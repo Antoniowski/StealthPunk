@@ -18,6 +18,7 @@
 		6AB863F92820254D006BB85E /* VectorFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB863F82820254D006BB85E /* VectorFunctions.swift */; };
 		6AB863FB2820258F006BB85E /* OpOverloading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB863FA2820258F006BB85E /* OpOverloading.swift */; };
 		6AB8640028217369006BB85E /* PlayerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB863FF28217369006BB85E /* PlayerClass.swift */; };
+		6AB8640228217ED5006BB85E /* PlayerMovementFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB8640128217ED5006BB85E /* PlayerMovementFunctions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		6AB863F82820254D006BB85E /* VectorFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorFunctions.swift; sourceTree = "<group>"; };
 		6AB863FA2820258F006BB85E /* OpOverloading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpOverloading.swift; sourceTree = "<group>"; };
 		6AB863FF28217369006BB85E /* PlayerClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerClass.swift; sourceTree = "<group>"; };
+		6AB8640128217ED5006BB85E /* PlayerMovementFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerMovementFunctions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,12 +67,13 @@
 		6AB863DF28200334006BB85E /* StealthProject */ = {
 			isa = PBXGroup;
 			children = (
+				6AB8640428217F64006BB85E /* Scenes */,
+				6AB8640328217F56006BB85E /* Guards */,
 				6AB863FE2821735F006BB85E /* Player */,
 				6AB863F72820252E006BB85E /* Useful Functions */,
 				6AB863E028200334006BB85E /* AppDelegate.swift */,
 				6AB863E228200334006BB85E /* GameScene.sks */,
 				6AB863E428200334006BB85E /* Actions.sks */,
-				6AB863E628200334006BB85E /* GameScene.swift */,
 				6AB863E828200334006BB85E /* GameViewController.swift */,
 				6AB863EA28200334006BB85E /* Main.storyboard */,
 				6AB863ED28200335006BB85E /* Assets.xcassets */,
@@ -92,8 +95,24 @@
 			isa = PBXGroup;
 			children = (
 				6AB863FF28217369006BB85E /* PlayerClass.swift */,
+				6AB8640128217ED5006BB85E /* PlayerMovementFunctions.swift */,
 			);
 			path = Player;
+			sourceTree = "<group>";
+		};
+		6AB8640328217F56006BB85E /* Guards */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Guards;
+			sourceTree = "<group>";
+		};
+		6AB8640428217F64006BB85E /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				6AB863E628200334006BB85E /* GameScene.swift */,
+			);
+			path = Scenes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,6 +190,7 @@
 			files = (
 				6AB863FB2820258F006BB85E /* OpOverloading.swift in Sources */,
 				6AB863E728200334006BB85E /* GameScene.swift in Sources */,
+				6AB8640228217ED5006BB85E /* PlayerMovementFunctions.swift in Sources */,
 				6AB863F92820254D006BB85E /* VectorFunctions.swift in Sources */,
 				6AB8640028217369006BB85E /* PlayerClass.swift in Sources */,
 				6AB863E928200334006BB85E /* GameViewController.swift in Sources */,
