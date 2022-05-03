@@ -15,10 +15,12 @@
 		6AB863EC28200334006BB85E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AB863EA28200334006BB85E /* Main.storyboard */; };
 		6AB863EE28200335006BB85E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AB863ED28200335006BB85E /* Assets.xcassets */; };
 		6AB863F128200335006BB85E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AB863EF28200335006BB85E /* LaunchScreen.storyboard */; };
+		6AB863F92820254D006BB85E /* VectorFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB863F82820254D006BB85E /* VectorFunctions.swift */; };
+		6AB863FB2820258F006BB85E /* OpOverloading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB863FA2820258F006BB85E /* OpOverloading.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6AB863DD28200334006BB85E /* StealthProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StealthProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6AB863DD28200334006BB85E /* StealthPunk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StealthPunk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AB863E028200334006BB85E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6AB863E228200334006BB85E /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		6AB863E428200334006BB85E /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -27,6 +29,8 @@
 		6AB863EB28200334006BB85E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6AB863ED28200335006BB85E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6AB863F028200335006BB85E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6AB863F82820254D006BB85E /* VectorFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorFunctions.swift; sourceTree = "<group>"; };
+		6AB863FA2820258F006BB85E /* OpOverloading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpOverloading.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +55,7 @@
 		6AB863DE28200334006BB85E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6AB863DD28200334006BB85E /* StealthProject.app */,
+				6AB863DD28200334006BB85E /* StealthPunk.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -59,6 +63,7 @@
 		6AB863DF28200334006BB85E /* StealthProject */ = {
 			isa = PBXGroup;
 			children = (
+				6AB863F72820252E006BB85E /* Useful Functions */,
 				6AB863E028200334006BB85E /* AppDelegate.swift */,
 				6AB863E228200334006BB85E /* GameScene.sks */,
 				6AB863E428200334006BB85E /* Actions.sks */,
@@ -69,6 +74,15 @@
 				6AB863EF28200335006BB85E /* LaunchScreen.storyboard */,
 			);
 			path = StealthProject;
+			sourceTree = "<group>";
+		};
+		6AB863F72820252E006BB85E /* Useful Functions */ = {
+			isa = PBXGroup;
+			children = (
+				6AB863F82820254D006BB85E /* VectorFunctions.swift */,
+				6AB863FA2820258F006BB85E /* OpOverloading.swift */,
+			);
+			path = "Useful Functions";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -88,7 +102,7 @@
 			);
 			name = StealthProject;
 			productName = StealthProject;
-			productReference = 6AB863DD28200334006BB85E /* StealthProject.app */;
+			productReference = 6AB863DD28200334006BB85E /* StealthPunk.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -144,7 +158,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AB863FB2820258F006BB85E /* OpOverloading.swift in Sources */,
 				6AB863E728200334006BB85E /* GameScene.swift in Sources */,
+				6AB863F92820254D006BB85E /* VectorFunctions.swift in Sources */,
 				6AB863E928200334006BB85E /* GameViewController.swift in Sources */,
 				6AB863E128200334006BB85E /* AppDelegate.swift in Sources */,
 			);
@@ -299,18 +315,20 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeLeft;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationLandscapeLeft;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = AntoniowskiR.StealthProject;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = Goosezilla.StealthProject;
+				PRODUCT_NAME = StealthPunk;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -327,18 +345,20 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeLeft;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationLandscapeLeft;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = AntoniowskiR.StealthProject;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				MARKETING_VERSION = 0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = Goosezilla.StealthProject;
+				PRODUCT_NAME = StealthPunk;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
