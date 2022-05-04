@@ -27,7 +27,7 @@ struct CharacterState{
     var isInvicible: Bool = false
 }
 
-class Player: SKSpriteNode{
+class PlayableCharacterClass: SKSpriteNode{
 
     
     private var noise: Int = 0
@@ -36,7 +36,6 @@ class Player: SKSpriteNode{
     
     private var status: CharacterState = CharacterState()
     private var actionState: ActionState = .MOVE
-    private var type: CharacterType = .HUMAN
     
     
     
@@ -56,28 +55,28 @@ class Player: SKSpriteNode{
         self.strenght = strenght
     }
     
-    init(texture: SKTexture?, color: UIColor, size: CGSize, characterType: CharacterType) {
-        super.init(texture: texture, color: color, size: size)
-        self.type = characterType
-        switch characterType {
-        case .HUMAN:
-            self.noise = 2
-            self.strenght = 1
-            self.characterSpeed = 4
-        case .HUMANGIRL:
-            self.noise = 0
-            self.strenght = 2
-            self.characterSpeed = 3
-        case .BIGGUS:
-            self.noise = 5
-            self.strenght = 4
-            self.characterSpeed = 1
-        case .COSOCONLARUOTA:
-            self.noise = 2
-            self.strenght = 5
-            self.characterSpeed = 5
-        }
-    }
+//    init(texture: SKTexture?, color: UIColor, size: CGSize, characterType: CharacterType) {
+//        super.init(texture: texture, color: color, size: size)
+//        self.type = characterType
+//        switch characterType {
+//        case .HUMAN:
+//            self.noise = 2
+//            self.strenght = 1
+//            self.characterSpeed = 4
+//        case .HUMANGIRL:
+//            self.noise = 0
+//            self.strenght = 2
+//            self.characterSpeed = 3
+//        case .BIGGUS:
+//            self.noise = 5
+//            self.strenght = 4
+//            self.characterSpeed = 1
+//        case .COSOCONLARUOTA:
+//            self.noise = 2
+//            self.strenght = 5
+//            self.characterSpeed = 5
+//        }
+//    }
     
     
 //    GET FUNCTIONS
@@ -94,9 +93,9 @@ class Player: SKSpriteNode{
         return self.characterSpeed
     }
     
-    func getType()->CharacterType{
-        return self.type
-    }
+//    func getType()->CharacterType{
+//        return self.type
+//    }
     
     func getStatus()->CharacterState{
         return self.status

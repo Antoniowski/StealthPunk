@@ -12,3 +12,5 @@ func playerMovement(player: SKShapeNode, velocity: CGVector){
     player.position.x += velocity.dx
     player.position.y += velocity.dy
 }
+
+

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A6A4D3E28226FAB003A76C5 /* GuardClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6A4D3D28226FAB003A76C5 /* GuardClass.swift */; };
 		6AB863E128200334006BB85E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB863E028200334006BB85E /* AppDelegate.swift */; };
 		6AB863E328200334006BB85E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6AB863E228200334006BB85E /* GameScene.sks */; };
 		6AB863E528200334006BB85E /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6AB863E428200334006BB85E /* Actions.sks */; };
@@ -17,11 +18,13 @@
 		6AB863F128200335006BB85E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AB863EF28200335006BB85E /* LaunchScreen.storyboard */; };
 		6AB863F92820254D006BB85E /* VectorFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB863F82820254D006BB85E /* VectorFunctions.swift */; };
 		6AB863FB2820258F006BB85E /* OpOverloading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB863FA2820258F006BB85E /* OpOverloading.swift */; };
-		6AB8640028217369006BB85E /* PlayerClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB863FF28217369006BB85E /* PlayerClass.swift */; };
+		6AB8640028217369006BB85E /* PlayableCharacterClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB863FF28217369006BB85E /* PlayableCharacterClass.swift */; };
 		6AB8640228217ED5006BB85E /* PlayerMovementFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB8640128217ED5006BB85E /* PlayerMovementFunctions.swift */; };
+		6AB8640A2821845B006BB85E /* VirtualController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB864092821845B006BB85E /* VirtualController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6A6A4D3D28226FAB003A76C5 /* GuardClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardClass.swift; sourceTree = "<group>"; };
 		6AB863DD28200334006BB85E /* StealthPunk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StealthPunk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AB863E028200334006BB85E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6AB863E228200334006BB85E /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -33,8 +36,9 @@
 		6AB863F028200335006BB85E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6AB863F82820254D006BB85E /* VectorFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorFunctions.swift; sourceTree = "<group>"; };
 		6AB863FA2820258F006BB85E /* OpOverloading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpOverloading.swift; sourceTree = "<group>"; };
-		6AB863FF28217369006BB85E /* PlayerClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerClass.swift; sourceTree = "<group>"; };
+		6AB863FF28217369006BB85E /* PlayableCharacterClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayableCharacterClass.swift; sourceTree = "<group>"; };
 		6AB8640128217ED5006BB85E /* PlayerMovementFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerMovementFunctions.swift; sourceTree = "<group>"; };
+		6AB864092821845B006BB85E /* VirtualController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +52,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A6A4D3F2822A37A003A76C5 /* Controlls */ = {
+			isa = PBXGroup;
+			children = (
+				6AB8640128217ED5006BB85E /* PlayerMovementFunctions.swift */,
+				6AB864092821845B006BB85E /* VirtualController.swift */,
+			);
+			path = Controlls;
+			sourceTree = "<group>";
+		};
 		6AB863D428200333006BB85E = {
 			isa = PBXGroup;
 			children = (
@@ -67,9 +80,10 @@
 		6AB863DF28200334006BB85E /* StealthProject */ = {
 			isa = PBXGroup;
 			children = (
+				6A6A4D3F2822A37A003A76C5 /* Controlls */,
 				6AB8640428217F64006BB85E /* Scenes */,
 				6AB8640328217F56006BB85E /* Guards */,
-				6AB863FE2821735F006BB85E /* Player */,
+				6AB863FE2821735F006BB85E /* Characters */,
 				6AB863F72820252E006BB85E /* Useful Functions */,
 				6AB863E028200334006BB85E /* AppDelegate.swift */,
 				6AB863E228200334006BB85E /* GameScene.sks */,
@@ -91,18 +105,18 @@
 			path = "Useful Functions";
 			sourceTree = "<group>";
 		};
-		6AB863FE2821735F006BB85E /* Player */ = {
+		6AB863FE2821735F006BB85E /* Characters */ = {
 			isa = PBXGroup;
 			children = (
-				6AB863FF28217369006BB85E /* PlayerClass.swift */,
-				6AB8640128217ED5006BB85E /* PlayerMovementFunctions.swift */,
+				6AB863FF28217369006BB85E /* PlayableCharacterClass.swift */,
 			);
-			path = Player;
+			path = Characters;
 			sourceTree = "<group>";
 		};
 		6AB8640328217F56006BB85E /* Guards */ = {
 			isa = PBXGroup;
 			children = (
+				6A6A4D3D28226FAB003A76C5 /* GuardClass.swift */,
 			);
 			path = Guards;
 			sourceTree = "<group>";
@@ -192,7 +206,9 @@
 				6AB863E728200334006BB85E /* GameScene.swift in Sources */,
 				6AB8640228217ED5006BB85E /* PlayerMovementFunctions.swift in Sources */,
 				6AB863F92820254D006BB85E /* VectorFunctions.swift in Sources */,
-				6AB8640028217369006BB85E /* PlayerClass.swift in Sources */,
+				6AB8640028217369006BB85E /* PlayableCharacterClass.swift in Sources */,
+				6AB8640A2821845B006BB85E /* VirtualController.swift in Sources */,
+				6A6A4D3E28226FAB003A76C5 /* GuardClass.swift in Sources */,
 				6AB863E928200334006BB85E /* GameViewController.swift in Sources */,
 				6AB863E128200334006BB85E /* AppDelegate.swift in Sources */,
 			);
