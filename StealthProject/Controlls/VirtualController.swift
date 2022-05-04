@@ -84,7 +84,9 @@ class MyVirtualControllerClass {
         buttonA?.valueChangedHandler = {(_ button: GCControllerButtonInput, _ value: Float, _ pressed: Bool) -> Void in
             // Put here the codes to run when button A clicked
             if(pressed == true){
-                
+                buttonAIsPressed = true
+            }else{
+                buttonAIsPressed = false
             }
         }
         
@@ -92,7 +94,9 @@ class MyVirtualControllerClass {
         buttonB?.valueChangedHandler = {(_ button: GCControllerButtonInput, _ value: Float, _ pressed: Bool) -> Void in
             // Put here the codes to run when button B clicked
             if(pressed == true){
-                
+                buttonBIsPressed = true
+            }else{
+                buttonBIsPressed = false
             }
         }
         

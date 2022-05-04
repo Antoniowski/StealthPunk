@@ -9,13 +9,16 @@ import Foundation
 import SpriteKit
 import SwiftUI
 
-func playerMovement(player: SKShapeNode, velocity: CGVector){
+func playerMovement(player: SKSpriteNode, velocity: CGVector){
     player.position.x += velocity.dx
     player.position.y += velocity.dy
 }
 
 
 protocol PlayableScene: DeltaProtocol{
+    
+    var player: PlayableCharacterClass {get set}
+    
     var inputVector: CGVector {get set}
     var rollVector: CGVector {get set}
     var velocity: CGVector {get set}
@@ -25,13 +28,11 @@ protocol PlayableScene: DeltaProtocol{
     var FRICTION: Double {get set}
     
     func moveState()
-    func attackState()
-    func rollState()
-    func interactState()
+    
 }
 
 extension PlayableScene{
-    mutating func moveState(){
+     func moveState(){
         self.inputVector = CGVector.zero
         inputVector = myMovement
         if inputVector != CGVector.zero{
@@ -46,11 +47,11 @@ extension PlayableScene{
         
     }
     
-    mutating func attackState(){
+     func attackState(){
         
     }
     
-    mutating func rollState(){
+     func rollState(){
         if velocity != CGVector.zero{
             velocity = velocity.moveTowardZero(value: 1000)
         }
@@ -60,7 +61,7 @@ extension PlayableScene{
 //        }])) DA RISOLVERE
     }
     
-    mutating func interactState(){
+     func interactState(){
         
     }
 }

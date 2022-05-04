@@ -79,6 +79,16 @@ class PlayableCharacterClass: SKSpriteNode{
 //    }
     
     
+    func updateActionState(){
+        if buttonAIsPressed && self.actionState != .ROLL{
+            self.actionState = .ROLL
+        }
+        if buttonAIsPressed == false && self.actionState == .ROLL{
+            self.actionState = .MOVE
+        }
+    }
+    
+    
 //    GET FUNCTIONS
     
     func getNoise()->Int{
@@ -140,6 +150,7 @@ class PlayableCharacterClass: SKSpriteNode{
     func setActionState(_ newActionState: ActionState){
         self.actionState = newActionState
     }
+    
     
 }
 

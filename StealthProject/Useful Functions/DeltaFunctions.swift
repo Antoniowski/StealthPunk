@@ -8,20 +8,20 @@
 import Foundation
 import SpriteKit
 
-protocol DeltaProtocol{
+protocol DeltaProtocol: AnyObject{
     var delta: TimeInterval {get set}
-    var lastUpdate: TimeInterval! {get set}
+    var lastUpdate: TimeInterval? {get set}
     
-    func calcDelta()
 }
 
 extension DeltaProtocol{
-    mutating func calcDelta(currentTime: TimeInterval){
-        defer{ lastUpdate = currentTime}
-        guard lastUpdate != nil else{
+    
+    func calcDelta(currentTime: TimeInterval){
+        defer{ self.lastUpdate = currentTime}
+        guard self.lastUpdate != nil else{
             return
         }
-        delta = currentTime-lastUpdate
+        self.delta = currentTime-lastUpdate!
         guard delta < 1 else{
             return
         }
