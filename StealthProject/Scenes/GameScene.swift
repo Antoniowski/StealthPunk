@@ -8,10 +8,16 @@
 import SpriteKit
 import GameplayKit
 
+
+
 class GameScene: SKScene {
     
+//    var myGameController: MyVirtualControllerClass = MyVirtualControllerClass()
+    
     override func didMove(to view: SKView) {
-
+        myGameController.setUpGameController()
+        
+        
     }
     
     
@@ -28,7 +34,7 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-
+        
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -43,5 +49,8 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+        
+        print("\(myMovement.dx) + \(myMovement.dy)")
+        
     }
 }
