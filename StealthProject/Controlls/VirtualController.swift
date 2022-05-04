@@ -20,36 +20,44 @@ class MyVirtualControllerClass {
         set { self._virtualController = newValue }
     }
     
+    private var initialized: Bool = false
+    
     
     func setUpGameController(){
-        if #available(iOS 15.0, *)
-        {
-            virtualController?.disconnect()
-            
-            let virtualConfiguration = GCVirtualController.Configuration()
-            virtualConfiguration.elements = [GCInputLeftThumbstick, GCInputButtonA, GCInputButtonB]
+//        virtualController?.disconnect()
+        
+        if(initialized){
+            virtualController?.connect()
+        } else {
+            if #available(iOS 15.0, *)
+            {
+                
+                let virtualConfiguration = GCVirtualController.Configuration()
+                virtualConfiguration.elements = [GCInputLeftThumbstick, GCInputButtonA, GCInputButtonB]
 
-            virtualController = GCVirtualController(configuration: virtualConfiguration)
+                virtualController = GCVirtualController(configuration: virtualConfiguration)
+            
+                // Connect to the virtual controller if no physical controllers are available.
+                if GCController.controllers().isEmpty {
+                    virtualController?.connect()
+                }
+                
+                guard let myController = virtualController?.controller else {
+                    return
+                }
+                
+                registerGameController(myController)
+            }
         
-            // Connect to the virtual controller if no physical controllers are available.
-            if GCController.controllers().isEmpty {
-                virtualController?.connect()
+            guard let controller = GCController.controllers().first else {
+            return
             }
-            
-            guard let myController = virtualController?.controller else {
-                return
-            }
-            
-            registerGameController(myController)
         }
-    
-    guard let controller = GCController.controllers().first else {
-        return
-    }
-        
     }
     
     func registerGameController(_ gameController: GCController) {
+        self.initialized = true
+        
         var buttonA: GCControllerButtonInput?
         var buttonB: GCControllerButtonInput?
         var leftThumb: GCControllerDirectionPad?
@@ -89,6 +97,15 @@ class MyVirtualControllerClass {
         }
         
     }
+    
+    func disconnectController(){
+        virtualController?.disconnect()
+    }
+    
+    func connectController(){
+        virtualController?.connect()
+    }
+    
 }
 
     

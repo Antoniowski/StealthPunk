@@ -34,7 +34,9 @@ class GameScene: SKScene {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+        myGameController.disconnectController()
+        let scene = TestScene2(size: self.size)
+        view?.presentScene(scene)
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -49,8 +51,6 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
-        
-        print("\(myMovement.dx) + \(myMovement.dy)")
-        
+
     }
 }
