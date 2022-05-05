@@ -54,7 +54,6 @@ extension PlayableScene{
             }
             
         }
-        //DA FARE DOPO L'ANIMAZIONE
         self.player.setActionState(.MOVE)
     }
     

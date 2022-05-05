@@ -36,6 +36,7 @@ class PlayableCharacter: SKSpriteNode{
     
     private var status: CharacterState = CharacterState()
     private var actionState: ActionState = .MOVE
+    private var facingDirection: FacingDirection = .DOWN
     
     private var noiseDitance: Double = 0
     
@@ -67,6 +68,48 @@ class PlayableCharacter: SKSpriteNode{
             self.actionState = .MOVE
         }
     }
+    
+    func updateFacingDirection(){    //FUNZIONA: Aggiorna una sola volta il facing direction
+        if myMovement != .zero{
+            if Double(myAngle) >= pi/4 && Double(myAngle) <= 3*pi/4{
+                if self.facingDirection != .RIGHT{
+                    self.facingDirection = .RIGHT
+                }
+            }else if Double(myAngle) > 3*pi/4 && Double(myAngle) <= pi || Double(myAngle) < -3*pi/4 && Double(myAngle) > -pi{
+                if self.facingDirection != .DOWN{
+                    self.facingDirection = .DOWN
+                }
+            }else if Double(myAngle) <= -pi/4 && Double(myAngle) >= -3*pi/4{
+                if self.facingDirection != .LEFT{
+                    self.facingDirection = .LEFT
+                }
+            }else if Double(myAngle) > -pi/4 && Double(myAngle) < pi/4{
+                if self.facingDirection != .UP{
+                    self.facingDirection = .UP
+                }
+            }
+        }
+    }
+    
+//    func animationWalking(){
+//        if actionState == .MOVE{
+//            if myMovement != .zero{
+//                if Double(myAngle) >= pi/4 && Double(myAngle) <= 3*pi/4{
+//                    if self.facingDirection != .RIGHT{
+//                        self.facingDirection = .RIGHT
+//                        self.run(.repeatForever(.animate(with: test, timePerFrame: 0.2)))
+//                    }
+//                }
+//            }else{
+//                if Double(myAngle) >= pi/4 && Double(myAngle) <= 3*pi/4{
+//                    if self.facingDirection != .RIGHT{
+//                        self.facingDirection = .RIGHT
+//                        self.run(.setTexture(SKTexture(imageNamed: "boySideR")))
+//                    }
+//                }
+//            }
+//        }
+//    }
     
     
 //    GET FUNCTIONS
@@ -104,6 +147,9 @@ class PlayableCharacter: SKSpriteNode{
         return self.interactRange
     }
     
+    func getFacingDirection()->FacingDirection{
+        return self.facingDirection
+    }
     
 //    SET FUNCTIONS
     
@@ -149,6 +195,10 @@ class PlayableCharacter: SKSpriteNode{
     
     func setInteractRange(_ newRange: Double){
         self.interactRange = newRange
+    }
+    
+    func setFacingDirection(_ newDir: FacingDirection){
+        self.facingDirection = newDir
     }
     
 }
