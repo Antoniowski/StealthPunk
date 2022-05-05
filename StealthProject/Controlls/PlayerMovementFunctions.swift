@@ -17,7 +17,7 @@ func playerMovement(player: SKSpriteNode, velocity: CGVector){
 
 protocol PlayableScene: DeltaProtocol{
     
-    var player: PlayableCharacterClass {get set}
+    var player: PlayableCharacter {get set}
     
     var inputVector: CGVector {get set}
     var rollVector: CGVector {get set}

@@ -27,7 +27,7 @@ struct CharacterState{
     var isInvicible: Bool = false
 }
 
-class PlayableCharacterClass: SKSpriteNode{
+class PlayableCharacter: SKSpriteNode{
 
     
     private var noise: Int = 0
