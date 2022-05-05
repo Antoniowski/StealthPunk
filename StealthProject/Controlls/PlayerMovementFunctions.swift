@@ -71,8 +71,15 @@ extension PlayableScene{
          })
     }
     
-     func interactState(){
-        
+    func interactState(scene: SKScene){
+         scene.enumerateChildNodes(withName: "interactable"){ object, _ in
+             if getDistanceBetween(point1: self.player.position, point2: object.position) <= self.player.getInteractRange(){
+                 //TO DO
+             }
+             
+         }
+         self.player.setActionState(.MOVE)
+
     }
 }
 

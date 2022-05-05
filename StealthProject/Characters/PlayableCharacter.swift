@@ -36,7 +36,9 @@ class PlayableCharacter: SKSpriteNode{
     
     private var status: CharacterState = CharacterState()
     private var actionState: ActionState = .MOVE
-    private var facingDirection: FacingDirection = .DOWN
+    private var movingDirection: Direction = .DOWN
+    private var facingDirection: Direction = .DOWN
+    private var idle: Bool = true
     
     private var noiseDitance: Double = 0
     
@@ -69,47 +71,90 @@ class PlayableCharacter: SKSpriteNode{
         }
     }
     
-    func updateFacingDirection(){    //FUNZIONA: Aggiorna una sola volta il facing direction
+    func updateMovingDirection(){    //FUNZIONA: Aggiorna una sola volta il moving direction
         if myMovement != .zero{
             if Double(myAngle) >= pi/4 && Double(myAngle) <= 3*pi/4{
-                if self.facingDirection != .RIGHT{
-                    self.facingDirection = .RIGHT
+                if self.movingDirection != .RIGHT{
+                    self.movingDirection = .RIGHT
                 }
             }else if Double(myAngle) > 3*pi/4 && Double(myAngle) <= pi || Double(myAngle) < -3*pi/4 && Double(myAngle) > -pi{
-                if self.facingDirection != .DOWN{
-                    self.facingDirection = .DOWN
+                if self.movingDirection != .DOWN{
+                    self.movingDirection = .DOWN
                 }
             }else if Double(myAngle) <= -pi/4 && Double(myAngle) >= -3*pi/4{
-                if self.facingDirection != .LEFT{
-                    self.facingDirection = .LEFT
+                if self.movingDirection != .LEFT{
+                    self.movingDirection = .LEFT
                 }
             }else if Double(myAngle) > -pi/4 && Double(myAngle) < pi/4{
-                if self.facingDirection != .UP{
-                    self.facingDirection = .UP
+                if self.movingDirection != .UP{
+                    self.movingDirection = .UP
                 }
             }
         }
     }
     
-//    func animationWalking(){
-//        if actionState == .MOVE{
-//            if myMovement != .zero{
-//                if Double(myAngle) >= pi/4 && Double(myAngle) <= 3*pi/4{
-//                    if self.facingDirection != .RIGHT{
-//                        self.facingDirection = .RIGHT
-//                        self.run(.repeatForever(.animate(with: test, timePerFrame: 0.2)))
-//                    }
-//                }
-//            }else{
-//                if Double(myAngle) >= pi/4 && Double(myAngle) <= 3*pi/4{
-//                    if self.facingDirection != .RIGHT{
-//                        self.facingDirection = .RIGHT
-//                        self.run(.setTexture(SKTexture(imageNamed: "boySideR")))
-//                    }
-//                }
-//            }
-//        }
-//    }
+    func animationWalking(){
+        updateMovingDirection()
+        if actionState == .MOVE{
+            switch movingDirection {
+            case .UP:
+                if myMovement != .zero && (self.idle == true || self.facingDirection != .UP){
+                    self.idle = false
+                    self.facingDirection = .UP
+                    self.run(.repeatForever(.animate(with: test4, timePerFrame: 0.25)))
+                        
+                }else if myMovement == .zero && self.idle == false{
+                    self.removeAllActions()
+                    self.idle = true
+                    self.run(.setTexture(SKTexture(imageNamed: "boyBack")))
+                }
+            case .UP_RIGHT:
+                print("TODO")
+            case .RIGHT:
+                if myMovement != .zero && (self.idle == true || self.facingDirection != .RIGHT){
+                    self.idle = false
+                    self.facingDirection = .RIGHT
+                    self.run(.repeatForever(.animate(with: test, timePerFrame: 0.18)))
+                        
+                }else if myMovement == .zero && self.idle == false{
+                    self.removeAllActions()
+                    self.idle = true
+                    self.run(.setTexture(SKTexture(imageNamed: "boySideR")))
+                }
+            case .DOWN_RIGHT:
+                print("TODO")
+
+            case .DOWN:
+                if myMovement != .zero && (self.idle == true || self.facingDirection != .DOWN){
+                    self.idle = false
+                    self.facingDirection = .DOWN
+                    self.run(.repeatForever(.animate(with: test2, timePerFrame: 0.25)))
+                        
+                }else if myMovement == .zero && self.idle == false{
+                    self.removeAllActions()
+                    self.idle = true
+                    self.run(.setTexture(SKTexture(imageNamed: "boyFront")))
+                }
+            case .DOWN_LEFT:
+                print("TODO")
+
+            case .LEFT:
+                if myMovement != .zero && (self.idle == true || self.facingDirection != .LEFT){
+                    self.idle = false
+                    self.facingDirection = .LEFT
+                    self.run(.repeatForever(.animate(with: test3, timePerFrame: 0.18)))
+                        
+                }else if myMovement == .zero && self.idle == false{
+                    self.removeAllActions()
+                    self.idle = true
+                    self.run(.setTexture(SKTexture(imageNamed: "boySideL")))
+                }
+            case .UP_LEFT:
+                print("TODO")
+
+            }
+        }
+    }
     
     
 //    GET FUNCTIONS
@@ -147,7 +192,7 @@ class PlayableCharacter: SKSpriteNode{
         return self.interactRange
     }
     
-    func getFacingDirection()->FacingDirection{
+    func getFacingDirection()->Direction{
         return self.facingDirection
     }
     
@@ -197,7 +242,7 @@ class PlayableCharacter: SKSpriteNode{
         self.interactRange = newRange
     }
     
-    func setFacingDirection(_ newDir: FacingDirection){
+    func setFacingDirection(_ newDir: Direction){
         self.facingDirection = newDir
     }
     

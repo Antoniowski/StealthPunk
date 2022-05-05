@@ -11,6 +11,8 @@ import GameplayKit
 
 var test: [SKTexture] = [SKTexture(imageNamed: "boyWalk1"), SKTexture(imageNamed:"boyWalk2"), SKTexture(imageNamed:"boyWalk3"), SKTexture(imageNamed:"boyWalk4"), SKTexture(imageNamed:"boyWalk5"), SKTexture(imageNamed:"boyWalk6"), SKTexture(imageNamed:"boyWalk7"), SKTexture(imageNamed:"boyWalk8")]
 var test2: [SKTexture] = [SKTexture(imageNamed: "boyFrontWalk1"), SKTexture(imageNamed: "boyFrontWalk2"), SKTexture(imageNamed: "boyFrontWalk3"), SKTexture(imageNamed: "boyFrontWalk4")]
+var test3: [SKTexture] = [SKTexture(imageNamed: "boyWalkLeft1"), SKTexture(imageNamed:"boyWalkLeft2"), SKTexture(imageNamed:"boyWalkLeft3"), SKTexture(imageNamed:"boyWalkLeft4"), SKTexture(imageNamed:"boyWalkLeft5"), SKTexture(imageNamed:"boyWalkLeft6"), SKTexture(imageNamed:"boyWalkLeft7"), SKTexture(imageNamed:"boyWalkLeft8")]
+var test4: [SKTexture] = [SKTexture(imageNamed: "boyBackWalk1"), SKTexture(imageNamed: "boyBackWalk2"), SKTexture(imageNamed: "boyBackWalk3"), SKTexture(imageNamed: "boyBackWalk4")]
 
 
 class TestScene2: SKScene, PlayableScene {
@@ -18,7 +20,7 @@ class TestScene2: SKScene, PlayableScene {
     var delta: TimeInterval = 0.0
     var lastUpdate: TimeInterval?
     
-    var player: PlayableCharacter = PlayableCharacter(texture: SKTexture(imageNamed: "boyFront"), color: .clear, size: CGSize(width: 25, height: 50), noise: 1, speed: 1, strenght: 1)
+    var player: PlayableCharacter = PlayableCharacter(texture: SKTexture(imageNamed: "boyFront"), color: .clear, size: CGSize(width: 35, height: 70), noise: 1, speed: 1, strenght: 1)
 
     
     var scenecamera = SKCameraNode()
@@ -44,9 +46,9 @@ class TestScene2: SKScene, PlayableScene {
     
     override func update(_ currentTime: TimeInterval) {
         calcDelta(currentTime: currentTime)
-        player.updateFacingDirection()
         player.updateActionState()
-//        player.animationWalking()
+//        player.updateMovingDirection()
+        player.animationWalking()
         
         switch player.getActionState(){
         case .MOVE:

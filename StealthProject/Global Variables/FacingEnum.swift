@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum FacingDirection: Int{
+enum Direction: Int{
     case UP = 0
     case UP_RIGHT = 1
     case RIGHT = 2

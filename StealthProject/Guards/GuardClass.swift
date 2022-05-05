@@ -44,6 +44,7 @@ class Guard: SKSpriteNode{
     
     init(texture: SKTexture?, color: UIColor, size: CGSize, strenght: Int, speed: Int, visionDistance: Double, visionRadius: Double) {
         super.init(texture: texture, color: color, size: size)
+        self.name = "enemy"
         self.strenght = strenght
         self.guardSpeed = speed
         self.visionDistance = visionDistance
