@@ -37,6 +37,10 @@ class PlayableCharacter: SKSpriteNode{
     private var status: CharacterState = CharacterState()
     private var actionState: ActionState = .MOVE
     
+    private var noiseDitance: Double = 0
+    
+    private var interactRange: Double = 25
+    private var attackRange: Double = 25
     
     
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
@@ -54,30 +58,6 @@ class PlayableCharacter: SKSpriteNode{
         self.characterSpeed = speed
         self.strenght = strenght
     }
-    
-//    init(texture: SKTexture?, color: UIColor, size: CGSize, characterType: CharacterType) {
-//        super.init(texture: texture, color: color, size: size)
-//        self.type = characterType
-//        switch characterType {
-//        case .HUMAN:
-//            self.noise = 2
-//            self.strenght = 1
-//            self.characterSpeed = 4
-//        case .HUMANGIRL:
-//            self.noise = 0
-//            self.strenght = 2
-//            self.characterSpeed = 3
-//        case .BIGGUS:
-//            self.noise = 5
-//            self.strenght = 4
-//            self.characterSpeed = 1
-//        case .COSOCONLARUOTA:
-//            self.noise = 2
-//            self.strenght = 5
-//            self.characterSpeed = 5
-//        }
-//    }
-    
     
     func updateActionState(){
         if buttonAIsPressed && self.actionState != .ROLL{
@@ -103,9 +83,10 @@ class PlayableCharacter: SKSpriteNode{
         return self.characterSpeed
     }
     
-//    func getType()->CharacterType{
-//        return self.type
-//    }
+    func getNoiseDistance()->Double{
+        return self.noiseDitance
+    }
+    
     
     func getStatus()->CharacterState{
         return self.status
@@ -115,6 +96,13 @@ class PlayableCharacter: SKSpriteNode{
         return self.actionState
     }
     
+    func getAttackRange()->Double{
+        return self.attackRange
+    }
+    
+    func getInteractRange()->Double{
+        return self.interactRange
+    }
     
     
 //    SET FUNCTIONS
@@ -151,6 +139,17 @@ class PlayableCharacter: SKSpriteNode{
         self.actionState = newActionState
     }
     
+    func setNoiceDistance(_ newDistance: Double){
+        self.noiseDitance = newDistance
+    }
+    
+    func setAttackRange(_ newRange: Double){
+        self.attackRange = newRange
+    }
+    
+    func setInteractRange(_ newRange: Double){
+        self.interactRange = newRange
+    }
     
 }
 

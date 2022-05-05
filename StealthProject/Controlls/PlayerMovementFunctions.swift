@@ -32,6 +32,7 @@ protocol PlayableScene: DeltaProtocol{
 }
 
 extension PlayableScene{
+    
      func moveState(){
         self.inputVector = CGVector.zero
         inputVector = myMovement
@@ -46,15 +47,22 @@ extension PlayableScene{
         
     }
     
-     func attackState(){
-        
+    func attackState(scene: SKScene){
+        scene.enumerateChildNodes(withName: "enemy"){ object, _ in
+            if getDistanceBetween(point1: self.player.position, point2: object.position) <= self.player.getAttackRange(){
+                //TO DO
+            }
+            
+        }
+        //DA FARE DOPO L'ANIMAZIONE
+        self.player.setActionState(.MOVE)
     }
     
      func rollState(){
         if velocity != CGVector.zero{
             velocity = velocity.moveTowardZero(value: 1000)
         }
-         velocity = rollVector*MAX_SPEED*1.5*delta
+         velocity = rollVector*MAX_SPEED*3*delta
          
          DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2, execute: {
              self.velocity = self.velocity.moveTowardZero(value: self.FRICTION*self.delta)
