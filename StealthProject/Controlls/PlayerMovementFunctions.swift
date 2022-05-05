@@ -36,13 +36,12 @@ extension PlayableScene{
         self.inputVector = CGVector.zero
         inputVector = myMovement
         if inputVector != CGVector.zero{
-            rollVector = inputVector
+            rollVector = inputVector.normalized()
             inputVector = inputVector*ACCELLERATION*delta //AGGIUNGERE ACCELERAZIONE APPROPRIATA
             velocity += inputVector
-            velocity = velocity.clamped(maxLength: MAX_SPEED) //AGGIUNGERE MAX VELOCITY
+            velocity = velocity.clamped(maxLength: MAX_SPEED*delta) //AGGIUNGERE MAX VELOCITY
         }else{
             velocity = velocity.moveTowardZero(value: FRICTION*delta)
-            rollVector = CGVector.init(dx: 0, dy: 1)
         }
         
     }
@@ -55,10 +54,14 @@ extension PlayableScene{
         if velocity != CGVector.zero{
             velocity = velocity.moveTowardZero(value: 1000)
         }
-        velocity = rollVector*MAX_SPEED*1.5*delta
-//        run(SKAction.sequence([.wait(forDuration: 0.2), .run {
-//            self.velocity = self.velocity.moveTowardZero(value: self.FRICTION*self.delta)
-//        }])) DA RISOLVERE
+         velocity = rollVector*MAX_SPEED*1.5*delta
+         
+         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2, execute: {
+             self.velocity = self.velocity.moveTowardZero(value: self.FRICTION*self.delta)
+         })
+         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.3, execute: {
+             self.player.setActionState(.MOVE)
+         })
     }
     
      func interactState(){

@@ -23,9 +23,9 @@ class TestScene2: SKScene, PlayableScene {
     var rollVector: CGVector = CGVector.init(dx: 1, dy: 0)
     var velocity: CGVector = CGVector.zero
     
-    var ACCELLERATION: Double = 10
+    var ACCELLERATION: Double = 20
     var MAX_SPEED: Double = 100
-    var FRICTION: Double = 50
+    var FRICTION: Double = 10
     
     
     override func didMove(to view: SKView) {
@@ -34,6 +34,8 @@ class TestScene2: SKScene, PlayableScene {
         scenecamera.position = player.position
         addChild(player)
     }
+    
+    
     
     override func update(_ currentTime: TimeInterval) {
         calcDelta(currentTime: currentTime)
@@ -49,12 +51,12 @@ class TestScene2: SKScene, PlayableScene {
             print("")
             
         case .ROLL:
-            print("")
+            rollState()
         }
         
         playerMovement(player: player as SKSpriteNode, velocity: velocity)
 //        scenecamera.position = player.position
-        print(inputVector)
+        
     }
     
     
