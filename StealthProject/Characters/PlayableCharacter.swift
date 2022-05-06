@@ -75,6 +75,16 @@ class PlayableCharacter: SKSpriteNode{
     var runningAnimationBackRight: [SKTexture] = []
     var runningAnimationBackLeft: [SKTexture] = []
     
+//    ROLLING ANIMATION ARRAYS
+    var rollingAnimationFront: [SKTexture] = []
+    var rollingAnimationFrontLeft: [SKTexture] = []
+    var rollingAnimationFrontRight: [SKTexture] = []
+    var rollingAnimationRight: [SKTexture] = []
+    var rollingAnimationLeft: [SKTexture] = []
+    var rollingAnimationBack: [SKTexture] = []
+    var rollingAnimationBackRight: [SKTexture] = []
+    var rollingAnimationBackLeft: [SKTexture] = []
+    
 //    SHOOTING ANIMATION ARRAYS
     var shootingAnimationFront: [SKTexture] = []
     var shootingAnimationFrontRight: [SKTexture] = []
