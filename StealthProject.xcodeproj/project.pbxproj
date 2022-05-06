@@ -27,7 +27,7 @@
 		6AC709612823D4DD007F8A50 /* SpecificCharacterClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC709602823D4DD007F8A50 /* SpecificCharacterClasses.swift */; };
 		6AC709652823D78A007F8A50 /* AbilityClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC709642823D78A007F8A50 /* AbilityClass.swift */; };
 		6AC7096728240B00007F8A50 /* FacingEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC7096628240B00007F8A50 /* FacingEnum.swift */; };
-		A693D34B28254CEF0055C266 /* testRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = A693D34A28254CEF0055C266 /* testRoom.swift */; };
+		A693D34E28255EC20055C266 /* Testroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = A693D34D28255EC20055C266 /* Testroom.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,7 +52,7 @@
 		6AC709602823D4DD007F8A50 /* SpecificCharacterClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificCharacterClasses.swift; sourceTree = "<group>"; };
 		6AC709642823D78A007F8A50 /* AbilityClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbilityClass.swift; sourceTree = "<group>"; };
 		6AC7096628240B00007F8A50 /* FacingEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacingEnum.swift; sourceTree = "<group>"; };
-		A693D34A28254CEF0055C266 /* testRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testRoom.swift; sourceTree = "<group>"; };
+		A693D34D28255EC20055C266 /* Testroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Testroom.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +87,7 @@
 		6AB863D428200333006BB85E = {
 			isa = PBXGroup;
 			children = (
+				A693D34D28255EC20055C266 /* Testroom.swift */,
 				6AB863DF28200334006BB85E /* StealthProject */,
 				6AB863DE28200334006BB85E /* Products */,
 			);
@@ -103,7 +104,6 @@
 		6AB863DF28200334006BB85E /* StealthProject */ = {
 			isa = PBXGroup;
 			children = (
-				A693D34C28254D040055C266 /* Rooms */,
 				6AC709632823D77C007F8A50 /* Objects */,
 				6AC709622823D776007F8A50 /* Abilities */,
 				6A6A4D3F2822A37A003A76C5 /* Controlls */,
@@ -172,14 +172,6 @@
 			children = (
 			);
 			path = Objects;
-			sourceTree = "<group>";
-		};
-		A693D34C28254D040055C266 /* Rooms */ = {
-			isa = PBXGroup;
-			children = (
-				A693D34A28254CEF0055C266 /* testRoom.swift */,
-			);
-			path = Rooms;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,7 +253,7 @@
 				6AC709652823D78A007F8A50 /* AbilityClass.swift in Sources */,
 				6AB8640228217ED5006BB85E /* PlayerMovementFunctions.swift in Sources */,
 				6AB863F92820254D006BB85E /* VectorFunctions.swift in Sources */,
-				A693D34B28254CEF0055C266 /* testRoom.swift in Sources */,
+				A693D34E28255EC20055C266 /* Testroom.swift in Sources */,
 				4A1B448E2822B274001DABEE /* ControllerRelatedGlobalVariables.swift in Sources */,
 				6AB8640028217369006BB85E /* PlayableCharacter.swift in Sources */,
 				6AB8640A2821845B006BB85E /* VirtualController.swift in Sources */,
