@@ -16,7 +16,7 @@ class GameViewController: UIViewController {
         
         let view = self.view as! SKView
             // Load the SKScene from 'GameScene.sks'
-        let scene = GameScene(size: CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
+        let scene = Piano1(size: CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
                 // Set the scale mode to scale to fit the window
         scene.scaleMode = .aspectFill
                 
@@ -25,6 +25,7 @@ class GameViewController: UIViewController {
             
             
         view.ignoresSiblingOrder = true
+        view.showsPhysics = true
             
         view.showsFPS = true
         view.showsNodeCount = true

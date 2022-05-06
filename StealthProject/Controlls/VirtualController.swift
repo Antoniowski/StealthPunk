@@ -98,6 +98,9 @@ class MyVirtualControllerClass {
             // Put here the codes to run when button B clicked
             if(pressed == true){
                 buttonBIsPressed = true
+                DispatchQueue.main.asyncAfter(deadline: .now()+0.1, execute: {
+                    buttonBIsPressed = false
+                })
             }else{
                 buttonBIsPressed = false
             }

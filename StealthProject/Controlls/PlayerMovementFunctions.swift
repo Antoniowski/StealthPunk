@@ -27,8 +27,6 @@ protocol PlayableScene: DeltaProtocol{
     var MAX_SPEED: Double {get set}
     var FRICTION: Double {get set}
     
-    func moveState()
-    
 }
 
 extension PlayableScene{
@@ -81,7 +79,7 @@ extension PlayableScene{
     func interactState(scene: SKScene){
          scene.enumerateChildNodes(withName: "interactable"){ object, _ in
              if getDistanceBetween(point1: self.player.position, point2: object.position) <= self.player.getInteractRange(){
-                 //TO DO
+                 object.run(.rotate(byAngle: pi/2, duration: 1))
              }
              
          }
