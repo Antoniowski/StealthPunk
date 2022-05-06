@@ -17,12 +17,13 @@ var test4: [SKTexture] = [SKTexture(imageNamed: "boyBackWalk1"), SKTexture(image
 var rolltest: [SKTexture] = [SKTexture(imageNamed: "boyRoll1"), SKTexture(imageNamed: "boyRoll2"), SKTexture(imageNamed: "boyRoll3"), SKTexture(imageNamed: "boyRoll4"), SKTexture(imageNamed: "boyRoll5"), SKTexture(imageNamed: "boyRoll6"), SKTexture(imageNamed: "boyRoll7"), SKTexture(imageNamed: "boyRoll8")]
 
 
-class TestScene2: SKScene, PlayableScene {
+class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     
     var delta: TimeInterval = 0.0
     var lastUpdate: TimeInterval?
     
     var player: PlayableCharacter = Human(texture: SKTexture(imageNamed: "boyFront"), color: .clear, size: CGSize(width: 35, height: 70), noise: 1, speed: 1, strenght: 1)
+    var armadio: InteractableObject = InteractableObject(texture: SKTexture(imageNamed: "closet"), color: .clear, size: CGSize(width: 100, height: 100), type: .HIDEOUT)
 
     
     var scenecamera = SKCameraNode()
@@ -41,7 +42,12 @@ class TestScene2: SKScene, PlayableScene {
         myGameController.connectController()
         camera = scenecamera
         scenecamera.position = player.position
+        armadio.position = player.position
+        armadio.position.x += 250
+        player.zPosition = 3
+        armadio.zPosition = 1
         addChild(player)
+        addChild(armadio)
     }
     
     
@@ -59,7 +65,7 @@ class TestScene2: SKScene, PlayableScene {
             print("")
             
         case .INTERACT:
-            print("")
+            interactState(scene: self)
             
         case .ROLL:
             rollState()

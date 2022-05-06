@@ -9,6 +9,13 @@ import Foundation
 import SpriteKit
 
 func visionCone(entity: Guard, scene: SKScene){
+//    entity.centerBall()
+    
+    if(!entity.getInitBall()){
+        scene.addChild(entity.getCenterBall())
+        entity.setInitBall()
+    }
+    
     scene.enumerateChildNodes(withName: "*"){node, _ in
         if(node.name == entity.name!+"visualCone"){
             node.removeFromParent()
@@ -28,7 +35,7 @@ func visionCone(entity: Guard, scene: SKScene){
 func visionConeRayCasting360(entity: Guard, scene: SKScene){
     
     for index in 0...Int(entity.getVisionConeAngle())-1{
-        var newAngle = entity.zRotation + CGFloat(index)
+        var newAngle = entity.getCenterBall().zRotation + CGFloat(index)
         var newX4 = cos(newAngle * 3.14 / 180)*CGFloat(entity.getVisionConeRadius())
         var newY4 = sin(newAngle * 3.14 / 180)*CGFloat(entity.getVisionConeRadius())
         rayCasting(myX: entity.position.x + newX4, myY: entity.position.y + newY4, entity: entity, scene: scene)
@@ -47,7 +54,7 @@ func visionConeRayCasting360(entity: Guard, scene: SKScene){
 }
 
 func visionConeRayCasting(entity: Guard, scene: SKScene){
-    let myAngle = entity.zRotation * 180 / 3.14 + 90
+    let myAngle = entity.getCenterBall().zRotation * 180 / 3.14 + 90
     
     
     let newX = cos(myAngle * 3.14 / 180)*CGFloat(entity.getVisionConeRadius())

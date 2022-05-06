@@ -42,7 +42,7 @@ class PlayableCharacter: SKSpriteNode{
     
     private var noiseDitance: Double = 0
     
-    private var interactRange: Double = 25
+    private var interactRange: Double = 150
     private var attackRange: Double = 25
     
 //    IDLE ANIMATION ARRAYS
@@ -143,10 +143,16 @@ class PlayableCharacter: SKSpriteNode{
     
 //    GENERIC FUNCTIONS
     func updateActionState(){
-        if buttonAIsPressed && self.actionState != .ROLL{
+        if buttonBIsPressed && self.actionState != .ROLL{
             self.actionState = .ROLL
         }
-        if buttonAIsPressed == false && self.actionState == .ROLL{
+        if buttonBIsPressed == false && self.actionState == .ROLL{
+            self.actionState = .MOVE
+        }
+        if buttonAIsPressed && self.actionState != .INTERACT{
+            self.actionState = .INTERACT
+        }
+        if buttonAIsPressed == false && self.actionState == .INTERACT{
             self.actionState = .MOVE
         }
     }
