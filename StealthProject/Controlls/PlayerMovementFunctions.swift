@@ -58,20 +58,20 @@ extension PlayableScene{
     }
     
      func rollState(){
-        if velocity != CGVector.zero{
-            velocity = velocity.moveTowardZero(value: 1000)
-        }
+//        if velocity != CGVector.zero{
+//            velocity = velocity.moveTowardZero(value: 1000)
+//        }
          velocity = rollVector*MAX_SPEED*3*delta
          
 //         player.xScale = 2
-//         player.run(.animate(with: rolltest, timePerFrame: 0.1),
+//         player.run(.animate(with: player.rollingAnimationRight, timePerFrame: 0.05),
 //                    completion: {
 //             self.player.xScale = 1
 //             self.player.run(.setTexture(SKTexture(imageNamed: "boySideR")))
 //         })
          
          DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2, execute: {
-             self.velocity = self.velocity.moveTowardZero(value: self.FRICTION*self.delta)
+             self.velocity = .zero
          })
          DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.3, execute: {
              self.player.setActionState(.MOVE)
