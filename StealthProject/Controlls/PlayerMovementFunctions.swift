@@ -63,6 +63,13 @@ extension PlayableScene{
         }
          velocity = rollVector*MAX_SPEED*3*delta
          
+//         player.xScale = 2
+//         player.run(.animate(with: rolltest, timePerFrame: 0.1),
+//                    completion: {
+//             self.player.xScale = 1
+//             self.player.run(.setTexture(SKTexture(imageNamed: "boySideR")))
+//         })
+         
          DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2, execute: {
              self.velocity = self.velocity.moveTowardZero(value: self.FRICTION*self.delta)
          })
