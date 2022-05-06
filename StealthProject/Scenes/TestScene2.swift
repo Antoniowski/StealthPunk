@@ -24,6 +24,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     
     var player: PlayableCharacter = Human(texture: SKTexture(imageNamed: "boyFront"), color: .clear, size: CGSize(width: 35, height: 70), noise: 1, speed: 1, strenght: 1)
     var armadio: InteractableObject = InteractableObject(texture: SKTexture(imageNamed: "closet"), color: .clear, size: CGSize(width: 100, height: 100), type: .HIDEOUT)
+    var lampione = InteractableObject(texture: SKTexture(imageNamed: "lampione"), color: .clear, size: CGSize(width: 70, height: 140), type: .STATIC)
 
     
     var scenecamera = SKCameraNode()
@@ -44,10 +45,14 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         scenecamera.position = player.position
         armadio.position = player.position
         armadio.position.x += 250
+        lampione.position = player.position
+        lampione.position.y += 100
         player.zPosition = 3
         armadio.zPosition = 1
+        lampione.zPosition = 1
         addChild(player)
         addChild(armadio)
+        addChild(lampione)
     }
     
     
