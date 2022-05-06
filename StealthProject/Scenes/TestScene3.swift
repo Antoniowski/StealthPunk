@@ -25,6 +25,9 @@ class TestScene3: SKScene, SKPhysicsContactDelegate {
         
         visionCone(entity: guard1, scene: self)
         
+        print(guard1.getCenterBall().zRotation)
+//        print(guard1.getCenterBall().zRotation * )
+        
         
     }
     
@@ -32,6 +35,8 @@ class TestScene3: SKScene, SKPhysicsContactDelegate {
         guard1.position = CGPoint(x: size.width*0.5, y: size.height*0.5)
         addChild(guard1)
         
-        guard1.run(.rotate(byAngle: 3.14 * 90 / 180, duration: 2))
+//        guard1.run(.rotate(byAngle: 3.14 * 90 / 180, duration: 2))
+        
+        guard1.getCenterBall().run(.rotate(byAngle: 3.14 * 90 / 180, duration: 2))
     }
 }

@@ -39,6 +39,9 @@ class Guard: SKSpriteNode{
     
     private var arrayOfVisionPoints: [CGPoint] = []
     
+    private var invisibleBall: SKShapeNode = SKShapeNode(rectOf: CGSize(width: 1, height: 1))
+    private var initBall: Bool = false
+    
     private var playerFound: Bool = false
     
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
@@ -56,6 +59,11 @@ class Guard: SKSpriteNode{
         self.guardSpeed = speed
         self.visionConeRadius = visionConeRadius
         self.visionConeAngle = visionConeAngle
+        
+        invisibleBall.strokeColor = .clear
+        invisibleBall.fillColor = .clear
+       
+        
     }
     
 //    GET FUNCTIONS
@@ -81,6 +89,14 @@ class Guard: SKSpriteNode{
     
     func getPlayerFound()->Bool{
         return self.playerFound
+    }
+    
+    func getCenterBall()->SKShapeNode{
+        return self.invisibleBall
+    }
+    
+    func getInitBall()->Bool{
+        return self.initBall
     }
     
 //    SET FUNCTIONS
@@ -116,6 +132,14 @@ class Guard: SKSpriteNode{
     
     func setPlayerFoundFlase(){
         self.playerFound = false
+    }
+ 
+    func centerBall(){
+        self.invisibleBall.position = self.position
+    }
+    
+    func setInitBall() {
+        self.initBall = true
     }
     
 }
