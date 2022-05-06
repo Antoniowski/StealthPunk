@@ -34,6 +34,10 @@ class InteractableObject: SKSpriteNode{
         self.spotted = false
         self.inUse = false
         self.type = type
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: size.width, height: size.height/2), center: CGPoint(x: 0, y: size.height/4))
+        self.physicsBody?.affectedByGravity = false
+        self.physicsBody?.isDynamic = false
+        self.physicsBody?.allowsRotation = false
     }
     
     
