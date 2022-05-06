@@ -30,6 +30,7 @@ class InteractableObject: SKSpriteNode{
     
     init(texture: SKTexture?, color: UIColor, size: CGSize, type: ObjectType){
         super.init(texture: texture, color: color, size: size)
+        self.name = "interactable"
         self.spotted = false
         self.inUse = false
         self.type = type
