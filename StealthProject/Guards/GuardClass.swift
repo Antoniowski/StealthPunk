@@ -14,6 +14,10 @@ struct GuardState{
     var isAlerted: Bool = false
     var isSerching: Bool = false
     var playerDetected: Bool = false
+    
+    
+    
+    
 }
 
 enum GuardActionState: Int{
@@ -30,9 +34,12 @@ class Guard: SKSpriteNode{
     private var status: GuardState = GuardState()
     private var actionState: GuardActionState = .MOVE
     
-    private var visionDistance: Double = 0
-    private var visionRadius: Double = 0
+    private var visionConeRadius: Double = 0
+    private var visionConeAngle: Double = 60
     
+    private var arrayOfVisionPoints: [CGPoint] = []
+    
+    private var playerFound: Bool = false
     
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
         super.init(texture: texture, color: color, size: size)
@@ -42,13 +49,13 @@ class Guard: SKSpriteNode{
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(texture: SKTexture?, color: UIColor, size: CGSize, strenght: Int, speed: Int, visionDistance: Double, visionRadius: Double) {
+    init(texture: SKTexture?, color: UIColor, size: CGSize, strenght: Int, speed: Int, visionConeRadius: Double, visionConeAngle: Double) {
         super.init(texture: texture, color: color, size: size)
         self.name = "enemy"
         self.strenght = strenght
         self.guardSpeed = speed
-        self.visionDistance = visionDistance
-        self.visionRadius = visionRadius
+        self.visionConeRadius = visionConeRadius
+        self.visionConeAngle = visionConeAngle
     }
     
 //    GET FUNCTIONS
@@ -60,14 +67,21 @@ class Guard: SKSpriteNode{
         return self.guardSpeed
     }
     
-    func getVisionDistance()->Double{
-        return self.visionDistance
+    func getArrayOfVisionPoints()->[CGPoint]{
+        return self.arrayOfVisionPoints
     }
     
-    func getVisionRadius()->Double{
-        return self.visionRadius
+    func getVisionConeRadius()->Double{
+        return self.visionConeRadius
     }
     
+    func getVisionConeAngle()->Double{
+        return self.visionConeAngle
+    }
+    
+    func getPlayerFound()->Bool{
+        return self.playerFound
+    }
     
 //    SET FUNCTIONS
 //    Are these usefull for guards??
@@ -80,11 +94,28 @@ class Guard: SKSpriteNode{
         self.guardSpeed = newSpeed
     }
     
-    func setVisionDistance(_ newVisionDistance: Double){
-        self.visionDistance = newVisionDistance
+    func appendToArrayOfPoints(point: CGPoint){
+        arrayOfVisionPoints.append(point)
     }
     
-    func setVisionRadius(_ newVisionRadius: Double){
-        self.visionRadius = newVisionRadius
+    func resetArrayOfPoints(){
+        arrayOfVisionPoints.removeAll()
     }
+    
+    func setVisionConeRadius(_ newVisionConeRadius: Double){
+        self.visionConeRadius = newVisionConeRadius
+    }
+    
+    func setVisionConeAngle(_ newAngleRadius: Double){
+        self.visionConeAngle = newAngleRadius
+    }
+    
+    func setPlayerFoundTrue(){
+        self.playerFound = true
+    }
+    
+    func setPlayerFoundFlase(){
+        self.playerFound = false
+    }
+    
 }
