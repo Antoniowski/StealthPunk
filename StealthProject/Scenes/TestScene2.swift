@@ -22,7 +22,7 @@ class TestScene2: SKScene, PlayableScene {
     var delta: TimeInterval = 0.0
     var lastUpdate: TimeInterval?
     
-    var player: PlayableCharacter = PlayableCharacter(texture: SKTexture(imageNamed: "boyFront"), color: .clear, size: CGSize(width: 35, height: 70), noise: 1, speed: 1, strenght: 1)
+    var player: PlayableCharacter = Human(texture: SKTexture(imageNamed: "boyFront"), color: .clear, size: CGSize(width: 35, height: 70), noise: 1, speed: 1, strenght: 1)
 
     
     var scenecamera = SKCameraNode()

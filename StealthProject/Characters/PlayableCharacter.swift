@@ -45,7 +45,77 @@ class PlayableCharacter: SKSpriteNode{
     private var interactRange: Double = 25
     private var attackRange: Double = 25
     
+//    IDLE ANIMATION ARRAYS
+    var idleAnimationFront: [SKTexture] = []
+    var idleAnimationFrontLeft: [SKTexture] = []
+    var idleAnimationFrontRight: [SKTexture] = []
+    var idleAnimationLeft: [SKTexture] = []
+    var idleAnimationRight: [SKTexture] = []
+    var idleAnimationBack: [SKTexture] = []
+    var idleAnimationBackRight: [SKTexture] = []
+    var idleAnimationBackLeft: [SKTexture] = []
     
+//    WALKING ANIMATION ARRAYS
+    var walkingAnimationFront: [SKTexture] = []
+    var walkingAnimationFrontRight: [SKTexture] = []
+    var walkingAnimationFrontLeft: [SKTexture] = []
+    var walkingAnimationLeft: [SKTexture] = []
+    var walkingAnimationRight: [SKTexture] = []
+    var walkingAnimationBack: [SKTexture] = []
+    var walkingAnimationBackRight: [SKTexture] = []
+    var walkingAnimationBackLeft: [SKTexture] = []
+    
+//    RUNNING ANIMATION ARRAYS
+    var runningAnimationFront: [SKTexture] = []
+    var runningAnimationFrontRight: [SKTexture] = []
+    var runningAnimationFrontLeft: [SKTexture] = []
+    var runningAnimationRight: [SKTexture] = []
+    var runningAnimationLeft: [SKTexture] = []
+    var runningAnimationBack: [SKTexture] = []
+    var runningAnimationBackRight: [SKTexture] = []
+    var runningAnimationBackLeft: [SKTexture] = []
+    
+//    SHOOTING ANIMATION ARRAYS
+    var shootingAnimationFront: [SKTexture] = []
+    var shootingAnimationFrontRight: [SKTexture] = []
+    var shootingAnimationFrontLeft: [SKTexture] = []
+    var shootingAnimationRight: [SKTexture] = []
+    var shootingAnimationLeft: [SKTexture] = []
+    var shootingAnimationBack: [SKTexture] = []
+    var shootingAnimationBackLeft: [SKTexture] = []
+    var shootingAnimationBackRight: [SKTexture] = []
+    
+//    ATTACK ANIMATION ARRAYS
+    var attackAnimationFront: [SKTexture] = []
+    var attackAnimationFrontLeft: [SKTexture] = []
+    var attackAnimationFrontRight: [SKTexture] = []
+    var attackAnimationRight: [SKTexture] = []
+    var attackAnimationLeft: [SKTexture] = []
+    var attackAnimationBack: [SKTexture] = []
+    var attackAnimationBackLeft: [SKTexture] = []
+    var attackAnimationBackRight: [SKTexture] = []
+    
+//    INTERACT ANIMATION ARRAYS
+    var interactAnimationFront: [SKTexture] = []
+    var interactAnimationFrontLeft: [SKTexture] = []
+    var interactAnimationFrontRight: [SKTexture] = []
+    var interactAnimationRight: [SKTexture] = []
+    var interactAnimationLeft: [SKTexture] = []
+    var interactAnimationBack: [SKTexture] = []
+    var interactAnimationBackLeft: [SKTexture] = []
+    var interactAnimationBackRight: [SKTexture] = []
+    
+//    HIDE ANIMATION ARRAYS
+    var hideAnimationFront: [SKTexture] = []
+    var hideAnimationFrontLeft: [SKTexture] = []
+    var hideAnimationFrontRight: [SKTexture] = []
+    var hideAnimationRight: [SKTexture] = []
+    var hideAnimationLeft: [SKTexture] = []
+    var hideAnimationBack: [SKTexture] = []
+    var hideAnimationBackRight: [SKTexture] = []
+    var hideAnimationBackLeft: [SKTexture] = []
+    
+//    INITIALIZER
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
         super.init(texture: texture, color: color, size: size)
     }
@@ -54,7 +124,6 @@ class PlayableCharacter: SKSpriteNode{
         fatalError("init(coder:) has not been implemented")
     }
     
-
     init(texture: SKTexture?, color: UIColor, size: CGSize, noise: Int, speed: Int, strenght: Int) {
         super.init(texture: texture, color: color, size: size)
         self.noise = noise
@@ -62,6 +131,7 @@ class PlayableCharacter: SKSpriteNode{
         self.strenght = strenght
     }
     
+//    GENERIC FUNCTIONS
     func updateActionState(){
         if buttonAIsPressed && self.actionState != .ROLL{
             self.actionState = .ROLL
@@ -101,7 +171,7 @@ class PlayableCharacter: SKSpriteNode{
                 if myMovement != .zero && (self.idle == true || self.facingDirection != .UP){
                     self.idle = false
                     self.facingDirection = .UP
-                    self.run(.repeatForever(.animate(with: test4, timePerFrame: 0.25)))
+                    self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
                         
                 }else if myMovement == .zero && self.idle == false{
                     self.removeAllActions()
@@ -114,7 +184,7 @@ class PlayableCharacter: SKSpriteNode{
                 if myMovement != .zero && (self.idle == true || self.facingDirection != .RIGHT){
                     self.idle = false
                     self.facingDirection = .RIGHT
-                    self.run(.repeatForever(.animate(with: test, timePerFrame: 0.18)))
+                    self.run(.repeatForever(.animate(with: walkingAnimationRight, timePerFrame: 0.18)))
                         
                 }else if myMovement == .zero && self.idle == false{
                     self.removeAllActions()
@@ -128,7 +198,7 @@ class PlayableCharacter: SKSpriteNode{
                 if myMovement != .zero && (self.idle == true || self.facingDirection != .DOWN){
                     self.idle = false
                     self.facingDirection = .DOWN
-                    self.run(.repeatForever(.animate(with: test2, timePerFrame: 0.25)))
+                    self.run(.repeatForever(.animate(with: walkingAnimationFront, timePerFrame: 0.25)))
                         
                 }else if myMovement == .zero && self.idle == false{
                     self.removeAllActions()
@@ -142,7 +212,7 @@ class PlayableCharacter: SKSpriteNode{
                 if myMovement != .zero && (self.idle == true || self.facingDirection != .LEFT){
                     self.idle = false
                     self.facingDirection = .LEFT
-                    self.run(.repeatForever(.animate(with: test3, timePerFrame: 0.18)))
+                    self.run(.repeatForever(.animate(with: walkingAnimationLeft, timePerFrame: 0.18)))
                         
                 }else if myMovement == .zero && self.idle == false{
                     self.removeAllActions()

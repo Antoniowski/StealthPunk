@@ -13,16 +13,14 @@ class Human: PlayableCharacter{
     private var type: CharacterType = .HUMAN
 //    private var ability: Ability
     
-    private var idleAnimation: [SKTexture] = []
-    private var walkingAnimation: [SKTexture] = []
-    private var runningAnimation: [SKTexture] = []
-    private var shootingAnimation: [SKTexture] = []
-    private var attackAnimation: [SKTexture] = []
-    private var interactAnimation: [SKTexture] = []
-    private var hideAnimation: [SKTexture] = []
+
     
     override init(texture: SKTexture?, color: UIColor, size: CGSize, noise: Int, speed: Int, strenght: Int) {
         super.init(texture: texture, color: color, size: size, noise: noise, speed: speed, strenght: strenght)
+        self.walkingAnimationRight = [SKTexture(imageNamed: "boyWalk1"), SKTexture(imageNamed:"boyWalk2"), SKTexture(imageNamed:"boyWalk3"), SKTexture(imageNamed:"boyWalk4"), SKTexture(imageNamed:"boyWalk5"), SKTexture(imageNamed:"boyWalk6"), SKTexture(imageNamed:"boyWalk7"), SKTexture(imageNamed:"boyWalk8")]
+        self.walkingAnimationFront = [SKTexture(imageNamed: "boyFrontWalk1"), SKTexture(imageNamed: "boyFrontWalk2"), SKTexture(imageNamed: "boyFrontWalk3"), SKTexture(imageNamed: "boyFrontWalk4")]
+        self.walkingAnimationLeft = [SKTexture(imageNamed: "boyWalkLeft1"), SKTexture(imageNamed:"boyWalkLeft2"), SKTexture(imageNamed:"boyWalkLeft3"), SKTexture(imageNamed:"boyWalkLeft4"), SKTexture(imageNamed:"boyWalkLeft5"), SKTexture(imageNamed:"boyWalkLeft6"), SKTexture(imageNamed:"boyWalkLeft7"), SKTexture(imageNamed:"boyWalkLeft8")]
+        self.walkingAnimationBack = [SKTexture(imageNamed: "boyBackWalk1"), SKTexture(imageNamed: "boyBackWalk2"), SKTexture(imageNamed: "boyBackWalk3"), SKTexture(imageNamed: "boyBackWalk4")]
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -33,6 +31,10 @@ class Human: PlayableCharacter{
         super.init(texture: texture, color: color, size: size)
         self.characterName = "Human" //INSERIRE NOME PERSONAGGIO APPENA DISPONIBILE
         self.type = .HUMAN
+        self.walkingAnimationRight = [SKTexture(imageNamed: "boyWalk1"), SKTexture(imageNamed:"boyWalk2"), SKTexture(imageNamed:"boyWalk3"), SKTexture(imageNamed:"boyWalk4"), SKTexture(imageNamed:"boyWalk5"), SKTexture(imageNamed:"boyWalk6"), SKTexture(imageNamed:"boyWalk7"), SKTexture(imageNamed:"boyWalk8")]
+        self.walkingAnimationFront = [SKTexture(imageNamed: "boyFrontWalk1"), SKTexture(imageNamed: "boyFrontWalk2"), SKTexture(imageNamed: "boyFrontWalk3"), SKTexture(imageNamed: "boyFrontWalk4")]
+        self.walkingAnimationLeft = [SKTexture(imageNamed: "boyWalkLeft1"), SKTexture(imageNamed:"boyWalkLeft2"), SKTexture(imageNamed:"boyWalkLeft3"), SKTexture(imageNamed:"boyWalkLeft4"), SKTexture(imageNamed:"boyWalkLeft5"), SKTexture(imageNamed:"boyWalkLeft6"), SKTexture(imageNamed:"boyWalkLeft7"), SKTexture(imageNamed:"boyWalkLeft8")]
+        self.walkingAnimationBack = [SKTexture(imageNamed: "boyBackWalk1"), SKTexture(imageNamed: "boyBackWalk2"), SKTexture(imageNamed: "boyBackWalk3"), SKTexture(imageNamed: "boyBackWalk4")]
     }
     
 //    GET FUNCTIONS
@@ -61,15 +63,6 @@ class HumanGirl: PlayableCharacter{
     private var characterName: String = ""
     private var type: CharacterType = .HUMANGIRL
 //    private var ability: Ability
-    
-    
-    private var idleAnimation: [SKTexture] = []
-    private var walkingAnimation: [SKTexture] = []
-    private var runningAnimation: [SKTexture] = []
-    private var shootingAnimation: [SKTexture] = []
-    private var attackAnimation: [SKTexture] = []
-    private var interactAnimation: [SKTexture] = []
-    private var hideAnimation: [SKTexture] = []
     
     override init(texture: SKTexture?, color: UIColor, size: CGSize, noise: Int, speed: Int, strenght: Int) {
         super.init(texture: texture, color: color, size: size, noise: noise, speed: speed, strenght: strenght)
@@ -113,15 +106,6 @@ class Big: PlayableCharacter{
     private var type: CharacterType = .BIGGUS
 //    private var ability: Ability
     
-    
-    private var idleAnimation: [SKTexture] = []
-    private var walkingAnimation: [SKTexture] = []
-    private var runningAnimation: [SKTexture] = []
-    private var shootingAnimation: [SKTexture] = []
-    private var attackAnimation: [SKTexture] = []
-    private var interactAnimation: [SKTexture] = []
-    private var hideAnimation: [SKTexture] = []
-    
     override init(texture: SKTexture?, color: UIColor, size: CGSize, noise: Int, speed: Int, strenght: Int) {
         super.init(texture: texture, color: color, size: size, noise: noise, speed: speed, strenght: strenght)
     }
@@ -163,15 +147,6 @@ class Robot: PlayableCharacter{
     private var characterName: String = ""
     private var type: CharacterType = .COSOCONLARUOTA
 //    private var ability: Ability
-    
-    
-    private var idleAnimation: [SKTexture] = []
-    private var walkingAnimation: [SKTexture] = []
-    private var runningAnimation: [SKTexture] = []
-    private var shootingAnimation: [SKTexture] = []
-    private var attackAnimation: [SKTexture] = []
-    private var interactAnimation: [SKTexture] = []
-    private var hideAnimation: [SKTexture] = []
     
     override init(texture: SKTexture?, color: UIColor, size: CGSize, noise: Int, speed: Int, strenght: Int) {
         super.init(texture: texture, color: color, size: size, noise: noise, speed: speed, strenght: strenght)
