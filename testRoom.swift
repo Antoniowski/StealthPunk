@@ -76,15 +76,17 @@ class Piano1: SKScene {
                             
                     }
                 if(roomWalls[index3][index4] == 3){
-                    var nemico1 = SKShapeNode(rectOf: CGSize(width: 20, height: 20))
+                    var nemico1 = Guard(imageNamed: "boyFront")
                     nemico1.zPosition = 10
                     nemico1.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 20, height: 20))
                     nemico1.physicsBody?.affectedByGravity = false
                     nemico1.position = CGPoint(x: size.width * 0 + CGFloat(30*index4) + 30/2, y: size.height - CGFloat(30*index3) + 30/2)
-                    nemico1.strokeColor = .red
-                    nemico1.fillColor = .red
+                    nemico1.setVisionConeRadius(150)
+                    nemico1.size.width = nemico1.size.width/10
+                    nemico1.size.height = nemico1.size.height/10
+                    
                     addChild(nemico1)
-                        
+                    
                 }
             }
     }
