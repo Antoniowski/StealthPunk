@@ -42,7 +42,7 @@ class PlayableCharacter: SKSpriteNode{
     
     private var noiseDitance: Double = 0
     
-    private var interactRange: Double = 150
+    private var interactRange: Double = 50
     private var attackRange: Double = 25
     
 //    IDLE ANIMATION ARRAYS
@@ -242,6 +242,20 @@ class PlayableCharacter: SKSpriteNode{
         }
     }
     
+    func searchObject(scene: SKScene){
+        scene.enumerateChildNodes(withName: "interactable"){ object, _ in
+            if getDistanceBetween(point1: self.position, point2: object.position) <= self.interactRange{
+                if object.alpha != 0.5{
+                    object.alpha = 0.5
+                }
+            }else{
+                if object.alpha != 1{
+                    object.alpha = 1
+                }
+            }
+        }
+    }
+    
     
 //    GET FUNCTIONS
     
@@ -333,4 +347,5 @@ class PlayableCharacter: SKSpriteNode{
     }
     
 }
+
 
