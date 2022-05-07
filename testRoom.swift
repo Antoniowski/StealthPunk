@@ -77,7 +77,7 @@ class Piano1: SKScene {
         
      
         createRoom()
-//        createNPC()
+        createNPC()
         
         var cazzillo : SKSpriteNode = SKSpriteNode(imageNamed: "boyFront")
         cazzillo.size.width = cazzillo.size.width/10
@@ -111,9 +111,9 @@ class Piano1: SKScene {
     
     
     func createRoom(){
-        for index in 0...roomWalls2.count-1{
-            for index2 in 0...roomWalls2[1].count-1{
-                    if(roomWalls2[index][index2] == 1){
+        for index in 0...roomWalls.count-1{
+            for index2 in 0...roomWalls[1].count-1{
+                    if(roomWalls[index][index2] == 1){
                         let myWall = SKShapeNode(rectOf: CGSize(width: 30, height: 30))
                         myWall.strokeColor = .systemGray3
                         myWall.fillColor = .systemGray3
@@ -129,45 +129,46 @@ class Piano1: SKScene {
                     }
                 }
             }
-        for index in 0...roomWalls2.count-1{
-            for index2 in 0...roomWalls2[1].count-1{
-                    if(roomWalls2[index][index2] == 0){
-                        let myWall = SKShapeNode(rectOf: CGSize(width: 30, height: 30))
-                        myWall.strokeColor = .orange
-                        myWall.fillColor = .orange
-                        myWall.name = "wall"+String(index)+String(index2)
-                        myWall.zPosition = 4
-                        myWall.position = CGPoint(x: size.width * 0 + CGFloat(30*index2) + 30/2, y: size.height - CGFloat(30*index) + 30/2)
-                        myWall.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 30, height: 30))
-                        myWall.physicsBody?.restitution = 0
-                        myWall.physicsBody?.affectedByGravity = false
-                        myWall.physicsBody?.isDynamic = true
-                        addChild(myWall)
-                        
-                    }
-                }
-            }
-        
-        for index in 0...roomWalls3.count-1{
-            for index2 in 0...roomWalls3[1].count-1{
-                    if(roomWalls2[index][index2] == 1){
-                        let myWall = SKShapeNode(rectOf: CGSize(width: 30, height: 30))
-                        myWall.strokeColor = .blue
-                        myWall.fillColor = .blue
-                        myWall.name = "wall"+String(index)+String(index2)
-                        myWall.zPosition = 4
-                        myWall.position = CGPoint(x: size.width * 0 + CGFloat(30*index2) + 30/2, y: size.height - CGFloat(30*index) + 30/2)
-                        myWall.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 30, height: 30))
-                        myWall.physicsBody?.restitution = 0
-                        myWall.physicsBody?.affectedByGravity = false
-                        myWall.physicsBody?.isDynamic = true
-                        addChild(myWall)
-                        
-                    }
-                }
-            }
+//
+//        for index in 0...roomWalls2.count-1{
+//            for index2 in 0...roomWalls2[1].count-1{
+//                    if(roomWalls2[index][index2] == 0){
+//                        let myWall = SKShapeNode(rectOf: CGSize(width: 30, height: 30))
+//                        myWall.strokeColor = .orange
+//                        myWall.fillColor = .orange
+//                        myWall.name = "wall"+String(index)+String(index2)
+//                        myWall.zPosition = 4
+//                        myWall.position = CGPoint(x: size.width * 0 + CGFloat(30*index2) + 30/2, y: size.height - CGFloat(30*index) + 30/2)
+//                        myWall.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 30, height: 30))
+//                        myWall.physicsBody?.restitution = 0
+//                        myWall.physicsBody?.affectedByGravity = false
+//                        myWall.physicsBody?.isDynamic = true
+//                        addChild(myWall)
+//
+//                    }
+//                }
+//            }
+//
+//        for index in 0...roomWalls3.count-1{
+//            for index2 in 0...roomWalls3[1].count-1{
+//                    if(roomWalls2[index][index2] == 1){
+//                        let myWall = SKShapeNode(rectOf: CGSize(width: 30, height: 30))
+//                        myWall.strokeColor = .blue
+//                        myWall.fillColor = .blue
+//                        myWall.name = "wall"+String(index)+String(index2)
+//                        myWall.zPosition = 4
+//                        myWall.position = CGPoint(x: size.width * 0 + CGFloat(30*index2) + 30/2, y: size.height - CGFloat(30*index) + 30/2)
+//                        myWall.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 30, height: 30))
+//                        myWall.physicsBody?.restitution = 0
+//                        myWall.physicsBody?.affectedByGravity = false
+//                        myWall.physicsBody?.isDynamic = true
+//                        addChild(myWall)
+//
+//                    }
+//                }
+//            }
         }
-    }
+    
     
     func createNPC(){
         for index3 in 0...roomWalls.count-1{
@@ -224,5 +225,6 @@ class Piano1: SKScene {
 //        }
     }
 }
+
 
 
