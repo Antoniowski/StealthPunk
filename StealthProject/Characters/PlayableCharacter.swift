@@ -52,6 +52,16 @@ class PlayableCharacter: SKSpriteNode{
     
     private var focus: Focus = .OBJECT
     
+    //    STATIC TEXTURES
+    var frontTexture: SKTexture = SKTexture()
+    var sideLTexture: SKTexture = SKTexture()
+    var sideRTexture: SKTexture = SKTexture()
+    var backTexture: SKTexture = SKTexture()
+    var halfFrontLTexture: SKTexture = SKTexture()
+    var halfFrontRTexture: SKTexture = SKTexture()
+    var halfBackLTexture: SKTexture = SKTexture()
+    var halfBackRTexture: SKTexture = SKTexture()
+    
 //    IDLE ANIMATION ARRAYS
     var idleAnimationFront: [SKTexture] = []
     var idleAnimationFrontLeft: [SKTexture] = []
@@ -61,6 +71,7 @@ class PlayableCharacter: SKSpriteNode{
     var idleAnimationBack: [SKTexture] = []
     var idleAnimationBackRight: [SKTexture] = []
     var idleAnimationBackLeft: [SKTexture] = []
+    
     
 //    WALKING ANIMATION ARRAYS
     var walkingAnimationFront: [SKTexture] = []
@@ -271,7 +282,7 @@ class PlayableCharacter: SKSpriteNode{
                 }else if myMovement == .zero && self.idle == false{
                     self.removeAllActions()
                     self.idle = true
-                    self.run(.setTexture(SKTexture(imageNamed: "boyBack")))
+                    self.run(.setTexture(backTexture))
                 }
             case .UP_RIGHT:
                 if myMovement != .zero && (self.idle == true || self.facingDirection != .UP_RIGHT){
@@ -282,7 +293,7 @@ class PlayableCharacter: SKSpriteNode{
                 }else if myMovement == .zero && self.idle == false{
                     self.removeAllActions()
                     self.idle = true
-                    self.run(.setTexture(SKTexture(imageNamed: "boyHalfBackR")))
+                    self.run(.setTexture(halfBackRTexture))
                 }
             case .RIGHT:
                 if myMovement != .zero && (self.idle == true || self.facingDirection != .RIGHT){
@@ -293,8 +304,7 @@ class PlayableCharacter: SKSpriteNode{
                 }else if myMovement == .zero && self.idle == false{
                     self.removeAllActions()
                     self.idle = true
-                    self.run(.setTexture(SKTexture(imageNamed: "boySideR")))
-                }
+                    self.run(.setTexture(sideRTexture))                }
             case .DOWN_RIGHT:
                 if myMovement != .zero && (self.idle == true || self.facingDirection != .DOWN_RIGHT){
                     self.idle = false
@@ -304,8 +314,7 @@ class PlayableCharacter: SKSpriteNode{
                 }else if myMovement == .zero && self.idle == false{
                     self.removeAllActions()
                     self.idle = true
-                    self.run(.setTexture(SKTexture(imageNamed: "boyHalfFrontR")))
-                }
+                    self.run(.setTexture(halfFrontRTexture))                }
 
             case .DOWN:
                 if myMovement != .zero && (self.idle == true || self.facingDirection != .DOWN){
@@ -316,8 +325,7 @@ class PlayableCharacter: SKSpriteNode{
                 }else if myMovement == .zero && self.idle == false{
                     self.removeAllActions()
                     self.idle = true
-                    self.run(.setTexture(SKTexture(imageNamed: "boyFront")))
-                }
+                    self.run(.setTexture(frontTexture))                }
             case .DOWN_LEFT:
                 if myMovement != .zero && (self.idle == true || self.facingDirection != .DOWN_LEFT){
                     self.idle = false
@@ -327,8 +335,7 @@ class PlayableCharacter: SKSpriteNode{
                 }else if myMovement == .zero && self.idle == false{
                     self.removeAllActions()
                     self.idle = true
-                    self.run(.setTexture(SKTexture(imageNamed: "boyHalfFrontL")))
-                }
+                    self.run(.setTexture(halfFrontLTexture))                }
             case .LEFT:
                 if myMovement != .zero && (self.idle == true || self.facingDirection != .LEFT){
                     self.idle = false
@@ -338,7 +345,7 @@ class PlayableCharacter: SKSpriteNode{
                 }else if myMovement == .zero && self.idle == false{
                     self.removeAllActions()
                     self.idle = true
-                    self.run(.setTexture(SKTexture(imageNamed: "boySideL")))
+                    self.run(.setTexture(sideLTexture))
                 }
             case .UP_LEFT:
                 if myMovement != .zero && (self.idle == true || self.facingDirection != .UP_LEFT){
@@ -349,7 +356,8 @@ class PlayableCharacter: SKSpriteNode{
                 }else if myMovement == .zero && self.idle == false{
                     self.removeAllActions()
                     self.idle = true
-                    self.run(.setTexture(SKTexture(imageNamed: "boyHalfBackL")))
+                    self.run(.setTexture(halfBackLTexture))
+                    
                 }
             }
         }
