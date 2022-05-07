@@ -61,7 +61,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         lampione.lightingBitMask = 2
         
         player.lightingBitMask = 2
-        armadio.lightingBitMask = 2
+        armadio.lightingBitMask = 1
 
 
         

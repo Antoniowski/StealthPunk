@@ -43,6 +43,7 @@ class PlayableCharacter: SKSpriteNode{
     private var noiseDitance: Double = 0
     
     private var interactRange: Double = 50
+    private var objectHighlighted: Bool = false
     private var attackRange: Double = 25
     
 //    IDLE ANIMATION ARRAYS
@@ -245,12 +246,14 @@ class PlayableCharacter: SKSpriteNode{
     func searchObject(scene: SKScene){
         scene.enumerateChildNodes(withName: "interactable"){ object, _ in
             if getDistanceBetween(point1: self.position, point2: object.position) <= self.interactRange{
-                if object.alpha != 0.5{
-                    object.alpha = 0.5
+                if self.objectHighlighted != true{
+                    self.objectHighlighted = true
+                    object.run(.colorize(with: .green, colorBlendFactor: 0.2, duration: 0.1))
                 }
             }else{
-                if object.alpha != 1{
-                    object.alpha = 1
+                if self.objectHighlighted != false{
+                    self.objectHighlighted = false
+                    object.run(.colorize(withColorBlendFactor: 0, duration: 0.1))
                 }
             }
         }
