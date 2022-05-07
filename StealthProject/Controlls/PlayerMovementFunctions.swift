@@ -5,6 +5,15 @@
 //  Created by Antonio Romano on 03/05/22.
 //
 
+
+
+
+
+//PER L'ATTACCO E L'INTERAZIONE POSSIAMO CREARE UN ARRAY DI NEMICI E
+//OGGETTI INTERAGIBILI E PASSARE QUEGLI ARRAY ALLE FUNZIONI, IN MODO
+//DA SOSTITUIRE LA FUNZIONE DI ENUMERATE BASE CHE NON CI PERMETTE DI
+//AVERE ACCESSO ALLE STATS DEI PERSONAGGI
+
 import Foundation
 import SpriteKit
 import SwiftUI
@@ -46,12 +55,14 @@ extension PlayableScene{
     }
     
     func attackState(scene: SKScene){
+        
         scene.enumerateChildNodes(withName: "enemy"){ object, _ in
             if getDistanceBetween(point1: self.player.position, point2: object.position) <= self.player.getAttackRange(){
                 //TO DO
             }
-            
+
         }
+        print("Attack")
         self.player.setActionState(.MOVE)
     }
     
@@ -60,13 +71,6 @@ extension PlayableScene{
 //            velocity = velocity.moveTowardZero(value: 1000)
 //        }
          velocity = rollVector*MAX_SPEED*3*delta
-         
-//         player.xScale = 2
-//         player.run(.animate(with: player.rollingAnimationRight, timePerFrame: 0.05),
-//                    completion: {
-//             self.player.xScale = 1
-//             self.player.run(.setTexture(SKTexture(imageNamed: "boySideR")))
-//         })
          
          DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2, execute: {
              self.velocity = .zero

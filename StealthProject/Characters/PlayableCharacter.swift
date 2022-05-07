@@ -22,11 +22,15 @@ enum CharacterType: Int{
     case COSOCONLARUOTA = 3
 }
 
+enum Focus: Int{
+    case OBJECT = 0
+    case ENEMY = 1
+}
+
 struct CharacterState{
     var isHidden: Bool = false
     var isInvicible: Bool = false
 }
-
 class PlayableCharacter: SKSpriteNode{
 
     
@@ -43,8 +47,10 @@ class PlayableCharacter: SKSpriteNode{
     private var noiseDitance: Double = 0
     
     private var interactRange: Double = 50
-    private var objectHighlighted: Bool = false
     private var attackRange: Double = 25
+    private var objectHighlighted: Bool = false
+    
+    private var focus: Focus = .OBJECT
     
 //    IDLE ANIMATION ARRAYS
     var idleAnimationFront: [SKTexture] = []
@@ -146,15 +152,54 @@ class PlayableCharacter: SKSpriteNode{
     func updateActionState(){
         if buttonBIsPressed && self.actionState != .ROLL{
             self.actionState = .ROLL
-        }
-        if buttonBIsPressed == false && self.actionState == .ROLL{
+        } else if buttonBIsPressed == false && self.actionState == .ROLL{
             self.actionState = .MOVE
         }
-        if buttonAIsPressed && self.actionState != .INTERACT{
-            self.actionState = .INTERACT
+        if buttonAIsPressed{
+            if self.focus == .OBJECT && self.actionState != .INTERACT{
+                self.actionState = .INTERACT
+            }else if focus == .ENEMY && self.actionState != .ATTACK{
+                self.actionState = .ATTACK
+            }
+        } else if buttonAIsPressed == false{
+            if actionState == .ATTACK || actionState == .INTERACT{
+                self.actionState = .MOVE
+            }
         }
-        if buttonAIsPressed == false && self.actionState == .INTERACT{
-            self.actionState = .MOVE
+    }
+    
+    func updateFocus(scene: SKScene){
+        var first: Bool = true
+        var distanceEnemy: Double = .infinity
+        var distanceObject: Double = .infinity
+        scene.enumerateChildNodes(withName: "enemy"){ element, _ in
+            let distance = getDistanceBetween(point1: self.position, point2: element.position)
+            if first{
+                distanceEnemy = distance
+                first = false
+            }
+            if distanceEnemy > distance{
+                distanceEnemy = distance
+            }
+        }
+        scene.enumerateChildNodes(withName: "interactable"){ element, _ in
+            let distance = getDistanceBetween(point1: self.position, point2: element.position)
+            if distanceObject >= distance{
+                distanceObject = distance
+            }
+        }
+        
+        print(distanceEnemy)
+        print(distanceObject)
+        
+        if distanceEnemy > distanceObject{
+            if self.focus != .OBJECT{
+                self.focus = .OBJECT
+            }
+        }else{
+            if self.focus != .ENEMY{
+                self.focus = .ENEMY
+            }
         }
     }
     
@@ -297,6 +342,10 @@ class PlayableCharacter: SKSpriteNode{
     
     func getFacingDirection()->Direction{
         return self.facingDirection
+    }
+    
+    func getFocusState()->Focus{
+        return self.focus
     }
     
 //    SET FUNCTIONS

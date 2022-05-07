@@ -64,7 +64,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         armadio.lightingBitMask = 1
 
 
-        
+        lampione.name = "enemy"
         
         
         addChild(player)
@@ -81,12 +81,13 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
 //        player.updateMovingDirection()
         player.animationWalking()
         player.searchObject(scene: self)
+        player.updateFocus(scene: self)
         
         switch player.getActionState(){
         case .MOVE:
             moveState()
         case .ATTACK:
-            print("")
+            attackState(scene: self)
             
         case .INTERACT:
             interactState(scene: self)
@@ -99,8 +100,8 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
 //        scenecamera.position = player.position
 //        print(player.getFacingDirection())
+        print(player.getFocusState())
     }
-    
     
     
     
