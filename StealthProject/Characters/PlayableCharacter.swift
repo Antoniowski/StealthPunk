@@ -216,23 +216,6 @@ class PlayableCharacter: SKSpriteNode{
     
     func updateMovingDirection(){    //FUNZIONA: Aggiorna una sola volta il moving direction
         if myMovement != .zero{
-//            if Double(myAngle) >= pi/4 && Double(myAngle) <= 3*pi/4{
-//                if self.movingDirection != .RIGHT{
-//                    self.movingDirection = .RIGHT
-//                }
-//            }else if Double(myAngle) > 3*pi/4 && Double(myAngle) <= pi || Double(myAngle) < -3*pi/4 && Double(myAngle) > -pi{
-//                if self.movingDirection != .DOWN{
-//                    self.movingDirection = .DOWN
-//                }
-//            }else if Double(myAngle) <= -pi/4 && Double(myAngle) >= -3*pi/4{
-//                if self.movingDirection != .LEFT{
-//                    self.movingDirection = .LEFT
-//                }
-//            }else if Double(myAngle) > -pi/4 && Double(myAngle) < pi/4{
-//                if self.movingDirection != .UP{
-//                    self.movingDirection = .UP
-//                }
-//            }
             if Double(myAngle) < pi/8 && Double(myAngle) > -pi/8{
                 if self.movingDirection != .UP{
                     self.movingDirection = .UP

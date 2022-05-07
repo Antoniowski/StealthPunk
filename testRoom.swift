@@ -109,10 +109,6 @@ class Piano1: SKScene {
                         myWall.name = "wall"+String(index)+String(index2)
                         myWall.zPosition = 4
                         myWall.position = CGPoint(x: size.width * 0 + CGFloat(30*index2) + 30/2, y: size.height - CGFloat(30*index) + 30/2)
-                        myWall.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 30, height: 30))
-                        myWall.physicsBody?.restitution = 0
-                        myWall.physicsBody?.affectedByGravity = false
-                        myWall.physicsBody?.isDynamic = true
                         addChild(myWall)
                         
                     }
