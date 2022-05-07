@@ -13,6 +13,8 @@ class Piano1: SKScene {
     
     
     var roomWalls : [[Int]] = []
+    var roomWalls2: [[Int]] = []
+    var roomWalls3: [[Int]] = []
     
     override func didMove(to view: SKView) {
         
@@ -32,23 +34,99 @@ class Piano1: SKScene {
                       [1, 0, 0, 0, 0, 0, 3, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1],
                       [1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1],
                       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]
+        
+        roomWalls2 = [Array(repeating: 1, count: 50),
+                      [1] + Array(repeating: 0, count: 48)+[1],
+                      [1] + Array(repeating: 0, count: 48)+[1],
+                      [1] + Array(repeating: 0, count: 48)+[1],
+                      [1] + Array(repeating: 0, count: 48)+[1],
+                      [1] + Array(repeating: 0, count: 48)+[1],
+                      [1] + Array(repeating: 0, count: 48)+[1],
+                      [1] + Array(repeating: 0, count: 48)+[1],
+                      [1] + Array(repeating: 0, count: 48)+[1],
+                      [1] + Array(repeating: 0, count: 48)+[1],
+                      [1] + Array(repeating: 0, count: 48)+[1],
+                      [1] + Array(repeating: 0, count: 48)+[1],
+                      [1] + Array(repeating: 0, count: 48)+[1],
+                      [1] + Array(repeating: 0, count: 48)+[1],
+                      [1] + Array(repeating: 0, count: 48)+[1],
+                      [1] + Array(repeating: 0, count: 48)+[1],
+                      [1] + Array(repeating: 0, count: 48)+[1],
+                      [1] + Array(repeating: 0, count: 48)+[1],
+                      [1] + Array(repeating: 0, count: 48)+[1],
+                      [1] + Array(repeating: 0, count: 48)+[1],
+                      [1] + Array(repeating: 0, count: 48)+[1],
+                      [1] + Array(repeating: 0, count: 48)+[1],
+                      [1] + Array(repeating: 0, count: 48)+[1],
+                      Array(repeating: 1, count: 50)]
+        
+        roomWalls3 = [[0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0],
+                      [0 ,1 ,1 ,1 ,1 ,1,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0],
+                      [0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0],
+                      [0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0],
+                      [0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0],
+                      [0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0],
+                      [0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0],
+                      [0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0],
+                      [0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0],
+                      [0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0],
+                      [0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0]]
+        
+        
      
         createRoom()
-        createNPC()
+//        createNPC()
         
         
     }
     
     
     func createRoom(){
-        for index in 0...roomWalls.count-1{
-            for index2 in 0...roomWalls[1].count-1{
-                    if(roomWalls[index][index2] == 1){
+        for index in 0...roomWalls2.count-1{
+            for index2 in 0...roomWalls2[1].count-1{
+                    if(roomWalls2[index][index2] == 1){
                         let myWall = SKShapeNode(rectOf: CGSize(width: 30, height: 30))
                         myWall.strokeColor = .systemGray3
                         myWall.fillColor = .systemGray3
                         myWall.name = "wall"+String(index)+String(index2)
                         myWall.zPosition = 5
+                        myWall.position = CGPoint(x: size.width * 0 + CGFloat(30*index2) + 30/2, y: size.height - CGFloat(30*index) + 30/2)
+                        myWall.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 30, height: 30))
+                        myWall.physicsBody?.restitution = 0
+                        myWall.physicsBody?.affectedByGravity = false
+                        myWall.physicsBody?.isDynamic = true
+                        addChild(myWall)
+                        
+                    }
+                }
+            }
+        for index in 0...roomWalls2.count-1{
+            for index2 in 0...roomWalls2[1].count-1{
+                    if(roomWalls2[index][index2] == 0){
+                        let myWall = SKShapeNode(rectOf: CGSize(width: 30, height: 30))
+                        myWall.strokeColor = .orange
+                        myWall.fillColor = .orange
+                        myWall.name = "wall"+String(index)+String(index2)
+                        myWall.zPosition = 4
+                        myWall.position = CGPoint(x: size.width * 0 + CGFloat(30*index2) + 30/2, y: size.height - CGFloat(30*index) + 30/2)
+                        myWall.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 30, height: 30))
+                        myWall.physicsBody?.restitution = 0
+                        myWall.physicsBody?.affectedByGravity = false
+                        myWall.physicsBody?.isDynamic = true
+                        addChild(myWall)
+                        
+                    }
+                }
+            }
+        
+        for index in 0...roomWalls3.count-1{
+            for index2 in 0...roomWalls3[1].count-1{
+                    if(roomWalls2[index][index2] == 1){
+                        let myWall = SKShapeNode(rectOf: CGSize(width: 30, height: 30))
+                        myWall.strokeColor = .blue
+                        myWall.fillColor = .blue
+                        myWall.name = "wall"+String(index)+String(index2)
+                        myWall.zPosition = 4
                         myWall.position = CGPoint(x: size.width * 0 + CGFloat(30*index2) + 30/2, y: size.height - CGFloat(30*index) + 30/2)
                         myWall.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 30, height: 30))
                         myWall.physicsBody?.restitution = 0

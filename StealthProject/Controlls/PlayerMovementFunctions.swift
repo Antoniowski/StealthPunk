@@ -80,6 +80,7 @@ extension PlayableScene{
          scene.enumerateChildNodes(withName: "interactable"){ object, _ in
              if getDistanceBetween(point1: self.player.position, point2: object.position) <= self.player.getInteractRange(){
                  object.run(.rotate(byAngle: pi/2, duration: 1))
+                 self.player.setHiddenStatus(true)
              }
              
          }
