@@ -9,6 +9,9 @@ import Foundation
 import GameController
 
 
+var arrayOfTouches: [CGPoint] = []
+let projectileShootDistance: CGFloat = 5000
+let projectileVelocity: CGFloat = 500
 
 var myMovement: CGVector = CGVector(dx: 0, dy: 0)
 var myAngle: Float = 0

@@ -22,11 +22,15 @@ enum CharacterType: Int{
     case COSOCONLARUOTA = 3
 }
 
+enum Focus: Int{
+    case OBJECT = 0
+    case ENEMY = 1
+}
+
 struct CharacterState{
     var isHidden: Bool = false
     var isInvicible: Bool = false
 }
-
 class PlayableCharacter: SKSpriteNode{
 
     
@@ -42,8 +46,21 @@ class PlayableCharacter: SKSpriteNode{
     
     private var noiseDitance: Double = 0
     
-    private var interactRange: Double = 150
+    private var interactRange: Double = 50
     private var attackRange: Double = 25
+    private var objectHighlighted: Bool = false
+    
+    private var focus: Focus = .OBJECT
+    
+    //    STATIC TEXTURES
+    var frontTexture: SKTexture = SKTexture()
+    var sideLTexture: SKTexture = SKTexture()
+    var sideRTexture: SKTexture = SKTexture()
+    var backTexture: SKTexture = SKTexture()
+    var halfFrontLTexture: SKTexture = SKTexture()
+    var halfFrontRTexture: SKTexture = SKTexture()
+    var halfBackLTexture: SKTexture = SKTexture()
+    var halfBackRTexture: SKTexture = SKTexture()
     
 //    IDLE ANIMATION ARRAYS
     var idleAnimationFront: [SKTexture] = []
@@ -54,6 +71,7 @@ class PlayableCharacter: SKSpriteNode{
     var idleAnimationBack: [SKTexture] = []
     var idleAnimationBackRight: [SKTexture] = []
     var idleAnimationBackLeft: [SKTexture] = []
+    
     
 //    WALKING ANIMATION ARRAYS
     var walkingAnimationFront: [SKTexture] = []
@@ -145,35 +163,107 @@ class PlayableCharacter: SKSpriteNode{
     func updateActionState(){
         if buttonBIsPressed && self.actionState != .ROLL{
             self.actionState = .ROLL
-        }
-        if buttonBIsPressed == false && self.actionState == .ROLL{
+        } else if buttonBIsPressed == false && self.actionState == .ROLL{
             self.actionState = .MOVE
         }
-        if buttonAIsPressed && self.actionState != .INTERACT{
-            self.actionState = .INTERACT
+        if buttonAIsPressed{
+            if self.focus == .OBJECT && self.actionState != .INTERACT{
+                self.actionState = .INTERACT
+            }else if focus == .ENEMY && self.actionState != .ATTACK{
+                self.actionState = .ATTACK
+            }
+        } else if buttonAIsPressed == false{
+            if actionState == .ATTACK || actionState == .INTERACT{
+                self.actionState = .MOVE
+            }
         }
-        if buttonAIsPressed == false && self.actionState == .INTERACT{
-            self.actionState = .MOVE
+    }
+    
+    func updateFocus(scene: SKScene){
+        var first: Bool = true
+        var distanceEnemy: Double = .infinity
+        var distanceObject: Double = .infinity
+        scene.enumerateChildNodes(withName: "enemy"){ element, _ in
+            let distance = getDistanceBetween(point1: self.position, point2: element.position)
+            if first{
+                distanceEnemy = distance
+                first = false
+            }
+            if distanceEnemy > distance{
+                distanceEnemy = distance
+            }
+        }
+        scene.enumerateChildNodes(withName: "interactable"){ element, _ in
+            let distance = getDistanceBetween(point1: self.position, point2: element.position)
+            if distanceObject >= distance{
+                distanceObject = distance
+            }
+        }
+        
+        print(distanceEnemy)
+        print(distanceObject)
+        
+        if distanceEnemy > distanceObject{
+            if self.focus != .OBJECT{
+                self.focus = .OBJECT
+            }
+        }else{
+            if self.focus != .ENEMY{
+                self.focus = .ENEMY
+            }
         }
     }
     
     func updateMovingDirection(){    //FUNZIONA: Aggiorna una sola volta il moving direction
         if myMovement != .zero{
-            if Double(myAngle) >= pi/4 && Double(myAngle) <= 3*pi/4{
+//            if Double(myAngle) >= pi/4 && Double(myAngle) <= 3*pi/4{
+//                if self.movingDirection != .RIGHT{
+//                    self.movingDirection = .RIGHT
+//                }
+//            }else if Double(myAngle) > 3*pi/4 && Double(myAngle) <= pi || Double(myAngle) < -3*pi/4 && Double(myAngle) > -pi{
+//                if self.movingDirection != .DOWN{
+//                    self.movingDirection = .DOWN
+//                }
+//            }else if Double(myAngle) <= -pi/4 && Double(myAngle) >= -3*pi/4{
+//                if self.movingDirection != .LEFT{
+//                    self.movingDirection = .LEFT
+//                }
+//            }else if Double(myAngle) > -pi/4 && Double(myAngle) < pi/4{
+//                if self.movingDirection != .UP{
+//                    self.movingDirection = .UP
+//                }
+//            }
+            if Double(myAngle) < pi/8 && Double(myAngle) > -pi/8{
+                if self.movingDirection != .UP{
+                    self.movingDirection = .UP
+                }
+            }else if Double(myAngle) >= pi/8 && Double(myAngle) <= 3*pi/8{
+                if self.movingDirection != .UP_RIGHT{
+                    self.movingDirection = .UP_RIGHT
+                }
+            }else if Double(myAngle) > 3*pi/8 && Double(myAngle) < 5*pi/8{
                 if self.movingDirection != .RIGHT{
                     self.movingDirection = .RIGHT
                 }
-            }else if Double(myAngle) > 3*pi/4 && Double(myAngle) <= pi || Double(myAngle) < -3*pi/4 && Double(myAngle) > -pi{
+            }else if Double(myAngle) >= 5*pi/8 && Double(myAngle) <= 7*pi/8{
+                if self.movingDirection != .DOWN_RIGHT{
+                    self.movingDirection = .DOWN_RIGHT
+                }
+            }else if (Double(myAngle) > 7*pi/8 && Double(myAngle) <= pi) || (Double(myAngle) < -7*pi/8 && Double(myAngle) >= -pi){
                 if self.movingDirection != .DOWN{
                     self.movingDirection = .DOWN
                 }
-            }else if Double(myAngle) <= -pi/4 && Double(myAngle) >= -3*pi/4{
+            }else if Double(myAngle) >= -7*pi/8 && Double(myAngle) <= -5*pi/8{
+                if self.movingDirection != .DOWN_LEFT{
+                    self.movingDirection = .DOWN_LEFT
+                }
+            }else if Double(myAngle) > -5*pi/8 && Double(myAngle) < -3*pi/8{
                 if self.movingDirection != .LEFT{
                     self.movingDirection = .LEFT
                 }
-            }else if Double(myAngle) > -pi/4 && Double(myAngle) < pi/4{
-                if self.movingDirection != .UP{
-                    self.movingDirection = .UP
+            }else if Double(myAngle) >= -3*pi/8 && Double(myAngle) <= -pi/8{
+                if self.movingDirection != .UP_LEFT{
+                    self.movingDirection = .UP_LEFT
                 }
             }
         }
@@ -192,10 +282,19 @@ class PlayableCharacter: SKSpriteNode{
                 }else if myMovement == .zero && self.idle == false{
                     self.removeAllActions()
                     self.idle = true
-                    self.run(.setTexture(SKTexture(imageNamed: "boyBack")))
+                    self.run(.setTexture(backTexture))
                 }
             case .UP_RIGHT:
-                print("TODO")
+                if myMovement != .zero && (self.idle == true || self.facingDirection != .UP_RIGHT){
+                    self.idle = false
+                    self.facingDirection = .UP_RIGHT
+//                    self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
+                        
+                }else if myMovement == .zero && self.idle == false{
+                    self.removeAllActions()
+                    self.idle = true
+                    self.run(.setTexture(halfBackRTexture))
+                }
             case .RIGHT:
                 if myMovement != .zero && (self.idle == true || self.facingDirection != .RIGHT){
                     self.idle = false
@@ -205,10 +304,17 @@ class PlayableCharacter: SKSpriteNode{
                 }else if myMovement == .zero && self.idle == false{
                     self.removeAllActions()
                     self.idle = true
-                    self.run(.setTexture(SKTexture(imageNamed: "boySideR")))
-                }
+                    self.run(.setTexture(sideRTexture))                }
             case .DOWN_RIGHT:
-                print("TODO")
+                if myMovement != .zero && (self.idle == true || self.facingDirection != .DOWN_RIGHT){
+                    self.idle = false
+                    self.facingDirection = .DOWN_RIGHT
+//                    self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
+                        
+                }else if myMovement == .zero && self.idle == false{
+                    self.removeAllActions()
+                    self.idle = true
+                    self.run(.setTexture(halfFrontRTexture))                }
 
             case .DOWN:
                 if myMovement != .zero && (self.idle == true || self.facingDirection != .DOWN){
@@ -219,11 +325,17 @@ class PlayableCharacter: SKSpriteNode{
                 }else if myMovement == .zero && self.idle == false{
                     self.removeAllActions()
                     self.idle = true
-                    self.run(.setTexture(SKTexture(imageNamed: "boyFront")))
-                }
+                    self.run(.setTexture(frontTexture))                }
             case .DOWN_LEFT:
-                print("TODO")
-
+                if myMovement != .zero && (self.idle == true || self.facingDirection != .DOWN_LEFT){
+                    self.idle = false
+                    self.facingDirection = .DOWN_LEFT
+//                    self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
+                        
+                }else if myMovement == .zero && self.idle == false{
+                    self.removeAllActions()
+                    self.idle = true
+                    self.run(.setTexture(halfFrontLTexture))                }
             case .LEFT:
                 if myMovement != .zero && (self.idle == true || self.facingDirection != .LEFT){
                     self.idle = false
@@ -233,11 +345,36 @@ class PlayableCharacter: SKSpriteNode{
                 }else if myMovement == .zero && self.idle == false{
                     self.removeAllActions()
                     self.idle = true
-                    self.run(.setTexture(SKTexture(imageNamed: "boySideL")))
+                    self.run(.setTexture(sideLTexture))
                 }
             case .UP_LEFT:
-                print("TODO")
-
+                if myMovement != .zero && (self.idle == true || self.facingDirection != .UP_LEFT){
+                    self.idle = false
+                    self.facingDirection = .UP_LEFT
+//                    self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
+                        
+                }else if myMovement == .zero && self.idle == false{
+                    self.removeAllActions()
+                    self.idle = true
+                    self.run(.setTexture(halfBackLTexture))
+                    
+                }
+            }
+        }
+    }
+    
+    func searchObject(scene: SKScene){
+        scene.enumerateChildNodes(withName: "interactable"){ object, _ in
+            if getDistanceBetween(point1: self.position, point2: object.position) <= self.interactRange{
+                if self.objectHighlighted != true{
+                    self.objectHighlighted = true
+                    object.run(.colorize(with: .green, colorBlendFactor: 0.2, duration: 0.1))
+                }
+            }else{
+                if self.objectHighlighted != false{
+                    self.objectHighlighted = false
+                    object.run(.colorize(withColorBlendFactor: 0, duration: 0.1))
+                }
             }
         }
     }
@@ -280,6 +417,10 @@ class PlayableCharacter: SKSpriteNode{
     
     func getFacingDirection()->Direction{
         return self.facingDirection
+    }
+    
+    func getFocusState()->Focus{
+        return self.focus
     }
     
 //    SET FUNCTIONS
@@ -333,4 +474,5 @@ class PlayableCharacter: SKSpriteNode{
     }
     
 }
+
 

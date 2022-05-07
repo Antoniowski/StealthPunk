@@ -24,6 +24,9 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     
     var player: PlayableCharacter = Human(texture: SKTexture(imageNamed: "boyFront"), color: .clear, size: CGSize(width: 35, height: 70), noise: 1, speed: 1, strenght: 1)
     var armadio: InteractableObject = InteractableObject(texture: SKTexture(imageNamed: "closet"), color: .clear, size: CGSize(width: 100, height: 100), type: .HIDEOUT)
+    var lampione = InteractableObject(texture: SKTexture(imageNamed: "lampione"), color: .clear, size: CGSize(width: 70, height: 140), type: .STATIC)
+    
+    var luce: SKLightNode = SKLightNode()
 
     
     var scenecamera = SKCameraNode()
@@ -44,10 +47,30 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         scenecamera.position = player.position
         armadio.position = player.position
         armadio.position.x += 250
+        lampione.position = player.position
+        lampione.position.y += 100
         player.zPosition = 3
         armadio.zPosition = 1
+        lampione.zPosition = 1
+        
+        luce.categoryBitMask = 2
+        luce.position = lampione.position
+        luce.position.y += 35
+        
+        
+        lampione.lightingBitMask = 2
+        
+        player.lightingBitMask = 2
+        armadio.lightingBitMask = 1
+
+
+        lampione.name = "enemy"
+        
+        
         addChild(player)
         addChild(armadio)
+        addChild(lampione)
+        addChild(luce)
     }
     
     
@@ -57,12 +80,14 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         player.updateActionState()
 //        player.updateMovingDirection()
         player.animationWalking()
+        player.searchObject(scene: self)
+        player.updateFocus(scene: self)
         
         switch player.getActionState(){
         case .MOVE:
             moveState()
         case .ATTACK:
-            print("")
+            attackState(scene: self)
             
         case .INTERACT:
             interactState(scene: self)
@@ -75,8 +100,8 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
 //        scenecamera.position = player.position
 //        print(player.getFacingDirection())
+        print(player.getFocusState())
     }
-    
     
     
     

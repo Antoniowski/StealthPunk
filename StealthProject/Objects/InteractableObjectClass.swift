@@ -11,6 +11,7 @@ import SpriteKit
 enum ObjectType: Int{
     case HIDEOUT = 0
     case USABLE = 1
+    case STATIC = 2
 }
 
 class InteractableObject: SKSpriteNode{
@@ -30,10 +31,18 @@ class InteractableObject: SKSpriteNode{
     
     init(texture: SKTexture?, color: UIColor, size: CGSize, type: ObjectType){
         super.init(texture: texture, color: color, size: size)
-        self.name = "interactable"
+
         self.spotted = false
         self.inUse = false
         self.type = type
+        switch type {
+        case .HIDEOUT:
+            self.name = "interactable"
+        case .USABLE:
+            self.name = "usable"
+        case .STATIC:
+            self.name = "static"
+        }
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: size.width, height: size.height/2), center: CGPoint(x: 0, y: size.height/4))
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.isDynamic = false
