@@ -30,6 +30,10 @@ enum Focus: Int{
 struct CharacterState{
     var isHidden: Bool = false
     var isInvicible: Bool = false
+    var idle: Bool = true
+    var isRolling: Bool = false
+    var isAttacking: Bool = false
+    var isInteractiong: Bool = false
 }
 class PlayableCharacter: SKSpriteNode{
 
@@ -46,13 +50,6 @@ class PlayableCharacter: SKSpriteNode{
     private var actionState: ActionState = .MOVE
     private var movingDirection: Direction = .DOWN
     private var facingDirection: Direction = .DOWN
-    
-    //VARIABILI PER IL CONTROLLO DELLE ANIMAZIONI
-    private var idle: Bool = true
-    private var isRolling: Bool = false
-    private var isAttacking: Bool = false
-    private var isInteractiong: Bool = false
-    
     
     private var objectHighlighted: Bool = false
     private var focus: Focus = .OBJECT
@@ -260,100 +257,100 @@ class PlayableCharacter: SKSpriteNode{
         if actionState == .MOVE{
             switch movingDirection {
             case .UP:
-                if myMovement != .zero && (self.idle == true || self.facingDirection != .UP){
-                    self.idle = false
+                if myMovement != .zero && (self.status.idle == true || self.facingDirection != .UP){
+                    self.status.idle = false
                     self.facingDirection = .UP
                     self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
                         
-                }else if myMovement == .zero && self.idle == false{
+                }else if myMovement == .zero && self.status.idle == false{
                     self.removeAllActions()
-                    self.idle = true
+                    self.status.idle = true
                     self.run(.setTexture(backTexture))
                 }
             case .UP_RIGHT:
-                if myMovement != .zero && (self.idle == true || self.facingDirection != .UP_RIGHT){
-                    self.idle = false
+                if myMovement != .zero && (self.status.idle == true || self.facingDirection != .UP_RIGHT){
+                    self.status.idle = false
                     self.facingDirection = .UP_RIGHT
 //                    self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
                         
-                }else if myMovement == .zero && self.idle == false{
+                }else if myMovement == .zero && self.status.idle == false{
                     self.removeAllActions()
-                    self.idle = true
+                    self.status.idle = true
                     self.run(.setTexture(halfBackRTexture))
                 }
             case .RIGHT:
-                if myMovement != .zero && (self.idle == true || self.facingDirection != .RIGHT){
-                    self.idle = false
+                if myMovement != .zero && (self.status.idle == true || self.facingDirection != .RIGHT){
+                    self.status.idle = false
                     self.facingDirection = .RIGHT
                     self.run(.repeatForever(.animate(with: walkingAnimationRight, timePerFrame: 0.18)))
                         
-                }else if myMovement == .zero && self.idle == false{
+                }else if myMovement == .zero && self.status.idle == false{
                     self.removeAllActions()
-                    self.idle = true
+                    self.status.idle = true
                     self.run(.setTexture(sideRTexture))                }
             case .DOWN_RIGHT:
-                if myMovement != .zero && (self.idle == true || self.facingDirection != .DOWN_RIGHT){
-                    self.idle = false
+                if myMovement != .zero && (self.status.idle == true || self.facingDirection != .DOWN_RIGHT){
+                    self.status.idle = false
                     self.facingDirection = .DOWN_RIGHT
 //                    self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
                         
-                }else if myMovement == .zero && self.idle == false{
+                }else if myMovement == .zero && self.status.idle == false{
                     self.removeAllActions()
-                    self.idle = true
+                    self.status.idle = true
                     self.run(.setTexture(halfFrontRTexture))                }
 
             case .DOWN:
-                if myMovement != .zero && (self.idle == true || self.facingDirection != .DOWN){
-                    self.idle = false
+                if myMovement != .zero && (self.status.idle == true || self.facingDirection != .DOWN){
+                    self.status.idle = false
                     self.facingDirection = .DOWN
                     self.run(.repeatForever(.animate(with: walkingAnimationFront, timePerFrame: 0.25)))
                         
-                }else if myMovement == .zero && self.idle == false{
+                }else if myMovement == .zero && self.status.idle == false{
                     self.removeAllActions()
-                    self.idle = true
+                    self.status.idle = true
                     self.run(.setTexture(frontTexture))                }
             case .DOWN_LEFT:
-                if myMovement != .zero && (self.idle == true || self.facingDirection != .DOWN_LEFT){
-                    self.idle = false
+                if myMovement != .zero && (self.status.idle == true || self.facingDirection != .DOWN_LEFT){
+                    self.status.idle = false
                     self.facingDirection = .DOWN_LEFT
 //                    self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
                         
-                }else if myMovement == .zero && self.idle == false{
+                }else if myMovement == .zero && self.status.idle == false{
                     self.removeAllActions()
-                    self.idle = true
+                    self.status.idle = true
                     self.run(.setTexture(halfFrontLTexture))                }
             case .LEFT:
-                if myMovement != .zero && (self.idle == true || self.facingDirection != .LEFT){
-                    self.idle = false
+                if myMovement != .zero && (self.status.idle == true || self.facingDirection != .LEFT){
+                    self.status.idle = false
                     self.facingDirection = .LEFT
                     self.run(.repeatForever(.animate(with: walkingAnimationLeft, timePerFrame: 0.18)))
                         
-                }else if myMovement == .zero && self.idle == false{
+                }else if myMovement == .zero && self.status.idle == false{
                     self.removeAllActions()
-                    self.idle = true
+                    self.status.idle = true
                     self.run(.setTexture(sideLTexture))
                 }
             case .UP_LEFT:
-                if myMovement != .zero && (self.idle == true || self.facingDirection != .UP_LEFT){
-                    self.idle = false
+                if myMovement != .zero && (self.status.idle == true || self.facingDirection != .UP_LEFT){
+                    self.status.idle = false
                     self.facingDirection = .UP_LEFT
 //                    self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
                         
-                }else if myMovement == .zero && self.idle == false{
+                }else if myMovement == .zero && self.status.idle == false{
                     self.removeAllActions()
-                    self.idle = true
+                    self.status.idle = true
                     self.run(.setTexture(halfBackLTexture))
                     
                 }
             }
         }else if actionState == .ROLL{
-            if isRolling == false{
-                isRolling = true
+            if status.isRolling == false{
+                status.isRolling = true
                 self.xScale = 2
                 self.run(.animate(with: rollingAnimationRight, timePerFrame: 0.1), completion: {
                     self.actionState = .MOVE
                     self.xScale = 1
-                    self.isRolling = false
+                    self.status.isRolling = false
                     self.run(.setTexture(self.sideRTexture))
                 })
             }
