@@ -35,7 +35,7 @@ class Human: PlayableCharacter{
         self.walkingAnimationLeft = [SKTexture(imageNamed: "boyWalkLeft1"), SKTexture(imageNamed:"boyWalkLeft2"), SKTexture(imageNamed:"boyWalkLeft3"), SKTexture(imageNamed:"boyWalkLeft4"), SKTexture(imageNamed:"boyWalkLeft5"), SKTexture(imageNamed:"boyWalkLeft6"), SKTexture(imageNamed:"boyWalkLeft7"), SKTexture(imageNamed:"boyWalkLeft8")]
         self.walkingAnimationBack = [SKTexture(imageNamed: "boyBackWalk1"), SKTexture(imageNamed: "boyBackWalk2"), SKTexture(imageNamed: "boyBackWalk3"), SKTexture(imageNamed: "boyBackWalk4")]
         
-        self.rollingAnimationRight = [SKTexture(imageNamed: "boyRoll1"), SKTexture(imageNamed: "boyRoll2"), SKTexture(imageNamed: "boyRoll3"), SKTexture(imageNamed: "boyRoll4"), SKTexture(imageNamed: "boyRoll5"), SKTexture(imageNamed: "boyRoll6"), SKTexture(imageNamed: "boyRoll7"), SKTexture(imageNamed: "boyRoll8"), SKTexture(imageNamed: "boyRoll9"), SKTexture(imageNamed: "boyRoll10"), SKTexture(imageNamed: "boyRoll11")]
+        self.rollingAnimationRight = [/*SKTexture(imageNamed: "boyRoll1"), SKTexture(imageNamed: "boyRoll2"), SKTexture(imageNamed: "boyRoll3"), SKTexture(imageNamed: "boyRoll4"),*/ SKTexture(imageNamed: "boyRoll5"),/* SKTexture(imageNamed: "boyRoll6"),*/ SKTexture(imageNamed: "boyRoll7"), SKTexture(imageNamed: "boyRoll8"), SKTexture(imageNamed: "boyRoll9"), SKTexture(imageNamed: "boyRoll10")/*, SKTexture(imageNamed: "boyRoll11")*/]
 
     }
     

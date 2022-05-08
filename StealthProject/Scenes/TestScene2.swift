@@ -79,7 +79,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         calcDelta(currentTime: currentTime)
         player.updateActionState()
 //        player.updateMovingDirection()
-        player.animationWalking()
+        player.animationTree()
         player.searchObject(scene: self)
         player.updateFocus(scene: self)
         
@@ -100,7 +100,8 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
 //        scenecamera.position = player.position
 //        print(player.getFacingDirection())
-        print(player.getFocusState())
+//        print(player.getFocusState())
+        print(player.getActionState())
     }
     
     

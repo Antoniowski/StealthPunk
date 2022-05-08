@@ -67,17 +67,15 @@ extension PlayableScene{
     }
     
      func rollState(){
-//        if velocity != CGVector.zero{
-//            velocity = velocity.moveTowardZero(value: 1000)
-//        }
+        
          velocity = rollVector*MAX_SPEED*3*delta
          
          DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2, execute: {
              self.velocity = .zero
          })
-         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.3, execute: {
-             self.player.setActionState(.MOVE)
-         })
+//         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.3, execute: {
+//             self.player.setActionState(.MOVE)
+//         })
     }
     
     func interactState(scene: SKScene){

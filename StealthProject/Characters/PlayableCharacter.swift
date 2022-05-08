@@ -33,23 +33,28 @@ struct CharacterState{
 }
 class PlayableCharacter: SKSpriteNode{
 
-    
+    //STATS
     private var noise: Int = 0
     private var strenght: Int = 0
     private var characterSpeed: Int = 0
+    private var noiseDistance: Double = 0
+    private var interactRange: Double = 50
+    private var attackRange: Double = 25
+    
     
     private var status: CharacterState = CharacterState()
     private var actionState: ActionState = .MOVE
     private var movingDirection: Direction = .DOWN
     private var facingDirection: Direction = .DOWN
+    
+    //VARIABILI PER IL CONTROLLO DELLE ANIMAZIONI
     private var idle: Bool = true
+    private var isRolling: Bool = false
+    private var isAttacking: Bool = false
+    private var isInteractiong: Bool = false
     
-    private var noiseDitance: Double = 0
     
-    private var interactRange: Double = 50
-    private var attackRange: Double = 25
     private var objectHighlighted: Bool = false
-    
     private var focus: Focus = .OBJECT
     
     //    STATIC TEXTURES
@@ -163,9 +168,10 @@ class PlayableCharacter: SKSpriteNode{
     func updateActionState(){
         if buttonBIsPressed && self.actionState != .ROLL{
             self.actionState = .ROLL
-        } else if buttonBIsPressed == false && self.actionState == .ROLL{
-            self.actionState = .MOVE
         }
+//        else if buttonBIsPressed == false && self.actionState == .ROLL{
+//            self.actionState = .MOVE
+//        }
         if buttonAIsPressed{
             if self.focus == .OBJECT && self.actionState != .INTERACT{
                 self.actionState = .INTERACT
@@ -199,9 +205,6 @@ class PlayableCharacter: SKSpriteNode{
                 distanceObject = distance
             }
         }
-        
-        print(distanceEnemy)
-        print(distanceObject)
         
         if distanceEnemy > distanceObject{
             if self.focus != .OBJECT{
@@ -252,7 +255,7 @@ class PlayableCharacter: SKSpriteNode{
         }
     }
     
-    func animationWalking(){
+    func animationTree(){
         updateMovingDirection()
         if actionState == .MOVE{
             switch movingDirection {
@@ -343,6 +346,17 @@ class PlayableCharacter: SKSpriteNode{
                     
                 }
             }
+        }else if actionState == .ROLL{
+            if isRolling == false{
+                isRolling = true
+                self.xScale = 2
+                self.run(.animate(with: rollingAnimationRight, timePerFrame: 0.1), completion: {
+                    self.actionState = .MOVE
+                    self.xScale = 1
+                    self.isRolling = false
+                    self.run(.setTexture(self.sideRTexture))
+                })
+            }
         }
     }
     
@@ -378,7 +392,7 @@ class PlayableCharacter: SKSpriteNode{
     }
     
     func getNoiseDistance()->Double{
-        return self.noiseDitance
+        return self.noiseDistance
     }
     
     
@@ -441,7 +455,7 @@ class PlayableCharacter: SKSpriteNode{
     }
     
     func setNoiceDistance(_ newDistance: Double){
-        self.noiseDitance = newDistance
+        self.noiseDistance = newDistance
     }
     
     func setAttackRange(_ newRange: Double){
