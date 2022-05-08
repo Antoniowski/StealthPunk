@@ -163,23 +163,19 @@ class PlayableCharacter: SKSpriteNode{
     
 //    GENERIC FUNCTIONS
     func updateActionState(){
-        if buttonBIsPressed && self.actionState != .ROLL{
+        if buttonBIsPressed && self.actionState == .MOVE {
             self.actionState = .ROLL
         }
-//        else if buttonBIsPressed == false && self.actionState == .ROLL{
-//            self.actionState = .MOVE
-//        }
         if buttonAIsPressed{
-            if self.focus == .OBJECT && self.actionState != .INTERACT{
-                self.actionState = .INTERACT
-            }else if focus == .ENEMY && self.actionState != .ATTACK{
-                self.actionState = .ATTACK
-            }
-        } else if buttonAIsPressed == false{
-            if actionState == .ATTACK || actionState == .INTERACT{
-                self.actionState = .MOVE
+            if self.actionState == .MOVE{
+                if self.focus == .OBJECT && self.actionState != .INTERACT{
+                    self.actionState = .INTERACT
+                }else if focus == .ENEMY && self.actionState != .ATTACK{
+                    self.actionState = .ATTACK
+                }
             }
         }
+        
     }
     
     func updateFocus(scene: SKScene){
@@ -351,7 +347,16 @@ class PlayableCharacter: SKSpriteNode{
                     self.actionState = .MOVE
                     self.xScale = 1
                     self.status.isRolling = false
-                    self.run(.setTexture(self.sideRTexture))
+                    self.status.idle = false
+                })
+            }
+        }else if actionState == .ATTACK{
+            if self.status.isAttacking == false{
+                self.status.isAttacking = true
+                self.run(.animate(with: self.attackAnimationFront, timePerFrame: 0.18), completion: {
+                    self.actionState = .MOVE
+                    self.status.isAttacking = false
+                    self.status.idle = false
                 })
             }
         }

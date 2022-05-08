@@ -14,6 +14,8 @@
 //DA SOSTITUIRE LA FUNZIONE DI ENUMERATE BASE CHE NON CI PERMETTE DI
 //AVERE ACCESSO ALLE STATS DEI PERSONAGGI
 
+//TODO: AGGIUSTARE LA POSSIBILITA' DI USARE MEZZO STICK PER MUOVERSI PIU' LENTAMENTE E FARE MENO RUMORE
+
 import Foundation
 import SpriteKit
 import SwiftUI
@@ -47,7 +49,11 @@ extension PlayableScene{
             rollVector = inputVector.normalized()
             inputVector = inputVector*ACCELLERATION*delta //AGGIUNGERE ACCELERAZIONE APPROPRIATA
             velocity += inputVector
-            velocity = velocity.clamped(maxLength: MAX_SPEED*delta) //AGGIUNGERE MAX VELOCITY
+            if myMovement.getMagnitude() > 0.5{
+                velocity = velocity.clamped(maxLength: MAX_SPEED*delta)
+            }else{
+                velocity = velocity.clamped(maxLength: MAX_SPEED*delta*0.5)
+            } //AGGIUNGERE MAX SPEED
         }else{
             velocity = velocity.moveTowardZero(value: FRICTION*delta)
         }
@@ -56,26 +62,30 @@ extension PlayableScene{
     
     func attackState(scene: SKScene){
         
-        scene.enumerateChildNodes(withName: "enemy"){ object, _ in
-            if getDistanceBetween(point1: self.player.position, point2: object.position) <= self.player.getAttackRange(){
-                //TO DO
-            }
-
-        }
-        print("Attack")
-        self.player.setActionState(.MOVE)
+//        scene.enumerateChildNodes(withName: "enemy"){ object, _ in
+//            if getDistanceBetween(point1: self.player.position, point2: object.position) <= self.player.getAttackRange(){
+//                //TO DO
+//            }
+//
+//        }
+//        print("Attack")
+//        self.player.setActionState(.MOVE)
+        print("ATTACK!")
+        velocity = .zero
     }
     
-     func rollState(){
+    func rollState(){
         
-         velocity = rollVector*MAX_SPEED*3*delta
-         
-         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2, execute: {
-             self.velocity = .zero
-         })
-//         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.3, execute: {
-//             self.player.setActionState(.MOVE)
-//         })
+        velocity = rollVector*MAX_SPEED*3*delta
+        
+        
+//        if myMovement == .zero{
+//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
+//                self.velocity = self.velocity.moveTowardZero(value: 30)
+//            })
+//
+//        }
+        
     }
     
     func interactState(scene: SKScene){

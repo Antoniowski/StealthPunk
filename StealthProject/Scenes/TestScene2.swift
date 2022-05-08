@@ -101,7 +101,9 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
 //        scenecamera.position = player.position
 //        print(player.getFacingDirection())
 //        print(player.getFocusState())
-        print(player.getActionState())
+//        print(player.getActionState())
+        print("INPUT VECTOR = \(inputVector)")
+        print("MyMovement = \(myMovement)")
     }
     
     
