@@ -392,10 +392,13 @@ class PlayableCharacter: SKSpriteNode{
         scene.enumerateChildNodes(withName: "dynamicObject"){ object, _ in
             if getDistanceBetween(point1: self.position, point2: object.position) <= self.interactRange{
                 let sprite = object as? InteractableObject
-                if sprite?.getSpottedStatus()==false{
+                if sprite?.getSpottedStatus() == false{
                     sprite?.setSpottedStatus(true)
 //                    object.run(.colorize(with: .green, colorBlendFactor: 0.2, duration: 0.1))
                     sprite?.run(.setTexture(sprite?.highlightedTexture ?? SKTexture()))
+                    sprite?.shapeHighlighted.strokeColor = .init(white: 1, alpha: 0.5)
+                    sprite?.shapeHighlighted.glowWidth = 3
+                    sprite?.addChild(sprite?.shapeHighlighted ?? SKShapeNode())
                 }
             }else{
                 let sprite = object as? InteractableObject
@@ -403,6 +406,7 @@ class PlayableCharacter: SKSpriteNode{
                     sprite?.setSpottedStatus(false)
 //                    object.run(.colorize(withColorBlendFactor: 0, duration: 0.1))
                     sprite?.run(.setTexture(sprite?.baseTexture ?? SKTexture()))
+                    sprite?.shapeHighlighted.removeFromParent()
                 }
             }
         }
