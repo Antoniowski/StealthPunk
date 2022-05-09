@@ -8,8 +8,13 @@
 import Foundation
 import SpriteKit
 
+enum StaticObjectCategory: Int{
+    case LIGHT = 0
+}
+
 class StaticObject: SKSpriteNode{
     private var objectName: String = ""
+    private var objectCategory: StaticObjectCategory = .LIGHT
     
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
         super.init(texture: texture, color: color, size: size)
@@ -17,10 +22,11 @@ class StaticObject: SKSpriteNode{
         setPhysicBody()
     }
     
-    init(texture: SKTexture?, color: UIColor, size: CGSize, name: String) {
+    init(texture: SKTexture?, color: UIColor, size: CGSize, objectName: String, objectCategory: StaticObjectCategory) {
         super.init(texture: texture, color: color, size: size)
-        self.objectName = name
+        self.objectName = objectName
         self.name = "staticObject"
+        self.objectCategory = objectCategory
         setPhysicBody()
     }
     
@@ -42,10 +48,18 @@ class StaticObject: SKSpriteNode{
         return self.objectName
     }
     
+    func getCategory()->StaticObjectCategory{
+        return self.objectCategory
+    }
+    
     
     //SETFUNCTIONS
     
     func setName(_ newName: String){
         self.objectName = newName
+    }
+    
+    func setCategory(_ newCategory: StaticObjectCategory){
+        self.objectCategory = newCategory
     }
 }

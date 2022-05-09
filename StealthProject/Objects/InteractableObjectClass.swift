@@ -45,6 +45,10 @@ class InteractableObject: SKSpriteNode{
         self.physicsBody?.allowsRotation = false
     }
     
+    func action(){
+        //DA PERSONALIZZARE IN OGNI SOTTO CLASSE SPECIFICA
+    }
+    
     
     
     //GET FUNCTIONS

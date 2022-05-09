@@ -167,8 +167,9 @@ class PlayableCharacter: SKSpriteNode{
             self.actionState = .ROLL
         }
         if buttonAIsPressed{
-            if self.actionState == .MOVE{
+            if self.actionState == .MOVE && self.getStatus().isInteractiong == false{
                 if self.focus == .OBJECT && self.actionState != .INTERACT{
+//                    print("INTERACT AVVIATO")
                     self.actionState = .INTERACT
                 }else if focus == .ENEMY && self.actionState != .ATTACK{
                     self.actionState = .ATTACK
@@ -481,11 +482,15 @@ class PlayableCharacter: SKSpriteNode{
         self.status.isInvicible.toggle()
     }
     
+    func setInteractingStatus(_ newStatus: Bool){
+        self.status.isInteractiong = newStatus
+    }
+    
     func setActionState(_ newActionState: ActionState){
         self.actionState = newActionState
     }
     
-    func setNoiceDistance(_ newDistance: Double){
+    func setNoiseDistance(_ newDistance: Double){
         self.noiseDistance = newDistance
     }
     

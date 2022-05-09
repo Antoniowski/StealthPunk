@@ -24,9 +24,11 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     
     var player: PlayableCharacter = Human(texture: SKTexture(imageNamed: "boyFront"), color: .clear, size: CGSize(width: 35, height: 70), noise: 1, speed: 1, strenght: 1)
     var armadio: InteractableObject = InteractableObject(texture: SKTexture(imageNamed: "closet"), highlighted: SKTexture(imageNamed: "closetFocused"), color: .clear, size: CGSize(width: 100, height: 100), type: .HIDEOUT)
-    var lampione = StaticObject(texture: SKTexture(imageNamed: "lampione"), color: .clear, size: CGSize(width: 70, height: 140))
+    var lampione = Lampione(texture: SKTexture(imageNamed: "lampione"), color: .clear, size: CGSize(width: 70, height: 140), objectName: "lampione1", lightBitmask: 2)
     
-    var luce: SKLightNode = SKLightNode()
+    var lightSwitch = LightSwitch(texture: SKTexture(imageNamed: "ConoPiccoloBackF1"), highlighted: SKTexture(imageNamed: "ConoPiccoloBackF2"), color: .clear, size: CGSize(width: 100, height: 100), referredLightName: "lampione1")
+    
+//    var luce: SKLightNode = SKLightNode()
 
     
     var scenecamera = SKCameraNode()
@@ -58,18 +60,18 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         armadio.zPosition = 1
         lampione.zPosition = 1
         
-        luce.categoryBitMask = 2
-        luce.position = lampione.position
-        luce.position.y += 35
+//        luce.categoryBitMask = 2
+//        luce.position = lampione.position
+//        luce.position.y += 35
         
         
-        lampione.lightingBitMask = 2
+//        lampione.lightingBitMask = 2
         
         player.lightingBitMask = 2
         armadio.lightingBitMask = 2
 
 
-        lampione.name = "enemy"
+//        lampione.name = "enemy"
         coin.size = CGSize(width: 30, height: 30)
 
         ombra.position = t.position
@@ -88,14 +90,18 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         animationCoin.timingMode = .easeOut
         t.run(animationCoin)
         
+        lightSwitch.position = player.position
+        lightSwitch.position.x -= 70
+        
 
         
         addChild(player)
         addChild(armadio)
         addChild(lampione)
-        addChild(luce)
+//        addChild(luce)
         addChild(t)
 //        addChild(ombra)
+        addChild(lightSwitch)
     }
     
     
