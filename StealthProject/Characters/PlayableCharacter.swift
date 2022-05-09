@@ -51,7 +51,7 @@ class PlayableCharacter: SKSpriteNode{
     private var movingDirection: Direction = .DOWN
     private var facingDirection: Direction = .DOWN
     
-    private var objectHighlighted: Bool = false
+//    private var objectHighlighted: Bool = false
     private var focus: Focus = .OBJECT
     
     //    STATIC TEXTURES
@@ -167,8 +167,9 @@ class PlayableCharacter: SKSpriteNode{
             self.actionState = .ROLL
         }
         if buttonAIsPressed{
-            if self.actionState == .MOVE{
+            if self.actionState == .MOVE && self.getStatus().isInteractiong == false{
                 if self.focus == .OBJECT && self.actionState != .INTERACT{
+//                    print("INTERACT AVVIATO")
                     self.actionState = .INTERACT
                 }else if focus == .ENEMY && self.actionState != .ATTACK{
                     self.actionState = .ATTACK
@@ -177,6 +178,7 @@ class PlayableCharacter: SKSpriteNode{
         }
         
     }
+     //TODO: DA AGGIUSTARE CON ELEMENTI DI UNA SOLA STANZA
     
     func updateFocus(scene: SKScene){
         var first: Bool = true
@@ -192,7 +194,7 @@ class PlayableCharacter: SKSpriteNode{
                 distanceEnemy = distance
             }
         }
-        scene.enumerateChildNodes(withName: "interactable"){ element, _ in
+        scene.enumerateChildNodes(withName: "dynamicObject"){ element, _ in
             let distance = getDistanceBetween(point1: self.position, point2: element.position)
             if distanceObject >= distance{
                 distanceObject = distance
@@ -344,7 +346,10 @@ class PlayableCharacter: SKSpriteNode{
                 status.isRolling = true
                 switch facingDirection {
                 case .UP:
-                    print("UP")
+                    self.run(.animate(with: rollingAnimationBack, timePerFrame: 0.1), completion: {
+                        self.actionState = .MOVE
+                        self.status.isRolling = false
+                    })
                 case .UP_RIGHT:
                     print("UPRIGHT")
                 case .RIGHT:
@@ -384,20 +389,24 @@ class PlayableCharacter: SKSpriteNode{
     }
     
     func searchObject(scene: SKScene){
-        scene.enumerateChildNodes(withName: "interactable"){ object, _ in
+        scene.enumerateChildNodes(withName: "dynamicObject"){ object, _ in
             if getDistanceBetween(point1: self.position, point2: object.position) <= self.interactRange{
-                if self.objectHighlighted != true{
-                    self.objectHighlighted = true
-                    let sprite = object as? InteractableObject
+                let sprite = object as? InteractableObject
+                if sprite?.getSpottedStatus() == false{
+                    sprite?.setSpottedStatus(true)
 //                    object.run(.colorize(with: .green, colorBlendFactor: 0.2, duration: 0.1))
                     sprite?.run(.setTexture(sprite?.highlightedTexture ?? SKTexture()))
+                    sprite?.shapeHighlighted.strokeColor = .init(white: 1, alpha: 0.5)
+                    sprite?.shapeHighlighted.glowWidth = 3
+                    sprite?.addChild(sprite?.shapeHighlighted ?? SKShapeNode())
                 }
             }else{
-                if self.objectHighlighted != false{
-                    self.objectHighlighted = false
+                let sprite = object as? InteractableObject
+                if sprite?.getSpottedStatus() != false{
+                    sprite?.setSpottedStatus(false)
 //                    object.run(.colorize(withColorBlendFactor: 0, duration: 0.1))
-                    let sprite = object as? InteractableObject
                     sprite?.run(.setTexture(sprite?.baseTexture ?? SKTexture()))
+                    sprite?.shapeHighlighted.removeFromParent()
                 }
             }
         }
@@ -477,11 +486,15 @@ class PlayableCharacter: SKSpriteNode{
         self.status.isInvicible.toggle()
     }
     
+    func setInteractingStatus(_ newStatus: Bool){
+        self.status.isInteractiong = newStatus
+    }
+    
     func setActionState(_ newActionState: ActionState){
         self.actionState = newActionState
     }
     
-    func setNoiceDistance(_ newDistance: Double){
+    func setNoiseDistance(_ newDistance: Double){
         self.noiseDistance = newDistance
     }
     

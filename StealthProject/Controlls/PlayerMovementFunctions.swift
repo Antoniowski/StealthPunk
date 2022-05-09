@@ -89,15 +89,37 @@ extension PlayableScene{
     }
     
     func interactState(scene: SKScene){
-         scene.enumerateChildNodes(withName: "interactable"){ object, _ in
-             if getDistanceBetween(point1: self.player.position, point2: object.position) <= self.player.getInteractRange(){
-                 object.run(.rotate(byAngle: pi/2, duration: 1))
-                 self.player.setHiddenStatus(true)
-             }
-             
-         }
-         self.player.setActionState(.MOVE)
-
+        if player.getStatus().isInteractiong == false{
+            player.setInteractingStatus(true)
+//            print("Interaction")
+            scene.enumerateChildNodes(withName: "dynamicObject"){ object, _ in
+                if getDistanceBetween(point1: self.player.position, point2: object.position) <= self.player.getInteractRange(){
+                    let interact = object as? InteractableObject
+                    switch interact?.getType(){
+                    case .USABLE:
+                        let usable = interact as? UsableObject
+                        switch usable?.getUsableCategory(){
+                        case .SWITCH:
+                            let lightSwitch = usable as? LightSwitch
+                            lightSwitch?.action(scene)
+                        default:
+                            return
+                        }
+                    case .HIDEOUT:
+                        print("Sono nascosto")
+                    default:
+                        return
+                    }
+                }
+                
+            }
+            self.player.setActionState(.MOVE)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { //FUNZIONA MA NON SO COME
+                self.player.setInteractingStatus(false)                    //IL DELAY E' NECESSARIO ALTRIMENTI L'AZIONE VIENE
+                                                                           //RICHIAMATA PIU' VOLTE VISTO CHE A RIMANE PREMUTO
+            })
+            
+        }
     }
 }
 
