@@ -10,13 +10,31 @@ import SpriteKit
 import GameplayKit
 import SwiftUI
 
+enum roomsType: Int{
+    case NORMAL = 0
+    case START = 1
+    case END = 2
+}
+
+enum doorPosition: Int{
+    case UP = 0
+    case DOWN = 1
+    case RIGHT = 2
+    case LEFT = 3
+    case NOT = 4
+}
+
+
 class Room {
     
-    var numRighe : Int = 0
-    var numColonne : Int = 0
-    var stanza : [[Int]] = []
-    var nemici : [Guard] = []
-    var oggetti : [InteractableObject] = []
+    private var door : doorPosition = .DOWN
+    private var tipy : roomsType = .NORMAL
+    
+    private var numRighe : Int = 0
+    private var numColonne : Int = 0
+    private var stanza : [[Int]] = []
+    private var nemici : [Guard] = []
+    private var oggetti : [InteractableObject] = []
     
     func createRooms(righe :Int, colonne :Int, matrice :[[Int]], scene :SKScene){
         for index in 0...matrice.count-1{
@@ -87,6 +105,12 @@ class Room {
         return self.stanza
     }
     
+    func setRighe(_ righe :Int ){
+        self.numRighe = righe
+    }
     
+    func setColonne(_ colonne :Int){
+        self.numColonne = colonne
+    }
 }
 
