@@ -31,6 +31,9 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     
     var scenecamera = SKCameraNode()
     
+    var coin = SKShapeNode(circleOfRadius: 25)
+    var t = SKTransformNode()
+    var animationCoin = SKAction()
     
     var inputVector: CGVector = CGVector.zero
     var rollVector: CGVector = CGVector.init(dx: 1, dy: 0)
@@ -66,11 +69,23 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
 
         lampione.name = "enemy"
         
+        coin.fillColor = .yellow
+        coin.strokeColor = .yellow
+        t.position = CGPoint(x: 100, y: 100)
+        
+        t.addChild(coin)
+        animationCoin = SKAction.repeatForever(.sequence([.run {
+            self.t.yRotation += 0.063  //UN CENTESIMO DI 2PI
+        }, .wait(forDuration: 0.05)]))
+        animationCoin.timingMode = .easeOut
+        t.run(animationCoin)
+        
         
         addChild(player)
         addChild(armadio)
         addChild(lampione)
         addChild(luce)
+        addChild(t)
     }
     
     
@@ -102,8 +117,6 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
 //        print(player.getFacingDirection())
 //        print(player.getFocusState())
 //        print(player.getActionState())
-        print("INPUT VECTOR = \(inputVector)")
-        print("MyMovement = \(myMovement)")
     }
     
     
