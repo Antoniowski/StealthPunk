@@ -43,6 +43,8 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     var MAX_SPEED: Double = 100
     var FRICTION: Double = 10
     
+    var ombra = SKShapeNode(ellipseOf: CGSize(width: 30, height: 2))
+    
     
     override func didMove(to view: SKView) {
         myGameController.connectController()
@@ -64,13 +66,21 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         lampione.lightingBitMask = 2
         
         player.lightingBitMask = 2
-        armadio.lightingBitMask = 1
+        armadio.lightingBitMask = 2
 
 
         lampione.name = "enemy"
+        coin.size = CGSize(width: 30, height: 30)
+
+        ombra.position = t.position
+        ombra.position.y -= coin.size.height/2 + 10
+        ombra.zPosition = 1
+        ombra.fillColor = .init(white: 0, alpha: 0.2)
+        ombra.strokeColor = .clear
+        
+        coin.addChild(ombra)
         
         t.position = CGPoint(x: 100, y: 100)
-        coin.size = CGSize(width: 30, height: 30)
         t.addChild(coin)
         animationCoin = SKAction.repeatForever(.sequence([.run {
             self.t.yRotation += 0.063  //UN CENTESIMO DI 2PI
@@ -78,12 +88,14 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         animationCoin.timingMode = .easeOut
         t.run(animationCoin)
         
+
         
         addChild(player)
         addChild(armadio)
         addChild(lampione)
         addChild(luce)
         addChild(t)
+//        addChild(ombra)
     }
     
     
@@ -110,6 +122,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         }
         
         playerMovement(player: player as SKSpriteNode, velocity: velocity)
+
         
 //        scenecamera.position = player.position
 //        print(player.getFacingDirection())

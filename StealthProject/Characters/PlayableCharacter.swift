@@ -177,6 +177,7 @@ class PlayableCharacter: SKSpriteNode{
         }
         
     }
+     //TODO: DA AGGIUSTARE CON ELEMENTI DI UNA SOLA STANZA
     
     func updateFocus(scene: SKScene){
         var first: Bool = true
@@ -344,7 +345,10 @@ class PlayableCharacter: SKSpriteNode{
                 status.isRolling = true
                 switch facingDirection {
                 case .UP:
-                    print("UP")
+                    self.run(.animate(with: rollingAnimationBack, timePerFrame: 0.1), completion: {
+                        self.actionState = .MOVE
+                        self.status.isRolling = false
+                    })
                 case .UP_RIGHT:
                     print("UPRIGHT")
                 case .RIGHT:
