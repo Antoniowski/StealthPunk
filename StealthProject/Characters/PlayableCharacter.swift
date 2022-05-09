@@ -362,7 +362,10 @@ class PlayableCharacter: SKSpriteNode{
                 case .DOWN_RIGHT:
                     print("")
                 case .DOWN:
-                    print("")
+                    self.run(.animate(with: rollingAnimationFront, timePerFrame: 0.1), completion: {
+                        self.actionState = .MOVE
+                        self.status.isRolling = false
+                    })
                 case .DOWN_LEFT:
                     print("")
                 case .LEFT:

@@ -116,7 +116,7 @@ extension PlayableScene{
             self.player.setActionState(.MOVE)
             DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { //FUNZIONA MA NON SO COME
                 self.player.setInteractingStatus(false)                    //IL DELAY E' NECESSARIO ALTRIMENTI L'AZIONE VIENE
-                                                                           //RICHIAMATA PIU' VOLTE VISTO CHE A RIMANE PREMUTO
+                                                                           //RICHIAMATA PIU' VOLTE VISTO CHE "A" RIMANE PREMUTO
             })
             
         }
