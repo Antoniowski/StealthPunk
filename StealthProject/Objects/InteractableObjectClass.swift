@@ -21,6 +21,9 @@ class InteractableObject: SKSpriteNode{
     private var spotted: Bool = false
     private var inUse: Bool = false
     
+    var baseTexture: SKTexture = SKTexture()
+    var highlightedTexture: SKTexture?
+    
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
         super.init(texture: texture, color: color, size: size)
     }
@@ -29,17 +32,19 @@ class InteractableObject: SKSpriteNode{
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(texture: SKTexture?, color: UIColor, size: CGSize, type: ObjectType){
+    init(texture: SKTexture?, highlighted: SKTexture?, color: UIColor, size: CGSize, type: ObjectType){
         super.init(texture: texture, color: color, size: size)
-
+        self.baseTexture = texture ?? SKTexture()
         self.spotted = false
         self.inUse = false
         self.type = type
         switch type {
         case .HIDEOUT:
             self.name = "interactable"
+            self.highlightedTexture = highlighted
         case .USABLE:
             self.name = "usable"
+            self.highlightedTexture = highlighted
         case .STATIC:
             self.name = "static"
         }

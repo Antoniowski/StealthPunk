@@ -13,30 +13,12 @@ class Human: PlayableCharacter{
     private var type: CharacterType = .HUMAN
 //    private var ability: Ability
     
-
-    
     override init(texture: SKTexture?, color: UIColor, size: CGSize, noise: Int, speed: Int, strenght: Int) {
         super.init(texture: texture, color: color, size: size, noise: noise, speed: speed, strenght: strenght)
         self.physicsBody = SKPhysicsBody(rectangleOf: size)
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.allowsRotation = false
-    
-        self.frontTexture = SKTexture(imageNamed: "boyFront")
-        self.backTexture = SKTexture(imageNamed: "boyBack")
-        self.sideLTexture = SKTexture(imageNamed: "boySideL")
-        self.sideRTexture = SKTexture(imageNamed: "boySideR")
-        self.halfBackLTexture = SKTexture(imageNamed: "boyHalfBackL")
-        self.halfBackRTexture = SKTexture(imageNamed: "boyHalfBackR")
-        self.halfFrontRTexture = SKTexture(imageNamed: "boyHalfFrontR")
-        self.halfFrontLTexture = SKTexture(imageNamed: "boyHalfFrontL")
-        
-        self.walkingAnimationRight = [SKTexture(imageNamed: "boyWalk1"), SKTexture(imageNamed:"boyWalk2"), SKTexture(imageNamed:"boyWalk3"), SKTexture(imageNamed:"boyWalk4"), SKTexture(imageNamed:"boyWalk5"), SKTexture(imageNamed:"boyWalk6"), SKTexture(imageNamed:"boyWalk7"), SKTexture(imageNamed:"boyWalk8")]
-        self.walkingAnimationFront = [SKTexture(imageNamed: "boyFrontWalk1"), SKTexture(imageNamed: "boyFrontWalk2"), SKTexture(imageNamed: "boyFrontWalk3"), SKTexture(imageNamed: "boyFrontWalk4")]
-        self.walkingAnimationLeft = [SKTexture(imageNamed: "boyWalkLeft1"), SKTexture(imageNamed:"boyWalkLeft2"), SKTexture(imageNamed:"boyWalkLeft3"), SKTexture(imageNamed:"boyWalkLeft4"), SKTexture(imageNamed:"boyWalkLeft5"), SKTexture(imageNamed:"boyWalkLeft6"), SKTexture(imageNamed:"boyWalkLeft7"), SKTexture(imageNamed:"boyWalkLeft8")]
-        self.walkingAnimationBack = [SKTexture(imageNamed: "boyBackWalk1"), SKTexture(imageNamed: "boyBackWalk2"), SKTexture(imageNamed: "boyBackWalk3"), SKTexture(imageNamed: "boyBackWalk4")]
-        
-        self.rollingAnimationRight = [SKTexture(imageNamed: "boyRoll1"), SKTexture(imageNamed: "boyRoll2"), SKTexture(imageNamed: "boyRoll3"), SKTexture(imageNamed: "boyRoll4"), SKTexture(imageNamed: "boyRoll5"), SKTexture(imageNamed: "boyRoll6"), SKTexture(imageNamed: "boyRoll7"), SKTexture(imageNamed: "boyRoll8"), SKTexture(imageNamed: "boyRoll9"), SKTexture(imageNamed: "boyRoll10"), SKTexture(imageNamed: "boyRoll11")]
-
+        setAnimationArrays()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -48,10 +30,7 @@ class Human: PlayableCharacter{
         self.characterName = "Human" //INSERIRE NOME PERSONAGGIO APPENA DISPONIBILE
         self.type = .HUMAN
         self.physicsBody = SKPhysicsBody(rectangleOf: size)
-        self.walkingAnimationRight = [SKTexture(imageNamed: "boyWalk1"), SKTexture(imageNamed:"boyWalk2"), SKTexture(imageNamed:"boyWalk3"), SKTexture(imageNamed:"boyWalk4"), SKTexture(imageNamed:"boyWalk5"), SKTexture(imageNamed:"boyWalk6"), SKTexture(imageNamed:"boyWalk7"), SKTexture(imageNamed:"boyWalk8")]
-        self.walkingAnimationFront = [SKTexture(imageNamed: "boyFrontWalk1"), SKTexture(imageNamed: "boyFrontWalk2"), SKTexture(imageNamed: "boyFrontWalk3"), SKTexture(imageNamed: "boyFrontWalk4")]
-        self.walkingAnimationLeft = [SKTexture(imageNamed: "boyWalkLeft1"), SKTexture(imageNamed:"boyWalkLeft2"), SKTexture(imageNamed:"boyWalkLeft3"), SKTexture(imageNamed:"boyWalkLeft4"), SKTexture(imageNamed:"boyWalkLeft5"), SKTexture(imageNamed:"boyWalkLeft6"), SKTexture(imageNamed:"boyWalkLeft7"), SKTexture(imageNamed:"boyWalkLeft8")]
-        self.walkingAnimationBack = [SKTexture(imageNamed: "boyBackWalk1"), SKTexture(imageNamed: "boyBackWalk2"), SKTexture(imageNamed: "boyBackWalk3"), SKTexture(imageNamed: "boyBackWalk4")]
+        setAnimationArrays()
     }
     
 //    GET FUNCTIONS
@@ -73,6 +52,28 @@ class Human: PlayableCharacter{
     
     func setCharacterName(_ newName: String){
         self.characterName = newName
+    }
+    
+    private func setAnimationArrays(){
+        self.frontTexture = SKTexture(imageNamed: "boyFront")
+        self.backTexture = SKTexture(imageNamed: "boyBack")
+        self.sideLTexture = SKTexture(imageNamed: "boySideL")
+        self.sideRTexture = SKTexture(imageNamed: "boySideR")
+        self.halfBackLTexture = SKTexture(imageNamed: "boyHalfBackL")
+        self.halfBackRTexture = SKTexture(imageNamed: "boyHalfBackR")
+        self.halfFrontRTexture = SKTexture(imageNamed: "boyHalfFrontR")
+        self.halfFrontLTexture = SKTexture(imageNamed: "boyHalfFrontL")
+        
+        self.walkingAnimationRight = [SKTexture(imageNamed: "boyWalk1"), SKTexture(imageNamed:"boyWalk2"), SKTexture(imageNamed:"boyWalk3"), SKTexture(imageNamed:"boyWalk4"), SKTexture(imageNamed:"boyWalk5"), SKTexture(imageNamed:"boyWalk6"), SKTexture(imageNamed:"boyWalk7"), SKTexture(imageNamed:"boyWalk8")]
+        self.walkingAnimationFront = [SKTexture(imageNamed: "boyFrontWalk1"), SKTexture(imageNamed: "boyFrontWalk2"), SKTexture(imageNamed: "boyFrontWalk3"), SKTexture(imageNamed: "boyFrontWalk4")]
+        self.walkingAnimationLeft = [SKTexture(imageNamed: "boyWalkLeft1"), SKTexture(imageNamed:"boyWalkLeft2"), SKTexture(imageNamed:"boyWalkLeft3"), SKTexture(imageNamed:"boyWalkLeft4"), SKTexture(imageNamed:"boyWalkLeft5"), SKTexture(imageNamed:"boyWalkLeft6"), SKTexture(imageNamed:"boyWalkLeft7"), SKTexture(imageNamed:"boyWalkLeft8")]
+        self.walkingAnimationBack = [SKTexture(imageNamed: "boyBackWalk1"), SKTexture(imageNamed: "boyBackWalk2"), SKTexture(imageNamed: "boyBackWalk3"), SKTexture(imageNamed: "boyBackWalk4")]
+        
+        self.rollingAnimationRight = [SKTexture(imageNamed: "boyRollRight2"), SKTexture(imageNamed: "boyRollRight3"), SKTexture(imageNamed: "boyRollRight4"), SKTexture(imageNamed: "boyRollRight5"), SKTexture(imageNamed: "boyRollRight6")]
+        self.rollingAnimationLeft = [SKTexture(imageNamed: "boyRollLeft2"), SKTexture(imageNamed: "boyRollLeft3"), SKTexture(imageNamed: "boyRollLeft4"), SKTexture(imageNamed: "boyRollLeft5"), SKTexture(imageNamed: "boyRollLeft6")]
+        
+        //TEMPORANEO PER TEST
+        self.attackAnimationFront = [SKTexture(imageNamed: "boyFront"), SKTexture(imageNamed: "boyHalfFrontL"), SKTexture(imageNamed: "boySideL"), SKTexture(imageNamed: "boyHalfBackL"), SKTexture(imageNamed: "boyBack"), SKTexture(imageNamed: "boyHalfBackR"), SKTexture(imageNamed: "boySideR"), SKTexture(imageNamed: "boyHalfFrontR")]
     }
 }
 

@@ -30,26 +30,28 @@ enum Focus: Int{
 struct CharacterState{
     var isHidden: Bool = false
     var isInvicible: Bool = false
+    var idle: Bool = true
+    var isRolling: Bool = false
+    var isAttacking: Bool = false
+    var isInteractiong: Bool = false
 }
 class PlayableCharacter: SKSpriteNode{
 
-    
+    //STATS
     private var noise: Int = 0
     private var strenght: Int = 0
     private var characterSpeed: Int = 0
+    private var noiseDistance: Double = 0
+    private var interactRange: Double = 50
+    private var attackRange: Double = 25
+    
     
     private var status: CharacterState = CharacterState()
     private var actionState: ActionState = .MOVE
     private var movingDirection: Direction = .DOWN
     private var facingDirection: Direction = .DOWN
-    private var idle: Bool = true
     
-    private var noiseDitance: Double = 0
-    
-    private var interactRange: Double = 50
-    private var attackRange: Double = 25
     private var objectHighlighted: Bool = false
-    
     private var focus: Focus = .OBJECT
     
     //    STATIC TEXTURES
@@ -161,22 +163,19 @@ class PlayableCharacter: SKSpriteNode{
     
 //    GENERIC FUNCTIONS
     func updateActionState(){
-        if buttonBIsPressed && self.actionState != .ROLL{
+        if buttonBIsPressed && self.actionState == .MOVE && myMovement != .zero {
             self.actionState = .ROLL
-        } else if buttonBIsPressed == false && self.actionState == .ROLL{
-            self.actionState = .MOVE
         }
         if buttonAIsPressed{
-            if self.focus == .OBJECT && self.actionState != .INTERACT{
-                self.actionState = .INTERACT
-            }else if focus == .ENEMY && self.actionState != .ATTACK{
-                self.actionState = .ATTACK
-            }
-        } else if buttonAIsPressed == false{
-            if actionState == .ATTACK || actionState == .INTERACT{
-                self.actionState = .MOVE
+            if self.actionState == .MOVE{
+                if self.focus == .OBJECT && self.actionState != .INTERACT{
+                    self.actionState = .INTERACT
+                }else if focus == .ENEMY && self.actionState != .ATTACK{
+                    self.actionState = .ATTACK
+                }
             }
         }
+        
     }
     
     func updateFocus(scene: SKScene){
@@ -200,9 +199,6 @@ class PlayableCharacter: SKSpriteNode{
             }
         }
         
-        print(distanceEnemy)
-        print(distanceObject)
-        
         if distanceEnemy > distanceObject{
             if self.focus != .OBJECT{
                 self.focus = .OBJECT
@@ -216,23 +212,6 @@ class PlayableCharacter: SKSpriteNode{
     
     func updateMovingDirection(){    //FUNZIONA: Aggiorna una sola volta il moving direction
         if myMovement != .zero{
-//            if Double(myAngle) >= pi/4 && Double(myAngle) <= 3*pi/4{
-//                if self.movingDirection != .RIGHT{
-//                    self.movingDirection = .RIGHT
-//                }
-//            }else if Double(myAngle) > 3*pi/4 && Double(myAngle) <= pi || Double(myAngle) < -3*pi/4 && Double(myAngle) > -pi{
-//                if self.movingDirection != .DOWN{
-//                    self.movingDirection = .DOWN
-//                }
-//            }else if Double(myAngle) <= -pi/4 && Double(myAngle) >= -3*pi/4{
-//                if self.movingDirection != .LEFT{
-//                    self.movingDirection = .LEFT
-//                }
-//            }else if Double(myAngle) > -pi/4 && Double(myAngle) < pi/4{
-//                if self.movingDirection != .UP{
-//                    self.movingDirection = .UP
-//                }
-//            }
             if Double(myAngle) < pi/8 && Double(myAngle) > -pi/8{
                 if self.movingDirection != .UP{
                     self.movingDirection = .UP
@@ -269,96 +248,137 @@ class PlayableCharacter: SKSpriteNode{
         }
     }
     
-    func animationWalking(){
+    func animationTree(){
         updateMovingDirection()
         if actionState == .MOVE{
             switch movingDirection {
             case .UP:
-                if myMovement != .zero && (self.idle == true || self.facingDirection != .UP){
-                    self.idle = false
+                if myMovement != .zero && (self.status.idle == true || self.facingDirection != .UP){
+                    self.status.idle = false
                     self.facingDirection = .UP
                     self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
                         
-                }else if myMovement == .zero && self.idle == false{
+                }else if myMovement == .zero && self.status.idle == false{
                     self.removeAllActions()
-                    self.idle = true
+                    self.status.idle = true
                     self.run(.setTexture(backTexture))
                 }
             case .UP_RIGHT:
-                if myMovement != .zero && (self.idle == true || self.facingDirection != .UP_RIGHT){
-                    self.idle = false
+                if myMovement != .zero && (self.status.idle == true || self.facingDirection != .UP_RIGHT){
+                    self.status.idle = false
                     self.facingDirection = .UP_RIGHT
 //                    self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
                         
-                }else if myMovement == .zero && self.idle == false{
+                }else if myMovement == .zero && self.status.idle == false{
                     self.removeAllActions()
-                    self.idle = true
+                    self.status.idle = true
                     self.run(.setTexture(halfBackRTexture))
                 }
             case .RIGHT:
-                if myMovement != .zero && (self.idle == true || self.facingDirection != .RIGHT){
-                    self.idle = false
+                if myMovement != .zero && (self.status.idle == true || self.facingDirection != .RIGHT){
+                    self.status.idle = false
                     self.facingDirection = .RIGHT
                     self.run(.repeatForever(.animate(with: walkingAnimationRight, timePerFrame: 0.18)))
                         
-                }else if myMovement == .zero && self.idle == false{
+                }else if myMovement == .zero && self.status.idle == false{
                     self.removeAllActions()
-                    self.idle = true
+                    self.status.idle = true
                     self.run(.setTexture(sideRTexture))                }
             case .DOWN_RIGHT:
-                if myMovement != .zero && (self.idle == true || self.facingDirection != .DOWN_RIGHT){
-                    self.idle = false
+                if myMovement != .zero && (self.status.idle == true || self.facingDirection != .DOWN_RIGHT){
+                    self.status.idle = false
                     self.facingDirection = .DOWN_RIGHT
 //                    self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
                         
-                }else if myMovement == .zero && self.idle == false{
+                }else if myMovement == .zero && self.status.idle == false{
                     self.removeAllActions()
-                    self.idle = true
+                    self.status.idle = true
                     self.run(.setTexture(halfFrontRTexture))                }
 
             case .DOWN:
-                if myMovement != .zero && (self.idle == true || self.facingDirection != .DOWN){
-                    self.idle = false
+                if myMovement != .zero && (self.status.idle == true || self.facingDirection != .DOWN){
+                    self.status.idle = false
                     self.facingDirection = .DOWN
                     self.run(.repeatForever(.animate(with: walkingAnimationFront, timePerFrame: 0.25)))
                         
-                }else if myMovement == .zero && self.idle == false{
+                }else if myMovement == .zero && self.status.idle == false{
                     self.removeAllActions()
-                    self.idle = true
+                    self.status.idle = true
                     self.run(.setTexture(frontTexture))                }
             case .DOWN_LEFT:
-                if myMovement != .zero && (self.idle == true || self.facingDirection != .DOWN_LEFT){
-                    self.idle = false
+                if myMovement != .zero && (self.status.idle == true || self.facingDirection != .DOWN_LEFT){
+                    self.status.idle = false
                     self.facingDirection = .DOWN_LEFT
 //                    self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
                         
-                }else if myMovement == .zero && self.idle == false{
+                }else if myMovement == .zero && self.status.idle == false{
                     self.removeAllActions()
-                    self.idle = true
+                    self.status.idle = true
                     self.run(.setTexture(halfFrontLTexture))                }
             case .LEFT:
-                if myMovement != .zero && (self.idle == true || self.facingDirection != .LEFT){
-                    self.idle = false
+                if myMovement != .zero && (self.status.idle == true || self.facingDirection != .LEFT){
+                    self.status.idle = false
                     self.facingDirection = .LEFT
                     self.run(.repeatForever(.animate(with: walkingAnimationLeft, timePerFrame: 0.18)))
                         
-                }else if myMovement == .zero && self.idle == false{
+                }else if myMovement == .zero && self.status.idle == false{
                     self.removeAllActions()
-                    self.idle = true
+                    self.status.idle = true
                     self.run(.setTexture(sideLTexture))
                 }
             case .UP_LEFT:
-                if myMovement != .zero && (self.idle == true || self.facingDirection != .UP_LEFT){
-                    self.idle = false
+                if myMovement != .zero && (self.status.idle == true || self.facingDirection != .UP_LEFT){
+                    self.status.idle = false
                     self.facingDirection = .UP_LEFT
 //                    self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
                         
-                }else if myMovement == .zero && self.idle == false{
+                }else if myMovement == .zero && self.status.idle == false{
                     self.removeAllActions()
-                    self.idle = true
+                    self.status.idle = true
                     self.run(.setTexture(halfBackLTexture))
                     
                 }
+            }
+        }else if actionState == .ROLL{
+            if status.isRolling == false{
+                status.isRolling = true
+                switch facingDirection {
+                case .UP:
+                    print("UP")
+                case .UP_RIGHT:
+                    print("UPRIGHT")
+                case .RIGHT:
+                    self.xScale = 2
+                    self.run(.animate(with: rollingAnimationRight, timePerFrame: 0.1), completion: {
+                        self.actionState = .MOVE
+                        self.xScale = 1
+                        self.status.isRolling = false
+                    })
+                case .DOWN_RIGHT:
+                    print("")
+                case .DOWN:
+                    print("")
+                case .DOWN_LEFT:
+                    print("")
+                case .LEFT:
+                    self.xScale = 2
+                    self.run(.animate(with: rollingAnimationLeft, timePerFrame: 0.1), completion: {
+                        self.actionState = .MOVE
+                        self.xScale = 1
+                        self.status.isRolling = false
+                    })
+                case .UP_LEFT:
+                    print("")
+                }
+            }
+        }else if actionState == .ATTACK{
+            if self.status.isAttacking == false{
+                self.status.isAttacking = true
+                self.run(.animate(with: self.attackAnimationFront, timePerFrame: 0.18), completion: {
+                    self.actionState = .MOVE
+                    self.status.isAttacking = false
+                    self.status.idle = false
+                })
             }
         }
     }
@@ -368,12 +388,16 @@ class PlayableCharacter: SKSpriteNode{
             if getDistanceBetween(point1: self.position, point2: object.position) <= self.interactRange{
                 if self.objectHighlighted != true{
                     self.objectHighlighted = true
-                    object.run(.colorize(with: .green, colorBlendFactor: 0.2, duration: 0.1))
+                    let sprite = object as? InteractableObject
+//                    object.run(.colorize(with: .green, colorBlendFactor: 0.2, duration: 0.1))
+                    sprite?.run(.setTexture(sprite?.highlightedTexture ?? SKTexture()))
                 }
             }else{
                 if self.objectHighlighted != false{
                     self.objectHighlighted = false
-                    object.run(.colorize(withColorBlendFactor: 0, duration: 0.1))
+//                    object.run(.colorize(withColorBlendFactor: 0, duration: 0.1))
+                    let sprite = object as? InteractableObject
+                    sprite?.run(.setTexture(sprite?.baseTexture ?? SKTexture()))
                 }
             }
         }
@@ -395,7 +419,7 @@ class PlayableCharacter: SKSpriteNode{
     }
     
     func getNoiseDistance()->Double{
-        return self.noiseDitance
+        return self.noiseDistance
     }
     
     
@@ -458,7 +482,7 @@ class PlayableCharacter: SKSpriteNode{
     }
     
     func setNoiceDistance(_ newDistance: Double){
-        self.noiseDitance = newDistance
+        self.noiseDistance = newDistance
     }
     
     func setAttackRange(_ newRange: Double){

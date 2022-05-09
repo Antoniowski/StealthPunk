@@ -23,14 +23,17 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     var lastUpdate: TimeInterval?
     
     var player: PlayableCharacter = Human(texture: SKTexture(imageNamed: "boyFront"), color: .clear, size: CGSize(width: 35, height: 70), noise: 1, speed: 1, strenght: 1)
-    var armadio: InteractableObject = InteractableObject(texture: SKTexture(imageNamed: "closet"), color: .clear, size: CGSize(width: 100, height: 100), type: .HIDEOUT)
-    var lampione = InteractableObject(texture: SKTexture(imageNamed: "lampione"), color: .clear, size: CGSize(width: 70, height: 140), type: .STATIC)
+    var armadio: InteractableObject = InteractableObject(texture: SKTexture(imageNamed: "closet"), highlighted: SKTexture(imageNamed: "closetFocused"), color: .clear, size: CGSize(width: 100, height: 100), type: .HIDEOUT)
+    var lampione = InteractableObject(texture: SKTexture(imageNamed: "lampione"), highlighted: nil, color: .clear, size: CGSize(width: 70, height: 140), type: .STATIC)
     
     var luce: SKLightNode = SKLightNode()
 
     
     var scenecamera = SKCameraNode()
     
+    var coin = SKSpriteNode(imageNamed: "ingranaggio")
+    var t = SKTransformNode()
+    var animationCoin = SKAction()
     
     var inputVector: CGVector = CGVector.zero
     var rollVector: CGVector = CGVector.init(dx: 1, dy: 0)
@@ -66,11 +69,21 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
 
         lampione.name = "enemy"
         
+        t.position = CGPoint(x: 100, y: 100)
+        coin.size = CGSize(width: 30, height: 30)
+        t.addChild(coin)
+        animationCoin = SKAction.repeatForever(.sequence([.run {
+            self.t.yRotation += 0.063  //UN CENTESIMO DI 2PI
+        }, .wait(forDuration: 0.05)]))
+        animationCoin.timingMode = .easeOut
+        t.run(animationCoin)
+        
         
         addChild(player)
         addChild(armadio)
         addChild(lampione)
         addChild(luce)
+        addChild(t)
     }
     
     
@@ -79,7 +92,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         calcDelta(currentTime: currentTime)
         player.updateActionState()
 //        player.updateMovingDirection()
-        player.animationWalking()
+        player.animationTree()
         player.searchObject(scene: self)
         player.updateFocus(scene: self)
         
@@ -100,7 +113,8 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
 //        scenecamera.position = player.position
 //        print(player.getFacingDirection())
-        print(player.getFocusState())
+//        print(player.getFocusState())
+//        print(player.getActionState())
     }
     
     
