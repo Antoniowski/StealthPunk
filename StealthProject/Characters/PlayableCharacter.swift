@@ -367,12 +367,16 @@ class PlayableCharacter: SKSpriteNode{
             if getDistanceBetween(point1: self.position, point2: object.position) <= self.interactRange{
                 if self.objectHighlighted != true{
                     self.objectHighlighted = true
-                    object.run(.colorize(with: .green, colorBlendFactor: 0.2, duration: 0.1))
+                    let sprite = object as? InteractableObject
+//                    object.run(.colorize(with: .green, colorBlendFactor: 0.2, duration: 0.1))
+                    sprite?.run(.setTexture(sprite?.highlightedTexture ?? SKTexture()))
                 }
             }else{
                 if self.objectHighlighted != false{
                     self.objectHighlighted = false
-                    object.run(.colorize(withColorBlendFactor: 0, duration: 0.1))
+//                    object.run(.colorize(withColorBlendFactor: 0, duration: 0.1))
+                    let sprite = object as? InteractableObject
+                    sprite?.run(.setTexture(sprite?.baseTexture ?? SKTexture()))
                 }
             }
         }
