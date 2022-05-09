@@ -51,7 +51,7 @@ class PlayableCharacter: SKSpriteNode{
     private var movingDirection: Direction = .DOWN
     private var facingDirection: Direction = .DOWN
     
-    private var objectHighlighted: Bool = false
+//    private var objectHighlighted: Bool = false
     private var focus: Focus = .OBJECT
     
     //    STATIC TEXTURES
@@ -392,16 +392,16 @@ class PlayableCharacter: SKSpriteNode{
         scene.enumerateChildNodes(withName: "dynamicObject"){ object, _ in
             if getDistanceBetween(point1: self.position, point2: object.position) <= self.interactRange{
                 let sprite = object as? InteractableObject
-                if self.objectHighlighted != true{
-                    self.objectHighlighted = true
+                if sprite?.getSpottedStatus()==false{
+                    sprite?.setSpottedStatus(true)
 //                    object.run(.colorize(with: .green, colorBlendFactor: 0.2, duration: 0.1))
                     sprite?.run(.setTexture(sprite?.highlightedTexture ?? SKTexture()))
                 }
             }else{
-                if self.objectHighlighted != false{
-                    self.objectHighlighted = false
+                let sprite = object as? InteractableObject
+                if sprite?.getSpottedStatus() != false{
+                    sprite?.setSpottedStatus(false)
 //                    object.run(.colorize(withColorBlendFactor: 0, duration: 0.1))
-                    let sprite = object as? InteractableObject
                     sprite?.run(.setTexture(sprite?.baseTexture ?? SKTexture()))
                 }
             }
