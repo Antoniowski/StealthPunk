@@ -163,7 +163,7 @@ class PlayableCharacter: SKSpriteNode{
     
 //    GENERIC FUNCTIONS
     func updateActionState(){
-        if buttonBIsPressed && self.actionState == .MOVE {
+        if buttonBIsPressed && self.actionState == .MOVE && myMovement != .zero {
             self.actionState = .ROLL
         }
         if buttonAIsPressed{
@@ -342,13 +342,34 @@ class PlayableCharacter: SKSpriteNode{
         }else if actionState == .ROLL{
             if status.isRolling == false{
                 status.isRolling = true
-                self.xScale = 2
-                self.run(.animate(with: rollingAnimationRight, timePerFrame: 0.1), completion: {
-                    self.actionState = .MOVE
-                    self.xScale = 1
-                    self.status.isRolling = false
-                    self.status.idle = false
-                })
+                switch facingDirection {
+                case .UP:
+                    print("UP")
+                case .UP_RIGHT:
+                    print("UPRIGHT")
+                case .RIGHT:
+                    self.xScale = 2
+                    self.run(.animate(with: rollingAnimationRight, timePerFrame: 0.1), completion: {
+                        self.actionState = .MOVE
+                        self.xScale = 1
+                        self.status.isRolling = false
+                    })
+                case .DOWN_RIGHT:
+                    print("")
+                case .DOWN:
+                    print("")
+                case .DOWN_LEFT:
+                    print("")
+                case .LEFT:
+                    self.xScale = 2
+                    self.run(.animate(with: rollingAnimationLeft, timePerFrame: 0.1), completion: {
+                        self.actionState = .MOVE
+                        self.xScale = 1
+                        self.status.isRolling = false
+                    })
+                case .UP_LEFT:
+                    print("")
+                }
             }
         }else if actionState == .ATTACK{
             if self.status.isAttacking == false{
@@ -367,12 +388,16 @@ class PlayableCharacter: SKSpriteNode{
             if getDistanceBetween(point1: self.position, point2: object.position) <= self.interactRange{
                 if self.objectHighlighted != true{
                     self.objectHighlighted = true
-                    object.run(.colorize(with: .green, colorBlendFactor: 0.2, duration: 0.1))
+                    let sprite = object as? InteractableObject
+//                    object.run(.colorize(with: .green, colorBlendFactor: 0.2, duration: 0.1))
+                    sprite?.run(.setTexture(sprite?.highlightedTexture ?? SKTexture()))
                 }
             }else{
                 if self.objectHighlighted != false{
                     self.objectHighlighted = false
-                    object.run(.colorize(withColorBlendFactor: 0, duration: 0.1))
+//                    object.run(.colorize(withColorBlendFactor: 0, duration: 0.1))
+                    let sprite = object as? InteractableObject
+                    sprite?.run(.setTexture(sprite?.baseTexture ?? SKTexture()))
                 }
             }
         }
