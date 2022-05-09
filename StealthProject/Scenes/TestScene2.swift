@@ -31,7 +31,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     
     var scenecamera = SKCameraNode()
     
-    var coin = SKShapeNode(circleOfRadius: 25)
+    var coin = SKSpriteNode(imageNamed: "ingranaggio2")
     var t = SKTransformNode()
     var animationCoin = SKAction()
     
@@ -69,10 +69,8 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
 
         lampione.name = "enemy"
         
-        coin.fillColor = .yellow
-        coin.strokeColor = .yellow
         t.position = CGPoint(x: 100, y: 100)
-        
+        coin.size = CGSize(width: 30, height: 30)
         t.addChild(coin)
         animationCoin = SKAction.repeatForever(.sequence([.run {
             self.t.yRotation += 0.063  //UN CENTESIMO DI 2PI
