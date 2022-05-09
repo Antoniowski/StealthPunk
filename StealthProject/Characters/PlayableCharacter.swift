@@ -193,7 +193,7 @@ class PlayableCharacter: SKSpriteNode{
                 distanceEnemy = distance
             }
         }
-        scene.enumerateChildNodes(withName: "interactable"){ element, _ in
+        scene.enumerateChildNodes(withName: "dynamicObject"){ element, _ in
             let distance = getDistanceBetween(point1: self.position, point2: element.position)
             if distanceObject >= distance{
                 distanceObject = distance
@@ -388,11 +388,11 @@ class PlayableCharacter: SKSpriteNode{
     }
     
     func searchObject(scene: SKScene){
-        scene.enumerateChildNodes(withName: "interactable"){ object, _ in
+        scene.enumerateChildNodes(withName: "dynamicObject"){ object, _ in
             if getDistanceBetween(point1: self.position, point2: object.position) <= self.interactRange{
+                let sprite = object as? InteractableObject
                 if self.objectHighlighted != true{
                     self.objectHighlighted = true
-                    let sprite = object as? InteractableObject
 //                    object.run(.colorize(with: .green, colorBlendFactor: 0.2, duration: 0.1))
                     sprite?.run(.setTexture(sprite?.highlightedTexture ?? SKTexture()))
                 }
