@@ -10,3 +10,13 @@ import SpriteKit
 import SwiftUI
 
 let blocco : Int = 100
+
+//protocol Dimensions{
+//
+//}
+//
+//extension Dimensions{
+//    var blocco: Double{
+//        return 100
+//    }
+//}

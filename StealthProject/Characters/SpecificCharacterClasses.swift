@@ -33,6 +33,14 @@ class Human: PlayableCharacter{
         setAnimationArrays()
     }
     
+    init(){
+        super.init(texture: SKTexture(imageNamed: "boyFront"), color: .clear, size: CGSize(width: 35, height: 75))
+        self.characterName = "Human" //INSERIRE NOME PERSONAGGIO APPENA DISPONIBILE
+        self.type = .HUMAN
+        self.physicsBody = SKPhysicsBody(rectangleOf: size)
+        setAnimationArrays()
+    }
+    
 //    GET FUNCTIONS
     
     func getType()->CharacterType{
