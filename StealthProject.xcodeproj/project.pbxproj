@@ -40,6 +40,7 @@
 		A693D3562826F5960055C266 /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = A693D3552826F5960055C266 /* Path.swift */; };
 		A693D35928293E470055C266 /* classRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = A693D35828293E470055C266 /* classRoom.swift */; };
 		A693D35B28295AE20055C266 /* classFloor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A693D35A28295AE20055C266 /* classFloor.swift */; };
+		A693D35D282A9F770055C266 /* Dimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A693D35C282A9F770055C266 /* Dimension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +78,7 @@
 		A693D3552826F5960055C266 /* Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
 		A693D35828293E470055C266 /* classRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = classRoom.swift; sourceTree = "<group>"; };
 		A693D35A28295AE20055C266 /* classFloor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = classFloor.swift; sourceTree = "<group>"; };
+		A693D35C282A9F770055C266 /* Dimension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 			children = (
 				4A1B448D2822B274001DABEE /* ControllerRelatedGlobalVariables.swift */,
 				6AC7096628240B00007F8A50 /* FacingEnum.swift */,
+				A693D35C282A9F770055C266 /* Dimension.swift */,
 			);
 			path = "Global Variables";
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				6AC7096728240B00007F8A50 /* FacingEnum.swift in Sources */,
 				4A1B44962822B809001DABEE /* TestScene2.swift in Sources */,
 				6A6A4D3E28226FAB003A76C5 /* GuardClass.swift in Sources */,
+				A693D35D282A9F770055C266 /* Dimension.swift in Sources */,
 				4A00C7512825719C009DB657 /* Swipe Functions.swift in Sources */,
 				6AA31BDC282985A8002CCD47 /* StaticObject.swift in Sources */,
 				6AB863E928200334006BB85E /* GameViewController.swift in Sources */,
