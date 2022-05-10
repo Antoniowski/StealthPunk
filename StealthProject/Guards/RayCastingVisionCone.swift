@@ -17,6 +17,9 @@ func visionCone(entity: Guard, scene: SKScene){
     }
     
     scene.enumerateChildNodes(withName: "*"){node, _ in
+//        guard node.name != nil && entity.name != nil else{
+//            return
+//        }
         if(node.name == entity.name!+"visualCone"){
             node.removeFromParent()
         }

@@ -10,25 +10,29 @@ import SpriteKit
 import GameplayKit
 import SwiftUI
 
-enum roomsType: Int{
+enum RoomArchetype: Int{
+    case SIMPLE_1 = 0
+}
+
+enum RoomsType: Int{
     case NORMAL = 0
     case START = 1
     case END = 2
 }
 
-enum doorPosition: Int{
-    case UP = 0
-    case DOWN = 1
-    case RIGHT = 2
-    case LEFT = 3
-    case NOT = 4
+struct DoorPosition{
+    var UP: Bool = false
+    var DOWN: Bool = false
+    var RIGHT: Bool = false
+    var LEFT: Bool = false
 }
 
 
 class Room {
     
-    private var door : doorPosition = .DOWN
-    private var tipy : roomsType = .NORMAL
+    private var door : DoorPosition = DoorPosition()
+    private var tipe : RoomsType = .NORMAL
+    private var archetype: RoomArchetype = .SIMPLE_1
     
     private var numRighe : Int = 0
     private var numColonne : Int = 0
@@ -36,7 +40,33 @@ class Room {
     private var nemici : [Guard] = []
     private var oggetti : [InteractableObject] = []
     
-    func createRooms(righe :Int, colonne :Int, matrice :[[Int]], scene :SKScene){
+    //TEXTURES
+    private var frontWallTexture: SKTexture = SKTexture()
+    private var sideLeftWallTexture: SKTexture = SKTexture()
+    private var sideRightWallTexture: SKTexture = SKTexture()
+    private var cornerLeftWallTexture: SKTexture = SKTexture()
+    private var cornerRightWallTexture: SKTexture = SKTexture()
+    private var frontWallLightTexture: SKTexture = SKTexture()
+    private var floorTexture: SKTexture = SKTexture()
+    private var carpetTexture: [SKTexture] = []
+
+    
+    init(_ archetype: RoomArchetype, scene: SKScene){
+        switch archetype {
+        case .SIMPLE_1:
+            door = DoorPosition(UP: true, DOWN: true, RIGHT: false, LEFT: false)
+            tipe = .NORMAL
+            numRighe = 15
+            numColonne = 15
+            stanza = [[]]
+            nemici = []
+            createRooms(righe: numRighe, colonne: numRighe, matrice: stanza, scene: scene)
+        }
+    }
+    
+    
+    //TODO: AGGIUSTARE LO SPAWN
+    private func createRooms(righe :Int, colonne :Int, matrice :[[Int]], scene :SKScene){
         for index in 0...matrice.count-1{
             for index2 in 0...matrice[1].count-1{
                 if(matrice[index][index2] == 1){
