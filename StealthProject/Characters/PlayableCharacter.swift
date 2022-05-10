@@ -180,7 +180,7 @@ class PlayableCharacter: SKSpriteNode{
             }else if self.actionState == .HIDDEN && self.status.isEntering == false && self.status.isExiting == false{
                 self.status.isExiting = true
                 //SOSTITUIRE DISPATCH CON ANIMAZIONE
-                //IL PERSONAGGIO ENTRA PIU' VOLTE NELLO HIDDEN STATE FUNCTION TODO: RISOLVERE
+                //ENTRA PIU' VOLTE NELLO STATO HIDDEN E QUINDI NON RIAPPARE TODO: RISOLVERE LIMINTANDO L'INGRESSO ALLA FUNZIONE
                 self.alpha = 1
                 self.setActionState(.MOVE)
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
