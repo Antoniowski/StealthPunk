@@ -13,6 +13,7 @@ enum ActionState: Int{
     case ATTACK = 1
     case ROLL = 3
     case INTERACT = 4
+    case HIDDEN = 5
 }
 
 enum CharacterType: Int{
@@ -28,12 +29,14 @@ enum Focus: Int{
 }
 
 struct CharacterState{
-    var isHidden: Bool = false
+//    var isHidden: Bool = false
     var isInvicible: Bool = false
     var idle: Bool = true
     var isRolling: Bool = false
     var isAttacking: Bool = false
-    var isInteractiong: Bool = false
+    var isInteracting: Bool = false
+    var isEntering: Bool = false
+    var isExiting: Bool = false
 }
 class PlayableCharacter: SKSpriteNode{
 
@@ -162,18 +165,27 @@ class PlayableCharacter: SKSpriteNode{
     }
     
 //    GENERIC FUNCTIONS
-    func updateActionState(){
+    func updateActionState(scene: SKScene){
         if buttonBIsPressed && self.actionState == .MOVE && myMovement != .zero {
             self.actionState = .ROLL
         }
         if buttonAIsPressed{
-            if self.actionState == .MOVE && self.getStatus().isInteractiong == false{
-                if self.focus == .OBJECT && self.actionState != .INTERACT{
+            if self.actionState == .MOVE && self.status.isExiting == false{
+                if self.focus == .OBJECT && self.status.isInteracting == false{
 //                    print("INTERACT AVVIATO")
                     self.actionState = .INTERACT
-                }else if focus == .ENEMY && self.actionState != .ATTACK{
+                }else if focus == .ENEMY && self.status.isAttacking == false{
                     self.actionState = .ATTACK
                 }
+            }else if self.actionState == .HIDDEN && self.status.isEntering == false && self.status.isExiting == false{
+                self.status.isExiting = true
+                //SOSTITUIRE DISPATCH CON ANIMAZIONE
+                //IL PERSONAGGIO ENTRA PIU' VOLTE NELLO HIDDEN STATE FUNCTION TODO: RISOLVERE
+                self.alpha = 1
+                self.setActionState(.MOVE)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                    self.status.isExiting = false
+                })
             }
         }
         
@@ -473,13 +485,13 @@ class PlayableCharacter: SKSpriteNode{
         self.characterSpeed = newSpeed
     }
     
-    func setHiddenStatus(_ newStatus: Bool){
-        self.status.isHidden = newStatus
-    }
-    
-    func toggleHiddenStatus(){
-        self.status.isHidden.toggle()
-    }
+//    func setHiddenStatus(_ newStatus: Bool){
+//        self.status.isHidden = newStatus
+//    }
+//    
+//    func toggleHiddenStatus(){
+//        self.status.isHidden.toggle()
+//    }
     
     func setInvicibleStatus(_ newStatus: Bool){
         self.status.isInvicible = newStatus
@@ -490,7 +502,15 @@ class PlayableCharacter: SKSpriteNode{
     }
     
     func setInteractingStatus(_ newStatus: Bool){
-        self.status.isInteractiong = newStatus
+        self.status.isInteracting = newStatus
+    }
+    
+    func setEnteringStatus(_ newStatus: Bool){
+        self.status.isEntering = newStatus
+    }
+    
+    func setExitiingStatus(_ newStatus: Bool){
+        self.status.isExiting = newStatus
     }
     
     func setActionState(_ newActionState: ActionState){

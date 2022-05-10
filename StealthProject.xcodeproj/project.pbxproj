@@ -36,6 +36,8 @@
 		6AC709652823D78A007F8A50 /* AbilityClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC709642823D78A007F8A50 /* AbilityClass.swift */; };
 		6AC7096728240B00007F8A50 /* FacingEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC7096628240B00007F8A50 /* FacingEnum.swift */; };
 		6AC7096928254AB4007F8A50 /* InteractableObjectClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC7096828254AB4007F8A50 /* InteractableObjectClass.swift */; };
+		6AFA738C282B0BE5001B7E50 /* HideoutObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFA738B282B0BE5001B7E50 /* HideoutObject.swift */; };
+		6AFA738F282B0CB9001B7E50 /* ClosetClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFA738E282B0CB9001B7E50 /* ClosetClass.swift */; };
 		A693D354282561300055C266 /* testRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = A693D353282561300055C266 /* testRoom.swift */; };
 		A693D3562826F5960055C266 /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = A693D3552826F5960055C266 /* Path.swift */; };
 		A693D35928293E470055C266 /* classRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = A693D35828293E470055C266 /* classRoom.swift */; };
@@ -74,6 +76,8 @@
 		6AC709642823D78A007F8A50 /* AbilityClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbilityClass.swift; sourceTree = "<group>"; };
 		6AC7096628240B00007F8A50 /* FacingEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacingEnum.swift; sourceTree = "<group>"; };
 		6AC7096828254AB4007F8A50 /* InteractableObjectClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractableObjectClass.swift; sourceTree = "<group>"; };
+		6AFA738B282B0BE5001B7E50 /* HideoutObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideoutObject.swift; sourceTree = "<group>"; };
+		6AFA738E282B0CB9001B7E50 /* ClosetClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClosetClass.swift; sourceTree = "<group>"; };
 		A693D353282561300055C266 /* testRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = testRoom.swift; path = ../../testRoom.swift; sourceTree = "<group>"; };
 		A693D3552826F5960055C266 /* Path.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
 		A693D35828293E470055C266 /* classRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = classRoom.swift; sourceTree = "<group>"; };
@@ -211,12 +215,22 @@
 		6AC709632823D77C007F8A50 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				6AFA738D282B0CA3001B7E50 /* Hideouts */,
 				6AA31BDD28298C03002CCD47 /* Light */,
 				6AC7096828254AB4007F8A50 /* InteractableObjectClass.swift */,
 				6AA31BDB282985A8002CCD47 /* StaticObject.swift */,
 				6AA31BE428299DE4002CCD47 /* UsableObject.swift */,
+				6AFA738B282B0BE5001B7E50 /* HideoutObject.swift */,
 			);
 			path = Objects;
+			sourceTree = "<group>";
+		};
+		6AFA738D282B0CA3001B7E50 /* Hideouts */ = {
+			isa = PBXGroup;
+			children = (
+				6AFA738E282B0CB9001B7E50 /* ClosetClass.swift */,
+			);
+			path = Hideouts;
 			sourceTree = "<group>";
 		};
 		A693D35228255F9E0055C266 /* Rooms */ = {
@@ -331,7 +345,9 @@
 				6AC709612823D4DD007F8A50 /* SpecificCharacterClasses.swift in Sources */,
 				6AC7096728240B00007F8A50 /* FacingEnum.swift in Sources */,
 				4A1B44962822B809001DABEE /* TestScene2.swift in Sources */,
+				6AFA738C282B0BE5001B7E50 /* HideoutObject.swift in Sources */,
 				6A6A4D3E28226FAB003A76C5 /* GuardClass.swift in Sources */,
+				6AFA738F282B0CB9001B7E50 /* ClosetClass.swift in Sources */,
 				A693D35D282A9F770055C266 /* Dimension.swift in Sources */,
 				4A00C7512825719C009DB657 /* Swipe Functions.swift in Sources */,
 				6AA31BDC282985A8002CCD47 /* StaticObject.swift in Sources */,

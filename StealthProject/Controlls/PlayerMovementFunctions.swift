@@ -78,18 +78,10 @@ extension PlayableScene{
         
         velocity = rollVector*MAX_SPEED*3*delta
         
-        
-//        if myMovement == .zero{
-//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
-//                self.velocity = self.velocity.moveTowardZero(value: 30)
-//            })
-//
-//        }
-        
     }
     
     func interactState(scene: SKScene){
-        if player.getStatus().isInteractiong == false{
+        if player.getStatus().isInteracting == false{
             player.setInteractingStatus(true)
 //            print("Interaction")
             scene.enumerateChildNodes(withName: "dynamicObject"){ object, _ in
@@ -106,20 +98,30 @@ extension PlayableScene{
                             return
                         }
                     case .HIDEOUT:
-                        print("Sono nascosto")
+                        let hideout = interact as? Hideout
+                        hideout?.action(player: self.player)
                     default:
                         return
                     }
                 }
                 
             }
-            self.player.setActionState(.MOVE)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { //FUNZIONA MA NON SO COME
+//            self.player.setActionState(.MOVE)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { //FUNZIONA MA NON SO COME
                 self.player.setInteractingStatus(false)                    //IL DELAY E' NECESSARIO ALTRIMENTI L'AZIONE VIENE
                                                                            //RICHIAMATA PIU' VOLTE VISTO CHE "A" RIMANE PREMUTO
+                self.player.setActionState(.MOVE)
+                //IL DELAY ANDRA' SOSTITUITO DALL'ANIMAZIONE
             })
             
         }
+    }
+    
+    func hiddenState(){
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.5, execute: {
+            self.player.alpha = 0
+            self.player.setEnteringStatus(false)
+        })
     }
 }
 
