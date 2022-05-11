@@ -49,15 +49,24 @@ extension PlayableScene{
             rollVector = inputVector.normalized()
             inputVector = inputVector*ACCELLERATION*delta //AGGIUNGERE ACCELERAZIONE APPROPRIATA
             velocity += inputVector
-            if myMovement.getMagnitude() > 0.5{
-                velocity = velocity.clamped(maxLength: MAX_SPEED*delta)
-            }else{
-                velocity = velocity.clamped(maxLength: MAX_SPEED*delta*0.5)
-            } //AGGIUNGERE MAX SPEED
+            velocity = velocity.clamped(maxLength: MAX_SPEED*delta*0.5)
         }else{
             velocity = velocity.moveTowardZero(value: FRICTION*delta)
         }
         
+    }
+    
+    func runningState(){
+        self.inputVector = CGVector.zero
+        inputVector = myMovement
+        if inputVector != CGVector.zero{
+            rollVector = inputVector.normalized()
+            inputVector = inputVector*ACCELLERATION*delta //AGGIUNGERE ACCELERAZIONE APPROPRIATA
+            velocity += inputVector
+            velocity = velocity.clamped(maxLength: MAX_SPEED*delta)
+        }else{
+            velocity = velocity.moveTowardZero(value: FRICTION*delta)
+        }
     }
     
     func attackState(scene: SKScene){

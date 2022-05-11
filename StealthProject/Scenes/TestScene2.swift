@@ -224,6 +224,9 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
             
         case .HIDDEN:
             hiddenState()
+            
+        case .RUNNING:
+            runningState()
         }
         
         playerMovement(player: player as SKSpriteNode, velocity: velocity)
@@ -232,7 +235,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         scenecamera.position = player.position
 //        print(player.getFacingDirection())
 //        print(player.getFocusState())
-//        print(player.getActionState())
+        print(player.getActionState())
 //        print(player.getStatus().isInteracting)
     }
     

@@ -14,6 +14,7 @@ enum ActionState: Int{
     case ROLL = 3
     case INTERACT = 4
     case HIDDEN = 5
+    case RUNNING = 6
 }
 
 enum CharacterType: Int{
@@ -37,6 +38,8 @@ struct CharacterState{
     var isInteracting: Bool = false
     var isEntering: Bool = false
     var isExiting: Bool = false
+    var isWalking: Bool = false
+    var isRunning: Bool = false
 }
 class PlayableCharacter: SKSpriteNode{
 
@@ -170,6 +173,7 @@ class PlayableCharacter: SKSpriteNode{
             self.actionState = .ROLL
         }
         if buttonAIsPressed{
+            print(status.isInteracting)
             if self.actionState == .MOVE && self.status.isExiting == false{
                 if self.focus == .OBJECT && self.status.isInteracting == false{
 //                    print("INTERACT AVVIATO")
@@ -224,7 +228,14 @@ class PlayableCharacter: SKSpriteNode{
         }
     }
     
-    func updateMovingDirection(){    //FUNZIONA: Aggiorna una sola volta il moving direction
+    
+    func updateMovingDirection(){//FUNZIONA: Aggiorna una sola volta il moving direction e lo stato di running
+        if myMovement.getMagnitude() > 0.5 && self.actionState != .RUNNING{
+            self.actionState = .RUNNING
+        }else if myMovement.getMagnitude() <= 0.5 && self.actionState == .RUNNING{
+            self.actionState = .MOVE
+        }
+        
         if myMovement != .zero{
             if Double(myAngle) < pi/8 && Double(myAngle) > -pi/8{
                 if self.movingDirection != .UP{
@@ -262,12 +273,16 @@ class PlayableCharacter: SKSpriteNode{
         }
     }
     
+    //TODO: AGGIUNGERE E AGGIUSTARE L'ANIMAZIONE DI CORSA
     func animationTree(){
         updateMovingDirection()
-        if actionState == .MOVE{
+        switch actionState {
+        case .MOVE:
+            status.isWalking = true
             switch movingDirection {
             case .UP:
-                if myMovement != .zero && (self.status.idle == true || self.facingDirection != .UP){
+                if myMovement != .zero && (self.status.idle == true || self.facingDirection != .UP || self.status.isRunning == true){
+                    self.status.isRunning = false
                     self.status.idle = false
                     self.facingDirection = .UP
                     self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
@@ -278,7 +293,8 @@ class PlayableCharacter: SKSpriteNode{
                     self.run(.setTexture(backTexture))
                 }
             case .UP_RIGHT:
-                if myMovement != .zero && (self.status.idle == true || self.facingDirection != .UP_RIGHT){
+                if myMovement != .zero && (self.status.idle == true || self.facingDirection != .UP_RIGHT || self.status.isRunning == true){
+                    self.status.isRunning = false
                     self.status.idle = false
                     self.facingDirection = .UP_RIGHT
 //                    self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
@@ -289,7 +305,8 @@ class PlayableCharacter: SKSpriteNode{
                     self.run(.setTexture(halfBackRTexture))
                 }
             case .RIGHT:
-                if myMovement != .zero && (self.status.idle == true || self.facingDirection != .RIGHT){
+                if myMovement != .zero && (self.status.idle == true || self.facingDirection != .RIGHT || self.status.isRunning == true){
+                    self.status.isRunning = false
                     self.status.idle = false
                     self.facingDirection = .RIGHT
                     self.run(.repeatForever(.animate(with: walkingAnimationRight, timePerFrame: 0.18)))
@@ -299,7 +316,8 @@ class PlayableCharacter: SKSpriteNode{
                     self.status.idle = true
                     self.run(.setTexture(sideRTexture))                }
             case .DOWN_RIGHT:
-                if myMovement != .zero && (self.status.idle == true || self.facingDirection != .DOWN_RIGHT){
+                if myMovement != .zero && (self.status.idle == true || self.facingDirection != .DOWN_RIGHT || self.status.isRunning == true){
+                    self.status.isRunning = false
                     self.status.idle = false
                     self.facingDirection = .DOWN_RIGHT
 //                    self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
@@ -310,7 +328,8 @@ class PlayableCharacter: SKSpriteNode{
                     self.run(.setTexture(halfFrontRTexture))                }
 
             case .DOWN:
-                if myMovement != .zero && (self.status.idle == true || self.facingDirection != .DOWN){
+                if myMovement != .zero && (self.status.idle == true || self.facingDirection != .DOWN || self.status.isRunning == true){
+                    self.status.isRunning = false
                     self.status.idle = false
                     self.facingDirection = .DOWN
                     self.run(.repeatForever(.animate(with: walkingAnimationFront, timePerFrame: 0.25)))
@@ -320,7 +339,8 @@ class PlayableCharacter: SKSpriteNode{
                     self.status.idle = true
                     self.run(.setTexture(frontTexture))                }
             case .DOWN_LEFT:
-                if myMovement != .zero && (self.status.idle == true || self.facingDirection != .DOWN_LEFT){
+                if myMovement != .zero && (self.status.idle == true || self.facingDirection != .DOWN_LEFT || self.status.isRunning == true){
+                    self.status.isRunning = false
                     self.status.idle = false
                     self.facingDirection = .DOWN_LEFT
 //                    self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
@@ -330,7 +350,8 @@ class PlayableCharacter: SKSpriteNode{
                     self.status.idle = true
                     self.run(.setTexture(halfFrontLTexture))                }
             case .LEFT:
-                if myMovement != .zero && (self.status.idle == true || self.facingDirection != .LEFT){
+                if myMovement != .zero && (self.status.idle == true || self.facingDirection != .LEFT || self.status.isRunning == true){
+                    self.status.isRunning = false
                     self.status.idle = false
                     self.facingDirection = .LEFT
                     self.run(.repeatForever(.animate(with: walkingAnimationLeft, timePerFrame: 0.18)))
@@ -341,7 +362,8 @@ class PlayableCharacter: SKSpriteNode{
                     self.run(.setTexture(sideLTexture))
                 }
             case .UP_LEFT:
-                if myMovement != .zero && (self.status.idle == true || self.facingDirection != .UP_LEFT){
+                if myMovement != .zero && (self.status.idle == true || self.facingDirection != .UP_LEFT || self.status.isRunning == true){
+                    self.status.isRunning = false
                     self.status.idle = false
                     self.facingDirection = .UP_LEFT
 //                    self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
@@ -353,7 +375,17 @@ class PlayableCharacter: SKSpriteNode{
                     
                 }
             }
-        }else if actionState == .ROLL{
+            
+        case .ATTACK:
+            if self.status.isAttacking == false{
+                self.status.isAttacking = true
+                self.run(.animate(with: self.attackAnimationFront, timePerFrame: 0.18), completion: {
+                    self.actionState = .MOVE
+                    self.status.isAttacking = false
+                    self.status.idle = false
+                })
+            }
+        case .ROLL:
             if status.isRolling == false{
                 status.isRolling = true
                 switch facingDirection {
@@ -391,17 +423,77 @@ class PlayableCharacter: SKSpriteNode{
                     print("")
                 }
             }
-        }else if actionState == .ATTACK{
-            if self.status.isAttacking == false{
-                self.status.isAttacking = true
-                self.run(.animate(with: self.attackAnimationFront, timePerFrame: 0.18), completion: {
-                    self.actionState = .MOVE
-                    self.status.isAttacking = false
-                    self.status.idle = false
-                })
+            
+        case .INTERACT:
+            print("InteractAnimation")
+        case .HIDDEN:
+            print("InteractAnimation")
+        case .RUNNING:
+            status.isRunning = true
+            switch movingDirection {
+            case .UP:
+                if myMovement != .zero && (self.status.isWalking == true || self.facingDirection != .UP){
+                    self.status.isWalking = false
+                    self.facingDirection = .UP
+                    self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
+                }
+            case .UP_RIGHT:
+                if myMovement != .zero && (self.status.isWalking == true || self.facingDirection != .UP_RIGHT){
+                    self.status.isWalking = false
+                    self.facingDirection = .UP_RIGHT
+//                    self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
+                        
+                }
+            case .RIGHT:
+                if myMovement != .zero && (self.status.isWalking == true || self.facingDirection != .RIGHT){
+                    self.status.isWalking = false
+                    self.facingDirection = .RIGHT
+                    self.run(.repeatForever(.animate(with: runningAnimationRight, timePerFrame: 0.18)))
+                        
+                }
+            case .DOWN_RIGHT:
+                if myMovement != .zero && (self.status.isWalking == true || self.facingDirection != .DOWN_RIGHT){
+                    self.status.isWalking = false
+                    self.facingDirection = .DOWN_RIGHT
+//                    self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
+                        
+                }
+
+            case .DOWN:
+                if myMovement != .zero && (self.status.isWalking == true || self.facingDirection != .DOWN){
+                    self.status.isWalking = false
+                    self.facingDirection = .DOWN
+                    self.run(.repeatForever(.animate(with: runningAnimationFront, timePerFrame: 0.25)))
+                        
+                }
+            case .DOWN_LEFT:
+                if myMovement != .zero && (self.status.isWalking == true || self.facingDirection != .DOWN_LEFT){
+                    self.status.isWalking = false
+                    self.facingDirection = .DOWN_LEFT
+//                    self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
+                        
+                }
+            case .LEFT:
+                if myMovement != .zero && (self.status.isWalking == true || self.facingDirection != .LEFT){
+                    self.status.isWalking = false
+                    self.facingDirection = .LEFT
+                    self.run(.repeatForever(.animate(with: runningAnimationLeft, timePerFrame: 0.18)))
+                        
+                }
+            case .UP_LEFT:
+                if myMovement != .zero && (self.status.isWalking == true || self.facingDirection != .UP_LEFT){
+                    self.status.isWalking = false
+                    self.facingDirection = .UP_LEFT
+//                    self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
+                        
+                }
             }
         }
     }
+    
+    
+    
+    
     
     func searchObject(scene: SKScene){
         scene.enumerateChildNodes(withName: "dynamicObject"){ object, _ in
