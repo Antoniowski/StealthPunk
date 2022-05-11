@@ -36,7 +36,7 @@ class Room {
     
     private var numRighe : Int = 0
     private var numColonne : Int = 0
-    private var stanza : [[Int]] = []
+    private var stanza : Matrix = []
     private var nemici : [Guard] = []
     private var oggetti : [InteractableObject] = []
     
@@ -57,16 +57,17 @@ class Room {
         case .SIMPLE_1:
             door = DoorPosition(UP: true, DOWN: true, RIGHT: false, LEFT: false)
             tipe = .NORMAL
-            numRighe = 15
-            numColonne = 15
+            numRighe = simple1Matrix[1].count
+            numColonne = simple1Matrix.count
             stanza = simple1Matrix
             nemici = []
             self.frontWallTexture = SKTexture(imageNamed: "wall")
-            self.floorTexture = SKTexture(imageNamed: "pavimento2")
+            self.floorTexture = SKTexture(imageNamed: "pavimento4")
             self.sideRightWallTexture = SKTexture(imageNamed: "wallR")
             self.sideLeftWallTexture  = SKTexture(imageNamed: "wallL")
             self.cornerRightWallTexture = SKTexture(imageNamed: "wallAngleR")
             self.cornerLeftWallTexture = SKTexture(imageNamed: "wallAngleL")
+            self.doorTexture = SKTexture(imageNamed: "porta chiusa")
             createRoom(scene: scene, startingPosition: startingPosition)
         }
     }
@@ -142,12 +143,7 @@ class Room {
                     door.name = "door"
                     door.zPosition = 2
                     door.position = CGPoint(x: startingPosition.x + Double(j*blocco) - Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
-                    door.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco/3, height: blocco), center: CGPoint(x: blocco/3, y: 0))
-                    if i == 1{
-                        door.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco/3, height: blocco*2), center: CGPoint(x: blocco/3, y: 0))
-                    }
-                    door.physicsBody?.affectedByGravity = false
-                    door.physicsBody?.isDynamic = false
+                    door.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
                     scene.addChild(door)
                     
                     
