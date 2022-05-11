@@ -30,6 +30,8 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
                       [1,1,1,1,1,1,1,1]
 ]
     
+    var floor = SKSpriteNode(texture: SKTexture(imageNamed: "pavimento3"), size: CGSize(width: blocco, height: blocco))
+    
     var delta: TimeInterval = 0.0
     var lastUpdate: TimeInterval?
     
@@ -186,6 +188,10 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
         lightSwitch.position = player.position
         lightSwitch.position.x -= 70
+    
+        floor.position = .zero
+        
+        addChild(floor)
         
 
         

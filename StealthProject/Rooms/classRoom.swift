@@ -115,6 +115,25 @@ class Room {
         }
     }
     
+    private func createRoom(scene: SKScene){
+        for i in 0..<numRighe{
+            for j in 0..<numColonne{
+                if stanza[i][j] != 0{
+                    let floor = SKSpriteNode(texture: floorTexture, size: CGSize(width: blocco, height: blocco))
+                    floor.name = "floorTile"
+                    floor.zPosition = 1
+                    floor.position = CGPoint(x: 0, y: 0)
+                }
+                switch stanza[i][j]{
+                case 1:
+                    print("")
+                default:
+                    print("")
+                }
+            }
+        }
+    }
+    
     func getRighe() -> Int{
         return self.numRighe
     }
