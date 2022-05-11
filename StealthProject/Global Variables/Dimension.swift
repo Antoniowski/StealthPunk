@@ -10,6 +10,7 @@ import SpriteKit
 import SwiftUI
 
 let blocco : Int = 100
+let bloccoSize: CGSize = CGSize(width: blocco, height: blocco)
 
 //protocol Dimensions{
 //
