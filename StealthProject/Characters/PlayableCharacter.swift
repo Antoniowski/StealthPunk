@@ -462,7 +462,7 @@ class PlayableCharacter: SKSpriteNode{
                     self.xScale = 1
                     self.status.isWalking = false
                     self.facingDirection = .UP
-                    self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
+                    self.run(.repeatForever(.animate(with: runningAnimationBack, timePerFrame: 0.18)))
                 }
             case .UP_RIGHT:
                 if myMovement != .zero && (self.status.isWalking == true || self.facingDirection != .UP_RIGHT){
