@@ -234,6 +234,7 @@ class PlayableCharacter: SKSpriteNode{
             self.actionState = .RUNNING
         }else if myMovement.getMagnitude() <= 0.5 && self.actionState == .RUNNING{
             self.actionState = .MOVE
+            self.xScale = 1
         }
         
         if myMovement != .zero{
@@ -273,10 +274,12 @@ class PlayableCharacter: SKSpriteNode{
         }
     }
     
-    //TODO: AGGIUNGERE E AGGIUSTARE L'ANIMAZIONE DI CORSA
     func animationTree(){
         updateMovingDirection()
         switch actionState {
+            
+//            WALKING ANIMATION E IDLE
+            
         case .MOVE:
             status.isWalking = true
             switch movingDirection {
@@ -376,6 +379,8 @@ class PlayableCharacter: SKSpriteNode{
                 }
             }
             
+//            ATTACK ANIMATION
+            
         case .ATTACK:
             if self.status.isAttacking == false{
                 self.status.isAttacking = true
@@ -428,11 +433,17 @@ class PlayableCharacter: SKSpriteNode{
             print("InteractAnimation")
         case .HIDDEN:
             print("InteractAnimation")
+            
+            
+//            RUNNING ANIMATION
+
+            
         case .RUNNING:
             status.isRunning = true
             switch movingDirection {
             case .UP:
                 if myMovement != .zero && (self.status.isWalking == true || self.facingDirection != .UP){
+                    self.xScale = 1
                     self.status.isWalking = false
                     self.facingDirection = .UP
                     self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
@@ -446,6 +457,7 @@ class PlayableCharacter: SKSpriteNode{
                 }
             case .RIGHT:
                 if myMovement != .zero && (self.status.isWalking == true || self.facingDirection != .RIGHT){
+                    self.xScale = 2
                     self.status.isWalking = false
                     self.facingDirection = .RIGHT
                     self.run(.repeatForever(.animate(with: runningAnimationRight, timePerFrame: 0.18)))
@@ -461,9 +473,10 @@ class PlayableCharacter: SKSpriteNode{
 
             case .DOWN:
                 if myMovement != .zero && (self.status.isWalking == true || self.facingDirection != .DOWN){
+                    self.xScale = 1
                     self.status.isWalking = false
                     self.facingDirection = .DOWN
-                    self.run(.repeatForever(.animate(with: runningAnimationFront, timePerFrame: 0.25)))
+                    self.run(.repeatForever(.animate(with: runningAnimationFront, timePerFrame: 0.18)))
                         
                 }
             case .DOWN_LEFT:
@@ -475,6 +488,7 @@ class PlayableCharacter: SKSpriteNode{
                 }
             case .LEFT:
                 if myMovement != .zero && (self.status.isWalking == true || self.facingDirection != .LEFT){
+                    self.xScale = 2
                     self.status.isWalking = false
                     self.facingDirection = .LEFT
                     self.run(.repeatForever(.animate(with: runningAnimationLeft, timePerFrame: 0.18)))

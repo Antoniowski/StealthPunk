@@ -63,7 +63,7 @@ extension PlayableScene{
             rollVector = inputVector.normalized()
             inputVector = inputVector*ACCELLERATION*delta //AGGIUNGERE ACCELERAZIONE APPROPRIATA
             velocity += inputVector
-            velocity = velocity.clamped(maxLength: MAX_SPEED*delta)
+            velocity = velocity.clamped(maxLength: 1.5*MAX_SPEED*delta)
         }else{
             velocity = velocity.moveTowardZero(value: FRICTION*delta)
         }
