@@ -169,7 +169,7 @@ class PlayableCharacter: SKSpriteNode{
     
 //    GENERIC FUNCTIONS
     func updateActionState(scene: SKScene){
-        if buttonBIsPressed && self.actionState == .MOVE && myMovement != .zero {
+        if buttonBIsPressed && (self.actionState == .MOVE || self.actionState == .RUNNING) && myMovement != .zero {
             self.actionState = .ROLL
         }
         if buttonAIsPressed{
@@ -230,7 +230,7 @@ class PlayableCharacter: SKSpriteNode{
     
     
     func updateMovingDirection(){//FUNZIONA: Aggiorna una sola volta il moving direction e lo stato di running
-        if myMovement.getMagnitude() > 0.5 && self.actionState != .RUNNING{
+        if myMovement.getMagnitude() > 0.5 && self.actionState == .MOVE{
             self.actionState = .RUNNING
         }else if myMovement.getMagnitude() <= 0.5 && self.actionState == .RUNNING{
             self.actionState = .MOVE
@@ -396,7 +396,11 @@ class PlayableCharacter: SKSpriteNode{
                 switch facingDirection {
                 case .UP:
                     self.run(.animate(with: rollingAnimationBack, timePerFrame: 0.1), completion: {
-                        self.actionState = .MOVE
+                        if self.status.isRunning {
+                            self.actionState = .RUNNING
+                        }else{
+                            self.actionState = .MOVE
+                        }
                         self.status.isRolling = false
                     })
                 case .UP_RIGHT:
@@ -404,15 +408,23 @@ class PlayableCharacter: SKSpriteNode{
                 case .RIGHT:
                     self.xScale = 2
                     self.run(.animate(with: rollingAnimationRight, timePerFrame: 0.1), completion: {
-                        self.actionState = .MOVE
-                        self.xScale = 1
+                        if self.status.isRunning {
+                            self.actionState = .RUNNING
+                        }else{
+                            self.actionState = .MOVE
+                            self.xScale = 1
+                        }
                         self.status.isRolling = false
                     })
                 case .DOWN_RIGHT:
                     print("")
                 case .DOWN:
                     self.run(.animate(with: rollingAnimationFront, timePerFrame: 0.1), completion: {
-                        self.actionState = .MOVE
+                        if self.status.isRunning {
+                            self.actionState = .RUNNING
+                        }else{
+                            self.actionState = .MOVE
+                        }
                         self.status.isRolling = false
                     })
                 case .DOWN_LEFT:
@@ -420,8 +432,12 @@ class PlayableCharacter: SKSpriteNode{
                 case .LEFT:
                     self.xScale = 2
                     self.run(.animate(with: rollingAnimationLeft, timePerFrame: 0.1), completion: {
-                        self.actionState = .MOVE
-                        self.xScale = 1
+                        if self.status.isRunning {
+                            self.actionState = .RUNNING
+                        }else{
+                            self.actionState = .MOVE
+                            self.xScale = 1
+                        }
                         self.status.isRolling = false
                     })
                 case .UP_LEFT:
