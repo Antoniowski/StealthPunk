@@ -49,15 +49,24 @@ extension PlayableScene{
             rollVector = inputVector.normalized()
             inputVector = inputVector*ACCELLERATION*delta //AGGIUNGERE ACCELERAZIONE APPROPRIATA
             velocity += inputVector
-            if myMovement.getMagnitude() > 0.5{
-                velocity = velocity.clamped(maxLength: MAX_SPEED*delta)
-            }else{
-                velocity = velocity.clamped(maxLength: MAX_SPEED*delta*0.5)
-            } //AGGIUNGERE MAX SPEED
+            velocity = velocity.clamped(maxLength: MAX_SPEED*delta*0.5)
         }else{
             velocity = velocity.moveTowardZero(value: FRICTION*delta)
         }
         
+    }
+    
+    func runningState(){
+        self.inputVector = CGVector.zero
+        inputVector = myMovement
+        if inputVector != CGVector.zero{
+            rollVector = inputVector.normalized()
+            inputVector = inputVector*ACCELLERATION*delta //AGGIUNGERE ACCELERAZIONE APPROPRIATA
+            velocity += inputVector
+            velocity = velocity.clamped(maxLength: 1.5*MAX_SPEED*delta)
+        }else{
+            velocity = velocity.moveTowardZero(value: FRICTION*delta)
+        }
     }
     
     func attackState(scene: SKScene){
@@ -78,18 +87,10 @@ extension PlayableScene{
         
         velocity = rollVector*MAX_SPEED*3*delta
         
-        
-//        if myMovement == .zero{
-//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
-//                self.velocity = self.velocity.moveTowardZero(value: 30)
-//            })
-//
-//        }
-        
     }
     
     func interactState(scene: SKScene){
-        if player.getStatus().isInteractiong == false{
+        if player.getStatus().isInteracting == false{
             player.setInteractingStatus(true)
 //            print("Interaction")
             scene.enumerateChildNodes(withName: "dynamicObject"){ object, _ in
@@ -106,20 +107,30 @@ extension PlayableScene{
                             return
                         }
                     case .HIDEOUT:
-                        print("Sono nascosto")
+                        let hideout = interact as? Hideout
+                        hideout?.action(player: self.player)
                     default:
                         return
                     }
                 }
                 
             }
-            self.player.setActionState(.MOVE)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: { //FUNZIONA MA NON SO COME
+//            self.player.setActionState(.MOVE)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { //FUNZIONA MA NON SO COME
                 self.player.setInteractingStatus(false)                    //IL DELAY E' NECESSARIO ALTRIMENTI L'AZIONE VIENE
                                                                            //RICHIAMATA PIU' VOLTE VISTO CHE "A" RIMANE PREMUTO
+                self.player.setActionState(.MOVE)
+                //IL DELAY ANDRA' SOSTITUITO DALL'ANIMAZIONE
             })
             
         }
+    }
+    
+    func hiddenState(){
+        DispatchQueue.main.asyncAfter(deadline: .now()+0.5, execute: {
+            self.player.alpha = 0
+            self.player.setEnteringStatus(false)
+        })
     }
 }
 

@@ -30,11 +30,14 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
                       [1,1,1,1,1,1,1,1]
 ]
     
+    var floor = SKSpriteNode(texture: SKTexture(imageNamed: "pavimento3"), size: CGSize(width: blocco, height: blocco))
+    
     var delta: TimeInterval = 0.0
     var lastUpdate: TimeInterval?
     
     var player: PlayableCharacter = Human(texture: SKTexture(imageNamed: "boyFront"), color: .clear, size: CGSize(width: 35, height: 70), noise: 1, speed: 1, strenght: 1)
-    var armadio: InteractableObject = InteractableObject(texture: SKTexture(imageNamed: "closet"), highlighted: SKTexture(imageNamed: "closetFocused"), color: .clear, size: CGSize(width: 100, height: 100), type: .HIDEOUT)
+//    var armadio: InteractableObject = InteractableObject(texture: SKTexture(imageNamed: "closet"), highlighted: SKTexture(imageNamed: "closetFocused"), color: .clear, size: CGSize(width: 100, height: 100), type: .HIDEOUT)
+    var armadio: Closet = Closet()
     var lampione = Lampione(texture: SKTexture(imageNamed: "lampione"), color: .clear, size: CGSize(width: 70, height: 140), objectName: "lampione1", lightBitmask: 2)
     
     var lightSwitch = LightSwitch(texture: SKTexture(imageNamed: "ConoPiccoloBackF1"), highlighted: SKTexture(imageNamed: "ConoPiccoloBackF2"), color: .clear, size: CGSize(width: 100, height: 100), referredLightName: "lampione1")
@@ -194,10 +197,10 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         addChild(pavimento)
         
         addChild(player)
-//        addChild(armadio)
-//        addChild(lampione)
+        addChild(armadio)
+        addChild(lampione)
 //        addChild(luce)
-//        addChild(t)
+        addChild(t)
 //        addChild(ombra)
 //        addChild(lightSwitch)
         createRoom2()
@@ -207,7 +210,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         calcDelta(currentTime: currentTime)
-        player.updateActionState()
+        player.updateActionState(scene: self)
 //        player.updateMovingDirection()
         player.animationTree()
         player.searchObject(scene: self)
@@ -216,6 +219,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         switch player.getActionState(){
         case .MOVE:
             moveState()
+            
         case .ATTACK:
             attackState(scene: self)
             
@@ -224,6 +228,12 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
             
         case .ROLL:
             rollState()
+            
+        case .HIDDEN:
+            hiddenState()
+            
+        case .RUNNING:
+            runningState()
         }
         
         playerMovement(player: player as SKSpriteNode, velocity: velocity)
@@ -232,7 +242,8 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         scenecamera.position = player.position
 //        print(player.getFacingDirection())
 //        print(player.getFocusState())
-//        print(player.getActionState())
+        print(player.getActionState())
+//        print(player.getStatus().isInteracting)
     }
     
     

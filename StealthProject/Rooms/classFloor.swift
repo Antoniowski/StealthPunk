@@ -14,4 +14,8 @@ class Floor{
     
     var stanze: [Room] = []
     
+    init(numeroStanze: Int){
+        
+    }
+    
 }
