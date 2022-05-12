@@ -156,7 +156,8 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         lampione.zPosition = 1
         player.position = CGPoint(x: 400, y: 400)
         
-        let room = Room(.SIMPLE_1, scene: self, startingPosition: CGPoint(x: 1000, y: 1000))
+//        let room = Room(.SIMPLE_1, startingPosition: CGPoint(x: 400, y: 400))
+        let floor = Floor(self, floorType: .FIRST_FLOOR)
         
 //        luce.categoryBitMask = 2
 //        luce.position = lampione.position
@@ -203,6 +204,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
 //        addChild(ombra)
         addChild(lightSwitch)
 //        createRoom2()
+//        addChild(room)
     }
     
     

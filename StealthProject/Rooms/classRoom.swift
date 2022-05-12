@@ -24,6 +24,13 @@ enum RoomsType: Int{
     case END = 2
 }
 
+enum DoorPlacement: Int{
+    case UP = 0
+    case DOWN = 1
+    case LEFT = 2
+    case RIGHT = 3
+}
+
 struct DoorPosition{
     var UP: Bool = false
     var DOWN: Bool = false
@@ -32,7 +39,7 @@ struct DoorPosition{
 }
 
 
-class Room {
+class Room: SKNode {
     
     private var door : DoorPosition = DoorPosition()
     private var tipe : RoomsType = .NORMAL
@@ -43,6 +50,8 @@ class Room {
     private var stanza : Matrix = []
     private var nemici : [Guard] = []
     private var oggetti : [InteractableObject] = []
+    private var startingPosition: CGPoint = .zero
+    private var doorPositionPoints: [(placement: DoorPlacement, point: CGPoint)] = []
     
     //TEXTURES
     private var doorTexture: SKTexture = SKTexture()
@@ -56,7 +65,9 @@ class Room {
     private var carpetTexture: [SKTexture] = []
 
     
-    init(_ archetype: RoomArchetype, scene: SKScene, startingPosition: CGPoint){
+    init(_ archetype: RoomArchetype, startingPosition: CGPoint){
+        super.init()
+        self.startingPosition = startingPosition
         switch archetype {
         case .FIRST:
             door = DoorPosition(UP: true, DOWN: false, RIGHT: false, LEFT: false)
@@ -72,7 +83,7 @@ class Room {
             self.cornerRightWallTexture = SKTexture(imageNamed: "wallAngleR")
             self.cornerLeftWallTexture = SKTexture(imageNamed: "wallAngleL")
             self.doorTexture = SKTexture(imageNamed: "porta chiusa")
-            createRoom(scene: scene, startingPosition: startingPosition)
+            self.createRoom()
         case .FIRST_2:
             door = DoorPosition(UP: true, DOWN: true, RIGHT: false, LEFT: false)
             tipe = .START
@@ -87,7 +98,7 @@ class Room {
             self.cornerRightWallTexture = SKTexture(imageNamed: "wallAngleR")
             self.cornerLeftWallTexture = SKTexture(imageNamed: "wallAngleL")
             self.doorTexture = SKTexture(imageNamed: "porta chiusa")
-            createRoom(scene: scene, startingPosition: startingPosition)
+            createRoom()
         case .FIRST_3:
             door = DoorPosition(UP: true, DOWN: true, RIGHT: true, LEFT: false)
             tipe = .START
@@ -102,7 +113,7 @@ class Room {
             self.cornerRightWallTexture = SKTexture(imageNamed: "wallAngleR")
             self.cornerLeftWallTexture = SKTexture(imageNamed: "wallAngleL")
             self.doorTexture = SKTexture(imageNamed: "porta chiusa")
-            createRoom(scene: scene, startingPosition: startingPosition)
+            createRoom()
         case .FIRST_4:
             door = DoorPosition(UP: true, DOWN: true, RIGHT: true, LEFT: true)
             tipe = .START
@@ -117,7 +128,7 @@ class Room {
             self.cornerRightWallTexture = SKTexture(imageNamed: "wallAngleR")
             self.cornerLeftWallTexture = SKTexture(imageNamed: "wallAngleL")
             self.doorTexture = SKTexture(imageNamed: "porta chiusa")
-            createRoom(scene: scene, startingPosition: startingPosition)
+            createRoom()
         case .SIMPLE_1:
             door = DoorPosition(UP: true, DOWN: true, RIGHT: false, LEFT: false)
             tipe = .NORMAL
@@ -132,13 +143,17 @@ class Room {
             self.cornerRightWallTexture = SKTexture(imageNamed: "wallAngleR")
             self.cornerLeftWallTexture = SKTexture(imageNamed: "wallAngleL")
             self.doorTexture = SKTexture(imageNamed: "porta chiusa")
-            createRoom(scene: scene, startingPosition: startingPosition)
+            createRoom()
         }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     
     //TODO: AGGIUSTARE LO SPAWN
-    private func createRoom(scene: SKScene, startingPosition: CGPoint){
+    private func createRoom(){
         for i in 0..<stanza.count{
             for j in 0..<stanza[1].count{
                 if stanza[i][j] != 0{
@@ -146,7 +161,7 @@ class Room {
                     floor.name = "floorTile"
                     floor.zPosition = 1
                     floor.position = CGPoint(x: startingPosition.x + Double(j * blocco) - Double(blocco/2) , y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
-                    scene.addChild(floor)
+                    addChild(floor)
                 }
                 switch stanza[i][j]{
                     //FRONT WALL
@@ -158,7 +173,7 @@ class Room {
                     wall.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
                     wall.physicsBody?.isDynamic = false
                     wall.physicsBody?.affectedByGravity = false
-                    scene.addChild(wall)
+                    addChild(wall)
                     
                 case 2:
                     let leftAngle = SKSpriteNode(texture: cornerLeftWallTexture, size: bloccoSize)
@@ -168,7 +183,7 @@ class Room {
                     leftAngle.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
                     leftAngle.physicsBody?.isDynamic = false
                     leftAngle.physicsBody?.affectedByGravity = false
-                    scene.addChild(leftAngle)
+                    addChild(leftAngle)
                 case 3:
                     let myWall = SKSpriteNode(texture: cornerRightWallTexture, size: bloccoSize)
                     myWall.name = "wall"
@@ -177,7 +192,7 @@ class Room {
                     myWall.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
                     myWall.physicsBody?.affectedByGravity = false
                     myWall.physicsBody?.isDynamic = false
-                    scene.addChild(myWall)
+                    addChild(myWall)
                 case 4:
                     let myWall = SKSpriteNode(texture: sideLeftWallTexture, size: bloccoSize)
                     myWall.name = "wall"
@@ -189,7 +204,7 @@ class Room {
                     }
                     myWall.physicsBody?.affectedByGravity = false
                     myWall.physicsBody?.isDynamic = false
-                    scene.addChild(myWall)
+                    addChild(myWall)
                 case 5:
                     let myWall = SKSpriteNode(texture: sideRightWallTexture, size: bloccoSize)
                     myWall.name = "wall"
@@ -201,14 +216,39 @@ class Room {
                     }
                     myWall.physicsBody?.affectedByGravity = false
                     myWall.physicsBody?.isDynamic = false
-                    scene.addChild(myWall)
+                    addChild(myWall)
                 case 7:
                     let door = SKSpriteNode(texture: doorTexture, size: bloccoSize)
                     door.name = "door"
                     door.zPosition = 2
                     door.position = CGPoint(x: startingPosition.x + Double(j*blocco) - Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    doorPositionPoints.append((DoorPlacement.UP,door.position))
                     door.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
-                    scene.addChild(door)
+                    addChild(door)
+                case 8:
+                    let door = SKSpriteNode(texture: doorTexture, size: bloccoSize)
+                    door.name = "door"
+                    door.zPosition = 2
+                    door.position = CGPoint(x: startingPosition.x + Double(j*blocco) - Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    doorPositionPoints.append((.DOWN,door.position))
+                    door.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
+                    addChild(door)
+                case 9:
+                    let door = SKSpriteNode(texture: doorTexture, size: bloccoSize)
+                    door.name = "door"
+                    door.zPosition = 2
+                    door.position = CGPoint(x: startingPosition.x + Double(j*blocco) - Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    doorPositionPoints.append((.LEFT,door.position))
+                    door.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
+                    addChild(door)
+                case 10:
+                    let door = SKSpriteNode(texture: doorTexture, size: bloccoSize)
+                    door.name = "door"
+                    door.zPosition = 2
+                    door.position = CGPoint(x: startingPosition.x + Double(j*blocco) - Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    doorPositionPoints.append((.RIGHT,door.position))
+                    door.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
+                    addChild(door)
                     
                     
                 default:
@@ -238,6 +278,10 @@ class Room {
         return self.stanza
     }
     
+    func getStartingPosition()->CGPoint{
+        return self.startingPosition
+    }
+    
     func getDoorNumber()->Int{
         if (door.RIGHT == true && door.UP == false && door.DOWN == false && door.LEFT == false) || (door.RIGHT == false && door.UP == true && door.DOWN == false && door.LEFT == false) || (door.RIGHT == false && door.UP == false && door.DOWN == true && door.LEFT == false) || (door.RIGHT == false && door.UP == false && door.DOWN == false && door.LEFT == true){
             return 1
@@ -253,6 +297,46 @@ class Room {
             return 4
         }
         return 0
+    }
+    
+    func getDoorPosition()->[(DoorPlacement, CGPoint)]{
+        return self.doorPositionPoints
+    }
+    
+    func getUpDoorPosition()->CGPoint{
+        for x in doorPositionPoints{
+            if x.placement == .UP{
+                return x.point
+            }
+        }
+        return .zero
+    }
+    
+    func getDownDoorPosition()->CGPoint{
+        for x in doorPositionPoints{
+            if x.placement == .DOWN{
+                return x.point
+            }
+        }
+        return .zero
+    }
+    
+    func getLeftDoorPosition()->CGPoint{
+        for x in doorPositionPoints{
+            if x.placement == .LEFT{
+                return x.point
+            }
+        }
+        return .zero
+    }
+    
+    func getRightDoorPosition()->CGPoint{
+        for x in doorPositionPoints{
+            if x.placement == .RIGHT{
+                return x.point
+            }
+        }
+        return .zero
     }
     
     func setRighe(_ righe :Int ){
