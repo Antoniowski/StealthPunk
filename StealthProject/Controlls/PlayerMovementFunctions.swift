@@ -115,13 +115,13 @@ extension PlayableScene{
                 }
                 
             }
-//            self.player.setActionState(.MOVE)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { //FUNZIONA MA NON SO COME
-                self.player.setInteractingStatus(false)                    //IL DELAY E' NECESSARIO ALTRIMENTI L'AZIONE VIENE
-                                                                           //RICHIAMATA PIU' VOLTE VISTO CHE "A" RIMANE PREMUTO
-                self.player.setActionState(.MOVE)
-                //IL DELAY ANDRA' SOSTITUITO DALL'ANIMAZIONE
-            })
+////            self.player.setActionState(.MOVE)
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2, execute: { //FUNZIONA MA NON SO COME
+//                self.player.setInteractingStatus(false)                    //IL DELAY E' NECESSARIO ALTRIMENTI L'AZIONE VIENE
+//                                                                           //RICHIAMATA PIU' VOLTE VISTO CHE "A" RIMANE PREMUTO
+//                self.player.setActionState(.MOVE)
+//                //IL DELAY ANDRA' SOSTITUITO DALL'ANIMAZIONE
+//            })
             
         }
     }
