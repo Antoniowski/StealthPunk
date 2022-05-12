@@ -20,15 +20,25 @@ var rolltest: [SKTexture] = [SKTexture(imageNamed: "boyRoll1"), SKTexture(imageN
 
 
 class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
-    var roomWalls2 = [[2,1,1,1,1,1,1,3],
-                      [4,6,6,6,6,6,6,5],
-                      [4,6,6,6,6,6,6,5],
-                      [4,6,6,6,6,6,6,5],
-                      [4,6,6,6,6,6,6,5],
-                      [4,6,6,6,6,6,6,5],
-                      [4,6,6,6,6,6,6,5],
-                      [1,1,1,1,1,1,1,1]
-]
+//    var roomWalls2 = [[2,1,1,1,1,1,1,3],
+//                      [4,6,6,6,6,6,6,5],
+//                      [4,6,6,6,6,6,6,5],
+//                      [4,6,6,6,6,6,6,5],
+//                      [4,6,6,6,6,6,6,5],
+//                      [4,6,6,6,6,6,6,5],
+//                      [4,6,6,6,6,6,6,5],
+//                      [1,1,1,1,1,1,1,1]
+//]
+    
+    var roomWalls2 =     [[2, 1, 1, 1, 1, 7, 1, 1, 1, 1, 1, 3],
+                          [4, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5],
+                          [4, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5],
+                          [7, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 7],
+                          [4, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5],
+                          [1, 1, 1, 4, 6, 6, 6, 6, 5, 1, 1, 1],
+                          [0, 0, 0, 4, 6, 6, 6, 6, 5, 0, 0, 0],
+                          [0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0]
+                         ]
     
     var floor = SKSpriteNode(texture: SKTexture(imageNamed: "pavimento3"), size: CGSize(width: blocco, height: blocco))
     
@@ -66,7 +76,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
             for index2 in 0...roomWalls2[1].count-1{
                 
                 if(roomWalls2[index][index2] != 0){
-                    let myWall = SKSpriteNode(texture: SKTexture(imageNamed: "pavimento4"), size: CGSize(width: blocco, height: blocco))
+                    let myWall = SKSpriteNode(texture: SKTexture(imageNamed: "erba"), size: CGSize(width: blocco, height: blocco))
                     myWall.name = "wall"+String(index)+String(index2)
                     myWall.zPosition = 1
                     myWall.position = CGPoint(x:  CGFloat(Float(blocco*index2)) + CGFloat(blocco/2), y: size.height - CGFloat(blocco*index) + CGFloat(blocco/2))
@@ -74,7 +84,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
                 }
                 
                 if(roomWalls2[index][index2] == 1){
-                    let myWall = SKSpriteNode(texture: SKTexture(imageNamed: "wall"), size: CGSize(width: blocco, height: blocco))
+                    let myWall = SKSpriteNode(texture: SKTexture(imageNamed: "parete frontaleSu"), size: CGSize(width: blocco, height: blocco))
                     myWall.name = "wall"+String(index)+String(index2)
                     myWall.zPosition = 2
                     myWall.position = CGPoint(x: CGFloat(Float(blocco*index2)) + CGFloat(blocco/2), y: size.height - CGFloat(blocco*index) + CGFloat(blocco/2))
@@ -86,7 +96,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
                 }
 
                 if(roomWalls2[index][index2] == 2){
-                    let myWall = SKSpriteNode(texture: SKTexture(imageNamed: "wallAngleL"), size: CGSize(width: blocco, height: blocco))
+                    let myWall = SKSpriteNode(texture: SKTexture(imageNamed: "angolo frontaleSxSu"), size: CGSize(width: blocco, height: blocco))
                     myWall.name = "wall"+String(index)+String(index2)
                     myWall.zPosition = 2
                     myWall.position = CGPoint(x: blocco*index2 + blocco/2, y: Int(size.height) - blocco*index + blocco/2)
@@ -98,7 +108,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
                 }
 
                 if(roomWalls2[index][index2] == 3){
-                    let myWall = SKSpriteNode(texture: SKTexture(imageNamed: "wallAngleR"), size: CGSize(width: blocco, height: blocco))
+                    let myWall = SKSpriteNode(texture: SKTexture(imageNamed: "angolo frontaleDxSu"), size: CGSize(width: blocco, height: blocco))
                     myWall.name = "wall"+String(index)+String(index2)
                     myWall.zPosition = 2
                     myWall.position = CGPoint(x: CGFloat(Float(blocco*index2)) + CGFloat(blocco/2), y: size.height - CGFloat(blocco*index) + CGFloat(blocco/2))
@@ -109,7 +119,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
                     addChild(myWall)
                 }
                 if(roomWalls2[index][index2] == 4){
-                    let myWall = SKSpriteNode(texture: SKTexture(imageNamed: "wallL"), size: CGSize(width: blocco, height: blocco))
+                    let myWall = SKSpriteNode(texture: SKTexture(imageNamed: "parete laterale"), size: CGSize(width: blocco, height: blocco))
                     myWall.name = "wall"+String(index)+String(index2)
                     myWall.zPosition = 2
                     myWall.position = CGPoint(x: size.width * 0 + CGFloat(Float(blocco*index2)) + CGFloat(blocco/2), y: size.height - CGFloat(blocco*index) + CGFloat(blocco/2))
@@ -123,7 +133,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
                     addChild(myWall)
                 }
                 if(roomWalls2[index][index2] == 5){
-                    let myWall = SKSpriteNode(texture: SKTexture(imageNamed: "wallR"), size: CGSize(width: blocco, height: blocco))
+                    let myWall = SKSpriteNode(texture: SKTexture(imageNamed: "parete laterale"), size: CGSize(width: blocco, height: blocco))
                     myWall.name = "wall"+String(index)+String(index2)
                     myWall.zPosition = 2
                     myWall.position = CGPoint(x: size.width * 0 + CGFloat(Float(blocco*index2)) + CGFloat(blocco/2), y: size.height - CGFloat(blocco*index) + CGFloat(blocco/2))
@@ -158,7 +168,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         lampione.zPosition = 1
         player.position = CGPoint(x: 400, y: 400)
         
-        let room = Room(.SIMPLE_1, scene: self, startingPosition: CGPoint(x: 1000, y: 1000))
+//        let room = Room(.SIMPLE_1, scene: self, startingPosition: CGPoint(x: 1000, y: 1000))
         
 //        luce.categoryBitMask = 2
 //        luce.position = lampione.position
