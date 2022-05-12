@@ -11,7 +11,11 @@ import GameplayKit
 import SwiftUI
 
 enum RoomArchetype: Int{
-    case SIMPLE_1 = 0
+    case FIRST = 0
+    case FIRST_2 = 1
+    case FIRST_3 = 2
+    case FIRST_4 = 3
+    case SIMPLE_1 = 4
 }
 
 enum RoomsType: Int{
@@ -54,6 +58,66 @@ class Room {
     
     init(_ archetype: RoomArchetype, scene: SKScene, startingPosition: CGPoint){
         switch archetype {
+        case .FIRST:
+            door = DoorPosition(UP: true, DOWN: false, RIGHT: false, LEFT: false)
+            tipe = .START
+            numRighe = simple1Matrix[1].count
+            numColonne = simple1Matrix.count
+            stanza = simple1Matrix
+            nemici = []
+            self.frontWallTexture = SKTexture(imageNamed: "wall")
+            self.floorTexture = SKTexture(imageNamed: "pavimento4")
+            self.sideRightWallTexture = SKTexture(imageNamed: "wallR")
+            self.sideLeftWallTexture  = SKTexture(imageNamed: "wallL")
+            self.cornerRightWallTexture = SKTexture(imageNamed: "wallAngleR")
+            self.cornerLeftWallTexture = SKTexture(imageNamed: "wallAngleL")
+            self.doorTexture = SKTexture(imageNamed: "porta chiusa")
+            createRoom(scene: scene, startingPosition: startingPosition)
+        case .FIRST_2:
+            door = DoorPosition(UP: true, DOWN: true, RIGHT: false, LEFT: false)
+            tipe = .START
+            numRighe = simple1Matrix[1].count
+            numColonne = simple1Matrix.count
+            stanza = simple1Matrix
+            nemici = []
+            self.frontWallTexture = SKTexture(imageNamed: "wall")
+            self.floorTexture = SKTexture(imageNamed: "pavimento4")
+            self.sideRightWallTexture = SKTexture(imageNamed: "wallR")
+            self.sideLeftWallTexture  = SKTexture(imageNamed: "wallL")
+            self.cornerRightWallTexture = SKTexture(imageNamed: "wallAngleR")
+            self.cornerLeftWallTexture = SKTexture(imageNamed: "wallAngleL")
+            self.doorTexture = SKTexture(imageNamed: "porta chiusa")
+            createRoom(scene: scene, startingPosition: startingPosition)
+        case .FIRST_3:
+            door = DoorPosition(UP: true, DOWN: true, RIGHT: true, LEFT: false)
+            tipe = .START
+            numRighe = simple1Matrix[1].count
+            numColonne = simple1Matrix.count
+            stanza = simple1Matrix
+            nemici = []
+            self.frontWallTexture = SKTexture(imageNamed: "wall")
+            self.floorTexture = SKTexture(imageNamed: "pavimento4")
+            self.sideRightWallTexture = SKTexture(imageNamed: "wallR")
+            self.sideLeftWallTexture  = SKTexture(imageNamed: "wallL")
+            self.cornerRightWallTexture = SKTexture(imageNamed: "wallAngleR")
+            self.cornerLeftWallTexture = SKTexture(imageNamed: "wallAngleL")
+            self.doorTexture = SKTexture(imageNamed: "porta chiusa")
+            createRoom(scene: scene, startingPosition: startingPosition)
+        case .FIRST_4:
+            door = DoorPosition(UP: true, DOWN: true, RIGHT: true, LEFT: true)
+            tipe = .START
+            numRighe = simple1Matrix[1].count
+            numColonne = simple1Matrix.count
+            stanza = simple1Matrix
+            nemici = []
+            self.frontWallTexture = SKTexture(imageNamed: "wall")
+            self.floorTexture = SKTexture(imageNamed: "pavimento4")
+            self.sideRightWallTexture = SKTexture(imageNamed: "wallR")
+            self.sideLeftWallTexture  = SKTexture(imageNamed: "wallL")
+            self.cornerRightWallTexture = SKTexture(imageNamed: "wallAngleR")
+            self.cornerLeftWallTexture = SKTexture(imageNamed: "wallAngleL")
+            self.doorTexture = SKTexture(imageNamed: "porta chiusa")
+            createRoom(scene: scene, startingPosition: startingPosition)
         case .SIMPLE_1:
             door = DoorPosition(UP: true, DOWN: true, RIGHT: false, LEFT: false)
             tipe = .NORMAL
@@ -172,6 +236,23 @@ class Room {
     
     func getStanza() -> [[Int]]{
         return self.stanza
+    }
+    
+    func getDoorNumber()->Int{
+        if (door.RIGHT == true && door.UP == false && door.DOWN == false && door.LEFT == false) || (door.RIGHT == false && door.UP == true && door.DOWN == false && door.LEFT == false) || (door.RIGHT == false && door.UP == false && door.DOWN == true && door.LEFT == false) || (door.RIGHT == false && door.UP == false && door.DOWN == false && door.LEFT == true){
+            return 1
+        }
+        if (door.RIGHT == true && door.UP == true && door.DOWN == false && door.LEFT == false) || (door.RIGHT == true && door.UP == false && door.DOWN == false && door.LEFT == true) || (door.RIGHT == true && door.UP == false && door.DOWN == true && door.LEFT == false) || (door.RIGHT == false && door.UP == true && door.DOWN == true && door.LEFT == false) || (door.RIGHT == false && door.UP == true && door.DOWN == false && door.LEFT == true) || (door.RIGHT == false && door.UP == false && door.DOWN == true && door.LEFT == true){
+            return 2
+        }
+        
+        if (door.RIGHT == true && door.UP == true && door.DOWN == true && door.LEFT == false) || (door.RIGHT == true && door.UP == false && door.DOWN == true && door.LEFT == true) || (door.RIGHT == true && door.UP == true && door.DOWN == false && door.LEFT == true) || (door.RIGHT == false && door.UP == true && door.DOWN == true && door.LEFT == true){
+            return 3
+        }
+        if (door.RIGHT == true && door.UP == true && door.DOWN == true && door.LEFT == true){
+            return 4
+        }
+        return 0
     }
     
     func setRighe(_ righe :Int ){

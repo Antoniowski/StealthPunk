@@ -390,6 +390,7 @@ class PlayableCharacter: SKSpriteNode{
                     self.status.idle = false
                 })
             }
+            //ROLL ANIMATION
         case .ROLL:
             if status.isRolling == false{
                 status.isRolling = true
@@ -446,7 +447,40 @@ class PlayableCharacter: SKSpriteNode{
             }
             
         case .INTERACT:
-            print("InteractAnimation")
+            switch movingDirection {
+            case .UP:
+                print ("")
+            case .UP_RIGHT:
+                print ("")
+            case .RIGHT:
+                if(status.isInteracting == false) {
+                    self.run(.animate(with: interactAnimationRight, timePerFrame: 0.1), completion: {
+                        self.actionState = .MOVE
+                        self.status.isInteracting = false
+                        self.status.idle = false
+                    })
+                }
+                
+            case .DOWN_RIGHT:
+                print ("")
+            case .DOWN:
+                print ("")
+            case .DOWN_LEFT:
+                print ("")
+            case .LEFT:
+                if(status.isInteracting == false) {
+                    self.run(.animate(with: interactAnimationLeft, timePerFrame: 0.15), completion: {
+                        self.actionState = .MOVE
+                        self.status.isInteracting = false
+                        self.status.idle = false
+                    })
+                    
+                }
+                
+                
+            case .UP_LEFT:
+                print ("")
+            }
         case .HIDDEN:
             print("InteractAnimation")
             
