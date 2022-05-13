@@ -59,7 +59,9 @@ class Room: SKNode {
     private var doorPositionPoints: [(placement: DoorPlacement, point: CGPoint)] = []
     
     //TEXTURES
-    private var doorTexture: SKTexture = SKTexture()
+    private var frontDoorTexture: SKTexture = SKTexture()
+    private var leftDoorTexture: SKTexture = SKTexture()
+    private var rightDoorTexture: SKTexture = SKTexture()
     private var frontWallTexture: SKTexture = SKTexture()
     private var sideLeftWallTexture: SKTexture = SKTexture()
     private var sideRightWallTexture: SKTexture = SKTexture()
@@ -179,7 +181,9 @@ class Room: SKNode {
         self.sideLeftWallTexture  = SKTexture(imageNamed: "wallL")
         self.cornerRightWallTexture = SKTexture(imageNamed: "wallAngleR")
         self.cornerLeftWallTexture = SKTexture(imageNamed: "wallAngleL")
-        self.doorTexture = SKTexture(imageNamed: "porta chiusa")
+        self.frontDoorTexture = SKTexture(imageNamed: "doorClosed")
+        self.leftDoorTexture = SKTexture(imageNamed: "doorLeft")
+        self.rightDoorTexture = SKTexture(imageNamed: "doorRight")
     }
     
     
@@ -249,7 +253,7 @@ class Room: SKNode {
                     myWall.physicsBody?.isDynamic = false
                     addChild(myWall)
                 case 7:
-                    let door = SKSpriteNode(texture: doorTexture, size: bloccoSize)
+                    let door = SKSpriteNode(texture: frontDoorTexture, size: bloccoSize)
                     door.name = "door"
                     door.zPosition = 2
                     door.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
@@ -260,7 +264,7 @@ class Room: SKNode {
                     door.physicsBody?.allowsRotation = false
                     addChild(door)
                 case 8:
-                    let door = SKSpriteNode(texture: doorTexture, size: bloccoSize)
+                    let door = SKSpriteNode(texture: frontDoorTexture, size: bloccoSize)
                     door.name = "door"
                     door.zPosition = 2
                     door.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
@@ -271,23 +275,23 @@ class Room: SKNode {
                     door.physicsBody?.allowsRotation = false
                     addChild(door)
                 case 9:
-                    let door = SKSpriteNode(texture: doorTexture, size: bloccoSize)
+                    let door = SKSpriteNode(texture: leftDoorTexture, size: bloccoSize)
                     door.name = "door"
                     door.zPosition = 2
                     door.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                     doorPositionPoints.append((.LEFT,door.position))
-                    door.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
+                    door.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco/3, height: blocco), center: CGPoint(x: -blocco/3, y: 0))
                     door.physicsBody?.isDynamic = false
                     door.physicsBody?.affectedByGravity = false
                     door.physicsBody?.allowsRotation = false
                     addChild(door)
                 case 10:
-                    let door = SKSpriteNode(texture: doorTexture, size: bloccoSize)
+                    let door = SKSpriteNode(texture: rightDoorTexture, size: bloccoSize)
                     door.name = "door"
                     door.zPosition = 2
                     door.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                     doorPositionPoints.append((.RIGHT,door.position))
-                    door.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
+                    door.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco/3, height: blocco), center: CGPoint(x: blocco/3, y: 0))
                     door.physicsBody?.isDynamic = false
                     door.physicsBody?.affectedByGravity = false
                     door.physicsBody?.allowsRotation = false
