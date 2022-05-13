@@ -169,7 +169,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         player.position = CGPoint(x: 0, y: 0)
         
 //        let room = Room(.SIMPLE_1, startingPosition: CGPoint(x: 400, y: 400))
-        let floor = Floor(self, floorType: .FIRST_FLOOR)
+        let _ = Floor(self, floorType: .FIRST_FLOOR)
         
 //        luce.categoryBitMask = 2
 //        luce.position = lampione.position
