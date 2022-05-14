@@ -60,7 +60,8 @@ class Room: SKNode {
     private var nemici : [Guard] = []
     private var oggetti : [InteractableObject] = []
     private var startingPosition: CGPoint = .zero
-    private var doorPositionPoints: [(placement: DoorPlacement, point: CGPoint)] = []
+    
+    private var doorPositionPoints: [(placement: DoorPlacement, point: CGPoint, isOccupied: Bool)] = []
     
     //TEXTURES
     private var frontDoorTexture: SKTexture = SKTexture()
@@ -271,7 +272,7 @@ class Room: SKNode {
                 case 4:
                     let myWall = SKSpriteNode(texture: sideLeftWallTexture, size: bloccoSize)
                     myWall.name = "wall"
-                    myWall.zPosition = 2
+                    myWall.zPosition = 3
                     myWall.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                     myWall.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco/3, height: blocco), center: CGPoint(x: -blocco/3, y: 0))
                     if i == 1{
@@ -283,7 +284,7 @@ class Room: SKNode {
                 case 5:
                     let myWall = SKSpriteNode(texture: sideRightWallTexture, size: bloccoSize)
                     myWall.name = "wall"
-                    myWall.zPosition = 2
+                    myWall.zPosition = 3
                     myWall.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                     myWall.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco/3, height: blocco), center: CGPoint(x: blocco/3, y: 0))
                     if i == 1{
@@ -297,7 +298,7 @@ class Room: SKNode {
                     door.name = "door"
                     door.zPosition = 2
                     door.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
-                    doorPositionPoints.append((DoorPlacement.UP,door.position))
+                    doorPositionPoints.append((DoorPlacement.UP,door.position, false))
                     door.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
                     door.physicsBody?.isDynamic = false
                     door.physicsBody?.affectedByGravity = false
@@ -308,7 +309,7 @@ class Room: SKNode {
                     door.name = "door"
                     door.zPosition = 2
                     door.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
-                    doorPositionPoints.append((.DOWN,door.position))
+                    doorPositionPoints.append((.DOWN,door.position, false))
                     door.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
                     door.physicsBody?.isDynamic = false
                     door.physicsBody?.affectedByGravity = false
@@ -319,7 +320,7 @@ class Room: SKNode {
                     door.name = "door"
                     door.zPosition = 2
                     door.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
-                    doorPositionPoints.append((.LEFT,door.position))
+                    doorPositionPoints.append((.LEFT,door.position, false))
                     door.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco/3, height: blocco), center: CGPoint(x: -blocco/3, y: 0))
                     door.physicsBody?.isDynamic = false
                     door.physicsBody?.affectedByGravity = false
@@ -330,7 +331,7 @@ class Room: SKNode {
                     door.name = "door"
                     door.zPosition = 2
                     door.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
-                    doorPositionPoints.append((.RIGHT,door.position))
+                    doorPositionPoints.append((.RIGHT,door.position, false))
                     door.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco/3, height: blocco), center: CGPoint(x: blocco/3, y: 0))
                     door.physicsBody?.isDynamic = false
                     door.physicsBody?.affectedByGravity = false
@@ -386,7 +387,7 @@ class Room: SKNode {
         return 0
     }
     
-    func getDoorPosition()->[(DoorPlacement, CGPoint)]{
+    func getDoorPosition()->[(DoorPlacement, CGPoint, Bool)]{
         return self.doorPositionPoints
     }
     
@@ -424,6 +425,40 @@ class Room: SKNode {
             }
         }
         return .zero
+    }
+    
+//    SET FUNCTIONS
+    
+    func setDoorOccupiedStatus(placement: DoorPlacement, _ newStatus: Bool){
+        switch placement {
+        case .UP:
+            for x in 0..<doorPositionPoints.count{
+                if doorPositionPoints[x].placement == .UP{
+                    doorPositionPoints[x].isOccupied = newStatus
+                }
+            }
+        case .DOWN:
+            for x in 0..<doorPositionPoints.count{
+                if doorPositionPoints[x].placement == .DOWN{
+                    doorPositionPoints[x].isOccupied = newStatus
+                }
+                
+            }
+        case .LEFT:
+            for x in 0..<doorPositionPoints.count{
+                if doorPositionPoints[x].placement == .LEFT{
+                    doorPositionPoints[x].isOccupied = newStatus
+                }
+                
+            }
+        case .RIGHT:
+            for x in 0..<doorPositionPoints.count{
+                if doorPositionPoints[x].placement == .RIGHT{
+                    doorPositionPoints[x].isOccupied = newStatus
+                }
+            }
+        }
+        
     }
     
     func setRighe(_ righe :Int ){

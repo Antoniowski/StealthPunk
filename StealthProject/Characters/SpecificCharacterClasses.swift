@@ -15,9 +15,9 @@ class Human: PlayableCharacter{
     
     override init(texture: SKTexture?, color: UIColor, size: CGSize, noise: Int, speed: Int, strenght: Int) {
         super.init(texture: texture, color: color, size: size, noise: noise, speed: speed, strenght: strenght)
-        self.physicsBody = SKPhysicsBody(rectangleOf: size)
-        self.physicsBody?.affectedByGravity = false
-        self.physicsBody?.allowsRotation = false
+//        self.physicsBody = SKPhysicsBody(rectangleOf: size)
+//        self.physicsBody?.affectedByGravity = false
+//        self.physicsBody?.allowsRotation = false
         setAnimationArrays()
     }
     
