@@ -21,6 +21,10 @@ enum RoomArchetype: Int{
     case SIMPLE_4 = 7
     case SIMPLE_5 = 8
     case SIMPLE_6 = 9
+    case PROVA1 = 10
+    case PROVA2 = 11
+    case PROVA3 = 12
+    case PROVA4 = 13
 }
 
 enum RoomsType: Int{
@@ -163,6 +167,42 @@ class Room: SKNode {
             numRighe = simple6Matrix[1].count
             numColonne = simple6Matrix.count
             stanza = simple6Matrix
+            nemici = []
+            setTextures()
+            createRoom()
+        case .PROVA1:
+            door = DoorPosition(UP: true, DOWN: false, RIGHT: false, LEFT: false)
+            tipe = .NORMAL
+            numRighe = prova1[1].count
+            numColonne = prova1.count
+            stanza = prova1
+            nemici = []
+            setTextures()
+            createRoom()
+        case .PROVA2:
+            door = DoorPosition(UP: false, DOWN: true, RIGHT: false, LEFT: false)
+            tipe = .NORMAL
+            numRighe = prova2[1].count
+            numColonne = prova2.count
+            stanza = prova2
+            nemici = []
+            setTextures()
+            createRoom()
+        case .PROVA3:
+            door = DoorPosition(UP: false, DOWN: false, RIGHT: false, LEFT: true)
+            tipe = .NORMAL
+            numRighe = prova3[1].count
+            numColonne = prova3.count
+            stanza = prova3
+            nemici = []
+            setTextures()
+            createRoom()
+        case .PROVA4:
+            door = DoorPosition(UP: false, DOWN: false, RIGHT: true, LEFT: false)
+            tipe = .NORMAL
+            numRighe = prova4[1].count
+            numColonne = prova4.count
+            stanza = prova4
             nemici = []
             setTextures()
             createRoom()

@@ -127,6 +127,47 @@ let taverna: [[Int]] =
      [1, 1, 1, 1, 1, 1, 1]
     ]
 
+
+
+
+
+let prova1: Matrix =
+    [[2,1,1,7,1,1,3],
+     [4,6,6,6,6,6,5],
+     [4,6,6,6,6,6,5],
+     [4,6,6,6,6,6,5],
+     [4,6,6,6,6,6,5],
+     [4,6,6,6,6,6,5],
+     [1,1,1,1,1,1,1]
+    ]
+
+let prova2: Matrix =
+    [[2,1,1,1,1,1,3],
+     [4,6,6,6,6,6,5],
+     [4,6,6,6,6,6,5],
+     [4,6,6,6,6,6,5],
+     [4,6,6,6,6,6,5],
+     [4,6,6,6,6,6,5],
+     [1,1,1,8,1,1,1]
+    ]
+let prova3: Matrix =
+    [[2,1,1,1,1,1,3],
+     [4,6,6,6,6,6,5],
+     [4,6,6,6,6,6,5],
+     [9,6,6,6,6,6,5],
+     [4,6,6,6,6,6,5],
+     [4,6,6,6,6,6,5],
+     [1,1,1,1,1,1,1]
+    ]
+let prova4: Matrix =
+    [[2,1,1,1,1,1,3],
+     [4,6,6,6,6,6,5],
+     [4,6,6,6,6,6,5],
+     [4,6,6,6,6,6,10],
+     [4,6,6,6,6,6,5],
+     [4,6,6,6,6,6,5],
+     [1,1,1,1,1,1,1]
+    ]
     
 
 
@@ -138,3 +179,8 @@ let STANZE_U: [RoomArchetype] = [.SIMPLE_1, .SIMPLE_2, .SIMPLE_4]
 let STANZE_R: [RoomArchetype] = [.SIMPLE_3, .SIMPLE_4, .SIMPLE_6]
 let STANZE_L: [RoomArchetype] = [.SIMPLE_3 , .SIMPLE_4, .SIMPLE_5]
 let STANZE_D: [RoomArchetype] = [.SIMPLE_1, .SIMPLE_2, .SIMPLE_3, .SIMPLE_5, .SIMPLE_6]
+
+let STANZE_U_1DOOR: [RoomArchetype] = [.PROVA1]
+let STANZE_R_1DOOR: [RoomArchetype] = [.PROVA4]
+let STANZE_L_1DOOR: [RoomArchetype] = [.PROVA3]
+let STANZE_D_1DOOR: [RoomArchetype] = [.PROVA2]

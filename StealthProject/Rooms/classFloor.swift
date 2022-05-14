@@ -101,44 +101,43 @@ class Floor{
                     }
                 }
             }else{
-                actualAdded = numeroStanze + 1
+                lastRoomsAdded = []
+                //AGGIUNGE STANZE CON UNA PORTA
+                for door in doorPoints{
+                        switch door.0{
+                        case .UP:
+    //                      FUNZIONA PER DIO!
+                            let type = STANZE_D_1DOOR.randomElement()
+                            let newRoom = Room(type ?? .SIMPLE_1, startingPosition:  CGPoint(x: door.1.x, y: door.1.y))
+                            newRoom.position.x -= ((newRoom.getDownDoorPosition().x)-door.1.x)
+                            newRoom.position.y += Double(newRoom.getColonne()*blocco - blocco/2)
+                            scene.addChild(newRoom)
+                        case .DOWN:
+                            let type = STANZE_U_1DOOR.randomElement()
+                            let newRoom = Room(type ?? .SIMPLE_1, startingPosition: CGPoint(x: door.1.x, y: door.1.y))
+                            newRoom.position.x -= ((newRoom.getUpDoorPosition().x - door.1.x))
+                            newRoom.position.y += Double(blocco/2)
+                            scene.addChild(newRoom)
+                        case .LEFT:
+                            let type = STANZE_R_1DOOR.randomElement()
+                            let newRoom = Room(type!, startingPosition: CGPoint(x: door.1.x, y: door.1.y))
+                            newRoom.position.x -= Double(newRoom.getRighe()*blocco + blocco/2)
+                            newRoom.position.y -= (newRoom.getRightDoorPosition().y - door.1.y)
+                            scene.addChild(newRoom)
+
+                        case .RIGHT:
+                            let type = STANZE_L_1DOOR.randomElement()
+                            let newRoom = Room(type!, startingPosition: CGPoint(x: door.1.x, y: door.1.y))
+                            newRoom.position.x += Double(blocco/2)
+                            newRoom.position.y -= (newRoom.getLeftDoorPosition().y - door.1.y)
+                            scene.addChild(newRoom)
+
+                        }
+                }
+                actualAdded = numeroStanze+1
             }
-//            else{
-////                lastRoomsAdded = []
-////                //AGGIUNGE STANZE CON UNA PORTA
-////                for door in doorPoints{
-////                    switch door.0{
-////                    case .UP:
-////                        //DEVE AVERE UNA PORTA SOTTO
-////                        //ORGANIZZARE ARRAY IN MODO CHE SAI A PRIORI LA POSIZIONE DELLA PORTA
-////                        let type = STANZE_D.randomElement()
-////                        let newRoom = Room(type ?? .SIMPLE_1, startingPosition: CGPoint(x: door.1.x, y: door.1.y))
-////                        newRoom.position.x -= (abs(newRoom.getDownDoorPosition().x - door.1.x))
-////                        newRoom.position.y += Double(newRoom.getColonne()*blocco)
-////                        lastRoomsAdded.append(newRoom)
-////                        scene.addChild(newRoom)
-////                    case .DOWN:
-////                        let type = STANZE_U.randomElement()
-////                        let newRoom = Room(type ?? .SIMPLE_1, startingPosition: CGPoint(x: door.1.x, y: door.1.y))
-////                        newRoom.position.x -= (abs(newRoom.getUpDoorPosition().x - door.1.x))
-////                        lastRoomsAdded.append(newRoom)
-////                    case .LEFT:
-////                        let type = STANZE_R.randomElement()
-////                        let newRoom = Room(type ?? .SIMPLE_1, startingPosition: CGPoint(x: door.1.x - Double(blocco/2), y: door.1.y))
-////                        newRoom.position.y += abs(newRoom.getRightDoorPosition().y - door.1.y)
-////                        newRoom.position.x -= Double(newRoom.getRighe()*blocco)
-////                        lastRoomsAdded.append(newRoom)
-////                    case .RIGHT:
-////                        let type = STANZE_L.randomElement()
-////                        let newRoom = Room(type ?? .SIMPLE_1, startingPosition: CGPoint(x: door.1.x + Double(blocco/2), y: door.1.y))
-////                        newRoom.position.y += abs(newRoom.getLeftDoorPosition().y - door.1.y)
-////                        lastRoomsAdded.append(newRoom)
-////                    }
-////                }
-//                actualAdded = numeroStanze+1
-//            }
-//        }
+        }
     }
     
 }
-}
+
