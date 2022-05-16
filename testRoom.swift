@@ -74,20 +74,26 @@ class Piano1: SKScene {
             addChild(cazzillo)
             
             // 2
-            let path = CGMutablePath()
-        path.move(to: CGPoint(x: -100, y: 0))
-            path.addLine(to: CGPoint(x: -100, y: 0))
-            let followLine = SKAction.follow(path, speed: 30.0)
+//            let path = CGMutablePath()
+//        path.move(to: CGPoint(x: -100, y: 0))
+//            path.addLine(to: CGPoint(x: -100, y: 0))
+//            let followLine = SKAction.follow(path, speed: 30.0)
                 
             // 3
-            let reversedLine = followLine.reversed()
+//            let reversedLine = followLine.reversed()
                 
+        let path = CGMutablePath()
+        path.move(to: CGPoint(x: 0, y: 0))
+        path.addLine(to: CGPoint(x: 0 , y: 180))
+        let followLine = SKAction.follow(path, duration: 2.0)
+        
+        
             // 4
             let square = UIBezierPath(rect: CGRect(x: 0,y: 0, width: 220, height: 0))
             let followSquare = SKAction.follow(square.cgPath, asOffset: true, orientToPath: false, duration: 5.0)
         
         let square2 = UIBezierPath(rect: CGRect(x: 0,y: 0, width: 0, height: 180))
-        let followSquare2 = SKAction.follow(square.cgPath, asOffset: true, orientToPath: false, duration: 5.0)
+        let followSquare2 = SKAction.follow(square2.cgPath, asOffset: true, orientToPath: false, duration: 5.0)
                 
             // 5
             let circle = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: 100, height: 100), cornerRadius: 100)
@@ -95,7 +101,10 @@ class Piano1: SKScene {
                 
             // 6
         let percorso = SKAction.sequence([followSquare,followSquare2])
-            cazzillo.run(SKAction.repeatForever(percorso))
+//            cazzillo.run(SKAction.repeatForever(percorso))
+        let percorso2 = SKAction.sequence([followLine, ])
+        cazzillo.run(followLine)
+//        cazzillo.run(.repeatForever(followSquare2))
             
         
     }

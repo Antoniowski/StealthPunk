@@ -28,13 +28,13 @@ enum GuardActionState: Int{
 
 class Guard: SKSpriteNode{
     
-    private var strenght: Int = 0
+    private var strength: Int = 0
     private var guardSpeed: Int = 0
     
     private var status: GuardState = GuardState()
     private var actionState: GuardActionState = .MOVE
     
-    private var visionConeRadius: Double = 0
+    private var visionConeRadius: Double = 200
     private var visionConeAngle: Double = 60
     
     private var arrayOfVisionPoints: [CGPoint] = []
@@ -44,6 +44,39 @@ class Guard: SKSpriteNode{
     
     private var playerFound: Bool = false
     
+    //    STATIC TEXTURES
+    var frontTexture: SKTexture = SKTexture()
+    var sideLTexture: SKTexture = SKTexture()
+    var sideRTexture: SKTexture = SKTexture()
+    var backTexture: SKTexture = SKTexture()
+    var halfFrontLTexture: SKTexture = SKTexture()
+    var halfFrontRTexture: SKTexture = SKTexture()
+    var halfBackLTexture: SKTexture = SKTexture()
+    var halfBackRTexture: SKTexture = SKTexture()
+    
+    //    IDLE ANIMATION ARRAYS
+    var idleAnimationFront: [SKTexture] = []
+    var idleAnimationFrontLeft: [SKTexture] = []
+    var idleAnimationFrontRight: [SKTexture] = []
+    var idleAnimationLeft: [SKTexture] = []
+    var idleAnimationRight: [SKTexture] = []
+    var idleAnimationBack: [SKTexture] = []
+    var idleAnimationBackRight: [SKTexture] = []
+    var idleAnimationBackLeft: [SKTexture] = []
+    
+    
+    //    WALKING ANIMATION ARRAYS
+    var walkingAnimationFront: [SKTexture] = []
+    var walkingAnimationFrontRight: [SKTexture] = []
+    var walkingAnimationFrontLeft: [SKTexture] = []
+    var walkingAnimationLeft: [SKTexture] = []
+    var walkingAnimationRight: [SKTexture] = []
+    var walkingAnimationBack: [SKTexture] = []
+    var walkingAnimationBackRight: [SKTexture] = []
+    var walkingAnimationBackLeft: [SKTexture] = []
+    
+    
+    
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
         super.init(texture: texture, color: color, size: size)
     }
@@ -52,23 +85,23 @@ class Guard: SKSpriteNode{
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(texture: SKTexture?, color: UIColor, size: CGSize, strenght: Int, speed: Int, visionConeRadius: Double, visionConeAngle: Double) {
+    init(texture: SKTexture?, color: UIColor, size: CGSize, strength: Int, speed: Int, visionConeRadius: Double, visionConeAngle: Double) {
         super.init(texture: texture, color: color, size: size)
         self.name = "enemy"
-        self.strenght = strenght
+        self.strength = strength
         self.guardSpeed = speed
         self.visionConeRadius = visionConeRadius
         self.visionConeAngle = visionConeAngle
         
         invisibleBall.strokeColor = .clear
         invisibleBall.fillColor = .clear
-       
-        
     }
+    
+    
     
 //    GET FUNCTIONS
     func getStrenght()->Int{
-        return self.strenght
+        return self.strength
     }
     
     func getSpeed()->Int{
@@ -102,8 +135,8 @@ class Guard: SKSpriteNode{
 //    SET FUNCTIONS
 //    Are these usefull for guards??
     
-    func setStenght(_ newStrenght: Int){
-        self.strenght = newStrenght
+    func setStenght(_ newStrength: Int){
+        self.strength = newStrength
     }
     
     func setSpeed(_ newSpeed: Int){
