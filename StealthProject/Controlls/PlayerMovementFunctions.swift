@@ -90,7 +90,7 @@ extension PlayableScene{
     }
     
     func interactState(scene: SKScene){
-        if player.getStatus().isInteracting == false{
+        if player.getStatus().isInteracting == false && player.getStatus().isExiting == false{
             player.setInteractingStatus(true)
 //            print("Interaction")
             scene.enumerateChildNodes(withName: "dynamicObject"){ object, _ in
@@ -127,10 +127,14 @@ extension PlayableScene{
     }
     
     func hiddenState(){
-        DispatchQueue.main.asyncAfter(deadline: .now()+0.5, execute: {
+        if player.getStatus().isHidden == false{
+            print("NONT")
+            player.setHiddenStatus(true)
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.35, execute: {
             self.player.alpha = 0
             self.player.setEnteringStatus(false)
         })
+        }
     }
 }
 

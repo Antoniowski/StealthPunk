@@ -38,6 +38,7 @@ struct CharacterState{
     var isInteracting: Bool = false
     var isEntering: Bool = false
     var isExiting: Bool = false
+    var isHidden: Bool = false
     var isWalking: Bool = false
     var isRunning: Bool = false
 }
@@ -181,15 +182,18 @@ class PlayableCharacter: SKSpriteNode{
                 }else if focus == .ENEMY && self.status.isAttacking == false{
                     self.actionState = .ATTACK
                 }
-            }else if self.actionState == .HIDDEN && self.status.isEntering == false && self.status.isExiting == false{
-                self.status.isExiting = true
-                //SOSTITUIRE DISPATCH CON ANIMAZIONE
-                //ENTRA PIU' VOLTE NELLO STATO HIDDEN E QUINDI NON RIAPPARE TODO: RISOLVERE LIMINTANDO L'INGRESSO ALLA FUNZIONE
-                self.alpha = 1
-                self.setActionState(.MOVE)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
-                    self.status.isExiting = false
-                })
+            }else if self.actionState == .HIDDEN && self.status.isEntering == false && self.status.isExiting == false {
+                if self.status.isExiting == false{
+                    self.status.isExiting = true
+                    //SOSTITUIRE DISPATCH CON ANIMAZIONE
+                    //ENTRA PIU' VOLTE NELLO STATO HIDDEN E QUINDI NON RIAPPARE TODO: RISOLVERE LIMINTANDO L'INGRESSO ALLA FUNZIONE
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
+                        self.status.isExiting = false
+                        self.setActionState(.MOVE)
+                        self.status.isHidden = false
+                        self.alpha = 1
+                    })
+                }
             }
         }
         
@@ -230,9 +234,9 @@ class PlayableCharacter: SKSpriteNode{
     
     
     func updateMovingDirection(){//FUNZIONA: Aggiorna una sola volta il moving direction e lo stato di running
-        if myMovement.getMagnitude() > 0.5 && self.actionState == .MOVE{
+        if myMovement.getMagnitude() > 0.5 && self.actionState == .MOVE && self.status.isEntering == false{
             self.actionState = .RUNNING
-        }else if myMovement.getMagnitude() <= 0.5 && self.actionState == .RUNNING{
+        }else if myMovement.getMagnitude() <= 0.5 && self.actionState == .RUNNING && self.status.isEntering == false{
             self.actionState = .MOVE
             self.xScale = 1
         }
@@ -451,7 +455,9 @@ class PlayableCharacter: SKSpriteNode{
             case .UP:
                 if(status.isInteracting == false) {
                     self.run(.animate(with: interactAnimationBack, timePerFrame: 0.15), completion: {
-                        self.actionState = .MOVE
+                        if self.status.isEntering == false{
+                            self.actionState = .MOVE
+                        }
                         self.status.isInteracting = false
                         self.status.idle = false
                     })
@@ -462,7 +468,9 @@ class PlayableCharacter: SKSpriteNode{
             case .RIGHT:
                 if(status.isInteracting == false) {
                     self.run(.animate(with: interactAnimationRight, timePerFrame: 0.15), completion: {
-                        self.actionState = .MOVE
+                        if self.status.isEntering == false{
+                            self.actionState = .MOVE
+                        }
                         self.status.isInteracting = false
                         self.status.idle = false
                     })
@@ -473,7 +481,9 @@ class PlayableCharacter: SKSpriteNode{
             case .DOWN:
                 if(status.isInteracting == false) {
                     self.run(.animate(with: interactAnimationFront, timePerFrame: 0.15), completion: {
-                        self.actionState = .MOVE
+                        if self.status.isEntering == false{
+                            self.actionState = .MOVE
+                        }
                         self.status.isInteracting = false
                         self.status.idle = false
                     })
@@ -483,7 +493,9 @@ class PlayableCharacter: SKSpriteNode{
             case .LEFT:
                 if(status.isInteracting == false) {
                     self.run(.animate(with: interactAnimationLeft, timePerFrame: 0.15), completion: {
-                        self.actionState = .MOVE
+                        if self.status.isEntering == false{
+                            self.actionState = .MOVE
+                        }
                         self.status.isInteracting = false
                         self.status.idle = false
                     })
@@ -495,7 +507,7 @@ class PlayableCharacter: SKSpriteNode{
                 print ("")
             }
         case .HIDDEN:
-            print("InteractAnimation")
+            print("")
             
             
 //            RUNNING ANIMATION
@@ -654,13 +666,13 @@ class PlayableCharacter: SKSpriteNode{
         self.characterSpeed = newSpeed
     }
     
-//    func setHiddenStatus(_ newStatus: Bool){
-//        self.status.isHidden = newStatus
-//    }
-//    
-//    func toggleHiddenStatus(){
-//        self.status.isHidden.toggle()
-//    }
+    func setHiddenStatus(_ newStatus: Bool){
+        self.status.isHidden = newStatus
+    }
+    
+    func toggleHiddenStatus(){
+        self.status.isHidden.toggle()
+    }
     
     func setInvicibleStatus(_ newStatus: Bool){
         self.status.isInvicible = newStatus

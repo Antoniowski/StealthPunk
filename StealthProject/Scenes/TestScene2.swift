@@ -170,7 +170,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         player.position = CGPoint(x: 0, y: 0)
         
 //        let room = Room(.SIMPLE_1, startingPosition: CGPoint(x: 400, y: 400))
-        let _ = Floor(self, floorType: .FIRST_FLOOR)
+//        let _ = Floor(self, floorType: .FIRST_FLOOR)
         
 //        luce.categoryBitMask = 2
 //        luce.position = lampione.position
@@ -206,12 +206,12 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         lightSwitch.position.x -= 70
         
         addChild(player)
-//        addChild(armadio)
+        addChild(armadio)
         addChild(lampione)
 //        addChild(luce)
-//        addChild(t)
+        addChild(t)
 //        addChild(ombra)
-//        addChild(lightSwitch)
+        addChild(lightSwitch)
 //        createRoom2()
 //        addChild(room)
     }
@@ -252,7 +252,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         scenecamera.position = player.position
 //        print(player.getFacingDirection())
 //        print(player.getFocusState())
-//        print(player.getActionState())
+        print(player.getActionState())
 //        print(player.getStatus().isInteracting)
     }
     
