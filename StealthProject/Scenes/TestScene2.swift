@@ -119,7 +119,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
                     addChild(myWall)
                 }
                 if(roomWalls2[index][index2] == 4){
-                    let myWall = SKSpriteNode(texture: SKTexture(imageNamed: "parete laterale"), size: CGSize(width: blocco, height: blocco))
+                    let myWall = SKSpriteNode(texture: SKTexture(imageNamed: "parete LateraleSx"), size: CGSize(width: blocco, height: blocco))
                     myWall.name = "wall"+String(index)+String(index2)
                     myWall.zPosition = 2
                     myWall.position = CGPoint(x: size.width * 0 + CGFloat(Float(blocco*index2)) + CGFloat(blocco/2), y: size.height - CGFloat(blocco*index) + CGFloat(blocco/2))
@@ -133,7 +133,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
                     addChild(myWall)
                 }
                 if(roomWalls2[index][index2] == 5){
-                    let myWall = SKSpriteNode(texture: SKTexture(imageNamed: "parete laterale"), size: CGSize(width: blocco, height: blocco))
+                    let myWall = SKSpriteNode(texture: SKTexture(imageNamed: "parete LateraleDx"), size: CGSize(width: blocco, height: blocco))
                     myWall.name = "wall"+String(index)+String(index2)
                     myWall.zPosition = 2
                     myWall.position = CGPoint(x: size.width * 0 + CGFloat(Float(blocco*index2)) + CGFloat(blocco/2), y: size.height - CGFloat(blocco*index) + CGFloat(blocco/2))
