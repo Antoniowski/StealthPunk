@@ -159,6 +159,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         myGameController.connectController()
         camera = scenecamera
         scenecamera.position = player.position
+//        scenecamera.setScale(10)
         armadio.position = player.position
         armadio.position.x += 250
         lampione.position = player.position
@@ -166,9 +167,10 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         player.zPosition = 10
         armadio.zPosition = 1
         lampione.zPosition = 1
-        player.position = CGPoint(x: 400, y: 400)
+        player.position = CGPoint(x: 0, y: 0)
         
-//        let room = Room(.SIMPLE_1, scene: self, startingPosition: CGPoint(x: 1000, y: 1000))
+//        let room = Room(.SIMPLE_1, startingPosition: CGPoint(x: 400, y: 400))
+        let _ = Floor(self, floorType: .FIRST_FLOOR)
         
 //        luce.categoryBitMask = 2
 //        luce.position = lampione.position
@@ -202,20 +204,16 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
         lightSwitch.position = player.position
         lightSwitch.position.x -= 70
-         
-        var pavimento : SKSpriteNode = SKSpriteNode(imageNamed: "pavimento$4")
-        pavimento.position = CGPoint(x: 0, y: 0)
-        pavimento.size = CGSize (width: blocco, height: blocco)
-        addChild(pavimento)
         
         addChild(player)
-        addChild(armadio)
+//        addChild(armadio)
         addChild(lampione)
 //        addChild(luce)
-        addChild(t)
+//        addChild(t)
 //        addChild(ombra)
 //        addChild(lightSwitch)
-        createRoom2()
+//        createRoom2()
+//        addChild(room)
     }
     
     
@@ -254,7 +252,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         scenecamera.position = player.position
 //        print(player.getFacingDirection())
 //        print(player.getFocusState())
-        print(player.getActionState())
+//        print(player.getActionState())
 //        print(player.getStatus().isInteracting)
     }
     
