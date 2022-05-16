@@ -445,16 +445,23 @@ class PlayableCharacter: SKSpriteNode{
                     print("")
                 }
             }
-            
+             //INTERACT ANIMATION
         case .INTERACT:
             switch movingDirection {
             case .UP:
-                print ("")
+                if(status.isInteracting == false) {
+                    self.run(.animate(with: interactAnimationBack, timePerFrame: 0.15), completion: {
+                        self.actionState = .MOVE
+                        self.status.isInteracting = false
+                        self.status.idle = false
+                    })
+                }
+
             case .UP_RIGHT:
                 print ("")
             case .RIGHT:
                 if(status.isInteracting == false) {
-                    self.run(.animate(with: interactAnimationRight, timePerFrame: 0.1), completion: {
+                    self.run(.animate(with: interactAnimationRight, timePerFrame: 0.15), completion: {
                         self.actionState = .MOVE
                         self.status.isInteracting = false
                         self.status.idle = false
@@ -464,7 +471,13 @@ class PlayableCharacter: SKSpriteNode{
             case .DOWN_RIGHT:
                 print ("")
             case .DOWN:
-                print ("")
+                if(status.isInteracting == false) {
+                    self.run(.animate(with: interactAnimationFront, timePerFrame: 0.15), completion: {
+                        self.actionState = .MOVE
+                        self.status.isInteracting = false
+                        self.status.idle = false
+                    })
+                }
             case .DOWN_LEFT:
                 print ("")
             case .LEFT:
@@ -510,7 +523,7 @@ class PlayableCharacter: SKSpriteNode{
                     self.xScale = 2
                     self.status.isWalking = false
                     self.facingDirection = .RIGHT
-                    self.run(.repeatForever(.animate(with: runningAnimationRight, timePerFrame: 0.18)))
+                    self.run(.repeatForever(.animate(with: runningAnimationRight, timePerFrame: 0.125)))
                         
                 }
             case .DOWN_RIGHT:
@@ -541,7 +554,7 @@ class PlayableCharacter: SKSpriteNode{
                     self.xScale = 2
                     self.status.isWalking = false
                     self.facingDirection = .LEFT
-                    self.run(.repeatForever(.animate(with: runningAnimationLeft, timePerFrame: 0.18)))
+                    self.run(.repeatForever(.animate(with: runningAnimationLeft, timePerFrame: 0.125)))
                         
                 }
             case .UP_LEFT:

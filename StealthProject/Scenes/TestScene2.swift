@@ -159,7 +159,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         myGameController.connectController()
         camera = scenecamera
         scenecamera.position = player.position
-        scenecamera.setScale(10)
+//        scenecamera.setScale(10)
         armadio.position = player.position
         armadio.position.x += 250
         lampione.position = player.position
