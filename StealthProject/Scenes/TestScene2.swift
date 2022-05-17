@@ -45,6 +45,12 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     var boots = Collectible(type: .BOOTS)
     var knuckles = Collectible(type: .KNUCKLES)
     var testcoin = Collectible(type: .COIN)
+    var testcoin2 = Collectible(type: .COIN)
+
+    var testcoin3 = Collectible(type: .COIN)
+
+    var testcoin4 = Collectible(type: .COIN)
+
     
     var indicatore = Counter()
     var chest = Chest(locked: false)
@@ -110,6 +116,10 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
         knuckles.position = .init(x: 150, y: 150)
         testcoin.position = .init(x: 150, y: -150)
+        testcoin2.position = .init(x: 170, y: -150)
+        testcoin3.position = .init(x: 190, y: -150)
+        testcoin4.position = .init(x: 210, y: -150)
+
         
         chest.position = .init(x: -100 , y: -120)
         
@@ -118,16 +128,20 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
         
         addChild(player)
-        addChild(armadio)
-        addChild(lampione)
+//        addChild(armadio)
+//        addChild(lampione)
 //        addChild(luce)
-        addChild(t)
+//        addChild(t)
 //        addChild(ombra)
-        addChild(lightSwitch)
-        addChild(boots)
-        addChild(knuckles)
+//        addChild(lightSwitch)
+//        addChild(boots)
+//        addChild(knuckles)
         addChild(testcoin)
-        addChild(chest)
+        addChild(testcoin2)
+        addChild(testcoin4)
+        addChild(testcoin3)
+
+//        addChild(chest)
         
         addChild(scenecamera)
 //        createRoom2()
@@ -153,8 +167,11 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
             let item = secondBody.node as? Collectible
             item?.action(player: firstBody.node as? PlayableCharacter ?? PlayableCharacter())
             if item?.getType() == .COIN{
-                indicatore.run(.moveBy(x: 0, y: -90, duration: 0.5), completion: {
-                    self.indicatore.run(.sequence([.wait(forDuration: 1.5), .moveBy(x: 0, y: 90, duration: 0.5)]))
+//                indicatore.run(.moveBy(x: 0, y: -90, duration: 0.5), completion: {
+//                    self.indicatore.run(.sequence([.wait(forDuration: 1.5), .moveBy(x: 0, y: 90, duration: 0.5)]))
+//                })
+                indicatore.run(.moveTo(y: UIScreen.main.bounds.height*0.29, duration: 0.5), completion: {
+                    self.indicatore.run(.sequence([.wait(forDuration: 1.5), .moveTo(y: UIScreen.main.bounds.height*0.55, duration: 0.5)]))
                 })
                 item?.action(contatore: indicatore)
             }
