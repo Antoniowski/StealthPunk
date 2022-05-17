@@ -9,10 +9,12 @@ import Foundation
 import SpriteKit
 
 enum CollectibleItemCategory: Int{
-    case COIN = 0
-    case BOOTS = 1
-    case KNUCKLES = 2
-    case POTION = 3
+    case COIN = 0    //CURRENCY
+    case BOOTS = 1   //NOISE -1
+    case KNUCKLES = 2   //STRENGHT +1
+    case POTION = 3   //SPEED +1
+    case SIRINGE = 4  //STRENGHT +1, SPEED +1, NOISE +1
+    case HAT = 5    //SPEED +1, NOISE -1, STRENGHT -1
 }
 
 class Collectible: SKSpriteNode{
@@ -45,6 +47,12 @@ class Collectible: SKSpriteNode{
         case .POTION:
             sprite = SKTexture(imageNamed: "potionBlur")
             self.collectibleName = "Speed Potion"
+            self.run(.setTexture(sprite))
+        case .SIRINGE:
+            sprite = SKTexture(imageNamed: "siringaBlur")
+            self.run(.setTexture(sprite))
+        case .HAT:
+            sprite = SKTexture(imageNamed: "cappelloBlur")
             self.run(.setTexture(sprite))
         }
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
@@ -82,6 +90,34 @@ class Collectible: SKSpriteNode{
             player.setSpeed(newSpeed: player.getSpeed() + 1)
             if player.getSpeed() > 7 {
                 player.setSpeed(newSpeed: 7)
+            }
+        case .SIRINGE:
+            player.setSpeed(newSpeed: player.getSpeed() + 1)
+            player.setStrenght(newStrenght: player.getStrenght() + 1)
+            player.setNoise(newNoise: player.getNoise() + 1)
+            
+            if player.getNoise() > 7{
+                player.setNoise(newNoise: 7)
+            }
+            if player.getSpeed() > 7{
+                player.setSpeed(newSpeed: 7)
+            }
+            if player.getStrenght() > 7 {
+                player.setStrenght(newStrenght: 7)
+            }
+        case .HAT:
+            player.setSpeed(newSpeed: player.getSpeed() + 1)
+            player.setStrenght(newStrenght: player.getStrenght() - 1)
+            player.setNoise(newNoise: player.getNoise() - 1)
+            
+            if player.getNoise() < 0{
+                player.setNoise(newNoise: 0)
+            }
+            if player.getSpeed() > 7{
+                player.setSpeed(newSpeed: 7)
+            }
+            if player.getStrenght() < 0 {
+                player.setStrenght(newStrenght: 0)
             }
         }
     }
