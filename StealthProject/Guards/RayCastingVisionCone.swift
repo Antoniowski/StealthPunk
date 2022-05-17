@@ -11,10 +11,15 @@ import SpriteKit
 func visionCone(entity: Guard, scene: SKScene){
 //    entity.centerBall()
     
+    
     if(!entity.getInitBall()){
         scene.addChild(entity.getCenterBall())
         entity.setInitBall()
+        entity.getCenterBall().position = entity.position
     }
+    
+    entity.position = entity.getCenterBall().position
+
     
     scene.enumerateChildNodes(withName: "*"){node, _ in
 //        guard node.name != nil && entity.name != nil else{
@@ -108,9 +113,10 @@ func createVisionCone360(entity: Guard, scene: SKScene){
     }
     
     let visualCone = SKShapeNode(path: myPath.cgPath)
-    visualCone.fillColor = .green
-    visualCone.strokeColor = .green
-    visualCone.zPosition = 20
+    visualCone.fillColor = .yellow
+    visualCone.strokeColor = .yellow
+    visualCone.alpha = 0.35
+    visualCone.zPosition = entity.zPosition - 1
     visualCone.name = entity.name!+"visualCone"
     
     scene.addChild(visualCone)
@@ -129,9 +135,10 @@ func createVisionCone(entity: Guard, scene: SKScene){
     myPath.addLine(to: entity.position)
     
     let visualCone = SKShapeNode(path: myPath.cgPath)
-    visualCone.fillColor = .green
-    visualCone.strokeColor = .green
-    visualCone.zPosition = 20
+    visualCone.fillColor = .yellow
+    visualCone.strokeColor = .yellow
+    visualCone.alpha = 0.35
+    visualCone.zPosition = entity.zPosition - 1
     visualCone.name = entity.name!+"visualCone"
     
     scene.addChild(visualCone)
