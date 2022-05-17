@@ -138,7 +138,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
             secondBody.node?.removeFromParent()
         }
         if firstBody.node?.name == "player" && secondBody.node?.name == "door"{
-            let door = secondBody.node as? Door
+            var door = secondBody.node as? Door
             door?.open()
         }
     }
