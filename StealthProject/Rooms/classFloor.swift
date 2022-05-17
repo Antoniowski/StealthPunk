@@ -23,6 +23,10 @@ class Floor{
     private var stanze: [Room] = []
     private var numeroStanze: Int = 0
     
+    func getType()-> FloorType{
+        return type
+    }
+    
     init(_ scene: SKScene, floorType: FloorType){
         self.type = floorType
         self.numeroStanze = Int.random(in: 4...4)
