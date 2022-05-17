@@ -306,11 +306,9 @@ class Guard: SKSpriteNode{
 
         if(self.actionStateBuffer == GuardActionState.MOVE){
             if(self.movingDirectionBuffer != self.movingDirection){
-                print("Initializing animation")
                 self.removeAction(forKey: "guardMovement")
                 switch movingDirection {
                 case .UP:
-                    print("Back animation")
                     self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.125)), withKey: "guardMovement")
                 case .UP_RIGHT:
                     return
@@ -351,7 +349,6 @@ func createPath(entity: Guard, arrayOfActions: [myAction]){
             
             var space: Double = 0
             
-            print("Creating the movement action")
             let path = CGMutablePath()
             path.move(to: CGPoint(x: 0, y: 0))
             if(action.startingPoint.x != action.endingPoint.x){
@@ -382,7 +379,6 @@ func createPath(entity: Guard, arrayOfActions: [myAction]){
                 
                 path.addLine(to: CGPoint(x: 0, y: (action.endingPoint.y - action.startingPoint.y)*CGFloat(blockDimension)))
                 if(action.endingPoint.y - action.startingPoint.y > 0){
-                    print("Animazione verso l'alto")
                     let updateStateActionToMoveAndDirection = SKAction.customAction(withDuration: 0.01, actionBlock: {
                         node, _ in
                         
@@ -408,8 +404,6 @@ func createPath(entity: Guard, arrayOfActions: [myAction]){
             sequenceArray.append(followLine)
             
         case .ROTATE_ACTION:
-            print("Creating the rotate action")
-            
             let updateStateActionToIdle = SKAction.customAction(withDuration: 0.01, actionBlock: {
                 node, _ in
                 
@@ -424,8 +418,6 @@ func createPath(entity: Guard, arrayOfActions: [myAction]){
             sequenceArray.append(rotateAction)
             
         case .WAIT_ACTION:
-            print("Creating the wait action")
-            
             let updateStateActionToIdle = SKAction.customAction(withDuration: 0.01, actionBlock: {
                 node, _ in
                 
