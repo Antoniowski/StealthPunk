@@ -25,9 +25,12 @@ class Hideout: InteractableObject{
     
     func action(player: PlayableCharacter) {
 //        player.setHiddenStatus(true)
-        player.setEnteringStatus(true)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
-            player.setActionState(.HIDDEN)
-        })
+        if player.getActionState() == .INTERACT {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25, execute: {
+                player.setEnteringStatus(true)
+                player.setActionState(.HIDDEN)
+            })
+
+        }
     }
 }

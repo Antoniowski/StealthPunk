@@ -88,7 +88,7 @@ class Room: SKNode {
             numColonne = simple1Matrix.count
             stanza = simple1Matrix
             nemici = []
-            setTextures()
+            setTextures(tipo: .FIRST_FLOOR)
             self.createRoom()
         case .FIRST_2:
             door = DoorPosition(UP: true, DOWN: true, RIGHT: false, LEFT: false)
@@ -97,7 +97,7 @@ class Room: SKNode {
             numColonne = simple1Matrix.count
             stanza = simple1Matrix
             nemici = []
-            setTextures()
+            setTextures(tipo: .FIRST_FLOOR)
             createRoom()
         case .FIRST_3:
             door = DoorPosition(UP: true, DOWN: true, RIGHT: true, LEFT: false)
@@ -106,7 +106,7 @@ class Room: SKNode {
             numColonne = simple1Matrix.count
             stanza = simple1Matrix
             nemici = []
-            setTextures()
+            setTextures(tipo: .FIRST_FLOOR)
             createRoom()
         case .FIRST_4:
             door = DoorPosition(UP: true, DOWN: true, RIGHT: true, LEFT: true)
@@ -115,7 +115,7 @@ class Room: SKNode {
             numColonne = simple1Matrix.count
             stanza = simple1Matrix
             nemici = []
-            setTextures()
+            setTextures(tipo: .FIRST_FLOOR)
             createRoom()
         case .SIMPLE_1:
             door = DoorPosition(UP: true, DOWN: true, RIGHT: false, LEFT: false)
@@ -124,7 +124,7 @@ class Room: SKNode {
             numColonne = simple1Matrix.count
             stanza = simple1Matrix
             nemici = []
-            setTextures()
+            setTextures(tipo: .FIRST_FLOOR)
             createRoom()
         case .SIMPLE_2:
             door = DoorPosition(UP: true, DOWN: true, RIGHT: false, LEFT: false)
@@ -133,7 +133,7 @@ class Room: SKNode {
             numColonne = simple2Matrix.count
             stanza = simple2Matrix
             nemici = []
-            setTextures()
+            setTextures(tipo: .FIRST_FLOOR)
             createRoom()
         case .SIMPLE_3:
             door = DoorPosition(UP: false, DOWN: true, RIGHT: true, LEFT: true)
@@ -142,7 +142,7 @@ class Room: SKNode {
             numColonne = simple3Matrix.count
             stanza = simple3Matrix
             nemici = []
-            setTextures()
+            setTextures(tipo: .FIRST_FLOOR)
             createRoom()
         case .SIMPLE_4:
             door = DoorPosition(UP: true, DOWN: false, RIGHT: true, LEFT: true)
@@ -151,7 +151,7 @@ class Room: SKNode {
             numColonne = simple4Matrix.count
             stanza = simple4Matrix
             nemici = []
-            setTextures()
+            setTextures(tipo: .FIRST_FLOOR)
             createRoom()
         case .SIMPLE_5:
             door = DoorPosition(UP: false, DOWN: true, RIGHT: false, LEFT: true)
@@ -160,7 +160,7 @@ class Room: SKNode {
             numColonne = simple5Matrix.count
             stanza = simple5Matrix
             nemici = []
-            setTextures()
+            setTextures(tipo: .FIRST_FLOOR)
             createRoom()
         case .SIMPLE_6:
             door = DoorPosition(UP: false, DOWN: true, RIGHT: true, LEFT: false)
@@ -169,7 +169,7 @@ class Room: SKNode {
             numColonne = simple6Matrix.count
             stanza = simple6Matrix
             nemici = []
-            setTextures()
+            setTextures(tipo: .FIRST_FLOOR)
             createRoom()
         case .PROVA1:
             door = DoorPosition(UP: true, DOWN: false, RIGHT: false, LEFT: false)
@@ -178,7 +178,7 @@ class Room: SKNode {
             numColonne = prova1.count
             stanza = prova1
             nemici = []
-            setTextures()
+            setTextures(tipo: .FIRST_FLOOR)
             createRoom()
         case .PROVA2:
             door = DoorPosition(UP: false, DOWN: true, RIGHT: false, LEFT: false)
@@ -187,7 +187,7 @@ class Room: SKNode {
             numColonne = prova2.count
             stanza = prova2
             nemici = []
-            setTextures()
+            setTextures(tipo: .FIRST_FLOOR)
             createRoom()
         case .PROVA3:
             door = DoorPosition(UP: false, DOWN: false, RIGHT: false, LEFT: true)
@@ -196,7 +196,7 @@ class Room: SKNode {
             numColonne = prova3.count
             stanza = prova3
             nemici = []
-            setTextures()
+            setTextures(tipo: .FIRST_FLOOR)
             createRoom()
         case .PROVA4:
             door = DoorPosition(UP: false, DOWN: false, RIGHT: true, LEFT: false)
@@ -205,7 +205,7 @@ class Room: SKNode {
             numColonne = prova4.count
             stanza = prova4
             nemici = []
-            setTextures()
+            setTextures(tipo: .FIRST_FLOOR)
             createRoom()
         }
     }
@@ -215,16 +215,54 @@ class Room: SKNode {
     }
     
     
-    private func setTextures(){
-        self.frontWallTexture = SKTexture(imageNamed: "wall")
-        self.floorTexture = SKTexture(imageNamed: "pavimento4")
-        self.sideRightWallTexture = SKTexture(imageNamed: "wallR")
-        self.sideLeftWallTexture  = SKTexture(imageNamed: "wallL")
-        self.cornerRightWallTexture = SKTexture(imageNamed: "wallAngleR")
-        self.cornerLeftWallTexture = SKTexture(imageNamed: "wallAngleL")
-        self.frontDoorTexture = SKTexture(imageNamed: "doorClosed")
-        self.leftDoorTexture = SKTexture(imageNamed: "doorLeft")
-        self.rightDoorTexture = SKTexture(imageNamed: "doorRight")
+//    private func setTextures(){
+//        self.frontWallTexture = SKTexture(imageNamed: "wall")
+//        self.floorTexture = SKTexture(imageNamed: "pavimento4")
+//        self.sideRightWallTexture = SKTexture(imageNamed: "wallR")
+//        self.sideLeftWallTexture  = SKTexture(imageNamed: "wallL")
+//        self.cornerRightWallTexture = SKTexture(imageNamed: "wallAngleR")
+//        self.cornerLeftWallTexture = SKTexture(imageNamed: "wallAngleL")
+//        self.frontDoorTexture = SKTexture(imageNamed: "doorClosed")
+//        self.leftDoorTexture = SKTexture(imageNamed: "doorLeft")
+//        self.rightDoorTexture = SKTexture(imageNamed: "doorRight")
+//    }
+    
+    private func setTextures(tipo : FloorType){
+        switch tipo {
+            
+        case .FIRST_FLOOR:
+            self.frontWallTexture = SKTexture(imageNamed: "parete frontaleSu")
+            self.floorTexture = SKTexture(imageNamed: "erba")
+            self.sideRightWallTexture = SKTexture(imageNamed: "parete LateraleDx")
+            self.sideLeftWallTexture  = SKTexture(imageNamed: "parete LateraleSx")
+            self.cornerRightWallTexture = SKTexture(imageNamed: "angolo frontaleDxSu")
+            self.cornerLeftWallTexture = SKTexture(imageNamed: "andolo frontaleSxSu")
+            self.frontDoorTexture = SKTexture(imageNamed: "doorClosed")
+            self.leftDoorTexture = SKTexture(imageNamed: "porta laterale")
+            self.rightDoorTexture = SKTexture(imageNamed: "porta laterale")
+            
+        case .SECOND_FLOOE:
+            self.frontWallTexture = SKTexture(imageNamed: "wall")
+            self.floorTexture = SKTexture(imageNamed: "pavimento4")
+            self.sideRightWallTexture = SKTexture(imageNamed: "wallR")
+            self.sideLeftWallTexture  = SKTexture(imageNamed: "wallL")
+            self.cornerRightWallTexture = SKTexture(imageNamed: "wallAngleR")
+            self.cornerLeftWallTexture = SKTexture(imageNamed: "wallAngleL")
+            self.frontDoorTexture = SKTexture(imageNamed: "doorClosed")
+            self.leftDoorTexture = SKTexture(imageNamed: "doorLeft")
+            self.rightDoorTexture = SKTexture(imageNamed: "doorRight")
+            
+        case .LAST_FLOOR:
+            self.frontWallTexture = SKTexture(imageNamed: "pavimento2 tappeto lato su")
+            self.floorTexture = SKTexture(imageNamed: "pavimento2")
+            self.sideRightWallTexture = SKTexture(imageNamed: "pavimento2 tappeto lato dx")
+            self.sideLeftWallTexture  = SKTexture(imageNamed: "pavimento2 tappeto lato sx")
+            self.cornerRightWallTexture = SKTexture(imageNamed: "pavimento2 tappeto angolo dx su")
+            self.cornerLeftWallTexture = SKTexture(imageNamed: "pavimento2 tappeto angolo sx su")
+            self.frontDoorTexture = SKTexture(imageNamed: "doorClosed")
+            self.leftDoorTexture = SKTexture(imageNamed: "porta laterale")
+            self.rightDoorTexture = SKTexture(imageNamed: "porta laterale")
+        }
     }
     
     
@@ -294,7 +332,8 @@ class Room: SKNode {
                     myWall.physicsBody?.isDynamic = false
                     addChild(myWall)
                 case 7:
-                    let door = SKSpriteNode(texture: frontDoorTexture, size: bloccoSize)
+//                    let door = SKSpriteNode(texture: frontDoorTexture, size: bloccoSize)
+                    let door = Door(.UP, isOpen: false)
                     door.name = "door"
                     door.zPosition = 2
                     door.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
@@ -305,7 +344,8 @@ class Room: SKNode {
                     door.physicsBody?.allowsRotation = false
                     addChild(door)
                 case 8:
-                    let door = SKSpriteNode(texture: frontDoorTexture, size: bloccoSize)
+//                    let door = SKSpriteNode(texture: frontDoorTexture, size: bloccoSize)
+                    let door = Door(.DOWN, isOpen: false)
                     door.name = "door"
                     door.zPosition = 2
                     door.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
@@ -316,7 +356,8 @@ class Room: SKNode {
                     door.physicsBody?.allowsRotation = false
                     addChild(door)
                 case 9:
-                    let door = SKSpriteNode(texture: leftDoorTexture, size: bloccoSize)
+//                    let door = SKSpriteNode(texture: leftDoorTexture, size: bloccoSize)
+                    let door = Door(.LEFT, isOpen: false)
                     door.name = "door"
                     door.zPosition = 2
                     door.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
@@ -327,7 +368,8 @@ class Room: SKNode {
                     door.physicsBody?.allowsRotation = false
                     addChild(door)
                 case 10:
-                    let door = SKSpriteNode(texture: rightDoorTexture, size: bloccoSize)
+//                    let door = SKSpriteNode(texture: rightDoorTexture, size: bloccoSize)
+                    let door = Door(.RIGHT, isOpen: false)
                     door.name = "door"
                     door.zPosition = 2
                     door.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))

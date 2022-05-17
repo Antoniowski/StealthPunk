@@ -15,9 +15,16 @@ class Human: PlayableCharacter{
     
     override init(texture: SKTexture?, color: UIColor, size: CGSize, noise: Int, speed: Int, strenght: Int) {
         super.init(texture: texture, color: color, size: size, noise: noise, speed: speed, strenght: strenght)
-//        self.physicsBody = SKPhysicsBody(rectangleOf: size)
-//        self.physicsBody?.affectedByGravity = false
-//        self.physicsBody?.allowsRotation = false
+        self.name = "player"
+        self.physicsBody = SKPhysicsBody(rectangleOf: size)
+        self.physicsBody?.affectedByGravity = false
+        self.physicsBody?.allowsRotation = false
+        self.physicsBody?.isDynamic = true
+        self.physicsBody?.categoryBitMask = ColliderType.PLAYER.rawValue
+        self.physicsBody?.collisionBitMask = ColliderType.COLLECTIBLE.rawValue
+        self.physicsBody?.contactTestBitMask = ColliderType.COLLECTIBLE.rawValue
+        self.physicsBody?.collisionBitMask = ColliderType.DOOR.rawValue
+        self.physicsBody?.contactTestBitMask = ColliderType.DOOR.rawValue
         setAnimationArrays()
     }
     
@@ -36,6 +43,7 @@ class Human: PlayableCharacter{
     init(){
         super.init(texture: SKTexture(imageNamed: "boyFront"), color: .clear, size: CGSize(width: 35, height: 75))
         self.characterName = "Human" //INSERIRE NOME PERSONAGGIO APPENA DISPONIBILE
+        self.name = "player"
         self.type = .HUMAN
         self.physicsBody = SKPhysicsBody(rectangleOf: size)
         setAnimationArrays()
