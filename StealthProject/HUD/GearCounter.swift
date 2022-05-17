@@ -14,7 +14,7 @@ class Counter: SKNode{
 //    private var border: SKSpriteNode = SKSpriteNode()
     private var border: SKShapeNode = SKShapeNode(rect: .init(x: 0, y: 0, width: 200, height: 75), cornerRadius: 30)
     private var image: SKSpriteNode = SKSpriteNode(imageNamed: "ingranaggio")
-    private var etichetta: SKLabelNode = SKLabelNode()
+    var etichetta: SKLabelNode = SKLabelNode()
     
     override init(){
         super.init()
@@ -23,6 +23,7 @@ class Counter: SKNode{
         image.zPosition = 1000
         image.position = CGPoint (x: 50, y: 37.5)
         image.size = CGSize (width: 50, height: 50)
+        image.run(.repeatForever(.rotate(byAngle: pi, duration: 4)))
         etichetta.zPosition = 1000
         etichetta.position = CGPoint (x: 130, y: 20)
         etichetta.text = "x \(number)"

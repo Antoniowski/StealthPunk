@@ -26,7 +26,7 @@ func playerMovement(player: SKSpriteNode, velocity: CGVector){
 }
 
 
-protocol PlayableScene: DeltaProtocol{
+protocol PlayableScene: DeltaProtocol, SKPhysicsContactDelegate{
     
     var player: PlayableCharacter {get set}
     
@@ -37,6 +37,8 @@ protocol PlayableScene: DeltaProtocol{
     var ACCELLERATION: Double {get set}
     var MAX_SPEED: Double {get set}
     var FRICTION: Double {get set}
+    
+    var indicatore: Counter {get set}
     
 }
 
@@ -134,6 +136,38 @@ extension PlayableScene{
             self.player.alpha = 0
             self.player.setEnteringStatus(false)
         })
+        }
+    }
+    
+    
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        var firstBody = SKPhysicsBody()
+        var secondBody = SKPhysicsBody()
+        
+        if contact.bodyA.node?.name == "player"{
+            firstBody = contact.bodyA
+            secondBody = contact.bodyB
+        }else if contact.bodyB.node?.name == "player"{
+            firstBody = contact.bodyB
+            secondBody = contact.bodyA
+        }
+        
+        
+        if firstBody.node?.name == "player" && secondBody.node?.name == "collectible"{
+            let item = secondBody.node as? Collectible
+            item?.action(player: firstBody.node as? PlayableCharacter ?? PlayableCharacter())
+            if item?.getType() == .COIN{
+                indicatore.run(.moveBy(x: 0, y: -90, duration: 0.5), completion: {
+                    self.indicatore.run(.sequence([.wait(forDuration: 1.5), .moveBy(x: 0, y: 90, duration: 0.5)]))
+                })
+                item?.action(contatore: indicatore)
+            }
+            secondBody.node?.removeFromParent()
+        }
+        if firstBody.node?.name == "player" && secondBody.node?.name == "door"{
+            let door = secondBody.node as? Door
+            door?.open()
         }
     }
 }

@@ -56,6 +56,10 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
         physicsWorld.contactDelegate = self
         camera = scenecamera
+        indicatore.position.x = player.position.x - 100
+        indicatore.position.y = player.position.y + frame.height/3.5 + 90
+        scenecamera.addChild(indicatore)
+
         scenecamera.position = player.position
       scenecamera.setScale(1)
         armadio.position = player.position
@@ -106,6 +110,8 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         knuckles.position = .init(x: 150, y: 150)
         testcoin.position = .init(x: 150, y: -150)
         
+
+        
         
         
         addChild(player)
@@ -119,7 +125,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         addChild(knuckles)
         addChild(testcoin)
         
-        addChild(indicatore)
+        addChild(scenecamera)
 //        createRoom2()
 //        addChild(room)
     }
@@ -142,6 +148,12 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         if firstBody.node?.name == "player" && secondBody.node?.name == "collectible"{
             let item = secondBody.node as? Collectible
             item?.action(player: firstBody.node as? PlayableCharacter ?? PlayableCharacter())
+            if item?.getType() == .COIN{
+                indicatore.run(.moveBy(x: 0, y: -90, duration: 0.5), completion: {
+                    self.indicatore.run(.sequence([.wait(forDuration: 1.5), .moveBy(x: 0, y: 90, duration: 0.5)]))
+                })
+                item?.action(contatore: indicatore)
+            }
             secondBody.node?.removeFromParent()
         }
         if firstBody.node?.name == "player" && secondBody.node?.name == "door"{
@@ -154,6 +166,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         calcDelta(currentTime: currentTime)
+        indicatore.etichetta.text = "x \(indicatore.number)"
         player.updateActionState(scene: self)
 //        player.updateMovingDirection()
         player.animationTree()
@@ -186,8 +199,8 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
 
         
         scenecamera.position = player.position
-        indicatore.position.x = scenecamera.position.x - 100
-        indicatore.position.y = scenecamera.position.y + frame.height/3.5
+//        indicatore.position.x = scenecamera.position.x - 100
+//        indicatore.position.y = scenecamera.position.y + frame.height/3.5
         
         
         
