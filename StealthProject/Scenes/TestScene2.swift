@@ -45,6 +45,9 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     var boots = Collectible(type: .BOOTS)
     var knuckles = Collectible(type: .KNUCKLES)
     var testcoin = Collectible(type: .COIN)
+    
+    var indicatore = Counter()
+    
 
     
     
@@ -65,7 +68,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         player.position = CGPoint(x: 204, y: 300)
         
 //        let room = Room(.SIMPLE_1, startingPosition: CGPoint(x: 400, y: 400))
-        let _ = Floor(self, floorType: .FIRST_FLOOR)
+//        let _ = Floor(self, floorType: .FIRST_FLOOR)
         
 //        luce.categoryBitMask = 2
 //        luce.position = lampione.position
@@ -103,6 +106,8 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         knuckles.position = .init(x: 150, y: 150)
         testcoin.position = .init(x: 150, y: -150)
         
+        
+        
         addChild(player)
         addChild(armadio)
         addChild(lampione)
@@ -113,6 +118,8 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         addChild(boots)
         addChild(knuckles)
         addChild(testcoin)
+        
+        addChild(indicatore)
 //        createRoom2()
 //        addChild(room)
     }
@@ -179,6 +186,11 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
 
         
         scenecamera.position = player.position
+        indicatore.position.x = scenecamera.position.x - 100
+        indicatore.position.y = scenecamera.position.y + frame.height/3.5
+        
+        
+        
 //        print(player.getFacingDirection())
 //        print(player.getFocusState())
 //        print(player.getActionState())
