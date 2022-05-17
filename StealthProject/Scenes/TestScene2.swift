@@ -54,7 +54,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         physicsWorld.contactDelegate = self
         camera = scenecamera
         scenecamera.position = player.position
-//        scenecamera.setScale(10)
+//        scenecamera.setScale(0.4)
         armadio.position = player.position
         armadio.position.x += 250
         lampione.position = player.position
@@ -136,6 +136,10 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
             let item = secondBody.node as? Collectible
             item?.action(player: firstBody.node as? PlayableCharacter ?? PlayableCharacter())
             secondBody.node?.removeFromParent()
+        }
+        if firstBody.node?.name == "player" && secondBody.node?.name == "door"{
+            let door = secondBody.node as? Door
+            door?.open()
         }
     }
     

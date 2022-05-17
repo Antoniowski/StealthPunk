@@ -36,6 +36,7 @@ class Door: SKSpriteNode{
             self.isOpen = true
             self.run(.setTexture(openTexure))
         }
+        self.name = "door"
     }
     
     private func setTexture(_ placement: DoorPlacement){
@@ -60,5 +61,6 @@ class Door: SKSpriteNode{
     func open(){
         self.isOpen = true
         self.run(.setTexture(openTexure))
+        self.physicsBody = SKPhysicsBody()
     }
 }
