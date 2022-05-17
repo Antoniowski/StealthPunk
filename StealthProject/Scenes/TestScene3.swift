@@ -10,7 +10,7 @@ import SpriteKit
 
 class TestScene3: SKScene, SKPhysicsContactDelegate {
 
-    let guard1 = Guard(texture: SKTexture(imageNamed: "boyFront"), color: .clear, size: CGSize(width: 35, height: 75), strenght: 2, speed: 2, visionConeRadius: 150, visionConeAngle: 60)
+    let guard1 = Guard(texture: SKTexture(imageNamed: "ConoGrande3:4BackF1"), color: .clear, size: CGSize(width: 35, height: 75), strength: 2, speed: 2, visionConeRadius: 150, visionConeAngle: 60)
     
     let player = PlayableCharacter(texture: SKTexture(imageNamed: "boyFront"), color: .clear, size: CGSize(width: 35, height: 75), noise: 1, speed: 5, strenght: 5)
     
@@ -34,10 +34,10 @@ class TestScene3: SKScene, SKPhysicsContactDelegate {
     
     func spawn(){
         guard1.position = CGPoint(x: size.width*0.5, y: size.height*0.5)
-//        addChild(guard1)
+        addChild(guard1)
         
         player.position = CGPoint(x: size.width*0.5, y: size.height*0.5)
-        addChild(player)
+//        addChild(player)
         
         
 //        guard1.run(.rotate(byAngle: 3.14 * 90 / 180, duration: 2))
