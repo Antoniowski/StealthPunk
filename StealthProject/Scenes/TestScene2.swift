@@ -54,7 +54,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         physicsWorld.contactDelegate = self
         camera = scenecamera
         scenecamera.position = player.position
-      scenecamera.setScale(10)
+      scenecamera.setScale(1)
         armadio.position = player.position
         armadio.position.x += 250
         lampione.position = player.position
@@ -62,10 +62,10 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         player.zPosition = 10
         armadio.zPosition = 1
         lampione.zPosition = 1
-        player.position = CGPoint(x: -100, y: -100)
+        player.position = CGPoint(x: 204, y: 300)
         
 //        let room = Room(.SIMPLE_1, startingPosition: CGPoint(x: 400, y: 400))
-//        let _ = Floor(self, floorType: .FIRST_FLOOR)
+        let _ = Floor(self, floorType: .FIRST_FLOOR)
         
 //        luce.categoryBitMask = 2
 //        luce.position = lampione.position
@@ -153,6 +153,8 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         player.searchObject(scene: self)
         player.updateFocus(scene: self)
         
+        
+        
         switch player.getActionState(){
         case .MOVE:
             moveState()
@@ -183,7 +185,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
 //        print(player.getStatus().isInteracting)
 //        print(player.name)
 //        print(boots.name)
-        print(player.getSpeed())
+//        print(player.getSpeed())
     }
     
     

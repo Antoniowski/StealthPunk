@@ -23,6 +23,8 @@ class Human: PlayableCharacter{
         self.physicsBody?.categoryBitMask = ColliderType.PLAYER.rawValue
         self.physicsBody?.collisionBitMask = ColliderType.COLLECTIBLE.rawValue
         self.physicsBody?.contactTestBitMask = ColliderType.COLLECTIBLE.rawValue
+        self.physicsBody?.collisionBitMask = ColliderType.DOOR.rawValue
+        self.physicsBody?.contactTestBitMask = ColliderType.DOOR.rawValue
         setAnimationArrays()
     }
     

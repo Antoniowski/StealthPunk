@@ -332,7 +332,8 @@ class Room: SKNode {
                     myWall.physicsBody?.isDynamic = false
                     addChild(myWall)
                 case 7:
-                    let door = SKSpriteNode(texture: frontDoorTexture, size: bloccoSize)
+//                    let door = SKSpriteNode(texture: frontDoorTexture, size: bloccoSize)
+                    let door = Door(.UP, isOpen: false)
                     door.name = "door"
                     door.zPosition = 2
                     door.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
@@ -343,7 +344,8 @@ class Room: SKNode {
                     door.physicsBody?.allowsRotation = false
                     addChild(door)
                 case 8:
-                    let door = SKSpriteNode(texture: frontDoorTexture, size: bloccoSize)
+//                    let door = SKSpriteNode(texture: frontDoorTexture, size: bloccoSize)
+                    let door = Door(.DOWN, isOpen: false)
                     door.name = "door"
                     door.zPosition = 2
                     door.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
@@ -354,7 +356,8 @@ class Room: SKNode {
                     door.physicsBody?.allowsRotation = false
                     addChild(door)
                 case 9:
-                    let door = SKSpriteNode(texture: leftDoorTexture, size: bloccoSize)
+//                    let door = SKSpriteNode(texture: leftDoorTexture, size: bloccoSize)
+                    let door = Door(.LEFT, isOpen: false)
                     door.name = "door"
                     door.zPosition = 2
                     door.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
@@ -365,7 +368,8 @@ class Room: SKNode {
                     door.physicsBody?.allowsRotation = false
                     addChild(door)
                 case 10:
-                    let door = SKSpriteNode(texture: rightDoorTexture, size: bloccoSize)
+//                    let door = SKSpriteNode(texture: rightDoorTexture, size: bloccoSize)
+                    let door = Door(.RIGHT, isOpen: false)
                     door.name = "door"
                     door.zPosition = 2
                     door.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
