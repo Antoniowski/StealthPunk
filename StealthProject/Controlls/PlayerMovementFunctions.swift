@@ -47,9 +47,9 @@ extension PlayableScene{
         inputVector = myMovement
         if inputVector != CGVector.zero{
             rollVector = inputVector.normalized()
-            inputVector = inputVector*ACCELLERATION*delta //AGGIUNGERE ACCELERAZIONE APPROPRIATA
+            inputVector = inputVector*ACCELLERATION*Double(player.getSpeed())*0.25*delta //AGGIUNGERE ACCELERAZIONE APPROPRIATA
             velocity += inputVector
-            velocity = velocity.clamped(maxLength: MAX_SPEED*delta*0.5)
+            velocity = velocity.clamped(maxLength: MAX_SPEED*delta*Double(player.getSpeed())*0.5)
         }else{
             velocity = velocity.moveTowardZero(value: FRICTION*delta)
         }
@@ -61,9 +61,9 @@ extension PlayableScene{
         inputVector = myMovement
         if inputVector != CGVector.zero{
             rollVector = inputVector.normalized()
-            inputVector = inputVector*ACCELLERATION*delta //AGGIUNGERE ACCELERAZIONE APPROPRIATA
+            inputVector = inputVector*ACCELLERATION*Double(player.getSpeed())*0.25*delta //AGGIUNGERE ACCELERAZIONE APPROPRIATA
             velocity += inputVector
-            velocity = velocity.clamped(maxLength: 1.5*MAX_SPEED*delta)
+            velocity = velocity.clamped(maxLength: MAX_SPEED*Double(player.getSpeed())*delta)
         }else{
             velocity = velocity.moveTowardZero(value: FRICTION*delta)
         }
