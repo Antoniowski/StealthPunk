@@ -105,6 +105,9 @@ extension PlayableScene{
                         case .SWITCH:
                             let lightSwitch = usable as? LightSwitch
                             lightSwitch?.action(scene)
+                        case .CHEST:
+                            let chest = usable as? Chest
+                            chest?.action(scene: scene)
                         default:
                             return
                         }

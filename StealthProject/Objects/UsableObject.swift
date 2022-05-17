@@ -13,6 +13,7 @@ import SpriteKit
 
 enum UsableObjectCategory: Int{
     case SWITCH = 0
+    case CHEST = 1
 }
 
 class UsableObject: InteractableObject{

@@ -590,19 +590,26 @@ class PlayableCharacter: SKSpriteNode{
                 let sprite = object as? InteractableObject
                 if sprite?.getSpottedStatus() == false{
                     sprite?.setSpottedStatus(true)
-//                    object.run(.colorize(with: .green, colorBlendFactor: 0.2, duration: 0.1))
                     sprite?.run(.setTexture(sprite?.highlightedTexture ?? SKTexture()))
                     sprite?.shapeHighlighted.strokeColor = .init(white: 1, alpha: 0.5)
                     sprite?.shapeHighlighted.glowWidth = 3
-                    sprite?.addChild(sprite?.shapeHighlighted ?? SKShapeNode())
+//                    sprite?.addChild(sprite?.shapeHighlighted ?? SKShapeNode())
                 }
             }else{
                 let sprite = object as? InteractableObject
                 if sprite?.getSpottedStatus() != false{
                     sprite?.setSpottedStatus(false)
-//                    object.run(.colorize(withColorBlendFactor: 0, duration: 0.1))
                     sprite?.run(.setTexture(sprite?.baseTexture ?? SKTexture()))
-                    sprite?.shapeHighlighted.removeFromParent()
+                    if sprite?.getType() == .USABLE{
+                        let usable = object as? UsableObject
+                        if usable?.getUsableCategory() == .CHEST{
+                            let chest = usable as? Chest
+                            if chest?.getOpenStatus() == true{
+                                chest?.run(.setTexture(chest?.openTexture ?? SKTexture()))
+                            }
+                        }
+                    }
+//                    sprite?.shapeHighlighted.removeFromParent()
                 }
             }
         }

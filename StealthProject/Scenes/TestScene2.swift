@@ -47,6 +47,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     var testcoin = Collectible(type: .COIN)
     
     var indicatore = Counter()
+    var chest = Chest(locked: false)
     
 
     
@@ -61,7 +62,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         scenecamera.addChild(indicatore)
 
         scenecamera.position = player.position
-      scenecamera.setScale(1)
+        scenecamera.setScale(1)
         armadio.position = player.position
         armadio.position.x += 250
         lampione.position = player.position
@@ -110,6 +111,8 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         knuckles.position = .init(x: 150, y: 150)
         testcoin.position = .init(x: 150, y: -150)
         
+        chest.position = .init(x: -100 , y: -120)
+        
 
         
         
@@ -124,6 +127,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         addChild(boots)
         addChild(knuckles)
         addChild(testcoin)
+        addChild(chest)
         
         addChild(scenecamera)
 //        createRoom2()
