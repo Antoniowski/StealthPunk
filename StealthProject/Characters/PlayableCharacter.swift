@@ -686,6 +686,12 @@ class PlayableCharacter: SKSpriteNode{
                                 chest?.run(.setTexture(chest?.openTexture ?? SKTexture()))
                             }
                         }
+                        if usable?.getUsableCategory() == .SWITCH{
+                            let lswitch = usable as? LightSwitch
+                            if lswitch?.getOnOffStatus() == true{
+                                lswitch?.run(.setTexture(lswitch?.ONTexture ?? SKTexture()))
+                            }
+                        }
                     }
 //                    sprite?.shapeHighlighted.removeFromParent()
                 }
