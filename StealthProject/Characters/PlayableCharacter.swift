@@ -398,6 +398,8 @@ class PlayableCharacter: SKSpriteNode{
                     self.run(.setTexture(halfBackLTexture))
                     
                 }
+            case .NONE:
+                return
             }
             
 //            ATTACK ANIMATION
@@ -491,7 +493,10 @@ class PlayableCharacter: SKSpriteNode{
                             self.actionState = .MOVE
                         }
                         self.status.isRolling = false
-                    })                }
+                    })
+                case .NONE:
+                    return
+                }
             }
              //INTERACT ANIMATION
         case .INTERACT:
@@ -581,6 +586,8 @@ class PlayableCharacter: SKSpriteNode{
                         self.status.idle = false
                     })
                 }
+            case .NONE:
+                return
             }
         case .HIDDEN:
             print("")
@@ -654,6 +661,8 @@ class PlayableCharacter: SKSpriteNode{
                     self.facingDirection = .UP_LEFT
                     self.run(.repeatForever(.animate(with: runningAnimationBack, timePerFrame: 0.18)))
                 }
+            case .NONE:
+                return
             }
         }
     }

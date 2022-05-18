@@ -236,7 +236,7 @@ class Room: SKNode {
             self.sideRightWallTexture = SKTexture(imageNamed: "parete LateraleDx")
             self.sideLeftWallTexture  = SKTexture(imageNamed: "parete LateraleSx")
             self.cornerRightWallTexture = SKTexture(imageNamed: "angolo frontaleDxSu")
-            self.cornerLeftWallTexture = SKTexture(imageNamed: "andolo frontaleSxSu")
+            self.cornerLeftWallTexture = SKTexture(imageNamed: "angolo frontaleSxSu")
             self.frontDoorTexture = SKTexture(imageNamed: "doorClosed")
             self.leftDoorTexture = SKTexture(imageNamed: "porta laterale")
             self.rightDoorTexture = SKTexture(imageNamed: "porta laterale")
