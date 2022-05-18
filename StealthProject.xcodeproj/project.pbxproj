@@ -150,13 +150,6 @@
 			path = Items;
 			sourceTree = "<group>";
 		};
-		6A2A7E972833F78E00D14EC0 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		6A6A4D3F2822A37A003A76C5 /* Controlls */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,7 +265,6 @@
 		6AC709632823D77C007F8A50 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
-				6A2A7E972833F78E00D14EC0 /* New Group */,
 				6AFA738D282B0CA3001B7E50 /* Hideouts */,
 				6AA31BDD28298C03002CCD47 /* Light */,
 				6AC7096828254AB4007F8A50 /* InteractableObjectClass.swift */,
