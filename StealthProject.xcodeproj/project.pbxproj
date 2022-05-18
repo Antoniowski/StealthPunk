@@ -14,6 +14,7 @@
 		4A1B44962822B809001DABEE /* TestScene2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B44952822B809001DABEE /* TestScene2.swift */; };
 		4ABFC91E28327D6D00213CC9 /* GuardConoGrande.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABFC91D28327D6D00213CC9 /* GuardConoGrande.swift */; };
 		63B9F6AB2833DA35008E62C1 /* GearCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9F6AA2833DA35008E62C1 /* GearCounter.swift */; };
+		63B9F6AE283439FE008E62C1 /* Victorian Parlor Vintage Alternate_free.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63B9F6AD283439FE008E62C1 /* Victorian Parlor Vintage Alternate_free.ttf */; };
 		6A0621F0283301AF0064BB97 /* CollectibleItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0621EF283301AF0064BB97 /* CollectibleItems.swift */; };
 		6A0621F228330FC80064BB97 /* CollisionsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0621F128330FC80064BB97 /* CollisionsEnum.swift */; };
 		6A6A4D3E28226FAB003A76C5 /* GuardClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6A4D3D28226FAB003A76C5 /* GuardClass.swift */; };
@@ -59,6 +60,8 @@
 		4A1B44952822B809001DABEE /* TestScene2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestScene2.swift; sourceTree = "<group>"; };
 		4ABFC91D28327D6D00213CC9 /* GuardConoGrande.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardConoGrande.swift; sourceTree = "<group>"; };
 		63B9F6AA2833DA35008E62C1 /* GearCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearCounter.swift; sourceTree = "<group>"; };
+		63B9F6AD283439FE008E62C1 /* Victorian Parlor Vintage Alternate_free.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Victorian Parlor Vintage Alternate_free.ttf"; sourceTree = "<group>"; };
+		63B9F6AF28343B50008E62C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		6A0621EF283301AF0064BB97 /* CollectibleItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectibleItems.swift; sourceTree = "<group>"; };
 		6A0621F128330FC80064BB97 /* CollisionsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionsEnum.swift; sourceTree = "<group>"; };
 		6A6A4D3D28226FAB003A76C5 /* GuardClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardClass.swift; sourceTree = "<group>"; };
@@ -127,6 +130,14 @@
 			path = HUD;
 			sourceTree = "<group>";
 		};
+		63B9F6AC283439A0008E62C1 /* Project Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				63B9F6AD283439FE008E62C1 /* Victorian Parlor Vintage Alternate_free.ttf */,
+			);
+			path = "Project Fonts";
+			sourceTree = "<group>";
+		};
 		6A0621EE2833019E0064BB97 /* Items */ = {
 			isa = PBXGroup;
 			children = (
@@ -174,6 +185,8 @@
 		6AB863DF28200334006BB85E /* StealthProject */ = {
 			isa = PBXGroup;
 			children = (
+				63B9F6AF28343B50008E62C1 /* Info.plist */,
+				63B9F6AC283439A0008E62C1 /* Project Fonts */,
 				63B9F6A92833D9F7008E62C1 /* HUD */,
 				6A0621EE2833019E0064BB97 /* Items */,
 				6AC709632823D77C007F8A50 /* Objects */,
@@ -348,6 +361,7 @@
 				6AB863EE28200335006BB85E /* Assets.xcassets in Resources */,
 				6AB863F128200335006BB85E /* LaunchScreen.storyboard in Resources */,
 				6AB863E528200334006BB85E /* Actions.sks in Resources */,
+				63B9F6AE283439FE008E62C1 /* Victorian Parlor Vintage Alternate_free.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -543,6 +557,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YT6T4953M8;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StealthProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -573,6 +588,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YT6T4953M8;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StealthProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
