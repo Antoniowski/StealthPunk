@@ -131,7 +131,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
         
         addChild(player)
-//        addChild(armadio)
+        addChild(armadio)
 //        addChild(lampione)
 //        addChild(luce)
 //        addChild(t)

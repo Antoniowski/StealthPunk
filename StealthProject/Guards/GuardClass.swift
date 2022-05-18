@@ -49,7 +49,13 @@ class Guard: SKSpriteNode{
     private var actionStateBuffer: GuardActionState = .IDLE
     private var movingDirection: Direction = .UP
     private var movingDirectionBuffer: Direction = .UP
+    var lastMoVingDirection: Direction = .NONE
     private var facingDirection: Direction = .UP
+    
+    var lastActionState: GuardActionState = .IDLE
+    
+    var transitionToSeen:Bool = true
+    var transitionToUnseen: Bool = false
     
     private var currentIdleDirectionTexture: SKTexture = SKTexture(imageNamed: "ConoGrandeBackF1")
     
@@ -62,6 +68,8 @@ class Guard: SKSpriteNode{
     private var initBall: Bool = false
     
     private var playerFound: Bool = false
+    private var playerFoundTransitioning: Bool = false
+    var rayCastingPlayerFound: Bool = false
     
     //    STATIC TEXTURES
     var frontTexture: SKTexture = SKTexture()
@@ -146,6 +154,10 @@ class Guard: SKSpriteNode{
         return self.playerFound
     }
     
+    func getPlayerFoundTransitioning()->Bool{
+        return self.playerFoundTransitioning
+    }
+    
     func getCenterBall()->SKShapeNode{
         return self.invisibleBall
     }
@@ -193,10 +205,18 @@ class Guard: SKSpriteNode{
         self.playerFound = true
     }
     
-    func setPlayerFoundFlase(){
+    func setPlayerFoundFalse(){
         self.playerFound = false
     }
  
+    func setPlayerFoundTransitioningTrue(){
+        self.playerFoundTransitioning = true
+    }
+    
+    func setPlayerFoundTransitioningFalse(){
+        self.playerFoundTransitioning = false
+    }
+    
     func centerBall(){
         self.invisibleBall.position = self.position
     }
@@ -221,7 +241,46 @@ class Guard: SKSpriteNode{
     
     
     
-    func checkState(){
+    func checkState(point: CGPoint, deltaTime: TimeInterval){
+        //Aggiungere il movimento con += position per gestire le animazioni durante l'inseguimento
+        
+        if(playerFound){
+            let directionVector = getDirectionVectorBetween(start: self.position, end: point)
+
+            let angle = -atan2(directionVector.dx, directionVector.dy)
+            
+            invisibleBall.position.x += directionVector.dx * 100 * deltaTime
+            invisibleBall.position.y += directionVector.dy * 100 * deltaTime
+            invisibleBall.zRotation = angle
+                        
+            if(transitionToSeen){
+                transitionToSeen = false
+                if let action = self.invisibleBall.action(forKey: "guardPath"){
+                    action.speed = 0
+                }
+                
+                print(actionState)
+                
+                lastActionState = actionState
+                actionStateBuffer = .IDLE
+                
+                movingDirectionBuffer = .NONE
+                transitionToUnseen = true
+            }
+        } else {
+            if(transitionToUnseen){
+                transitionToUnseen = false
+                                
+                if let action = self.invisibleBall.action(forKey: "guardPath"){
+                    action.speed = 1
+                }
+                actionStateBuffer = lastActionState
+                transitionToSeen = true
+            }
+            
+        }
+        
+        
         
         if(self.actionStateBuffer == GuardActionState.IDLE){            
             self.removeAction(forKey: "guardMovement")
@@ -305,7 +364,10 @@ class Guard: SKSpriteNode{
         }
 
         if(self.actionStateBuffer == GuardActionState.MOVE){
+//            print("Moving")
+//            print("\(movingDirectionBuffer) + \(facingDirection)")
             if(self.movingDirectionBuffer != self.facingDirection){
+//                print("DIVERSI")
                 self.removeAction(forKey: "guardMovement")
                 switch facingDirection {
                 case .UP:
@@ -321,8 +383,11 @@ class Guard: SKSpriteNode{
                 case .DOWN_LEFT:
                     return
                 case .LEFT:
+                    print("LEFT")
                     self.run(.repeatForever(.animate(with: walkingAnimationLeft, timePerFrame: 0.125)), withKey: "guardMovement")
                 case .UP_LEFT:
+                    return
+                case .NONE:
                     return
                 }
                 self.movingDirectionBuffer = self.facingDirection

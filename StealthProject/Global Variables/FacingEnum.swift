@@ -16,6 +16,7 @@ enum Direction: Int{
     case DOWN_LEFT = 5
     case LEFT = 6
     case UP_LEFT = 7
+    case NONE = 8
 }
 
 let pi: Double = 3.14159265359
