@@ -43,8 +43,19 @@ class Chest: UsableObject{
             let items: [CollectibleItemCategory] = [.POTION, .COIN , .KNUCKLES, .BOOTS, .HAT, .SIRINGE]
             let type = items.randomElement()
             let itemObject = Collectible(type: type ?? .COIN)
-            itemObject.position = .init(x: self.position.x, y: self.position.y - 100)
+            itemObject.position = .init(x: self.position.x, y: self.position.y)
+            itemObject.physicsBody = SKPhysicsBody()
+            itemObject.physicsBody?.affectedByGravity = false
+            itemObject.setScale(0.1)
+            itemObject.zPosition = 15
             scene.addChild(itemObject)
+            itemObject.run(.scale(to: 1, duration: 0.8))
+            itemObject.run(.sequence([.moveTo(y: self.position.y + 20, duration: 0.8), .wait(forDuration: 0.5) , .moveTo(y: self.position.y - 100, duration: 0.5)]), completion: {
+                itemObject.physicsBody = SKPhysicsBody(rectangleOf: itemObject.size)
+                itemObject.physicsBody?.affectedByGravity = false
+                itemObject.physicsBody?.isDynamic = false
+                itemObject.physicsBody?.allowsRotation = false
+            })
             
         }
     }
