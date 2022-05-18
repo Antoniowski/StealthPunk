@@ -192,6 +192,23 @@ class PlayableCharacter: SKSpriteNode{
                         self.setActionState(.MOVE)
                         self.status.isHidden = false
                         self.alpha = 1
+                        scene.enumerateChildNodes(withName: "dynamicObject"){ object, _ in
+                            if getDistanceBetween(point1: self.position, point2: object.position) <= self.getInteractRange(){
+                                let interact = object as? InteractableObject
+                                if interact?.getType() == .HIDEOUT {
+                                    let interazione = interact as? Hideout
+                                    switch interazione?.getHideoutCategory(){
+                                    case .CLOSET:
+                                        let armadio = interazione as? Closet
+                                        armadio?.action()
+                                    default :
+                                        print ("")
+                                    }
+                                }
+                            }
+                            
+                        }
+                        
                     })
                 }
             }
@@ -304,7 +321,7 @@ class PlayableCharacter: SKSpriteNode{
                     self.status.isRunning = false
                     self.status.idle = false
                     self.facingDirection = .UP_RIGHT
-//                    self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
+                    self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
                         
                 }else if myMovement == .zero && self.status.idle == false{
                     self.removeAllActions()
@@ -327,7 +344,7 @@ class PlayableCharacter: SKSpriteNode{
                     self.status.isRunning = false
                     self.status.idle = false
                     self.facingDirection = .DOWN_RIGHT
-//                    self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
+                    self.run(.repeatForever(.animate(with: walkingAnimationFront, timePerFrame: 0.25)))
                         
                 }else if myMovement == .zero && self.status.idle == false{
                     self.removeAllActions()
@@ -350,7 +367,7 @@ class PlayableCharacter: SKSpriteNode{
                     self.status.isRunning = false
                     self.status.idle = false
                     self.facingDirection = .DOWN_LEFT
-//                    self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
+                    self.run(.repeatForever(.animate(with: walkingAnimationFront, timePerFrame: 0.25)))
                         
                 }else if myMovement == .zero && self.status.idle == false{
                     self.removeAllActions()
@@ -373,7 +390,7 @@ class PlayableCharacter: SKSpriteNode{
                     self.status.isRunning = false
                     self.status.idle = false
                     self.facingDirection = .UP_LEFT
-//                    self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
+                    self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
                         
                 }else if myMovement == .zero && self.status.idle == false{
                     self.removeAllActions()
@@ -411,7 +428,14 @@ class PlayableCharacter: SKSpriteNode{
                         self.status.isRolling = false
                     })
                 case .UP_RIGHT:
-                    print("UPRIGHT")
+                    self.run(.animate(with: rollingAnimationBack, timePerFrame: 0.1), completion: {
+                        if self.status.isRunning {
+                            self.actionState = .RUNNING
+                        }else{
+                            self.actionState = .MOVE
+                        }
+                        self.status.isRolling = false
+                    })
                 case .RIGHT:
                     self.xScale = 2
                     self.run(.animate(with: rollingAnimationRight, timePerFrame: 0.1), completion: {
@@ -424,7 +448,14 @@ class PlayableCharacter: SKSpriteNode{
                         self.status.isRolling = false
                     })
                 case .DOWN_RIGHT:
-                    print("")
+                    self.run(.animate(with: rollingAnimationFront, timePerFrame: 0.1), completion: {
+                        if self.status.isRunning {
+                            self.actionState = .RUNNING
+                        }else{
+                            self.actionState = .MOVE
+                        }
+                        self.status.isRolling = false
+                    })
                 case .DOWN:
                     self.run(.animate(with: rollingAnimationFront, timePerFrame: 0.1), completion: {
                         if self.status.isRunning {
@@ -435,7 +466,14 @@ class PlayableCharacter: SKSpriteNode{
                         self.status.isRolling = false
                     })
                 case .DOWN_LEFT:
-                    print("")
+                    self.run(.animate(with: rollingAnimationFront, timePerFrame: 0.1), completion: {
+                        if self.status.isRunning {
+                            self.actionState = .RUNNING
+                        }else{
+                            self.actionState = .MOVE
+                        }
+                        self.status.isRolling = false
+                    })
                 case .LEFT:
                     self.xScale = 2
                     self.run(.animate(with: rollingAnimationLeft, timePerFrame: 0.1), completion: {
@@ -448,10 +486,14 @@ class PlayableCharacter: SKSpriteNode{
                         self.status.isRolling = false
                     })
                 case .UP_LEFT:
-                    print("")
-                case .NONE:
-                    return
-                }
+                    self.run(.animate(with: rollingAnimationBack, timePerFrame: 0.1), completion: {
+                        if self.status.isRunning {
+                            self.actionState = .RUNNING
+                        }else{
+                            self.actionState = .MOVE
+                        }
+                        self.status.isRolling = false
+                    })                }
             }
              //INTERACT ANIMATION
         case .INTERACT:
@@ -468,7 +510,15 @@ class PlayableCharacter: SKSpriteNode{
                 }
 
             case .UP_RIGHT:
-                print ("")
+                if(status.isInteracting == false) {
+                    self.run(.animate(with: interactAnimationBack, timePerFrame: 0.15), completion: {
+                        if self.status.isEntering == false{
+                            self.actionState = .MOVE
+                        }
+                        self.status.isInteracting = false
+                        self.status.idle = false
+                    })
+                }
             case .RIGHT:
                 if(status.isInteracting == false) {
                     self.run(.animate(with: interactAnimationRight, timePerFrame: 0.15), completion: {
@@ -481,7 +531,15 @@ class PlayableCharacter: SKSpriteNode{
                 }
                 
             case .DOWN_RIGHT:
-                print ("")
+                if(status.isInteracting == false) {
+                    self.run(.animate(with: interactAnimationFront, timePerFrame: 0.15), completion: {
+                        if self.status.isEntering == false{
+                            self.actionState = .MOVE
+                        }
+                        self.status.isInteracting = false
+                        self.status.idle = false
+                    })
+                }
             case .DOWN:
                 if(status.isInteracting == false) {
                     self.run(.animate(with: interactAnimationFront, timePerFrame: 0.15), completion: {
@@ -493,7 +551,15 @@ class PlayableCharacter: SKSpriteNode{
                     })
                 }
             case .DOWN_LEFT:
-                print ("")
+                if(status.isInteracting == false) {
+                    self.run(.animate(with: interactAnimationFront, timePerFrame: 0.15), completion: {
+                        if self.status.isEntering == false{
+                            self.actionState = .MOVE
+                        }
+                        self.status.isInteracting = false
+                        self.status.idle = false
+                    })
+                }
             case .LEFT:
                 if(status.isInteracting == false) {
                     self.run(.animate(with: interactAnimationLeft, timePerFrame: 0.15), completion: {
@@ -508,9 +574,15 @@ class PlayableCharacter: SKSpriteNode{
                 
                 
             case .UP_LEFT:
-                print ("")
-            case .NONE:
-                return
+                if(status.isInteracting == false) {
+                    self.run(.animate(with: interactAnimationBack, timePerFrame: 0.15), completion: {
+                        if self.status.isEntering == false{
+                            self.actionState = .MOVE
+                        }
+                        self.status.isInteracting = false
+                        self.status.idle = false
+                    })
+                }
             }
         case .HIDDEN:
             print("")
@@ -531,10 +603,10 @@ class PlayableCharacter: SKSpriteNode{
                 }
             case .UP_RIGHT:
                 if myMovement != .zero && (self.status.isWalking == true || self.facingDirection != .UP_RIGHT){
+                    self.xScale = 1
                     self.status.isWalking = false
                     self.facingDirection = .UP_RIGHT
-//                    self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
-                        
+                    self.run(.repeatForever(.animate(with: runningAnimationBack, timePerFrame: 0.18)))
                 }
             case .RIGHT:
                 if myMovement != .zero && (self.status.isWalking == true || self.facingDirection != .RIGHT){
@@ -546,10 +618,11 @@ class PlayableCharacter: SKSpriteNode{
                 }
             case .DOWN_RIGHT:
                 if myMovement != .zero && (self.status.isWalking == true || self.facingDirection != .DOWN_RIGHT){
+                    self.xScale = 1
                     self.status.isWalking = false
                     self.facingDirection = .DOWN_RIGHT
-//                    self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
-                        
+                    self.run(.repeatForever(.animate(with: runningAnimationFront, timePerFrame: 0.18)))
+
                 }
 
             case .DOWN:
@@ -562,10 +635,11 @@ class PlayableCharacter: SKSpriteNode{
                 }
             case .DOWN_LEFT:
                 if myMovement != .zero && (self.status.isWalking == true || self.facingDirection != .DOWN_LEFT){
+                    self.xScale = 1
                     self.status.isWalking = false
                     self.facingDirection = .DOWN_LEFT
-//                    self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
-                        
+                    self.run(.repeatForever(.animate(with: runningAnimationFront, timePerFrame: 0.18)))
+
                 }
             case .LEFT:
                 if myMovement != .zero && (self.status.isWalking == true || self.facingDirection != .LEFT){
@@ -577,10 +651,10 @@ class PlayableCharacter: SKSpriteNode{
                 }
             case .UP_LEFT:
                 if myMovement != .zero && (self.status.isWalking == true || self.facingDirection != .UP_LEFT){
+                    self.xScale = 1
                     self.status.isWalking = false
                     self.facingDirection = .UP_LEFT
-//                    self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
-                        
+                    self.run(.repeatForever(.animate(with: runningAnimationBack, timePerFrame: 0.18)))
                 }
             case .NONE:
                 return

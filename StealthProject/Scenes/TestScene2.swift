@@ -128,7 +128,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
         
         addChild(player)
-//        addChild(armadio)
+        addChild(armadio)
 //        addChild(lampione)
 //        addChild(luce)
 //        addChild(t)
@@ -138,10 +138,10 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
 //        addChild(knuckles)
         addChild(testcoin)
         addChild(testcoin2)
-        addChild(testcoin4)
-        addChild(testcoin3)
+//        addChild(testcoin4)
+//        addChild(testcoin3)
 
-//        addChild(chest)
+        addChild(chest)
         
         addChild(scenecamera)
 //        createRoom2()
