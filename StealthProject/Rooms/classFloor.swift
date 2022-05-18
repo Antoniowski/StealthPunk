@@ -29,7 +29,7 @@ class Floor{
     
     init(_ scene: SKScene, floorType: FloorType){
         self.type = floorType
-        self.numeroStanze = Int.random(in: 4...4)
+        self.numeroStanze = Int.random(in: 6...6)
         var lastRoomsAdded: [Room] = []
         var actualAdded: Int = 0
         var doorNumbers: Int = 0
@@ -54,6 +54,8 @@ class Floor{
             let room = Room(.SIMPLE_4, startingPosition: CGPoint(x: 50, y: 50))
             lastRoomsAdded.append(room)
             scene.addChild(room)
+            accortSX = true
+            accortDX = true
             actualAdded+=1
         }
         
@@ -110,7 +112,8 @@ class Floor{
                         lastRoomsAdded.append(newRoom)
                         scene.addChild(newRoom)
                     case .LEFT:
-                        let type = STANZE_R.randomElement()
+                        if(accortSX){
+                        let type = STANZE_R_SAFE.randomElement()
                         let newRoom = Room(type!, startingPosition: CGPoint(x: door.1.x, y: door.1.y))
 //                        newRoom.convert(door.point, to: newRoom)
 
@@ -119,8 +122,21 @@ class Floor{
                         newRoom.setDoorOccupiedStatus(placement: .RIGHT, true)
                         lastRoomsAdded.append(newRoom)
                         scene.addChild(newRoom)
+                        }
+                        else{
+                            let type = STANZE_R.randomElement()
+                            let newRoom = Room(type!, startingPosition: CGPoint(x: door.1.x, y: door.1.y))
+    //                        newRoom.convert(door.point, to: newRoom)
+
+                            newRoom.position.x -= Double(newRoom.getRighe()*blocco + blocco/2)
+                            newRoom.position.y -= (newRoom.getRightDoorPosition().y - door.1.y)
+                            newRoom.setDoorOccupiedStatus(placement: .RIGHT, true)
+                            lastRoomsAdded.append(newRoom)
+                            scene.addChild(newRoom)
+                        }
                     case .RIGHT:
-                        let type = STANZE_L.randomElement()
+                        if(accortDX){
+                            let type = STANZE_L_SAFE.randomElement()
                         let newRoom = Room(type!, startingPosition: CGPoint(x: door.1.x, y: door.1.y))
 //                        newRoom.convert(door.point, to: newRoom)
 
@@ -129,6 +145,18 @@ class Floor{
                         newRoom.setDoorOccupiedStatus(placement: .LEFT, true)
                         lastRoomsAdded.append(newRoom)
                         scene.addChild(newRoom)
+                        }
+                        else {
+                            let type = STANZE_L.randomElement()
+                            let newRoom = Room(type!, startingPosition: CGPoint(x: door.1.x, y: door.1.y))
+    //                        newRoom.convert(door.point, to: newRoom)
+
+                            newRoom.position.x += Double(blocco/2)
+                            newRoom.position.y -= (newRoom.getLeftDoorPosition().y - door.1.y)
+                            newRoom.setDoorOccupiedStatus(placement: .LEFT, true)
+                            lastRoomsAdded.append(newRoom)
+                            scene.addChild(newRoom)
+                        }
                     }
                 }
                 actualAdded = actualAdded + doorNumbers

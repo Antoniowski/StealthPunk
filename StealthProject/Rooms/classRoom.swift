@@ -25,6 +25,10 @@ enum RoomArchetype: Int{
     case PROVA2 = 11
     case PROVA3 = 12
     case PROVA4 = 13
+    case SCAMBIO1 = 14
+    case SCAMBIO2 = 15
+    case SCAMBIO3 = 16
+    case SCAMBIO4 = 17
 }
 
 enum RoomsType: Int{
@@ -207,6 +211,14 @@ class Room: SKNode {
             nemici = []
             setTextures(tipo: .FIRST_FLOOR)
             createRoom()
+        case .SCAMBIO1:
+            print("ciao")
+        case .SCAMBIO2:
+            print ("criao")
+        case .SCAMBIO3:
+            print("ciao")
+        case .SCAMBIO4:
+            print("ciao")
         }
     }
     
@@ -236,7 +248,7 @@ class Room: SKNode {
             self.sideRightWallTexture = SKTexture(imageNamed: "parete LateraleDx")
             self.sideLeftWallTexture  = SKTexture(imageNamed: "parete LateraleSx")
             self.cornerRightWallTexture = SKTexture(imageNamed: "angolo frontaleDxSu")
-            self.cornerLeftWallTexture = SKTexture(imageNamed: "andolo frontaleSxSu")
+            self.cornerLeftWallTexture = SKTexture(imageNamed: "angolo frontaleSxSu")
             self.frontDoorTexture = SKTexture(imageNamed: "doorClosed")
             self.leftDoorTexture = SKTexture(imageNamed: "porta laterale")
             self.rightDoorTexture = SKTexture(imageNamed: "porta laterale")
