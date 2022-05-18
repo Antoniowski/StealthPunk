@@ -15,52 +15,42 @@ let enemyDimensionHeight: Double = 48
 let blockDimension: Int = 60
 
 
-class Piano1: SKScene {
-    var roomWalls : [[Int]] = []
-    var roomWalls2: [[Int]] = []
-    var roomWalls3: [[Int]] = []
-//    var player = Human()
-//    var scenecamera: SKCameraNode = SKCameraNode()
-    
+class Piano1: SKScene  {
+
     let guard1: GuardConoGrande = GuardConoGrande(texture: SKTexture(imageNamed: "ConoGrandeFrontF2"), color: .clear, size: CGSize(width: enemyDimensionWidth, height: enemyDimensionHeight))
     
     
     
+    let room = Room(.SIMPLE_1, startingPosition: CGPoint(x: 50, y: 50))
+    
+    var scenecamera = SKCameraNode()
+    
+    
+    var player: PlayableCharacter = Human(texture: SKTexture(imageNamed: "boyFront"), color: .clear, size: CGSize(width: 35, height: 70), noise: 1, speed: 3, strenght: 1)
+
+    var inputVector: CGVector = CGVector.zero
+    var rollVector: CGVector = CGVector.init(dx: 1, dy: 0)
+    var velocity: CGVector = CGVector.zero
+    
+    var ACCELLERATION: Double = 10
+    var MAX_SPEED: Double = 50
+    var FRICTION: Double = 10
+
     
     override func didMove(to view: SKView) {
-        roomWalls =  [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-                      [1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-                      [1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
-                      [1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1],
-                      [1, 0, 0, 51, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1],
-                      [1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1],
-                      [1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1],
-                      [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1],
-                      [1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 3, 0, 0, 0, 0, 0, 0, 1],
-                      [1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 2, 1],
-                      [1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1],
-                      [1, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1],
-                      [1, 0, 0, 0, 0, 0, 3, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1],
-                      [1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1],
-                      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]
-                
-        roomWalls3 = [[0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0],
-                      [0 ,1 ,1 ,1 ,1 ,1,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0],
-                      [0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0],
-                      [0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0],
-                      [0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0],
-                      [0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0],
-                      [0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0],
-                      [0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0],
-                      [0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0],
-                      [0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0],
-                      [0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0 ,0]]
-        
+        myGameController.setUpGameController()
         
      
-        createRoom()
+        camera = scenecamera
+        scenecamera.position = player.position
+        
+//        createRoom()
+        
+        
+//        addChild(room)
         
         guard1.run(.setTexture(SKTexture(imageNamed: "ConoGrandeBackF1")))
+        addChild(guard1)
         
         createPath(entity: guard1, arrayOfActions:
                     [myAction(actionType: ActionType.ROTATE_ACTION, duration: 1, startingPoint: CGPoint(x: 7, y: 3), endingPoint: CGPoint(x: 7, y: 6), angle: -90),
@@ -86,77 +76,22 @@ class Piano1: SKScene {
         let followLine = SKAction.follow(path, duration: 2.0)
         
         
-            // 4
-            let square = UIBezierPath(rect: CGRect(x: 0,y: 0, width: 220, height: 0))
-            let followSquare = SKAction.follow(square.cgPath, asOffset: true, orientToPath: false, duration: 5.0)
+        // 4
+        let square = UIBezierPath(rect: CGRect(x: 0,y: 0, width: 220, height: 0))
+        let followSquare = SKAction.follow(square.cgPath, asOffset: true, orientToPath: false, duration: 5.0)
         
         let square2 = UIBezierPath(rect: CGRect(x: 0,y: 0, width: 0, height: 180))
         let followSquare2 = SKAction.follow(square2.cgPath, asOffset: true, orientToPath: false, duration: 5.0)
                 
-            // 5
-            let circle = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: 100, height: 100), cornerRadius: 100)
-            let followCircle = SKAction.follow(circle.cgPath, asOffset: true, orientToPath: false, duration: 5.0)
+        // 5
+        let circle = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: 100, height: 100), cornerRadius: 100)
+        let followCircle = SKAction.follow(circle.cgPath, asOffset: true, orientToPath: false, duration: 5.0)
                 
-            // 6
+        // 6
         let percorso = SKAction.sequence([followSquare,followSquare2])
-//            cazzillo.run(SKAction.repeatForever(percorso))
         let percorso2 = SKAction.sequence([followLine, ])
-//        cazzillo.run(followLine)
-//        cazzillo.run(.repeatForever(followSquare2))
-            
-        
-        
-//        guard1.run(.repeatForever(.animate(with: guard1.walkingAnimationRight, timePerFrame: 0.125)))
-        
     }
     
-    
-    func createRoom(){
-        for index in 0...roomWalls.count-1{
-            for index2 in 0...roomWalls[1].count-1{
-                    if(roomWalls[index][index2] == 1){
-                        let myWall = SKShapeNode(rectOf: CGSize(width: blockDimension, height: blockDimension))
-                        myWall.strokeColor = .systemGray3
-                        myWall.fillColor = .systemGray3
-                        myWall.name = "wall"+String(index)+String(index2)
-                        myWall.zPosition = 5
-                        myWall.position = CGPoint(x: size.width * 0 + CGFloat(blockDimension*index2) + CGFloat(blockDimension/2), y: size.height - CGFloat(blockDimension*index) + CGFloat(blockDimension/2))
-                        myWall.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blockDimension, height: blockDimension))
-                        myWall.physicsBody?.restitution = 0
-                        myWall.physicsBody?.affectedByGravity = false
-                        myWall.physicsBody?.isDynamic = true
-                        addChild(myWall)
-                        
-                    }
-                
-                if(roomWalls[index][index2] == 2){
-                    var player1 = SKShapeNode(rectOf: CGSize(width: 20, height: 20))
-                    player1.zPosition = 10
-                    player1.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 20, height: 20))
-                    player1.physicsBody?.affectedByGravity = false
-                    player1.position = CGPoint(x: size.width * 0 + CGFloat(blockDimension*index2) + CGFloat(blockDimension/2), y: size.height - CGFloat(blockDimension*index) + CGFloat(blockDimension/2))
-                    player1.strokeColor = .blue
-                    player1.name = "player"
-                    player1.fillColor = .blue
-                    addChild(player1)
-                    
-                }
-                
-                
-                if(roomWalls[index][index2] == 51){
-                    guard1.zPosition = 10
-                    guard1.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: enemyDimensionWidth, height: enemyDimensionHeight))
-                    guard1.physicsBody?.affectedByGravity = false
-                    guard1.position = CGPoint(x: size.width * 0 + CGFloat(blockDimension*index2) + CGFloat(blockDimension/2), y: size.height - CGFloat(blockDimension*index) + CGFloat(blockDimension/2))
-                    guard1.name = "cattivone" + String(index) + String(index2)
-                    
-                    addChild(guard1)
-                }
-
-                
-                }
-            }
-        }
     
     
     func createStraightPath(startRow: Int, startColumn: Int, endRow: Int, endColumn: Int){

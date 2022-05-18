@@ -305,9 +305,9 @@ class Guard: SKSpriteNode{
         }
 
         if(self.actionStateBuffer == GuardActionState.MOVE){
-            if(self.movingDirectionBuffer != self.movingDirection){
+            if(self.movingDirectionBuffer != self.facingDirection){
                 self.removeAction(forKey: "guardMovement")
-                switch movingDirection {
+                switch facingDirection {
                 case .UP:
                     self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.125)), withKey: "guardMovement")
                 case .UP_RIGHT:
@@ -325,7 +325,7 @@ class Guard: SKSpriteNode{
                 case .UP_LEFT:
                     return
                 }
-                self.movingDirectionBuffer = self.movingDirection
+                self.movingDirectionBuffer = self.facingDirection
                 self.actionState = self.actionStateBuffer
             }
             
@@ -360,7 +360,7 @@ func createPath(entity: Guard, arrayOfActions: [myAction]){
                         node, _ in
                         
                         entity.setGuardActionStateBuffer(actionStateBuffer: GuardActionState.MOVE)
-                        entity.setGuardMovementDirection(movementDirection: Direction.RIGHT)
+//                        entity.setGuardMovementDirection(movementDirection: Direction.RIGHT)
                     })
                     
                     sequenceArray.append(updateStateActionToMoveAndDirection)
@@ -369,7 +369,7 @@ func createPath(entity: Guard, arrayOfActions: [myAction]){
                         node, _ in
                         
                         entity.setGuardActionStateBuffer(actionStateBuffer: GuardActionState.MOVE)
-                        entity.setGuardMovementDirection(movementDirection: Direction.LEFT)
+//                        entity.setGuardMovementDirection(movementDirection: Direction.LEFT)
                     })
                     
                     sequenceArray.append(updateStateActionToMoveAndDirection)
@@ -383,7 +383,7 @@ func createPath(entity: Guard, arrayOfActions: [myAction]){
                         node, _ in
                         
                         entity.setGuardActionStateBuffer(actionStateBuffer: GuardActionState.MOVE)
-                        entity.setGuardMovementDirection(movementDirection: Direction.UP)
+//                        entity.setGuardMovementDirection(movementDirection: Direction.UP)
                     })
                     
                     sequenceArray.append(updateStateActionToMoveAndDirection)
@@ -392,7 +392,7 @@ func createPath(entity: Guard, arrayOfActions: [myAction]){
                         node, _ in
                         
                         entity.setGuardActionStateBuffer(actionStateBuffer: GuardActionState.MOVE)
-                        entity.setGuardMovementDirection(movementDirection: Direction.DOWN)
+//                        entity.setGuardMovementDirection(movementDirection: Direction.DOWN)
                     })
                     
                     sequenceArray.append(updateStateActionToMoveAndDirection)
