@@ -381,6 +381,8 @@ class PlayableCharacter: SKSpriteNode{
                     self.run(.setTexture(halfBackLTexture))
                     
                 }
+            case .NONE:
+                return
             }
             
 //            ATTACK ANIMATION
@@ -447,6 +449,8 @@ class PlayableCharacter: SKSpriteNode{
                     })
                 case .UP_LEFT:
                     print("")
+                case .NONE:
+                    return
                 }
             }
              //INTERACT ANIMATION
@@ -505,6 +509,8 @@ class PlayableCharacter: SKSpriteNode{
                 
             case .UP_LEFT:
                 print ("")
+            case .NONE:
+                return
             }
         case .HIDDEN:
             print("")
@@ -576,6 +582,8 @@ class PlayableCharacter: SKSpriteNode{
 //                    self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
                         
                 }
+            case .NONE:
+                return
             }
         }
     }
