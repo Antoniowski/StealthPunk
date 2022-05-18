@@ -114,6 +114,13 @@ extension PlayableScene{
                     case .HIDEOUT:
                         let hideout = interact as? Hideout
                         hideout?.action(player: self.player)
+                        switch hideout?.getHideoutCategory(){
+                        case .CLOSET:
+                            let useCloset = hideout as? Closet
+                            useCloset?.action()
+                        default :
+                            print("")
+                        }
                     default:
                         return
                     }
@@ -133,7 +140,6 @@ extension PlayableScene{
     
     func hiddenState(){
         if player.getStatus().isHidden == false{
-            print("NONT")
             player.setHiddenStatus(true)
             DispatchQueue.main.asyncAfter(deadline: .now()+0.35, execute: {
             self.player.alpha = 0

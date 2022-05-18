@@ -192,6 +192,23 @@ class PlayableCharacter: SKSpriteNode{
                         self.setActionState(.MOVE)
                         self.status.isHidden = false
                         self.alpha = 1
+                        scene.enumerateChildNodes(withName: "dynamicObject"){ object, _ in
+                            if getDistanceBetween(point1: self.position, point2: object.position) <= self.getInteractRange(){
+                                let interact = object as? InteractableObject
+                                if interact?.getType() == .HIDEOUT {
+                                    let interazione = interact as? Hideout
+                                    switch interazione?.getHideoutCategory(){
+                                    case .CLOSET:
+                                        let armadio = interazione as? Closet
+                                        armadio?.action()
+                                    default :
+                                        print ("")
+                                    }
+                                }
+                            }
+                            
+                        }
+                        
                     })
                 }
             }
