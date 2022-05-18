@@ -493,7 +493,10 @@ class PlayableCharacter: SKSpriteNode{
                             self.actionState = .MOVE
                         }
                         self.status.isRolling = false
-                    })                }
+                    })
+                case .NONE:
+                    return
+                }
             }
              //INTERACT ANIMATION
         case .INTERACT:
@@ -583,6 +586,8 @@ class PlayableCharacter: SKSpriteNode{
                         self.status.idle = false
                     })
                 }
+            case .NONE:
+                return
             }
         case .HIDDEN:
             print("")
