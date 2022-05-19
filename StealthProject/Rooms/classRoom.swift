@@ -563,7 +563,7 @@ class Room: SKNode {
                     internalAngleSx.name = "wall"
                     internalAngleSx.zPosition = 2
                     internalAngleSx.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
-                    internalAngleSx.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco/2, height: blocco), center: CGPoint(x: blocco/2, y: blocco/2))
+                    internalAngleSx.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco/3, height: blocco), center: CGPoint(x: -blocco/3, y: blocco/2))
                     internalAngleSx.physicsBody?.isDynamic = false
                     internalAngleSx.physicsBody?.affectedByGravity = false
                     addChild(internalAngleSx)
