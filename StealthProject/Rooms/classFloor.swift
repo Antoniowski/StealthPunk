@@ -176,7 +176,7 @@ class Floor{
     //                      FUNZIONA PER DIO!
                             if(!passaggio1){
                             let type = STANZE_FINALI_D.randomElement()
-                                let newRoom = Room(type ?? .SCAMBIO1, startingPosition:  CGPoint(x: door.1.x, y: door.1.y))
+                                let newRoom = Room(type ?? .SCAMBIO1, startingPosition:  CGPoint(x: door.1.x, y: door.1.y), floor: floorType)
                             newRoom.position.x -= ((newRoom.getDownDoorPosition().x)-door.1.x)
                             newRoom.position.y += Double(newRoom.getColonne()*blocco - blocco/2)
                             scene.addChild(newRoom)
@@ -184,7 +184,7 @@ class Floor{
                             }
                             else{
                                 let type = STANZE_D_1DOOR.randomElement()
-                                let newRoom = Room(type ?? .SIMPLE_1, startingPosition:  CGPoint(x: door.1.x, y: door.1.y))
+                                let newRoom = Room(type ?? .SIMPLE_1, startingPosition:  CGPoint(x: door.1.x, y: door.1.y), floor: floorType)
                                 newRoom.position.x -= ((newRoom.getDownDoorPosition().x)-door.1.x)
                                 newRoom.position.y += Double(newRoom.getColonne()*blocco - blocco/2)
                                 scene.addChild(newRoom)
@@ -193,7 +193,7 @@ class Floor{
                         case .DOWN:
                             if(!passaggio1){
                             let type = STANZE_FINALI_U.randomElement()
-                            let newRoom = Room(type ?? .SCAMBIO3, startingPosition: CGPoint(x: door.1.x, y: door.1.y))
+                            let newRoom = Room(type ?? .SCAMBIO3, startingPosition: CGPoint(x: door.1.x, y: door.1.y), floor: floorType)
                             newRoom.position.x -= ((newRoom.getUpDoorPosition().x - door.1.x))
                             newRoom.position.y += Double(blocco/2)
                             scene.addChild(newRoom)
@@ -201,7 +201,7 @@ class Floor{
                             }
                                     else{
                                         let type = STANZE_U_1DOOR.randomElement()
-                                        let newRoom = Room(type ?? .SIMPLE_1, startingPosition: CGPoint(x: door.1.x, y: door.1.y))
+                                        let newRoom = Room(type ?? .SIMPLE_1, startingPosition: CGPoint(x: door.1.x, y: door.1.y), floor: floorType)
                                         newRoom.position.x -= ((newRoom.getUpDoorPosition().x - door.1.x))
                                         newRoom.position.y += Double(blocco/2)
                                         scene.addChild(newRoom)
@@ -210,7 +210,7 @@ class Floor{
                         case .LEFT:
                             if(!passaggio1){
                                 let type = STANZE_FINALI_R.randomElement()
-                            let newRoom = Room(type!, startingPosition: CGPoint(x: door.1.x, y: door.1.y))
+                            let newRoom = Room(type!, startingPosition: CGPoint(x: door.1.x, y: door.1.y), floor: floorType)
                             newRoom.position.x -= Double(newRoom.getRighe()*blocco + blocco/2)
                             newRoom.position.y -= (newRoom.getRightDoorPosition().y - door.1.y)
                             scene.addChild(newRoom)
@@ -218,7 +218,7 @@ class Floor{
                             }
                             else{
                                 let type = STANZE_R_1DOOR.randomElement()
-                                let newRoom = Room(type!, startingPosition: CGPoint(x: door.1.x, y: door.1.y))
+                                let newRoom = Room(type!, startingPosition: CGPoint(x: door.1.x, y: door.1.y), floor: floorType)
                                 newRoom.position.x -= Double(newRoom.getRighe()*blocco + blocco/2)
                                 newRoom.position.y -= (newRoom.getRightDoorPosition().y - door.1.y)
                                 scene.addChild(newRoom)
@@ -226,7 +226,7 @@ class Floor{
                         case .RIGHT:
                             if(!passaggio1){
                             let type = STANZE_FINALI_L.randomElement()
-                            let newRoom = Room(type!, startingPosition: CGPoint(x: door.1.x, y: door.1.y))
+                            let newRoom = Room(type!, startingPosition: CGPoint(x: door.1.x, y: door.1.y), floor: floorType)
                             newRoom.position.x += Double(blocco/2)
                             newRoom.position.y -= (newRoom.getLeftDoorPosition().y - door.1.y)
                             scene.addChild(newRoom)
@@ -234,7 +234,7 @@ class Floor{
                             }
                             else{
                                 let type = STANZE_L_1DOOR.randomElement()
-                                let newRoom = Room(type!, startingPosition: CGPoint(x: door.1.x, y: door.1.y))
+                                let newRoom = Room(type!, startingPosition: CGPoint(x: door.1.x, y: door.1.y), floor: floorType)
                                 newRoom.position.x += Double(blocco/2)
                                 newRoom.position.y -= (newRoom.getLeftDoorPosition().y - door.1.y)
                                 scene.addChild(newRoom)
