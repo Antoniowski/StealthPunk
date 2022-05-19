@@ -24,6 +24,8 @@
 // 15 - CHANGE ROOM OBJECT
 // 31 - ANGOLO INTERNO DX
 // 32 - ANGOLO INTERNO SX
+// 33 - ANGOLO INTERNO DX 2
+// 34 - ANGOLO INTERNO SX 2
 // 
 // TAVERNA OGGETTI
 // 16 - BARILI
@@ -389,14 +391,14 @@ let simple6Matrix: [[Int]] =
 
 let simple7Matrix: [[Int]] =
     [[2, 1, 1, 1, 3, 0, 0, 2, 1, 1, 1, 3],
-     [4, 6, 6, 6, 5, 1, 1, 4, 6, 6, 6, 5],
-     [1, 1, 4, 4, 6, 6, 6, 6, 6, 6, 6, 10],
-     [0, 0, 4, 6, 6, 6, 6, 6, 6, 5, 1, 1],
+     [4, 6, 6, 6, 31, 1, 1, 32, 6, 6, 6, 5],
+     [1, 1, 34, 6, 6, 6, 6, 6, 6, 6, 6, 10],
+     [0, 0, 4, 6, 6, 6, 6, 6, 6, 33, 1, 1],
      [0, 0, 4, 6, 6, 6, 6, 6, 6, 5, 0, 0],
-     [2, 2, 4, 6, 6, 6, 6, 6, 6, 5, 0, 0],
-     [9, 6, 6, 6, 6, 6, 6, 6, 6, 5, 3, 0],
+     [2, 1, 32, 6, 6, 6, 6, 6, 6, 5, 0, 0],
+     [9, 6, 6, 6, 6, 6, 6, 6, 6, 31, 3, 0],
      [4, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 0],
-     [1, 1, 1, 1, 1, 8, 1, 1, 1, 1, 1, 0]
+     [1, 1, 1, 1, 1, 1, 8, 1, 1, 1, 1, 0]
     ]
 
 
@@ -456,7 +458,7 @@ let STANZE_D: [RoomArchetype] = [.SIMPLE_1, .SIMPLE_2, .SIMPLE_5, .SIMPLE_6, .SI
 
 //STANZA SENZA PORTA SOTTO
 let STANZE_L_SAFE : [RoomArchetype] = [.SIMPLE_5, .SIMPLE_7]
-let STANZE_R_SAFE : [RoomArchetype] = [.SIMPLE_6, .SIMPLE_7]
+let STANZE_R_SAFE : [RoomArchetype] = [/*.SIMPLE_6,*/ .SIMPLE_7]
 
 let STANZE_U_1DOOR: [RoomArchetype] = [.PROVA1]
 let STANZE_R_1DOOR: [RoomArchetype] = [.PROVA4]
