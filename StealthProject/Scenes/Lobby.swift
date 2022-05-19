@@ -10,7 +10,7 @@ import SpriteKit
 
 class LobbyScene: SKScene{
     private var label: SKLabelNode = SKLabelNode()
-    private let stanza = Room(.LOBBY, startingPosition: .zero)
+    private let stanza = Room(.LOBBY, startingPosition: .zero, floor: .FIRST_FLOOR)
     private var sceneCamera: SKCameraNode = SKCameraNode()
     
     override func didMove(to view: SKView) {
@@ -25,8 +25,8 @@ class LobbyScene: SKScene{
         label.zPosition = 1000
         label.run(.repeatForever(.sequence([.fadeOut(withDuration: 1), .fadeIn(withDuration: 1)])))
         sceneCamera.addChild(label)
-        sceneCamera.setScale(4)
-        sceneCamera.position = CGPoint(x: 350, y: -650)
+        sceneCamera.setScale(2)
+        sceneCamera.position = CGPoint(x: 350, y: -350)
         addChild(sceneCamera)
 
     }

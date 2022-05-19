@@ -71,7 +71,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         scenecamera.addChild(indicatore)
 
         scenecamera.position = player.position
-        scenecamera.setScale(3)
+        scenecamera.setScale(1)
         armadio.position = player.position
         armadio.position.x += 250
         lampione.position = player.position
@@ -81,15 +81,15 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         lampione.zPosition = 1
         player.position = CGPoint(x: 204, y: 300)
         
-        let room = Room(.SIMPLE_1, startingPosition: CGPoint(x: 400, y: 400))
-        let _ = Floor(self, floorType: .FIRST_FLOOR)
+//        let room = Room(.SIMPLE_1, startingPosition: CGPoint(x: 400, y: 400), floor: .FIRST_FLOOR)
+//        let f = Floor(self, floorType: .FIRST_FLOOR)
         
 //        luce.categoryBitMask = 2
 //        luce.position = lampione.position
 //        luce.position.y += 35
         
         
-//        lampione.lightingBitMask = 2
+        lampione.lightingBitMask = 2
         
         player.lightingBitMask = 2
         armadio.lightingBitMask = 2
@@ -127,7 +127,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         chest.position = .init(x: -100 , y: -120)
         
 
-        
+//        player.position = f.spawn
         
         
         addChild(player)
@@ -136,13 +136,13 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
 //        addChild(luce)
 //        addChild(t)
 //        addChild(ombra)
-        addChild(lightSwitch)
+//        addChild(lightSwitch)
 //        addChild(boots)
 //        addChild(knuckles)
         addChild(testcoin)
         addChild(testcoin2)
-//        addChild(testcoin4)
-//        addChild(testcoin3)
+        addChild(testcoin4)
+        addChild(testcoin3)
 
         addChild(chest)
         

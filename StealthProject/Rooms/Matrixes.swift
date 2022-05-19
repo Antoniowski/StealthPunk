@@ -6,6 +6,33 @@
 //  Created by Antonio Romano on 11/05/22.
 //
 
+
+
+
+// 0 - VOID
+// 1 - FRONT WALL
+// 2 - LEFT ANGLE
+// 3 - RIGHT ANGLE
+// 4 - LEFT WALL
+// 5 - RIGHT WALL
+// 6 - NEEDED FOR FLOOR
+// 7 - UP DOOR
+// 8 - DOWN DOOR
+// 9 - LEFT DOOR
+// 10 - RIGHT DOOR
+// 11 - LOBBY DOOR
+// 15 - CHANGE ROOM OBJECT
+// 
+// TAVERNA OGGETTI
+// 16 - BARILI
+// 17 - TAVOLINI
+// 18 - BANCONE1
+// 19 - BANCONE2
+// 20 - FORZIERE
+// 21 - BARILI SX
+//
+
+
 import Foundation
 
 typealias Matrix = [[Int]]
@@ -223,15 +250,15 @@ let simpleFinale: [[Int]] =
 
 //TAVERNA
 let taverna: [[Int]] =
-    [[0, 2, 1, 7, 1, 3, 0],
-     [0, 4, 6, 6, 6, 5, 0],
-     [0, 4, 6, 6, 6, 5, 0],
+    [[0, 2, 1, 11, 1, 3, 0],
+     [0, 4, 18, 6, 20, 5, 0],
+     [0, 4, 19, 6, 16, 5, 0],
      [0, 1, 4, 6, 5, 1, 0],
      [0, 0, 4, 6, 5, 0, 0],
      [2, 1, 4, 6, 5, 1, 3],
-     [4, 6, 6, 6, 6, 6, 5],
-     [4, 6, 6, 6, 6, 6, 5],
-     [4, 6, 6, 6, 6, 6, 5],
+     [4, 17, 6, 6, 6, 17, 5],
+     [4, 21, 6, 6, 6, 16, 5],
+     [4, 17, 6, 6, 6, 17, 5],
      [4, 6, 6, 6, 6, 6, 5],
      [1, 1, 1, 1, 1, 1, 1]
     ]
