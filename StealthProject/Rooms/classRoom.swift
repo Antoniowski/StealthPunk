@@ -82,7 +82,9 @@ class Room: SKNode {
     private var frontWallLightTexture: SKTexture = SKTexture()
     private var floorTexture: SKTexture = SKTexture()
     private var carpetTexture: [SKTexture] = []
-
+    private var internalAngledx: SKTexture = SKTexture()
+    private var internalAnglesx: SKTexture = SKTexture()
+    
     
     init(_ archetype: RoomArchetype, startingPosition: CGPoint, floor: FloorType){
         super.init()
@@ -314,6 +316,9 @@ class Room: SKNode {
             self.frontDoorTexture = SKTexture(imageNamed: "doorClosed")
             self.leftDoorTexture = SKTexture(imageNamed: "porta laterale")
             self.rightDoorTexture = SKTexture(imageNamed: "porta laterale")
+            self.internalAngledx = SKTexture(imageNamed: "angolo interno Dx")
+            self.internalAnglesx = SKTexture(imageNamed: "angolo interno Sx")
+            
             
         case .SECOND_FLOOE:
             self.frontWallTexture = SKTexture(imageNamed: "wall")
@@ -541,8 +546,25 @@ class Room: SKNode {
                              passaggio.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                              addChild(passaggio)
                     
+                case 31:
+                    let internalAngleDx = SKSpriteNode(texture: internalAngledx, size: bloccoSize)
+                    internalAngleDx.name = "wall"
+                    internalAngleDx.zPosition = 2
+                    internalAngleDx.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    internalAngleDx.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco/3, height: blocco/2), center: CGPoint(x: blocco/3, y: blocco/4))
+                    internalAngleDx.physicsBody?.isDynamic = false
+                    internalAngleDx.physicsBody?.affectedByGravity = false
+                    addChild(internalAngleDx)
                     
-                    
+                case 32:
+                    let internalAngleSx = SKSpriteNode(texture: internalAnglesx, size: bloccoSize)
+                    internalAngleSx.name = "wall"
+                    internalAngleSx.zPosition = 2
+                    internalAngleSx.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    internalAngleSx.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco/2, height: blocco), center: CGPoint(x: blocco/2, y: blocco/2))
+                    internalAngleSx.physicsBody?.isDynamic = false
+                    internalAngleSx.physicsBody?.affectedByGravity = false
+                    addChild(internalAngleSx)
                 default:
                     print("")
                 }
