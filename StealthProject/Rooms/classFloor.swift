@@ -17,16 +17,16 @@ enum FloorType: Int{
 }
 
 class Floor{
-    
+
     private var type: FloorType = .FIRST_FLOOR
-    
+
     private var stanze: [Room] = []
     private var numeroStanze: Int = 0
-    
+
     func getType()-> FloorType{
         return type
     }
-    
+
     init(_ scene: SKScene, floorType: FloorType){
         self.type = floorType
         self.numeroStanze = Int.random(in: 6...6)
@@ -58,7 +58,7 @@ class Floor{
             accortDX = true
             actualAdded+=1
         }
-        
+
         var firstCycle: Bool = true
         while actualAdded <= numeroStanze{
             doorNumbers = 0
@@ -79,13 +79,13 @@ class Floor{
                         }
                     }
                 }
-                
+
             }
-            
+
             if firstCycle{
                 firstCycle = false
             }
-            
+
 //            print("Numero porte \(doorNumbers)")
 //            print("Numero porte Array \(doorPoints)")
             if (doorNumbers + actualAdded) <= numeroStanze{
@@ -199,6 +199,6 @@ class Floor{
             }
         }
     }
-    
+
 }
 

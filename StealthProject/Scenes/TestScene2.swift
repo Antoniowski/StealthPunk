@@ -81,8 +81,8 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         lampione.zPosition = 1
         player.position = CGPoint(x: 204, y: 300)
         
-        let room = Room(.SIMPLE_1, startingPosition: CGPoint(x: 400, y: 400))
-        let _ = Floor(self, floorType: .FIRST_FLOOR)
+//        let room = Room(.SIMPLE_1, startingPosition: CGPoint(x: 400, y: 400), floor: .FIRST_FLOOR)
+//        let _ = Floor(self, floorType: .FIRST_FLOOR)
         
 //        luce.categoryBitMask = 2
 //        luce.position = lampione.position
