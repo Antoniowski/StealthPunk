@@ -409,9 +409,9 @@ class PlayableCharacter: SKSpriteNode{
             case .UP:
                 if self.status.isAttacking == false{
                     self.status.isAttacking = true
-                    self.xScale = 2
-                    self.run(.animate(with: self.attackAnimationRight, timePerFrame: 0.1), completion: {
-                        self.xScale = 1
+//                    self.xScale = 2
+                    self.run(.animate(with: self.attackAnimationBack, timePerFrame: 0.1), completion: {
+//                        self.xScale = 1
                         self.actionState = .MOVE
                         self.status.isAttacking = false
                         self.status.idle = false
@@ -420,9 +420,9 @@ class PlayableCharacter: SKSpriteNode{
             case .UP_RIGHT:
                 if self.status.isAttacking == false{
                     self.status.isAttacking = true
-                    self.xScale = 2
-                    self.run(.animate(with: self.attackAnimationRight, timePerFrame: 0.1), completion: {
-                        self.xScale = 1
+//                    self.xScale = 2
+                    self.run(.animate(with: self.attackAnimationBack, timePerFrame: 0.1), completion: {
+//                        self.xScale = 1
                         self.actionState = .MOVE
                         self.status.isAttacking = false
                         self.status.idle = false
@@ -442,9 +442,9 @@ class PlayableCharacter: SKSpriteNode{
             case .DOWN_RIGHT:
                 if self.status.isAttacking == false{
                     self.status.isAttacking = true
-                    self.xScale = 2
-                    self.run(.animate(with: self.attackAnimationRight, timePerFrame: 0.1), completion: {
-                        self.xScale = 1
+//                    self.xScale = 2
+                    self.run(.animate(with: self.attackAnimationFront, timePerFrame: 0.1), completion: {
+//                        self.xScale = 1
                         self.actionState = .MOVE
                         self.status.isAttacking = false
                         self.status.idle = false
@@ -453,9 +453,9 @@ class PlayableCharacter: SKSpriteNode{
             case .DOWN:
                 if self.status.isAttacking == false{
                     self.status.isAttacking = true
-                    self.xScale = 2
-                    self.run(.animate(with: self.attackAnimationRight, timePerFrame: 0.1), completion: {
-                        self.xScale = 1
+//                    self.xScale = 2
+                    self.run(.animate(with: self.attackAnimationFront, timePerFrame: 0.1), completion: {
+//                        self.xScale = 1
                         self.actionState = .MOVE
                         self.status.isAttacking = false
                         self.status.idle = false
@@ -464,9 +464,9 @@ class PlayableCharacter: SKSpriteNode{
             case .DOWN_LEFT:
                 if self.status.isAttacking == false{
                     self.status.isAttacking = true
-                    self.xScale = 2
-                    self.run(.animate(with: self.attackAnimationRight, timePerFrame: 0.1), completion: {
-                        self.xScale = 1
+//                    self.xScale = 2
+                    self.run(.animate(with: self.attackAnimationFront, timePerFrame: 0.1), completion: {
+//                        self.xScale = 1
                         self.actionState = .MOVE
                         self.status.isAttacking = false
                         self.status.idle = false
@@ -486,9 +486,9 @@ class PlayableCharacter: SKSpriteNode{
             case .UP_LEFT:
                 if self.status.isAttacking == false{
                     self.status.isAttacking = true
-                    self.xScale = 2
-                    self.run(.animate(with: self.attackAnimationRight, timePerFrame: 0.1), completion: {
-                        self.xScale = 1
+//                    self.xScale = 2
+                    self.run(.animate(with: self.attackAnimationBack, timePerFrame: 0.1), completion: {
+//                        self.xScale = 1
                         self.actionState = .MOVE
                         self.status.isAttacking = false
                         self.status.idle = false

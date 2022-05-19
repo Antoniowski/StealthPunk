@@ -224,14 +224,44 @@ class Room: SKNode {
             nemici = []
             setTextures(tipo: .FIRST_FLOOR)
             createRoom()
+            
         case .SCAMBIO1:
-            print("ciao")
+            door = DoorPosition(UP: false, DOWN: true, RIGHT: false, LEFT: false)
+            tipe = .NORMAL
+            numRighe = simple1Scambio[1].count
+            numColonne = simple1Scambio.count
+            stanza = simple1Scambio
+            nemici = []
+            setTextures(tipo: .FIRST_FLOOR)
+            createRoom()
         case .SCAMBIO2:
-            print ("criao")
+            door = DoorPosition(UP: false, DOWN: false, RIGHT: false, LEFT: true)
+            tipe = .NORMAL
+            numRighe = simple2Scambio[1].count
+            numColonne = simple2Scambio.count
+            stanza = simple2Scambio
+            nemici = []
+            setTextures(tipo: .FIRST_FLOOR)
+            createRoom()
         case .SCAMBIO3:
-            print("ciao")
+            door = DoorPosition(UP: true, DOWN: false, RIGHT: false, LEFT: false)
+            tipe = .NORMAL
+            numRighe = simple3Scambio[1].count
+            numColonne = simple3Scambio.count
+            stanza = simple3Scambio
+            nemici = []
+            setTextures(tipo: .FIRST_FLOOR)
+            createRoom()
         case .SCAMBIO4:
-            print("ciao")
+            door = DoorPosition(UP: false, DOWN: false, RIGHT: true, LEFT: false)
+            tipe = .NORMAL
+            numRighe = simple4Scambio[1].count
+            numColonne = simple4Scambio.count
+            stanza = simple4Scambio
+            nemici = []
+            setTextures(tipo: .FIRST_FLOOR)
+            createRoom()
+            
         case .LOBBY:
             door = DoorPosition(UP: true, DOWN: false, RIGHT: false, LEFT: false)
             self.tipe = .NORMAL
@@ -503,6 +533,14 @@ class Room: SKNode {
                     scrigno.physicsBody?.affectedByGravity = false
                     scrigno.physicsBody?.allowsRotation = false
                     addChild(scrigno)
+                    
+                case 15:
+                             let passaggio = SKShapeNode(rectOf: CGSize(width: 100, height: 100))
+                             passaggio.zPosition = 10
+                             passaggio.fillColor = .red
+                             passaggio.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                             addChild(passaggio)
+                    
                     
                     
                 default:
