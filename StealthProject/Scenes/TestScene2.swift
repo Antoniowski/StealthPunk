@@ -22,7 +22,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     var armadio: Closet = Closet()
     var lampione = Lampione(texture: SKTexture(imageNamed: "lampione"), color: .clear, size: CGSize(width: 70, height: 140), objectName: "lampione1", lightBitmask: 2)
     
-    var lightSwitch = LightSwitch(texture: SKTexture(imageNamed: "ConoPiccoloBackF1"), highlighted: SKTexture(imageNamed: "ConoPiccoloBackF2"), color: .clear, size: CGSize(width: 100, height: 100), referredLightName: "lampione1")
+    var lightSwitch = LightSwitch(referredLightName: "lampione1")
     
 //    var luce: SKLightNode = SKLightNode()
 
@@ -95,7 +95,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         armadio.lightingBitMask = 2
 
 
-//        lampione.name = "enemy"
+        lampione.name = "enemy"
         coin.size = CGSize(width: 30, height: 30)
 
         ombra.position = t.position
@@ -132,11 +132,11 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
         addChild(player)
         addChild(armadio)
-//        addChild(lampione)
+        addChild(lampione)
 //        addChild(luce)
 //        addChild(t)
 //        addChild(ombra)
-//        addChild(lightSwitch)
+        addChild(lightSwitch)
 //        addChild(boots)
 //        addChild(knuckles)
         addChild(testcoin)

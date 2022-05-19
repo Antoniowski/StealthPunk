@@ -30,6 +30,7 @@ enum RoomArchetype: Int{
     case SCAMBIO2 = 15
     case SCAMBIO3 = 16
     case SCAMBIO4 = 17
+    case LOBBY = 18
 }
 
 enum RoomsType: Int{
@@ -229,6 +230,15 @@ class Room: SKNode {
             print("ciao")
         case .SCAMBIO4:
             print("ciao")
+        case .LOBBY:
+            door = DoorPosition(UP: true, DOWN: false, RIGHT: false, LEFT: false)
+            self.tipe = .NORMAL
+            self.stanza = taverna
+            numRighe = taverna[1].count
+            numColonne = taverna.count
+            nemici = []
+            setTextureTaverna()
+            createRoom()
         }
     }
     
@@ -248,6 +258,16 @@ class Room: SKNode {
 //        self.leftDoorTexture = SKTexture(imageNamed: "doorLeft")
 //        self.rightDoorTexture = SKTexture(imageNamed: "doorRight")
 //    }
+    
+    private func setTextureTaverna(){
+        self.frontWallTexture = SKTexture(imageNamed: "parete centrale")
+        self.floorTexture = SKTexture(imageNamed: "pavimento taverna")
+        self.sideRightWallTexture = SKTexture(imageNamed: "parete lato dx")
+        self.sideLeftWallTexture  = SKTexture(imageNamed: "parete lato sx")
+        self.cornerRightWallTexture = SKTexture(imageNamed: "parete angolo dx")
+        self.cornerLeftWallTexture = SKTexture(imageNamed: "parete angolo sx")
+        self.frontDoorTexture = SKTexture(imageNamed: "porta chiusa")
+    }
     
     private func setTextures(tipo : FloorType){
         switch tipo {
@@ -364,6 +384,9 @@ class Room: SKNode {
                     door.physicsBody?.isDynamic = false
                     door.physicsBody?.affectedByGravity = false
                     door.physicsBody?.allowsRotation = false
+                    if self.archetype == .LOBBY{
+                        door.texture = SKTexture(imageNamed: "porta chiusa")
+                    }
                     addChild(door)
                 case 8:
 //                    let door = SKSpriteNode(texture: frontDoorTexture, size: bloccoSize)

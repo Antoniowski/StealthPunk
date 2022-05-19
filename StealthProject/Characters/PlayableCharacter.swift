@@ -405,13 +405,97 @@ class PlayableCharacter: SKSpriteNode{
 //            ATTACK ANIMATION
             
         case .ATTACK:
-            if self.status.isAttacking == false{
-                self.status.isAttacking = true
-                self.run(.animate(with: self.attackAnimationFront, timePerFrame: 0.18), completion: {
-                    self.actionState = .MOVE
-                    self.status.isAttacking = false
-                    self.status.idle = false
-                })
+            switch facingDirection {
+            case .UP:
+                if self.status.isAttacking == false{
+                    self.status.isAttacking = true
+                    self.xScale = 2
+                    self.run(.animate(with: self.attackAnimationRight, timePerFrame: 0.1), completion: {
+                        self.xScale = 1
+                        self.actionState = .MOVE
+                        self.status.isAttacking = false
+                        self.status.idle = false
+                    })
+                }
+            case .UP_RIGHT:
+                if self.status.isAttacking == false{
+                    self.status.isAttacking = true
+                    self.xScale = 2
+                    self.run(.animate(with: self.attackAnimationRight, timePerFrame: 0.1), completion: {
+                        self.xScale = 1
+                        self.actionState = .MOVE
+                        self.status.isAttacking = false
+                        self.status.idle = false
+                    })
+                }
+            case .RIGHT:
+                if self.status.isAttacking == false{
+                    self.status.isAttacking = true
+                    self.xScale = 2
+                    self.run(.animate(with: self.attackAnimationRight, timePerFrame: 0.1), completion: {
+                        self.xScale = 1
+                        self.actionState = .MOVE
+                        self.status.isAttacking = false
+                        self.status.idle = false
+                    })
+                }
+            case .DOWN_RIGHT:
+                if self.status.isAttacking == false{
+                    self.status.isAttacking = true
+                    self.xScale = 2
+                    self.run(.animate(with: self.attackAnimationRight, timePerFrame: 0.1), completion: {
+                        self.xScale = 1
+                        self.actionState = .MOVE
+                        self.status.isAttacking = false
+                        self.status.idle = false
+                    })
+                }
+            case .DOWN:
+                if self.status.isAttacking == false{
+                    self.status.isAttacking = true
+                    self.xScale = 2
+                    self.run(.animate(with: self.attackAnimationRight, timePerFrame: 0.1), completion: {
+                        self.xScale = 1
+                        self.actionState = .MOVE
+                        self.status.isAttacking = false
+                        self.status.idle = false
+                    })
+                }
+            case .DOWN_LEFT:
+                if self.status.isAttacking == false{
+                    self.status.isAttacking = true
+                    self.xScale = 2
+                    self.run(.animate(with: self.attackAnimationRight, timePerFrame: 0.1), completion: {
+                        self.xScale = 1
+                        self.actionState = .MOVE
+                        self.status.isAttacking = false
+                        self.status.idle = false
+                    })
+                }
+            case .LEFT:
+                if self.status.isAttacking == false{
+                    self.status.isAttacking = true
+                    self.xScale = 2
+                    self.run(.animate(with: self.attackAnimationLeft, timePerFrame: 0.1), completion: {
+                        self.xScale = 1
+                        self.actionState = .MOVE
+                        self.status.isAttacking = false
+                        self.status.idle = false
+                    })
+                }
+            case .UP_LEFT:
+                if self.status.isAttacking == false{
+                    self.status.isAttacking = true
+                    self.xScale = 2
+                    self.run(.animate(with: self.attackAnimationRight, timePerFrame: 0.1), completion: {
+                        self.xScale = 1
+                        self.actionState = .MOVE
+                        self.status.isAttacking = false
+                        self.status.idle = false
+                    })
+                }
+            case .NONE:
+                return
             }
             //ROLL ANIMATION
         case .ROLL:
@@ -589,6 +673,7 @@ class PlayableCharacter: SKSpriteNode{
             case .NONE:
                 return
             }
+            
         case .HIDDEN:
             print("")
             
@@ -678,8 +763,8 @@ class PlayableCharacter: SKSpriteNode{
                 if sprite?.getSpottedStatus() == false{
                     sprite?.setSpottedStatus(true)
                     sprite?.run(.setTexture(sprite?.highlightedTexture ?? SKTexture()))
-                    sprite?.shapeHighlighted.strokeColor = .init(white: 1, alpha: 0.5)
-                    sprite?.shapeHighlighted.glowWidth = 3
+//                    sprite?.shapeHighlighted.strokeColor = .init(white: 1, alpha: 0.5)
+//                    sprite?.shapeHighlighted.glowWidth = 3
 //                    sprite?.addChild(sprite?.shapeHighlighted ?? SKShapeNode())
                 }
             }else{
@@ -693,6 +778,12 @@ class PlayableCharacter: SKSpriteNode{
                             let chest = usable as? Chest
                             if chest?.getOpenStatus() == true{
                                 chest?.run(.setTexture(chest?.openTexture ?? SKTexture()))
+                            }
+                        }
+                        if usable?.getUsableCategory() == .SWITCH{
+                            let lswitch = usable as? LightSwitch
+                            if lswitch?.getOnOffStatus() == true{
+                                lswitch?.run(.setTexture(lswitch?.ONTexture ?? SKTexture()))
                             }
                         }
                     }
