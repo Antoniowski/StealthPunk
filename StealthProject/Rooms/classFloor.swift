@@ -29,7 +29,8 @@ class Floor{
     
     init(_ scene: SKScene, floorType: FloorType){
         self.type = floorType
-        self.numeroStanze = Int.random(in: 6...6)
+        self
+            .numeroStanze = Int.random(in: 6...6)
         var lastRoomsAdded: [Room] = []
         var actualAdded: Int = 0
         var doorNumbers: Int = 0
