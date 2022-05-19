@@ -71,7 +71,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         scenecamera.addChild(indicatore)
 
         scenecamera.position = player.position
-        scenecamera.setScale(1)
+        scenecamera.setScale(5)
         armadio.position = player.position
         armadio.position.x += 250
         lampione.position = player.position

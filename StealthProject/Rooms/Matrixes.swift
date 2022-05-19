@@ -429,6 +429,18 @@ let simple6Matrix: [[Int]] =
  [1, 1, 1, 1, 1, 1, 8, 1, 1, 1, 1, 1]
 ]
 
+let simple7Matrix: [[Int]] =
+    [[2, 1, 1, 3, 0, 0, 0, 5, 1, 1, 3],
+     [4, 6, 6, 5, 1, 1, 1, 1, 6, 6, 5],
+     [1, 1, 6, 6, 6, 6, 6, 6, 6, 6, 10],
+     [0, 4, 6, 6, 6, 6, 6, 6, 5, 1, 1],
+     [0, 4, 6, 6, 6, 6, 6, 6, 5, 0, 0],
+     [2, 1, 6, 6, 6, 6, 6, 6, 5, 0, 0],
+     [9, 6, 6, 6, 6, 6, 6, 6, 1, 3, 0],
+     [4, 6, 6, 6, 6, 6, 6, 6, 6, 5, 0],
+     [1, 1, 1, 1, 1, 8, 1, 1, 1, 1, 0]
+    ]
+
 
 
 
@@ -437,13 +449,13 @@ let simple6Matrix: [[Int]] =
 //ARRAY DI STANZE DIVISI PER POSIZIONE PORTE
 
 let STANZE_U: [RoomArchetype] = [.SIMPLE_1, .SIMPLE_2, .SIMPLE_4]
-let STANZE_R: [RoomArchetype] = [.SIMPLE_3, .SIMPLE_4, .SIMPLE_6]
-let STANZE_L: [RoomArchetype] = [.SIMPLE_3 , .SIMPLE_4, .SIMPLE_5]
-let STANZE_D: [RoomArchetype] = [.SIMPLE_1, .SIMPLE_2, .SIMPLE_5, .SIMPLE_6]
+let STANZE_R: [RoomArchetype] = [.SIMPLE_3, .SIMPLE_4, .SIMPLE_6, .SIMPLE_7]
+let STANZE_L: [RoomArchetype] = [.SIMPLE_3 , .SIMPLE_4, .SIMPLE_5, .SIMPLE_7]
+let STANZE_D: [RoomArchetype] = [.SIMPLE_1, .SIMPLE_2, .SIMPLE_5, .SIMPLE_6, .SIMPLE_7]
 
 //STANZA SENZA PORTA SOTTO
-let STANZE_L_SAFE : [RoomArchetype] = [.SIMPLE_5]
-let STANZE_R_SAFE : [RoomArchetype] = [.SIMPLE_6]
+let STANZE_L_SAFE : [RoomArchetype] = [.SIMPLE_5, .SIMPLE_7]
+let STANZE_R_SAFE : [RoomArchetype] = [.SIMPLE_6, .SIMPLE_7]
 
 let STANZE_U_1DOOR: [RoomArchetype] = [.PROVA1]
 let STANZE_R_1DOOR: [RoomArchetype] = [.PROVA4]
