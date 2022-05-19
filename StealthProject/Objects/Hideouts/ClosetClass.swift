@@ -14,7 +14,7 @@ class Closet: Hideout{
         super.init(texture: SKTexture(imageNamed: "closet"), highlighted: SKTexture(imageNamed: "closetFocused"), color: .clear, size: CGSize(width: blocco, height: blocco), type: .HIDEOUT)
         self.setHideoutCategory(.CLOSET)
         self.setName("Closet")
-        self.openCloset = SKTexture(imageNamed: "closetOpen")
+        self.openCloset = SKTexture(imageNamed: "ClosetOpen")
     }
     
     required init?(coder aDecoder: NSCoder) {
