@@ -63,12 +63,15 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
         physicsWorld.contactDelegate = self
         camera = scenecamera
+        
+        
+        
         indicatore.position.x = player.position.x - 100
         indicatore.position.y = player.position.y + frame.height/3.5 + 90
         scenecamera.addChild(indicatore)
 
         scenecamera.position = player.position
-        scenecamera.setScale(1)
+        scenecamera.setScale(10)
         armadio.position = player.position
         armadio.position.x += 250
         lampione.position = player.position
@@ -78,8 +81,8 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         lampione.zPosition = 1
         player.position = CGPoint(x: 204, y: 300)
         
-//        let room = Room(.SIMPLE_1, startingPosition: CGPoint(x: 400, y: 400))
-//        let _ = Floor(self, floorType: .FIRST_FLOOR)
+        let room = Room(.SIMPLE_1, startingPosition: CGPoint(x: 400, y: 400))
+        let _ = Floor(self, floorType: .FIRST_FLOOR)
         
 //        luce.categoryBitMask = 2
 //        luce.position = lampione.position
