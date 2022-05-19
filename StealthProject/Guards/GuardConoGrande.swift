@@ -34,8 +34,13 @@ class GuardConoGrande: Guard{
         self.halfFrontLTexture = SKTexture(imageNamed: "ConoGrande3:4FrontF3")
         
         self.walkingAnimationRight = [SKTexture(imageNamed: "ConoGrandeSideMirrorF2"), SKTexture(imageNamed:"ConoGrandeSideMirrorF3"), SKTexture(imageNamed:"ConoGrandeSideMirrorF4"), SKTexture(imageNamed:"ConoGrandeSideMirrorF1")]
+        self.walkingAnimationFrontLeft = [SKTexture(imageNamed: "ConoGrande3:4FrontF2"), SKTexture(imageNamed:"ConoGrande3:4FrontF3"), SKTexture(imageNamed:"ConoGrande3:4FrontF4"), SKTexture(imageNamed:"ConoGrande3:4FrontF1")]
+        self.walkingAnimationFrontRight = [SKTexture(imageNamed: "ConoGrande3:4FrontMirrorF2"), SKTexture(imageNamed:"ConoGrande3:4FrontMirrorF3"), SKTexture(imageNamed:"ConoGrande3:4FrontMirrorF4"), SKTexture(imageNamed:"ConoGrande3:4FrontMirrorF1")]
         self.walkingAnimationFront = [SKTexture(imageNamed: "ConoGrandeFrontF3"), SKTexture(imageNamed: "ConoGrandeFrontF4"), SKTexture(imageNamed: "ConoGrandeFrontF1"), SKTexture(imageNamed: "ConoGrandeFrontF2")]
         self.walkingAnimationLeft = [SKTexture(imageNamed: "ConoGrandeSideF3"), SKTexture(imageNamed:"ConoGrandeSideF4"), SKTexture(imageNamed:"ConoGrandeSideF1"), SKTexture(imageNamed:"ConoGrandeSideF2")]
         self.walkingAnimationBack = [SKTexture(imageNamed: "ConoGrandeBackF1"), SKTexture(imageNamed: "ConoGrandeBackF2"), SKTexture(imageNamed: "ConoGrandeBackF3"), SKTexture(imageNamed: "ConoGrandeBackF4")]
+        self.walkingAnimationBackRight = [SKTexture(imageNamed: "ConoGrande3:4BackF2"), SKTexture(imageNamed:"ConoGrande3:4BackF3"), SKTexture(imageNamed:"ConoGrande3:4BackF4"), SKTexture(imageNamed:"ConoGrande3:4BackF1")]
+        self.walkingAnimationBackLeft = [SKTexture(imageNamed: "ConoGrande3:4BackMirrorF2"), SKTexture(imageNamed:"ConoGrande3:4BackMirrorF3"), SKTexture(imageNamed:"ConoGrande3:4BackMirrorF4"), SKTexture(imageNamed:"ConoGrande3:4BackMirrorF1")]
+        
     }
 }
