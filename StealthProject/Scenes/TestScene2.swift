@@ -92,7 +92,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         armadio.lightingBitMask = 2
 
 
-//        lampione.name = "enemy"
+        lampione.name = "enemy"
         coin.size = CGSize(width: 30, height: 30)
 
         ombra.position = t.position
