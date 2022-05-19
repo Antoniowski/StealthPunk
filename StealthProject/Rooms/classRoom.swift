@@ -30,7 +30,7 @@ enum RoomArchetype: Int{
     case SCAMBIO2 = 15
     case SCAMBIO3 = 16
     case SCAMBIO4 = 17
-    case LOBBY = 18
+    case LOBBY = 19
 }
 
 enum RoomsType: Int{
