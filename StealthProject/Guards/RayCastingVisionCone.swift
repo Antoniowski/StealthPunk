@@ -23,9 +23,6 @@ func visionCone(entity: Guard, scene: SKScene){
 
     
     scene.enumerateChildNodes(withName: "*"){node, _ in
-//        guard node.name != nil && entity.name != nil else{
-//            return
-//        }
         if(node.name == entity.name!+"visualCone"){
             node.removeFromParent()
         }
@@ -127,15 +124,15 @@ func createVisionCone360(entity: Guard, scene: SKScene){
     
     scene.addChild(visualCone)
     
-    if(entity.rayCastingPlayerFound){
-        print("Trovato")
-        entity.setPlayerFoundTrue()
-        entity.setPlayerFoundTransitioningTrue()
-    } else {
-        print("NonTrovato")
-        entity.setPlayerFoundFalse()
-        entity.setPlayerFoundTransitioningFalse()
-    }
+//    if(entity.rayCastingPlayerFound){
+//        print("Trovato")
+//        entity.setPlayerFoundTrue()
+//        entity.setPlayerFoundTransitioningTrue()
+//    } else {
+//        print("NonTrovato")
+//        entity.setPlayerFoundFalse()
+//        entity.setPlayerFoundTransitioningFalse()
+//    }
 }
 
 func createVisionCone(entity: Guard, scene: SKScene){
@@ -159,20 +156,40 @@ func createVisionCone(entity: Guard, scene: SKScene){
     
     scene.addChild(visualCone)
     
+    
     if(entity.rayCastingPlayerFound){
-        entity.setPlayerFoundTrue()
-        entity.setPlayerFoundTransitioningTrue()
-        
+        if (entity.getGuardActionState() == .IDLE || entity.getGuardActionState() == .MOVE || entity.getGuardActionState() == .ROTATING_ACTION){
+            print("NOT FOUND IN CHASING")
+            entity.pathToChasing = true
+        } else if (entity.getGuardActionState() == .SEARCHING || entity.getGuardActionState() == .ROTATING || entity.getGuardActionState() == .RETURNING){
+            entity.pathToChasing = true
+        }
     } else {
-        if(entity.chasing){
-            entity.setPlayerFoundFalse()
-//            entity.searching = true
-            entity.transitionToSearch = true
-        } else {
-            entity.setPlayerFoundFalse()
-            entity.setPlayerFoundTransitioningFalse()
+        if (entity.getGuardActionState() == .CHASING ){
+            entity.chasingToSearching = true
+        } else if (entity.getGuardActionState() == .ROTATING && entity.readyToReturn){
+            entity.readyToReturn = false
+            entity.rotatingToReturn = true
         }
     }
+    
+//    if(entity.rayCastingPlayerFound){
+//        entity.setPlayerFoundTrue()
+//        entity.setPlayerFoundTransitioningTrue()
+//
+//    } else {
+//        if(entity.chasing){
+//            entity.setPlayerFoundFalse()
+////            entity.searching = true
+//            entity.transitionToSearch = true
+//        } else {
+//            entity.setPlayerFoundFalse()
+//            entity.setPlayerFoundTransitioningFalse()
+//        }
+//    }
+    
+    
+    
 }
 
 
