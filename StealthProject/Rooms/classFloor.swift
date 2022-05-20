@@ -60,8 +60,9 @@ class Floor{
             lastRoomsAdded.append(room)
             spawn = .init(x: room.position.x + Double(blocco*room.getRighe())/2, y: room.position.y - Double(blocco*room.getColonne())/2)
             scene.addChild(room)
-            accortSX = true
-            accortDX = true
+            attenzione1 = true
+            attenzione2 = true
+            attenzione3 = true
             actualAdded+=1
         }
 
@@ -99,14 +100,26 @@ class Floor{
                 for door in doorPoints{
                     switch door.0{
                     case .UP:
+                        if(attenzione1){
 //                      FUNZIONA PER DIO!
-                        let type = STANZE_D.randomElement()
+                        let type = STANZE_D_NO_SX.randomElement()
                         let newRoom = Room(type ?? .SIMPLE_1, startingPosition:  CGPoint(x: door.1.x, y: door.1.y), floor: floorType)
                         newRoom.position.x -= ((newRoom.getDownDoorPosition().x)-door.1.x)
                         newRoom.position.y += Double(newRoom.getColonne()*blocco - blocco/2)
                         newRoom.setDoorOccupiedStatus(placement: .DOWN, true)
                         lastRoomsAdded.append(newRoom)
                         scene.addChild(newRoom)
+                            attenzione1 = false
+                        }
+                        else{
+                            let type = STANZE_D.randomElement()
+                            let newRoom = Room(type ?? .SIMPLE_1, startingPosition:  CGPoint(x: door.1.x, y: door.1.y), floor: floorType)
+                            newRoom.position.x -= ((newRoom.getDownDoorPosition().x)-door.1.x)
+                            newRoom.position.y += Double(newRoom.getColonne()*blocco - blocco/2)
+                            newRoom.setDoorOccupiedStatus(placement: .DOWN, true)
+                            lastRoomsAdded.append(newRoom)
+                            scene.addChild(newRoom)
+                        }
                     case .DOWN:
                         let type = STANZE_U.randomElement()
                         let newRoom = Room(type ?? .SIMPLE_1, startingPosition: CGPoint(x: door.1.x, y: door.1.y), floor: floorType)
@@ -118,8 +131,8 @@ class Floor{
                         lastRoomsAdded.append(newRoom)
                         scene.addChild(newRoom)
                     case .LEFT:
-                        if(accortSX){
-                        let type = STANZE_R_SAFE.randomElement()
+                        if(attenzione3){
+                        let type = STANZE_L_NO_UP.randomElement()
                         let newRoom = Room(type!, startingPosition: CGPoint(x: door.1.x, y: door.1.y), floor: floorType)
 //                        newRoom.convert(door.point, to: newRoom)
 
@@ -128,6 +141,7 @@ class Floor{
                         newRoom.setDoorOccupiedStatus(placement: .RIGHT, true)
                         lastRoomsAdded.append(newRoom)
                         scene.addChild(newRoom)
+                            attenzione3 = false
                         }
                         else{
                             let type = STANZE_R.randomElement()
@@ -141,8 +155,8 @@ class Floor{
                             scene.addChild(newRoom)
                         }
                     case .RIGHT:
-                        if(accortDX){
-                            let type = STANZE_L_SAFE.randomElement()
+                        if(attenzione2){
+                            let type = STANZE_R_NO_UP.randomElement()
                         let newRoom = Room(type!, startingPosition: CGPoint(x: door.1.x, y: door.1.y),floor: floorType)
 //                        newRoom.convert(door.point, to: newRoom)
 
@@ -151,6 +165,7 @@ class Floor{
                         newRoom.setDoorOccupiedStatus(placement: .LEFT, true)
                         lastRoomsAdded.append(newRoom)
                         scene.addChild(newRoom)
+                            attenzione2 = false
                         }
                         else {
                             let type = STANZE_L.randomElement()

@@ -330,7 +330,7 @@ let simple1Matrix: [[Int]] =
     ]
 
 let simple2Matrix: [[Int]] =
-    [[2, 1, 7, 1, 1, 1, 1, 1, 1,  3],
+    [[2, 1, 7, 1, 1, 1, 1, 1, 1, 3],
      [4, 6, 6, 6, 6, 6, 6, 6, 6, 5],
      [4, 6, 6, 6, 6, 6, 6, 6, 6, 5],
      [4, 6, 6, 6, 6, 6, 6, 6, 6, 5],
@@ -342,16 +342,16 @@ let simple2Matrix: [[Int]] =
 
 //PORTA SOTTO DX E SX
 let simple3Matrix: [[Int]] =
-[[2, 1, 1, 1, 1, 1, 3, 0, 0, 0, 0],
- [9, 6, 6, 6, 6, 6, 5, 0, 0, 0, 0],
- [1, 1, 1, 4, 6, 6, 21, 1, 1, 1, 3],
- [0, 0, 0, 4, 6, 6, 6, 6, 6, 6, 10],
- [0, 0, 0, 4, 6, 6, 5, 1, 1, 1, 1],
- [0, 0, 0, 4, 6, 6, 5, 0, 0, 0, 0],
- [2, 1, 1, 32, 6, 6, 5, 0, 0, 0, 0],
- [4, 6, 6, 6, 6, 6, 5, 0, 0, 0, 0],
- [1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0]
-]
+    [[2, 1, 1, 1, 1, 1, 3, 0, 0, 0, 0],
+     [9, 6, 6, 6, 6, 6, 5, 0, 0, 0, 0],
+     [1, 1, 1, 4, 6, 6, 21, 1, 1, 1, 3],
+     [0, 0, 0, 4, 6, 6, 6, 6, 6, 6, 10],
+     [0, 0, 0, 4, 6, 6, 5, 1, 1, 1, 1],
+     [0, 0, 0, 4, 6, 6, 5, 0, 0, 0, 0],
+     [2, 1, 1, 32, 6, 6, 5, 0, 0, 0, 0],
+     [4, 6, 6, 6, 6, 6, 5, 0, 0, 0, 0], 
+     [1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0]
+    ]
 
 //PORTA SOPRA SX E DX
 let simple4Matrix: [[Int]] =
@@ -460,6 +460,10 @@ let STANZE_D: [RoomArchetype] = [.SIMPLE_1, .SIMPLE_2, .SIMPLE_5, .SIMPLE_6, .SI
 let STANZE_L_SAFE : [RoomArchetype] = [.SIMPLE_5, .SIMPLE_7]
 let STANZE_R_SAFE : [RoomArchetype] = [/*.SIMPLE_6,*/.SIMPLE_7]
 
+let STANZE_D_NO_SX : [RoomArchetype] = [.SIMPLE_1, .SIMPLE_2]
+let STANZE_R_NO_UP : [RoomArchetype] = [.SIMPLE_3, .SIMPLE_5, .SIMPLE_7]
+let STANZE_L_NO_UP : [RoomArchetype] = [.SIMPLE_3, .SIMPLE_6, .SIMPLE_7]
+ 
 let STANZE_U_1DOOR: [RoomArchetype] = [.PROVA1]
 let STANZE_R_1DOOR: [RoomArchetype] = [.PROVA4]
 let STANZE_L_1DOOR: [RoomArchetype] = [.PROVA3]
