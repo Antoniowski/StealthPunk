@@ -15,6 +15,7 @@ class Bush: Hideout{
         self.setHideoutCategory(.BUSH)
         self.setName("Bush")
         self.openBush = SKTexture(imageNamed: "cespuglio")
+        self.normalTexture = SKTexture(imageNamed: "cespuglio normal map")
         self.physicsBody = SKPhysicsBody(rectangleOf: .init(width: Double(blocco)/1.5, height: Double(blocco)/2.5), center: .init(x: 0, y: Double(blocco)/4))
         self.physicsBody?.isDynamic = false
         self.physicsBody?.allowsRotation = false

@@ -24,7 +24,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     
     var lightSwitch = LightSwitch(referredLightName: "lampione1")
     
-//    var luce: SKLightNode = SKLightNode()
+    var luce: SKLightNode = SKLightNode()
 
     
     var scenecamera = SKCameraNode()
@@ -71,7 +71,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         scenecamera.addChild(indicatore)
 
         scenecamera.position = player.position
-        scenecamera.setScale(1)
+        scenecamera.setScale(0.25)
 //        armadio.position = player.position
 //        armadio.position.x += 250
 //        lampione.position = player.position
@@ -82,8 +82,8 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         player.position = CGPoint(x: 204, y: 300)
         player.lightingBitMask = 1 | 2
         
-//        let room = Room(.SIMPLE_1, startingPosition: CGPoint(x: 400, y: 400), floor: .FIRST_FLOOR)
-        let f = Floor(self, floorType: .FIRST_FLOOR)
+        let room = Room(.SIMPLE_3, startingPosition: CGPoint(x: 0, y: 400), floor: .FIRST_FLOOR)
+//        let f = Floor(self, floorType: .FIRST_FLOOR)
         
 //        luce.categoryBitMask = 2
 //        luce.position = lampione.position
@@ -129,8 +129,10 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
         chest.position = .init(x: -100 , y: -120)
         
+        luce.falloff = 0
+        
 
-        player.position = f.spawn
+//        player.position = f.spawn
         player.zPosition = 10
 
         
@@ -152,7 +154,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
         addChild(scenecamera)
 //        createRoom2()
-//        addChild(room)
+        addChild(room)
     }
     
     
@@ -224,6 +226,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         }
         
         playerMovement(player: player as SKSpriteNode, velocity: velocity)
+        luce.position = player.position
 
         
         scenecamera.position = player.position

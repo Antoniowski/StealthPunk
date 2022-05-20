@@ -362,7 +362,9 @@ class PlayableCharacter: SKSpriteNode{
                 }else if myMovement == .zero && self.status.idle == false{
                     self.removeAllActions()
                     self.status.idle = true
-                    self.run(.setTexture(frontTexture))                }
+                    self.run(.setTexture(frontTexture))
+                    
+                }
             case .DOWN_LEFT:
                 if myMovement != .zero && (self.status.idle == true || self.facingDirection != .DOWN_LEFT || self.status.isRunning == true){
                     self.status.isRunning = false
