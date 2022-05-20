@@ -10,6 +10,7 @@ import SpriteKit
 
 enum StaticObjectCategory: Int{
     case LIGHT = 0
+    case MOBILIO = 1
 }
 
 class StaticObject: SKSpriteNode{

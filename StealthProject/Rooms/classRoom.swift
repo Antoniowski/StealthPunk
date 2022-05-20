@@ -542,11 +542,11 @@ class Room: SKNode {
                     addChild(scrigno)
                     
                 case 15:
-                             let passaggio = SKShapeNode(rectOf: CGSize(width: 100, height: 100))
-                             passaggio.zPosition = 10
-                             passaggio.fillColor = .red
-                             passaggio.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
-                             addChild(passaggio)
+                    let passaggio = SKShapeNode(rectOf: CGSize(width: 100, height: 100))
+                    passaggio.zPosition = 10
+                    passaggio.fillColor = .red
+                    passaggio.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    addChild(passaggio)
                     
                 case 31:
                     let internalAngleDx = SKSpriteNode(texture: internalAngledx, size: bloccoSize)
@@ -587,6 +587,17 @@ class Room: SKNode {
                     internalAngleSx2.physicsBody?.isDynamic = false
                     internalAngleSx2.physicsBody?.affectedByGravity = false
                     addChild(internalAngleSx2)
+                
+                case 12:
+                    let colonna = StaticObject(texture: SKTexture(imageNamed: "column"), color: .clear, size: .init(width: blocco/2, height: blocco), objectName: "column", objectCategory: .MOBILIO)
+                    colonna.physicsBody = SKPhysicsBody(rectangleOf: .init(width: Double(blocco/2), height: Double(blocco)), center: CGPoint (x: 0, y: Double(blocco/2) - 0.7*Double(blocco/2)))
+                    colonna.physicsBody?.affectedByGravity = false
+                    colonna.physicsBody?.allowsRotation = false
+                    colonna.physicsBody?.isDynamic = false
+                    colonna.zPosition = 3
+                    colonna.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    addChild(colonna)
+
                 default:
                     print("")
                 }
