@@ -12,7 +12,7 @@ class Cassapanca: Hideout{
     var open: SKTexture = SKTexture()
     init(){
         super.init(texture: SKTexture(imageNamed: "cassapancaChiusa"), highlighted: SKTexture(imageNamed: "cassapancaBlur"), color: .clear, size: CGSize(width: blocco, height: blocco), type: .HIDEOUT)
-        self.setHideoutCategory(.CLOSET)
+        self.setHideoutCategory(.PANCA)
         self.setName("Cassapanca")
         self.open = SKTexture(imageNamed: "cassapancaAperta")
     }

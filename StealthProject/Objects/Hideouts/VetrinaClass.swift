@@ -12,7 +12,7 @@ class Vetrina: Hideout{
     var open: SKTexture = SKTexture()
     init(){
         super.init(texture: SKTexture(imageNamed: "vetrinaChiusa"), highlighted: SKTexture(imageNamed: "vetrinaBlur"), color: .clear, size: CGSize(width: blocco, height: blocco), type: .HIDEOUT)
-        self.setHideoutCategory(.CLOSET)
+        self.setHideoutCategory(.VETRINA)
         self.setName("Vetrina")
         self.open = SKTexture(imageNamed: "vetrinaAperta")
     }

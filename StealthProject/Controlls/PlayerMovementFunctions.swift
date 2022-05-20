@@ -87,7 +87,7 @@ extension PlayableScene{
     
     func rollState(){
         
-        velocity = rollVector*MAX_SPEED*3*delta
+        velocity = rollVector*MAX_SPEED*2.2*Double(player.getSpeed())*delta
         
     }
     

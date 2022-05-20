@@ -25,6 +25,10 @@ class Lampione: StaticObject, Light{
         self.lightingBitMask = UInt32(lightBitmask)
         light.position.y += 20
         self.addChild(light)
+        self.physicsBody = SKPhysicsBody(rectangleOf: .init(width: 30, height: 70), center: .init(x: 0, y: 30))
+        self.physicsBody?.isDynamic = false
+        self.physicsBody?.affectedByGravity = false
+        self.physicsBody?.allowsRotation = false
     }
 //    override init(texture: SKTexture?, color: UIColor, size: CGSize, objectName: String, objectCategory: StaticObjectCategory) {
 //        super.init(texture: texture, color: color, size: size, objectName: objectName, objectCategory: .LIGHT)
