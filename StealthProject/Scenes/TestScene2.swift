@@ -82,8 +82,8 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         player.position = CGPoint(x: 204, y: 300)
         player.lightingBitMask = 1 | 2
         
-        let room = Room(.SIMPLE_1, startingPosition: CGPoint(x: 400, y: 400), floor: .FIRST_FLOOR)
-//        let f = Floor(self, floorType: .FIRST_FLOOR)
+//        let room = Room(.SIMPLE_1, startingPosition: CGPoint(x: 400, y: 400), floor: .FIRST_FLOOR)
+        let f = Floor(self, floorType: .FIRST_FLOOR)
         
 //        luce.categoryBitMask = 2
 //        luce.position = lampione.position
@@ -130,13 +130,12 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         chest.position = .init(x: -100 , y: -120)
         
 
-//        player.position = f.spawn
+        player.position = f.spawn
         player.zPosition = 10
-        player.position.x += 450
-        player.position.y -= 100
+
         
         addChild(player)
-        addChild(armadio)
+//        addChild(armadio)
 //        addChild(lampione)
 //        addChild(luce)
 //        addChild(t)
@@ -153,7 +152,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
         addChild(scenecamera)
 //        createRoom2()
-        addChild(room)
+//        addChild(room)
     }
     
     
