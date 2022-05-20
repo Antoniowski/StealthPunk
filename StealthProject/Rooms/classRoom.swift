@@ -651,14 +651,14 @@ class Room: SKNode {
                     furnitureSmall.lightingBitMask = 1 | 2
                     addChild(furnitureSmall)
                 case 40:
-                    var armadio: Closet
+                    var armadio: Hideout
                     if Int.random(in: 0...10) > 5{
-                        armadio = Closet()
+                        armadio = Cassapanca()
                     }else{
-                        armadio = Closet() // SoSTITUIRE CON VETRINA
+                        armadio = Vetrina()
                     }
                     if floor == .FIRST_FLOOR{
-                        armadio = Closet()  //AGGIUNGERE CESPUGLIO
+                        armadio = Bush()
                     }
                     armadio.name = "dynamicObject"
                     armadio.zPosition = 3
@@ -667,14 +667,14 @@ class Room: SKNode {
 
                     addChild(armadio)
                 case 41:
-                    var armadio: Closet
+                    var armadio: Hideout
                     if Int.random(in: 0...10) > 5{
-                        armadio = Closet()
+                        armadio = Cassapanca()
                     }else{
-                        armadio = Closet() // SoSTITUIRE CON VETRINA
+                        armadio = Vetrina()
                     }
                     if floor == .FIRST_FLOOR{
-                        armadio = Closet()  //AGGIUNGERE CESPUGLIO
+                        armadio = Bush()
                     }
                     armadio.name = "dynamicObject"
                     armadio.zPosition = 3

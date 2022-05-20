@@ -82,7 +82,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         player.position = CGPoint(x: 204, y: 300)
         player.lightingBitMask = 1 | 2
         
-        let room = Room(.SIMPLE_1, startingPosition: CGPoint(x: 400, y: 400), floor: .SECOND_FLOOE)
+        let room = Room(.SIMPLE_1, startingPosition: CGPoint(x: 400, y: 400), floor: .FIRST_FLOOR)
 //        let f = Floor(self, floorType: .FIRST_FLOOR)
         
         luce.categoryBitMask = 2
