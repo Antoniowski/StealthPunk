@@ -19,8 +19,8 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     
     var player: PlayableCharacter = Human(texture: SKTexture(imageNamed: "boyFront"), color: .clear, size: CGSize(width: 35, height: 70), noise: 1, speed: 3, strenght: 1)
 //    var armadio: InteractableObject = InteractableObject(texture: SKTexture(imageNamed: "closet"), highlighted: SKTexture(imageNamed: "closetFocused"), color: .clear, size: CGSize(width: 100, height: 100), type: .HIDEOUT)
-    var armadio: Closet = Closet()
-    var lampione = Lampione(texture: SKTexture(imageNamed: "lampione"), color: .clear, size: CGSize(width: 70, height: 140), objectName: "lampione1", lightBitmask: 2)
+//    var armadio: Closet = Closet()
+//    var lampione = Lampione(texture: SKTexture(imageNamed: "lampione"), color: .clear, size: CGSize(width: 70, height: 140), objectName: "lampione1", lightBitmask: 2)
     
     var lightSwitch = LightSwitch(referredLightName: "lampione1")
     
@@ -71,31 +71,31 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         scenecamera.addChild(indicatore)
 
         scenecamera.position = player.position
-        scenecamera.setScale(10)
-        armadio.position = player.position
-        armadio.position.x += 250
-        lampione.position = player.position
-        lampione.position.y += 100
-        player.zPosition = 10
-        armadio.zPosition = 1
-        lampione.zPosition = 1
+        scenecamera.setScale(1)
+//        armadio.position = player.position
+//        armadio.position.x += 250
+//        lampione.position = player.position
+//        lampione.position.y += 100
+//        player.zPosition = 10
+//        armadio.zPosition = 1
+//        lampione.zPosition = 1
         player.position = CGPoint(x: 204, y: 300)
         
-//        let room = Room(.SIMPLE_1, startingPosition: CGPoint(x: 400, y: 400), floor: .FIRST_FLOOR)
-        let f = Floor(self, floorType: .FIRST_FLOOR)
+        let room = Room(.SIMPLE_1, startingPosition: CGPoint(x: 400, y: 400), floor: .SECOND_FLOOE)
+//        let f = Floor(self, floorType: .FIRST_FLOOR)
         
 //        luce.categoryBitMask = 2
 //        luce.position = lampione.position
 //        luce.position.y += 35
         
         
-        lampione.lightingBitMask = 2
-        
-        player.lightingBitMask = 2
-        armadio.lightingBitMask = 2
-
-
-        lampione.name = "enemy"
+//        lampione.lightingBitMask = 2
+//        
+//        player.lightingBitMask = 2
+//        armadio.lightingBitMask = 2
+//
+//
+//        lampione.name = "enemy"
         coin.size = CGSize(width: 30, height: 30)
 
         ombra.position = t.position
@@ -127,8 +127,8 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         chest.position = .init(x: -100 , y: -120)
         
 
-        player.position = f.spawn
-        
+//        player.position = f.spawn
+        player.zPosition = 10
         
         addChild(player)
 //        addChild(armadio)
@@ -148,7 +148,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
         addChild(scenecamera)
 //        createRoom2()
-//        addChild(room)
+        addChild(room)
     }
     
     

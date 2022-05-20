@@ -589,7 +589,10 @@ class Room: SKNode {
                     addChild(internalAngleSx2)
                 
                 case 12:
-                    let colonna = StaticObject(texture: SKTexture(imageNamed: "column"), color: .clear, size: .init(width: blocco/2, height: blocco), objectName: "column", objectCategory: .MOBILIO)
+                    var colonna = StaticObject(texture: SKTexture(imageNamed: "column"), color: .clear, size: .init(width: blocco/2, height: blocco), objectName: "column", objectCategory: .MOBILIO)
+                    if self.floor == .FIRST_FLOOR{
+                       colonna = StaticObject(texture: SKTexture(imageNamed: "colonna"), color: .clear, size: .init(width: blocco, height: blocco), objectName: "column", objectCategory: .MOBILIO)
+                    }
                     colonna.physicsBody = SKPhysicsBody(rectangleOf: .init(width: Double(blocco/2), height: Double(blocco)), center: CGPoint (x: 0, y: Double(blocco/2) - 0.7*Double(blocco/2)))
                     colonna.physicsBody?.affectedByGravity = false
                     colonna.physicsBody?.allowsRotation = false
@@ -597,7 +600,63 @@ class Room: SKNode {
                     colonna.zPosition = 3
                     colonna.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                     addChild(colonna)
-
+                    
+                case 13:
+                    
+                    var furnitureBig = StaticObject(texture: SKTexture(imageNamed: "stand1"), color: .clear, size: .init(width: blocco, height: blocco), objectName: "stand1", objectCategory: .MOBILIO)
+                    if self.floor == .FIRST_FLOOR{
+                        furnitureBig = StaticObject(texture: SKTexture(imageNamed: "colonna"), color: .clear, size: .init(width: blocco, height: blocco), objectName: "column", objectCategory: .MOBILIO)
+                    }
+                    furnitureBig.physicsBody = SKPhysicsBody(rectangleOf: .init(width: Double(blocco), height: Double(blocco)), center: CGPoint (x: 0, y: Double(blocco) - 0.7*Double(blocco)))
+                    furnitureBig.physicsBody?.affectedByGravity = false
+                    furnitureBig.physicsBody?.allowsRotation = false
+                    furnitureBig.physicsBody?.isDynamic = false
+                    furnitureBig.zPosition = 3
+                    furnitureBig.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    addChild(furnitureBig)
+                    
+                case 14:
+                    var furnitureSmall = StaticObject(texture: SKTexture(imageNamed: "stand2"), color: .clear, size: .init(width: blocco/2, height: blocco), objectName: "stand2", objectCategory: .MOBILIO)
+                    furnitureSmall.physicsBody = SKPhysicsBody(rectangleOf: .init(width: Double(blocco), height: Double(blocco)), center: CGPoint (x: 0, y: Double(blocco) - 0.7*Double(blocco)))
+                    furnitureSmall.physicsBody?.affectedByGravity = false
+                    furnitureSmall.physicsBody?.allowsRotation = false
+                    furnitureSmall.physicsBody?.isDynamic = false
+                    furnitureSmall.zPosition = 3
+                    furnitureSmall.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    if self.floor == .FIRST_FLOOR{
+                        furnitureSmall = Lampione(lightBitmask: 1)
+                        furnitureSmall.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    }
+                    furnitureSmall.zPosition = 3
+                    addChild(furnitureSmall)
+                case 40:
+                    var armadio: Closet
+                    if Int.random(in: 0...10) > 5{
+                        armadio = Closet()
+                    }else{
+                        armadio = Closet() // SoSTITUIRE CON VETRINA
+                    }
+                    if floor == .FIRST_FLOOR{
+                        armadio = Closet()  //AGGIUNGERE CESPUGLIO
+                    }
+                    armadio.name = "dynamicObject"
+                    armadio.zPosition = 3
+                    armadio.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    addChild(armadio)
+                case 41:
+                    var armadio: Closet
+                    if Int.random(in: 0...10) > 5{
+                        armadio = Closet()
+                    }else{
+                        armadio = Closet() // SoSTITUIRE CON VETRINA
+                    }
+                    if floor == .FIRST_FLOOR{
+                        armadio = Closet()  //AGGIUNGERE CESPUGLIO
+                    }
+                    armadio.name = "dynamicObject"
+                    armadio.zPosition = 3
+                    armadio.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    addChild(armadio)
                 default:
                     print("")
                 }
