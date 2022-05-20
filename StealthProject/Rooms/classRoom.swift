@@ -89,6 +89,7 @@ class Room: SKNode {
     
     init(_ archetype: RoomArchetype, startingPosition: CGPoint, floor: FloorType){
         super.init()
+        self.name = "ROOM"
         self.startingPosition = startingPosition
         self.floor = floor
         switch archetype {
@@ -651,7 +652,7 @@ class Room: SKNode {
                     furnitureSmall.lightingBitMask = 1 | 2
                     addChild(furnitureSmall)
                 case 40:
-                    var armadio: Hideout
+                    var armadio: Hideout = Hideout()
                     if Int.random(in: 0...10) > 5{
                         armadio = Cassapanca()
                     }else{
@@ -667,7 +668,7 @@ class Room: SKNode {
 
                     addChild(armadio)
                 case 41:
-                    var armadio: Hideout
+                    var armadio: Hideout = Hideout()
                     if Int.random(in: 0...10) > 5{
                         armadio = Cassapanca()
                     }else{

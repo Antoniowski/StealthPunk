@@ -41,6 +41,7 @@ struct CharacterState{
     var isHidden: Bool = false
     var isWalking: Bool = false
     var isRunning: Bool = false
+    var nearBush: Bool = false
 }
 class PlayableCharacter: SKSpriteNode{
 
@@ -587,88 +588,207 @@ class PlayableCharacter: SKSpriteNode{
             switch movingDirection {
             case .UP:
                 if(status.isInteracting == false) {
-                    self.run(.animate(with: interactAnimationBack, timePerFrame: 0.15), completion: {
-                        if self.status.isEntering == false{
-                            self.actionState = .MOVE
-                        }
-                        self.status.isInteracting = false
-                        self.status.idle = false
-                    })
+                    if status.nearBush == true {
+                        self.run (.animate(with: [SKTexture(imageNamed: "boyRollBack2"),SKTexture(imageNamed: "boyRollBack2"),SKTexture(imageNamed: "boyRollBack3")], timePerFrame: 0.2),completion: {
+                            if self.status.isEntering == false{
+                                self.actionState = .MOVE
+                            }
+                            self.status.isInteracting = false
+                            self.status.idle = false
+                            
+                        })
+                            
+                    }
+                    else{
+                        self.run(.animate(with: interactAnimationBack, timePerFrame: 0.15), completion: {
+                            if self.status.isEntering == false{
+                                self.actionState = .MOVE
+                            }
+                            self.status.isInteracting = false
+                            self.status.idle = false
+                        })
+
+                    }
+                                    
                 }
 
             case .UP_RIGHT:
                 if(status.isInteracting == false) {
-                    self.run(.animate(with: interactAnimationBack, timePerFrame: 0.15), completion: {
-                        if self.status.isEntering == false{
-                            self.actionState = .MOVE
-                        }
-                        self.status.isInteracting = false
-                        self.status.idle = false
-                    })
+                    if status.nearBush == true {
+                        self.run (.animate(with: [SKTexture(imageNamed: "boyRollBack2"),SKTexture(imageNamed: "boyRollBack2"),SKTexture(imageNamed: "boyRollBack3")], timePerFrame: 0.2),completion: {
+                            if self.status.isEntering == false{
+                                self.actionState = .MOVE
+                            }
+                            self.status.isInteracting = false
+                            self.status.idle = false
+                            
+                        })
+                            
+                    }
+                    else{
+                        self.run(.animate(with: interactAnimationBack, timePerFrame: 0.15), completion: {
+                            if self.status.isEntering == false{
+                                self.actionState = .MOVE
+                            }
+                            self.status.isInteracting = false
+                            self.status.idle = false
+                        })
+
+                    }
+                                    
                 }
             case .RIGHT:
                 if(status.isInteracting == false) {
-                    self.run(.animate(with: interactAnimationRight, timePerFrame: 0.15), completion: {
-                        if self.status.isEntering == false{
-                            self.actionState = .MOVE
-                        }
-                        self.status.isInteracting = false
-                        self.status.idle = false
-                    })
+                    if status.nearBush == true {
+                        self.run (.animate(with: [SKTexture(imageNamed: "boyRollBack2"),SKTexture(imageNamed: "boyRollBack2"),SKTexture(imageNamed: "boyRollBack3")], timePerFrame: 0.2),completion: {
+                            if self.status.isEntering == false{
+                                self.actionState = .MOVE
+                            }
+                            self.status.isInteracting = false
+                            self.status.idle = false
+                            
+                        })
+                            
+                    }
+                    else{
+                        self.run(.animate(with: interactAnimationRight, timePerFrame: 0.15), completion: {
+                            if self.status.isEntering == false{
+                                self.actionState = .MOVE
+                            }
+                            self.status.isInteracting = false
+                            self.status.idle = false
+                        })
+
+                    }
+                                    
                 }
                 
             case .DOWN_RIGHT:
                 if(status.isInteracting == false) {
-                    self.run(.animate(with: interactAnimationFront, timePerFrame: 0.15), completion: {
-                        if self.status.isEntering == false{
-                            self.actionState = .MOVE
-                        }
-                        self.status.isInteracting = false
-                        self.status.idle = false
-                    })
+                    if status.nearBush == true {
+                        self.run (.animate(with: [SKTexture(imageNamed: "boyRollBack2"),SKTexture(imageNamed: "boyRollBack2"),SKTexture(imageNamed: "boyRollBack3")], timePerFrame: 0.2),completion: {
+                            if self.status.isEntering == false{
+                                self.actionState = .MOVE
+                            }
+                            self.status.isInteracting = false
+                            self.status.idle = false
+                            
+                        })
+                            
+                    }
+                    else{
+                        self.run(.animate(with: interactAnimationFront, timePerFrame: 0.15), completion: {
+                            if self.status.isEntering == false{
+                                self.actionState = .MOVE
+                            }
+                            self.status.isInteracting = false
+                            self.status.idle = false
+                        })
+
+                    }
+                                    
                 }
             case .DOWN:
                 if(status.isInteracting == false) {
-                    self.run(.animate(with: interactAnimationFront, timePerFrame: 0.15), completion: {
-                        if self.status.isEntering == false{
-                            self.actionState = .MOVE
-                        }
-                        self.status.isInteracting = false
-                        self.status.idle = false
-                    })
+                    if status.nearBush == true {
+                        self.run (.animate(with: [SKTexture(imageNamed: "boyRollBack2"),SKTexture(imageNamed: "boyRollBack2"),SKTexture(imageNamed: "boyRollBack3")], timePerFrame: 0.2),completion: {
+                            if self.status.isEntering == false{
+                                self.actionState = .MOVE
+                            }
+                            self.status.isInteracting = false
+                            self.status.idle = false
+                            
+                        })
+                            
+                    }
+                    else{
+                        self.run(.animate(with: interactAnimationFront, timePerFrame: 0.15), completion: {
+                            if self.status.isEntering == false{
+                                self.actionState = .MOVE
+                            }
+                            self.status.isInteracting = false
+                            self.status.idle = false
+                        })
+
+                    }
+                                    
                 }
             case .DOWN_LEFT:
                 if(status.isInteracting == false) {
-                    self.run(.animate(with: interactAnimationFront, timePerFrame: 0.15), completion: {
-                        if self.status.isEntering == false{
-                            self.actionState = .MOVE
-                        }
-                        self.status.isInteracting = false
-                        self.status.idle = false
-                    })
+                    if status.nearBush == true {
+                        self.run (.animate(with: [SKTexture(imageNamed: "boyRollBack2"),SKTexture(imageNamed: "boyRollBack2"),SKTexture(imageNamed: "boyRollBack3")], timePerFrame: 0.2),completion: {
+                            if self.status.isEntering == false{
+                                self.actionState = .MOVE
+                            }
+                            self.status.isInteracting = false
+                            self.status.idle = false
+                            
+                        })
+                            
+                    }
+                    else{
+                        self.run(.animate(with: interactAnimationFront, timePerFrame: 0.15), completion: {
+                            if self.status.isEntering == false{
+                                self.actionState = .MOVE
+                            }
+                            self.status.isInteracting = false
+                            self.status.idle = false
+                        })
+
+                    }
+                                    
                 }
             case .LEFT:
                 if(status.isInteracting == false) {
-                    self.run(.animate(with: interactAnimationLeft, timePerFrame: 0.15), completion: {
-                        if self.status.isEntering == false{
-                            self.actionState = .MOVE
-                        }
-                        self.status.isInteracting = false
-                        self.status.idle = false
-                    })
-                    
+                    if status.nearBush == true {
+                        self.run (.animate(with: [SKTexture(imageNamed: "boyRollBack2"),SKTexture(imageNamed: "boyRollBack2"),SKTexture(imageNamed: "boyRollBack3")], timePerFrame: 0.2),completion: {
+                            if self.status.isEntering == false{
+                                self.actionState = .MOVE
+                            }
+                            self.status.isInteracting = false
+                            self.status.idle = false
+                            
+                        })
+                            
+                    }
+                    else{
+                        self.run(.animate(with: interactAnimationLeft, timePerFrame: 0.15), completion: {
+                            if self.status.isEntering == false{
+                                self.actionState = .MOVE
+                            }
+                            self.status.isInteracting = false
+                            self.status.idle = false
+                        })
+
+                    }
+                                    
                 }
                 
                 
             case .UP_LEFT:
                 if(status.isInteracting == false) {
-                    self.run(.animate(with: interactAnimationBack, timePerFrame: 0.15), completion: {
-                        if self.status.isEntering == false{
-                            self.actionState = .MOVE
-                        }
-                        self.status.isInteracting = false
-                        self.status.idle = false
-                    })
+                    if status.nearBush == true {
+                        self.run (.animate(with: [SKTexture(imageNamed: "boyRollBack2"),SKTexture(imageNamed: "boyRollBack2"),SKTexture(imageNamed: "boyRollBack3")], timePerFrame: 0.2),completion: {
+                            if self.status.isEntering == false{
+                                self.actionState = .MOVE
+                            }
+                            self.status.isInteracting = false
+                            self.status.idle = false
+                            
+                        })
+                            
+                    }
+                    else{
+                        self.run(.animate(with: interactAnimationBack, timePerFrame: 0.15), completion: {
+                            if self.status.isEntering == false{
+                                self.actionState = .MOVE
+                            }
+                            self.status.isInteracting = false
+                            self.status.idle = false
+                        })
+
+                    }
+                                    
                 }
             case .NONE:
                 return
@@ -757,9 +877,16 @@ class PlayableCharacter: SKSpriteNode{
     
     
     func searchObject(scene: SKScene){
-        scene.enumerateChildNodes(withName: "dynamicObject"){ object, _ in
+        scene.enumerateChildNodes(withName: "ROOM"){ room, _ in
+            room.enumerateChildNodes(withName: "dynamicObject"){ object, _ in
             if getDistanceBetween(point1: self.position, point2: object.position) <= self.interactRange{
                 let sprite = object as? InteractableObject
+                if sprite?.getType() == .HIDEOUT {
+                    let x = sprite as? Hideout
+                    if x?.getHideoutCategory() == .BUSH {
+                        self.status.nearBush = true
+                    }
+                }
                 if sprite?.getSpottedStatus() == false{
                     sprite?.setSpottedStatus(true)
                     sprite?.run(.setTexture(sprite?.highlightedTexture ?? SKTexture()))
@@ -771,6 +898,7 @@ class PlayableCharacter: SKSpriteNode{
                 let sprite = object as? InteractableObject
                 if sprite?.getSpottedStatus() != false{
                     sprite?.setSpottedStatus(false)
+                    self.status.nearBush = false
                     sprite?.run(.setTexture(sprite?.baseTexture ?? SKTexture()))
                     if sprite?.getType() == .USABLE{
                         let usable = object as? UsableObject
@@ -789,6 +917,7 @@ class PlayableCharacter: SKSpriteNode{
                     }
 //                    sprite?.shapeHighlighted.removeFromParent()
                 }
+            }
             }
         }
     }

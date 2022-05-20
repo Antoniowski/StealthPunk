@@ -12,7 +12,7 @@ class Bush: Hideout{
     var openBush: SKTexture = SKTexture()
     init(){
         super.init(texture: SKTexture(imageNamed: "cespuglio"), highlighted: SKTexture(imageNamed: "cespuglioBlur"), color: .clear, size: CGSize(width: blocco, height: blocco), type: .HIDEOUT)
-        self.setHideoutCategory(.CLOSET)
+        self.setHideoutCategory(.BUSH)
         self.setName("Bush")
         self.openBush = SKTexture(imageNamed: "cespuglio")
     }
