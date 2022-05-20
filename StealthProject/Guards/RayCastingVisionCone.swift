@@ -162,51 +162,37 @@ func createVisionCone(entity: Guard, scene: SKScene){
     if(entity.rayCastingPlayerFound){
         entity.setPlayerFoundTrue()
         entity.setPlayerFoundTransitioningTrue()
+        
     } else {
-//        entity.setPlayerFoundFalse()
-//        entity.setPlayerFoundTransitioningFalse()
+        if(entity.chasing){
+            entity.setPlayerFoundFalse()
+//            entity.searching = true
+            entity.transitionToSearch = true
+        } else {
+            entity.setPlayerFoundFalse()
+            entity.setPlayerFoundTransitioningFalse()
+        }
     }
 }
 
 
 func rayCasting(myX: CGFloat, myY: CGFloat, entity: Guard, scene: SKScene, rayCastingPlayerFound: inout Bool){
-    
+    var foundObject: Bool = false
     let intersectedBody = scene.physicsWorld.body(alongRayStart: entity.position, end: CGPoint(x: myX, y: myY))
-    if(intersectedBody != nil){
-        scene.physicsWorld.enumerateBodies(alongRayStart: entity.position, end: CGPoint(x: myX, y: myY)){ body, point, vector, object in
-            if(intersectedBody?.node?.name! == body.node?.name){
-                entity.appendToArrayOfPoints(point: point)
-                if(intersectedBody?.node?.name! == "player"){
-                    entity.rayCastingPlayerFound = true
-                }
-            }
-            
-            
-//            else if(intersectedBody?.node?.name! == "player"){
-//                print("Nemico trovato")
-//                entity.setPlayerFoundTrue()
-//            }
-        }
-    } else {
-        var square = SKShapeNode(rectOf: CGSize(width: 5, height: 5))
-        entity.appendToArrayOfPoints(point: CGPoint(x: myX, y: myY))
-        
+    if(intersectedBody != nil && intersectedBody?.node?.name! == "player"){
+        entity.rayCastingPlayerFound = true
     }
-    
-//        if(scene?.physicsWorld.body(alongRayStart: entity.position, end: CGPoint(x: myX, y: myY)) != nil){
-//            self.physicsWorld.enumerateBodies(alongRayStart: entity.position, end: CGPoint(x: myX, y: myY)){ body, point, vector, object in
-//                if(body.node?.name == "player"){
-////                    print("Trovato")
-//                    entity.plyaerFound = true
-//
-//                }
-//                entity.arrayOfPoints.append(point)
-//            }
-//        } else {
-//            var square = SKShapeNode(rectOf: CGSize(width: 5, height: 5))
-//            entity.arrayOfPoints.append(CGPoint(x: myX, y: myY))
-//
-//        }
+    scene.physicsWorld.enumerateBodies(alongRayStart: entity.position, end: CGPoint(x: myX, y: myY)){ body, point, vector, object in
+        if(intersectedBody?.node?.name! != "player"){
+            foundObject = true
+            entity.appendToArrayOfPoints(point: point)
+            object.pointee = true
+        }
+
+    }
+    if(!foundObject){
+        entity.appendToArrayOfPoints(point: CGPoint(x: myX, y: myY))
+    }
     
     
 }
