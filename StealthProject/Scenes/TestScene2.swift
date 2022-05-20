@@ -24,7 +24,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     
     var lightSwitch = LightSwitch(referredLightName: "lampione1")
     
-//    var luce: SKLightNode = SKLightNode()
+    var luce: SKLightNode = SKLightNode()
 
     
     var scenecamera = SKCameraNode()
@@ -80,11 +80,12 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
 //        armadio.zPosition = 1
 //        lampione.zPosition = 1
         player.position = CGPoint(x: 204, y: 300)
+        player.lightingBitMask = 1 | 2
         
         let room = Room(.SIMPLE_1, startingPosition: CGPoint(x: 400, y: 400), floor: .SECOND_FLOOE)
 //        let f = Floor(self, floorType: .FIRST_FLOOR)
         
-//        luce.categoryBitMask = 2
+        luce.categoryBitMask = 2
 //        luce.position = lampione.position
 //        luce.position.y += 35
         
@@ -96,6 +97,8 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
 //
 //
 //        lampione.name = "enemy"
+        
+        luce.ambientColor = .init(white: 1, alpha: 0.4)
         coin.size = CGSize(width: 30, height: 30)
 
         ombra.position = t.position
@@ -133,7 +136,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         addChild(player)
 //        addChild(armadio)
 //        addChild(lampione)
-//        addChild(luce)
+        addChild(luce)
 //        addChild(t)
 //        addChild(ombra)
 //        addChild(lightSwitch)
