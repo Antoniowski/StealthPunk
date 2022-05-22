@@ -14,6 +14,7 @@ import SpriteKit
 enum UsableObjectCategory: Int{
     case SWITCH = 0
     case CHEST = 1
+    case TAVERNA_DOOR = 2
 }
 
 class UsableObject: InteractableObject{

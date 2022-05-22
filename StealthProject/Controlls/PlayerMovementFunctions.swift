@@ -95,8 +95,7 @@ extension PlayableScene{
         if player.getStatus().isInteracting == false && player.getStatus().isExiting == false{
             player.setInteractingStatus(true)
 //            print("Interaction")
-            scene.enumerateChildNodes(withName: "ROOM"){ room, _ in
-            room.enumerateChildNodes(withName: "dynamicObject"){ object, _ in
+            scene.enumerateChildNodes(withName: "ROOM/dynamicObject"){ object, _ in
                 if getDistanceBetween(point1: self.player.position, point2: object.position) <= self.player.getInteractRange(){
                     let interact = object as? InteractableObject
                     switch interact?.getType(){
@@ -109,6 +108,9 @@ extension PlayableScene{
                         case .CHEST:
                             let chest = usable as? Chest
                             chest?.action(scene: scene)
+                        case .TAVERNA_DOOR:
+                            let door = usable as? TavernaDoor
+                            door?.action()
                         default:
                             return
                         }
@@ -139,7 +141,6 @@ extension PlayableScene{
 //                //IL DELAY ANDRA' SOSTITUITO DALL'ANIMAZIONE
 //            })
             
-            }
         }
     }
     

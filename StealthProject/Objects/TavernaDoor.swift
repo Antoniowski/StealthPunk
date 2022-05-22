@@ -7,7 +7,7 @@
 
 import SpriteKit
 
-class TavernaDoor: InteractableObject{
+class TavernaDoor: UsableObject{
     
     private var closedNormalTexture: SKTexture = SKTexture(imageNamed: "porta chiusa normal texure")
     private var openNormalTexture: SKTexture = SKTexture(imageNamed: "porta aperta normal texure")
@@ -16,6 +16,7 @@ class TavernaDoor: InteractableObject{
         super.init(texture: SKTexture(imageNamed: "porta chiusa"), highlighted: SKTexture(imageNamed: "porta aperta"), color: .clear, size: bloccoSize, type: .USABLE)
         self.setName("TavernaDoor")
         self.normalTexture = SKTexture(imageNamed: "porta chiusa normal map")
+        self.setUsableCategory(.TAVERNA_DOOR)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -30,6 +31,6 @@ class TavernaDoor: InteractableObject{
     }
     
     override func action() {
-        
+        print("START GAME")
     }
 }

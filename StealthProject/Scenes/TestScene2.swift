@@ -160,12 +160,8 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         addChild(scenecamera)
 //        createRoom2()
         addChild(room)
-        enumerateChildNodes(withName: "ROOM"){ room, _ in
-            room.enumerateChildNodes(withName: "dynamicObject"){ o, _ in
-                self.index += 1
-                print(self.index)
-                print(o.name)
-            }
+        enumerateChildNodes(withName: "ROOM/dynamicObject"){ room, _ in
+            print("ciao")
         }
     }
     
@@ -247,13 +243,14 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
         
         
-//        print(player.getFacingDirection())
+//        print(player.position)
 //        print(player.getFocusState())
 //        print(player.getActionState())
 //        print(player.getStatus().nearBush)
 //        print(player.name)
 //        print(boots.name)
 //        print(player.getSpeed())
+        
 
     }
     

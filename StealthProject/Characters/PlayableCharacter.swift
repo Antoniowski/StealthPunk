@@ -232,7 +232,7 @@ class PlayableCharacter: SKSpriteNode{
                 distanceEnemy = distance
             }
         }
-        scene.enumerateChildNodes(withName: "dynamicObject"){ element, _ in
+        scene.enumerateChildNodes(withName: "ROOM/dynamicObject"){ element, _ in
             let distance = getDistanceBetween(point1: self.position, point2: element.position)
             if distanceObject >= distance{
                 distanceObject = distance
@@ -879,17 +879,16 @@ class PlayableCharacter: SKSpriteNode{
     
     
     func searchObject(scene: SKScene){
-        scene.enumerateChildNodes(withName: "ROOM"){ room, _ in
-            room.enumerateChildNodes(withName: "dynamicObject"){ object, _ in
-                if getDistanceBetween(point1: self.position, point2: scene.convert(object.position, from: room)) <= self.interactRange{
-                    print(getDistanceBetween(point1: self.position, point2: scene.convert(object.position, from: room)))
+        scene.enumerateChildNodes(withName: "ROOM/dynamicObject"){ object, _ in
+                if getDistanceBetween(point1: self.position, point2: object.position) <= self.interactRange{
+                    print(getDistanceBetween(point1: self.position, point2: object.position))
                     let sprite = object as? InteractableObject
-                    //                if sprite?.getType() == .HIDEOUT {
-                    //                    let x = sprite as? Hideout
-                    //                    if x?.getHideoutCategory() == .BUSH {
-                    //                        self.status.nearBush = true
-                    //                    }
-                    //                }
+                    if sprite?.getType() == .HIDEOUT {
+                        let x = sprite as? Hideout
+                        if x?.getHideoutCategory() == .BUSH {
+                            self.status.nearBush = true
+                        }
+                    }
                     if sprite?.getSpottedStatus() == false{
                         sprite?.setSpottedStatus(true)
                         sprite?.run(.setTexture(sprite?.highlightedTexture ?? SKTexture()))
@@ -922,7 +921,6 @@ class PlayableCharacter: SKSpriteNode{
                     }
                 }
             }
-        }
     }
     
     

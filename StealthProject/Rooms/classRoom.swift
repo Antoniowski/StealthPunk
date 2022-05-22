@@ -109,6 +109,10 @@ class Room: SKNode {
         self.name = "ROOM"
         self.startingPosition = startingPosition
         self.floor = floor
+        self.physicsBody = SKPhysicsBody()
+        self.physicsBody?.allowsRotation = false
+        self.physicsBody?.isDynamic = false
+        self.physicsBody?.affectedByGravity = false
         switch archetype {
         case .FIRST:
             door = DoorPosition(UP: true, DOWN: false, RIGHT: false, LEFT: false)
@@ -507,9 +511,8 @@ class Room: SKNode {
                 case 11:
                     let door = TavernaDoor()
                     door.size = bloccoSize
-                    door.name = "lobbyDoor"
                     door.zPosition = 2
-                    door.normalTexture = SKTexture(imageNamed: "porta chiusa normal map")
+//                    door.normalTexture = SKTexture(imageNamed: "porta chiusa normal map")
                     door.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                     door.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
                     door.physicsBody?.isDynamic = false
