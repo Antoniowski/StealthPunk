@@ -762,6 +762,25 @@ class Room: SKNode {
                     tappeto.position = CGPoint(x: startingPosition.x + Double(j * blocco) , y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                     tappeto.lightingBitMask = 1 | 2
                     addChild(tappeto)
+                case 4:
+                    let pareteLanterna = LuceTaverna(lightBitmask: 1|2)
+                    pareteLanterna.normalTexture = SKTexture(imageNamed: "parete lanterna normal map")
+                    pareteLanterna.name = "light"
+                    pareteLanterna.zPosition = 3
+                    pareteLanterna.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    pareteLanterna.lightingBitMask = 1 | 2
+                    addChild(pareteLanterna)
+                case 5:
+                    let pareteTubi = SKSpriteNode(texture: SKTexture(imageNamed:"parete centrale tubi"), size: bloccoSize)
+                    pareteTubi.normalTexture = SKTexture(imageNamed: "parete centrale tubi normal map")
+                    pareteTubi.name = "wall"
+                    pareteTubi.zPosition = 3
+                    pareteTubi.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    pareteTubi.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
+                    pareteTubi.physicsBody?.isDynamic = false
+                    pareteTubi.physicsBody?.affectedByGravity = false
+                    pareteTubi.lightingBitMask = 1 | 2
+                    addChild(pareteTubi)
                 default:
                     print("")
                 }
