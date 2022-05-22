@@ -505,7 +505,7 @@ class Room: SKNode {
                     door.lightingBitMask = 1 | 2
                     addChild(door)
                 case 11:
-                    let door = SKSpriteNode(imageNamed: "porta chiusa")
+                    let door = TavernaDoor()
                     door.size = bloccoSize
                     door.name = "lobbyDoor"
                     door.zPosition = 2
@@ -694,10 +694,10 @@ class Room: SKNode {
                     furnitureSmall.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                     furnitureSmall.normalTexture = SKTexture(imageNamed: "stand2NormalMap")
                     if self.floor == .FIRST_FLOOR{
-                        furnitureSmall = Lampione(lightBitmask: 1)
+                        furnitureSmall = Lampione(lightBitmask: 1 | 2)
                         furnitureSmall.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
-                        let appoggio = furnitureSmall as? Lampione
-                        appoggio?.light.ambientColor = .init(red: 0.624, green: 0.624, blue: 0.914, alpha: 0.5)
+//                        let appoggio = furnitureSmall as? Lampione
+//                        appoggio?.light.ambientColor = .init(red: 0.624, green: 0.624, blue: 0.914, alpha: 0.5)
                     }
                     furnitureSmall.zPosition = 3
                     furnitureSmall.lightingBitMask = 1 | 2

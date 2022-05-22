@@ -55,12 +55,13 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     var indicatore = Counter()
     var chest = Chest(locked: false)
     
+    var index = 0
 
     
     
     override func didMove(to view: SKView) {
         myGameController.connectController()
-        
+        self.backgroundColor = .black
         physicsWorld.contactDelegate = self
         camera = scenecamera
         
@@ -83,22 +84,23 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
 //        player.lightingBitMask = 5
         
         let room = Room(.LOBBY, startingPosition: CGPoint(x: 0, y: 400), floor: .FIRST_FLOOR)
-//        let f = Floor(self, floorType: .SECOND_FLOOE)
+//        let f = Floor(self, floorType: .FIRST_FLOOR)
         
 //        luce.categoryBitMask = 2
 //        luce.position = lampione.position
-//        luce.position.y += 35
+        luce.position = .init(x: 2000, y: 2000)
         
         
 //        lampione.lightingBitMask = 2
 //        
-//        player.lightingBitMask = 2
+        player.lightingBitMask = 1 | 2
 //        armadio.lightingBitMask = 2
 //
 //
 //        lampione.name = "enemy"
         
-//        luce.ambientColor = .init(white: 1, alpha: 0.4)
+        luce.ambientColor = .init(red: 0.624, green: 0.624, blue: 0.914, alpha: 0.5)
+
         coin.size = CGSize(width: 30, height: 30)
 
         ombra.position = t.position
@@ -129,10 +131,8 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
         chest.position = .init(x: -100 , y: -120)
         
-//        luce.categoryBitMask = 1 | 2
-        luce.falloff = 0
+        luce.falloff = 10
         luce.lightColor = .init(white: 1, alpha: 0.5)
-        luce.ambientColor = .init(white: 1, alpha: 0.5)
         luce.zPosition = 50
         
 
@@ -159,6 +159,13 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         addChild(scenecamera)
 //        createRoom2()
         addChild(room)
+        enumerateChildNodes(withName: "ROOM"){ room, _ in
+            room.enumerateChildNodes(withName: "dynamicObject"){ o, _ in
+                self.index += 1
+                print(self.index)
+                print(o.name)
+            }
+        }
     }
     
     
@@ -193,6 +200,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         if firstBody.node?.name == "player" && secondBody.node?.name == "door"{
             let door = secondBody.node as? Door
             door?.open()
+            door?.parent?.alpha = 1
         }
     }
     
@@ -230,22 +238,22 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         }
         
         playerMovement(player: player as SKSpriteNode, velocity: velocity)
-        luce.position = player.position
+//        luce.position = player.position
 
         
         scenecamera.position = player.position
-//        indicatore.position.x = scenecamera.position.x - 100
-//        indicatore.position.y = scenecamera.position.y + frame.height/3.5
+
         
         
         
 //        print(player.getFacingDirection())
 //        print(player.getFocusState())
 //        print(player.getActionState())
-        print(player.getStatus().nearBush)
+//        print(player.getStatus().nearBush)
 //        print(player.name)
 //        print(boots.name)
 //        print(player.getSpeed())
+
     }
     
     

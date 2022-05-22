@@ -881,45 +881,46 @@ class PlayableCharacter: SKSpriteNode{
     func searchObject(scene: SKScene){
         scene.enumerateChildNodes(withName: "ROOM"){ room, _ in
             room.enumerateChildNodes(withName: "dynamicObject"){ object, _ in
-            if getDistanceBetween(point1: self.position, point2: object.position) <= self.interactRange{
-                let sprite = object as? InteractableObject
-                if sprite?.getType() == .HIDEOUT {
-                    let x = sprite as? Hideout
-                    if x?.getHideoutCategory() == .BUSH {
-                        self.status.nearBush = true
+                if getDistanceBetween(point1: self.position, point2: scene.convert(object.position, from: room)) <= self.interactRange{
+                    print(getDistanceBetween(point1: self.position, point2: scene.convert(object.position, from: room)))
+                    let sprite = object as? InteractableObject
+                    //                if sprite?.getType() == .HIDEOUT {
+                    //                    let x = sprite as? Hideout
+                    //                    if x?.getHideoutCategory() == .BUSH {
+                    //                        self.status.nearBush = true
+                    //                    }
+                    //                }
+                    if sprite?.getSpottedStatus() == false{
+                        sprite?.setSpottedStatus(true)
+                        sprite?.run(.setTexture(sprite?.highlightedTexture ?? SKTexture()))
+                        //                    sprite?.shapeHighlighted.strokeColor = .init(white: 1, alpha: 0.5)
+                        //                    sprite?.shapeHighlighted.glowWidth = 3
+                        //                    sprite?.addChild(sprite?.shapeHighlighted ?? SKShapeNode())
                     }
-                }
-                if sprite?.getSpottedStatus() == false{
-                    sprite?.setSpottedStatus(true)
-                    sprite?.run(.setTexture(sprite?.highlightedTexture ?? SKTexture()))
-//                    sprite?.shapeHighlighted.strokeColor = .init(white: 1, alpha: 0.5)
-//                    sprite?.shapeHighlighted.glowWidth = 3
-//                    sprite?.addChild(sprite?.shapeHighlighted ?? SKShapeNode())
-                }
-            }else{
-                let sprite = object as? InteractableObject
-                if sprite?.getSpottedStatus() != false{
-                    sprite?.setSpottedStatus(false)
-                    self.status.nearBush = false
-                    sprite?.run(.setTexture(sprite?.baseTexture ?? SKTexture()))
-                    if sprite?.getType() == .USABLE{
-                        let usable = object as? UsableObject
-                        if usable?.getUsableCategory() == .CHEST{
-                            let chest = usable as? Chest
-                            if chest?.getOpenStatus() == true{
-                                chest?.run(.setTexture(chest?.openTexture ?? SKTexture()))
+                }else{
+                    let sprite = object as? InteractableObject
+                    if sprite?.getSpottedStatus() != false{
+                        sprite?.setSpottedStatus(false)
+                        self.status.nearBush = false
+                        sprite?.run(.setTexture(sprite?.baseTexture ?? SKTexture()))
+                        if sprite?.getType() == .USABLE{
+                            let usable = object as? UsableObject
+                            if usable?.getUsableCategory() == .CHEST{
+                                let chest = usable as? Chest
+                                if chest?.getOpenStatus() == true{
+                                    chest?.run(.setTexture(chest?.openTexture ?? SKTexture()))
+                                }
+                            }
+                            if usable?.getUsableCategory() == .SWITCH{
+                                let lswitch = usable as? LightSwitch
+                                if lswitch?.getOnOffStatus() == true{
+                                    lswitch?.run(.setTexture(lswitch?.ONTexture ?? SKTexture()))
+                                }
                             }
                         }
-                        if usable?.getUsableCategory() == .SWITCH{
-                            let lswitch = usable as? LightSwitch
-                            if lswitch?.getOnOffStatus() == true{
-                                lswitch?.run(.setTexture(lswitch?.ONTexture ?? SKTexture()))
-                            }
-                        }
+                        //                    sprite?.shapeHighlighted.removeFromParent()
                     }
-//                    sprite?.shapeHighlighted.removeFromParent()
                 }
-            }
             }
         }
     }
