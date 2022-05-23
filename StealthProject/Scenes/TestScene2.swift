@@ -160,9 +160,6 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         addChild(scenecamera)
 //        createRoom2()
 //        addChild(room)
-        enumerateChildNodes(withName: "ROOM/dynamicObject"){ room, _ in
-            print("ciao")
-        }
     }
     
     

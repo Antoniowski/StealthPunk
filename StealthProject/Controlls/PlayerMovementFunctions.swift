@@ -97,7 +97,7 @@ extension PlayableScene{
             player.setInteractingStatus(true)
 //            print("Interaction")
             scene.enumerateChildNodes(withName: "ROOM/dynamicObject"){ object, _ in
-                if getDistanceBetween(point1: self.player.position, point2: object.position) <= self.player.getInteractRange(){
+                if getDistanceBetween(point1: self.player.position, point2: scene.convert(object.position, from: object.parent ?? SKNode())) <= self.player.getInteractRange(){
                     let interact = object as? InteractableObject
                     switch interact?.getType(){
                     case .USABLE:
