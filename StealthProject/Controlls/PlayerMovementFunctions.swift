@@ -87,7 +87,7 @@ extension PlayableScene{
     
     func rollState(){
         
-        velocity = rollVector*MAX_SPEED*3*delta
+        velocity = rollVector*MAX_SPEED*2.2*Double(player.getSpeed())*delta
         
     }
     
@@ -95,7 +95,7 @@ extension PlayableScene{
         if player.getStatus().isInteracting == false && player.getStatus().isExiting == false{
             player.setInteractingStatus(true)
 //            print("Interaction")
-            scene.enumerateChildNodes(withName: "dynamicObject"){ object, _ in
+            scene.enumerateChildNodes(withName: "ROOM/dynamicObject"){ object, _ in
                 if getDistanceBetween(point1: self.player.position, point2: object.position) <= self.player.getInteractRange(){
                     let interact = object as? InteractableObject
                     switch interact?.getType(){
@@ -108,6 +108,9 @@ extension PlayableScene{
                         case .CHEST:
                             let chest = usable as? Chest
                             chest?.action(scene: scene)
+                        case .TAVERNA_DOOR:
+                            let door = usable as? TavernaDoor
+                            door?.action()
                         default:
                             return
                         }
@@ -118,6 +121,9 @@ extension PlayableScene{
                         case .CLOSET:
                             let useCloset = hideout as? Closet
                             useCloset?.action()
+                        case .BUSH:
+                            let useBush = hideout as? Bush
+                            useBush?.action()
                         default :
                             print("")
                         }

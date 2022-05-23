@@ -28,6 +28,11 @@
 		6AA31BE32829911A002CCD47 /* LightProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA31BE22829911A002CCD47 /* LightProtocol.swift */; };
 		6AA31BE528299DE4002CCD47 /* UsableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA31BE428299DE4002CCD47 /* UsableObject.swift */; };
 		6AACAB47282BF68B00B5E89B /* Matrixes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AACAB46282BF68B00B5E89B /* Matrixes.swift */; };
+		6AAE3F6A2837D907002917FB /* BushClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE3F692837D907002917FB /* BushClass.swift */; };
+		6AAE3F6C2837D966002917FB /* VetrinaClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE3F6B2837D966002917FB /* VetrinaClass.swift */; };
+		6AAE3F6E2837D9BF002917FB /* CassapancaClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE3F6D2837D9BF002917FB /* CassapancaClass.swift */; };
+		6AAE3F71283A4270002917FB /* TavernaDoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE3F70283A4270002917FB /* TavernaDoor.swift */; };
+		6AAE3F73283A4C23002917FB /* LuceTaverna.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE3F72283A4C23002917FB /* LuceTaverna.swift */; };
 		6AB863E128200334006BB85E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB863E028200334006BB85E /* AppDelegate.swift */; };
 		6AB863E328200334006BB85E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6AB863E228200334006BB85E /* GameScene.sks */; };
 		6AB863E528200334006BB85E /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6AB863E428200334006BB85E /* Actions.sks */; };
@@ -78,6 +83,11 @@
 		6AA31BE22829911A002CCD47 /* LightProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightProtocol.swift; sourceTree = "<group>"; };
 		6AA31BE428299DE4002CCD47 /* UsableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsableObject.swift; sourceTree = "<group>"; };
 		6AACAB46282BF68B00B5E89B /* Matrixes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrixes.swift; sourceTree = "<group>"; };
+		6AAE3F692837D907002917FB /* BushClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BushClass.swift; sourceTree = "<group>"; };
+		6AAE3F6B2837D966002917FB /* VetrinaClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VetrinaClass.swift; sourceTree = "<group>"; };
+		6AAE3F6D2837D9BF002917FB /* CassapancaClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CassapancaClass.swift; sourceTree = "<group>"; };
+		6AAE3F70283A4270002917FB /* TavernaDoor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TavernaDoor.swift; sourceTree = "<group>"; };
+		6AAE3F72283A4C23002917FB /* LuceTaverna.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuceTaverna.swift; sourceTree = "<group>"; };
 		6AB863DD28200334006BB85E /* StealthPunk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StealthPunk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AB863E028200334006BB85E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6AB863E228200334006BB85E /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -168,8 +178,20 @@
 				6AA31BDE28298C17002CCD47 /* Lampione.swift */,
 				6AA31BE028298F87002CCD47 /* LightSwitch.swift */,
 				6AA31BE22829911A002CCD47 /* LightProtocol.swift */,
+				6AAE3F72283A4C23002917FB /* LuceTaverna.swift */,
 			);
 			path = Light;
+			sourceTree = "<group>";
+		};
+		6AAE3F6F283A4234002917FB /* BaseObject */ = {
+			isa = PBXGroup;
+			children = (
+				6AC7096828254AB4007F8A50 /* InteractableObjectClass.swift */,
+				6AA31BDB282985A8002CCD47 /* StaticObject.swift */,
+				6AA31BE428299DE4002CCD47 /* UsableObject.swift */,
+				6AFA738B282B0BE5001B7E50 /* HideoutObject.swift */,
+			);
+			path = BaseObject;
 			sourceTree = "<group>";
 		};
 		6AB863D428200333006BB85E = {
@@ -268,13 +290,11 @@
 		6AC709632823D77C007F8A50 /* Objects */ = {
 			isa = PBXGroup;
 			children = (
+				6AAE3F6F283A4234002917FB /* BaseObject */,
 				6AFA738D282B0CA3001B7E50 /* Hideouts */,
 				6AA31BDD28298C03002CCD47 /* Light */,
-				6AC7096828254AB4007F8A50 /* InteractableObjectClass.swift */,
-				6AA31BDB282985A8002CCD47 /* StaticObject.swift */,
-				6AA31BE428299DE4002CCD47 /* UsableObject.swift */,
-				6AFA738B282B0BE5001B7E50 /* HideoutObject.swift */,
 				6A2A7E982833F8E600D14EC0 /* Chest.swift */,
+				6AAE3F70283A4270002917FB /* TavernaDoor.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -283,6 +303,9 @@
 			isa = PBXGroup;
 			children = (
 				6AFA738E282B0CB9001B7E50 /* ClosetClass.swift */,
+				6AAE3F692837D907002917FB /* BushClass.swift */,
+				6AAE3F6B2837D966002917FB /* VetrinaClass.swift */,
+				6AAE3F6D2837D9BF002917FB /* CassapancaClass.swift */,
 			);
 			path = Hideouts;
 			sourceTree = "<group>";
@@ -382,12 +405,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				6AB863FB2820258F006BB85E /* OpOverloading.swift in Sources */,
+				6AAE3F71283A4270002917FB /* TavernaDoor.swift in Sources */,
 				6AA31BDF28298C17002CCD47 /* Lampione.swift in Sources */,
 				6AB863E728200334006BB85E /* GameScene.swift in Sources */,
 				6AA31BE32829911A002CCD47 /* LightProtocol.swift in Sources */,
 				4A00C74F2825580D009DB657 /* TestScene3.swift in Sources */,
 				6A2A7E9C283457D600D14EC0 /* Intro.swift in Sources */,
 				6A2A7E9E28366BA900D14EC0 /* Lobby.swift in Sources */,
+				6AAE3F6A2837D907002917FB /* BushClass.swift in Sources */,
 				6A0621F0283301AF0064BB97 /* CollectibleItems.swift in Sources */,
 				6A6A4D412822BBEA003A76C5 /* DeltaFunctions.swift in Sources */,
 				6AC7096928254AB4007F8A50 /* InteractableObjectClass.swift in Sources */,
@@ -400,6 +425,7 @@
 				6AB863F92820254D006BB85E /* VectorFunctions.swift in Sources */,
 				6A2A7E992833F8E600D14EC0 /* Chest.swift in Sources */,
 				63B9F6AB2833DA35008E62C1 /* GearCounter.swift in Sources */,
+				6AAE3F73283A4C23002917FB /* LuceTaverna.swift in Sources */,
 				4A1B448E2822B274001DABEE /* ControllerRelatedGlobalVariables.swift in Sources */,
 				6AB8640028217369006BB85E /* PlayableCharacter.swift in Sources */,
 				6AB8640A2821845B006BB85E /* VirtualController.swift in Sources */,
@@ -417,6 +443,8 @@
 				4A00C7512825719C009DB657 /* Swipe Functions.swift in Sources */,
 				6AA31BDC282985A8002CCD47 /* StaticObject.swift in Sources */,
 				6AB863E928200334006BB85E /* GameViewController.swift in Sources */,
+				6AAE3F6E2837D9BF002917FB /* CassapancaClass.swift in Sources */,
+				6AAE3F6C2837D966002917FB /* VetrinaClass.swift in Sources */,
 				A693D3562826F5960055C266 /* Path.swift in Sources */,
 				4ABFC91E28327D6D00213CC9 /* GuardConoGrande.swift in Sources */,
 				6AA31BE128298F87002CCD47 /* LightSwitch.swift in Sources */,
@@ -566,8 +594,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = BDML2SSWYB;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = YT6T4953M8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StealthProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -597,8 +625,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = BDML2SSWYB;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = YT6T4953M8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StealthProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

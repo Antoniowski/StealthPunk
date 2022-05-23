@@ -19,12 +19,12 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     
     var player: PlayableCharacter = Human(texture: SKTexture(imageNamed: "boyFront"), color: .clear, size: CGSize(width: 35, height: 70), noise: 1, speed: 3, strenght: 1)
 //    var armadio: InteractableObject = InteractableObject(texture: SKTexture(imageNamed: "closet"), highlighted: SKTexture(imageNamed: "closetFocused"), color: .clear, size: CGSize(width: 100, height: 100), type: .HIDEOUT)
-    var armadio: Closet = Closet()
-    var lampione = Lampione(texture: SKTexture(imageNamed: "lampione"), color: .clear, size: CGSize(width: 70, height: 140), objectName: "lampione1", lightBitmask: 2)
+    var armadio: Bush = Bush()
+//    var lampione = Lampione(texture: SKTexture(imageNamed: "lampione"), color: .clear, size: CGSize(width: 70, height: 140), objectName: "lampione1", lightBitmask: 2)
     
     var lightSwitch = LightSwitch(referredLightName: "lampione1")
     
-//    var luce: SKLightNode = SKLightNode()
+    var luce: SKLightNode = SKLightNode()
 
     
     var scenecamera = SKCameraNode()
@@ -55,12 +55,13 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     var indicatore = Counter()
     var chest = Chest(locked: false)
     
+    var index = 0
 
     
     
     override func didMove(to view: SKView) {
         myGameController.connectController()
-        
+        self.backgroundColor = .black
         physicsWorld.contactDelegate = self
         camera = scenecamera
         
@@ -71,31 +72,36 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         scenecamera.addChild(indicatore)
 
         scenecamera.position = player.position
-        scenecamera.setScale(10)
-        armadio.position = player.position
-        armadio.position.x += 250
-        lampione.position = player.position
-        lampione.position.y += 100
-        player.zPosition = 10
-        armadio.zPosition = 1
-        lampione.zPosition = 1
+        scenecamera.setScale(1)
+//        armadio.position = player.position
+//        armadio.position.x += 250
+//        lampione.position = player.position
+//        lampione.position.y += 100
+//        player.zPosition = 10
+//        armadio.zPosition = 1
+//        lampione.zPosition = 1
         player.position = CGPoint(x: 204, y: 300)
+//        player.lightingBitMask = 5
         
-//        let room = Room(.SIMPLE_1, startingPosition: CGPoint(x: 400, y: 400), floor: .FIRST_FLOOR)
-        let f = Floor(self, floorType: .FIRST_FLOOR)
+        let room = Room(.LOBBY, startingPosition: CGPoint(x: 0, y: 400), floor: .FIRST_FLOOR)
+//        let f = Floor(self, floorType: .FIRST_FLOOR)
         
 //        luce.categoryBitMask = 2
 //        luce.position = lampione.position
-//        luce.position.y += 35
+        luce.position = .init(x: 2000, y: 2000)
         
         
-        lampione.lightingBitMask = 2
+//        lampione.lightingBitMask = 2
+//        
+        player.lightingBitMask = 1 | 2
+//        armadio.lightingBitMask = 2
+//
+//
+//        lampione.name = "enemy"
         
-        player.lightingBitMask = 2
-        armadio.lightingBitMask = 2
+//        luce.ambientColor = .init(red: 0.624, green: 0.624, blue: 0.914, alpha: 0.5) // PER LE PARTI SCURE - GIARDINO
+        luce.ambientColor = .init(red: 0.6, green: 0.6, blue: 0.75, alpha: 0.5)
 
-
-        lampione.name = "enemy"
         coin.size = CGSize(width: 30, height: 30)
 
         ombra.position = t.position
@@ -126,29 +132,37 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
         chest.position = .init(x: -100 , y: -120)
         
+        luce.falloff = 10
+        luce.lightColor = .init(white: 1, alpha: 0.5)
+        luce.zPosition = 50
+        
 
 //        player.position = f.spawn
-        
+        player.zPosition = 10
+
         
         addChild(player)
-        addChild(armadio)
-        addChild(lampione)
-//        addChild(luce)
+//        addChild(armadio)
+//        addChild(lampione)
+        addChild(luce)
 //        addChild(t)
 //        addChild(ombra)
 //        addChild(lightSwitch)
 //        addChild(boots)
 //        addChild(knuckles)
-        addChild(testcoin)
-        addChild(testcoin2)
-        addChild(testcoin4)
-        addChild(testcoin3)
-
-        addChild(chest)
+//        addChild(testcoin)
+//        addChild(testcoin2)
+//        addChild(testcoin4)
+//        addChild(testcoin3)
+//
+//        addChild(chest)
         
         addChild(scenecamera)
 //        createRoom2()
-//        addChild(room)
+        addChild(room)
+        enumerateChildNodes(withName: "ROOM/dynamicObject"){ room, _ in
+            print("ciao")
+        }
     }
     
     
@@ -183,6 +197,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         if firstBody.node?.name == "player" && secondBody.node?.name == "door"{
             let door = secondBody.node as? Door
             door?.open()
+            door?.parent?.alpha = 1
         }
     }
     
@@ -220,21 +235,23 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         }
         
         playerMovement(player: player as SKSpriteNode, velocity: velocity)
+//        luce.position = player.position
 
         
         scenecamera.position = player.position
-//        indicatore.position.x = scenecamera.position.x - 100
-//        indicatore.position.y = scenecamera.position.y + frame.height/3.5
+
         
         
         
-//        print(player.getFacingDirection())
+//        print(player.position)
 //        print(player.getFocusState())
 //        print(player.getActionState())
-//        print(player.getStatus().isInteracting)
+//        print(player.getStatus().nearBush)
 //        print(player.name)
 //        print(boots.name)
 //        print(player.getSpeed())
+        
+
     }
     
     

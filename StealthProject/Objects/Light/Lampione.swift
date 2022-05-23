@@ -19,17 +19,31 @@ class Lampione: StaticObject, Light{
             light.isEnabled = newValue
         }
     }
-    override init(texture: SKTexture?, color: UIColor, size: CGSize, objectName: String, objectCategory: StaticObjectCategory) {
-        super.init(texture: texture, color: color, size: size, objectName: objectName, objectCategory: .LIGHT)
-        self.addChild(light)
-    }
-    
-    init(texture: SKTexture?, color: UIColor, size: CGSize, objectName: String, lightBitmask: Int) {
-        super.init(texture: texture, color: color, size: size,objectName: objectName, objectCategory: .LIGHT)
+    init(lightBitmask: Int){
+        super.init(texture: SKTexture(imageNamed: "lampione"), color: .clear, size: .init(width: 70, height: 140), objectName: "lampione", objectCategory: .LIGHT)
         light.categoryBitMask = UInt32(lightBitmask)
         self.lightingBitMask = UInt32(lightBitmask)
+        light.lightColor = .init(white: 1, alpha: 0.7)
+        light.position.y += 20
+//        light.falloff = 2
         self.addChild(light)
+        self.normalTexture = SKTexture(imageNamed: "lampione normal map")
+        self.physicsBody = SKPhysicsBody(rectangleOf: .init(width: 30, height: 70), center: .init(x: 0, y: 30))
+        self.physicsBody?.isDynamic = false
+        self.physicsBody?.affectedByGravity = false
+        self.physicsBody?.allowsRotation = false
     }
+//    override init(texture: SKTexture?, color: UIColor, size: CGSize, objectName: String, objectCategory: StaticObjectCategory) {
+//        super.init(texture: texture, color: color, size: size, objectName: objectName, objectCategory: .LIGHT)
+//        self.addChild(light)
+//    }
+//
+//    init(texture: SKTexture?, color: UIColor, size: CGSize, objectName: String, lightBitmask: Int) {
+//        super.init(texture: texture, color: color, size: size,objectName: objectName, objectCategory: .LIGHT)
+//        light.categoryBitMask = UInt32(lightBitmask)
+//        self.lightingBitMask = UInt32(lightBitmask)
+//        self.addChild(light)
+//    }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

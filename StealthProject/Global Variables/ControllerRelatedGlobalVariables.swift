@@ -21,8 +21,9 @@ var buttonBIsPressed: Bool = false
 
 var myGameController: MyVirtualControllerClass = MyVirtualControllerClass()
 
-var accortDX : Bool = false
-var accortSX : Bool = false
+var attenzione1 : Bool = false
+var attenzione2 : Bool = false
+var attenzione3 : Bool = false
 
 var passaggio1: Bool = false
 

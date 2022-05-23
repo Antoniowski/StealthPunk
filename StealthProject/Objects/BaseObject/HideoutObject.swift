@@ -10,6 +10,9 @@ import SpriteKit
 
 enum HideoutCategory: Int{
     case CLOSET = 0
+    case BUSH = 1
+    case VETRINA = 2
+    case PANCA = 3
 }
 
 class Hideout: InteractableObject{
