@@ -8,6 +8,9 @@
 import Foundation
 import SpriteKit
 
+let guardPhyscisBodyWidth = 45
+let guardPhyscisBodyHeight = 85
+
 struct GuardState{
     var isDead: Bool = false
     var isStunned: Bool = false
@@ -87,8 +90,12 @@ class Guard: SKSpriteNode{
     var transitionToUnseen: Bool = false
     var transitionToSearch: Bool = false
     
-    
     var lastPlayerPosition: CGPoint = CGPoint(x: 0, y: 0)
+    
+    var correctingTrajectory: Bool = false
+    var angleCorrection: Float = 0
+    var playerPositionForDistance: CGPoint = CGPoint(x: 0, y: 0)
+    var startingPosition: CGPoint = CGPoint(x: 0, y: 0)
     
     private var currentIdleDirectionTexture: SKTexture = SKTexture(imageNamed: "ConoGrandeBackF1")
     
@@ -139,6 +146,9 @@ class Guard: SKSpriteNode{
     
     
     var searched: Bool = false
+    
+    
+    var firstIteration: Bool = false
     
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
         super.init(texture: texture, color: color, size: size)
@@ -330,6 +340,154 @@ class Guard: SKSpriteNode{
         }
     }
     
+    func rayCastingForObstacles(scene: SKScene, point: CGPoint){
+        
+        
+//        if(!firstIteration){
+//            playerPositionForDistance  = point
+//            startingPosition = invisibleBall.position
+//            let square = SKShapeNode (rectOf: CGSize(width: 5, height: 5))
+//            square.fillColor = .yellow
+//            square.strokeColor = .yellow
+//            scene.addChild(square)
+//            square.zPosition = 100
+//            square.position = invisibleBall.position
+//            square.position.x -= CGFloat(guardPhyscisBodyWidth/2)
+//            square.position.y += CGFloat(guardPhyscisBodyHeight/2)
+//            print(square.position)
+//        } else {
+////            angleCorrection += 2
+//            angleCorrection = 2
+//            let xRelativa = (playerPositionForDistance.x - startingPosition.x)
+//            let yRelativa = (playerPositionForDistance.y - startingPosition.y)
+//            let ro = sqrt((xRelativa*xRelativa)+(yRelativa*yRelativa))
+//            print(ro)
+//            let myAngle2 = -asin(yRelativa/ro)
+//            print(myAngle2 * 180 / 3.14)
+////            let myAngle = invisibleBall.zRotation
+//            let newAngle = myAngle2 - CGFloat(3.14 * angleCorrection / 180)
+//            print(newAngle * 180 / 3.14)
+////            let ro = getDistanceBetween(point1: startingPosition, point2: playerPositionForDistance)
+//
+////            let newX = ((cos(newAngle*3.14/180))*ro)
+////            let newY = ((sin(newAngle*3.14/180))*ro)
+//            let newX = cos(newAngle)
+//            let newY = sin(newAngle)
+//            let square = SKShapeNode (rectOf: CGSize(width: 5, height: 5))
+//            square.fillColor = .yellow
+//            square.strokeColor = .yellow
+//            scene.addChild(square)
+//            square.zPosition = 100
+//            square.position.x = (newX * ro) + playerPositionForDistance.x
+//            square.position.y = (newY * ro) + playerPositionForDistance.y
+//
+////            print("\(invisibleBall.zRotation * 180 / 3.14) + \(newAngle * 180 / 3.14)")
+////            print("\(square.position) + \(myAngle2 * 180 / 3.14)")
+//        }
+//
+//        firstIteration = true
+        
+        
+        if(!firstIteration){
+            startingPosition = invisibleBall.position
+            playerPositionForDistance = point
+            
+            let square = SKShapeNode(rectOf: CGSize(width: 5, height: 5))
+            square.strokeColor = .cyan
+            square.fillColor = .cyan
+            square.position = startingPosition
+            square.zPosition = 100
+            scene.addChild(square)
+            
+            firstIteration = true
+        } else {
+            
+        }
+        
+        
+    }
+    
+//    func rayCastingForObstacles(scene: SKScene, point: CGPoint){
+//        if(facingDirection == .UP_RIGHT){
+//            let distance = sqrt(((invisibleBall.position.x - CGFloat(guardPhyscisBodyWidth/2)) - (point.x - CGFloat(guardPhyscisBodyWidth/2))) -
+//                            ((invisibleBall.position.y - CGFloat(guardPhyscisBodyHeight/2)) - (point.y - CGFloat(guardPhyscisBodyHeight/2))))
+//
+//            let vector = getDirectionVectorBetween(start: CGPoint(x: invisibleBall.position.x - CGFloat(guardPhyscisBodyWidth/2), y: invisibleBall.position.y + CGFloat(guardPhyscisBodyHeight/2)), end: CGPoint(x: point.x - CGFloat(guardPhyscisBodyWidth/2), y: point.y - CGFloat(guardPhyscisBodyWidth/2)))
+//            let angle = -atan2(vector.dx, vector.dy)
+//
+////            let L = 0.005 * 2 * 3.14 * distance
+////            let C = L
+//
+//
+//
+////            if(correctingTrajectory){
+////                angleCorrection += 2
+////            }
+//
+//            angleCorrection += 2
+//
+//            let newAngle = CGFloat(invisibleBall.zRotation) + CGFloat((angleCorrection * 3.14 / 180))
+//            let newX4 = CGFloat(cos(newAngle * 3.14 / 180))*CGFloat(distance)
+//            let newY4 = CGFloat(sin(newAngle * 3.14 / 180))*CGFloat(distance)
+//
+//            print("\(vector) + \(angle) + \(newAngle) + \(newX4)")
+//            print("\(point.x - CGFloat(guardPhyscisBodyWidth/2)) + \(point.y - CGFloat(guardPhyscisBodyWidth/2))")
+//
+//            if(angleCorrection == 0){
+//                let rayCastingObject = scene.physicsWorld.body(alongRayStart: CGPoint(x: invisibleBall.position.x - CGFloat(guardPhyscisBodyWidth/2) , y: invisibleBall.position.y + CGFloat(guardPhyscisBodyHeight/2)),
+//                                                               end: CGPoint(x: point.x - CGFloat(guardPhyscisBodyWidth/2), y: point.y - CGFloat(guardPhyscisBodyWidth/2)))
+//                if(rayCastingObject?.node?.name != "player"){
+//
+//                }
+//
+//                let square = SKShapeNode (rectOf: CGSize(width: 5, height: 5))
+//                square.fillColor = .yellow
+//                square.strokeColor = .yellow
+//                scene.addChild(square)
+//                square.zPosition = 100
+////                square.position = invisibleBall.position
+////                square.position.x -= CGFloat(guardPhyscisBodyWidth/2)
+////                square.position.y += CGFloat(guardPhyscisBodyHeight/2)
+//                square.position.x = point.x - CGFloat(guardPhyscisBodyWidth/2)
+//                square.position.y = point.y - CGFloat(guardPhyscisBodyWidth/2)
+//            }else {
+//                print("CASTING SHIFTED + \(newX4) + \(newY4)")
+//                let rayCastingObject = scene.physicsWorld.body(alongRayStart: CGPoint(x: invisibleBall.position.x - CGFloat(guardPhyscisBodyWidth/2) , y: invisibleBall.position.y + CGFloat(guardPhyscisBodyHeight/2)),
+//                                                               end: CGPoint(x: point.x - CGFloat(guardPhyscisBodyWidth/2), y: point.y -   CGFloat(guardPhyscisBodyWidth/2)))
+//
+//                let square = SKShapeNode (rectOf: CGSize(width: 5, height: 5))
+//                square.fillColor = .yellow
+//                square.strokeColor = .yellow
+//                scene.addChild(square)
+//                square.zPosition = 100
+////                square.position = invisibleBall.position
+////                square.position.x -= CGFloat(guardPhyscisBodyWidth/2)
+////                square.position.y += CGFloat(guardPhyscisBodyHeight/2)
+//                square.position.x = newX4
+//                square.position.y = newY4
+//                print("\(newX4) + \(newY4)")
+//            }
+//
+//            let square = SKShapeNode (rectOf: CGSize(width: 5, height: 5))
+//            square.fillColor = .yellow
+//            square.strokeColor = .yellow
+//            scene.addChild(square)
+//            square.zPosition = 100
+//            square.position = invisibleBall.position
+//            square.position.x -= CGFloat(guardPhyscisBodyWidth/2)
+//            square.position.y += CGFloat(guardPhyscisBodyHeight/2)
+//            square.position.x = point.x - CGFloat(guardPhyscisBodyWidth/2)
+//            square.position.y = point.y - CGFloat(guardPhyscisBodyWidth/2)
+//
+//
+//
+//
+//
+//
+//        }
+//
+//    }
+    
     func checkAngle(){
         var spriteAngle = self.invisibleBall.zRotation
 //        if spriteAngle < -pi {
@@ -403,7 +561,7 @@ class Guard: SKSpriteNode{
     }
     
     
-    func checkState(point: CGPoint, deltaTime: TimeInterval){
+    func checkState(point: CGPoint, deltaTime: TimeInterval, scene: SKScene){
 //        print("Beginning check rotation: \(invisibleBall.zRotation) + \(lastAngleSeen)")
 //        print("\(actionState) + \(actionStateBuffer)")
         
@@ -417,16 +575,16 @@ class Guard: SKSpriteNode{
                 lastPosition = invisibleBall.position
                 lastMovingDirectionBuffer = movingDirectionBuffer
                 if let action = self.invisibleBall.action(forKey: "guardPath"){
-                    print("ACTION FOUND")
+//                    print("ACTION FOUND")
                     action.speed = 0
                 }
-                print("\(lastActionState) + \(actionState)")
-                print("\(lastAngle) + \(invisibleBall.zRotation)")
-                print("\(lastPosition) + \(invisibleBall.position)")
+//                print("\(lastActionState) + \(actionState)")
+//                print("\(lastAngle) + \(invisibleBall.zRotation)")
+//                print("\(lastPosition) + \(invisibleBall.position)")
             }
             
             actionStateBuffer = .CHASING
-            print("Checking zRotation in pathToChasing:  \(invisibleBall.zRotation)")
+//            print("Checking zRotation in pathToChasing:  \(invisibleBall.zRotation)")
             
         } else if (chasingToSearching) {
             chasingToSearching = false
@@ -435,14 +593,14 @@ class Guard: SKSpriteNode{
             print(lastAngleSeen)
             
             actionStateBuffer = .SEARCHING
-            print("Checking zRotation in chasingToSearching:  \(invisibleBall.zRotation)")
+//            print("Checking zRotation in chasingToSearching:  \(invisibleBall.zRotation)")
         } else if (searchingToRotating) {
             searchingToRotating = false
             
             rotatingToRotating = true
             
             actionStateBuffer = .ROTATING
-            print("Checking zRotation in searchingToRotating:  \(invisibleBall.zRotation)")
+//            print("Checking zRotation in searchingToRotating:  \(invisibleBall.zRotation)")
         } else if (rotatingToReturn){
             rotatingToReturn = false
             
@@ -462,6 +620,9 @@ class Guard: SKSpriteNode{
             if(actionStateBuffer != actionState){
                 actionState = actionStateBuffer
             }
+            
+            rayCastingForObstacles(scene: scene, point: point)
+            
          } else if (actionStateBuffer == .SEARCHING) {
             
             let directionVector = getDirectionVectorBetween(start: self.position, end: lastPlayerPosition)
@@ -535,20 +696,20 @@ class Guard: SKSpriteNode{
             }
             
             if(returningRectangleDestination.contains(invisibleBall.position)){
-                print("RETUREND")
+//                print("RETUREND")
                 
                 invisibleBall.position = lastPosition
                 actionStateBuffer = lastActionState
                 movingDirectionBuffer = lastMovingDirectionBuffer
                 invisibleBall.zRotation = lastAngle
                 if let action = self.invisibleBall.action(forKey: "guardPath"){
-                    print("ACTION FOUND")
+//                    print("ACTION FOUND")
                     action.speed = 1
                 }
                 
-                print("\(lastActionState) + \(actionState)")
-                print("\(lastAngle) + \(invisibleBall.zRotation)")
-                print("\(lastPosition) + \(invisibleBall.position)")
+//                print("\(lastActionState) + \(actionState)")
+//                print("\(lastAngle) + \(invisibleBall.zRotation)")
+//                print("\(lastPosition) + \(invisibleBall.position)")
                 
             }
             

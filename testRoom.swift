@@ -53,7 +53,7 @@ class Piano1: SKScene, PlayableScene, SKPhysicsContactDelegate  {
         
         addChild(room)
         
-        player.position = CGPoint(x: player.position.x + CGFloat(2*blocco), y: player.position.y - CGFloat(2*blocco))
+        player.position = CGPoint(x: player.position.x + CGFloat(9*blocco), y: player.position.y - CGFloat(2*blocco))
         addChild(player)
         player.name = "player"
         player.zPosition = 20
@@ -183,7 +183,7 @@ class Piano1: SKScene, PlayableScene, SKPhysicsContactDelegate  {
         scenecamera.position = player.position
         
         //Cose delle guardie
-        guard1.checkState(point: player.position, deltaTime: delta)
+        guard1.checkState(point: player.position, deltaTime: delta, scene: self)
         visionCone(entity: guard1, scene: self)
     }
 }
