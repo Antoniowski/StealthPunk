@@ -26,7 +26,7 @@ func playerMovement(player: SKSpriteNode, velocity: CGVector){
 }
 
 
-protocol PlayableScene: DeltaProtocol, SKPhysicsContactDelegate{
+protocol PlayableScene:SKScene, DeltaProtocol, SKPhysicsContactDelegate{
     
     var player: PlayableCharacter {get set}
     
@@ -39,6 +39,7 @@ protocol PlayableScene: DeltaProtocol, SKPhysicsContactDelegate{
     var FRICTION: Double {get set}
     
     var indicatore: Counter {get set}
+    
     
 }
 
@@ -110,7 +111,7 @@ extension PlayableScene{
                             chest?.action(scene: scene)
                         case .TAVERNA_DOOR:
                             let door = usable as? TavernaDoor
-                            door?.action()
+                            door?.action(self.view!)
                         default:
                             return
                         }
@@ -186,6 +187,36 @@ extension PlayableScene{
         if firstBody.node?.name == "player" && secondBody.node?.name == "door"{
             let door = secondBody.node as? Door
             door?.open()
+        }
+    }
+    
+    func playerEssential(scene: SKScene){
+        player.updateActionState(scene: scene)
+//        player.updateMovingDirection()
+        player.animationTree()
+        player.searchObject(scene: scene)
+        player.updateFocus(scene: scene)
+        
+        
+        
+        switch player.getActionState(){
+        case .MOVE:
+            moveState()
+            
+        case .ATTACK:
+            attackState(scene: scene)
+            
+        case .INTERACT:
+            interactState(scene: scene)
+            
+        case .ROLL:
+            rollState()
+            
+        case .HIDDEN:
+            hiddenState()
+            
+        case .RUNNING:
+            runningState()
         }
     }
 }
