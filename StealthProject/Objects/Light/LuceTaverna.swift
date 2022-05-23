@@ -25,8 +25,8 @@ class LuceTaverna: StaticObject, Light{
         light.lightColor = .init(red: 239/255, green: 192/255, blue: 112/255, alpha: 0.5)
         light.position.y -= 20
         light.falloff = 0.5
-        self.addChild(light)
         self.normalTexture = SKTexture(imageNamed: "parete laterna normal texture")
+        self.addChild(light)
     }
     
     required init?(coder aDecoder: NSCoder) {
