@@ -31,6 +31,10 @@ enum RoomArchetype: Int{
     case SCAMBIO3 = 16
     case SCAMBIO4 = 17
     case LOBBY = 19
+    case PROVA1POWERUP = 20
+    case PROVA2POWERUP = 21
+    case PROVA3POWERUP = 22
+    case PROVA4POWERUP = 23
 }
 
 enum RoomsType: Int{
@@ -298,6 +302,42 @@ class Room: SKNode {
             setTextureTaverna()
             createRoom()
             addRugsAndLights()
+        case .PROVA1POWERUP:
+            door = DoorPosition(UP: true, DOWN: false, RIGHT: false, LEFT: false)
+            tipe = .NORMAL
+            numRighe = prova1Scrigno[1].count
+            numColonne = prova1Scrigno.count
+            stanza = prova1Scrigno
+            nemici = []
+            setTextures(tipo: floor)
+            createRoom()
+        case .PROVA2POWERUP:
+            door = DoorPosition(UP: false, DOWN: true, RIGHT: false, LEFT: false)
+            tipe = .NORMAL
+            numRighe = prova2Scrigno[1].count
+            numColonne = prova2Scrigno.count
+            stanza = prova2Scrigno
+            nemici = []
+            setTextures(tipo: floor)
+            createRoom()
+        case .PROVA3POWERUP:
+            door = DoorPosition(UP: false, DOWN: false, RIGHT: false, LEFT: true)
+            tipe = .NORMAL
+            numRighe = prova3Scrigno[1].count
+            numColonne = prova3Scrigno.count
+            stanza = prova3Scrigno
+            nemici = []
+            setTextures(tipo: floor)
+            createRoom()
+        case .PROVA4POWERUP:
+            door = DoorPosition(UP: false, DOWN: false, RIGHT: true, LEFT: false)
+            tipe = .NORMAL
+            numRighe = prova4Scrigno[1].count
+            numColonne = prova4Scrigno.count
+            stanza = prova4Scrigno
+            nemici = []
+            setTextures(tipo: floor)
+            createRoom()
         }
     }
     
@@ -736,6 +776,13 @@ class Room: SKNode {
                     armadio.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                     armadio.lightingBitMask = 1 | 2
                     addChild(armadio)
+                    
+                case 100:
+                    var chest = Chest(locked: false)
+                    chest.zPosition = 3
+                    chest.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    chest.lightingBitMask = 1 | 2
+                    addChild(chest)
                 default:
                     print("")
                 }

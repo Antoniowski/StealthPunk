@@ -50,6 +50,10 @@
 //
 
 
+//OGGETTI DINAMICI
+//100
+
+
 import Foundation
 
 typealias Matrix = [[Int]]
@@ -302,9 +306,19 @@ let prova1: Matrix =
     [[2,1,1,7,1,1,3],
      [4,6,6,6,6,6,5],
      [4,6,6,6,6,6,5],
+     [4,6,6,14,6,6,5],
      [4,6,6,6,6,6,5],
      [4,6,6,6,6,6,5],
+     [1,1,1,1,1,1,1]
+    ]
+
+let prova1Scrigno: Matrix =
+    [[2,1,1,7,1,1,3],
      [4,6,6,6,6,6,5],
+     [4,6,6,6,6,6,5],
+     [4,6,6,100,6,6,5],
+     [4,6,6,6,6,6,5],
+     [4,14,6,6,6,6,5],
      [1,1,1,1,1,1,1]
     ]
 
@@ -312,27 +326,56 @@ let prova2: Matrix =
     [[2,1,1,1,1,1,3],
      [4,6,6,6,6,6,5],
      [4,6,6,6,6,6,5],
+     [4,6,6,14,6,6,5],
      [4,6,6,6,6,6,5],
      [4,6,6,6,6,6,5],
+     [1,1,1,8,1,1,1]
+    ]
+
+let prova2Scrigno: Matrix =
+    [[2,1,1,1,1,1,3],
+     [4,6,6,6,6,14,5],
      [4,6,6,6,6,6,5],
+     [4,6,6,100,6,6,5],
+     [4,6,6,6,6,6,5],
+     [4,14,6,6,6,6,5],
      [1,1,1,8,1,1,1]
     ]
 let prova3: Matrix =
     [[2,1,1,1,1,1,3],
      [4,6,6,6,6,6,5],
      [4,6,6,6,6,6,5],
-     [9,6,6,6,6,6,5],
+     [9,6,6,14,6,6,5],
      [4,6,6,6,6,6,5],
      [4,6,6,6,6,6,5],
+     [1,1,1,1,1,1,1]
+    ]
+let prova3Scrigno: Matrix =
+    [[2,1,1,1,1,1,3],
+     [4,6,6,6,6,14,5],
+     [4,6,6,6,6,6,5],
+     [9,6,6,100,6,6,5],
+     [4,6,6,6,6,6,5],
+     [4,14,6,6,6,6,5],
      [1,1,1,1,1,1,1]
     ]
 let prova4: Matrix =
     [[2,1,1,1,1,1,3],
      [4,6,6,6,6,6,5],
      [4,6,6,6,6,6,5],
-     [4,6,6,6,6,6,10],
+     [4,6,6,14,6,6,10],
      [4,6,6,6,6,6,5],
      [4,6,6,6,6,6,5],
+     [1,1,1,1,1,1,1]
+    ]
+    
+let prova4Scrigno: Matrix =
+    [[2,1,1,1,1,1,3],
+     [4,6,6,6,6,14,5],
+     [4,6,6,6,6,6,5],
+     [4,6,6,100,6,6,10],
+     [4,6,6,6,6,6,5],
+     [4,14,6,6,6,6,5],
      [1,1,1,1,1,1,1]
     ]
     
@@ -491,10 +534,10 @@ let STANZE_D_NO_SX : [RoomArchetype] = [.SIMPLE_1, .SIMPLE_2]
 let STANZE_R_NO_UP : [RoomArchetype] = [.SIMPLE_3, .SIMPLE_5, .SIMPLE_7]
 let STANZE_L_NO_UP : [RoomArchetype] = [.SIMPLE_3, .SIMPLE_6, .SIMPLE_7]
  
-let STANZE_U_1DOOR: [RoomArchetype] = [.PROVA1]
-let STANZE_R_1DOOR: [RoomArchetype] = [.PROVA4]
-let STANZE_L_1DOOR: [RoomArchetype] = [.PROVA3]
-let STANZE_D_1DOOR: [RoomArchetype] = [.PROVA2]
+let STANZE_U_1DOOR: [RoomArchetype] = [.PROVA1, .PROVA1, .PROVA1, .PROVA1, .PROVA1, .PROVA1, .PROVA1, .PROVA1, .PROVA1, .PROVA1POWERUP]
+let STANZE_R_1DOOR: [RoomArchetype] = [.PROVA4,.PROVA4,.PROVA4,.PROVA4,.PROVA4,.PROVA4,.PROVA4,.PROVA4,.PROVA4, .PROVA4POWERUP]
+let STANZE_L_1DOOR: [RoomArchetype] = [.PROVA3,.PROVA3,.PROVA3,.PROVA3,.PROVA3,.PROVA3,.PROVA3,.PROVA3,.PROVA3, .PROVA3POWERUP]
+let STANZE_D_1DOOR: [RoomArchetype] = [.PROVA2,.PROVA2,.PROVA2,.PROVA2,.PROVA2,.PROVA2,.PROVA2,.PROVA2,.PROVA2, .PROVA2POWERUP]
 
 let STANZE_FINALI_D: [RoomArchetype] = [.SCAMBIO1]
 let STANZE_FINALI_L: [RoomArchetype] = [.SCAMBIO2]
