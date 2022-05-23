@@ -159,7 +159,7 @@ func createVisionCone(entity: Guard, scene: SKScene){
     
     if(entity.rayCastingPlayerFound){
         if (entity.getGuardActionState() == .IDLE || entity.getGuardActionState() == .MOVE || entity.getGuardActionState() == .ROTATING_ACTION){
-            print("NOT FOUND IN CHASING")
+//            print("NOT FOUND IN CHASING")
             entity.pathToChasing = true
         } else if (entity.getGuardActionState() == .SEARCHING || entity.getGuardActionState() == .ROTATING || entity.getGuardActionState() == .RETURNING){
             entity.pathToChasing = true
