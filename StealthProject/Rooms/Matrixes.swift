@@ -456,9 +456,6 @@ let STANZE_R: [RoomArchetype] = [.SIMPLE_3, .SIMPLE_4, .SIMPLE_6, .SIMPLE_7]
 let STANZE_L: [RoomArchetype] = [.SIMPLE_3 , .SIMPLE_4, .SIMPLE_5, .SIMPLE_7]
 let STANZE_D: [RoomArchetype] = [.SIMPLE_1, .SIMPLE_2, .SIMPLE_5, .SIMPLE_6, .SIMPLE_7]
 
-//STANZA SENZA PORTA SOTTO
-let STANZE_L_SAFE : [RoomArchetype] = [.SIMPLE_5, .SIMPLE_7]
-let STANZE_R_SAFE : [RoomArchetype] = [/*.SIMPLE_6,*/.SIMPLE_7]
 
 let STANZE_D_NO_SX : [RoomArchetype] = [.SIMPLE_1, .SIMPLE_2]
 let STANZE_R_NO_UP : [RoomArchetype] = [.SIMPLE_3, .SIMPLE_5, .SIMPLE_7]
