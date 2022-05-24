@@ -15,6 +15,10 @@ class Cassapanca: Hideout{
         self.setHideoutCategory(.PANCA)
         self.setName("Cassapanca")
         self.open = SKTexture(imageNamed: "cassapancaAperta")
+        self.physicsBody = SKPhysicsBody(rectangleOf: .init(width: Double(blocco)*0.9, height: Double(blocco)/3), center: .init(x: 0, y: 0))
+        self.physicsBody?.affectedByGravity = false
+        self.physicsBody?.isDynamic = false
+        self.physicsBody?.allowsRotation = false
     }
     
     required init?(coder aDecoder: NSCoder) {

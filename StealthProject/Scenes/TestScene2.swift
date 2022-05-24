@@ -65,11 +65,12 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         physicsWorld.contactDelegate = self
         camera = scenecamera
         
+        luce.position = .init(x: 2000, y: 2000)
         
         
         indicatore.position.x = player.position.x - 100
         indicatore.position.y = player.position.y + frame.height/3.5 + 90
-        scenecamera.addChild(indicatore)
+//        scenecamera.addChild(indicatore)
 
         scenecamera.position = player.position
         scenecamera.setScale(1)
@@ -83,12 +84,11 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         player.position = CGPoint(x: 204, y: 300)
 //        player.lightingBitMask = 5
         
-        let room = Room(.LOBBY, startingPosition: CGPoint(x: 0, y: 400), floor: .FIRST_FLOOR)
-//        let f = Floor(self, floorType: .FIRST_FLOOR)
+//        let room = Room(.LOBBY, startingPosition: CGPoint(x: 0, y: 400), floor: .FIRST_FLOOR)
+        let f = Floor(self, floorType: .SECOND_FLOOE)
         
 //        luce.categoryBitMask = 2
 //        luce.position = lampione.position
-        luce.position = .init(x: 2000, y: 2000)
         
         
 //        lampione.lightingBitMask = 2
@@ -137,7 +137,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         luce.zPosition = 50
         
 
-//        player.position = f.spawn
+        player.position = f.spawn
         player.zPosition = 10
 
         
@@ -159,10 +159,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
         addChild(scenecamera)
 //        createRoom2()
-        addChild(room)
-        enumerateChildNodes(withName: "ROOM/dynamicObject"){ room, _ in
-            print("ciao")
-        }
+//        addChild(room)
     }
     
     
@@ -194,10 +191,17 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
             }
             secondBody.node?.removeFromParent()
         }
+        //PER FAR APPARIRE LE STANZE
         if firstBody.node?.name == "player" && secondBody.node?.name == "door"{
             let door = secondBody.node as? Door
             door?.open()
             door?.parent?.alpha = 1
+        }
+        
+        
+        if firstBody.node?.name == "player" && secondBody.node?.name == "nextLevel"{
+            let oggetto = secondBody.node as? NextFloor
+            oggetto?.loadScene(self.view!)
         }
     }
     
