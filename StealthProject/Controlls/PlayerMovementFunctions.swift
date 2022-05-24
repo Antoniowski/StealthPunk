@@ -157,38 +157,38 @@ extension PlayableScene{
     
     
     
-    func didBegin(_ contact: SKPhysicsContact) {
-        var firstBody = SKPhysicsBody()
-        var secondBody = SKPhysicsBody()
-        
-        if contact.bodyA.node?.name == "player"{
-            firstBody = contact.bodyA
-            secondBody = contact.bodyB
-        }else if contact.bodyB.node?.name == "player"{
-            firstBody = contact.bodyB
-            secondBody = contact.bodyA
-        }
-        
-        
-        if firstBody.node?.name == "player" && secondBody.node?.name == "collectible"{
-            let item = secondBody.node as? Collectible
-            item?.action(player: firstBody.node as? PlayableCharacter ?? PlayableCharacter())
-            if item?.getType() == .COIN{
-//                indicatore.run(.moveBy(x: 0, y: -90, duration: 0.5), completion: {
-//                    self.indicatore.run(.sequence([.wait(forDuration: 1.5), .moveBy(x: 0, y: 90, duration: 0.5)]))
+//    func didBegin(_ contact: SKPhysicsContact) {
+//        var firstBody = SKPhysicsBody()
+//        var secondBody = SKPhysicsBody()
+//        
+//        if contact.bodyA.node?.name == "player"{
+//            firstBody = contact.bodyA
+//            secondBody = contact.bodyB
+//        }else if contact.bodyB.node?.name == "player"{
+//            firstBody = contact.bodyB
+//            secondBody = contact.bodyA
+//        }
+//        
+//        
+//        if firstBody.node?.name == "player" && secondBody.node?.name == "collectible"{
+//            let item = secondBody.node as? Collectible
+//            item?.action(player: firstBody.node as? PlayableCharacter ?? PlayableCharacter())
+//            if item?.getType() == .COIN{
+////                indicatore.run(.moveBy(x: 0, y: -90, duration: 0.5), completion: {
+////                    self.indicatore.run(.sequence([.wait(forDuration: 1.5), .moveBy(x: 0, y: 90, duration: 0.5)]))
+////                })
+//                indicatore.run(.moveTo(y: UIScreen.main.bounds.height*0.8, duration: 10.5), completion: {
+//                    self.indicatore.run(.sequence([.wait(forDuration: 1.5), .moveTo(y: UIScreen.main.bounds.height*1.2, duration: 0.5)]))
 //                })
-                indicatore.run(.moveTo(y: UIScreen.main.bounds.height*0.8, duration: 10.5), completion: {
-                    self.indicatore.run(.sequence([.wait(forDuration: 1.5), .moveTo(y: UIScreen.main.bounds.height*1.2, duration: 0.5)]))
-                })
-                item?.action(contatore: indicatore)
-            }
-            secondBody.node?.removeFromParent()
-        }
-        if firstBody.node?.name == "player" && secondBody.node?.name == "door"{
-            let door = secondBody.node as? Door
-            door?.open()
-        }
-    }
+//                item?.action(contatore: indicatore)
+//            }
+//            secondBody.node?.removeFromParent()
+//        }
+//        if firstBody.node?.name == "player" && secondBody.node?.name == "door"{
+//            let door = secondBody.node as? Door
+//            door?.open()
+//        }
+//    }
     
     func playerEssential(scene: SKScene){
         player.updateActionState(scene: scene)

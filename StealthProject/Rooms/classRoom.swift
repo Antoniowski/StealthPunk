@@ -402,6 +402,8 @@ class Room: SKNode {
             self.frontDoorTexture = SKTexture(imageNamed: "doorClosed")
             self.leftDoorTexture = SKTexture(imageNamed: "doorLeft")
             self.rightDoorTexture = SKTexture(imageNamed: "doorRight")
+            self.internalAngledx = SKTexture(imageNamed: "wallSegmentR")
+            self.internalAnglesx = SKTexture(imageNamed: "wallSegmentL")
             
         case .LAST_FLOOR:
             self.frontWallTexture = SKTexture(imageNamed: "pavimento2 tappeto lato su")
@@ -647,10 +649,10 @@ class Room: SKNode {
                     addChild(scrigno)
                     
                 case 15:
-                    let passaggio = SKShapeNode(rectOf: CGSize(width: 100, height: 100))
+                    let passaggio = NextFloor(floorLink: .TWO_TO_ONE, floor: floor)
                     passaggio.zPosition = 10
-                    passaggio.fillColor = .red
                     passaggio.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    print(passaggio.nextFloor)
                     addChild(passaggio)
                     
                 case 31:
@@ -658,9 +660,11 @@ class Room: SKNode {
                     internalAngleDx.name = "wall"
                     internalAngleDx.zPosition = 2
                     internalAngleDx.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
-                    internalAngleDx.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco/3, height: blocco), center: CGPoint(x: blocco/3, y: blocco/2))
+                    internalAngleDx.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco/3, height: blocco/3), center: CGPoint(x: blocco/3, y: blocco/2))
                     internalAngleDx.physicsBody?.isDynamic = false
                     internalAngleDx.physicsBody?.affectedByGravity = false
+                    internalAngleDx.physicsBody?.allowsRotation = false
+                    internalAngleDx.lightingBitMask = 1 | 2
                     addChild(internalAngleDx)
                     
                 case 32:
@@ -668,9 +672,11 @@ class Room: SKNode {
                     internalAngleSx.name = "wall"
                     internalAngleSx.zPosition = 2
                     internalAngleSx.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
-                    internalAngleSx.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco/3, height: blocco), center: CGPoint(x: -blocco/3, y: blocco/2))
+                    internalAngleSx.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: Double(blocco)/3, height: Double(blocco)/2), center: CGPoint(x: -blocco/3, y: blocco/2))
                     internalAngleSx.physicsBody?.isDynamic = false
                     internalAngleSx.physicsBody?.affectedByGravity = false
+                    internalAngleSx.physicsBody?.allowsRotation = false
+                    internalAngleSx.lightingBitMask = 1 | 2
                     addChild(internalAngleSx)
                     
                 case 33:
@@ -711,7 +717,7 @@ class Room: SKNode {
                 case 13:
                     
                     var furnitureBig = StaticObject(texture: SKTexture(imageNamed: "stand1"), color: .clear, size: .init(width: blocco, height: blocco), objectName: "stand1", objectCategory: .MOBILIO)
-                    furnitureBig.physicsBody = SKPhysicsBody(rectangleOf: .init(width: Double(blocco), height: Double(blocco)), center: CGPoint (x: 0, y: Double(blocco) - 0.7*Double(blocco)))
+                    furnitureBig.physicsBody = SKPhysicsBody(rectangleOf: .init(width: Double(blocco), height: Double(blocco)/2.5), center: CGPoint (x: 0, y: Double(blocco) - 0.8*Double(blocco)))
                     furnitureBig.physicsBody?.affectedByGravity = false
                     furnitureBig.physicsBody?.allowsRotation = false
                     furnitureBig.physicsBody?.isDynamic = false
@@ -729,7 +735,7 @@ class Room: SKNode {
                     
                 case 14:
                     var furnitureSmall = StaticObject(texture: SKTexture(imageNamed: "stand2"), color: .clear, size: .init(width: blocco/2, height: blocco), objectName: "stand2", objectCategory: .MOBILIO)
-                    furnitureSmall.physicsBody = SKPhysicsBody(rectangleOf: .init(width: Double(blocco), height: Double(blocco)), center: CGPoint (x: 0, y: Double(blocco) - 0.7*Double(blocco)))
+                    furnitureSmall.physicsBody = SKPhysicsBody(rectangleOf: .init(width: Double(blocco)/2, height: Double(blocco)/2), center: CGPoint (x: 0, y: Double(blocco) - 0.85*Double(blocco)))
                     furnitureSmall.physicsBody?.affectedByGravity = false
                     furnitureSmall.physicsBody?.allowsRotation = false
                     furnitureSmall.physicsBody?.isDynamic = false
@@ -778,7 +784,7 @@ class Room: SKNode {
                     addChild(armadio)
                     
                 case 100:
-                    var chest = Chest(locked: false)
+                    let chest = Chest(locked: false)
                     chest.zPosition = 3
                     chest.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                     chest.lightingBitMask = 1 | 2

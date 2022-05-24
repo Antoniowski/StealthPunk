@@ -27,6 +27,7 @@ class LobbyScene: SKScene, PlayableScene{
     
     
     private let ambientLight = SKLightNode()
+    private var lightArray: [LuceTaverna] = []
     
     private var startGame: Bool = false
     private let stanza = Room(.LOBBY, startingPosition: .zero, floor: .FIRST_FLOOR)
@@ -39,13 +40,17 @@ class LobbyScene: SKScene, PlayableScene{
         self.backgroundColor = .black
         physicsWorld.contactDelegate = self
         
+        indicatore.position.x = player.position.x - 100
+        indicatore.position.y = player.position.y + frame.height/3.5 + 90
+        sceneCamera.addChild(indicatore)
+
         
         ambientLight.ambientColor = .init(red: 0.6, green: 0.6, blue: 0.75, alpha: 0.5)
         ambientLight.position = .init(x: 2000, y: 2000)
         ambientLight.falloff = 10
         ambientLight.categoryBitMask = 1|2
+        
         addChild(ambientLight)
-
         addChild(stanza)
         camera = sceneCamera
         sceneCamera.setScale(1)
@@ -54,6 +59,12 @@ class LobbyScene: SKScene, PlayableScene{
         player.zPosition = 10
         addChild(player)
         addChild(sceneCamera)
+        
+        enumerateChildNodes(withName: "ROOM/light"){object, _ in
+            let luce = object as? LuceTaverna
+            self.lightArray.append(luce ?? LuceTaverna(lightBitmask: 1|2))
+            
+        }
 
     }
     
@@ -64,6 +75,23 @@ class LobbyScene: SKScene, PlayableScene{
         playerMovement(player: player as SKSpriteNode, velocity: velocity)
         sceneCamera.position = player.position
         startGameFunction()
+        
+        for x in 0..<lightArray.count{
+            if lightArray[x].animationBool == false{
+                lightArray[x].light.falloff -= 0.002
+                lightArray[x].light.lightColor = lightArray[x].light.lightColor.withAlphaComponent(lightArray[x].light.lightColor.rgba.alpha + 0.0005)
+                if lightArray[x].light.falloff <= 0.5{
+                    lightArray[x].animationBool = true
+                }
+            }else{
+                lightArray[x].light.falloff += 0.002
+                lightArray[x].light.lightColor = lightArray[x].light.lightColor.withAlphaComponent(lightArray[x].light.lightColor.rgba.alpha - 0.0005)
+                if lightArray[x].light.falloff >= 0.6{
+                    lightArray[x].animationBool = false
+                }
+            }
+            
+        }
     }
     
     

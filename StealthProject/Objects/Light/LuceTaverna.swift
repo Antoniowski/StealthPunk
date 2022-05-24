@@ -8,7 +8,7 @@
 import SpriteKit
 
 class LuceTaverna: StaticObject, Light{
-    internal let light: SKLightNode = SKLightNode()
+    var light: SKLightNode = SKLightNode()
     private var isOn: Bool {
         get{
             return light.isEnabled
@@ -17,6 +17,7 @@ class LuceTaverna: StaticObject, Light{
             light.isEnabled = newValue
         }
     }
+    var animationBool: Bool = false
     
     init(lightBitmask: Int){
         super.init(texture: SKTexture(imageNamed: "parete lanterna"), color: .clear, size: bloccoSize, objectName: "wallLight", objectCategory: .LIGHT)

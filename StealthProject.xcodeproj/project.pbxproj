@@ -34,6 +34,8 @@
 		6AAE3F71283A4270002917FB /* TavernaDoor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE3F70283A4270002917FB /* TavernaDoor.swift */; };
 		6AAE3F73283A4C23002917FB /* LuceTaverna.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE3F72283A4C23002917FB /* LuceTaverna.swift */; };
 		6AAE3F75283BC46C002917FB /* Museum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE3F74283BC46C002917FB /* Museum.swift */; };
+		6AAE3F77283C1D27002917FB /* NextFloorObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE3F76283C1D27002917FB /* NextFloorObject.swift */; };
+		6AAE3F79283C231B002917FB /* TestScene4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE3F78283C231B002917FB /* TestScene4.swift */; };
 		6AB863E128200334006BB85E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB863E028200334006BB85E /* AppDelegate.swift */; };
 		6AB863E328200334006BB85E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6AB863E228200334006BB85E /* GameScene.sks */; };
 		6AB863E528200334006BB85E /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6AB863E428200334006BB85E /* Actions.sks */; };
@@ -90,6 +92,8 @@
 		6AAE3F70283A4270002917FB /* TavernaDoor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TavernaDoor.swift; sourceTree = "<group>"; };
 		6AAE3F72283A4C23002917FB /* LuceTaverna.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuceTaverna.swift; sourceTree = "<group>"; };
 		6AAE3F74283BC46C002917FB /* Museum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Museum.swift; sourceTree = "<group>"; };
+		6AAE3F76283C1D27002917FB /* NextFloorObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextFloorObject.swift; sourceTree = "<group>"; };
+		6AAE3F78283C231B002917FB /* TestScene4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestScene4.swift; sourceTree = "<group>"; };
 		6AB863DD28200334006BB85E /* StealthPunk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StealthPunk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AB863E028200334006BB85E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6AB863E228200334006BB85E /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -278,6 +282,7 @@
 				4A00C74E2825580D009DB657 /* TestScene3.swift */,
 				6A2A7E9B283457D600D14EC0 /* Intro.swift */,
 				6A2A7E9D28366BA900D14EC0 /* Lobby.swift */,
+				6AAE3F78283C231B002917FB /* TestScene4.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -298,6 +303,7 @@
 				6AA31BDD28298C03002CCD47 /* Light */,
 				6A2A7E982833F8E600D14EC0 /* Chest.swift */,
 				6AAE3F70283A4270002917FB /* TavernaDoor.swift */,
+				6AAE3F76283C1D27002917FB /* NextFloorObject.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -428,6 +434,7 @@
 				6AB863F92820254D006BB85E /* VectorFunctions.swift in Sources */,
 				6A2A7E992833F8E600D14EC0 /* Chest.swift in Sources */,
 				63B9F6AB2833DA35008E62C1 /* GearCounter.swift in Sources */,
+				6AAE3F77283C1D27002917FB /* NextFloorObject.swift in Sources */,
 				6AAE3F73283A4C23002917FB /* LuceTaverna.swift in Sources */,
 				4A1B448E2822B274001DABEE /* ControllerRelatedGlobalVariables.swift in Sources */,
 				6AB8640028217369006BB85E /* PlayableCharacter.swift in Sources */,
@@ -435,6 +442,7 @@
 				A693D354282561300055C266 /* testRoom.swift in Sources */,
 				6A0621F228330FC80064BB97 /* CollisionsEnum.swift in Sources */,
 				6AC709612823D4DD007F8A50 /* SpecificCharacterClasses.swift in Sources */,
+				6AAE3F79283C231B002917FB /* TestScene4.swift in Sources */,
 				6AC7096728240B00007F8A50 /* FacingEnum.swift in Sources */,
 				6AAE3F75283BC46C002917FB /* Museum.swift in Sources */,
 				4A1B44962822B809001DABEE /* TestScene2.swift in Sources */,

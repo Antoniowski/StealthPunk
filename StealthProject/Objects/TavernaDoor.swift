@@ -35,6 +35,6 @@ class TavernaDoor: UsableObject{
     }
     
     func action(_ view: SKView){
-        view.presentScene(newMuseum.firstFloor)
+        view.presentScene(newMuseum.firstFloor, transition: .fade(withDuration: 2))
     }
 }

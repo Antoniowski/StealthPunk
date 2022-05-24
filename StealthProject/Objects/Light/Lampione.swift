@@ -10,7 +10,7 @@ import SpriteKit
 
 class Lampione: StaticObject, Light{
     
-    internal let light: SKLightNode = SKLightNode()
+    var light: SKLightNode = SKLightNode()
     private var isOn: Bool {
         get{
             return light.isEnabled
