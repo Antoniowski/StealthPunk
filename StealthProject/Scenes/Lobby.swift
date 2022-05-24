@@ -7,6 +7,7 @@
 
 import Foundation
 import SpriteKit
+import SwiftUI
 
 class LobbyScene: SKScene, PlayableScene{
     
@@ -33,6 +34,8 @@ class LobbyScene: SKScene, PlayableScene{
     private let stanza = Room(.LOBBY, startingPosition: .zero, floor: .FIRST_FLOOR)
     private var sceneCamera: SKCameraNode = SKCameraNode()
     
+    private var oggetti: [SKNode] = []
+    private var nemici: [SKNode] = []
     
     
     override func didMove(to view: SKView) {
@@ -65,13 +68,17 @@ class LobbyScene: SKScene, PlayableScene{
             self.lightArray.append(luce ?? LuceTaverna(lightBitmask: 1|2))
             
         }
+        
+        enumerateChildNodes(withName: "ROOM/dynamicObject"){oggetto, _ in
+            self.oggetti.append(oggetto)
+        }
 
     }
     
     override func update(_ currentTime: TimeInterval) {
         calcDelta(currentTime: currentTime)
         indicatore.etichetta.text = "x \(indicatore.number)"
-        playerEssential(scene: self)
+        playerEssential(scene: self, nemici: nemici, oggetti: oggetti)
         playerMovement(player: player as SKSpriteNode, velocity: velocity)
         sceneCamera.position = player.position
         startGameFunction()
