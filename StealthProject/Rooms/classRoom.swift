@@ -31,6 +31,10 @@ enum RoomArchetype: Int{
     case SCAMBIO3 = 16
     case SCAMBIO4 = 17
     case LOBBY = 19
+    case PROVA1POWERUP = 20
+    case PROVA2POWERUP = 21
+    case PROVA3POWERUP = 22
+    case PROVA4POWERUP = 23
 }
 
 enum RoomsType: Int{
@@ -64,6 +68,7 @@ class Room: SKNode {
     private var numRighe : Int = 0
     private var numColonne : Int = 0
     private var stanza : Matrix = []
+    private var pavimento: Matrix = []
     private var nemici : [Guard] = []
     private var oggetti : [InteractableObject] = []
     private var startingPosition: CGPoint = .zero
@@ -87,10 +92,31 @@ class Room: SKNode {
     private var internalAngledx2: SKTexture = SKTexture()
     private var internalAnglesx2: SKTexture = SKTexture()
     
+    private var frontDoorTextureMap: SKTexture = SKTexture()
+    private var leftDoorTextureMap: SKTexture = SKTexture()
+    private var rightDoorTextureMap: SKTexture = SKTexture()
+    private var frontWallTextureMap: SKTexture = SKTexture()
+    private var sideLeftWallTextureMap: SKTexture = SKTexture()
+    private var sideRightWallTextureMap: SKTexture = SKTexture()
+    private var cornerLeftWallTextureMap: SKTexture = SKTexture()
+    private var cornerRightWallTextureMap: SKTexture = SKTexture()
+    private var frontWallLightTextureMap: SKTexture = SKTexture()
+    private var floorTextureMap: SKTexture = SKTexture()
+    private var carpetTextureMap: [SKTexture] = []
+    private var internalAngledxMap: SKTexture = SKTexture()
+    private var internalAnglesxMap: SKTexture = SKTexture()
+    private var internalAngledx2Map: SKTexture = SKTexture()
+    private var internalAnglesx2Map: SKTexture = SKTexture()
+    
     init(_ archetype: RoomArchetype, startingPosition: CGPoint, floor: FloorType){
         super.init()
+        self.name = "ROOM"
         self.startingPosition = startingPosition
         self.floor = floor
+        self.physicsBody = SKPhysicsBody()
+        self.physicsBody?.allowsRotation = false
+        self.physicsBody?.isDynamic = false
+        self.physicsBody?.affectedByGravity = false
         switch archetype {
         case .FIRST:
             door = DoorPosition(UP: true, DOWN: false, RIGHT: false, LEFT: false)
@@ -99,7 +125,7 @@ class Room: SKNode {
             numColonne = simple1Matrix.count
             stanza = simple1Matrix
             nemici = []
-            setTextures(tipo: .FIRST_FLOOR)
+            setTextures(tipo: floor)
             self.createRoom()
         case .FIRST_2:
             door = DoorPosition(UP: true, DOWN: true, RIGHT: false, LEFT: false)
@@ -108,7 +134,7 @@ class Room: SKNode {
             numColonne = simple1Matrix.count
             stanza = simple1Matrix
             nemici = []
-            setTextures(tipo: .FIRST_FLOOR)
+            setTextures(tipo: floor)
             createRoom()
         case .FIRST_3:
             door = DoorPosition(UP: true, DOWN: true, RIGHT: true, LEFT: false)
@@ -117,7 +143,7 @@ class Room: SKNode {
             numColonne = simple1Matrix.count
             stanza = simple1Matrix
             nemici = []
-            setTextures(tipo: .FIRST_FLOOR)
+            setTextures(tipo: floor)
             createRoom()
         case .FIRST_4:
             door = DoorPosition(UP: true, DOWN: true, RIGHT: true, LEFT: true)
@@ -126,7 +152,7 @@ class Room: SKNode {
             numColonne = simple1Matrix.count
             stanza = simple1Matrix
             nemici = []
-            setTextures(tipo: .FIRST_FLOOR)
+            setTextures(tipo: floor)
             createRoom()
         case .SIMPLE_1:
             door = DoorPosition(UP: true, DOWN: true, RIGHT: false, LEFT: false)
@@ -135,7 +161,7 @@ class Room: SKNode {
             numColonne = simple1Matrix.count
             stanza = simple1Matrix
             nemici = []
-            setTextures(tipo: .FIRST_FLOOR)
+            setTextures(tipo: floor)
             createRoom()
         case .SIMPLE_2:
             door = DoorPosition(UP: true, DOWN: true, RIGHT: false, LEFT: false)
@@ -144,7 +170,7 @@ class Room: SKNode {
             numColonne = simple2Matrix.count
             stanza = simple2Matrix
             nemici = []
-            setTextures(tipo: .FIRST_FLOOR)
+            setTextures(tipo: floor)
             createRoom()
         case .SIMPLE_3:
             door = DoorPosition(UP: false, DOWN: true, RIGHT: true, LEFT: true)
@@ -153,7 +179,7 @@ class Room: SKNode {
             numColonne = simple3Matrix.count
             stanza = simple3Matrix
             nemici = []
-            setTextures(tipo: .FIRST_FLOOR)
+            setTextures(tipo: floor)
             createRoom()
         case .SIMPLE_4:
             door = DoorPosition(UP: true, DOWN: false, RIGHT: true, LEFT: true)
@@ -162,7 +188,7 @@ class Room: SKNode {
             numColonne = simple4Matrix.count
             stanza = simple4Matrix
             nemici = []
-            setTextures(tipo: .FIRST_FLOOR)
+            setTextures(tipo: floor)
             createRoom()
         case .SIMPLE_5:
             door = DoorPosition(UP: false, DOWN: true, RIGHT: false, LEFT: true)
@@ -171,7 +197,7 @@ class Room: SKNode {
             numColonne = simple5Matrix.count
             stanza = simple5Matrix
             nemici = []
-            setTextures(tipo: .FIRST_FLOOR)
+            setTextures(tipo: floor)
             createRoom()
         case .SIMPLE_6:
             door = DoorPosition(UP: false, DOWN: true, RIGHT: true, LEFT: false)
@@ -180,7 +206,7 @@ class Room: SKNode {
             numColonne = simple6Matrix.count
             stanza = simple6Matrix
             nemici = []
-            setTextures(tipo: .FIRST_FLOOR)
+            setTextures(tipo: floor)
             createRoom()
         case .SIMPLE_7:
             door = DoorPosition(UP: false, DOWN: true, RIGHT: true, LEFT: true)
@@ -189,7 +215,7 @@ class Room: SKNode {
             numColonne = simple7Matrix.count
             stanza = simple7Matrix
             nemici = []
-            setTextures(tipo: .FIRST_FLOOR)
+            setTextures(tipo: floor)
             createRoom()
         case .PROVA1:
             door = DoorPosition(UP: true, DOWN: false, RIGHT: false, LEFT: false)
@@ -198,7 +224,7 @@ class Room: SKNode {
             numColonne = prova1.count
             stanza = prova1
             nemici = []
-            setTextures(tipo: .FIRST_FLOOR)
+            setTextures(tipo: floor)
             createRoom()
         case .PROVA2:
             door = DoorPosition(UP: false, DOWN: true, RIGHT: false, LEFT: false)
@@ -207,7 +233,7 @@ class Room: SKNode {
             numColonne = prova2.count
             stanza = prova2
             nemici = []
-            setTextures(tipo: .FIRST_FLOOR)
+            setTextures(tipo: floor)
             createRoom()
         case .PROVA3:
             door = DoorPosition(UP: false, DOWN: false, RIGHT: false, LEFT: true)
@@ -216,7 +242,7 @@ class Room: SKNode {
             numColonne = prova3.count
             stanza = prova3
             nemici = []
-            setTextures(tipo: .FIRST_FLOOR)
+            setTextures(tipo: floor)
             createRoom()
         case .PROVA4:
             door = DoorPosition(UP: false, DOWN: false, RIGHT: true, LEFT: false)
@@ -225,7 +251,7 @@ class Room: SKNode {
             numColonne = prova4.count
             stanza = prova4
             nemici = []
-            setTextures(tipo: .FIRST_FLOOR)
+            setTextures(tipo: floor)
             createRoom()
             
         case .SCAMBIO1:
@@ -235,7 +261,7 @@ class Room: SKNode {
             numColonne = simple1Scambio.count
             stanza = simple1Scambio
             nemici = []
-            setTextures(tipo: .FIRST_FLOOR)
+            setTextures(tipo: floor)
             createRoom()
         case .SCAMBIO2:
             door = DoorPosition(UP: false, DOWN: false, RIGHT: false, LEFT: true)
@@ -244,7 +270,7 @@ class Room: SKNode {
             numColonne = simple2Scambio.count
             stanza = simple2Scambio
             nemici = []
-            setTextures(tipo: .FIRST_FLOOR)
+            setTextures(tipo: floor)
             createRoom()
         case .SCAMBIO3:
             door = DoorPosition(UP: true, DOWN: false, RIGHT: false, LEFT: false)
@@ -253,7 +279,7 @@ class Room: SKNode {
             numColonne = simple3Scambio.count
             stanza = simple3Scambio
             nemici = []
-            setTextures(tipo: .FIRST_FLOOR)
+            setTextures(tipo: floor)
             createRoom()
         case .SCAMBIO4:
             door = DoorPosition(UP: false, DOWN: false, RIGHT: true, LEFT: false)
@@ -262,17 +288,55 @@ class Room: SKNode {
             numColonne = simple4Scambio.count
             stanza = simple4Scambio
             nemici = []
-            setTextures(tipo: .FIRST_FLOOR)
+            setTextures(tipo: floor)
             createRoom()
             
         case .LOBBY:
             door = DoorPosition(UP: true, DOWN: false, RIGHT: false, LEFT: false)
             self.tipe = .NORMAL
             self.stanza = taverna
+            self.pavimento = tavernaPavimento
             numRighe = taverna[1].count
             numColonne = taverna.count
             nemici = []
             setTextureTaverna()
+            createRoom()
+            addRugsAndLights()
+        case .PROVA1POWERUP:
+            door = DoorPosition(UP: true, DOWN: false, RIGHT: false, LEFT: false)
+            tipe = .NORMAL
+            numRighe = prova1Scrigno[1].count
+            numColonne = prova1Scrigno.count
+            stanza = prova1Scrigno
+            nemici = []
+            setTextures(tipo: floor)
+            createRoom()
+        case .PROVA2POWERUP:
+            door = DoorPosition(UP: false, DOWN: true, RIGHT: false, LEFT: false)
+            tipe = .NORMAL
+            numRighe = prova2Scrigno[1].count
+            numColonne = prova2Scrigno.count
+            stanza = prova2Scrigno
+            nemici = []
+            setTextures(tipo: floor)
+            createRoom()
+        case .PROVA3POWERUP:
+            door = DoorPosition(UP: false, DOWN: false, RIGHT: false, LEFT: true)
+            tipe = .NORMAL
+            numRighe = prova3Scrigno[1].count
+            numColonne = prova3Scrigno.count
+            stanza = prova3Scrigno
+            nemici = []
+            setTextures(tipo: floor)
+            createRoom()
+        case .PROVA4POWERUP:
+            door = DoorPosition(UP: false, DOWN: false, RIGHT: true, LEFT: false)
+            tipe = .NORMAL
+            numRighe = prova4Scrigno[1].count
+            numColonne = prova4Scrigno.count
+            stanza = prova4Scrigno
+            nemici = []
+            setTextures(tipo: floor)
             createRoom()
         }
     }
@@ -296,10 +360,18 @@ class Room: SKNode {
     
     private func setTextureTaverna(){
         self.frontWallTexture = SKTexture(imageNamed: "parete centrale")
+        self.frontWallTextureMap = SKTexture(imageNamed: "parete centrale normal map")
         self.floorTexture = SKTexture(imageNamed: "pavimento taverna")
+        self.floorTextureMap = SKTexture(imageNamed: "pavimento taverna normal map")
         self.sideRightWallTexture = SKTexture(imageNamed: "parete lato dx")
         self.sideLeftWallTexture  = SKTexture(imageNamed: "parete lato sx")
         self.cornerRightWallTexture = SKTexture(imageNamed: "parete angolo dx")
+        self.cornerRightWallTextureMap = SKTexture(imageNamed: "pareta angolo dx normal map")
+        self.internalAngledx = SKTexture(imageNamed: "parete angolo interno dx")
+        self.internalAnglesx = SKTexture(imageNamed: "parete angolo interno sx")
+        self.internalAngledxMap = SKTexture(imageNamed: "parete angolo interno dx normal map")
+        self.internalAnglesxMap = SKTexture(imageNamed: "parete angolo interno sx normal map")
+        self.cornerLeftWallTextureMap = SKTexture(imageNamed: "pareta angolo sx normal map")
         self.cornerLeftWallTexture = SKTexture(imageNamed: "parete angolo sx")
         self.frontDoorTexture = SKTexture(imageNamed: "porta chiusa")
     }
@@ -309,6 +381,7 @@ class Room: SKNode {
             
         case .FIRST_FLOOR:
             self.frontWallTexture = SKTexture(imageNamed: "parete frontaleSu")
+            self.frontWallTextureMap = SKTexture(imageNamed: "parete frontaleSu normal map")
             self.floorTexture = SKTexture(imageNamed: "erba")
             self.sideRightWallTexture = SKTexture(imageNamed: "parete LateraleDx")
             self.sideLeftWallTexture  = SKTexture(imageNamed: "parete LateraleSx")
@@ -325,6 +398,7 @@ class Room: SKNode {
         case .SECOND_FLOOE:
             self.frontWallTexture = SKTexture(imageNamed: "wall")
             self.floorTexture = SKTexture(imageNamed: "pavimento4")
+            self.floorTextureMap = SKTexture(imageNamed: "pavimento4NormalMap2")
             self.sideRightWallTexture = SKTexture(imageNamed: "wallR")
             self.sideLeftWallTexture  = SKTexture(imageNamed: "wallL")
             self.cornerRightWallTexture = SKTexture(imageNamed: "wallAngleR")
@@ -332,6 +406,8 @@ class Room: SKNode {
             self.frontDoorTexture = SKTexture(imageNamed: "doorClosed")
             self.leftDoorTexture = SKTexture(imageNamed: "doorLeft")
             self.rightDoorTexture = SKTexture(imageNamed: "doorRight")
+            self.internalAngledx = SKTexture(imageNamed: "wallSegmentR")
+            self.internalAnglesx = SKTexture(imageNamed: "wallSegmentL")
             
         case .LAST_FLOOR:
             self.frontWallTexture = SKTexture(imageNamed: "pavimento2 tappeto lato su")
@@ -353,9 +429,11 @@ class Room: SKNode {
             for j in 0..<stanza[1].count{
                 if stanza[i][j] != 0{
                     let floor = SKSpriteNode(texture: floorTexture, size: CGSize(width: blocco, height: blocco))
+                    floor.normalTexture = floorTextureMap
                     floor.name = "floorTile"
                     floor.zPosition = 1
                     floor.position = CGPoint(x: startingPosition.x + Double(j * blocco) + Double(blocco/2) , y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    floor.lightingBitMask = 1 | 2
                     addChild(floor)
                 }
                 switch stanza[i][j]{
@@ -364,29 +442,52 @@ class Room: SKNode {
                     let wall = SKSpriteNode(texture: frontWallTexture, size: bloccoSize)
                     wall.name = "wall"
                     wall.zPosition = 2
+                    wall.normalTexture = frontWallTextureMap
                     wall.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                     wall.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
                     wall.physicsBody?.isDynamic = false
                     wall.physicsBody?.affectedByGravity = false
+                    wall.lightingBitMask = 1 | 2
                     addChild(wall)
                     
                 case 2:
                     let leftAngle = SKSpriteNode(texture: cornerLeftWallTexture, size: bloccoSize)
                     leftAngle.name = "wall"
                     leftAngle.zPosition = 2
+                    leftAngle.normalTexture = cornerLeftWallTextureMap
                     leftAngle.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
-                    leftAngle.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
+//                    leftAngle.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
+                    let path = CGMutablePath()
+                    path.move(to: .init(x: blocco/2, y: blocco/2))
+                    path.addLine(to: .init(x: -blocco/2, y: blocco/2))
+                    path.addLine(to: .init(x: -blocco/2, y: -blocco/2))
+                    path.addLine(to: .init(x: -blocco/6, y: -blocco/2))
+                    path.addLine(to: .init(x: -blocco/6, y: 0))
+                    path.addLine(to: .init(x: blocco/2, y: 0))
+                    leftAngle.physicsBody = SKPhysicsBody(polygonFrom: path)
                     leftAngle.physicsBody?.isDynamic = false
                     leftAngle.physicsBody?.affectedByGravity = false
+                    leftAngle.lightingBitMask = 1 | 2
+
                     addChild(leftAngle)
                 case 3:
                     let myWall = SKSpriteNode(texture: cornerRightWallTexture, size: bloccoSize)
                     myWall.name = "wall"
                     myWall.zPosition = 2
+                    myWall.normalTexture = cornerRightWallTextureMap
                     myWall.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
-                    myWall.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
+//                    myWall.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
+                    let path = CGMutablePath()
+                    path.move(to: .init(x: -blocco/2, y: blocco/2))
+                    path.addLine(to: .init(x: blocco/2, y: blocco/2))
+                    path.addLine(to: .init(x: blocco/2, y: -blocco/2))
+                    path.addLine(to: .init(x: blocco/6, y: -blocco/2))
+                    path.addLine(to: .init(x: blocco/6, y: 0))
+                    path.addLine(to: .init(x: -blocco/2, y: 0))
+                    myWall.physicsBody = SKPhysicsBody(polygonFrom: path)
                     myWall.physicsBody?.affectedByGravity = false
                     myWall.physicsBody?.isDynamic = false
+                    myWall.lightingBitMask = 1 | 2
                     addChild(myWall)
                 case 4:
                     let myWall = SKSpriteNode(texture: sideLeftWallTexture, size: bloccoSize)
@@ -394,11 +495,12 @@ class Room: SKNode {
                     myWall.zPosition = 3
                     myWall.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                     myWall.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco/3, height: blocco), center: CGPoint(x: -blocco/3, y: 0))
-                    if i == 1{
-                        myWall.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco/3, height: blocco*2), center: CGPoint(x: -blocco/3, y: 0))
-                    }
+//                    if i == 1{
+//                        myWall.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco/3, height: blocco*2), center: CGPoint(x: -blocco/3, y: 0))
+//                    }
                     myWall.physicsBody?.affectedByGravity = false
                     myWall.physicsBody?.isDynamic = false
+                    myWall.lightingBitMask = 1 | 2
                     addChild(myWall)
                 case 5:
                     let myWall = SKSpriteNode(texture: sideRightWallTexture, size: bloccoSize)
@@ -406,11 +508,12 @@ class Room: SKNode {
                     myWall.zPosition = 3
                     myWall.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                     myWall.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco/3, height: blocco), center: CGPoint(x: blocco/3, y: 0))
-                    if i == 1{
-                        myWall.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco/3, height: blocco*2), center: CGPoint(x: blocco/3, y: 0))
-                    }
+//                    if i == 1{
+//                        myWall.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco/3, height: blocco*2), center: CGPoint(x: blocco/3, y: 0))
+//                    }
                     myWall.physicsBody?.affectedByGravity = false
                     myWall.physicsBody?.isDynamic = false
+                    myWall.lightingBitMask = 1 | 2
                     addChild(myWall)
                 case 7:
 //                    let door = SKSpriteNode(texture: frontDoorTexture, size: bloccoSize)
@@ -426,6 +529,7 @@ class Room: SKNode {
                     if self.archetype == .LOBBY{
                         door.run(.setTexture(SKTexture(imageNamed: "porta chiusa")))
                     }
+                    door.lightingBitMask = 1 | 2
                     addChild(door)
                 case 8:
 //                    let door = SKSpriteNode(texture: frontDoorTexture, size: bloccoSize)
@@ -438,6 +542,7 @@ class Room: SKNode {
                     door.physicsBody?.isDynamic = false
                     door.physicsBody?.affectedByGravity = false
                     door.physicsBody?.allowsRotation = false
+                    door.lightingBitMask = 1 | 2
                     addChild(door)
                 case 9:
 //                    let door = SKSpriteNode(texture: leftDoorTexture, size: bloccoSize)
@@ -450,6 +555,7 @@ class Room: SKNode {
                     door.physicsBody?.isDynamic = false
                     door.physicsBody?.affectedByGravity = false
                     door.physicsBody?.allowsRotation = false
+                    door.lightingBitMask = 1 | 2
                     addChild(door)
                 case 10:
 //                    let door = SKSpriteNode(texture: rightDoorTexture, size: bloccoSize)
@@ -462,23 +568,27 @@ class Room: SKNode {
                     door.physicsBody?.isDynamic = false
                     door.physicsBody?.affectedByGravity = false
                     door.physicsBody?.allowsRotation = false
+                    door.lightingBitMask = 1 | 2
                     addChild(door)
                 case 11:
-                    let door = SKSpriteNode(imageNamed: "porta chiusa")
+                    let door = TavernaDoor()
                     door.size = bloccoSize
-                    door.name = "lobbyDoor"
                     door.zPosition = 2
+//                    door.normalTexture = SKTexture(imageNamed: "porta chiusa normal map")
                     door.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                     door.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
                     door.physicsBody?.isDynamic = false
                     door.physicsBody?.affectedByGravity = false
                     door.physicsBody?.allowsRotation = false
+                    door.lightingBitMask = 1 | 2
                     addChild(door)
                 case 16:
                     let barile = SKSpriteNode(imageNamed: "bott9")
                     barile.name = "staticObject"
                     barile.size = bloccoSize
                     barile.zPosition = 2
+                    barile.normalTexture = SKTexture(imageNamed: "bott9NormalMap")
+                    barile.lightingBitMask = 1 | 2
                     barile.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                     barile.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
                     barile.physicsBody?.isDynamic = false
@@ -490,6 +600,8 @@ class Room: SKNode {
                     barile.name = "staticObject"
                     barile.size = bloccoSize
                     barile.zPosition = 2
+                    barile.normalTexture = SKTexture(imageNamed: "bott9NormalMap")
+                    barile.lightingBitMask = 1 | 2
                     barile.position = CGPoint(x: startingPosition.x + Double(j*blocco) - Double(blocco/4), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                     barile.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
                     barile.physicsBody?.isDynamic = false
@@ -501,30 +613,36 @@ class Room: SKNode {
                     bancone.name = "staticObject"
                     bancone.size = bloccoSize
                     bancone.zPosition = 2
+                    bancone.normalTexture = SKTexture(imageNamed: "bancone2 normal map")
                     bancone.position = CGPoint(x: startingPosition.x + Double(j*blocco) - Double(blocco/4), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                     bancone.physicsBody = SKPhysicsBody(rectangleOf: .init(width: blocco/2, height: blocco))
                     bancone.physicsBody?.isDynamic = false
                     bancone.physicsBody?.affectedByGravity = false
                     bancone.physicsBody?.allowsRotation = false
+                    bancone.lightingBitMask = 1 | 2
                     addChild(bancone)
                 case 19:
                     let bancone = SKSpriteNode(imageNamed: "bancone")
                     bancone.name = "staticObject"
                     bancone.size = bloccoSize
                     bancone.zPosition = 2
+                    bancone.normalTexture = SKTexture(imageNamed: "bancone normal map")
                     bancone.position = CGPoint(x: startingPosition.x + Double(j*blocco) - Double(blocco/4), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                     bancone.physicsBody = SKPhysicsBody(rectangleOf: .init(width: blocco/2, height: blocco))
                     bancone.physicsBody?.isDynamic = false
                     bancone.physicsBody?.affectedByGravity = false
                     bancone.physicsBody?.allowsRotation = false
+                    bancone.lightingBitMask = 1 | 2
                     addChild(bancone)
                 case 17:
                     let tavolo = SKSpriteNode(imageNamed: "tavolino")
                     tavolo.name = "staticObject"
                     tavolo.size = bloccoSize
                     tavolo.zPosition = 2
+                    tavolo.normalTexture = SKTexture(imageNamed: "tavolino normal map")
+                    tavolo.lightingBitMask = 1 | 2
                     tavolo.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
-                    tavolo.physicsBody = SKPhysicsBody(rectangleOf: .init(width: blocco/2, height: blocco))
+                    tavolo.physicsBody = SKPhysicsBody(texture: tavolo.texture ?? SKTexture(), size: tavolo.size)
                     tavolo.physicsBody?.isDynamic = false
                     tavolo.physicsBody?.affectedByGravity = false
                     tavolo.physicsBody?.allowsRotation = false
@@ -534,38 +652,53 @@ class Room: SKNode {
                     scrigno.name = "staticObject"
                     scrigno.size = bloccoSize
                     scrigno.zPosition = 4
+                    scrigno.normalTexture = SKTexture(imageNamed: "forziere normal map")
                     scrigno.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco), y: startingPosition.y - Double(i*blocco))
                     scrigno.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
                     scrigno.physicsBody?.isDynamic = false
                     scrigno.physicsBody?.affectedByGravity = false
                     scrigno.physicsBody?.allowsRotation = false
+                    scrigno.lightingBitMask = 1 | 2
+//                    let ombraScrigno = SKShapeNode(ellipseIn: .init(x: -blocco/2, y: -blocco/4, width: blocco, height: blocco/4))
+//                    ombraScrigno.fillColor = .black
+//                    ombraScrigno.strokeColor = .init(red: 0, green: 0, blue: 0, alpha: 0.15)
+//                    ombraScrigno.alpha = 0.15
+//                    ombraScrigno.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco), y: startingPosition.y - Double(i*blocco) - Double(blocco/4))
+//                    ombraScrigno.zPosition = 3
+//                    addChild(ombraScrigno)
                     addChild(scrigno)
                     
                 case 15:
-                             let passaggio = SKShapeNode(rectOf: CGSize(width: 100, height: 100))
-                             passaggio.zPosition = 10
-                             passaggio.fillColor = .red
-                             passaggio.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
-                             addChild(passaggio)
+                    let passaggio = NextFloor(floorLink: .TWO_TO_ONE, floor: floor)
+                    passaggio.zPosition = 10
+                    passaggio.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    print(passaggio.nextFloor)
+                    addChild(passaggio)
                     
                 case 31:
                     let internalAngleDx = SKSpriteNode(texture: internalAngledx, size: bloccoSize)
+                    internalAngleDx.normalTexture = internalAngledxMap
                     internalAngleDx.name = "wall"
                     internalAngleDx.zPosition = 2
                     internalAngleDx.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
-                    internalAngleDx.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco/3, height: blocco), center: CGPoint(x: blocco/3, y: blocco/2))
+                    internalAngleDx.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco/3, height: blocco/2), center: CGPoint(x: blocco/3, y: blocco/4))
                     internalAngleDx.physicsBody?.isDynamic = false
                     internalAngleDx.physicsBody?.affectedByGravity = false
+                    internalAngleDx.physicsBody?.allowsRotation = false
+                    internalAngleDx.lightingBitMask = 1 | 2
                     addChild(internalAngleDx)
                     
                 case 32:
                     let internalAngleSx = SKSpriteNode(texture: internalAnglesx, size: bloccoSize)
+                    internalAngleSx.normalTexture = internalAnglesxMap
                     internalAngleSx.name = "wall"
                     internalAngleSx.zPosition = 2
                     internalAngleSx.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
-                    internalAngleSx.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco/3, height: blocco), center: CGPoint(x: -blocco/3, y: blocco/2))
+                    internalAngleSx.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: Double(blocco)/3, height: Double(blocco)/2), center: CGPoint(x: -blocco/3, y: blocco/4))
                     internalAngleSx.physicsBody?.isDynamic = false
                     internalAngleSx.physicsBody?.affectedByGravity = false
+                    internalAngleSx.physicsBody?.allowsRotation = false
+                    internalAngleSx.lightingBitMask = 1 | 2
                     addChild(internalAngleSx)
                     
                 case 33:
@@ -587,12 +720,153 @@ class Room: SKNode {
                     internalAngleSx2.physicsBody?.isDynamic = false
                     internalAngleSx2.physicsBody?.affectedByGravity = false
                     addChild(internalAngleSx2)
+                
+                case 12:
+                    var colonna = StaticObject(texture: SKTexture(imageNamed: "column"), color: .clear, size: .init(width: blocco/2, height: blocco), objectName: "column", objectCategory: .MOBILIO)
+                    if self.floor == .FIRST_FLOOR{
+                       colonna = StaticObject(texture: SKTexture(imageNamed: "colonna"), color: .clear, size: .init(width: blocco, height: blocco), objectName: "column", objectCategory: .MOBILIO)
+                    }
+                    colonna.normalTexture = SKTexture(imageNamed: "colonnaNormalMap")
+                    colonna.physicsBody = SKPhysicsBody(rectangleOf: .init(width: Double(blocco/2), height: Double(blocco)*0.8), center: CGPoint (x: 0, y: Double(blocco)*0.12))
+                    colonna.physicsBody?.affectedByGravity = false
+                    colonna.physicsBody?.allowsRotation = false
+                    colonna.physicsBody?.isDynamic = false
+                    colonna.zPosition = 3
+                    colonna.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    colonna.lightingBitMask = 1 | 2
+                    addChild(colonna)
+                    
+                case 13:
+                    
+                    var furnitureBig = StaticObject(texture: SKTexture(imageNamed: "stand1"), color: .clear, size: .init(width: blocco, height: blocco), objectName: "stand1", objectCategory: .MOBILIO)
+                    furnitureBig.physicsBody = SKPhysicsBody(rectangleOf: .init(width: Double(blocco), height: Double(blocco)/2.5), center: CGPoint (x: 0, y: Double(blocco) - 0.8*Double(blocco)))
+                    furnitureBig.physicsBody?.affectedByGravity = false
+                    furnitureBig.physicsBody?.allowsRotation = false
+                    furnitureBig.physicsBody?.isDynamic = false
+                    if self.floor == .FIRST_FLOOR{
+                        furnitureBig = StaticObject(texture: SKTexture(imageNamed: "colonna"), color: .clear, size: .init(width: blocco, height: blocco), objectName: "column", objectCategory: .MOBILIO)
+                        furnitureBig.physicsBody = SKPhysicsBody(rectangleOf: .init(width: Double(blocco/2), height: Double(blocco)*0.8), center: CGPoint (x: 0, y: Double(blocco)*0.12))
+                        furnitureBig.physicsBody?.affectedByGravity = false
+                        furnitureBig.physicsBody?.allowsRotation = false
+                        furnitureBig.physicsBody?.isDynamic = false
+                    }
+                    furnitureBig.zPosition = 3
+                    furnitureBig.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    furnitureBig.lightingBitMask = 1 | 2
+                    addChild(furnitureBig)
+                    
+                case 14:
+                    var furnitureSmall = StaticObject(texture: SKTexture(imageNamed: "stand2"), color: .clear, size: .init(width: blocco/2, height: blocco), objectName: "stand2", objectCategory: .MOBILIO)
+                    furnitureSmall.physicsBody = SKPhysicsBody(rectangleOf: .init(width: Double(blocco)/2, height: Double(blocco)/2), center: CGPoint (x: 0, y: Double(blocco) - 0.85*Double(blocco)))
+                    furnitureSmall.physicsBody?.affectedByGravity = false
+                    furnitureSmall.physicsBody?.allowsRotation = false
+                    furnitureSmall.physicsBody?.isDynamic = false
+                    furnitureSmall.zPosition = 3
+                    furnitureSmall.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    furnitureSmall.normalTexture = SKTexture(imageNamed: "stand2NormalMap")
+                    if self.floor == .FIRST_FLOOR{
+                        furnitureSmall = Lampione(lightBitmask: 1 | 2)
+                        furnitureSmall.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+//                        let appoggio = furnitureSmall as? Lampione
+//                        appoggio?.light.ambientColor = .init(red: 0.624, green: 0.624, blue: 0.914, alpha: 0.5)
+                    }
+                    furnitureSmall.zPosition = 3
+                    furnitureSmall.lightingBitMask = 1 | 2
+                    addChild(furnitureSmall)
+                case 40:
+                    var armadio: Hideout = Hideout()
+                    if Int.random(in: 0...10) > 5{
+                        armadio = Cassapanca()
+                    }else{
+                        armadio = Vetrina()
+                    }
+                    if floor == .FIRST_FLOOR{
+                        armadio = Bush()
+                    }
+                    armadio.name = "dynamicObject"
+                    armadio.zPosition = 3
+                    armadio.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    armadio.lightingBitMask = 1 | 2
+
+                    addChild(armadio)
+                case 41:
+                    var armadio: Hideout = Hideout()
+                    if Int.random(in: 0...10) > 5{
+                        armadio = Cassapanca()
+                    }else{
+                        armadio = Vetrina()
+                    }
+                    if floor == .FIRST_FLOOR{
+                        armadio = Bush()
+                    }
+                    armadio.name = "dynamicObject"
+                    armadio.zPosition = 3
+                    armadio.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    armadio.lightingBitMask = 1 | 2
+                    addChild(armadio)
+                    
+                case 100:
+                    let chest = Chest(locked: false)
+                    chest.zPosition = 3
+                    chest.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    chest.lightingBitMask = 1 | 2
+                    addChild(chest)
                 default:
                     print("")
                 }
             }
         }
     }
+    
+    //TAPPETI E LUCI
+    
+    func addRugsAndLights(){
+        for i in 0..<pavimento.count{
+            for j in 0..<pavimento[1].count{
+                switch pavimento[i][j]{
+                case 2:
+                    let tappeto = SKSpriteNode(texture: SKTexture(imageNamed: "pavimento taverna tappeto 3"), size: bloccoSize)
+                    tappeto.normalTexture = SKTexture(imageNamed: "pavimento taverna tappeto 3 normal map")
+                    tappeto.name = "floorTile"
+                    tappeto.zPosition = 2
+                    tappeto.position = CGPoint(x: startingPosition.x + Double(j * blocco) + Double(blocco) , y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    tappeto.lightingBitMask = 1 | 2
+                    addChild(tappeto)
+                case 3:
+                    let tappeto = SKSpriteNode(texture: SKTexture(imageNamed: "pavimento taverna tappeto 2"), size: bloccoSize)
+                    tappeto.normalTexture = SKTexture(imageNamed: "pavimento taverna tappeto 2 normal map")
+                    tappeto.name = "floorTile"
+                    tappeto.zPosition = 2
+                    tappeto.position = CGPoint(x: startingPosition.x + Double(j * blocco) , y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    tappeto.lightingBitMask = 1 | 2
+                    addChild(tappeto)
+                case 4:
+                    let pareteLanterna = LuceTaverna(lightBitmask: 1|2)
+                    pareteLanterna.normalTexture = SKTexture(imageNamed: "parete lanterna normal map")
+                    pareteLanterna.name = "light"
+                    pareteLanterna.zPosition = 3
+                    pareteLanterna.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    pareteLanterna.lightingBitMask = 1 | 2
+                    addChild(pareteLanterna)
+                case 5:
+                    let pareteTubi = SKSpriteNode(texture: SKTexture(imageNamed:"parete centrale tubi"), size: bloccoSize)
+                    pareteTubi.normalTexture = SKTexture(imageNamed: "parete centrale tubi normal map")
+                    pareteTubi.name = "wall"
+                    pareteTubi.zPosition = 3
+                    pareteTubi.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    pareteTubi.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
+                    pareteTubi.physicsBody?.isDynamic = false
+                    pareteTubi.physicsBody?.affectedByGravity = false
+                    pareteTubi.lightingBitMask = 1 | 2
+                    addChild(pareteTubi)
+                default:
+                    print("")
+                }
+            }
+        }
+    }
+    
+    
     
     func getRighe() -> Int{
         return self.numRighe

@@ -108,6 +108,7 @@ class Floor{
                         newRoom.position.y += Double(newRoom.getColonne()*blocco - blocco/2)
                         newRoom.setDoorOccupiedStatus(placement: .DOWN, true)
                         lastRoomsAdded.append(newRoom)
+                            newRoom.alpha = 0
                         scene.addChild(newRoom)
                             attenzione1 = false
                         }
@@ -118,6 +119,8 @@ class Floor{
                             newRoom.position.y += Double(newRoom.getColonne()*blocco - blocco/2)
                             newRoom.setDoorOccupiedStatus(placement: .DOWN, true)
                             lastRoomsAdded.append(newRoom)
+                            newRoom.alpha = 0
+
                             scene.addChild(newRoom)
                         }
                     case .DOWN:
@@ -129,6 +132,8 @@ class Floor{
                         newRoom.position.y += Double(blocco/2)
                         newRoom.setDoorOccupiedStatus(placement: .UP, true)
                         lastRoomsAdded.append(newRoom)
+                        newRoom.alpha = 0
+
                         scene.addChild(newRoom)
                     case .LEFT:
                         if(attenzione3){
@@ -140,6 +145,8 @@ class Floor{
                         newRoom.position.y -= (newRoom.getRightDoorPosition().y - door.1.y)
                         newRoom.setDoorOccupiedStatus(placement: .RIGHT, true)
                         lastRoomsAdded.append(newRoom)
+                            newRoom.alpha = 0
+
                         scene.addChild(newRoom)
                             attenzione3 = false
                         }
@@ -152,6 +159,8 @@ class Floor{
                             newRoom.position.y -= (newRoom.getRightDoorPosition().y - door.1.y)
                             newRoom.setDoorOccupiedStatus(placement: .RIGHT, true)
                             lastRoomsAdded.append(newRoom)
+                            newRoom.alpha = 0
+
                             scene.addChild(newRoom)
                         }
                     case .RIGHT:
@@ -164,6 +173,8 @@ class Floor{
                         newRoom.position.y -= (newRoom.getLeftDoorPosition().y - door.1.y)
                         newRoom.setDoorOccupiedStatus(placement: .LEFT, true)
                         lastRoomsAdded.append(newRoom)
+                            newRoom.alpha = 0
+
                         scene.addChild(newRoom)
                             attenzione2 = false
                         }
@@ -176,6 +187,8 @@ class Floor{
                             newRoom.position.y -= (newRoom.getLeftDoorPosition().y - door.1.y)
                             newRoom.setDoorOccupiedStatus(placement: .LEFT, true)
                             lastRoomsAdded.append(newRoom)
+                            newRoom.alpha = 0
+
                             scene.addChild(newRoom)
                         }
                     }
@@ -194,6 +207,8 @@ class Floor{
                                 let newRoom = Room(type ?? .SCAMBIO1, startingPosition:  CGPoint(x: door.1.x, y: door.1.y), floor: floorType)
                             newRoom.position.x -= ((newRoom.getDownDoorPosition().x)-door.1.x)
                             newRoom.position.y += Double(newRoom.getColonne()*blocco - blocco/2)
+                                newRoom.alpha = 0
+
                             scene.addChild(newRoom)
                                 passaggio1 = true
                             }
@@ -202,6 +217,8 @@ class Floor{
                                 let newRoom = Room(type ?? .SIMPLE_1, startingPosition:  CGPoint(x: door.1.x, y: door.1.y), floor: floorType)
                                 newRoom.position.x -= ((newRoom.getDownDoorPosition().x)-door.1.x)
                                 newRoom.position.y += Double(newRoom.getColonne()*blocco - blocco/2)
+                                newRoom.alpha = 0
+
                                 scene.addChild(newRoom)
                             }
                             
@@ -211,6 +228,8 @@ class Floor{
                             let newRoom = Room(type ?? .SCAMBIO3, startingPosition: CGPoint(x: door.1.x, y: door.1.y), floor: floorType)
                             newRoom.position.x -= ((newRoom.getUpDoorPosition().x - door.1.x))
                             newRoom.position.y += Double(blocco/2)
+                                newRoom.alpha = 0
+
                             scene.addChild(newRoom)
                                 passaggio1 = true
                             }
@@ -219,6 +238,8 @@ class Floor{
                                         let newRoom = Room(type ?? .SIMPLE_1, startingPosition: CGPoint(x: door.1.x, y: door.1.y), floor: floorType)
                                         newRoom.position.x -= ((newRoom.getUpDoorPosition().x - door.1.x))
                                         newRoom.position.y += Double(blocco/2)
+                                        newRoom.alpha = 0
+
                                         scene.addChild(newRoom)
                                     }
                             
@@ -228,6 +249,8 @@ class Floor{
                             let newRoom = Room(type!, startingPosition: CGPoint(x: door.1.x, y: door.1.y), floor: floorType)
                             newRoom.position.x -= Double(newRoom.getRighe()*blocco + blocco/2)
                             newRoom.position.y -= (newRoom.getRightDoorPosition().y - door.1.y)
+                                newRoom.alpha = 0
+
                             scene.addChild(newRoom)
                                 passaggio1 = true
                             }
@@ -236,6 +259,8 @@ class Floor{
                                 let newRoom = Room(type!, startingPosition: CGPoint(x: door.1.x, y: door.1.y), floor: floorType)
                                 newRoom.position.x -= Double(newRoom.getRighe()*blocco + blocco/2)
                                 newRoom.position.y -= (newRoom.getRightDoorPosition().y - door.1.y)
+                                newRoom.alpha = 0
+
                                 scene.addChild(newRoom)
                             }
                         case .RIGHT:
@@ -244,6 +269,8 @@ class Floor{
                             let newRoom = Room(type!, startingPosition: CGPoint(x: door.1.x, y: door.1.y), floor: floorType)
                             newRoom.position.x += Double(blocco/2)
                             newRoom.position.y -= (newRoom.getLeftDoorPosition().y - door.1.y)
+                                newRoom.alpha = 0
+
                             scene.addChild(newRoom)
                                 passaggio1 = true
                             }
@@ -252,6 +279,8 @@ class Floor{
                                 let newRoom = Room(type!, startingPosition: CGPoint(x: door.1.x, y: door.1.y), floor: floorType)
                                 newRoom.position.x += Double(blocco/2)
                                 newRoom.position.y -= (newRoom.getLeftDoorPosition().y - door.1.y)
+                                newRoom.alpha = 0
+
                                 scene.addChild(newRoom)
                             }
                         }

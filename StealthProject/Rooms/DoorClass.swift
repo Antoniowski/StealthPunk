@@ -14,6 +14,7 @@ class Door: SKSpriteNode{
     
     private var closedTexture: SKTexture = SKTexture()
     private var openTexture: SKTexture = SKTexture()
+    private var openNormalTexture: SKTexture = SKTexture()
     private var doorPlacement: DoorPlacement = .UP
     
     
@@ -60,6 +61,8 @@ class Door: SKSpriteNode{
             case .UP, .DOWN:
                 closedTexture = SKTexture(imageNamed: "portaEsternaChiusa")
                 openTexture = SKTexture(imageNamed: "portaEsternaAperta")
+                self.normalTexture = SKTexture(imageNamed: "portaEsternaChiusaNormalMap")
+                openNormalTexture = SKTexture(imageNamed: "portaEsternaApertaNormalMap")
             case .LEFT:
                 closedTexture = SKTexture(imageNamed: "portaEsternaLateraleChiusaSx")
                 openTexture = SKTexture(imageNamed: "portaEsternaLateraleApertaSx")
@@ -79,6 +82,7 @@ class Door: SKSpriteNode{
     func open(){
         self.isOpen = true
         self.run(.setTexture(openTexture))
+        self.normalTexture = openNormalTexture
         self.physicsBody = SKPhysicsBody()
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.isDynamic = false
