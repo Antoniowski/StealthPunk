@@ -367,6 +367,10 @@ class Room: SKNode {
         self.sideLeftWallTexture  = SKTexture(imageNamed: "parete lato sx")
         self.cornerRightWallTexture = SKTexture(imageNamed: "parete angolo dx")
         self.cornerRightWallTextureMap = SKTexture(imageNamed: "pareta angolo dx normal map")
+        self.internalAngledx = SKTexture(imageNamed: "parete angolo interno dx")
+        self.internalAnglesx = SKTexture(imageNamed: "parete angolo interno sx")
+        self.internalAngledxMap = SKTexture(imageNamed: "parete angolo interno dx normal map")
+        self.internalAnglesxMap = SKTexture(imageNamed: "parete angolo interno sx normal map")
         self.cornerLeftWallTextureMap = SKTexture(imageNamed: "pareta angolo sx normal map")
         self.cornerLeftWallTexture = SKTexture(imageNamed: "parete angolo sx")
         self.frontDoorTexture = SKTexture(imageNamed: "porta chiusa")
@@ -452,7 +456,15 @@ class Room: SKNode {
                     leftAngle.zPosition = 2
                     leftAngle.normalTexture = cornerLeftWallTextureMap
                     leftAngle.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
-                    leftAngle.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
+//                    leftAngle.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
+                    let path = CGMutablePath()
+                    path.move(to: .init(x: blocco/2, y: blocco/2))
+                    path.addLine(to: .init(x: -blocco/2, y: blocco/2))
+                    path.addLine(to: .init(x: -blocco/2, y: -blocco/2))
+                    path.addLine(to: .init(x: -blocco/6, y: -blocco/2))
+                    path.addLine(to: .init(x: -blocco/6, y: 0))
+                    path.addLine(to: .init(x: blocco/2, y: 0))
+                    leftAngle.physicsBody = SKPhysicsBody(polygonFrom: path)
                     leftAngle.physicsBody?.isDynamic = false
                     leftAngle.physicsBody?.affectedByGravity = false
                     leftAngle.lightingBitMask = 1 | 2
@@ -464,7 +476,15 @@ class Room: SKNode {
                     myWall.zPosition = 2
                     myWall.normalTexture = cornerRightWallTextureMap
                     myWall.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
-                    myWall.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
+//                    myWall.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
+                    let path = CGMutablePath()
+                    path.move(to: .init(x: -blocco/2, y: blocco/2))
+                    path.addLine(to: .init(x: blocco/2, y: blocco/2))
+                    path.addLine(to: .init(x: blocco/2, y: -blocco/2))
+                    path.addLine(to: .init(x: blocco/6, y: -blocco/2))
+                    path.addLine(to: .init(x: blocco/6, y: 0))
+                    path.addLine(to: .init(x: -blocco/2, y: 0))
+                    myWall.physicsBody = SKPhysicsBody(polygonFrom: path)
                     myWall.physicsBody?.affectedByGravity = false
                     myWall.physicsBody?.isDynamic = false
                     myWall.lightingBitMask = 1 | 2
@@ -475,9 +495,9 @@ class Room: SKNode {
                     myWall.zPosition = 3
                     myWall.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                     myWall.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco/3, height: blocco), center: CGPoint(x: -blocco/3, y: 0))
-                    if i == 1{
-                        myWall.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco/3, height: blocco*2), center: CGPoint(x: -blocco/3, y: 0))
-                    }
+//                    if i == 1{
+//                        myWall.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco/3, height: blocco*2), center: CGPoint(x: -blocco/3, y: 0))
+//                    }
                     myWall.physicsBody?.affectedByGravity = false
                     myWall.physicsBody?.isDynamic = false
                     myWall.lightingBitMask = 1 | 2
@@ -488,9 +508,9 @@ class Room: SKNode {
                     myWall.zPosition = 3
                     myWall.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                     myWall.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco/3, height: blocco), center: CGPoint(x: blocco/3, y: 0))
-                    if i == 1{
-                        myWall.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco/3, height: blocco*2), center: CGPoint(x: blocco/3, y: 0))
-                    }
+//                    if i == 1{
+//                        myWall.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco/3, height: blocco*2), center: CGPoint(x: blocco/3, y: 0))
+//                    }
                     myWall.physicsBody?.affectedByGravity = false
                     myWall.physicsBody?.isDynamic = false
                     myWall.lightingBitMask = 1 | 2
@@ -657,10 +677,11 @@ class Room: SKNode {
                     
                 case 31:
                     let internalAngleDx = SKSpriteNode(texture: internalAngledx, size: bloccoSize)
+                    internalAngleDx.normalTexture = internalAngledxMap
                     internalAngleDx.name = "wall"
                     internalAngleDx.zPosition = 2
                     internalAngleDx.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
-                    internalAngleDx.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco/3, height: blocco/3), center: CGPoint(x: blocco/3, y: blocco/2))
+                    internalAngleDx.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco/3, height: blocco/2), center: CGPoint(x: blocco/3, y: blocco/4))
                     internalAngleDx.physicsBody?.isDynamic = false
                     internalAngleDx.physicsBody?.affectedByGravity = false
                     internalAngleDx.physicsBody?.allowsRotation = false
@@ -669,10 +690,11 @@ class Room: SKNode {
                     
                 case 32:
                     let internalAngleSx = SKSpriteNode(texture: internalAnglesx, size: bloccoSize)
+                    internalAngleSx.normalTexture = internalAnglesxMap
                     internalAngleSx.name = "wall"
                     internalAngleSx.zPosition = 2
                     internalAngleSx.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
-                    internalAngleSx.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: Double(blocco)/3, height: Double(blocco)/2), center: CGPoint(x: -blocco/3, y: blocco/2))
+                    internalAngleSx.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: Double(blocco)/3, height: Double(blocco)/2), center: CGPoint(x: -blocco/3, y: blocco/4))
                     internalAngleSx.physicsBody?.isDynamic = false
                     internalAngleSx.physicsBody?.affectedByGravity = false
                     internalAngleSx.physicsBody?.allowsRotation = false
