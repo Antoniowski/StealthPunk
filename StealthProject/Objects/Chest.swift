@@ -15,7 +15,7 @@ class Chest: UsableObject{
     var openTexture: SKTexture = SKTexture(imageNamed: "forziereAperto")
     
     init(locked: Bool){
-        super.init(texture: SKTexture(imageNamed: "forziere"), highlighted: SKTexture(imageNamed: "forziereBlur"), color: .clear, size: CGSize(width: 75, height: 75), type: .USABLE)
+        super.init(texture: SKTexture(imageNamed: "forziere"), highlighted: SKTexture(imageNamed: "blur forziere"), color: .clear, size: CGSize(width: 75, height: 75), type: .USABLE)
         self.isOpen = false
         self.locked = locked
         self.setUsableCategory(.CHEST)
@@ -43,14 +43,14 @@ class Chest: UsableObject{
             let items: [CollectibleItemCategory] = [.POTION, .COIN , .KNUCKLES, .BOOTS, .HAT, .SIRINGE]
             let type = items.randomElement()
             let itemObject = Collectible(type: type ?? .COIN)
-            itemObject.position = .init(x: self.position.x, y: self.position.y)
+            itemObject.position = scene.convert(self.position, from: self.parent!)
             itemObject.physicsBody = SKPhysicsBody()
             itemObject.physicsBody?.affectedByGravity = false
             itemObject.setScale(0.1)
             itemObject.zPosition = 15
             scene.addChild(itemObject)
             itemObject.run(.scale(to: 1, duration: 0.8))
-            itemObject.run(.sequence([.moveTo(y: self.position.y + 20, duration: 0.8), .wait(forDuration: 0.5) , .moveTo(y: self.position.y - 100, duration: 0.5)]), completion: {
+            itemObject.run(.sequence([.moveTo(y: scene.convert(self.position, from: self.parent!).y + 20, duration: 0.8), .wait(forDuration: 0.5) , .moveTo(y: scene.convert(self.position, from: self.parent!).y - 100, duration: 0.5)]), completion: {
                 itemObject.physicsBody = SKPhysicsBody(rectangleOf: itemObject.size)
                 itemObject.physicsBody?.affectedByGravity = false
                 itemObject.physicsBody?.isDynamic = false

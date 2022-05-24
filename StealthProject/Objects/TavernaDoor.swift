@@ -9,8 +9,8 @@ import SpriteKit
 
 class TavernaDoor: UsableObject{
     
-    private var closedNormalTexture: SKTexture = SKTexture(imageNamed: "porta chiusa normal texure")
-    private var openNormalTexture: SKTexture = SKTexture(imageNamed: "porta aperta normal texure")
+    private var closedNormalTexture: SKTexture = SKTexture(imageNamed: "porta chiusa normal map")
+    private var openNormalTexture: SKTexture = SKTexture(imageNamed: "porta aperta normal map")
     
     init(){
         super.init(texture: SKTexture(imageNamed: "porta chiusa"), highlighted: SKTexture(imageNamed: "porta aperta"), color: .clear, size: bloccoSize, type: .USABLE)

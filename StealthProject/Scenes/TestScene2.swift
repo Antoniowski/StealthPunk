@@ -57,6 +57,8 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     
     var index = 0
 
+    var oggetti: [SKNode] = []
+    var nemici: [SKNode] = []
     
     
     override func didMove(to view: SKView) {
@@ -73,7 +75,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
 //        scenecamera.addChild(indicatore)
 
         scenecamera.position = player.position
-        scenecamera.setScale(1)
+        scenecamera.setScale(8)
 //        armadio.position = player.position
 //        armadio.position.x += 250
 //        lampione.position = player.position
@@ -85,7 +87,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
 //        player.lightingBitMask = 5
         
 //        let room = Room(.LOBBY, startingPosition: CGPoint(x: 0, y: 400), floor: .FIRST_FLOOR)
-        let f = Floor(self, floorType: .SECOND_FLOOE)
+        let f = Floor(self, floorType: .FIRST_FLOOR)
         
 //        luce.categoryBitMask = 2
 //        luce.position = lampione.position
@@ -160,6 +162,9 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         addChild(scenecamera)
 //        createRoom2()
 //        addChild(room)
+        enumerateChildNodes(withName: "ROOM/dynamicObject"){oggetto, _ in
+            self.oggetti.append(oggetto)
+        }
     }
     
     
@@ -210,11 +215,11 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     override func update(_ currentTime: TimeInterval) {
         calcDelta(currentTime: currentTime)
         indicatore.etichetta.text = "x \(indicatore.number)"
-        player.updateActionState(scene: self)
+        player.updateActionState(scene: self, oggetti: oggetti)
 //        player.updateMovingDirection()
         player.animationTree()
-        player.searchObject(scene: self)
-        player.updateFocus(scene: self)
+        player.searchObject(scene: self, oggetti: oggetti)
+        player.updateFocus(scene: self, enemies: nemici, oggetti: oggetti)
         
         
         
@@ -226,7 +231,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
             attackState(scene: self)
             
         case .INTERACT:
-            interactState(scene: self)
+            interactState(scene: self,oggetti: oggetti)
             
         case .ROLL:
             rollState()

@@ -170,7 +170,7 @@ class PlayableCharacter: SKSpriteNode{
     }
     
 //    GENERIC FUNCTIONS
-    func updateActionState(scene: SKScene){
+    func updateActionState(scene: SKScene, oggetti: [SKNode]){
         if buttonBIsPressed && (self.actionState == .MOVE || self.actionState == .RUNNING) && myMovement != .zero {
             self.actionState = .ROLL
         }
@@ -193,7 +193,8 @@ class PlayableCharacter: SKSpriteNode{
                         self.setActionState(.MOVE)
                         self.status.isHidden = false
                         self.alpha = 1
-                        scene.enumerateChildNodes(withName: "ROOM/dynamicObject"){ object, _ in
+//                        scene.enumerateChildNodes(withName: "ROOM/dynamicObject"){ object, _ in
+                        for object in oggetti{
                             if getDistanceBetween(point1: self.position, point2: scene.convert(object.position, from: object.parent ?? SKNode())) <= self.getInteractRange(){
                                 let interact = object as? InteractableObject
                                 if interact?.getType() == .HIDEOUT {
@@ -218,11 +219,12 @@ class PlayableCharacter: SKSpriteNode{
     }
      //TODO: DA AGGIUSTARE CON ELEMENTI DI UNA SOLA STANZA
     
-    func updateFocus(scene: SKScene){
+    func updateFocus(scene: SKScene, enemies: [SKNode], oggetti: [SKNode]){
         var first: Bool = true
         var distanceEnemy: Double = .infinity
         var distanceObject: Double = .infinity
-        scene.enumerateChildNodes(withName: "enemy"){ element, _ in
+//        scene.enumerateChildNodes(withName: "enemy"){ element, _ in
+        for element in enemies{
             let distance = getDistanceBetween(point1: self.position, point2: element.position)
             if first{
                 distanceEnemy = distance
@@ -232,7 +234,8 @@ class PlayableCharacter: SKSpriteNode{
                 distanceEnemy = distance
             }
         }
-        scene.enumerateChildNodes(withName: "ROOM/dynamicObject"){ element, _ in
+//        scene.enumerateChildNodes(withName: "ROOM/dynamicObject"){ element, _ in
+        for element in oggetti{
             let distance = getDistanceBetween(point1: self.position, point2: element.convert(element.position, from: element.parent ?? SKNode()))
             if distanceObject >= distance{
                 distanceObject = distance
@@ -878,8 +881,9 @@ class PlayableCharacter: SKSpriteNode{
     
     
     
-    func searchObject(scene: SKScene){
-        scene.enumerateChildNodes(withName: "ROOM/dynamicObject"){ object, _ in
+    func searchObject(scene: SKScene, oggetti: [SKNode]){
+//        scene.enumerateChildNodes(withName: "ROOM/dynamicObject"){ object, _ in
+        for object in oggetti{
             if getDistanceBetween(point1: self.position, point2: scene.convert(object.position, from: object.parent ?? SKNode())) <= self.interactRange{
                     let sprite = object as? InteractableObject
                     if sprite?.getType() == .HIDEOUT {
@@ -890,7 +894,20 @@ class PlayableCharacter: SKSpriteNode{
                     }
                     if sprite?.getSpottedStatus() == false{
                         sprite?.setSpottedStatus(true)
-                        sprite?.run(.setTexture(sprite?.highlightedTexture ?? SKTexture()))
+                        let bordo = SKSpriteNode(texture: sprite?.highlightedTexture ?? SKTexture(), size: sprite?.size ?? .zero)
+                        bordo.position = scene.convert(sprite!.position, from: sprite!.parent!)
+                        bordo.zPosition = 6
+                        bordo.name = "bordo"
+                        if sprite?.getType() == .USABLE {
+                            let x = sprite as? UsableObject
+                            if x?.getUsableCategory() == .TAVERNA_DOOR {
+                                bordo.normalTexture = SKTexture(imageNamed: "porta aperta normal map")
+                                bordo.zPosition = 3
+                                bordo.lightingBitMask = 1 | 2
+                            }
+                        }
+                        scene.addChild(bordo)
+//                        sprite?.run(.setTexture(sprite?.highlightedTexture ?? SKTexture()))
                         //                    sprite?.shapeHighlighted.strokeColor = .init(white: 1, alpha: 0.5)
                         //                    sprite?.shapeHighlighted.glowWidth = 3
                         //                    sprite?.addChild(sprite?.shapeHighlighted ?? SKShapeNode())
@@ -900,7 +917,8 @@ class PlayableCharacter: SKSpriteNode{
                     if sprite?.getSpottedStatus() != false{
                         sprite?.setSpottedStatus(false)
                         self.status.nearBush = false
-                        sprite?.run(.setTexture(sprite?.baseTexture ?? SKTexture()))
+//                        sprite?.run(.setTexture(sprite?.baseTexture ?? SKTexture()))
+                        scene.childNode(withName: "bordo")?.removeFromParent()
                         if sprite?.getType() == .USABLE{
                             let usable = object as? UsableObject
                             if usable?.getUsableCategory() == .CHEST{
