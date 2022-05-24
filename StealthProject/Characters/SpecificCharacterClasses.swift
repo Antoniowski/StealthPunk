@@ -91,8 +91,12 @@ class Human: PlayableCharacter{
         self.halfFrontLTexture = SKTexture(imageNamed: "boyHalfFrontL")
         
         self.walkingAnimationRight = [SKTexture(imageNamed: "boyWalk1"), SKTexture(imageNamed:"boyWalk2"), SKTexture(imageNamed:"boyWalk3"), SKTexture(imageNamed:"boyWalk4"), SKTexture(imageNamed:"boyWalk5"), SKTexture(imageNamed:"boyWalk6"), SKTexture(imageNamed:"boyWalk7"), SKTexture(imageNamed:"boyWalk8")]
+        self.walkingAnimationFrontRight = [SKTexture(imageNamed: "boyWalkDiagonalRight1"),SKTexture(imageNamed: "boyWalkDiagonalRight2"),SKTexture(imageNamed: "boyWalkDiagonalRight3"),SKTexture(imageNamed: "boyWalkDiagonalRight4")]
+        self.walkingAnimationBackRight = [SKTexture(imageNamed: "boyWalkOof1"),SKTexture(imageNamed: "boyWalkOof2"),SKTexture(imageNamed: "boyWalkOof3"),SKTexture(imageNamed: "boyWalkOof4")]
         self.walkingAnimationFront = [SKTexture(imageNamed: "boyFrontWalk1"), SKTexture(imageNamed: "boyFrontWalk2"), SKTexture(imageNamed: "boyFrontWalk3"), SKTexture(imageNamed: "boyFrontWalk4")]
         self.walkingAnimationLeft = [SKTexture(imageNamed: "boyWalkLeft1"), SKTexture(imageNamed:"boyWalkLeft2"), SKTexture(imageNamed:"boyWalkLeft3"), SKTexture(imageNamed:"boyWalkLeft4"), SKTexture(imageNamed:"boyWalkLeft5"), SKTexture(imageNamed:"boyWalkLeft6"), SKTexture(imageNamed:"boyWalkLeft7"), SKTexture(imageNamed:"boyWalkLeft8")]
+        self.walkingAnimationFrontLeft = [SKTexture(imageNamed: "BoyWalkDiagonal1"),SKTexture(imageNamed: "BoyWalkDiagonal2"),SKTexture(imageNamed: "BoyWalkDiagonal3"),SKTexture(imageNamed: "BoyWalkDiagonal4")]
+        self.walkingAnimationBackLeft = [SKTexture(imageNamed: "boyWalkOofLeft1"),SKTexture(imageNamed: "boyWalkOofLeft2"),SKTexture(imageNamed: "boyWalkOofLeft3"),SKTexture(imageNamed: "boyWalkOofLeft4")]
         self.walkingAnimationBack = [SKTexture(imageNamed: "boyBackWalk1"), SKTexture(imageNamed: "boyBackWalk2"), SKTexture(imageNamed: "boyBackWalk3"), SKTexture(imageNamed: "boyBackWalk4")]
         
         self.rollingAnimationRight = [SKTexture(imageNamed: "boyRollRight2"), SKTexture(imageNamed: "boyRollRight3"), SKTexture(imageNamed: "boyRollRight4"), SKTexture(imageNamed: "boyRollRight5"), SKTexture(imageNamed: "boyRollRight6")]
