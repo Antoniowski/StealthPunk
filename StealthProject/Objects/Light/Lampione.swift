@@ -23,9 +23,10 @@ class Lampione: StaticObject, Light{
         super.init(texture: SKTexture(imageNamed: "lampione"), color: .clear, size: .init(width: 70, height: 140), objectName: "lampione", objectCategory: .LIGHT)
         light.categoryBitMask = UInt32(lightBitmask)
         self.lightingBitMask = UInt32(lightBitmask)
-        light.lightColor = .init(white: 1, alpha: 0.7)
+        light.lightColor = .init(red: 239/255, green: 192/255, blue: 112/255, alpha: 0.5)
         light.position.y += 20
-//        light.falloff = 2
+        light.falloff = 1
+        light.ambientColor = .clear
         self.addChild(light)
         self.normalTexture = SKTexture(imageNamed: "lampione normal map")
         self.physicsBody = SKPhysicsBody(rectangleOf: .init(width: 30, height: 70), center: .init(x: 0, y: 30))
