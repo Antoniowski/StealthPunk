@@ -325,7 +325,7 @@ class PlayableCharacter: SKSpriteNode{
                     self.status.isRunning = false
                     self.status.idle = false
                     self.facingDirection = .UP_RIGHT
-                    self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
+                    self.run(.repeatForever(.animate(with: walkingAnimationBackRight, timePerFrame: 0.25)))
                         
                 }else if myMovement == .zero && self.status.idle == false{
                     self.removeAllActions()
@@ -348,7 +348,7 @@ class PlayableCharacter: SKSpriteNode{
                     self.status.isRunning = false
                     self.status.idle = false
                     self.facingDirection = .DOWN_RIGHT
-                    self.run(.repeatForever(.animate(with: walkingAnimationFront, timePerFrame: 0.25)))
+                    self.run(.repeatForever(.animate(with: walkingAnimationFrontRight, timePerFrame: 0.25)))
                         
                 }else if myMovement == .zero && self.status.idle == false{
                     self.removeAllActions()
@@ -373,7 +373,7 @@ class PlayableCharacter: SKSpriteNode{
                     self.status.isRunning = false
                     self.status.idle = false
                     self.facingDirection = .DOWN_LEFT
-                    self.run(.repeatForever(.animate(with: walkingAnimationFront, timePerFrame: 0.25)))
+                    self.run(.repeatForever(.animate(with: walkingAnimationFrontLeft, timePerFrame: 0.25)))
                         
                 }else if myMovement == .zero && self.status.idle == false{
                     self.removeAllActions()
@@ -396,7 +396,7 @@ class PlayableCharacter: SKSpriteNode{
                     self.status.isRunning = false
                     self.status.idle = false
                     self.facingDirection = .UP_LEFT
-                    self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.25)))
+                    self.run(.repeatForever(.animate(with: walkingAnimationBackLeft, timePerFrame: 0.25)))
                         
                 }else if myMovement == .zero && self.status.idle == false{
                     self.removeAllActions()
