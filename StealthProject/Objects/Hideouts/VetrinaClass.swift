@@ -15,6 +15,10 @@ class Vetrina: Hideout{
         self.setHideoutCategory(.VETRINA)
         self.setName("Vetrina")
         self.open = SKTexture(imageNamed: "vetrinaAperta")
+        self.physicsBody = SKPhysicsBody(rectangleOf: .init(width: Double(blocco)/2, height: Double(blocco)/2.5), center: .init(x: 0, y: Double(blocco)/3))
+        self.physicsBody?.isDynamic = false
+        self.physicsBody?.affectedByGravity = false
+        self.physicsBody?.allowsRotation = false
     }
     
     required init?(coder aDecoder: NSCoder) {

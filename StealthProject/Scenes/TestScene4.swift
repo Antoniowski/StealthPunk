@@ -9,7 +9,7 @@ import UIKit
 import GameplayKit
 
 
-class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
+class TestScene4: SKScene, PlayableScene, SKPhysicsContactDelegate {
 
     
     var floor = SKSpriteNode(texture: SKTexture(imageNamed: "pavimento3"), size: CGSize(width: blocco, height: blocco))
@@ -92,7 +92,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
         
 //        lampione.lightingBitMask = 2
-//        
+//
         player.lightingBitMask = 1 | 2
 //        armadio.lightingBitMask = 2
 //
@@ -157,7 +157,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
 //
 //        addChild(chest)
         
-        addChild(scenecamera)
+//        addChild(scenecamera)
 //        createRoom2()
 //        addChild(room)
     }

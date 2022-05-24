@@ -33,4 +33,8 @@ class TavernaDoor: UsableObject{
     override func action() {
         print("START GAME")
     }
+    
+    func action(_ view: SKView){
+        view.presentScene(newMuseum.firstFloor, transition: .fade(withDuration: 2))
+    }
 }

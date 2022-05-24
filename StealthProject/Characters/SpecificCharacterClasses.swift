@@ -41,11 +41,21 @@ class Human: PlayableCharacter{
     }
     
     init(){
-        super.init(texture: SKTexture(imageNamed: "boyFront"), color: .clear, size: CGSize(width: 35, height: 75))
+        super.init(texture: SKTexture(imageNamed: "boyFront"), color: .clear, size: .init(width: 35, height: 70), noise: 3, speed: 3, strenght: 2)
         self.characterName = "Human" //INSERIRE NOME PERSONAGGIO APPENA DISPONIBILE
         self.name = "player"
         self.type = .HUMAN
-        self.physicsBody = SKPhysicsBody(rectangleOf: size)
+        self.physicsBody = SKPhysicsBody(rectangleOf: .init(width: 30, height: 60))
+        self.physicsBody?.affectedByGravity = false
+        self.physicsBody?.allowsRotation = false
+        self.physicsBody?.isDynamic = true
+        self.physicsBody?.categoryBitMask = ColliderType.PLAYER.rawValue
+        self.physicsBody?.collisionBitMask = ColliderType.COLLECTIBLE.rawValue
+        self.physicsBody?.contactTestBitMask = ColliderType.COLLECTIBLE.rawValue
+        self.physicsBody?.collisionBitMask = ColliderType.DOOR.rawValue
+        self.physicsBody?.contactTestBitMask = ColliderType.DOOR.rawValue
+        self.lightingBitMask = 1 | 2
+
         setAnimationArrays()
     }
     

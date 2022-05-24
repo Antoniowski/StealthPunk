@@ -193,8 +193,8 @@ class PlayableCharacter: SKSpriteNode{
                         self.setActionState(.MOVE)
                         self.status.isHidden = false
                         self.alpha = 1
-                        scene.enumerateChildNodes(withName: "dynamicObject"){ object, _ in
-                            if getDistanceBetween(point1: self.position, point2: object.position) <= self.getInteractRange(){
+                        scene.enumerateChildNodes(withName: "ROOM/dynamicObject"){ object, _ in
+                            if getDistanceBetween(point1: self.position, point2: scene.convert(object.position, from: object.parent ?? SKNode())) <= self.getInteractRange(){
                                 let interact = object as? InteractableObject
                                 if interact?.getType() == .HIDEOUT {
                                     let interazione = interact as? Hideout
@@ -233,7 +233,7 @@ class PlayableCharacter: SKSpriteNode{
             }
         }
         scene.enumerateChildNodes(withName: "ROOM/dynamicObject"){ element, _ in
-            let distance = getDistanceBetween(point1: self.position, point2: element.position)
+            let distance = getDistanceBetween(point1: self.position, point2: element.convert(element.position, from: element.parent ?? SKNode()))
             if distanceObject >= distance{
                 distanceObject = distance
             }
@@ -880,8 +880,7 @@ class PlayableCharacter: SKSpriteNode{
     
     func searchObject(scene: SKScene){
         scene.enumerateChildNodes(withName: "ROOM/dynamicObject"){ object, _ in
-                if getDistanceBetween(point1: self.position, point2: object.position) <= self.interactRange{
-                    print(getDistanceBetween(point1: self.position, point2: object.position))
+            if getDistanceBetween(point1: self.position, point2: scene.convert(object.position, from: object.parent ?? SKNode())) <= self.interactRange{
                     let sprite = object as? InteractableObject
                     if sprite?.getType() == .HIDEOUT {
                         let x = sprite as? Hideout

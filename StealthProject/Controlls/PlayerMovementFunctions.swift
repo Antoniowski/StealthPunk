@@ -26,7 +26,7 @@ func playerMovement(player: SKSpriteNode, velocity: CGVector){
 }
 
 
-protocol PlayableScene: DeltaProtocol, SKPhysicsContactDelegate{
+protocol PlayableScene:SKScene, DeltaProtocol, SKPhysicsContactDelegate{
     
     var player: PlayableCharacter {get set}
     
@@ -39,6 +39,7 @@ protocol PlayableScene: DeltaProtocol, SKPhysicsContactDelegate{
     var FRICTION: Double {get set}
     
     var indicatore: Counter {get set}
+    
     
 }
 
@@ -96,7 +97,7 @@ extension PlayableScene{
             player.setInteractingStatus(true)
 //            print("Interaction")
             scene.enumerateChildNodes(withName: "ROOM/dynamicObject"){ object, _ in
-                if getDistanceBetween(point1: self.player.position, point2: object.position) <= self.player.getInteractRange(){
+                if getDistanceBetween(point1: self.player.position, point2: scene.convert(object.position, from: object.parent ?? SKNode())) <= self.player.getInteractRange(){
                     let interact = object as? InteractableObject
                     switch interact?.getType(){
                     case .USABLE:
@@ -110,7 +111,7 @@ extension PlayableScene{
                             chest?.action(scene: scene)
                         case .TAVERNA_DOOR:
                             let door = usable as? TavernaDoor
-                            door?.action()
+                            door?.action(self.view!)
                         default:
                             return
                         }
@@ -156,36 +157,66 @@ extension PlayableScene{
     
     
     
-    func didBegin(_ contact: SKPhysicsContact) {
-        var firstBody = SKPhysicsBody()
-        var secondBody = SKPhysicsBody()
-        
-        if contact.bodyA.node?.name == "player"{
-            firstBody = contact.bodyA
-            secondBody = contact.bodyB
-        }else if contact.bodyB.node?.name == "player"{
-            firstBody = contact.bodyB
-            secondBody = contact.bodyA
-        }
-        
-        
-        if firstBody.node?.name == "player" && secondBody.node?.name == "collectible"{
-            let item = secondBody.node as? Collectible
-            item?.action(player: firstBody.node as? PlayableCharacter ?? PlayableCharacter())
-            if item?.getType() == .COIN{
-//                indicatore.run(.moveBy(x: 0, y: -90, duration: 0.5), completion: {
-//                    self.indicatore.run(.sequence([.wait(forDuration: 1.5), .moveBy(x: 0, y: 90, duration: 0.5)]))
+//    func didBegin(_ contact: SKPhysicsContact) {
+//        var firstBody = SKPhysicsBody()
+//        var secondBody = SKPhysicsBody()
+//        
+//        if contact.bodyA.node?.name == "player"{
+//            firstBody = contact.bodyA
+//            secondBody = contact.bodyB
+//        }else if contact.bodyB.node?.name == "player"{
+//            firstBody = contact.bodyB
+//            secondBody = contact.bodyA
+//        }
+//        
+//        
+//        if firstBody.node?.name == "player" && secondBody.node?.name == "collectible"{
+//            let item = secondBody.node as? Collectible
+//            item?.action(player: firstBody.node as? PlayableCharacter ?? PlayableCharacter())
+//            if item?.getType() == .COIN{
+////                indicatore.run(.moveBy(x: 0, y: -90, duration: 0.5), completion: {
+////                    self.indicatore.run(.sequence([.wait(forDuration: 1.5), .moveBy(x: 0, y: 90, duration: 0.5)]))
+////                })
+//                indicatore.run(.moveTo(y: UIScreen.main.bounds.height*0.8, duration: 10.5), completion: {
+//                    self.indicatore.run(.sequence([.wait(forDuration: 1.5), .moveTo(y: UIScreen.main.bounds.height*1.2, duration: 0.5)]))
 //                })
-                indicatore.run(.moveTo(y: UIScreen.main.bounds.height*0.8, duration: 10.5), completion: {
-                    self.indicatore.run(.sequence([.wait(forDuration: 1.5), .moveTo(y: UIScreen.main.bounds.height*1.2, duration: 0.5)]))
-                })
-                item?.action(contatore: indicatore)
-            }
-            secondBody.node?.removeFromParent()
-        }
-        if firstBody.node?.name == "player" && secondBody.node?.name == "door"{
-            let door = secondBody.node as? Door
-            door?.open()
+//                item?.action(contatore: indicatore)
+//            }
+//            secondBody.node?.removeFromParent()
+//        }
+//        if firstBody.node?.name == "player" && secondBody.node?.name == "door"{
+//            let door = secondBody.node as? Door
+//            door?.open()
+//        }
+//    }
+    
+    func playerEssential(scene: SKScene){
+        player.updateActionState(scene: scene)
+//        player.updateMovingDirection()
+        player.animationTree()
+        player.searchObject(scene: scene)
+        player.updateFocus(scene: scene)
+        
+        
+        
+        switch player.getActionState(){
+        case .MOVE:
+            moveState()
+            
+        case .ATTACK:
+            attackState(scene: scene)
+            
+        case .INTERACT:
+            interactState(scene: scene)
+            
+        case .ROLL:
+            rollState()
+            
+        case .HIDDEN:
+            hiddenState()
+            
+        case .RUNNING:
+            runningState()
         }
     }
 }
