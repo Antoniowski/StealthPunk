@@ -27,5 +27,7 @@ var attenzione3 : Bool = false
 
 var passaggio1: Bool = false
 
+var ostacolo : Bool = false
+
 
 
