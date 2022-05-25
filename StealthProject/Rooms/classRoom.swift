@@ -738,7 +738,10 @@ class Room: SKNode {
                     addChild(internalAngleSx)
                     
                 case 33:
-                    let internalAngleDx2 = SKSpriteNode(texture: internalAngledx2, size: bloccoSize)
+                    var internalAngleDx2 = SKSpriteNode(texture: internalAngledx2, size: bloccoSize)
+                    if floor == .SECOND_FLOOE || floor == .LAST_FLOOR{
+                        internalAngleDx2 = SKSpriteNode(texture: sideRightWallTexture, size: bloccoSize)
+                    }
                     internalAngleDx2.name = "wall"
                     internalAngleDx2.zPosition = 2
                     internalAngleDx2.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
@@ -750,7 +753,10 @@ class Room: SKNode {
                     addChild(internalAngleDx2)
                     
                 case 34:
-                    let internalAngleSx2 = SKSpriteNode(texture: internalAnglesx2, size: bloccoSize)
+                    var internalAngleSx2 = SKSpriteNode(texture: internalAnglesx2, size: bloccoSize)
+                    if floor == .SECOND_FLOOE || floor == .LAST_FLOOR{
+                        internalAngleSx2 = SKSpriteNode(texture: sideLeftWallTexture, size: bloccoSize)
+                    }
                     internalAngleSx2.name = "wall"
                     internalAngleSx2.zPosition = 2
                     internalAngleSx2.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))

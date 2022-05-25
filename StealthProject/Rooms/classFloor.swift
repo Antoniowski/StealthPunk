@@ -44,7 +44,7 @@ class Floor{
             scene.addChild(room)
             actualAdded+=1
         case 1:
-            let room = Room(.SIMPLE_2,  startingPosition: CGPoint(x: 50, y: 50), floor: floorType)
+            let room = Room(.SIMPLE_1,  startingPosition: CGPoint(x: 50, y: 50), floor: floorType)
             lastRoomsAdded.append(room)
             spawn = .init(x: room.position.x + Double(blocco*room.getRighe())/2, y: room.position.y - Double(blocco*room.getColonne())/2)
             scene.addChild(room)

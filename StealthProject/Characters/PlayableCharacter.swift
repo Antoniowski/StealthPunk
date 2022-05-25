@@ -171,8 +171,10 @@ class PlayableCharacter: SKSpriteNode{
         self.characterSpeed = speed
         self.strenght = strenght
         self.light.categoryBitMask = 2
-        self.light.falloff = 1
-        self.light.lightColor = .init(white: 1, alpha: 0.5)
+        self.light.falloff = 2
+        self.light.lightColor = .init(red: 239/255, green: 192/255, blue: 112/255, alpha: 0.75)
+        self.light.position.x += 10
+        self.light.position.y += 15
         self.addChild(light)
         self.lightingBitMask = 2
     }
