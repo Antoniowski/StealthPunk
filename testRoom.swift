@@ -62,6 +62,11 @@ class Piano1: SKScene, PlayableScene, SKPhysicsContactDelegate  {
         guard1.run(.setTexture(SKTexture(imageNamed: "ConoGrandeBackF1")))
         guard1.position = CGPoint(x: guard1.position.x + CGFloat(5*blocco), y: guard1.position.y - CGFloat(5*blocco))
         guard1.zPosition = 20
+        guard1.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 40, height: 80))
+        guard1.physicsBody?.restitution = 0
+        guard1.physicsBody?.isDynamic = false
+        guard1.physicsBody?.affectedByGravity = false
+        guard1.physicsBody?.allowsRotation = false
         addChild(guard1)
         
         

@@ -352,248 +352,90 @@ class Guard: SKSpriteNode{
     
     func rayCastingForObstacles(scene: SKScene, point: CGPoint){
         
-//        let rayCasted = scene.physicsWorld.body(alongRayStart: invisibleBall.position ,end: CGPoint(x: point.x, y: point.y))
-//
-//        if(rayCasted?.node?.name == "staticObject" || rayCasted?.node?.name == "dynamicObject"){
-//
-//            let distanza = getDistanceBetween(point1: invisibleBall.position, point2: point)
-//            let teta = acos(Double(point.x)) / acos(Double(distanza))
-//
-//            print(teta)
-//
-//        }
+        if(actionState == .CHASING){
+            
+            for i in 1...15{
+                var sprite = scene.physicsWorld.body(alongRayStart: invisibleBall.position, end: CGPoint(x: point.x + cos(CGFloat((i*2))*3.14/180), y: point.y))
+            if (sprite?.node?.name != "player"){
+               ostacolo = true
+            }
+                while(ostacolo){
+                print(atan2(point.x - invisibleBall.position.x , point.y - invisibleBall.position.y))
+                    
+                if(atan2(point.x - invisibleBall.position.x , point.y - invisibleBall.position.y) >= (0) && atan2(point.x - invisibleBall.position.x , point.y - invisibleBall.position.y) <= (-3.14/4)){
+                    
+                    invisibleBall.position.x += 20
+                    invisibleBall.position.y += 40
+                    
+                    print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                    ostacolo = false
+                }
+                
+                if(atan2(point.x - invisibleBall.position.x , point.y - invisibleBall.position.y) >= (0) && atan2(point.x - invisibleBall.position.x , point.y - invisibleBall.position.y) <= (-3.14/4)){
+                
+                    invisibleBall.position.x -= 20
+                    invisibleBall.position.y += 40
+                    
+                    print("bbbbbbbbbbbbbbbbbbbbbbbbnbbnbnbbbnbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb")
+                    ostacolo = false
+                }
+                
+                if(atan2(point.x - invisibleBall.position.x , point.y - invisibleBall.position.y) >= (-3.14/3) && atan2(point.x - invisibleBall.position.x , point.y - invisibleBall.position.y) <= (-3.14/2)){
+                    
+                    invisibleBall.position.x += 20
+                    invisibleBall.position.y -= 40
+                    
+                    print("cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc")
+                    ostacolo = false
+                }
+                
+                if(atan2(point.x - invisibleBall.position.x , point.y - invisibleBall.position.y) >= (-3.14/2) && atan2(point.x - invisibleBall.position.x , point.y - invisibleBall.position.y) <= (-3.14*2/3)){
+                    
+                    invisibleBall.position.x += 20
+                    invisibleBall.position.y += 40
+                    
+                    print("dddddddddddddddddddddddddddddddddddddddddddddddddddddddddeddfddfddddddddddddcddddddd")
+                    ostacolo = false
+                }
+                
+                if(atan2(point.x - invisibleBall.position.x , point.y - invisibleBall.position.y) >= (3.14/3) && atan2(point.x - invisibleBall.position.x , point.y - invisibleBall.position.y) <= (3.14/2)){
+                    
+                    invisibleBall.position.x += 20
+                    invisibleBall.position.y -= 40
+                    
+                    print("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
+                    ostacolo = false
+                }
+                
+                if(atan2(point.x - invisibleBall.position.x , point.y - invisibleBall.position.y) >= (3.14/2) && atan2(point.x - invisibleBall.position.x , point.y - invisibleBall.position.y) <= (2*3.14/2)){
+                    
+                    invisibleBall.position.x += 20
+                    invisibleBall.position.y += 40
+                    
+                    print("fffffffrfffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff")
+                    ostacolo = false
+                }
+                }
+        }
         
-        switch facingDirection {
-        case .UP:
-            return
-        case .UP_RIGHT:
-            if(!firstIteration){
-                scene.enumerateChildNodes(withName: "square"){
-                    node, _ in
-                    node.removeFromParent()
-                }
-                
-                startingPosition = invisibleBall.position
-                startingPosition1 = startingPosition
-                startingPosition1.x = startingPosition.x - Double(guardPhyscisBodyWidth)*0.5
-                startingPosition1.y = startingPosition.y + Double(guardPhyscisBodyHeight)*0.5
-                startingPosition2 = startingPosition
-                startingPosition2.x = startingPosition.x + Double(guardPhyscisBodyWidth)*0.5
-                startingPosition2.y = startingPosition.y - Double(guardPhyscisBodyHeight)*0.5
-                playerPositionForDistance = point
-                angleForPathfinding = invisibleBall.zRotation
-                
-                
-                let upperCasting = scene.physicsWorld.body(alongRayStart: startingPosition1 ,end: CGPoint(x: point.x - Double(guardPhyscisBodyWidth)*0.5, y: point.y + Double(guardPhyscisBodyHeight)*0.5))
-                let lowerCasting = scene.physicsWorld.body(alongRayStart: startingPosition2 ,end: CGPoint(x: point.x + Double(guardPhyscisBodyWidth)*0.5, y: point.y - Double(guardPhyscisBodyHeight)*0.5))
-                if (upperCasting?.node?.name == "staticObject" || upperCasting?.node?.name == "dyanimcObject"){
-                    self.obstructedPath = true
-                    print("OSTACOLO")
-                    firstIteration = true
-                    self.actionStateBuffer = .CHASING_PATHFIND
-                }
-                
-                
-                if (lowerCasting?.node?.name == "staticObject" || lowerCasting?.node?.name == "dyanimcObject"){
-                    self.obstructedPath = true
-                    print("OSTACOLO")
-                    firstIteration = true
-                    self.actionStateBuffer = .CHASING_PATHFIND
-                    print(self.actionStateBuffer)
-                }
-
-                let square = SKShapeNode(rectOf: CGSize(width: 5, height: 5))
-                square.strokeColor = .cyan
-                square.fillColor = .cyan
-                square.position = startingPosition1
-                square.zPosition = 100
-                scene.addChild(square)
-                square.name = "square"
-
-                let square2 = SKShapeNode(rectOf: CGSize(width: 5, height: 5))
-                square2.strokeColor = .green
-                square2.fillColor = .green
-                square2.position = startingPosition2
-                square2.zPosition = 100
-                scene.addChild(square2)
-                square2.name = "square"
-
-                
-            } else if (obstructedPath == true){
-                print("Searching a path")
-                
-                angleCorrection += 2
-                
-                invisibleBall.zRotation -= 2 * 3.14 / 180
-                
-                let newStartingPositionUp = CGPoint(x: startingPosition1.x, y: startingPosition2.y)
-                let newStartiPositiongBottom = CGPoint(x: startingPosition2.x, y: startingPosition2.y)
-                let distance = getDistanceBetween(point1: startingPosition, point2: playerPositionForDistance)
-                let newAngle = angleForPathfinding + CGFloat(angleCorrection * 3.14 / 180)
-//                print("\(angleForPathfinding * 180 / 3.14) + \(newAngle * 180 / 3.14)")
-                let newX = cos(Double(newAngle)) * distance
-                let newY = sin(Double(newAngle)) * distance
-
-                let square = SKShapeNode(rectOf: CGSize(width: 5, height: 5))
-                square.strokeColor = .cyan
-                square.fillColor = .cyan
-                square.position = CGPoint(x: newX + startingPosition1.x, y: -(newY - startingPosition.y) + Double(guardPhyscisBodyHeight)*0.5)
-//                square.position = CGPoint(x: newX + startingPosition.x , y: -(newY - startingPosition.y))
-                square.zPosition = 100
-                scene.addChild(square)
-                square.name = "square"
-                
-                let square2 = SKShapeNode(rectOf: CGSize(width: 5, height: 5))
-                square2.strokeColor = .green
-                square2.fillColor = .green
-                square2.position = CGPoint(x: newX + startingPosition2.x, y: -(newY - startingPosition.y) - Double(guardPhyscisBodyHeight)*0.5)
-//                square.position = CGPoint(x: newX + startingPosition.x , y: -(newY - startingPosition.y))
-                square2.zPosition = 100
-                scene.addChild(square2)
-                square2.name = "square"
-                
-                let upperCasting = scene.physicsWorld.body(alongRayStart: invisibleBall.position ,end: CGPoint(x: point.x, y: point.y))
-                let lowerCasting = scene.physicsWorld.body(alongRayStart: invisibleBall.position ,end: CGPoint(x: point.x, y: point.y))
-//                if (upperCasting?.node?.name == "staticObject" || upperCasting?.node?.name == "dyanimcObject"){
-//                    print("OSTACOLO")
-//                    obstructedPath = true
-//                } else {
-//                    obstructedPath = false
-//                }
-//                if (lowerCasting?.node?.name == "staticObject" || lowerCasting?.node?.name == "dyanimcObject"){
-//                    print("OSTACOLO")
-//                    obstructedPath = true
-//                } else {
-//                    obstructedPath = false
-//                }
-                
-                if( upperCasting?.node?.name == "staticObject" || upperCasting?.node?.name == "dyanimcObject" &&
-                    lowerCasting?.node?.name == "staticObject" || lowerCasting?.node?.name == "dyanimcObject"){
-                    print("OSTACOLO")
-                    obstructedPath = true
-                } else {
-                    obstructedPath = false
-                }
-            }
-        case .RIGHT:
-            if(!firstIteration){
-                scene.enumerateChildNodes(withName: "square"){
-                    node, _ in
-                    node.removeFromParent()
-                }
-                
-                startingPosition = invisibleBall.position
-                startingPosition1 = startingPosition
-                startingPosition1.x = startingPosition.x - Double(guardPhyscisBodyWidth)*0.5
-                startingPosition1.y = startingPosition.y + Double(guardPhyscisBodyHeight)*0.5
-                startingPosition2 = startingPosition
-                startingPosition2.x = startingPosition.x + Double(guardPhyscisBodyWidth)*0.5
-                startingPosition2.y = startingPosition.y - Double(guardPhyscisBodyHeight)*0.5
-                playerPositionForDistance = point
-                angleForPathfinding = invisibleBall.zRotation
-                
-                
-                let upperCasting = scene.physicsWorld.body(alongRayStart: startingPosition1 ,end: CGPoint(x: point.x - Double(guardPhyscisBodyWidth)*0.5, y: point.y + Double(guardPhyscisBodyHeight)*0.5))
-                let lowerCasting = scene.physicsWorld.body(alongRayStart: startingPosition2 ,end: CGPoint(x: point.x + Double(guardPhyscisBodyWidth)*0.5, y: point.y - Double(guardPhyscisBodyHeight)*0.5))
-                if (upperCasting?.node?.name == "staticObject" || upperCasting?.node?.name == "dyanimcObject"){
-                    self.obstructedPath = true
-                    print("OSTACOLO")
-                    firstIteration = true
-                    self.actionStateBuffer = .CHASING_PATHFIND
-                }
-                
-                
-                if (lowerCasting?.node?.name == "staticObject" || lowerCasting?.node?.name == "dyanimcObject"){
-                    self.obstructedPath = true
-                    print("OSTACOLO")
-                    firstIteration = true
-                    self.actionStateBuffer = .CHASING_PATHFIND
-                    print(self.actionStateBuffer)
-                }
-
-                let square = SKShapeNode(rectOf: CGSize(width: 5, height: 5))
-                square.strokeColor = .cyan
-                square.fillColor = .cyan
-                square.position = startingPosition1
-                square.zPosition = 100
-                scene.addChild(square)
-                square.name = "square"
-
-                let square2 = SKShapeNode(rectOf: CGSize(width: 5, height: 5))
-                square2.strokeColor = .green
-                square2.fillColor = .green
-                square2.position = startingPosition2
-                square2.zPosition = 100
-                scene.addChild(square2)
-                square2.name = "square"
-
-                
-            } else if (obstructedPath == true){
-                print("Searching a path")
-                
-                angleCorrection += 2
-                
-                invisibleBall.zRotation -= 2 * 3.14 / 180
-                
-                let newStartingPositionUp = CGPoint(x: startingPosition1.x, y: startingPosition2.y)
-                let newStartiPositiongBottom = CGPoint(x: startingPosition2.x, y: startingPosition2.y)
-                let distance = getDistanceBetween(point1: startingPosition, point2: playerPositionForDistance)
-                let newAngle = angleForPathfinding + CGFloat(angleCorrection * 3.14 / 180)
-//                print("\(angleForPathfinding * 180 / 3.14) + \(newAngle * 180 / 3.14)")
-                let newX = cos(Double(newAngle)) * distance
-                let newY = sin(Double(newAngle)) * distance
-
-                let square = SKShapeNode(rectOf: CGSize(width: 5, height: 5))
-                square.strokeColor = .cyan
-                square.fillColor = .cyan
-                square.position = CGPoint(x: newX + startingPosition1.x, y: -(newY - startingPosition.y) + Double(guardPhyscisBodyHeight)*0.5)
-//                square.position = CGPoint(x: newX + startingPosition.x , y: -(newY - startingPosition.y))
-                square.zPosition = 100
-                scene.addChild(square)
-                square.name = "square"
-                
-                let square2 = SKShapeNode(rectOf: CGSize(width: 5, height: 5))
-                square2.strokeColor = .green
-                square2.fillColor = .green
-                square2.position = CGPoint(x: newX + startingPosition2.x, y: -(newY - startingPosition.y) - Double(guardPhyscisBodyHeight)*0.5)
-//                square.position = CGPoint(x: newX + startingPosition.x , y: -(newY - startingPosition.y))
-                square2.zPosition = 100
-                scene.addChild(square2)
-                square2.name = "square"
-                
-                let upperCasting = scene.physicsWorld.body(alongRayStart: invisibleBall.position ,end: CGPoint(x: point.x, y: point.y))
-                let lowerCasting = scene.physicsWorld.body(alongRayStart: invisibleBall.position ,end: CGPoint(x: point.x, y: point.y))
-//                if (upperCasting?.node?.name == "staticObject" || upperCasting?.node?.name == "dyanimcObject"){
-//                    print("OSTACOLO")
-//                    obstructedPath = true
-//                } else {
-//                    obstructedPath = false
-//                }
-//                if (lowerCasting?.node?.name == "staticObject" || lowerCasting?.node?.name == "dyanimcObject"){
-//                    print("OSTACOLO")
-//                    obstructedPath = true
-//                } else {
-//                    obstructedPath = false
-//                }
-                
-                if( upperCasting?.node?.name == "staticObject" || upperCasting?.node?.name == "dyanimcObject" &&
-                    lowerCasting?.node?.name == "staticObject" || lowerCasting?.node?.name == "dyanimcObject"){
-                    print("OSTACOLO")
-                    obstructedPath = true
-                } else {
-                    obstructedPath = false
-                }
-            }
-
-        case .DOWN_RIGHT:
-            return
-        case .DOWN:
-            return
-        case .DOWN_LEFT:
-            return
-        case .LEFT:
-            return
-        case .UP_LEFT:
+        }
+    }
+//
+////        let rayCasted = scene.physicsWorld.body(alongRayStart: invisibleBall.position ,end: CGPoint(x: point.x, y: point.y))
+////
+////        if(rayCasted?.node?.name == "staticObject" || rayCasted?.node?.name == "dynamicObject"){
+////
+////            let distanza = getDistanceBetween(point1: invisibleBall.position, point2: point)
+////            let teta = acos(Double(point.x)) / acos(Double(distanza))
+////
+////            print(teta)
+////
+////        }
+//
+//        switch facingDirection {
+//        case .UP:
+//            return
+//        case .UP_RIGHT:
 //            if(!firstIteration){
 //                scene.enumerateChildNodes(withName: "square"){
 //                    node, _ in
@@ -609,6 +451,25 @@ class Guard: SKSpriteNode{
 //                startingPosition2.y = startingPosition.y - Double(guardPhyscisBodyHeight)*0.5
 //                playerPositionForDistance = point
 //                angleForPathfinding = invisibleBall.zRotation
+//
+//
+//                let upperCasting = scene.physicsWorld.body(alongRayStart: startingPosition1 ,end: CGPoint(x: point.x - Double(guardPhyscisBodyWidth)*0.5, y: point.y + Double(guardPhyscisBodyHeight)*0.5))
+//                let lowerCasting = scene.physicsWorld.body(alongRayStart: startingPosition2 ,end: CGPoint(x: point.x + Double(guardPhyscisBodyWidth)*0.5, y: point.y - Double(guardPhyscisBodyHeight)*0.5))
+//                if (upperCasting?.node?.name == "staticObject" || upperCasting?.node?.name == "dyanimcObject"){
+//                    self.obstructedPath = true
+//                    print("OSTACOLO")
+//                    firstIteration = true
+//                    self.actionStateBuffer = .CHASING_PATHFIND
+//                }
+//
+//
+//                if (lowerCasting?.node?.name == "staticObject" || lowerCasting?.node?.name == "dyanimcObject"){
+//                    self.obstructedPath = true
+//                    print("OSTACOLO")
+//                    firstIteration = true
+//                    self.actionStateBuffer = .CHASING_PATHFIND
+//                    print(self.actionStateBuffer)
+//                }
 //
 //                let square = SKShapeNode(rectOf: CGSize(width: 5, height: 5))
 //                square.strokeColor = .cyan
@@ -626,13 +487,19 @@ class Guard: SKSpriteNode{
 //                scene.addChild(square2)
 //                square2.name = "square"
 //
-//                firstIteration = true
-//            } else {
+//
+//            } else if (obstructedPath == true){
+//                print("Searching a path")
+//
+//                angleCorrection += 2
+//
+//                invisibleBall.zRotation -= 2 * 3.14 / 180
+//
 //                let newStartingPositionUp = CGPoint(x: startingPosition1.x, y: startingPosition2.y)
 //                let newStartiPositiongBottom = CGPoint(x: startingPosition2.x, y: startingPosition2.y)
 //                let distance = getDistanceBetween(point1: startingPosition, point2: playerPositionForDistance)
 //                let newAngle = angleForPathfinding + CGFloat(angleCorrection * 3.14 / 180)
-//                print("\(angleForPathfinding * 180 / 3.14) + \(newAngle * 180 / 3.14)")
+////                print("\(angleForPathfinding * 180 / 3.14) + \(newAngle * 180 / 3.14)")
 //                let newX = cos(Double(newAngle)) * distance
 //                let newY = sin(Double(newAngle)) * distance
 //
@@ -640,6 +507,7 @@ class Guard: SKSpriteNode{
 //                square.strokeColor = .cyan
 //                square.fillColor = .cyan
 //                square.position = CGPoint(x: newX + startingPosition1.x, y: -(newY - startingPosition.y) + Double(guardPhyscisBodyHeight)*0.5)
+////                square.position = CGPoint(x: newX + startingPosition.x , y: -(newY - startingPosition.y))
 //                square.zPosition = 100
 //                scene.addChild(square)
 //                square.name = "square"
@@ -648,24 +516,225 @@ class Guard: SKSpriteNode{
 //                square2.strokeColor = .green
 //                square2.fillColor = .green
 //                square2.position = CGPoint(x: newX + startingPosition2.x, y: -(newY - startingPosition.y) - Double(guardPhyscisBodyHeight)*0.5)
+////                square.position = CGPoint(x: newX + startingPosition.x , y: -(newY - startingPosition.y))
 //                square2.zPosition = 100
 //                scene.addChild(square2)
 //                square2.name = "square"
 //
 //                let upperCasting = scene.physicsWorld.body(alongRayStart: invisibleBall.position ,end: CGPoint(x: point.x, y: point.y))
 //                let lowerCasting = scene.physicsWorld.body(alongRayStart: invisibleBall.position ,end: CGPoint(x: point.x, y: point.y))
-//                if (upperCasting?.node?.name == "staticObject" || upperCasting?.node?.name == "dyanimcObject"){
+////                if (upperCasting?.node?.name == "staticObject" || upperCasting?.node?.name == "dyanimcObject"){
+////                    print("OSTACOLO")
+////                    obstructedPath = true
+////                } else {
+////                    obstructedPath = false
+////                }
+////                if (lowerCasting?.node?.name == "staticObject" || lowerCasting?.node?.name == "dyanimcObject"){
+////                    print("OSTACOLO")
+////                    obstructedPath = true
+////                } else {
+////                    obstructedPath = false
+////                }
 //
+//                if( upperCasting?.node?.name == "staticObject" || upperCasting?.node?.name == "dyanimcObject" &&
+//                    lowerCasting?.node?.name == "staticObject" || lowerCasting?.node?.name == "dyanimcObject"){
+//                    print("OSTACOLO")
+//                    obstructedPath = true
+//                } else {
+//                    obstructedPath = false
 //                }
-//                angleCorrection += 2
 //            }
-            return
-        case .NONE:
-            return
-        }
-        
-        
-    }
+//        case .RIGHT:
+//            if(!firstIteration){
+//                scene.enumerateChildNodes(withName: "square"){
+//                    node, _ in
+//                    node.removeFromParent()
+//                }
+//
+//                startingPosition = invisibleBall.position
+//                startingPosition1 = startingPosition
+//                startingPosition1.x = startingPosition.x - Double(guardPhyscisBodyWidth)*0.5
+//                startingPosition1.y = startingPosition.y + Double(guardPhyscisBodyHeight)*0.5
+//                startingPosition2 = startingPosition
+//                startingPosition2.x = startingPosition.x + Double(guardPhyscisBodyWidth)*0.5
+//                startingPosition2.y = startingPosition.y - Double(guardPhyscisBodyHeight)*0.5
+//                playerPositionForDistance = point
+//                angleForPathfinding = invisibleBall.zRotation
+//
+//
+//                let upperCasting = scene.physicsWorld.body(alongRayStart: startingPosition1 ,end: CGPoint(x: point.x - Double(guardPhyscisBodyWidth)*0.5, y: point.y + Double(guardPhyscisBodyHeight)*0.5))
+//                let lowerCasting = scene.physicsWorld.body(alongRayStart: startingPosition2 ,end: CGPoint(x: point.x + Double(guardPhyscisBodyWidth)*0.5, y: point.y - Double(guardPhyscisBodyHeight)*0.5))
+//                if (upperCasting?.node?.name == "staticObject" || upperCasting?.node?.name == "dyanimcObject"){
+//                    self.obstructedPath = true
+//                    print("OSTACOLO")
+//                    firstIteration = true
+//                    self.actionStateBuffer = .CHASING_PATHFIND
+//                }
+//
+//
+//                if (lowerCasting?.node?.name == "staticObject" || lowerCasting?.node?.name == "dyanimcObject"){
+//                    self.obstructedPath = true
+//                    print("OSTACOLO")
+//                    firstIteration = true
+//                    self.actionStateBuffer = .CHASING_PATHFIND
+//                    print(self.actionStateBuffer)
+//                }
+//
+//                let square = SKShapeNode(rectOf: CGSize(width: 5, height: 5))
+//                square.strokeColor = .cyan
+//                square.fillColor = .cyan
+//                square.position = startingPosition1
+//                square.zPosition = 100
+//                scene.addChild(square)
+//                square.name = "square"
+//
+//                let square2 = SKShapeNode(rectOf: CGSize(width: 5, height: 5))
+//                square2.strokeColor = .green
+//                square2.fillColor = .green
+//                square2.position = startingPosition2
+//                square2.zPosition = 100
+//                scene.addChild(square2)
+//                square2.name = "square"
+//
+//
+//            } else if (obstructedPath == true){
+//                print("Searching a path")
+//
+//                angleCorrection += 2
+//
+//                invisibleBall.zRotation -= 2 * 3.14 / 180
+//
+//                let newStartingPositionUp = CGPoint(x: startingPosition1.x, y: startingPosition2.y)
+//                let newStartiPositiongBottom = CGPoint(x: startingPosition2.x, y: startingPosition2.y)
+//                let distance = getDistanceBetween(point1: startingPosition, point2: playerPositionForDistance)
+//                let newAngle = angleForPathfinding + CGFloat(angleCorrection * 3.14 / 180)
+////                print("\(angleForPathfinding * 180 / 3.14) + \(newAngle * 180 / 3.14)")
+//                let newX = cos(Double(newAngle)) * distance
+//                let newY = sin(Double(newAngle)) * distance
+//
+//                let square = SKShapeNode(rectOf: CGSize(width: 5, height: 5))
+//                square.strokeColor = .cyan
+//                square.fillColor = .cyan
+//                square.position = CGPoint(x: newX + startingPosition1.x, y: -(newY - startingPosition.y) + Double(guardPhyscisBodyHeight)*0.5)
+////                square.position = CGPoint(x: newX + startingPosition.x , y: -(newY - startingPosition.y))
+//                square.zPosition = 100
+//                scene.addChild(square)
+//                square.name = "square"
+//
+//                let square2 = SKShapeNode(rectOf: CGSize(width: 5, height: 5))
+//                square2.strokeColor = .green
+//                square2.fillColor = .green
+//                square2.position = CGPoint(x: newX + startingPosition2.x, y: -(newY - startingPosition.y) - Double(guardPhyscisBodyHeight)*0.5)
+////                square.position = CGPoint(x: newX + startingPosition.x , y: -(newY - startingPosition.y))
+//                square2.zPosition = 100
+//                scene.addChild(square2)
+//                square2.name = "square"
+//
+//                let upperCasting = scene.physicsWorld.body(alongRayStart: invisibleBall.position ,end: CGPoint(x: point.x, y: point.y))
+//                let lowerCasting = scene.physicsWorld.body(alongRayStart: invisibleBall.position ,end: CGPoint(x: point.x, y: point.y))
+////                if (upperCasting?.node?.name == "staticObject" || upperCasting?.node?.name == "dyanimcObject"){
+////                    print("OSTACOLO")
+////                    obstructedPath = true
+////                } else {
+////                    obstructedPath = false
+////                }
+////                if (lowerCasting?.node?.name == "staticObject" || lowerCasting?.node?.name == "dyanimcObject"){
+////                    print("OSTACOLO")
+////                    obstructedPath = true
+////                } else {
+////                    obstructedPath = false
+////                }
+//
+//                if( upperCasting?.node?.name == "staticObject" || upperCasting?.node?.name == "dyanimcObject" &&
+//                    lowerCasting?.node?.name == "staticObject" || lowerCasting?.node?.name == "dyanimcObject"){
+//                    print("OSTACOLO")
+//                    obstructedPath = true
+//                } else {
+//                    obstructedPath = false
+//                }
+//            }
+//
+//        case .DOWN_RIGHT:
+//            return
+//        case .DOWN:
+//            return
+//        case .DOWN_LEFT:
+//            return
+//        case .LEFT:
+//            return
+//        case .UP_LEFT:
+////            if(!firstIteration){
+////                scene.enumerateChildNodes(withName: "square"){
+////                    node, _ in
+////                    node.removeFromParent()
+////                }
+////
+////                startingPosition = invisibleBall.position
+////                startingPosition1 = startingPosition
+////                startingPosition1.x = startingPosition.x - Double(guardPhyscisBodyWidth)*0.5
+////                startingPosition1.y = startingPosition.y + Double(guardPhyscisBodyHeight)*0.5
+////                startingPosition2 = startingPosition
+////                startingPosition2.x = startingPosition.x + Double(guardPhyscisBodyWidth)*0.5
+////                startingPosition2.y = startingPosition.y - Double(guardPhyscisBodyHeight)*0.5
+////                playerPositionForDistance = point
+////                angleForPathfinding = invisibleBall.zRotation
+////
+////                let square = SKShapeNode(rectOf: CGSize(width: 5, height: 5))
+////                square.strokeColor = .cyan
+////                square.fillColor = .cyan
+////                square.position = startingPosition1
+////                square.zPosition = 100
+////                scene.addChild(square)
+////                square.name = "square"
+////
+////                let square2 = SKShapeNode(rectOf: CGSize(width: 5, height: 5))
+////                square2.strokeColor = .green
+////                square2.fillColor = .green
+////                square2.position = startingPosition2
+////                square2.zPosition = 100
+////                scene.addChild(square2)
+////                square2.name = "square"
+////
+////                firstIteration = true
+////            } else {
+////                let newStartingPositionUp = CGPoint(x: startingPosition1.x, y: startingPosition2.y)
+////                let newStartiPositiongBottom = CGPoint(x: startingPosition2.x, y: startingPosition2.y)
+////                let distance = getDistanceBetween(point1: startingPosition, point2: playerPositionForDistance)
+////                let newAngle = angleForPathfinding + CGFloat(angleCorrection * 3.14 / 180)
+////                print("\(angleForPathfinding * 180 / 3.14) + \(newAngle * 180 / 3.14)")
+////                let newX = cos(Double(newAngle)) * distance
+////                let newY = sin(Double(newAngle)) * distance
+////
+////                let square = SKShapeNode(rectOf: CGSize(width: 5, height: 5))
+////                square.strokeColor = .cyan
+////                square.fillColor = .cyan
+////                square.position = CGPoint(x: newX + startingPosition1.x, y: -(newY - startingPosition.y) + Double(guardPhyscisBodyHeight)*0.5)
+////                square.zPosition = 100
+////                scene.addChild(square)
+////                square.name = "square"
+////
+////                let square2 = SKShapeNode(rectOf: CGSize(width: 5, height: 5))
+////                square2.strokeColor = .green
+////                square2.fillColor = .green
+////                square2.position = CGPoint(x: newX + startingPosition2.x, y: -(newY - startingPosition.y) - Double(guardPhyscisBodyHeight)*0.5)
+////                square2.zPosition = 100
+////                scene.addChild(square2)
+////                square2.name = "square"
+////
+////                let upperCasting = scene.physicsWorld.body(alongRayStart: invisibleBall.position ,end: CGPoint(x: point.x, y: point.y))
+////                let lowerCasting = scene.physicsWorld.body(alongRayStart: invisibleBall.position ,end: CGPoint(x: point.x, y: point.y))
+////                if (upperCasting?.node?.name == "staticObject" || upperCasting?.node?.name == "dyanimcObject"){
+////
+////                }
+////                angleCorrection += 2
+////            }
+//            return
+//        case .NONE:
+//            return
+//        }
+//
+//
+//    }
 
     
     func checkAngle(){
@@ -969,6 +1038,7 @@ class Guard: SKSpriteNode{
 }
 
 
+
 //TO DO: Sostituire blockDimension con "blocco"
 //Funzione globale per generare i percorsi per le guardie, assegnarli e iniziarli
 func createPath(entity: Guard, arrayOfActions: [myAction]){
@@ -1076,5 +1146,6 @@ func createPath(entity: Guard, arrayOfActions: [myAction]){
     
     entity.getCenterBall().run(.repeatForever(SKAction.sequence(sequenceArray)), withKey: "guardPath")
 }
+
 
 
