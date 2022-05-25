@@ -62,6 +62,9 @@ class PlayableCharacter: SKSpriteNode{
 //    private var objectHighlighted: Bool = false
     private var focus: Focus = .OBJECT
     
+    
+    private var light: SKLightNode = SKLightNode()
+    
     //    STATIC TEXTURES
     var frontTexture: SKTexture = SKTexture()
     var sideLTexture: SKTexture = SKTexture()
@@ -167,6 +170,13 @@ class PlayableCharacter: SKSpriteNode{
         self.noise = noise
         self.characterSpeed = speed
         self.strenght = strenght
+        self.light.categoryBitMask = 2
+        self.light.falloff = 2
+        self.light.lightColor = .init(red: 239/255, green: 192/255, blue: 112/255, alpha: 0.75)
+        self.light.position.x += 10
+        self.light.position.y += 15
+        self.addChild(light)
+        self.lightingBitMask = 2
     }
     
 //    GENERIC FUNCTIONS
