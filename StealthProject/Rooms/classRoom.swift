@@ -904,7 +904,8 @@ class Room: SKNode {
                     addChild(pareteTubi)
                 case 6:
                     if floor == .SECOND_FLOOE || floor == .LAST_FLOOR{
-                    let luce = LuceInterna(lightBitmask: 1|2)
+                    let luce = SKSpriteNode (texture: SKTexture(imageNamed: "light2"), normalMap: SKTexture (imageNamed: "light2NormalMap"))
+                        luce.size = .init(width: 30, height: 45)
                     luce.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                     luce.position.y -= 15
                     luce.physicsBody = SKPhysicsBody()
@@ -917,9 +918,9 @@ class Room: SKNode {
                     
                 case 8:
                     if floor == .SECOND_FLOOE || floor == .LAST_FLOOR{
-                    let luce = LuceInterna(lightBitmask: 1|2)
-                        luce.texture = SKTexture(imageNamed: "LightR")
-                        luce.normalTexture = SKTexture (imageNamed: "LightRMask")
+                        let luce = SKSpriteNode(texture: SKTexture(imageNamed: "LightR"), normalMap: SKTexture (imageNamed: "LightRMask"))
+//                        luce.texture = SKTexture(imageNamed: "LightR")
+//                        luce.normalTexture = SKTexture (imageNamed: "LightRMask")
                         luce.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                         luce.size = bloccoSize
 //                    luce.position.y -= 15
@@ -933,9 +934,9 @@ class Room: SKNode {
                     
                 case 9:
                     if floor == .SECOND_FLOOE || floor == .LAST_FLOOR{
-                    let luce = LuceInterna(lightBitmask: 1|2)
-                        luce.texture = SKTexture(imageNamed: "LightL")
-                        luce.normalTexture = SKTexture (imageNamed: "LightLMask")
+                        let luce = SKSpriteNode(texture: SKTexture(imageNamed: "LightL"), normalMap: SKTexture (imageNamed: "LightLMask"))
+//                        luce.texture = SKTexture(imageNamed: "LightL")
+//                        luce.normalTexture = SKTexture (imageNamed: "LightLMask")
                         luce.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                         luce.size = bloccoSize
             
