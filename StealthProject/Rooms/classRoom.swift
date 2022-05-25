@@ -889,6 +889,33 @@ class Room: SKNode {
                         luce.zPosition = 3
                     addChild(luce)
                     }
+                case 7:
+                    if floor == .SECOND_FLOOE || floor == .LAST_FLOOR{
+                        var cornice: StaticObject = StaticObject()
+                        let cifra = Int.random(in: 0...2)
+                        if(cifra == 0){
+                            cornice = StaticObject(texture: SKTexture(imageNamed: "frame1"), color: .clear, size: CGSize(width: blocco, height: blocco), objectName: "cornice", objectCategory: .MOBILIO)
+                            cornice.normalTexture = SKTexture (imageNamed: "frame1Maschera")
+                        }
+                        else if (cifra == 1) {
+                            cornice = StaticObject(texture: SKTexture(imageNamed: "frame2"), color: .clear, size: CGSize(width: blocco, height: blocco), objectName: "cornice", objectCategory: .MOBILIO)
+                            cornice.normalTexture = SKTexture (imageNamed: "frame2Maschera")
+                        }
+                        else {
+                            cornice = StaticObject(texture: SKTexture(imageNamed: "frame3"), color: .clear, size: CGSize(width: blocco, height: blocco), objectName: "cornice", objectCategory: .MOBILIO)
+                            cornice.normalTexture = SKTexture (imageNamed: "frame3Maschera")
+                        }
+                        
+                        cornice.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                        cornice.zPosition = 5
+                        cornice.physicsBody = SKPhysicsBody()
+                        cornice.physicsBody?.isDynamic = false
+                        cornice.physicsBody?.affectedByGravity = false
+                        cornice.lightingBitMask = 1 | 2
+                        cornice.normalTexture = SKTexture (imageNamed: "frame1Maschera")
+                        addChild(cornice)
+                        
+                    }
                 default:
                     print("")
                 }
