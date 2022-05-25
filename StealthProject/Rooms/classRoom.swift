@@ -982,6 +982,105 @@ class Room: SKNode {
                         addChild(cornice)
                         
                     }
+                    // 10 - tappeto angolo dx
+                    // 11 - tappeto angolo sx
+                    // 12 - tappeto centro
+                    // 13 - tappeto lato dx
+                    // 14 - tappeto lato sx
+                    // 15 - tappeto lato giu
+                    // 16 - tappeto lato su
+                    // 17 - tappeto angolo dx giu
+                    // 18 - tappeto angolo sx giu
+                case 10:
+                    if floor == .SECOND_FLOOE || floor == .LAST_FLOOR{
+                    let tappetoAngoloDx = SKSpriteNode(texture: SKTexture(imageNamed: "tappetoAngoloDx"), size: bloccoSize)
+                    tappetoAngoloDx.normalTexture = SKTexture(imageNamed: "tappetoAngoloDx NormalMap")
+                    tappetoAngoloDx.name = "floorTile"
+                    tappetoAngoloDx.zPosition = 2
+                    tappetoAngoloDx.position = CGPoint(x: startingPosition.x + Double(j * blocco) , y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    tappetoAngoloDx.lightingBitMask = 1 | 2
+                    addChild(tappetoAngoloDx)
+                    }
+                case 11:
+                    if floor == .SECOND_FLOOE || floor == .LAST_FLOOR{
+                    let tappetoAngoloSx = SKSpriteNode(texture: SKTexture(imageNamed: "tappetoAngoloSx"), size: bloccoSize)
+                    tappetoAngoloSx.normalTexture = SKTexture(imageNamed: "tappetoAngoloSx NormalMap")
+                    tappetoAngoloSx.name = "floorTile"
+                    tappetoAngoloSx.zPosition = 2
+                    tappetoAngoloSx.position = CGPoint(x: startingPosition.x + Double(j * blocco) , y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    tappetoAngoloSx.lightingBitMask = 1 | 2
+                    addChild(tappetoAngoloSx)
+                    }
+                case 12:
+                    if floor == .SECOND_FLOOE || floor == .LAST_FLOOR{
+                    let tappetoCentro = SKSpriteNode(texture: SKTexture(imageNamed: "tappetoCentro"), size: bloccoSize)
+                    tappetoCentro.normalTexture = SKTexture(imageNamed: "tappetoCentro NormalMap")
+                    tappetoCentro.name = "floorTile"
+                    tappetoCentro.zPosition = 2
+                    tappetoCentro.position = CGPoint(x: startingPosition.x + Double(j * blocco) , y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    tappetoCentro.lightingBitMask = 1 | 2
+                    addChild(tappetoCentro)
+                    }
+                case 13:
+                    if floor == .SECOND_FLOOE || floor == .LAST_FLOOR{
+                    let tappetoLatoDx = SKSpriteNode(texture: SKTexture(imageNamed: "tappetoLatoDx"), size: bloccoSize)
+                    tappetoLatoDx.normalTexture = SKTexture(imageNamed: "tappetoLatoDx NormalMap")
+                    tappetoLatoDx.name = "floorTile"
+                    tappetoLatoDx.zPosition = 2
+                    tappetoLatoDx.position = CGPoint(x: startingPosition.x + Double(j * blocco) , y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    tappetoLatoDx.lightingBitMask = 1 | 2
+                    addChild(tappetoLatoDx)
+                    }
+                case 14:
+                    if floor == .SECOND_FLOOE || floor == .LAST_FLOOR{
+                    let tappetoLatoSx = SKSpriteNode(texture: SKTexture(imageNamed: "tappetoLatoSx"), size: bloccoSize)
+                    tappetoLatoSx.normalTexture = SKTexture(imageNamed: "tappetoLatoSx NormalMap")
+                    tappetoLatoSx.name = "floorTile"
+                    tappetoLatoSx.zPosition = 2
+                    tappetoLatoSx.position = CGPoint(x: startingPosition.x + Double(j * blocco) , y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    tappetoLatoSx.lightingBitMask = 1 | 2
+                    addChild(tappetoLatoSx)
+                    }
+                case 15:
+                    if floor == .SECOND_FLOOE || floor == .LAST_FLOOR{
+                    let tappetoLatoGiu = SKSpriteNode(texture: SKTexture(imageNamed: "tappetoLatoGiu"), size: bloccoSize)
+                    tappetoLatoGiu.normalTexture = SKTexture(imageNamed: "tappetoLatoGiu NormalMap")
+                    tappetoLatoGiu.name = "floorTile"
+                    tappetoLatoGiu.zPosition = 2
+                    tappetoLatoGiu.position = CGPoint(x: startingPosition.x + Double(j * blocco) , y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    tappetoLatoGiu.lightingBitMask = 1 | 2
+                    addChild(tappetoLatoGiu)
+                    }
+                case 16:
+                    if floor == .SECOND_FLOOE || floor == .LAST_FLOOR{
+                    let tappetoLatoSu = SKSpriteNode(texture: SKTexture(imageNamed: "tappetoLatoSu"), size: bloccoSize)
+                    tappetoLatoSu.normalTexture = SKTexture(imageNamed: "tappetoLatoSu NormalMap")
+                    tappetoLatoSu.name = "floorTile"
+                    tappetoLatoSu.zPosition = 2
+                    tappetoLatoSu.position = CGPoint(x: startingPosition.x + Double(j * blocco) , y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    tappetoLatoSu.lightingBitMask = 1 | 2
+                    addChild(tappetoLatoSu)
+                    }
+                case 17:
+                    if floor == .SECOND_FLOOE || floor == .LAST_FLOOR{
+                    let tappetoAngoloDxGiu = SKSpriteNode(texture: SKTexture(imageNamed: "tappetoAngoloDxGiu"), size: bloccoSize)
+                    tappetoAngoloDxGiu.normalTexture = SKTexture(imageNamed: "tappetoAngoloDxGiuNormalMap")
+                    tappetoAngoloDxGiu.name = "floorTile"
+                    tappetoAngoloDxGiu.zPosition = 2
+                    tappetoAngoloDxGiu.position = CGPoint(x: startingPosition.x + Double(j * blocco) , y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    tappetoAngoloDxGiu.lightingBitMask = 1 | 2
+                    addChild(tappetoAngoloDxGiu)
+                    }
+                case 18:
+                    if floor == .SECOND_FLOOE || floor == .LAST_FLOOR{
+                    let tappetoAngoloSxGiu = SKSpriteNode(texture: SKTexture(imageNamed: "tappetoAngoloSxGiu"), size: bloccoSize)
+                    tappetoAngoloSxGiu.normalTexture = SKTexture(imageNamed: "tappetoAngoloSxGiuNormalMap")
+                    tappetoAngoloSxGiu.name = "floorTile"
+                    tappetoAngoloSxGiu.zPosition = 2
+                    tappetoAngoloSxGiu.position = CGPoint(x: startingPosition.x + Double(j * blocco) , y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    tappetoAngoloSxGiu.lightingBitMask = 1 | 2
+                    addChild(tappetoAngoloSxGiu)
+                    }
                 default:
                     print("")
                 }
