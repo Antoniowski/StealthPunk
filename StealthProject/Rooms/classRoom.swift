@@ -888,6 +888,7 @@ class Room: SKNode {
                     pareteLanterna.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                     pareteLanterna.lightingBitMask = 1 | 2
                     addChild(pareteLanterna)
+                    
                 case 5:
                     let pareteTubi = SKSpriteNode(texture: SKTexture(imageNamed:"parete centrale tubi"), size: bloccoSize)
                     pareteTubi.normalTexture = SKTexture(imageNamed: "parete centrale tubi normal map")
@@ -911,6 +912,39 @@ class Room: SKNode {
                         luce.zPosition = 3
                     addChild(luce)
                     }
+                    
+                case 8:
+                    if floor == .SECOND_FLOOE || floor == .LAST_FLOOR{
+                    let luce = LuceInterna(lightBitmask: 1|2)
+                        luce.texture = SKTexture(imageNamed: "LightR")
+                        luce.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                        luce.size = bloccoSize
+//                    luce.position.y -= 15
+                    luce.physicsBody = SKPhysicsBody()
+                    luce.physicsBody?.isDynamic = false
+                    luce.physicsBody?.affectedByGravity = false
+                    luce.lightingBitMask = 1 | 2
+                        luce.zPosition = 3
+                    addChild(luce)
+                    }
+                    
+                case 9:
+                    if floor == .SECOND_FLOOE || floor == .LAST_FLOOR{
+                    let luce = LuceInterna(lightBitmask: 1|2)
+                        luce.texture = SKTexture(imageNamed: "LightL")
+                        luce.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                        luce.size = bloccoSize
+            
+//                    luce.position.y -= 15
+                    luce.physicsBody = SKPhysicsBody()
+                    luce.physicsBody?.isDynamic = false
+                    luce.physicsBody?.affectedByGravity = false
+                    luce.lightingBitMask = 1 | 2
+                        luce.zPosition = 3
+                    addChild(luce)
+                    }
+                    
+                    
                 case 7:
                     if floor == .SECOND_FLOOE || floor == .LAST_FLOOR{
                         var cornice: StaticObject = StaticObject()
