@@ -203,6 +203,12 @@ class PlayableCharacter: SKSpriteNode{
                                     case .CLOSET:
                                         let armadio = interazione as? Closet
                                         armadio?.action()
+                                    case .PANCA:
+                                        let panca = interazione as? Cassapanca
+                                        panca?.action()
+                                    case .VETRINA:
+                                        let vetrina = interazione as? Vetrina
+                                        vetrina?.action()
                                     default :
                                         print ("")
                                     }
