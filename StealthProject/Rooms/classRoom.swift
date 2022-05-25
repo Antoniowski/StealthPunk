@@ -919,6 +919,7 @@ class Room: SKNode {
                     if floor == .SECOND_FLOOE || floor == .LAST_FLOOR{
                     let luce = LuceInterna(lightBitmask: 1|2)
                         luce.texture = SKTexture(imageNamed: "LightR")
+                        luce.normalTexture = SKTexture (imageNamed: "LightRMask")
                         luce.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                         luce.size = bloccoSize
 //                    luce.position.y -= 15
@@ -934,6 +935,7 @@ class Room: SKNode {
                     if floor == .SECOND_FLOOE || floor == .LAST_FLOOR{
                     let luce = LuceInterna(lightBitmask: 1|2)
                         luce.texture = SKTexture(imageNamed: "LightL")
+                        luce.normalTexture = SKTexture (imageNamed: "LightLMask")
                         luce.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                         luce.size = bloccoSize
             
