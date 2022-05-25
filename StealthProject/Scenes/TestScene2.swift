@@ -95,14 +95,13 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
 //        lampione.lightingBitMask = 2
 //        
-        player.lightingBitMask = 1 | 2
 //        armadio.lightingBitMask = 2
 //
 //
 //        lampione.name = "enemy"
         
 //        luce.ambientColor = .init(red: 0.624, green: 0.624, blue: 0.914, alpha: 0.5) // PER LE PARTI SCURE - GIARDINO
-        luce.ambientColor = .init(red: 0.6, green: 0.6, blue: 0.75, alpha: 0.5)
+        luce.ambientColor = .init(red: 0.6, green: 0.6, blue: 0.75, alpha: 0.15)
 
         coin.size = CGSize(width: 30, height: 30)
 
