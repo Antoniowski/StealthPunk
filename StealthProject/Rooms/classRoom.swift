@@ -765,8 +765,10 @@ class Room: SKNode {
                     var colonna = StaticObject(texture: SKTexture(imageNamed: "column"), color: .clear, size: .init(width: blocco/2, height: blocco), objectName: "column", objectCategory: .MOBILIO)
                     if self.floor == .FIRST_FLOOR{
                        colonna = StaticObject(texture: SKTexture(imageNamed: "colonna"), color: .clear, size: .init(width: blocco, height: blocco), objectName: "column", objectCategory: .MOBILIO)
+                        colonna.normalTexture = SKTexture(imageNamed: "colonnaNormalMap")
+                    }else{
+                        colonna.normalTexture = SKTexture(imageNamed: "columnMaschera")
                     }
-                    colonna.normalTexture = SKTexture(imageNamed: "colonnaNormalMap")
                     colonna.physicsBody = SKPhysicsBody(rectangleOf: .init(width: Double(blocco/2), height: Double(blocco)*0.8), center: CGPoint (x: 0, y: Double(blocco)*0.12))
                     colonna.physicsBody?.affectedByGravity = false
                     colonna.physicsBody?.allowsRotation = false
@@ -968,7 +970,6 @@ class Room: SKNode {
                         cornice.physicsBody?.isDynamic = false
                         cornice.physicsBody?.affectedByGravity = false
                         cornice.lightingBitMask = 1 | 2
-                        cornice.normalTexture = SKTexture (imageNamed: "frame1Maschera")
                         addChild(cornice)
                         
                     }
