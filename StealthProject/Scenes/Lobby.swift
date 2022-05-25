@@ -31,7 +31,7 @@ class LobbyScene: SKScene, PlayableScene{
     private var lightArray: [LuceTaverna] = []
     
     private var startGame: Bool = false
-    private let stanza = Room(.LOBBY, startingPosition: .zero, floor: .FIRST_FLOOR)
+    private let stanza = Room(.LOBBY, startingPosition: .zero, floor: .SECOND_FLOOE)
     private var sceneCamera: SKCameraNode = SKCameraNode()
     
     private var oggetti: [SKNode] = []

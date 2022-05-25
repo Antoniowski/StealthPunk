@@ -126,6 +126,12 @@ extension PlayableScene{
                         case .BUSH:
                             let useBush = hideout as? Bush
                             useBush?.action()
+                        case .PANCA:
+                            let panca = hideout as? Cassapanca
+                            panca?.action()
+                        case .VETRINA:
+                            let vetrina = hideout as? Vetrina
+                            vetrina?.action()
                         default :
                             print("")
                         }

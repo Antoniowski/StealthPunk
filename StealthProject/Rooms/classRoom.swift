@@ -124,99 +124,121 @@ class Room: SKNode {
             numRighe = simple1Matrix[1].count
             numColonne = simple1Matrix.count
             stanza = simple1Matrix
+            pavimento = simple1MatrixPavimento
             nemici = []
             setTextures(tipo: floor)
             self.createRoom()
+            addRugsAndLights()
         case .FIRST_2:
             door = DoorPosition(UP: true, DOWN: true, RIGHT: false, LEFT: false)
             tipe = .START
             numRighe = simple1Matrix[1].count
             numColonne = simple1Matrix.count
             stanza = simple1Matrix
+            pavimento = simple1MatrixPavimento
             nemici = []
             setTextures(tipo: floor)
             createRoom()
+            addRugsAndLights()
         case .FIRST_3:
             door = DoorPosition(UP: true, DOWN: true, RIGHT: true, LEFT: false)
             tipe = .START
             numRighe = simple1Matrix[1].count
             numColonne = simple1Matrix.count
             stanza = simple1Matrix
+            pavimento = simple1MatrixPavimento
             nemici = []
             setTextures(tipo: floor)
             createRoom()
+            addRugsAndLights()
         case .FIRST_4:
             door = DoorPosition(UP: true, DOWN: true, RIGHT: true, LEFT: true)
             tipe = .START
             numRighe = simple1Matrix[1].count
             numColonne = simple1Matrix.count
             stanza = simple1Matrix
+            pavimento = simple1MatrixPavimento
             nemici = []
             setTextures(tipo: floor)
             createRoom()
+            addRugsAndLights()
         case .SIMPLE_1:
             door = DoorPosition(UP: true, DOWN: true, RIGHT: false, LEFT: false)
             tipe = .NORMAL
             numRighe = simple1Matrix[1].count
             numColonne = simple1Matrix.count
             stanza = simple1Matrix
+            pavimento = simple1MatrixPavimento
             nemici = []
             setTextures(tipo: floor)
             createRoom()
+            addRugsAndLights()
         case .SIMPLE_2:
             door = DoorPosition(UP: true, DOWN: true, RIGHT: false, LEFT: false)
             tipe = .NORMAL
             numRighe = simple2Matrix[1].count
             numColonne = simple2Matrix.count
             stanza = simple2Matrix
+            pavimento = simple2MatrixPavimento
             nemici = []
             setTextures(tipo: floor)
             createRoom()
+            addRugsAndLights()
         case .SIMPLE_3:
             door = DoorPosition(UP: false, DOWN: true, RIGHT: true, LEFT: true)
             tipe = .NORMAL
             numRighe = simple3Matrix[1].count
             numColonne = simple3Matrix.count
             stanza = simple3Matrix
+            pavimento = simple3MatrixPavimento
             nemici = []
             setTextures(tipo: floor)
             createRoom()
+            addRugsAndLights()
         case .SIMPLE_4:
             door = DoorPosition(UP: true, DOWN: false, RIGHT: true, LEFT: true)
             tipe = .NORMAL
             numRighe = simple4Matrix[1].count
             numColonne = simple4Matrix.count
             stanza = simple4Matrix
+            pavimento = simple4MatrixPavimento
             nemici = []
             setTextures(tipo: floor)
             createRoom()
+            addRugsAndLights()
         case .SIMPLE_5:
             door = DoorPosition(UP: false, DOWN: true, RIGHT: false, LEFT: true)
             tipe = .NORMAL
             numRighe = simple5Matrix[1].count
             numColonne = simple5Matrix.count
             stanza = simple5Matrix
+            pavimento = simple5MatrixPavimento
             nemici = []
             setTextures(tipo: floor)
             createRoom()
+            addRugsAndLights()
         case .SIMPLE_6:
             door = DoorPosition(UP: false, DOWN: true, RIGHT: true, LEFT: false)
             tipe = .NORMAL
             numRighe = simple6Matrix[1].count
             numColonne = simple6Matrix.count
             stanza = simple6Matrix
+            pavimento = simple6MatrixPavimento
             nemici = []
             setTextures(tipo: floor)
             createRoom()
+            addRugsAndLights()
         case .SIMPLE_7:
             door = DoorPosition(UP: false, DOWN: true, RIGHT: true, LEFT: true)
             tipe = .NORMAL
             numRighe = simple7Matrix[1].count
             numColonne = simple7Matrix.count
             stanza = simple7Matrix
+            pavimento = simple7MatrixPavimento
             nemici = []
             setTextures(tipo: floor)
             createRoom()
+            addRugsAndLights()
         case .PROVA1:
             door = DoorPosition(UP: true, DOWN: false, RIGHT: false, LEFT: false)
             tipe = .NORMAL
@@ -888,6 +910,33 @@ class Room: SKNode {
                     luce.lightingBitMask = 1 | 2
                         luce.zPosition = 3
                     addChild(luce)
+                    }
+                case 7:
+                    if floor == .SECOND_FLOOE || floor == .LAST_FLOOR{
+                        var cornice: StaticObject = StaticObject()
+                        let cifra = Int.random(in: 0...2)
+                        if(cifra == 0){
+                            cornice = StaticObject(texture: SKTexture(imageNamed: "frame1"), color: .clear, size: CGSize(width: blocco, height: blocco), objectName: "cornice", objectCategory: .MOBILIO)
+                            cornice.normalTexture = SKTexture (imageNamed: "frame1Maschera")
+                        }
+                        else if (cifra == 1) {
+                            cornice = StaticObject(texture: SKTexture(imageNamed: "frame2"), color: .clear, size: CGSize(width: blocco, height: blocco), objectName: "cornice", objectCategory: .MOBILIO)
+                            cornice.normalTexture = SKTexture (imageNamed: "frame2Maschera")
+                        }
+                        else {
+                            cornice = StaticObject(texture: SKTexture(imageNamed: "frame3"), color: .clear, size: CGSize(width: blocco, height: blocco), objectName: "cornice", objectCategory: .MOBILIO)
+                            cornice.normalTexture = SKTexture (imageNamed: "frame3Maschera")
+                        }
+                        
+                        cornice.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                        cornice.zPosition = 5
+                        cornice.physicsBody = SKPhysicsBody()
+                        cornice.physicsBody?.isDynamic = false
+                        cornice.physicsBody?.affectedByGravity = false
+                        cornice.lightingBitMask = 1 | 2
+                        cornice.normalTexture = SKTexture (imageNamed: "frame1Maschera")
+                        addChild(cornice)
+                        
                     }
                 default:
                     print("")
