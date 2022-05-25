@@ -39,6 +39,9 @@ class Piano1: SKScene, PlayableScene, SKPhysicsContactDelegate  {
     var FRICTION: Double = 10
     
     var indicatore = Counter()
+    
+    var  nemici: [SKNode] = []
+    var oggetti: [SKNode] = []
 
     
     override func didMove(to view: SKView) {
@@ -156,11 +159,11 @@ class Piano1: SKScene, PlayableScene, SKPhysicsContactDelegate  {
     override func update(_ currentTime: TimeInterval) {
         calcDelta(currentTime: currentTime)
         indicatore.etichetta.text = "x \(indicatore.number)"
-        player.updateActionState(scene: self)
+        player.updateActionState(scene: self, oggetti: oggetti)
 //        player.updateMovingDirection()
         player.animationTree()
-        player.searchObject(scene: self)
-        player.updateFocus(scene: self)
+        player.searchObject(scene: self, oggetti: oggetti)
+        player.updateFocus(scene: self, enemies: nemici, oggetti: oggetti)
         
         switch player.getActionState(){
         case .MOVE:
@@ -170,7 +173,7 @@ class Piano1: SKScene, PlayableScene, SKPhysicsContactDelegate  {
             attackState(scene: self)
             
         case .INTERACT:
-            interactState(scene: self)
+            interactState(scene: self, oggetti: oggetti)
             
         case .ROLL:
             rollState()

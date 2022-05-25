@@ -210,36 +210,7 @@ class TestScene4: SKScene, PlayableScene, SKPhysicsContactDelegate {
     override func update(_ currentTime: TimeInterval) {
         calcDelta(currentTime: currentTime)
         indicatore.etichetta.text = "x \(indicatore.number)"
-        player.updateActionState(scene: self)
-//        player.updateMovingDirection()
-        player.animationTree()
-        player.searchObject(scene: self)
-        player.updateFocus(scene: self)
-        
-        
-        
-        switch player.getActionState(){
-        case .MOVE:
-            moveState()
-            
-        case .ATTACK:
-            attackState(scene: self)
-            
-        case .INTERACT:
-            interactState(scene: self)
-            
-        case .ROLL:
-            rollState()
-            
-        case .HIDDEN:
-            hiddenState()
-            
-        case .RUNNING:
-            runningState()
-        }
-        
-        playerMovement(player: player as SKSpriteNode, velocity: velocity)
-//        luce.position = player.position
+      
 
         
         scenecamera.position = player.position

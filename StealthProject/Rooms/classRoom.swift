@@ -223,18 +223,22 @@ class Room: SKNode {
             numRighe = prova1[1].count
             numColonne = prova1.count
             stanza = prova1
+            pavimento = prova1Pavimento
             nemici = []
             setTextures(tipo: floor)
             createRoom()
+            addRugsAndLights()
         case .PROVA2:
             door = DoorPosition(UP: false, DOWN: true, RIGHT: false, LEFT: false)
             tipe = .NORMAL
             numRighe = prova2[1].count
             numColonne = prova2.count
             stanza = prova2
+            pavimento = prova2Pavimento
             nemici = []
             setTextures(tipo: floor)
             createRoom()
+            addRugsAndLights()
         case .PROVA3:
             door = DoorPosition(UP: false, DOWN: false, RIGHT: false, LEFT: true)
             tipe = .NORMAL
@@ -242,8 +246,10 @@ class Room: SKNode {
             numColonne = prova3.count
             stanza = prova3
             nemici = []
+            pavimento = prova3Pavimento
             setTextures(tipo: floor)
             createRoom()
+            addRugsAndLights()
         case .PROVA4:
             door = DoorPosition(UP: false, DOWN: false, RIGHT: true, LEFT: false)
             tipe = .NORMAL
@@ -308,36 +314,44 @@ class Room: SKNode {
             numRighe = prova1Scrigno[1].count
             numColonne = prova1Scrigno.count
             stanza = prova1Scrigno
+            pavimento = prova1Pavimento
             nemici = []
             setTextures(tipo: floor)
             createRoom()
+            addRugsAndLights()
         case .PROVA2POWERUP:
             door = DoorPosition(UP: false, DOWN: true, RIGHT: false, LEFT: false)
             tipe = .NORMAL
             numRighe = prova2Scrigno[1].count
             numColonne = prova2Scrigno.count
             stanza = prova2Scrigno
+            pavimento = prova2Pavimento
             nemici = []
             setTextures(tipo: floor)
             createRoom()
+            addRugsAndLights()
         case .PROVA3POWERUP:
             door = DoorPosition(UP: false, DOWN: false, RIGHT: false, LEFT: true)
             tipe = .NORMAL
             numRighe = prova3Scrigno[1].count
             numColonne = prova3Scrigno.count
             stanza = prova3Scrigno
+            pavimento = prova3Pavimento
             nemici = []
             setTextures(tipo: floor)
             createRoom()
+            addRugsAndLights()
         case .PROVA4POWERUP:
             door = DoorPosition(UP: false, DOWN: false, RIGHT: true, LEFT: false)
             tipe = .NORMAL
             numRighe = prova4Scrigno[1].count
             numColonne = prova4Scrigno.count
             stanza = prova4Scrigno
+            pavimento = prova4Pavimento
             nemici = []
             setTextures(tipo: floor)
             createRoom()
+            addRugsAndLights()
         }
     }
     
@@ -709,6 +723,8 @@ class Room: SKNode {
                     internalAngleDx2.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco/3, height: blocco), center: CGPoint(x: blocco/3, y: -blocco/6))
                     internalAngleDx2.physicsBody?.isDynamic = false
                     internalAngleDx2.physicsBody?.affectedByGravity = false
+                    internalAngleDx2.physicsBody?.allowsRotation = false
+                    internalAngleDx2.lightingBitMask = 1 | 2
                     addChild(internalAngleDx2)
                     
                 case 34:
@@ -719,6 +735,8 @@ class Room: SKNode {
                     internalAngleSx2.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco/3, height: blocco), center: CGPoint(x: -blocco/3, y: -blocco/6))
                     internalAngleSx2.physicsBody?.isDynamic = false
                     internalAngleSx2.physicsBody?.affectedByGravity = false
+                    internalAngleSx2.physicsBody?.allowsRotation = false
+                    internalAngleSx2.lightingBitMask = 1 | 2
                     addChild(internalAngleSx2)
                 
                 case 12:
@@ -859,6 +877,18 @@ class Room: SKNode {
                     pareteTubi.physicsBody?.affectedByGravity = false
                     pareteTubi.lightingBitMask = 1 | 2
                     addChild(pareteTubi)
+                case 6:
+                    if floor == .SECOND_FLOOE || floor == .LAST_FLOOR{
+                    let luce = LuceInterna(lightBitmask: 1|2)
+                    luce.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    luce.position.y -= 15
+                    luce.physicsBody = SKPhysicsBody()
+                    luce.physicsBody?.isDynamic = false
+                    luce.physicsBody?.affectedByGravity = false
+                    luce.lightingBitMask = 1 | 2
+                        luce.zPosition = 3
+                    addChild(luce)
+                    }
                 default:
                     print("")
                 }

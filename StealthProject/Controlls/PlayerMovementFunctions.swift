@@ -92,11 +92,12 @@ extension PlayableScene{
         
     }
     
-    func interactState(scene: SKScene){
+    func interactState(scene: SKScene, oggetti: [SKNode]){
         if player.getStatus().isInteracting == false && player.getStatus().isExiting == false{
             player.setInteractingStatus(true)
 //            print("Interaction")
-            scene.enumerateChildNodes(withName: "ROOM/dynamicObject"){ object, _ in
+//            scene.enumerateChildNodes(withName: "ROOM/dynamicObject"){ object, _ in
+            for object in oggetti{
                 if getDistanceBetween(point1: self.player.position, point2: scene.convert(object.position, from: object.parent ?? SKNode())) <= self.player.getInteractRange(){
                     let interact = object as? InteractableObject
                     switch interact?.getType(){
@@ -160,7 +161,7 @@ extension PlayableScene{
 //    func didBegin(_ contact: SKPhysicsContact) {
 //        var firstBody = SKPhysicsBody()
 //        var secondBody = SKPhysicsBody()
-//        
+//
 //        if contact.bodyA.node?.name == "player"{
 //            firstBody = contact.bodyA
 //            secondBody = contact.bodyB
@@ -168,8 +169,8 @@ extension PlayableScene{
 //            firstBody = contact.bodyB
 //            secondBody = contact.bodyA
 //        }
-//        
-//        
+//
+//
 //        if firstBody.node?.name == "player" && secondBody.node?.name == "collectible"{
 //            let item = secondBody.node as? Collectible
 //            item?.action(player: firstBody.node as? PlayableCharacter ?? PlayableCharacter())
@@ -190,12 +191,12 @@ extension PlayableScene{
 //        }
 //    }
     
-    func playerEssential(scene: SKScene){
-        player.updateActionState(scene: scene)
+    func playerEssential(scene: SKScene, nemici: [SKNode], oggetti: [SKNode]){
+        player.updateActionState(scene: scene, oggetti: oggetti)
 //        player.updateMovingDirection()
         player.animationTree()
-        player.searchObject(scene: scene)
-        player.updateFocus(scene: scene)
+        player.searchObject(scene: scene, oggetti: oggetti)
+        player.updateFocus(scene: scene, enemies: nemici, oggetti: oggetti)
         
         
         
@@ -207,7 +208,7 @@ extension PlayableScene{
             attackState(scene: scene)
             
         case .INTERACT:
-            interactState(scene: scene)
+            interactState(scene: scene, oggetti: oggetti)
             
         case .ROLL:
             rollState()
