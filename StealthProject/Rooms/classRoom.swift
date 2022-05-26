@@ -511,10 +511,16 @@ class Room: SKNode {
                 switch stanza[i][j]{
                     //FRONT WALL
                 case 1:
-                    let wall = SKSpriteNode(texture: frontWallTexture, size: bloccoSize)
+                    var wall = SKSpriteNode(texture: frontWallTexture, size: bloccoSize)
+                    wall.normalTexture = frontWallTextureMap
+                    if (archetype == .SCAMBIO1 || archetype == .SCAMBIO2 || archetype == .SCAMBIO3 || archetype == .SCAMBIO4) && floor == .FIRST_FLOOR{
+                        if i == 1{
+                            wall = SKSpriteNode(texture: SKTexture(imageNamed: "parete centrale"), size: bloccoSize)
+                            wall.normalTexture = SKTexture(imageNamed: "parete centrale normal map")
+                        }
+                    }
                     wall.name = "wall"
                     wall.zPosition = 2
-                    wall.normalTexture = frontWallTextureMap
                     wall.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                     wall.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
                     wall.physicsBody?.isDynamic = false
@@ -744,7 +750,14 @@ class Room: SKNode {
                     let passaggio = NextFloor(floorLink: .TWO_TO_ONE, floor: floor)
                     passaggio.zPosition = 10
                     passaggio.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
-                    print(passaggio.nextFloor)
+                    if floor == .FIRST_FLOOR{
+                        passaggio.texture = SKTexture(imageNamed: "finestraFinale")
+                        passaggio.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                        let muro = SKSpriteNode(texture: SKTexture(imageNamed: "parete centrale"), size: bloccoSize)
+                        muro.normalTexture = SKTexture(imageNamed: "parete centrale normal texture")
+                        muro.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                        addChild(muro)
+                    }
                     addChild(passaggio)
                     
                 case 31:
