@@ -175,6 +175,7 @@ class PlayableCharacter: SKSpriteNode{
         self.light.lightColor = .init(red: 239/255, green: 192/255, blue: 112/255, alpha: 0.75)
         self.light.position.x += 10
         self.light.position.y += 15
+        self.light.run(.repeatForever(.sequence([.moveBy(x: 0, y: 10, duration: 1), .moveBy(x: 0, y: -10, duration: 1)])))
         self.addChild(light)
         self.lightingBitMask = 2
     }

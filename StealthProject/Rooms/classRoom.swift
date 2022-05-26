@@ -419,6 +419,7 @@ class Room: SKNode {
             self.frontWallTexture = SKTexture(imageNamed: "parete frontaleSu")
             self.frontWallTextureMap = SKTexture(imageNamed: "parete frontaleSu normal map")
             self.floorTexture = SKTexture(imageNamed: "erba")
+            self.floorTextureMap = SKTexture(imageNamed: "erbaNormalMap")
             self.sideRightWallTexture = SKTexture(imageNamed: "parete LateraleDx")
             self.sideLeftWallTexture  = SKTexture(imageNamed: "parete LateraleSx")
             self.cornerRightWallTexture = SKTexture(imageNamed: "angolo frontaleDxSu")
@@ -432,29 +433,64 @@ class Room: SKNode {
             self.internalAnglesx2 = SKTexture(imageNamed: "angolo interno Sx 2")
             
         case .SECOND_FLOOE:
-            self.frontWallTexture = SKTexture(imageNamed: "wall")
-            self.floorTexture = SKTexture(imageNamed: "pavimento4")
-            self.floorTextureMap = SKTexture(imageNamed: "pavimento4NormalMap2")
-            self.sideRightWallTexture = SKTexture(imageNamed: "wallR")
-            self.sideLeftWallTexture  = SKTexture(imageNamed: "wallL")
-            self.cornerRightWallTexture = SKTexture(imageNamed: "wallAngleR")
-            self.cornerLeftWallTexture = SKTexture(imageNamed: "wallAngleL")
-            self.frontDoorTexture = SKTexture(imageNamed: "doorClosed")
-            self.leftDoorTexture = SKTexture(imageNamed: "doorLeft")
-            self.rightDoorTexture = SKTexture(imageNamed: "doorRight")
-            self.internalAngledx = SKTexture(imageNamed: "wallSegmentR")
-            self.internalAnglesx = SKTexture(imageNamed: "wallSegmentL")
+            let int = Int.random(in: 0...1)
+            if int == 0{
+                self.frontWallTexture = SKTexture(imageNamed: "wall")
+                self.floorTexture = SKTexture(imageNamed: "pavimento4")
+                self.floorTextureMap = SKTexture(imageNamed: "pavimento4NormalMap2")
+                self.sideRightWallTexture = SKTexture(imageNamed: "wallR")
+                self.sideLeftWallTexture  = SKTexture(imageNamed: "wallL")
+                self.cornerRightWallTexture = SKTexture(imageNamed: "wallAngleR")
+                self.cornerLeftWallTexture = SKTexture(imageNamed: "wallAngleL")
+                self.frontDoorTexture = SKTexture(imageNamed: "doorClosed")
+                self.leftDoorTexture = SKTexture(imageNamed: "doorLeft")
+                self.rightDoorTexture = SKTexture(imageNamed: "doorRight")
+                self.internalAngledx = SKTexture(imageNamed: "wallSegmentR")
+                self.internalAnglesx = SKTexture(imageNamed: "wallSegmentL")
+            }else{
+                self.frontWallTexture = SKTexture(imageNamed: "RedWall")
+                self.floorTexture = SKTexture(imageNamed: "pavimento3")
+                self.floorTextureMap = SKTexture(imageNamed: "pavimento4NormalMap2")
+                self.sideRightWallTexture = SKTexture(imageNamed: "wallR")
+                self.sideLeftWallTexture  = SKTexture(imageNamed: "wallL")
+                self.cornerRightWallTexture = SKTexture(imageNamed: "RedWallAngleR")
+                self.cornerLeftWallTexture = SKTexture(imageNamed: "RedWallAngleL")
+                self.frontDoorTexture = SKTexture(imageNamed: "doorClosed")
+                self.leftDoorTexture = SKTexture(imageNamed: "doorLeft")
+                self.rightDoorTexture = SKTexture(imageNamed: "doorRight")
+                self.internalAngledx = SKTexture(imageNamed: "RedWallSegmentR")
+                self.internalAnglesx = SKTexture(imageNamed: "RedWallSegmentL")
+            }
             
         case .LAST_FLOOR:
-            self.frontWallTexture = SKTexture(imageNamed: "pavimento2 tappeto lato su")
-            self.floorTexture = SKTexture(imageNamed: "pavimento2")
-            self.sideRightWallTexture = SKTexture(imageNamed: "pavimento2 tappeto lato dx")
-            self.sideLeftWallTexture  = SKTexture(imageNamed: "pavimento2 tappeto lato sx")
-            self.cornerRightWallTexture = SKTexture(imageNamed: "pavimento2 tappeto angolo dx su")
-            self.cornerLeftWallTexture = SKTexture(imageNamed: "pavimento2 tappeto angolo sx su")
-            self.frontDoorTexture = SKTexture(imageNamed: "doorClosed")
-            self.leftDoorTexture = SKTexture(imageNamed: "porta laterale")
-            self.rightDoorTexture = SKTexture(imageNamed: "porta laterale")
+            let int = Int.random(in: 0...1)
+            if int == 0{
+                self.frontWallTexture = SKTexture(imageNamed: "RedWall")
+                self.floorTexture = SKTexture(imageNamed: "pavimento3")
+                self.floorTextureMap = SKTexture(imageNamed: "pavimento4NormalMap2")
+                self.sideRightWallTexture = SKTexture(imageNamed: "wallR")
+                self.sideLeftWallTexture  = SKTexture(imageNamed: "wallL")
+                self.cornerRightWallTexture = SKTexture(imageNamed: "RedWallAngleR")
+                self.cornerLeftWallTexture = SKTexture(imageNamed: "RedWallAngleL")
+                self.frontDoorTexture = SKTexture(imageNamed: "doorClosed")
+                self.leftDoorTexture = SKTexture(imageNamed: "doorLeft")
+                self.rightDoorTexture = SKTexture(imageNamed: "doorRight")
+                self.internalAngledx = SKTexture(imageNamed: "RedWallSegmentR")
+                self.internalAnglesx = SKTexture(imageNamed: "RedWallSegmentL")
+            }else{
+                self.frontWallTexture = SKTexture(imageNamed: "pareteCentro")
+                self.floorTexture = SKTexture(imageNamed: "pavimento6")
+                self.floorTextureMap = SKTexture(imageNamed: "pavimento6NormalMap")
+                self.sideRightWallTexture = SKTexture(imageNamed: "pareteLatoDx")
+                self.sideLeftWallTexture  = SKTexture(imageNamed: "pareteLatoSx")
+                self.cornerRightWallTexture = SKTexture(imageNamed: "pareteAngoloDx")
+                self.cornerLeftWallTexture = SKTexture(imageNamed: "pareteAngoloSx")
+                self.frontDoorTexture = SKTexture(imageNamed: "doorClosed")
+                self.leftDoorTexture = SKTexture(imageNamed: "doorLeft")
+                self.rightDoorTexture = SKTexture(imageNamed: "doorRight")
+                self.internalAngledx = SKTexture(imageNamed: "parete angolo interno Dx 2")
+                self.internalAnglesx = SKTexture(imageNamed: "parete angolo interno Sx 2")
+            }
         }
     }
     
@@ -1033,7 +1069,7 @@ class Room: SKNode {
                     }
                 case 14:
                     if floor == .SECOND_FLOOE || floor == .LAST_FLOOR{
-                    let tappetoLatoSx = SKSpriteNode(texture: SKTexture(imageNamed: "tappetoLatoSx"), size: bloccoSize)
+                    let tappetoLatoSx = SKSpriteNode(texture: SKTexture(imageNamed: "TappetoLatoSx"), size: bloccoSize)
                     tappetoLatoSx.normalTexture = SKTexture(imageNamed: "tappetoLatoSx NormalMap")
                     tappetoLatoSx.name = "floorTile"
                     tappetoLatoSx.zPosition = 2
