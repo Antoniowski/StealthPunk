@@ -40,6 +40,7 @@
 		6AAE3F7F283FC4C7002917FB /* grassFootsteps.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6AAE3F7D283FC4C7002917FB /* grassFootsteps.mp3 */; };
 		6AAE3F80283FC4C7002917FB /* footsteps.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6AAE3F7E283FC4C7002917FB /* footsteps.mp3 */; };
 		6AAE3F82283FC736002917FB /* SingleFootstep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6AAE3F81283FC735002917FB /* SingleFootstep.mp3 */; };
+		6AAE3F84283FD42A002917FB /* TimeCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE3F83283FD42A002917FB /* TimeCounter.swift */; };
 		6AB863E128200334006BB85E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB863E028200334006BB85E /* AppDelegate.swift */; };
 		6AB863E328200334006BB85E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6AB863E228200334006BB85E /* GameScene.sks */; };
 		6AB863E528200334006BB85E /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6AB863E428200334006BB85E /* Actions.sks */; };
@@ -102,6 +103,7 @@
 		6AAE3F7D283FC4C7002917FB /* grassFootsteps.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = grassFootsteps.mp3; sourceTree = "<group>"; };
 		6AAE3F7E283FC4C7002917FB /* footsteps.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = footsteps.mp3; sourceTree = "<group>"; };
 		6AAE3F81283FC735002917FB /* SingleFootstep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = SingleFootstep.mp3; sourceTree = "<group>"; };
+		6AAE3F83283FD42A002917FB /* TimeCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCounter.swift; sourceTree = "<group>"; };
 		6AB863DD28200334006BB85E /* StealthPunk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StealthPunk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AB863E028200334006BB85E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6AB863E228200334006BB85E /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				63B9F6AA2833DA35008E62C1 /* GearCounter.swift */,
+				6AAE3F83283FD42A002917FB /* TimeCounter.swift */,
 			);
 			path = HUD;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				4A00C7512825719C009DB657 /* Swipe Functions.swift in Sources */,
 				6AA31BDC282985A8002CCD47 /* StaticObject.swift in Sources */,
 				6AB863E928200334006BB85E /* GameViewController.swift in Sources */,
+				6AAE3F84283FD42A002917FB /* TimeCounter.swift in Sources */,
 				6AAE3F6E2837D9BF002917FB /* CassapancaClass.swift in Sources */,
 				6AAE3F6C2837D966002917FB /* VetrinaClass.swift in Sources */,
 				A693D3562826F5960055C266 /* Path.swift in Sources */,
