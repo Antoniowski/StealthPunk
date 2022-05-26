@@ -891,6 +891,7 @@ class PlayableCharacter: SKSpriteNode{
                     self.facingDirection = .RIGHT
                     self.run(.repeatForever(.animate(with: runningAnimationRight, timePerFrame: 0.125)))
                     self.lucciola.run(.repeatForever(.animate(with: animazioneLucciolaDx, timePerFrame: 0.1)))
+                    self.lucciola.run(.moveTo(x: -25, duration: 1))
                         
                 }
             case .DOWN_RIGHT:
@@ -931,6 +932,7 @@ class PlayableCharacter: SKSpriteNode{
                     self.facingDirection = .LEFT
                     self.run(.repeatForever(.animate(with: runningAnimationLeft, timePerFrame: 0.125)))
                     self.lucciola.run(.repeatForever(.animate(with: animazioneLucciolaSx, timePerFrame: 0.1)))
+                    self.lucciola.run(.moveTo(x: 25, duration: 1))
                         
                 }
             case .UP_LEFT:
