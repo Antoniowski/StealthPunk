@@ -37,6 +37,9 @@
 		6AAE3F77283C1D27002917FB /* NextFloorObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE3F76283C1D27002917FB /* NextFloorObject.swift */; };
 		6AAE3F79283C231B002917FB /* TestScene4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE3F78283C231B002917FB /* TestScene4.swift */; };
 		6AAE3F7B283D2F83002917FB /* LuceInterna.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE3F7A283D2F82002917FB /* LuceInterna.swift */; };
+		6AAE3F7F283FC4C7002917FB /* grassFootsteps.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6AAE3F7D283FC4C7002917FB /* grassFootsteps.mp3 */; };
+		6AAE3F80283FC4C7002917FB /* footsteps.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6AAE3F7E283FC4C7002917FB /* footsteps.mp3 */; };
+		6AAE3F82283FC736002917FB /* SingleFootstep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6AAE3F81283FC735002917FB /* SingleFootstep.mp3 */; };
 		6AB863E128200334006BB85E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB863E028200334006BB85E /* AppDelegate.swift */; };
 		6AB863E328200334006BB85E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6AB863E228200334006BB85E /* GameScene.sks */; };
 		6AB863E528200334006BB85E /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6AB863E428200334006BB85E /* Actions.sks */; };
@@ -96,6 +99,9 @@
 		6AAE3F76283C1D27002917FB /* NextFloorObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextFloorObject.swift; sourceTree = "<group>"; };
 		6AAE3F78283C231B002917FB /* TestScene4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestScene4.swift; sourceTree = "<group>"; };
 		6AAE3F7A283D2F82002917FB /* LuceInterna.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LuceInterna.swift; sourceTree = "<group>"; };
+		6AAE3F7D283FC4C7002917FB /* grassFootsteps.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = grassFootsteps.mp3; sourceTree = "<group>"; };
+		6AAE3F7E283FC4C7002917FB /* footsteps.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = footsteps.mp3; sourceTree = "<group>"; };
+		6AAE3F81283FC735002917FB /* SingleFootstep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = SingleFootstep.mp3; sourceTree = "<group>"; };
 		6AB863DD28200334006BB85E /* StealthPunk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StealthPunk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AB863E028200334006BB85E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6AB863E228200334006BB85E /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -203,6 +209,16 @@
 			path = BaseObject;
 			sourceTree = "<group>";
 		};
+		6AAE3F7C283FC4AC002917FB /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				6AAE3F81283FC735002917FB /* SingleFootstep.mp3 */,
+				6AAE3F7E283FC4C7002917FB /* footsteps.mp3 */,
+				6AAE3F7D283FC4C7002917FB /* grassFootsteps.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		6AB863D428200333006BB85E = {
 			isa = PBXGroup;
 			children = (
@@ -222,6 +238,7 @@
 		6AB863DF28200334006BB85E /* StealthProject */ = {
 			isa = PBXGroup;
 			children = (
+				6AAE3F7C283FC4AC002917FB /* Sounds */,
 				63B9F6AF28343B50008E62C1 /* Info.plist */,
 				63B9F6AC283439A0008E62C1 /* Project Fonts */,
 				63B9F6A92833D9F7008E62C1 /* HUD */,
@@ -402,9 +419,12 @@
 			files = (
 				6AB863EC28200334006BB85E /* Main.storyboard in Resources */,
 				6AB863E328200334006BB85E /* GameScene.sks in Resources */,
+				6AAE3F80283FC4C7002917FB /* footsteps.mp3 in Resources */,
 				6AB863EE28200335006BB85E /* Assets.xcassets in Resources */,
+				6AAE3F82283FC736002917FB /* SingleFootstep.mp3 in Resources */,
 				6AB863F128200335006BB85E /* LaunchScreen.storyboard in Resources */,
 				6AB863E528200334006BB85E /* Actions.sks in Resources */,
+				6AAE3F7F283FC4C7002917FB /* grassFootsteps.mp3 in Resources */,
 				63B9F6AE283439FE008E62C1 /* Victorian Parlor Vintage Alternate_free.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
