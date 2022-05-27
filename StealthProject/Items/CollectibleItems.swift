@@ -15,6 +15,8 @@ enum CollectibleItemCategory: Int{
     case POTION = 3   //SPEED +1
     case SIRINGE = 4  //STRENGHT +1, SPEED +1, NOISE +1
     case HAT = 5    //SPEED +1, NOISE -1, STRENGHT -1
+    case CLOCK1 = 6 //+30SEC
+    case CLOCK2 = 7 // +1MIN
 }
 
 class Collectible: SKSpriteNode{
@@ -53,6 +55,12 @@ class Collectible: SKSpriteNode{
             self.run(.setTexture(sprite))
         case .HAT:
             sprite = SKTexture(imageNamed: "cappelloBlur")
+            self.run(.setTexture(sprite))
+        case .CLOCK1:
+            sprite = SKTexture(imageNamed: "orologio+30sec")
+            self.run(.setTexture(sprite))
+        case .CLOCK2:
+            sprite = SKTexture(imageNamed: "orologio+1min")
             self.run(.setTexture(sprite))
         }
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
@@ -119,6 +127,11 @@ class Collectible: SKSpriteNode{
             if player.getStrenght() < 0 {
                 player.setStrenght(newStrenght: 0)
             }
+        case .CLOCK1:
+            SECONDS = SECONDS + 30
+            
+        case .CLOCK2:
+            MINUTE = MINUTE + 1
         }
     }
     
