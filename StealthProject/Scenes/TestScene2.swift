@@ -53,6 +53,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
 
     
     var indicatore = Counter()
+    var timer = TimeCounter()
     var chest = Chest(locked: false)
     
     var index = 0
@@ -72,7 +73,11 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
         indicatore.position.x = player.position.x - 100
         indicatore.position.y = player.position.y + frame.height/3.5 + 90
-//        scenecamera.addChild(indicatore)
+        timer.position.x = player.position.x - frame.width*0.45
+        timer.position.y = player.position.y + frame.height * 0.35
+        timer.setScale(0.5)
+        scenecamera.addChild(indicatore)
+        scenecamera.addChild(timer)
 
         scenecamera.position = player.position
         scenecamera.setScale(1)
@@ -87,7 +92,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
 //        player.lightingBitMask = 5
         
 //        let room = Room(.SIMPLE_1, startingPosition: CGPoint(x: 0, y: 400), floor: .SECOND_FLOOE)
-        let f = Floor(self, floorType: .FIRST_FLOOR)
+        let f = Floor(self, floorType: .SECOND_FLOOE)
         
 //        luce.categoryBitMask = 2
 //        luce.position = lampione.position
@@ -164,6 +169,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         enumerateChildNodes(withName: "ROOM/dynamicObject"){oggetto, _ in
             self.oggetti.append(oggetto)
         }
+        Timer()
     }
     
     
@@ -210,9 +216,42 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     }
     
     
+    func Timer(){
+            let wait = SKAction.wait(forDuration: 1)
+            let go = SKAction.run({
+                if SECONDS > 0 {
+                    SECONDS -= 1
+                }else{
+                    if MINUTE > 0{
+                        SECONDS = 60
+                        MINUTE -= 1
+                    }else{
+                        print("GAME OVER")
+                    }
+                }
+            })
+            let actions = SKAction.sequence([wait, go])
+        run(.sequence([wait, .run {
+            MINUTE -= 1
+        }]))
+            run(.repeatForever(actions))
+    }
+    
+    func updateTimerLabel(){
+        timer.etichetta.text = String(format: "%d:%d", MINUTE, SECONDS)
+        if SECONDS == 60{
+            timer.etichetta.text = String(format: "%d:00", MINUTE)
+        }else if SECONDS < 10{
+            timer.etichetta.text = String(format: "%d:0%d", MINUTE, SECONDS)
+
+        }
+    }
+    
+    
     
     override func update(_ currentTime: TimeInterval) {
         calcDelta(currentTime: currentTime)
+        updateTimerLabel()
         indicatore.etichetta.text = "x \(indicatore.number)"
         player.updateActionState(scene: self, oggetti: oggetti)
 //        player.updateMovingDirection()
