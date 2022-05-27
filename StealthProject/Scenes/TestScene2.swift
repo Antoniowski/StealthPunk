@@ -47,6 +47,9 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     var testcoin = Collectible(type: .COIN)
     var testcoin2 = Collectible(type: .COIN)
 
+    var clock1 = Collectible(type: .CLOCK1)
+    var clock2 = Collectible(type: .CLOCK2)
+    
     var testcoin3 = Collectible(type: .COIN)
 
     var testcoin4 = Collectible(type: .COIN)
@@ -145,7 +148,14 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
 
         player.position = f.spawn
         player.zPosition = 10
-
+        
+        clock1.zPosition = 3
+        clock2.zPosition = 3
+        clock1.position = .init(x: 150, y: 150)
+        clock2.position = .init(x: 150, y: -150)
+        
+        addChild(clock1)
+        addChild(clock2)
         
         addChild(player)
 //        addChild(armadio)

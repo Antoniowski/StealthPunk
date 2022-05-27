@@ -463,8 +463,8 @@ class Room: SKNode {
                 self.frontDoorTexture = SKTexture(imageNamed: "doorClosed")
                 self.leftDoorTexture = SKTexture(imageNamed: "doorLeft")
                 self.rightDoorTexture = SKTexture(imageNamed: "doorRight")
-                self.internalAngledx = SKTexture(imageNamed: "RedWallSegmentR")
-                self.internalAnglesx = SKTexture(imageNamed: "RedWallSegmentL")
+                self.internalAngledx = SKTexture(imageNamed: "redWallSegmentR")
+                self.internalAnglesx = SKTexture(imageNamed: "redWallSegmentL")
             }
             
         case .LAST_FLOOR:
@@ -868,7 +868,7 @@ class Room: SKNode {
                     furnitureSmall.normalTexture = SKTexture(imageNamed: "stand2NormalMap")
                     if self.floor == .FIRST_FLOOR{
                         furnitureSmall = Lampione(lightBitmask: 1 | 2)
-                        furnitureSmall.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                        furnitureSmall.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/4), y: startingPosition.y - Double(i*blocco) - Double(blocco/4))
 //                        let appoggio = furnitureSmall as? Lampione
 //                        appoggio?.light.ambientColor = .init(red: 0.624, green: 0.624, blue: 0.914, alpha: 0.5)
                     }
@@ -906,6 +906,40 @@ class Room: SKNode {
                     armadio.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                     armadio.lightingBitMask = 1 | 2
                     addChild(armadio)
+                    
+                case 50:
+                    var char2 = SKSpriteNode(texture: SKTexture(imageNamed: "Character2"), size: CGSize(width: 35, height: 70))
+                    char2.lightingBitMask = 1|2
+                    char2.physicsBody = SKPhysicsBody(rectangleOf: .init(width: 35, height: 60))
+                    char2.physicsBody?.affectedByGravity = false
+                    char2.physicsBody?.allowsRotation = false
+                    char2.zPosition = 4
+                    char2.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    char2.physicsBody?.isDynamic = false
+                    addChild(char2)
+                    
+                    
+                case 51:
+                    var char3 = SKSpriteNode(texture: SKTexture(imageNamed: "Character3"), size: CGSize(width: 80, height: 100))
+                    char3.lightingBitMask = 1|2
+                    char3.physicsBody = SKPhysicsBody(rectangleOf: .init(width: 50, height: 80))
+                    char3.physicsBody?.affectedByGravity = false
+                    char3.physicsBody?.allowsRotation = false
+                    char3.zPosition = 4
+                    char3.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    char3.physicsBody?.isDynamic = false
+                    addChild(char3)
+                    
+                case 52:
+                    var char4 = SKSpriteNode(texture: SKTexture(imageNamed: "Character4"), size: CGSize(width: 50, height: 75))
+                    char4.lightingBitMask = 1|2
+                    char4.physicsBody = SKPhysicsBody(rectangleOf: .init(width: 40, height: 60))
+                    char4.physicsBody?.affectedByGravity = false
+                    char4.physicsBody?.allowsRotation = false
+                    char4.zPosition = 4
+                    char4.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    char4.physicsBody?.isDynamic = false
+                    addChild(char4)
                     
                 case 100:
                     let chest = Chest(locked: false)
@@ -1143,8 +1177,8 @@ class Room: SKNode {
     }
     
     func createGuards(){
-        for i in 0...stanzaGuardia.count{
-            for j in 0...stanzaGuardia[1].count{
+        for i in 0...stanzaGuardia.count-1{
+            for j in 0...stanzaGuardia[1].count-1{
                 if(stanzaGuardia[i][j] == 0){
                     let guardia = GuardConoGrande(texture: SKTexture(imageNamed: "ConoGrandeFrontF2"), color: .clear, size: CGSize(width: enemyDimensionWidth, height: enemyDimensionHeight))
                     guardia.position = CGPoint(x: startingPosition.x + Double(j * blocco) + Double(blocco) , y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
