@@ -463,8 +463,8 @@ class Room: SKNode {
                 self.frontDoorTexture = SKTexture(imageNamed: "doorClosed")
                 self.leftDoorTexture = SKTexture(imageNamed: "doorLeft")
                 self.rightDoorTexture = SKTexture(imageNamed: "doorRight")
-                self.internalAngledx = SKTexture(imageNamed: "RedWallSegmentR")
-                self.internalAnglesx = SKTexture(imageNamed: "RedWallSegmentL")
+                self.internalAngledx = SKTexture(imageNamed: "redWallSegmentR")
+                self.internalAnglesx = SKTexture(imageNamed: "redWallSegmentL")
             }
             
         case .LAST_FLOOR:
@@ -868,7 +868,7 @@ class Room: SKNode {
                     furnitureSmall.normalTexture = SKTexture(imageNamed: "stand2NormalMap")
                     if self.floor == .FIRST_FLOOR{
                         furnitureSmall = Lampione(lightBitmask: 1 | 2)
-                        furnitureSmall.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                        furnitureSmall.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/4), y: startingPosition.y - Double(i*blocco) - Double(blocco/4))
 //                        let appoggio = furnitureSmall as? Lampione
 //                        appoggio?.light.ambientColor = .init(red: 0.624, green: 0.624, blue: 0.914, alpha: 0.5)
                     }
@@ -1183,8 +1183,8 @@ class Room: SKNode {
     }
     
     func createGuards(){
-        for i in 0...stanzaGuardia.count{
-            for j in 0...stanzaGuardia[1].count{
+        for i in 0...stanzaGuardia.count-1{
+            for j in 0...stanzaGuardia[1].count-1{
                 if(stanzaGuardia[i][j] == 0){
                     let guardia = GuardConoGrande(texture: SKTexture(imageNamed: "ConoGrandeFrontF2"), color: .clear, size: CGSize(width: enemyDimensionWidth, height: enemyDimensionHeight))
                     guardia.position = CGPoint(x: startingPosition.x + Double(j * blocco) + Double(blocco) , y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
