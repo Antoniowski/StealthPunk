@@ -68,6 +68,8 @@ class Room: SKNode {
     private var numRighe : Int = 0
     private var numColonne : Int = 0
     private var stanza : Matrix = []
+    private var stanzaGuardia: Matrix = []
+    private var vettoreDiPath: [[myAction]] = []
     private var pavimento: Matrix = []
     private var nemici : [Guard] = []
     private var oggetti : [InteractableObject] = []
@@ -168,10 +170,13 @@ class Room: SKNode {
             numRighe = simple1Matrix[1].count
             numColonne = simple1Matrix.count
             stanza = simple1Matrix
+            stanzaGuardia = simple1MatrixGuards
             pavimento = simple1MatrixPavimento
+            vettoreDiPath = simple1MatrixGuardsPaths
             nemici = []
             setTextures(tipo: floor)
             createRoom()
+            createGuards()
             addRugsAndLights()
         case .SIMPLE_2:
             door = DoorPosition(UP: true, DOWN: true, RIGHT: false, LEFT: false)
@@ -1116,7 +1121,7 @@ class Room: SKNode {
                     }
                 case 14:
                     if floor == .SECOND_FLOOE || floor == .LAST_FLOOR{
-                    let tappetoLatoSx = SKSpriteNode(texture: SKTexture(imageNamed: "TappetoLatoSx"), size: bloccoSize)
+                    let tappetoLatoSx = SKSpriteNode(texture: SKTexture(imageNamed: "tappetoLatoSx"), size: bloccoSize)
                     tappetoLatoSx.normalTexture = SKTexture(imageNamed: "tappetoLatoSx NormalMap")
                     tappetoLatoSx.name = "floorTile"
                     tappetoLatoSx.zPosition = 2
@@ -1171,6 +1176,22 @@ class Room: SKNode {
         }
     }
     
+    func createGuards(){
+        for i in 0...stanzaGuardia.count{
+            for j in 0...stanzaGuardia[1].count{
+                if(stanzaGuardia[i][j] == 0){
+                    let guardia = GuardConoGrande(texture: SKTexture(imageNamed: "ConoGrandeFrontF2"), color: .clear, size: CGSize(width: enemyDimensionWidth, height: enemyDimensionHeight))
+                    guardia.position = CGPoint(x: startingPosition.x + Double(j * blocco) + Double(blocco) , y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    nemici.append(guardia)
+                    addChild(guardia)
+                }
+            }
+        }
+        
+        for index in 0...nemici.count-1 {
+            createPath(entity: nemici[index], arrayOfActions: vettoreDiPath[index])
+        }
+    }
     
     
     func getRighe() -> Int{

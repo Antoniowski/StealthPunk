@@ -12,6 +12,7 @@
 		4A00C7512825719C009DB657 /* Swipe Functions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A00C7502825719C009DB657 /* Swipe Functions.swift */; };
 		4A1B448E2822B274001DABEE /* ControllerRelatedGlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B448D2822B274001DABEE /* ControllerRelatedGlobalVariables.swift */; };
 		4A1B44962822B809001DABEE /* TestScene2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B44952822B809001DABEE /* TestScene2.swift */; };
+		4A2159FA283FD60C000F237C /* GuardMatrixes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2159F9283FD60C000F237C /* GuardMatrixes.swift */; };
 		4ABFC91E28327D6D00213CC9 /* GuardConoGrande.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABFC91D28327D6D00213CC9 /* GuardConoGrande.swift */; };
 		63B9F6AB2833DA35008E62C1 /* GearCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9F6AA2833DA35008E62C1 /* GearCounter.swift */; };
 		63B9F6AE283439FE008E62C1 /* Victorian Parlor Vintage Alternate_free.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63B9F6AD283439FE008E62C1 /* Victorian Parlor Vintage Alternate_free.ttf */; };
@@ -74,6 +75,7 @@
 		4A00C7502825719C009DB657 /* Swipe Functions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swipe Functions.swift"; sourceTree = "<group>"; };
 		4A1B448D2822B274001DABEE /* ControllerRelatedGlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerRelatedGlobalVariables.swift; sourceTree = "<group>"; };
 		4A1B44952822B809001DABEE /* TestScene2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestScene2.swift; sourceTree = "<group>"; };
+		4A2159F9283FD60C000F237C /* GuardMatrixes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardMatrixes.swift; sourceTree = "<group>"; };
 		4ABFC91D28327D6D00213CC9 /* GuardConoGrande.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardConoGrande.swift; sourceTree = "<group>"; };
 		63B9F6AA2833DA35008E62C1 /* GearCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearCounter.swift; sourceTree = "<group>"; };
 		63B9F6AD283439FE008E62C1 /* Victorian Parlor Vintage Alternate_free.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Victorian Parlor Vintage Alternate_free.ttf"; sourceTree = "<group>"; };
@@ -349,6 +351,7 @@
 				A693D35828293E470055C266 /* classRoom.swift */,
 				A693D35A28295AE20055C266 /* classFloor.swift */,
 				6AACAB46282BF68B00B5E89B /* Matrixes.swift */,
+				4A2159F9283FD60C000F237C /* GuardMatrixes.swift */,
 				6AFCC51F282EE6CB00EC1666 /* DoorClass.swift */,
 			);
 			path = Rooms;
@@ -453,6 +456,7 @@
 				6AC7096928254AB4007F8A50 /* InteractableObjectClass.swift in Sources */,
 				6AC709652823D78A007F8A50 /* AbilityClass.swift in Sources */,
 				6AA31BE528299DE4002CCD47 /* UsableObject.swift in Sources */,
+				4A2159FA283FD60C000F237C /* GuardMatrixes.swift in Sources */,
 				6AB8640228217ED5006BB85E /* PlayerMovementFunctions.swift in Sources */,
 				A693D35B28295AE20055C266 /* classFloor.swift in Sources */,
 				A693D35928293E470055C266 /* classRoom.swift in Sources */,
