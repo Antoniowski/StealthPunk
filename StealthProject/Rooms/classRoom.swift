@@ -505,7 +505,7 @@ class Room: SKNode {
         for i in 0..<stanza.count{
             for j in 0..<stanza[1].count{
                 if stanza[i][j] != 0{
-                    let floor = SKSpriteNode(texture: floorTexture, size: CGSize(width: blocco, height: blocco))
+                    let floor = SKSpriteNode(texture: floorTexture, size: CGSize(width: Double(blocco), height: Double(blocco)))
                     floor.normalTexture = floorTextureMap
                     floor.name = "floorTile"
                     floor.zPosition = 1
@@ -1194,8 +1194,10 @@ class Room: SKNode {
             }
         }
         
-        for index in 0...nemici.count-1 {
-            createPath(entity: nemici[index], arrayOfActions: vettoreDiPath[index])
+        if(nemici.count > 0){
+            for index in 0...nemici.count-1 {
+                createPath(entity: nemici[index], arrayOfActions: vettoreDiPath[index])
+            }
         }
     }
     
