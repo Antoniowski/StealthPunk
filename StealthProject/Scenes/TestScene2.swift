@@ -149,9 +149,6 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         player.position = f.spawn
         player.zPosition = 10
         
-        clock1.position = player.position
-        clock1.position.x += 10
-        
         clock1.zPosition = 3
         clock2.zPosition = 3
         clock1.position = .init(x: 150, y: 150)
