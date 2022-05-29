@@ -107,9 +107,13 @@ class Human: PlayableCharacter{
         
         
         self.runningAnimationFront = [SKTexture(imageNamed: "boyRunFront1"), SKTexture(imageNamed: "boyRunFront2"), SKTexture(imageNamed: "boyRunFront3"), SKTexture(imageNamed: "boyRunFront4")]
+        self.runningAnimationFrontLeft = [SKTexture(imageNamed: "boyBastaL1"), SKTexture(imageNamed: "boyBastaL2"), SKTexture(imageNamed: "boyBastaL3"), SKTexture(imageNamed: "boyBastaL4")]
+        self.runningAnimationFrontRight = [SKTexture(imageNamed: "boyBastaR1"), SKTexture(imageNamed: "boyBastaR2"), SKTexture(imageNamed: "boyBastaR3"), SKTexture(imageNamed: "boyBastaR4")]
         self.runningAnimationLeft = [SKTexture(imageNamed: "boyRunLeft1"), SKTexture(imageNamed: "boyRunLeft1m"),SKTexture(imageNamed: "boyRunLeft2"), SKTexture(imageNamed: "boyRunLeft2m"), SKTexture(imageNamed: "boyRunLeft3"), SKTexture(imageNamed: "boyRunLeft3m"), SKTexture(imageNamed: "boyRunLeft4"), SKTexture(imageNamed: "boyRunLeft4m")]
         self.runningAnimationRight = [SKTexture(imageNamed: "boyRunRight1"), SKTexture(imageNamed: "boyRunRight1m"), SKTexture(imageNamed: "boyRunRight2"), SKTexture(imageNamed: "boyRunRight2m"), SKTexture(imageNamed: "boyRunRight3"), SKTexture(imageNamed: "boyRunRight3m"), SKTexture(imageNamed: "boyRunRight4"), SKTexture(imageNamed: "boyRunRight4m")]
         self.runningAnimationBack = [SKTexture(imageNamed: "boyRunBack1"), SKTexture(imageNamed: "boyRunBack2"), SKTexture(imageNamed: "boyRunBack3"), SKTexture(imageNamed: "boyRunBack4")]
+        self.runningAnimationBackLeft = [SKTexture(imageNamed: "boyRunninL1"), SKTexture(imageNamed: "boyRunninL2"),SKTexture(imageNamed: "boyRunninL3"),SKTexture(imageNamed: "boyRunninL4")]
+        self.runningAnimationBackRight = [SKTexture(imageNamed: "boyRunninR1"), SKTexture(imageNamed: "boyRunninR2"),SKTexture(imageNamed: "boyRunninR3"),SKTexture(imageNamed: "boyRunninR4")]
         
         self.interactAnimationLeft = [SKTexture(imageNamed: "boyInteraction1"),SKTexture(imageNamed: "boyInteraction2"),SKTexture(imageNamed: "boyInteraction3"),SKTexture(imageNamed: "boyInteraction4")]
         self.interactAnimationRight = [SKTexture(imageNamed: "boyInteractionRight1"),SKTexture(imageNamed: "boyInteractionRight2"),SKTexture(imageNamed: "boyInteractionRight3"),SKTexture(imageNamed: "boyInteractionRight4")]
