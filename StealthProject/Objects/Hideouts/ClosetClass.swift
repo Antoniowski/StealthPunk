@@ -11,7 +11,7 @@ import SpriteKit
 class Closet: Hideout{
     var openCloset: SKTexture = SKTexture()
     init(){
-        super.init(texture: SKTexture(imageNamed: "closet"), highlighted: SKTexture(imageNamed: "closetFocused"), color: .clear, size: CGSize(width: blocco, height: blocco), type: .HIDEOUT)
+        super.init(texture: SKTexture(imageNamed: "closet"), highlighted: SKTexture(imageNamed: "closetBordo"), color: .clear, size: CGSize(width: blocco, height: blocco), type: .HIDEOUT)
         self.setHideoutCategory(.CLOSET)
         self.setName("Closet")
         self.openCloset = SKTexture(imageNamed: "ClosetOpen")
@@ -22,6 +22,6 @@ class Closet: Hideout{
     }
     
     override func action() {
-        self.run(.sequence([.setTexture(openCloset), .wait(forDuration: 0.8), .setTexture(baseTexture)]))
+        self.run(.sequence([.setTexture(openCloset),.playSoundFileNamed("openCabinet", waitForCompletion: true), .setTexture(baseTexture), .playSoundFileNamed("closeCabinet", waitForCompletion: true)]))
     }
 }

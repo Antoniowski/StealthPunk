@@ -87,7 +87,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         scenecamera.addChild(timer)
 
         scenecamera.position = player.position
-        scenecamera.setScale(8)
+        scenecamera.setScale(1)
 //        armadio.position = player.position
 //        armadio.position.x += 250
 //        lampione.position = player.position
@@ -218,6 +218,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         //PER FAR APPARIRE LE STANZE
         if firstBody.node?.name == "player" && secondBody.node?.name == "door"{
             let door = secondBody.node as? Door
+            door?.run(.playSoundFileNamed("door2", waitForCompletion: true))
             door?.open()
             door?.parent?.alpha = 1
         }

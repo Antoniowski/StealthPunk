@@ -877,11 +877,7 @@ class Room: SKNode {
                     addChild(furnitureSmall)
                 case 40:
                     var armadio: Hideout = Hideout()
-                    if Int.random(in: 0...10) > 5{
-                        armadio = Cassapanca()
-                    }else{
-                        armadio = Vetrina()
-                    }
+                    armadio = Closet()
                     if floor == .FIRST_FLOOR{
                         armadio = Bush()
                     }

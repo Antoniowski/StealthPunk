@@ -17,6 +17,7 @@ enum CollectibleItemCategory: Int{
     case HAT = 5    //SPEED +1, NOISE -1, STRENGHT -1
     case CLOCK1 = 6 //+30SEC
     case CLOCK2 = 7 // +1MIN
+    case FINAL = 8 // FINAL
 }
 
 class Collectible: SKSpriteNode{
@@ -61,6 +62,9 @@ class Collectible: SKSpriteNode{
             self.run(.setTexture(sprite))
         case .CLOCK2:
             sprite = SKTexture(imageNamed: "orologio+1min")
+            self.run(.setTexture(sprite))
+        case .FINAL:
+            sprite = SKTexture(imageNamed: "")
             self.run(.setTexture(sprite))
         }
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
@@ -132,6 +136,8 @@ class Collectible: SKSpriteNode{
             
         case .CLOCK2:
             MINUTE = MINUTE + 1
+        case .FINAL:
+            print("YOU WON")
         }
     }
     
