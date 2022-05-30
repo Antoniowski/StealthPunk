@@ -403,7 +403,7 @@ class Room: SKNode {
         self.frontWallTexture = SKTexture(imageNamed: "parete centrale")
         self.frontWallTextureMap = SKTexture(imageNamed: "parete centrale normal map")
         self.floorTexture = SKTexture(imageNamed: "pavimento taverna")
-        self.floorTextureMap = SKTexture(imageNamed: "pavimento taverna normal map")
+        self.floorTextureMap = SKTexture(imageNamed: "pavimento taverna Normal Map")
         self.sideRightWallTexture = SKTexture(imageNamed: "parete lato dx")
         self.sideLeftWallTexture  = SKTexture(imageNamed: "parete lato sx")
         self.cornerRightWallTexture = SKTexture(imageNamed: "parete angolo dx")
@@ -442,7 +442,7 @@ class Room: SKNode {
             if int == 0{
                 self.frontWallTexture = SKTexture(imageNamed: "wall")
                 self.floorTexture = SKTexture(imageNamed: "pavimento4")
-                self.floorTextureMap = SKTexture(imageNamed: "pavimento4NormalMap2")
+                self.floorTextureMap = SKTexture(imageNamed: "pavimento4NormalMap")
                 self.sideRightWallTexture = SKTexture(imageNamed: "wallR")
                 self.sideLeftWallTexture  = SKTexture(imageNamed: "wallL")
                 self.cornerRightWallTexture = SKTexture(imageNamed: "wallAngleR")
@@ -455,7 +455,7 @@ class Room: SKNode {
             }else{
                 self.frontWallTexture = SKTexture(imageNamed: "RedWall")
                 self.floorTexture = SKTexture(imageNamed: "pavimento3")
-                self.floorTextureMap = SKTexture(imageNamed: "pavimento4NormalMap2")
+                self.floorTextureMap = SKTexture(imageNamed: "pavimento4NormalMap")
                 self.sideRightWallTexture = SKTexture(imageNamed: "wallR")
                 self.sideLeftWallTexture  = SKTexture(imageNamed: "wallL")
                 self.cornerRightWallTexture = SKTexture(imageNamed: "RedWallAngleR")
@@ -472,7 +472,7 @@ class Room: SKNode {
             if int == 0{
                 self.frontWallTexture = SKTexture(imageNamed: "RedWall")
                 self.floorTexture = SKTexture(imageNamed: "pavimento3")
-                self.floorTextureMap = SKTexture(imageNamed: "pavimento4NormalMap2")
+                self.floorTextureMap = SKTexture(imageNamed: "pavimento4NormalMap")
                 self.sideRightWallTexture = SKTexture(imageNamed: "wallR")
                 self.sideLeftWallTexture  = SKTexture(imageNamed: "wallL")
                 self.cornerRightWallTexture = SKTexture(imageNamed: "RedWallAngleR")
