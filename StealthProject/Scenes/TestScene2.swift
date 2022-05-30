@@ -127,7 +127,8 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         lightSwitch.position.x -= 70
         
         knuckles.position = .init(x: 150, y: 150)
-        testcoin.position = .init(x: 150, y: -150)
+        boots.position = .init(x: 150, y: -150)
+        boots.zPosition = 5
         testcoin2.position = .init(x: 170, y: -150)
         testcoin3.position = .init(x: 190, y: -150)
         testcoin4.position = .init(x: 210, y: -150)
@@ -158,9 +159,9 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
 //        addChild(t)
 //        addChild(ombra)
 //        addChild(lightSwitch)
-//        addChild(boots)
+        addChild(boots)
 //        addChild(knuckles)
-        addChild(testcoin)
+//        addChild(testcoin)
 //        addChild(testcoin2)
 //        addChild(testcoin4)
 //        addChild(testcoin3)
