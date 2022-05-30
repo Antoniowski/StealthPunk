@@ -89,6 +89,7 @@ class Collectible: SKSpriteNode{
         switch type {
         case .COIN:
             print("")
+            self.run(.playSoundFileNamed("GearSound", waitForCompletion: true))
         case .BOOTS:
             if player.getNoise() > 0{
                 player.setNoise(newNoise: player.getNoise() - 1)

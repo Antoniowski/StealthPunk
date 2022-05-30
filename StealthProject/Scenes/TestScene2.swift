@@ -47,9 +47,9 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     var knuckles = Collectible(type: .KNUCKLES)
     var testcoin = Collectible(type: .COIN)
     var testcoin2 = Collectible(type: .COIN)
-
-    var clock1 = Collectible(type: .CLOCK1)
-    var clock2 = Collectible(type: .CLOCK2)
+//
+//    var clock1 = Collectible(type: .CLOCK1)
+//    var clock2 = Collectible(type: .CLOCK2)
     
     var testcoin3 = Collectible(type: .COIN)
 
@@ -100,7 +100,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
 //        player.lightingBitMask = 5
         
 //        let room = Room(.SIMPLE_1, startingPosition: CGPoint(x: 0, y: 400), floor: .SECOND_FLOOE)
-        let f = Floor(self, floorType: .SECOND_FLOOE)
+        let f = Floor(self, floorType: .FIRST_FLOOR)
         
 //        luce.categoryBitMask = 2
 //        luce.position = lampione.position
@@ -115,16 +115,6 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
         luce.ambientColor = .init(red: 0.624, green: 0.624, blue: 0.914, alpha: 0.25) // PER LE PARTI SCURE - GIARDINO
 //        luce.ambientColor = .init(red: 0.6, green: 0.6, blue: 0.75, alpha: 0.15)
-
-        coin.size = CGSize(width: 30, height: 30)
-
-        ombra.position = t.position
-        ombra.position.y -= coin.size.height/2 + 10
-        ombra.zPosition = 1
-        ombra.fillColor = .init(white: 0, alpha: 0.2)
-        ombra.strokeColor = .clear
-        
-        coin.addChild(ombra)
         
         t.position = CGPoint(x: 100, y: 100)
         t.addChild(coin)
@@ -154,13 +144,13 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         player.position = f.spawn
         player.zPosition = 10
         
-        clock1.zPosition = 3
-        clock2.zPosition = 3
-        clock1.position = .init(x: 150, y: 150)
-        clock2.position = .init(x: 150, y: -150)
-        
-        addChild(clock1)
-        addChild(clock2)
+//        clock1.zPosition = 3
+//        clock2.zPosition = 3
+//        clock1.position = .init(x: 150, y: 150)
+//        clock2.position = .init(x: 150, y: -150)
+//        
+//        addChild(clock1)
+//        addChild(clock2)
         
         addChild(player)
 //        addChild(armadio)
@@ -171,7 +161,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
 //        addChild(lightSwitch)
 //        addChild(boots)
 //        addChild(knuckles)
-//        addChild(testcoin)
+        addChild(testcoin)
 //        addChild(testcoin2)
 //        addChild(testcoin4)
 //        addChild(testcoin3)
@@ -216,6 +206,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
             }
             secondBody.node?.removeFromParent()
         }
+        
         //PER FAR APPARIRE LE STANZE
         if firstBody.node?.name == "player" && secondBody.node?.name == "door"{
             let door = secondBody.node as? Door
