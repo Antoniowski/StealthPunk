@@ -166,16 +166,17 @@ class LobbyScene: SKScene, PlayableScene{
             counter2.velocita.text = "speed: 3/5"
             counter2.rumore.text = "noise: 1/5"
             counter2.run(.moveTo(y: -frame.height/3.5 - 15, duration: 0.5), completion: {
-//                self.player2 = false
+                self.counter2.moveBox = false
             })
         }
         else if (player3 == true){
+            counter2.moveBox = true
             counter2.nome.text = "Oswald / locked"
             counter2.forza.text = "strenght: 5/5"
             counter2.velocita.text = "speed: 2/5"
             counter2.rumore.text = "noise: 4/5"
             counter2.run(.moveTo(y: -frame.height/3.5 - 15, duration: 0.5), completion: {
-//                self.player3 = false
+                self.counter2.moveBox = false
             })
         }
         else if (player4 == true){
@@ -184,12 +185,18 @@ class LobbyScene: SKScene, PlayableScene{
             counter2.velocita.text = "speed: 3/5"
             counter2.rumore.text = "noise: 2/5"
             counter2.run(.moveTo(y: -frame.height/3.5 - 15, duration: 0.5), completion: {
-//                self.player4 = false
+                self.counter2.moveBox = false
             })
             
         }
         else{
-            counter2.run(.moveTo(y: -frame.height/3.5 - 175, duration: 0.5))
+            if (counter2.moveBox == false){
+            run(.sequence([.wait(forDuration: 0.5), .run {
+               
+                self.counter2.run(.moveTo(y: -self.frame.height/3.5 - 175, duration: 0.5))
+                self.counter2.moveBox = true
+            }]))
+            }
         }
     }
     
