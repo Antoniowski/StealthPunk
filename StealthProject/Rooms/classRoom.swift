@@ -1247,6 +1247,30 @@ class Room: SKNode {
                     arrayOfGuards.append(guardia)
                     
                     print("GUARDIA CREATA: \(guardia.name) + \(guardia.position)")
+                } else if(stanzaGuardia[i][j] == 301){
+                    print("GUARDIA PICCOLA")
+                    let guardia = GuardConoPiccolo(texture: SKTexture(imageNamed: "ConoPiccoloBackF1"), color: .clear, size: CGSize(width: enemyDimensionWidth, height: enemyDimensionHeight))
+                    guardia.position = CGPoint(x: startingPosition.x + Double(j * blocco) + Double(blocco) , y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    guardia.zPosition = 500
+                    guardia.name = "Guardia"+String(guardNameIndex)
+                    guardNameIndex += 1
+                    addChild(guardia)
+                    
+                    guardia.getCenterBall().zPosition = 600
+                    guardia.getCenterBall().fillColor = .blue
+                    guardia.getCenterBall().strokeColor = .blue
+                    guardia.getCenterBall().position = guardia.position
+                    addChild(guardia.getCenterBall())
+                    
+                    guardia.roomReference = self
+                    
+                    guardia.floorMatrixCopy = self.stanza
+                    guardia.floorMatrixForPathfinding = self.stanza
+                    
+                    nemici.append(guardia)
+                    arrayOfGuards.append(guardia)
+                    
+                    print("GUARDIA CREATA: \(guardia.name) + \(guardia.position)")
                 }
             }
         }

@@ -267,12 +267,12 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
                 print("GUARDIA POSIZIONE CONVERTITA: \(posizioneDellaScena)")
                 let posizioneDellaScena2 = guardia.roomReference.convert(guardia.position, to: self)
                 print("GUARDIA POSIZIONE CONVERTITA 2: \(posizioneDellaScena2)")
-                guardia.removeFromParent()
-                guardia.getCenterBall().removeFromParent()
-                guardia.position = posizioneDellaScena2
-                guardia.getCenterBall().position = posizioneDellaScena2
-                self.addChild(guardia)
-                self.addChild(guardia.getCenterBall())
+//                guardia.removeFromParent()
+//                guardia.getCenterBall().removeFromParent()
+//                guardia.position = posizioneDellaScena2
+//                guardia.getCenterBall().position = posizioneDellaScena2
+//                self.addChild(guardia)
+//                self.addChild(guardia.getCenterBall())
             }
         }
         

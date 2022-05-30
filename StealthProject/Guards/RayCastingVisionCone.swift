@@ -22,11 +22,17 @@ func visionCone(entity: Guard, scene: SKScene){
 //    entity.position = entity.getCenterBall().position
 
     
-    scene.enumerateChildNodes(withName: "*"){node, _ in
+    entity.parent!.enumerateChildNodes(withName: "*"){node, _ in
         if(node.name == entity.name!+"visualCone"){
             node.removeFromParent()
         }
     }
+    
+//    scene.enumerateChildNodes(withName: "*"){node, _ in
+//        if(node.name == entity.name!+"visualCone"){
+//            node.removeFromParent()
+//        }
+//    }
     
     entity.resetArrayOfPoints()
             
@@ -45,7 +51,7 @@ func visionConeRayCasting360(entity: Guard, scene: SKScene){
         var newAngle = entity.getCenterBall().zRotation + CGFloat(index)
         var newX4 = cos(newAngle * 3.14 / 180)*CGFloat(entity.getVisionConeRadius())
         var newY4 = sin(newAngle * 3.14 / 180)*CGFloat(entity.getVisionConeRadius())
-        rayCasting(myX: entity.position.x + newX4, myY: entity.position.y + newY4, entity: entity, scene: scene, rayCastingPlayerFound: &rayCastingPlayerFound)
+        rayCasting(myX: entity.roomReference.convert(entity.position, to: scene).x + newX4, myY: entity.roomReference.convert(entity.position, to: scene).y + newY4, entity: entity, scene: scene, rayCastingPlayerFound: &rayCastingPlayerFound)
     }
     
     
@@ -75,18 +81,18 @@ func visionConeRayCasting(entity: Guard, scene: SKScene){
         var newAngle = myAngle + CGFloat(counter - index)
         var newX4 = cos(newAngle * 3.14 / 180)*CGFloat(entity.getVisionConeRadius())
         var newY4 = sin(newAngle * 3.14 / 180)*CGFloat(entity.getVisionConeRadius())
-        rayCasting(myX: entity.position.x + newX4, myY: entity.position.y + newY4, entity: entity, scene: scene, rayCastingPlayerFound: &rayCastingPlayerFound)
+        rayCasting(myX: entity.roomReference.convert(entity.position, to: scene).x + newX4, myY: entity.roomReference.convert(entity.position, to: scene).y + newY4, entity: entity, scene: scene, rayCastingPlayerFound: &rayCastingPlayerFound)
         
     }
     
-    rayCasting(myX: entity.position.x + newX, myY: entity.position.y + newY, entity: entity, scene: scene, rayCastingPlayerFound: &rayCastingPlayerFound)
+    rayCasting(myX: entity.roomReference.convert(entity.position, to: scene).x + newX, myY: entity.roomReference.convert(entity.position, to: scene).y + newY, entity: entity, scene: scene, rayCastingPlayerFound: &rayCastingPlayerFound)
     
     
     for index in 1...counter {
         var newAngle = myAngle - CGFloat(index)
         var newX4 = cos(newAngle * 3.14 / 180)*CGFloat(entity.getVisionConeRadius())
         var newY4 = sin(newAngle * 3.14 / 180)*CGFloat(entity.getVisionConeRadius())
-        rayCasting(myX: entity.position.x + newX4, myY: entity.position.y + newY4, entity: entity, scene: scene, rayCastingPlayerFound: &rayCastingPlayerFound)
+        rayCasting(myX: entity.roomReference.convert(entity.position, to: scene).x + newX4, myY: entity.roomReference.convert(entity.position, to: scene).y + newY4, entity: entity, scene: scene, rayCastingPlayerFound: &rayCastingPlayerFound)
     }
     
     
@@ -106,13 +112,13 @@ func createVisionCone360(entity: Guard, scene: SKScene){
     var myPath = UIBezierPath()
     
 //    myPath.move(to: entity.arrayOfPoints[0])
-    myPath.move(to: entity.getArrayOfVisionPoints()[0])
+    myPath.move(to: scene.convert(entity.getArrayOfVisionPoints()[0], to: entity.parent!))
     
     let totalElements = entity.getArrayOfVisionPoints().count
     
     for index in 0..<entity.getArrayOfVisionPoints().count{
         let square = SKShapeNode(rectOf: CGSize(width: 5, height: 5))
-        myPath.addLine(to: entity.getArrayOfVisionPoints()[index])
+        myPath.addLine(to: scene.convert(entity.getArrayOfVisionPoints()[index], to: entity.parent!))
     }
     
     let visualCone = SKShapeNode(path: myPath.cgPath)
@@ -122,7 +128,7 @@ func createVisionCone360(entity: Guard, scene: SKScene){
     visualCone.zPosition = entity.zPosition - 1
     visualCone.name = entity.name!+"visualCone"
     
-    scene.addChild(visualCone)
+    entity.parent!.addChild(visualCone)
     
 //    if(entity.rayCastingPlayerFound){
 //        print("Trovato")
@@ -142,7 +148,7 @@ func createVisionCone(entity: Guard, scene: SKScene){
             
     for index in 0..<entity.getArrayOfVisionPoints().count{
         let square = SKShapeNode(rectOf: CGSize(width: 5, height: 5))
-        myPath.addLine(to: entity.getArrayOfVisionPoints()[index])
+        myPath.addLine(to: scene.convert(entity.getArrayOfVisionPoints()[index], to: entity.parent!))
     }
     
     myPath.addLine(to: entity.position)
@@ -154,24 +160,27 @@ func createVisionCone(entity: Guard, scene: SKScene){
     visualCone.zPosition = entity.zPosition - 1
     visualCone.name = entity.name!+"visualCone"
     
-    scene.addChild(visualCone)
+    entity.parent!.addChild(visualCone)
     
     
     if(entity.rayCastingPlayerFound){
-        if (entity.getGuardActionState() == .IDLE || entity.getGuardActionState() == .MOVE || entity.getGuardActionState() == .ROTATING_ACTION){
-//            print("NOT FOUND IN CHASING")
-            entity.pathToChasing = true
-        } else if (entity.getGuardActionState() == .SEARCHING || entity.getGuardActionState() == .ROTATING || entity.getGuardActionState() == .RETURNING){
-            entity.pathToChasing = true
-        }
-    } else {
-        if (entity.getGuardActionState() == .CHASING ){
-            entity.chasingToSearching = true
-        } else if (entity.getGuardActionState() == .ROTATING && entity.readyToReturn){
-            entity.readyToReturn = false
-            entity.rotatingToReturn = true
-        }
+        print("GIOCATORE TROVATO")
     }
+    
+//    if(entity.rayCastingPlayerFound){
+//        if (entity.getGuardActionState() == .IDLE || entity.getGuardActionState() == .MOVE || entity.getGuardActionState() == .ROTATING_ACTION){
+//            entity.pathToChasing = true
+//        } else if (entity.getGuardActionState() == .SEARCHING || entity.getGuardActionState() == .ROTATING || entity.getGuardActionState() == .RETURNING){
+//            entity.pathToChasing = true
+//        }
+//    } else {
+//        if (entity.getGuardActionState() == .CHASING ){
+//            entity.chasingToSearching = true
+//        } else if (entity.getGuardActionState() == .ROTATING && entity.readyToReturn){
+//            entity.readyToReturn = false
+//            entity.rotatingToReturn = true
+//        }
+//    }
     
 //    if(entity.rayCastingPlayerFound){
 //        entity.setPlayerFoundTrue()
@@ -195,18 +204,18 @@ func createVisionCone(entity: Guard, scene: SKScene){
 
 func rayCasting(myX: CGFloat, myY: CGFloat, entity: Guard, scene: SKScene, rayCastingPlayerFound: inout Bool){
     var foundObject: Bool = false
-    let intersectedBody = scene.physicsWorld.body(alongRayStart: entity.position, end: CGPoint(x: myX, y: myY))
+    let intersectedBody = scene.physicsWorld.body(alongRayStart: entity.roomReference.convert(entity.position, to: scene), end: CGPoint(x: myX, y: myY))
     if(intersectedBody != nil && intersectedBody?.node?.name! == "player"){
         entity.rayCastingPlayerFound = true
     }
-    scene.physicsWorld.enumerateBodies(alongRayStart: entity.position, end: CGPoint(x: myX, y: myY)){ body, point, vector, object in
+    scene.physicsWorld.enumerateBodies(alongRayStart: entity.roomReference.convert(entity.position, to: scene), end: CGPoint(x: myX, y: myY)){ body, point, vector, object in
         if(intersectedBody?.node?.name! != "player"){
             foundObject = true
             entity.appendToArrayOfPoints(point: point)
             object.pointee = true
         }
-
     }
+    
     if(!foundObject){
         entity.appendToArrayOfPoints(point: CGPoint(x: myX, y: myY))
     }
