@@ -1182,14 +1182,18 @@ class Room: SKNode {
                 if(stanzaGuardia[i][j] == 0){
                     let guardia = GuardConoGrande(texture: SKTexture(imageNamed: "ConoGrandeFrontF2"), color: .clear, size: CGSize(width: enemyDimensionWidth, height: enemyDimensionHeight))
                     guardia.position = CGPoint(x: startingPosition.x + Double(j * blocco) + Double(blocco) , y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    guardia.zPosition = 500
                     nemici.append(guardia)
+                    
                     addChild(guardia)
                 }
             }
         }
         
-        for index in 0...nemici.count-1 {
-            createPath(entity: nemici[index], arrayOfActions: vettoreDiPath[index])
+        if(nemici.count > 0){
+            for index in 0...nemici.count-1 {
+                createPath(entity: nemici[index], arrayOfActions: vettoreDiPath[index])
+            }
         }
     }
     
