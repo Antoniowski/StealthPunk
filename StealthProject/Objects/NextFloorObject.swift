@@ -61,7 +61,8 @@ class NextFloor: UsableObject{
     
     
     func loadScene(_ view: SKView){
-        let scene = TestScene4(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        passaggio1 = false
+        let scene = TestScene3(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         view.presentScene(scene, transition: .fade(withDuration: 2))
     }
     
