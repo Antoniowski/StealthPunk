@@ -1277,7 +1277,9 @@ class Room: SKNode {
         
         if(nemici.count > 0){
             for index in 0...nemici.count-1 {
-//                createPath(entity: nemici[index], arrayOfActions: vettoreDiPath[index])
+                if(vettoreDiPath.count != 0){
+                    createPath(entity: nemici[index], arrayOfActions: vettoreDiPath[index])
+                }
             }
         }
     }

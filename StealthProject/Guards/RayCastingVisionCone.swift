@@ -19,7 +19,7 @@ func visionCone(entity: Guard, scene: SKScene){
 //        entity.getCenterBall().position = entity.position
 //    }
 //
-//    entity.position = entity.getCenterBall().position
+    entity.position = entity.getCenterBall().position
 
     
     entity.parent!.enumerateChildNodes(withName: "*"){node, _ in

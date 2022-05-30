@@ -88,7 +88,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         scenecamera.addChild(timer)
 
         scenecamera.position = player.position
-        scenecamera.setScale(5)
+        scenecamera.setScale(3.5)
 //        armadio.position = player.position
 //        armadio.position.x += 250
 //        lampione.position = player.position
@@ -258,29 +258,6 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     
     
     override func update(_ currentTime: TimeInterval) {
-        if(!initGuards){
-            print("Inizializzo le guardie con le coordinate della scena")
-            initGuards = true
-            for guardia in arrayOfGuards{
-                print("GUARDIA POSIZIONE: \(guardia.position)")
-                let posizioneDellaScena = guardia.convert(guardia.position, to: self)
-                print("GUARDIA POSIZIONE CONVERTITA: \(posizioneDellaScena)")
-                let posizioneDellaScena2 = guardia.roomReference.convert(guardia.position, to: self)
-                print("GUARDIA POSIZIONE CONVERTITA 2: \(posizioneDellaScena2)")
-//                guardia.removeFromParent()
-//                guardia.getCenterBall().removeFromParent()
-//                guardia.position = posizioneDellaScena2
-//                guardia.getCenterBall().position = posizioneDellaScena2
-//                self.addChild(guardia)
-//                self.addChild(guardia.getCenterBall())
-            }
-        }
-        
-        for guardia in arrayOfGuards{
-            visionCone(entity: guardia, scene: self)
-        }
-        
-        
         calcDelta(currentTime: currentTime)
         updateTimerLabel()
         indicatore.etichetta.text = "x \(indicatore.number)"
@@ -318,7 +295,28 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
         scenecamera.position = player.position
 
+        if(!initGuards){
+            print("Inizializzo le guardie con le coordinate della scena")
+            initGuards = true
+            for guardia in arrayOfGuards{
+                print("GUARDIA POSIZIONE: \(guardia.position)")
+                let posizioneDellaScena = guardia.convert(guardia.position, to: self)
+                print("GUARDIA POSIZIONE CONVERTITA: \(posizioneDellaScena)")
+                let posizioneDellaScena2 = guardia.roomReference.convert(guardia.position, to: self)
+                print("GUARDIA POSIZIONE CONVERTITA 2: \(posizioneDellaScena2)")
+//                guardia.removeFromParent()
+//                guardia.getCenterBall().removeFromParent()
+//                guardia.position = posizioneDellaScena2
+//                guardia.getCenterBall().position = posizioneDellaScena2
+//                self.addChild(guardia)
+//                self.addChild(guardia.getCenterBall())
+            }
+        }
         
+        for guardia in arrayOfGuards{
+            visionCone(entity: guardia, scene: self)
+            guardia.checkState(point: player.position, deltaTime: delta, scene: self)
+        }
         
         
 //        print(player.position)
