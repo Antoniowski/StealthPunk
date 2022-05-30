@@ -53,6 +53,7 @@
 		6AAE3F9428450A95002917FB /* SingleFootstep2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6AAE3F9328450A95002917FB /* SingleFootstep2.wav */; };
 		6AAE3F9628450C89002917FB /* BushExit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6AAE3F9528450C89002917FB /* BushExit.wav */; };
 		6AAE3F9828450CC6002917FB /* BushEnter.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6AAE3F9728450CC5002917FB /* BushEnter.wav */; };
+		6AAE3F9A284511A5002917FB /* GearSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6AAE3F99284511A5002917FB /* GearSound.wav */; };
 		6AB863E128200334006BB85E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB863E028200334006BB85E /* AppDelegate.swift */; };
 		6AB863E328200334006BB85E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6AB863E228200334006BB85E /* GameScene.sks */; };
 		6AB863E528200334006BB85E /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6AB863E428200334006BB85E /* Actions.sks */; };
@@ -128,6 +129,7 @@
 		6AAE3F9328450A95002917FB /* SingleFootstep2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = SingleFootstep2.wav; sourceTree = "<group>"; };
 		6AAE3F9528450C89002917FB /* BushExit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = BushExit.wav; sourceTree = "<group>"; };
 		6AAE3F9728450CC5002917FB /* BushEnter.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = BushEnter.wav; sourceTree = "<group>"; };
+		6AAE3F99284511A5002917FB /* GearSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GearSound.wav; sourceTree = "<group>"; };
 		6AB863DD28200334006BB85E /* StealthPunk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StealthPunk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AB863E028200334006BB85E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6AB863E228200334006BB85E /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 				6AAE3F9528450C89002917FB /* BushExit.wav */,
 				6AAE3F8D2845000D002917FB /* closeCabinet.wav */,
 				6AAE3F91284504E7002917FB /* vetrina.wav */,
+				6AAE3F99284511A5002917FB /* GearSound.wav */,
 				6AAE3F9728450CC5002917FB /* BushEnter.wav */,
 				6AAE3F9328450A95002917FB /* SingleFootstep2.wav */,
 				6AAE3F81283FC735002917FB /* SingleFootstep.mp3 */,
@@ -465,6 +468,7 @@
 				6AAE3F80283FC4C7002917FB /* footsteps.mp3 in Resources */,
 				6AB863EE28200335006BB85E /* Assets.xcassets in Resources */,
 				6AAE3F82283FC736002917FB /* SingleFootstep.mp3 in Resources */,
+				6AAE3F9A284511A5002917FB /* GearSound.wav in Resources */,
 				6AB863F128200335006BB85E /* LaunchScreen.storyboard in Resources */,
 				6AAE3F8A2844FF08002917FB /* door2.wav in Resources */,
 				6AB863E528200334006BB85E /* Actions.sks in Resources */,
