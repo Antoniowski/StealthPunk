@@ -13,13 +13,13 @@ func visionCone(entity: Guard, scene: SKScene){
     
     entity.rayCastingPlayerFound = false
     
-    if(!entity.getInitBall()){
-        scene.addChild(entity.getCenterBall())
-        entity.setInitBall()
-        entity.getCenterBall().position = entity.position
-    }
-    
-    entity.position = entity.getCenterBall().position
+//    if(!entity.getInitBall()){
+//        scene.addChild(entity.getCenterBall())
+//        entity.setInitBall()
+//        entity.getCenterBall().position = entity.position
+//    }
+//
+//    entity.position = entity.getCenterBall().position
 
     
     scene.enumerateChildNodes(withName: "*"){node, _ in
