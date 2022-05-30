@@ -403,7 +403,7 @@ class Room: SKNode {
         self.frontWallTexture = SKTexture(imageNamed: "parete centrale")
         self.frontWallTextureMap = SKTexture(imageNamed: "parete centrale normal map")
         self.floorTexture = SKTexture(imageNamed: "pavimento taverna")
-        self.floorTextureMap = SKTexture(imageNamed: "pavimento taverna normal map")
+        self.floorTextureMap = SKTexture(imageNamed: "pavimento taverna Normal Map")
         self.sideRightWallTexture = SKTexture(imageNamed: "parete lato dx")
         self.sideLeftWallTexture  = SKTexture(imageNamed: "parete lato sx")
         self.cornerRightWallTexture = SKTexture(imageNamed: "parete angolo dx")
@@ -442,7 +442,7 @@ class Room: SKNode {
             if int == 0{
                 self.frontWallTexture = SKTexture(imageNamed: "wall")
                 self.floorTexture = SKTexture(imageNamed: "pavimento4")
-                self.floorTextureMap = SKTexture(imageNamed: "pavimento4NormalMap2")
+                self.floorTextureMap = SKTexture(imageNamed: "pavimento4NormalMap")
                 self.sideRightWallTexture = SKTexture(imageNamed: "wallR")
                 self.sideLeftWallTexture  = SKTexture(imageNamed: "wallL")
                 self.cornerRightWallTexture = SKTexture(imageNamed: "wallAngleR")
@@ -455,7 +455,7 @@ class Room: SKNode {
             }else{
                 self.frontWallTexture = SKTexture(imageNamed: "RedWall")
                 self.floorTexture = SKTexture(imageNamed: "pavimento3")
-                self.floorTextureMap = SKTexture(imageNamed: "pavimento4NormalMap2")
+                self.floorTextureMap = SKTexture(imageNamed: "pavimento4NormalMap")
                 self.sideRightWallTexture = SKTexture(imageNamed: "wallR")
                 self.sideLeftWallTexture  = SKTexture(imageNamed: "wallL")
                 self.cornerRightWallTexture = SKTexture(imageNamed: "RedWallAngleR")
@@ -472,7 +472,7 @@ class Room: SKNode {
             if int == 0{
                 self.frontWallTexture = SKTexture(imageNamed: "RedWall")
                 self.floorTexture = SKTexture(imageNamed: "pavimento3")
-                self.floorTextureMap = SKTexture(imageNamed: "pavimento4NormalMap2")
+                self.floorTextureMap = SKTexture(imageNamed: "pavimento4NormalMap")
                 self.sideRightWallTexture = SKTexture(imageNamed: "wallR")
                 self.sideLeftWallTexture  = SKTexture(imageNamed: "wallL")
                 self.cornerRightWallTexture = SKTexture(imageNamed: "RedWallAngleR")
@@ -505,7 +505,7 @@ class Room: SKNode {
         for i in 0..<stanza.count{
             for j in 0..<stanza[1].count{
                 if stanza[i][j] != 0{
-                    let floor = SKSpriteNode(texture: floorTexture, size: CGSize(width: blocco, height: blocco))
+                    let floor = SKSpriteNode(texture: floorTexture, size: CGSize(width: Double(blocco), height: Double(blocco)))
                     floor.normalTexture = floorTextureMap
                     floor.name = "floorTile"
                     floor.zPosition = 1
@@ -908,11 +908,13 @@ class Room: SKNode {
                     addChild(armadio)
                     
                 case 50:
-                    var char2 = SKSpriteNode(texture: SKTexture(imageNamed: "Character2"), size: CGSize(width: 35, height: 70))
+                    let char2 = SKSpriteNode(texture: SKTexture(imageNamed: "Character2"), size: CGSize(width: 35, height: 70))
+                    char2.name = "player2"
                     char2.lightingBitMask = 1|2
                     char2.physicsBody = SKPhysicsBody(rectangleOf: .init(width: 35, height: 60))
                     char2.physicsBody?.affectedByGravity = false
                     char2.physicsBody?.allowsRotation = false
+                    char2.physicsBody?.categoryBitMask = ColliderType.CHAR.rawValue
                     char2.zPosition = 4
                     char2.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                     char2.physicsBody?.isDynamic = false
@@ -920,22 +922,26 @@ class Room: SKNode {
                     
                     
                 case 51:
-                    var char3 = SKSpriteNode(texture: SKTexture(imageNamed: "Character3"), size: CGSize(width: 80, height: 100))
+                    let char3 = SKSpriteNode(texture: SKTexture(imageNamed: "Character3"), size: CGSize(width: 80, height: 100))
+                    char3.name = "player3"
                     char3.lightingBitMask = 1|2
                     char3.physicsBody = SKPhysicsBody(rectangleOf: .init(width: 50, height: 80))
                     char3.physicsBody?.affectedByGravity = false
                     char3.physicsBody?.allowsRotation = false
+                    char3.physicsBody?.categoryBitMask = ColliderType.CHAR.rawValue
                     char3.zPosition = 4
                     char3.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                     char3.physicsBody?.isDynamic = false
                     addChild(char3)
                     
                 case 52:
-                    var char4 = SKSpriteNode(texture: SKTexture(imageNamed: "Character4"), size: CGSize(width: 50, height: 75))
+                    let char4 = SKSpriteNode(texture: SKTexture(imageNamed: "Character4"), size: CGSize(width: 50, height: 75))
+                    char4.name = "player4"
                     char4.lightingBitMask = 1|2
                     char4.physicsBody = SKPhysicsBody(rectangleOf: .init(width: 40, height: 60))
                     char4.physicsBody?.affectedByGravity = false
                     char4.physicsBody?.allowsRotation = false
+                    char4.physicsBody?.categoryBitMask = ColliderType.CHAR.rawValue
                     char4.zPosition = 4
                     char4.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                     char4.physicsBody?.isDynamic = false

@@ -65,6 +65,8 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     var nemici: [SKNode] = []
     
     
+    
+    
     override func didMove(to view: SKView) {
         myGameController.connectController()
         self.backgroundColor = .black
@@ -79,6 +81,8 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         timer.position.x = player.position.x - frame.width*0.45
         timer.position.y = player.position.y + frame.height * 0.35
         timer.setScale(0.5)
+        
+        
         scenecamera.addChild(indicatore)
         scenecamera.addChild(timer)
 

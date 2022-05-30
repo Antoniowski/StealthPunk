@@ -910,11 +910,11 @@ class PlayableCharacter: SKSpriteNode{
                 }
             case .UP_RIGHT:
                 if myMovement != .zero && (self.status.isWalking == true || self.facingDirection != .UP_RIGHT){
-                    self.xScale = 1
-                    self.lucciola.xScale = 1
+                    self.xScale = 2
+                    self.lucciola.xScale = 0.5
                     self.status.isWalking = false
                     self.facingDirection = .UP_RIGHT
-                    self.run(.repeatForever(.animate(with: runningAnimationBack, timePerFrame: 0.18)))
+                    self.run(.repeatForever(.animate(with: runningAnimationBackRight, timePerFrame: 0.18)))
                     self.lucciola.run(.repeatForever(.animate(with: animazioneLucciolaDx, timePerFrame: 0.1)))
                     self.lucciola.run(.moveTo(y: -45, duration: 1))
                 }
@@ -933,11 +933,11 @@ class PlayableCharacter: SKSpriteNode{
                 }
             case .DOWN_RIGHT:
                 if myMovement != .zero && (self.status.isWalking == true || self.facingDirection != .DOWN_RIGHT){
-                    self.xScale = 1
-                    self.lucciola.xScale = 1
+                    self.xScale = 2
+                    self.lucciola.xScale = 0.5
                     self.status.isWalking = false
                     self.facingDirection = .DOWN_RIGHT
-                    self.run(.repeatForever(.animate(with: runningAnimationFront, timePerFrame: 0.18)))
+                    self.run(.repeatForever(.animate(with: runningAnimationFrontRight, timePerFrame: 0.18)))
                     self.lucciola.run(.repeatForever(.animate(with: animazioneLucciolaDx, timePerFrame: 0.1)))
                     self.lucciola.run(.moveTo(y: 45, duration: 1))
 
@@ -955,11 +955,11 @@ class PlayableCharacter: SKSpriteNode{
                 }
             case .DOWN_LEFT:
                 if myMovement != .zero && (self.status.isWalking == true || self.facingDirection != .DOWN_LEFT){
-                    self.xScale = 1
-                    self.lucciola.xScale = 1
+                    self.xScale = 2
+                    self.lucciola.xScale = 0.5
                     self.status.isWalking = false
                     self.facingDirection = .DOWN_LEFT
-                    self.run(.repeatForever(.animate(with: runningAnimationFront, timePerFrame: 0.18)))
+                    self.run(.repeatForever(.animate(with: runningAnimationFrontLeft, timePerFrame: 0.18)))
                     self.lucciola.run(.repeatForever(.animate(with: animazioneLucciolaSx, timePerFrame: 0.1)))
                     self.lucciola.run(.moveTo(y: 45, duration: 1))
 
@@ -979,11 +979,11 @@ class PlayableCharacter: SKSpriteNode{
                 }
             case .UP_LEFT:
                 if myMovement != .zero && (self.status.isWalking == true || self.facingDirection != .UP_LEFT){
-                    self.xScale = 1
-                    self.lucciola.xScale = 1
+                    self.xScale = 2
+                    self.lucciola.xScale = 0.5
                     self.status.isWalking = false
                     self.facingDirection = .UP_LEFT
-                    self.run(.repeatForever(.animate(with: runningAnimationBack, timePerFrame: 0.18)))
+                    self.run(.repeatForever(.animate(with: runningAnimationBackLeft, timePerFrame: 0.18)))
                     self.lucciola.run(.repeatForever(.animate(with: animazioneLucciolaSx, timePerFrame: 0.1)))
                     self.lucciola.run(.moveTo(y: -45, duration: 1))
 

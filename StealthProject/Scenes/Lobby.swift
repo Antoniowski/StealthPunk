@@ -25,8 +25,13 @@ class LobbyScene: SKScene, PlayableScene{
     var inputVector: CGVector = .zero
     var rollVector: CGVector = .init(dx: 1, dy: 0)
     var velocity: CGVector  = .zero
+    var counter2 = Counter2()
     
+    var player2: Bool = false
+    var player3: Bool = false
+    var player4: Bool = false
     
+
     private let ambientLight = SKLightNode()
     private var lightArray: [LuceTaverna] = []
     
@@ -46,14 +51,18 @@ class LobbyScene: SKScene, PlayableScene{
         indicatore.position.x = player.position.x - 100
         indicatore.position.y = player.position.y + frame.height/3.5 + 90
         sceneCamera.addChild(indicatore)
-
         
+        
+        counter2.position.x = player.position.x
+        counter2.position.y = player.position.y - frame.height/3.5 - 175
+        sceneCamera.addChild(counter2)
         ambientLight.ambientColor = .init(red: 0.6, green: 0.6, blue: 0.75, alpha: 0.5)
         ambientLight.position = .init(x: 2000, y: 2000)
         ambientLight.falloff = 10
         ambientLight.categoryBitMask = 1|2
         
         addChild(ambientLight)
+        
         addChild(stanza)
         camera = sceneCamera
         sceneCamera.setScale(1)
@@ -82,6 +91,8 @@ class LobbyScene: SKScene, PlayableScene{
         playerMovement(player: player as SKSpriteNode, velocity: velocity)
         sceneCamera.position = player.position
         startGameFunction()
+        showCounter()
+        print(player2)
         
         for x in 0..<lightArray.count{
             if lightArray[x].animationBool == false{
@@ -99,8 +110,88 @@ class LobbyScene: SKScene, PlayableScene{
             }
             
         }
+        
     }
     
+    func didBegin(_ contact: SKPhysicsContact) {
+        var firstBody = SKPhysicsBody()
+        var secondBody = SKPhysicsBody()
+        
+        if contact.bodyA.node?.name == "player"{
+            firstBody = contact.bodyA
+            secondBody = contact.bodyB
+        }else if contact.bodyB.node?.name == "player"{
+            firstBody = contact.bodyB
+            secondBody = contact.bodyA
+        }
+        
+        if (firstBody.node?.name == "player" && secondBody.node?.name == "player2") {
+            player2 = true
+        }
+        if (firstBody.node?.name == "player" && secondBody.node?.name == "player3") {
+            player3 = true
+        }
+        if (firstBody.node?.name == "player" && secondBody.node?.name == "player4") {
+            player4 = true
+        }
+    }
+    
+    func didEnd(_ contact: SKPhysicsContact) {
+        var firstBody = SKPhysicsBody()
+        var secondBody = SKPhysicsBody()
+        
+        if contact.bodyA.node?.name == "player"{
+            firstBody = contact.bodyA
+            secondBody = contact.bodyB
+        }else if contact.bodyB.node?.name == "player"{
+            firstBody = contact.bodyB
+            secondBody = contact.bodyA
+        }
+        
+        if (firstBody.node?.name == "player" && secondBody.node?.name == "player2") {
+            player2 = false
+        }
+        if (firstBody.node?.name == "player" && secondBody.node?.name == "player3") {
+            player3 = false
+        }
+        if (firstBody.node?.name == "player" && secondBody.node?.name == "player4") {
+            player4 = false
+        }
+    }
+    
+    func showCounter() {
+        if player2 == true {
+            counter2.nome.text = "Vanessa / locked"
+            counter2.forza.text = "strenght: 2/5"
+            counter2.velocita.text = "speed: 3/5"
+            counter2.rumore.text = "noise: 1/5"
+            counter2.run(.moveTo(y: -frame.height/3.5 - 15, duration: 0.5), completion: {
+//                self.player2 = false
+            })
+        }
+        else if (player3 == true){
+            counter2.nome.text = "Oswald / locked"
+            counter2.forza.text = "strenght: 5/5"
+            counter2.velocita.text = "speed: 2/5"
+            counter2.rumore.text = "noise: 4/5"
+            counter2.run(.moveTo(y: -frame.height/3.5 - 15, duration: 0.5), completion: {
+//                self.player3 = false
+            })
+        }
+        else if (player4 == true){
+            counter2.nome.text = "??? / locked"
+            counter2.forza.text = "strenght: 4/5"
+            counter2.velocita.text = "speed: 3/5"
+            counter2.rumore.text = "noise: 2/5"
+            counter2.run(.moveTo(y: -frame.height/3.5 - 15, duration: 0.5), completion: {
+//                self.player4 = false
+            })
+            
+        }
+        else{
+            counter2.run(.moveTo(y: -frame.height/3.5 - 175, duration: 0.5))
+        }
+    }
     
     func startGameFunction(){
         if self.startGame == true{
