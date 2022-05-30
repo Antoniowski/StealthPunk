@@ -16,6 +16,7 @@ class Counter2: SKNode {
     var velocita: SKLabelNode = SKLabelNode()
     var rumore: SKLabelNode = SKLabelNode()
     var testo: SKLabelNode = SKLabelNode()
+    var moveBox: Bool = false
     
     
     override init() {
