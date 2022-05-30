@@ -8,7 +8,7 @@
 import UIKit
 import SpriteKit
 
-class TestScene3: SKScene, SKPhysicsContactDelegate {
+class TestScene4: SKScene, SKPhysicsContactDelegate {
 
     let guard1 = Guard(texture: SKTexture(imageNamed: "ConoGrande3:4BackF1"), color: .clear, size: CGSize(width: 35, height: 75), strength: 2, speed: 2, visionConeRadius: 150, visionConeAngle: 60)
     
