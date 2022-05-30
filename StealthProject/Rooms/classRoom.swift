@@ -403,7 +403,7 @@ class Room: SKNode {
         self.frontWallTexture = SKTexture(imageNamed: "parete centrale")
         self.frontWallTextureMap = SKTexture(imageNamed: "parete centrale normal map")
         self.floorTexture = SKTexture(imageNamed: "pavimento taverna")
-        self.floorTextureMap = SKTexture(imageNamed: "pavimento taverna Normal Map")
+        self.floorTextureMap = SKTexture(imageNamed: "pavimento taverna normal map")
         self.sideRightWallTexture = SKTexture(imageNamed: "parete lato dx")
         self.sideLeftWallTexture  = SKTexture(imageNamed: "parete lato sx")
         self.cornerRightWallTexture = SKTexture(imageNamed: "parete angolo dx")

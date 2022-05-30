@@ -238,6 +238,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
                 }else{
                     if MINUTE > 0{
                         SECONDS = 60
+                        SECONDS -= 1
                         MINUTE -= 1
                     }else{
                         print("GAME OVER")
