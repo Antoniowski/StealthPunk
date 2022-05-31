@@ -44,6 +44,10 @@ class LobbyScene: SKScene, PlayableScene{
     
     
     override func didMove(to view: SKView) {
+        self.name = "Lobby"
+        currentScene = self
+        print("Scena corrente: \(currentScene)")
+        
         myGameController.setUpGameController()
         self.backgroundColor = .black
         physicsWorld.contactDelegate = self
