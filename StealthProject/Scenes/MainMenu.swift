@@ -50,6 +50,7 @@ class MainMenu: SKScene{
 
         option.fontSize = 24
         option.text = "Settings"
+        option.name = "settings"
         option.fontName = "OldNewspaperTypes"
         option.zPosition = 2
         option.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
@@ -60,6 +61,7 @@ class MainMenu: SKScene{
 
         credits.fontSize = 24
         credits.text = "Credits"
+        credits.name = "credits"
         credits.fontName = "OldNewspaperTypes"
         credits.zPosition = 2
         credits.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
@@ -83,7 +85,7 @@ class MainMenu: SKScene{
         let touchLocation = touch.location(in: self)
         let touchedNode = atPoint(touchLocation)
 
-        if touchedNode.name != "credits" && touchedNode.name != "settings" && touchedNode.name != "menu"{
+        if touchedNode.name != "credits" && touchedNode.name != "settings" && touchedNode.name != "menu" && subtitle.text == "MAIN MENU"{
             let lobby = LobbyScene(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
             view?.presentScene(lobby, transition: .fade(withDuration: 3))
         }
@@ -96,7 +98,9 @@ class MainMenu: SKScene{
                 self.option.text = ""
                 self.option.name = ""
                 self.start.removeFromParent()
+                self.run(.playSoundFileNamed("pagina", waitForCompletion: true))
                 self.run(.fadeIn(withDuration: 1))
+               
             })
         }
         
@@ -108,7 +112,9 @@ class MainMenu: SKScene{
                 self.option.text = "SETTINGS"
                 self.option.name = "settings"
                 self.addChild(self.start)
+                self.run(.playSoundFileNamed("pagina", waitForCompletion: true))
                 self.run(.fadeIn(withDuration: 1))
+                
             })
         }
         
@@ -120,6 +126,7 @@ class MainMenu: SKScene{
                 self.option.text = ""
                 self.option.name = ""
                 self.start.removeFromParent()
+                self.run(.playSoundFileNamed("pagina", waitForCompletion: true))
                 self.run(.fadeIn(withDuration: 1))
             })
         }
