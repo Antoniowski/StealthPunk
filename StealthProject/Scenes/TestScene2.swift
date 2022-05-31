@@ -10,6 +10,7 @@ import GameplayKit
 
 
 class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
+    var initGuards = false
 
     
     var floor = SKSpriteNode(texture: SKTexture(imageNamed: "pavimento3"), size: CGSize(width: blocco, height: blocco))
@@ -126,8 +127,9 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         lightSwitch.position = player.position
         lightSwitch.position.x -= 70
         
-        knuckles.position = .init(x: 150, y: 150)
-        testcoin.position = .init(x: 150, y: -150)
+        knuckles.position = .init(x: 150, y: -150)
+        boots.position = .init(x: 150, y: -150)
+        knuckles.zPosition = 5
         testcoin2.position = .init(x: 170, y: -150)
         testcoin3.position = .init(x: 190, y: -150)
         testcoin4.position = .init(x: 210, y: -150)
@@ -159,8 +161,8 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
 //        addChild(ombra)
 //        addChild(lightSwitch)
 //        addChild(boots)
-//        addChild(knuckles)
-        addChild(testcoin)
+        addChild(knuckles)
+//        addChild(testcoin)
 //        addChild(testcoin2)
 //        addChild(testcoin4)
 //        addChild(testcoin3)
@@ -194,6 +196,9 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         if firstBody.node?.name == "player" && secondBody.node?.name == "collectible"{
             let item = secondBody.node as? Collectible
             item?.action(player: firstBody.node as? PlayableCharacter ?? PlayableCharacter())
+            
+            
+            
             if item?.getType() == .COIN{
 //                indicatore.run(.moveBy(x: 0, y: -90, duration: 0.5), completion: {
 //                    self.indicatore.run(.sequence([.wait(forDuration: 1.5), .moveBy(x: 0, y: 90, duration: 0.5)]))
@@ -202,8 +207,19 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
                     self.indicatore.run(.sequence([.wait(forDuration: 1.5), .moveTo(y: UIScreen.main.bounds.height*0.55, duration: 0.5)]))
                 })
                 item?.action(contatore: indicatore)
+            }else {
+                let box = ObjectBox(item!)
+                box.position.x = -125
+                box.position.y = UIScreen.main.bounds.height*0.55
+                scenecamera.addChild(box)
+                box.run(.moveTo(y: UIScreen.main.bounds.height*0.29 , duration: 0.5), completion: {
+                    box.run(.sequence([.wait(forDuration: 1.5), .moveTo(y: UIScreen.main.bounds.height*0.55, duration: 0.5)]), completion: {
+                        box.removeFromParent()
+                    })
+                })
             }
             secondBody.node?.removeFromParent()
+            
         }
         
         //PER FAR APPARIRE LE STANZE
@@ -294,7 +310,28 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
         scenecamera.position = player.position
 
+        if(!initGuards){
+            print("Inizializzo le guardie con le coordinate della scena")
+            initGuards = true
+            for guardia in arrayOfGuards{
+                print("GUARDIA POSIZIONE: \(guardia.position)")
+                let posizioneDellaScena = guardia.convert(guardia.position, to: self)
+                print("GUARDIA POSIZIONE CONVERTITA: \(posizioneDellaScena)")
+                let posizioneDellaScena2 = guardia.roomReference.convert(guardia.position, to: self)
+                print("GUARDIA POSIZIONE CONVERTITA 2: \(posizioneDellaScena2)")
+//                guardia.removeFromParent()
+//                guardia.getCenterBall().removeFromParent()
+//                guardia.position = posizioneDellaScena2
+//                guardia.getCenterBall().position = posizioneDellaScena2
+//                self.addChild(guardia)
+//                self.addChild(guardia.getCenterBall())
+            }
+        }
         
+        for guardia in arrayOfGuards{
+            visionCone(entity: guardia, scene: self)
+            guardia.checkState(point: player.position, deltaTime: delta, scene: self)
+        }
         
         
 //        print(player.position)

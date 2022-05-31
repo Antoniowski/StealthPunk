@@ -25,7 +25,7 @@ class Collectible: SKSpriteNode{
     private var objectDescription: String = ""
     private var type: CollectibleItemCategory = .COIN
     
-    private var sprite: SKTexture = SKTexture()
+    var sprite: SKTexture = SKTexture()
     
     init(type: CollectibleItemCategory){
         super.init(texture: sprite, color: .clear, size: CGSize(width: 40, height: 40))
@@ -41,27 +41,34 @@ class Collectible: SKSpriteNode{
         case .BOOTS:
             sprite = SKTexture(imageNamed: "bootsWhite")
             self.collectibleName = "Silent Boots"
+            self.objectDescription = "Like a cat"
             self.run(.setTexture(sprite))
         
         case .KNUCKLES:
             sprite = SKTexture(imageNamed: "knuckleWhiteBlur")
             self.collectibleName = "Knuckles"
+            self.objectDescription = "Hit harder"
             self.run(.setTexture(sprite))
         case .POTION:
             sprite = SKTexture(imageNamed: "potionBlur")
             self.collectibleName = "Speed Potion"
+            self.objectDescription = "Blue Cow"
             self.run(.setTexture(sprite))
         case .SIRINGE:
             sprite = SKTexture(imageNamed: "siringaBlur")
             self.run(.setTexture(sprite))
+            self.objectDescription = "All Natural"
         case .HAT:
             sprite = SKTexture(imageNamed: "cappelloBlur")
+            self.objectDescription = "Stylish thief"
             self.run(.setTexture(sprite))
         case .CLOCK1:
             sprite = SKTexture(imageNamed: "orologio+30sec")
+            self.objectDescription = "More time"
             self.run(.setTexture(sprite))
         case .CLOCK2:
             sprite = SKTexture(imageNamed: "orologio+1min")
+            self.objectDescription = "More more time" 
             self.run(.setTexture(sprite))
         case .FINAL:
             sprite = SKTexture(imageNamed: "")
@@ -88,23 +95,26 @@ class Collectible: SKSpriteNode{
     func action(player: PlayableCharacter){
         switch type {
         case .COIN:
-            print("")
-            self.run(.playSoundFileNamed("GearSound", waitForCompletion: true))
+            player.run(.playSoundFileNamed("GearSound", waitForCompletion: true))
         case .BOOTS:
+            player.run(.playSoundFileNamed("swing", waitForCompletion: true))
             if player.getNoise() > 0{
                 player.setNoise(newNoise: player.getNoise() - 1)
             }
         case .KNUCKLES:
+            player.run(.playSoundFileNamed("swing", waitForCompletion: true))
             player.setStrenght(newStrenght: player.getStrenght() + 1)
             if player.getStrenght() > 7{
                 player.setStrenght(newStrenght: 7)
             }
         case .POTION:
+            player.run(.playSoundFileNamed("swing", waitForCompletion: true))
             player.setSpeed(newSpeed: player.getSpeed() + 1)
             if player.getSpeed() > 7 {
                 player.setSpeed(newSpeed: 7)
             }
         case .SIRINGE:
+            player.run(.playSoundFileNamed("swing", waitForCompletion: true))
             player.setSpeed(newSpeed: player.getSpeed() + 1)
             player.setStrenght(newStrenght: player.getStrenght() + 1)
             player.setNoise(newNoise: player.getNoise() + 1)
@@ -119,6 +129,7 @@ class Collectible: SKSpriteNode{
                 player.setStrenght(newStrenght: 7)
             }
         case .HAT:
+            player.run(.playSoundFileNamed("swing", waitForCompletion: true))
             player.setSpeed(newSpeed: player.getSpeed() + 1)
             player.setStrenght(newStrenght: player.getStrenght() - 1)
             player.setNoise(newNoise: player.getNoise() - 1)
@@ -133,9 +144,11 @@ class Collectible: SKSpriteNode{
                 player.setStrenght(newStrenght: 0)
             }
         case .CLOCK1:
+            player.run(.playSoundFileNamed("swing", waitForCompletion: true))
             SECONDS = SECONDS + 30
             
         case .CLOCK2:
+            player.run(.playSoundFileNamed("swing", waitForCompletion: true))
             MINUTE = MINUTE + 1
         case .FINAL:
             print("YOU WON")
