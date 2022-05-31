@@ -1,17 +1,17 @@
 //
-//  MainMenu.swift
+//  gameOver.swift
 //  StealthProject
 //
-//  Created by Antonio Romano on 31/05/22.
+//  Created by Guendalina De Laurentis on 31/05/22.
 //
 
 import Foundation
 import SpriteKit
 
-class MainMenu: SKScene{
+class GameOver: SKScene{
     private var backgroundImage: SKSpriteNode = SKSpriteNode(imageNamed: "Menu_Template")
     private var title: SKLabelNode = SKLabelNode(fontNamed: "OldLondon")
-    private var start: SKLabelNode = SKLabelNode()
+    private var breakingNews: SKLabelNode = SKLabelNode()
     private var option: SKLabelNode = SKLabelNode()
     
     override func didMove(to view: SKView) {
@@ -25,12 +25,11 @@ class MainMenu: SKScene{
         title.zPosition = 2
         title.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
         
-        start.fontSize = 30
-        start.text = "Start"
-        start.name = "start"
-        start.zPosition = 2
-        start.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
-        start.position = .init(x: frame.width*0.74, y: frame.height*0.45)
+        breakingNews.fontSize = 30
+        breakingNews.text = "Breaking News"
+        breakingNews.zPosition = 2
+        breakingNews.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
+        breakingNews.position = .init(x: frame.width*0.7, y: frame.height*0.55)
 
         option.fontSize = 30
         option.text = "Settings"
@@ -40,7 +39,7 @@ class MainMenu: SKScene{
         
         addChild(backgroundImage)
         addChild(title)
-        addChild(start)
+        addChild(breakingNews)
         addChild(option)
     }
     
@@ -58,3 +57,4 @@ class MainMenu: SKScene{
         }
     }
 }
+

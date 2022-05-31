@@ -15,6 +15,7 @@
 		4A2159FA283FD60C000F237C /* GuardMatrixes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2159F9283FD60C000F237C /* GuardMatrixes.swift */; };
 		4A3A1B97284516010030BB48 /* GuardConoPiccolo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3A1B96284516010030BB48 /* GuardConoPiccolo.swift */; };
 		4ABFC91E28327D6D00213CC9 /* GuardConoGrande.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABFC91D28327D6D00213CC9 /* GuardConoGrande.swift */; };
+		52CF6A9828465A1C000A62ED /* gameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF6A9728465A1C000A62ED /* gameOver.swift */; };
 		63A55F4528410B1D00A067A5 /* CharacterBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A55F4428410B1D00A067A5 /* CharacterBox.swift */; };
 		63B9F6AB2833DA35008E62C1 /* GearCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9F6AA2833DA35008E62C1 /* GearCounter.swift */; };
 		63B9F6AE283439FE008E62C1 /* Victorian Parlor Vintage Alternate_free.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63B9F6AD283439FE008E62C1 /* Victorian Parlor Vintage Alternate_free.ttf */; };
@@ -96,6 +97,7 @@
 		4A2159F9283FD60C000F237C /* GuardMatrixes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardMatrixes.swift; sourceTree = "<group>"; };
 		4A3A1B96284516010030BB48 /* GuardConoPiccolo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardConoPiccolo.swift; sourceTree = "<group>"; };
 		4ABFC91D28327D6D00213CC9 /* GuardConoGrande.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardConoGrande.swift; sourceTree = "<group>"; };
+		52CF6A9728465A1C000A62ED /* gameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gameOver.swift; sourceTree = "<group>"; };
 		63A55F4428410B1D00A067A5 /* CharacterBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterBox.swift; sourceTree = "<group>"; };
 		63B9F6AA2833DA35008E62C1 /* GearCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearCounter.swift; sourceTree = "<group>"; };
 		63B9F6AD283439FE008E62C1 /* Victorian Parlor Vintage Alternate_free.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Victorian Parlor Vintage Alternate_free.ttf"; sourceTree = "<group>"; };
@@ -362,6 +364,7 @@
 				6A2A7E9D28366BA900D14EC0 /* Lobby.swift */,
 				6AAE3F78283C231B002917FB /* TestScene4.swift */,
 				6AAE3FA1284643EE002917FB /* MainMenu.swift */,
+				52CF6A9728465A1C000A62ED /* gameOver.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 				6AB8640A2821845B006BB85E /* VirtualController.swift in Sources */,
 				A693D354282561300055C266 /* testRoom.swift in Sources */,
 				6A0621F228330FC80064BB97 /* CollisionsEnum.swift in Sources */,
+				52CF6A9828465A1C000A62ED /* gameOver.swift in Sources */,
 				6AAE3FA028461569002917FB /* ObjectBox.swift in Sources */,
 				6AC709612823D4DD007F8A50 /* SpecificCharacterClasses.swift in Sources */,
 				6AAE3F79283C231B002917FB /* TestScene4.swift in Sources */,
