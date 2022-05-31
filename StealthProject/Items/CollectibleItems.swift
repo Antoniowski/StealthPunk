@@ -71,7 +71,8 @@ class Collectible: SKSpriteNode{
             self.objectDescription = "More more time" 
             self.run(.setTexture(sprite))
         case .FINAL:
-            sprite = SKTexture(imageNamed: "")
+            sprite = SKTexture(imageNamed: "crownBorder")
+            self.size = CGSize(width: 70, height: 70)
             self.run(.setTexture(sprite))
         }
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
