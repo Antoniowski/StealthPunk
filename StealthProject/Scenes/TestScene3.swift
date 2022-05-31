@@ -202,7 +202,7 @@ class TestScene3: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
         if firstBody.node?.name == "player" && secondBody.node?.name == "nextLevel"{
             let oggetto = secondBody.node as? NextFloor
-            oggetto?.loadScene(self.view!)
+            oggetto?.loadScene(self.view!, Floor: .SECOND_FLOOE)
         }
     }
     

@@ -35,6 +35,9 @@ enum RoomArchetype: Int{
     case PROVA2POWERUP = 21
     case PROVA3POWERUP = 22
     case PROVA4POWERUP = 23
+    case FINALE_D = 24
+    case FINALE_L = 25
+    case FINALE_R = 26
 }
 
 enum RoomsType: Int{
@@ -420,7 +423,39 @@ class Room: SKNode {
             createRoom()
             createGuards()
             addRugsAndLights()
+            
+        case .FINALE_D:
+            door = DoorPosition(UP: false, DOWN: true, RIGHT: false, LEFT: false)
+            tipe = .NORMAL
+            numRighe = simpleFinale_D[1].count
+            numColonne = simpleFinale_D.count
+            stanza = simpleFinale_D
+            nemici = []
+            setTextures(tipo: floor)
+            createRoom()
+            
+        case .FINALE_L:
+            door = DoorPosition(UP: false, DOWN: false, RIGHT: false, LEFT: true)
+            tipe = .NORMAL
+            numRighe = simpleFinale_L[1].count
+            numColonne = simpleFinale_L.count
+            stanza = simpleFinale_L
+            nemici = []
+            setTextures(tipo: floor)
+            createRoom()
+            
+        case .FINALE_R:
+            door = DoorPosition(UP: false, DOWN: false, RIGHT: true, LEFT: false)
+            tipe = .NORMAL
+            numRighe = simpleFinale_R[1].count
+            numColonne = simpleFinale_R.count
+            stanza = simpleFinale_R
+            nemici = []
+            setTextures(tipo: floor)
+            createRoom()
         }
+        
+    
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -1188,7 +1223,7 @@ class Room: SKNode {
                     }
                 case 14:
                     if floor == .SECOND_FLOOE || floor == .LAST_FLOOR{
-                    let tappetoLatoSx = SKSpriteNode(texture: SKTexture(imageNamed: "tappetoLatoSx"), size: bloccoSize)
+                    let tappetoLatoSx = SKSpriteNode(texture: SKTexture(imageNamed: "TappetoLatoSx"), size: bloccoSize)
                     tappetoLatoSx.normalTexture = SKTexture(imageNamed: "tappetoLatoSx NormalMap")
                     tappetoLatoSx.name = "floorTile"
                     tappetoLatoSx.zPosition = 2
