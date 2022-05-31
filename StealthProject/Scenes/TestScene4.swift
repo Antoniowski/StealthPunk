@@ -218,7 +218,7 @@ class TestScene4: SKScene, PlayableScene, SKPhysicsContactDelegate {
 
         
         scenecamera.position = player.position
-        scenecamera.setScale(2)
+        scenecamera.setScale(8)
 
         
         
