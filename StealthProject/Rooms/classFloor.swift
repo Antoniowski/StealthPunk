@@ -257,8 +257,8 @@ class Floor{
                             if(!finale){
                                 let type = FINALE_RIGHT.randomElement()
                                 let newRoom = Room(type ?? .FINALE_R, startingPosition:  CGPoint(x: door.1.x, y: door.1.y), floor: floorType)
-                                newRoom.position.x -= ((newRoom.getDownDoorPosition().x)-door.1.x)
-                                newRoom.position.y += Double(newRoom.getColonne()*blocco - blocco/2)
+                                newRoom.position.x -= Double(newRoom.getRighe()*blocco + blocco/2)
+                                newRoom.position.y -= (newRoom.getRightDoorPosition().y - door.1.y)
                                     newRoom.alpha = 0
 
                                 scene.addChild(newRoom)
@@ -287,8 +287,8 @@ class Floor{
                             if(!finale){
                                 let type = FINALE_LEFT.randomElement()
                                 let newRoom = Room(type ?? .FINALE_L, startingPosition:  CGPoint(x: door.1.x, y: door.1.y), floor: floorType)
-                                newRoom.position.x -= ((newRoom.getDownDoorPosition().x)-door.1.x)
-                                newRoom.position.y += Double(newRoom.getColonne()*blocco - blocco/2)
+                                newRoom.position.x += Double(blocco/2)
+                                newRoom.position.y -= (newRoom.getLeftDoorPosition().y - door.1.y)
                                     newRoom.alpha = 0
 
                                 scene.addChild(newRoom)

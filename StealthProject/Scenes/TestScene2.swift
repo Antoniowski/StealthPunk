@@ -88,7 +88,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         scenecamera.addChild(timer)
 
         scenecamera.position = player.position
-        scenecamera.setScale(1)
+        scenecamera.setScale(8)
 //        armadio.position = player.position
 //        armadio.position.x += 250
 //        lampione.position = player.position
@@ -311,14 +311,15 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         scenecamera.position = player.position
 
         if(!initGuards){
-            print("Inizializzo le guardie con le coordinate della scena")
+//            print("Inizializzo le guardie con le coordinate della scena")
             initGuards = true
             for guardia in arrayOfGuards{
-                print("GUARDIA POSIZIONE: \(guardia.position)")
+//                print("GUARDIA POSIZIONE: \(guardia.position)")
                 let posizioneDellaScena = guardia.convert(guardia.position, to: self)
-                print("GUARDIA POSIZIONE CONVERTITA: \(posizioneDellaScena)")
+//                print("GUARDIA POSIZIONE CONVERTITA: \(posizioneDellaScena)")
                 let posizioneDellaScena2 = guardia.roomReference.convert(guardia.position, to: self)
-                print("GUARDIA POSIZIONE CONVERTITA 2: \(posizioneDellaScena2)")
+//                print("GUARDIA POSIZIONE CONVERTITA 2: \(posizioneDellaScena2)")
+                
 //                guardia.removeFromParent()
 //                guardia.getCenterBall().removeFromParent()
 //                guardia.position = posizioneDellaScena2

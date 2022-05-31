@@ -944,7 +944,8 @@ class Room: SKNode {
                     furnitureSmall.normalTexture = SKTexture(imageNamed: "stand2NormalMap")
                     if self.floor == .FIRST_FLOOR{
                         furnitureSmall = Lampione(lightBitmask: 1 | 2)
-                        furnitureSmall.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/4), y: startingPosition.y - Double(i*blocco) - Double(blocco/4))
+                        furnitureSmall.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/4), y: startingPosition.y - Double(i*blocco) - Double(3)*Double(blocco/4))
+//                        furnitureSmall.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/4), y: startingPosition.y - Double(i*blocco) - Double(blocco/4))
 //                        let appoggio = furnitureSmall as? Lampione
 //                        appoggio?.light.ambientColor = .init(red: 0.624, green: 0.624, blue: 0.914, alpha: 0.5)
                     }
@@ -1279,21 +1280,22 @@ class Room: SKNode {
     }
     
     func createGuards(){
-        print("Creating Guards")
+//        print("Creating Guards")
         for i in 0...stanzaGuardia.count-1{
             for j in 0...stanzaGuardia[1].count-1{
                 if(stanzaGuardia[i][j] == 300){
-                    print("GUARDIA")
+//                    print("GUARDIA")
                     let guardia = GuardConoGrande(texture: SKTexture(imageNamed: "ConoGrandeFrontF2"), color: .clear, size: CGSize(width: enemyDimensionWidth, height: enemyDimensionHeight))
-                    guardia.position = CGPoint(x: startingPosition.x + Double(j * blocco) + Double(blocco) , y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+//                    guardia.position = CGPoint(x: startingPosition.x + Double(j * blocco) - Double(blocco/2) , y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    guardia.position = CGPoint(x: startingPosition.x + Double(j * blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                     guardia.zPosition = 500
                     guardia.name = "Guardia"+String(guardNameIndex)
                     guardNameIndex += 1
                     addChild(guardia)
                     
-                    guardia.getCenterBall().zPosition = 600
-                    guardia.getCenterBall().fillColor = .blue
-                    guardia.getCenterBall().strokeColor = .blue
+                    guardia.getCenterBall().zPosition = 1
+//                    guardia.getCenterBall().fillColor = .blue
+//                    guardia.getCenterBall().strokeColor = .blue
                     guardia.getCenterBall().position = guardia.position
                     addChild(guardia.getCenterBall())
                     
@@ -1305,9 +1307,9 @@ class Room: SKNode {
                     nemici.append(guardia)
                     arrayOfGuards.append(guardia)
                     
-                    print("GUARDIA CREATA: \(guardia.name) + \(guardia.position)")
+//                    print("GUARDIA CREATA: \(guardia.name) + \(guardia.position)")
                 } else if(stanzaGuardia[i][j] == 301){
-                    print("GUARDIA PICCOLA")
+//                    print("GUARDIA PICCOLA")
                     let guardia = GuardConoPiccolo(texture: SKTexture(imageNamed: "ConoPiccoloBackF1"), color: .clear, size: CGSize(width: enemyDimensionWidth, height: enemyDimensionHeight))
                     guardia.position = CGPoint(x: startingPosition.x + Double(j * blocco) + Double(blocco) , y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                     guardia.zPosition = 500
@@ -1315,9 +1317,9 @@ class Room: SKNode {
                     guardNameIndex += 1
                     addChild(guardia)
                     
-                    guardia.getCenterBall().zPosition = 600
-                    guardia.getCenterBall().fillColor = .blue
-                    guardia.getCenterBall().strokeColor = .blue
+                    guardia.getCenterBall().zPosition = 1
+//                    guardia.getCenterBall().fillColor = .blue
+//                    guardia.getCenterBall().strokeColor = .blue
                     guardia.getCenterBall().position = guardia.position
                     addChild(guardia.getCenterBall())
                     
@@ -1329,7 +1331,7 @@ class Room: SKNode {
                     nemici.append(guardia)
                     arrayOfGuards.append(guardia)
                     
-                    print("GUARDIA CREATA: \(guardia.name) + \(guardia.position)")
+//                    print("GUARDIA CREATA: \(guardia.name) + \(guardia.position)")
                 }
             }
         }

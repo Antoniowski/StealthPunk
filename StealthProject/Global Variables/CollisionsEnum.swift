@@ -12,4 +12,7 @@ enum ColliderType: UInt32{
     case COLLECTIBLE = 2
     case DOOR = 3
     case CHAR = 4
+    
+    
+    case NONE = 16
 }
