@@ -9,6 +9,8 @@ import Foundation
 import GameplayKit
 import SpriteKit
 
+var currentScene = SKScene()
+
 var arrayOfGuards: [Guard] = []
 var guardNameIndex: Int = 0
 
@@ -1057,14 +1059,28 @@ func createPath(entity: Guard, arrayOfActions: [myAction]){
         switch action.actionType{
         case .PATH_ACTION:
             
+            let currentRoom = entity.parent!
+            
+//            print("Scena corrente per la guardia: \(currentScene)")
+            
+//            let currentFloor = currentRoom.parent!
+            
+//            print("SCENA DI \(entity.name) : \(currentRoom)")
+            
             var space: Double = 0
             
             let path = CGMutablePath()
+            
+            print("Punto iniziale: \(action.startingPoint) + Punto finale: \(action.endingPoint)")
+            
             path.move(to: CGPoint(x: 0, y: 0))
+//            path.move(to: currentRoom.convert(CGPoint(x: 0, y: 0), to: entity.parent!))
             if(action.startingPoint.x != action.endingPoint.x){
-                space = (action.endingPoint.x - action.startingPoint.x)*CGFloat(blockDimension)
+                space = (action.endingPoint.x - action.startingPoint.x)*CGFloat(blocco)
                 
-                path.addLine(to: CGPoint(x: (action.endingPoint.x - action.startingPoint.x)*CGFloat(blockDimension), y: 0))
+                
+//                path.addLine(to: currentRoom.convert(CGPoint(x: (action.endingPoint.x - action.startingPoint.x)*CGFloat(blockDimension), y: 0), to: entity.parent!))
+                path.addLine(to: CGPoint(x: (action.endingPoint.x - action.startingPoint.x)*CGFloat(blocco), y: 0))
                 if(action.endingPoint.x - action.startingPoint.x > 0){
                     let updateStateActionToMoveAndDirection = SKAction.customAction(withDuration: 0.01, actionBlock: {
                         node, _ in
@@ -1083,9 +1099,10 @@ func createPath(entity: Guard, arrayOfActions: [myAction]){
                     sequenceArray.append(updateStateActionToMoveAndDirection)
                 }
             } else {
-                space = (action.endingPoint.y - action.startingPoint.y)*CGFloat(blockDimension)
+//                space = (action.endingPoint.y - action.startingPoint.y)*CGFloat(blocco)
+                space = (action.startingPoint.y - action.endingPoint.y)*CGFloat(blocco)
                 
-                path.addLine(to: CGPoint(x: 0, y: (action.endingPoint.y - action.startingPoint.y)*CGFloat(blockDimension)))
+                path.addLine(to: CGPoint(x: 0, y: (action.startingPoint.y - action.endingPoint.y)*CGFloat(blocco)))
                 if(action.endingPoint.y - action.startingPoint.y > 0){
                     let updateStateActionToMoveAndDirection = SKAction.customAction(withDuration: 0.01, actionBlock: {
                         node, _ in
@@ -1107,6 +1124,53 @@ func createPath(entity: Guard, arrayOfActions: [myAction]){
             }
 
             let followLine = SKAction.follow(path, asOffset: true, orientToPath: false, duration: abs(space)/Double(entity.getSpeed()))
+
+//            if(action.startingPoint.x != action.endingPoint.x){
+//                space = (action.endingPoint.x - action.startingPoint.x)*CGFloat(blockDimension)
+//
+//                path.addLine(to: CGPoint(x: (action.endingPoint.x - action.startingPoint.x)*CGFloat(blockDimension), y: 0))
+//                if(action.endingPoint.x - action.startingPoint.x > 0){
+//                    let updateStateActionToMoveAndDirection = SKAction.customAction(withDuration: 0.01, actionBlock: {
+//                        node, _ in
+//
+//                        entity.setGuardActionStateBuffer(actionStateBuffer: GuardActionState.MOVE)
+//                    })
+//
+//                    sequenceArray.append(updateStateActionToMoveAndDirection)
+//                } else {
+//                    let updateStateActionToMoveAndDirection = SKAction.customAction(withDuration: 0.01, actionBlock: {
+//                        node, _ in
+//
+//                        entity.setGuardActionStateBuffer(actionStateBuffer: GuardActionState.MOVE)
+//                    })
+//
+//                    sequenceArray.append(updateStateActionToMoveAndDirection)
+//                }
+//            } else {
+//                space = (action.endingPoint.y - action.startingPoint.y)*CGFloat(blockDimension)
+//
+//                path.addLine(to: CGPoint(x: 0, y: (action.endingPoint.y - action.startingPoint.y)*CGFloat(blockDimension)))
+//                if(action.endingPoint.y - action.startingPoint.y > 0){
+//                    let updateStateActionToMoveAndDirection = SKAction.customAction(withDuration: 0.01, actionBlock: {
+//                        node, _ in
+//
+//                        entity.setGuardActionStateBuffer(actionStateBuffer: GuardActionState.MOVE)
+//                    })
+//
+//                    sequenceArray.append(updateStateActionToMoveAndDirection)
+//                } else {
+//                    let updateStateActionToMoveAndDirection = SKAction.customAction(withDuration: 0.01, actionBlock: {
+//                        node, _ in
+//
+//                        entity.setGuardActionStateBuffer(actionStateBuffer: GuardActionState.MOVE)
+////                        entity.setGuardMovementDirection(movementDirection: Direction.DOWN)
+//                    })
+//
+//                    sequenceArray.append(updateStateActionToMoveAndDirection)
+//                }
+//            }
+//
+//            let followLine = SKAction.follow(path, asOffset: true, orientToPath: false, duration: abs(space)/Double(entity.getSpeed()))
 
             sequenceArray.append(followLine)
             
