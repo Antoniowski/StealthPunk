@@ -15,6 +15,7 @@
 		4A2159FA283FD60C000F237C /* GuardMatrixes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2159F9283FD60C000F237C /* GuardMatrixes.swift */; };
 		4A3A1B97284516010030BB48 /* GuardConoPiccolo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3A1B96284516010030BB48 /* GuardConoPiccolo.swift */; };
 		4ABFC91E28327D6D00213CC9 /* GuardConoGrande.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABFC91D28327D6D00213CC9 /* GuardConoGrande.swift */; };
+		63935A33284657D000155031 /* OldNewspaperTypes.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63935A32284657D000155031 /* OldNewspaperTypes.ttf */; };
 		63A55F4528410B1D00A067A5 /* CharacterBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A55F4428410B1D00A067A5 /* CharacterBox.swift */; };
 		63B9F6AB2833DA35008E62C1 /* GearCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9F6AA2833DA35008E62C1 /* GearCounter.swift */; };
 		63B9F6AE283439FE008E62C1 /* Victorian Parlor Vintage Alternate_free.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63B9F6AD283439FE008E62C1 /* Victorian Parlor Vintage Alternate_free.ttf */; };
@@ -55,6 +56,11 @@
 		6AAE3F9628450C89002917FB /* BushExit.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6AAE3F9528450C89002917FB /* BushExit.wav */; };
 		6AAE3F9828450CC6002917FB /* BushEnter.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6AAE3F9728450CC5002917FB /* BushEnter.wav */; };
 		6AAE3F9A284511A5002917FB /* GearSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6AAE3F99284511A5002917FB /* GearSound.wav */; };
+		6AAE3F9C28451D97002917FB /* BONK.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6AAE3F9B28451D97002917FB /* BONK.mp3 */; };
+		6AAE3F9E28452050002917FB /* swing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6AAE3F9D28452050002917FB /* swing.wav */; };
+		6AAE3FA028461569002917FB /* ObjectBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE3F9F28461569002917FB /* ObjectBox.swift */; };
+		6AAE3FA2284643EE002917FB /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE3FA1284643EE002917FB /* MainMenu.swift */; };
+		6AAE3FA528465029002917FB /* OldLondon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6AAE3FA428465029002917FB /* OldLondon.ttf */; };
 		6AB863E128200334006BB85E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB863E028200334006BB85E /* AppDelegate.swift */; };
 		6AB863E328200334006BB85E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6AB863E228200334006BB85E /* GameScene.sks */; };
 		6AB863E528200334006BB85E /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6AB863E428200334006BB85E /* Actions.sks */; };
@@ -91,6 +97,7 @@
 		4A2159F9283FD60C000F237C /* GuardMatrixes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardMatrixes.swift; sourceTree = "<group>"; };
 		4A3A1B96284516010030BB48 /* GuardConoPiccolo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardConoPiccolo.swift; sourceTree = "<group>"; };
 		4ABFC91D28327D6D00213CC9 /* GuardConoGrande.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardConoGrande.swift; sourceTree = "<group>"; };
+		63935A32284657D000155031 /* OldNewspaperTypes.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OldNewspaperTypes.ttf; sourceTree = "<group>"; };
 		63A55F4428410B1D00A067A5 /* CharacterBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterBox.swift; sourceTree = "<group>"; };
 		63B9F6AA2833DA35008E62C1 /* GearCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearCounter.swift; sourceTree = "<group>"; };
 		63B9F6AD283439FE008E62C1 /* Victorian Parlor Vintage Alternate_free.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Victorian Parlor Vintage Alternate_free.ttf"; sourceTree = "<group>"; };
@@ -132,6 +139,11 @@
 		6AAE3F9528450C89002917FB /* BushExit.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = BushExit.wav; sourceTree = "<group>"; };
 		6AAE3F9728450CC5002917FB /* BushEnter.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = BushEnter.wav; sourceTree = "<group>"; };
 		6AAE3F99284511A5002917FB /* GearSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GearSound.wav; sourceTree = "<group>"; };
+		6AAE3F9B28451D97002917FB /* BONK.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BONK.mp3; sourceTree = "<group>"; };
+		6AAE3F9D28452050002917FB /* swing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = swing.wav; sourceTree = "<group>"; };
+		6AAE3F9F28461569002917FB /* ObjectBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectBox.swift; sourceTree = "<group>"; };
+		6AAE3FA1284643EE002917FB /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
+		6AAE3FA428465029002917FB /* OldLondon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OldLondon.ttf; sourceTree = "<group>"; };
 		6AB863DD28200334006BB85E /* StealthPunk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StealthPunk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AB863E028200334006BB85E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6AB863E228200334006BB85E /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -188,6 +200,7 @@
 				63B9F6AA2833DA35008E62C1 /* GearCounter.swift */,
 				63A55F4428410B1D00A067A5 /* CharacterBox.swift */,
 				6AAE3F83283FD42A002917FB /* TimeCounter.swift */,
+				6AAE3F9F28461569002917FB /* ObjectBox.swift */,
 			);
 			path = HUD;
 			sourceTree = "<group>";
@@ -195,7 +208,9 @@
 		63B9F6AC283439A0008E62C1 /* Project Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				6AAE3FA428465029002917FB /* OldLondon.ttf */,
 				63B9F6AD283439FE008E62C1 /* Victorian Parlor Vintage Alternate_free.ttf */,
+				63935A32284657D000155031 /* OldNewspaperTypes.ttf */,
 			);
 			path = "Project Fonts";
 			sourceTree = "<group>";
@@ -251,9 +266,11 @@
 				6AAE3F9528450C89002917FB /* BushExit.wav */,
 				6AAE3F8D2845000D002917FB /* closeCabinet.wav */,
 				6AAE3F91284504E7002917FB /* vetrina.wav */,
+				6AAE3F9B28451D97002917FB /* BONK.mp3 */,
 				6AAE3F99284511A5002917FB /* GearSound.wav */,
 				6AAE3F9728450CC5002917FB /* BushEnter.wav */,
 				6AAE3F9328450A95002917FB /* SingleFootstep2.wav */,
+				6AAE3F9D28452050002917FB /* swing.wav */,
 				6AAE3F81283FC735002917FB /* SingleFootstep.mp3 */,
 				6AAE3F7E283FC4C7002917FB /* footsteps.mp3 */,
 				6AAE3F8B28450004002917FB /* openCabinet.wav */,
@@ -347,6 +364,7 @@
 				6A2A7E9B283457D600D14EC0 /* Intro.swift */,
 				6A2A7E9D28366BA900D14EC0 /* Lobby.swift */,
 				6AAE3F78283C231B002917FB /* TestScene4.swift */,
+				6AAE3FA1284643EE002917FB /* MainMenu.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -472,14 +490,18 @@
 				6AB863EE28200335006BB85E /* Assets.xcassets in Resources */,
 				6AAE3F82283FC736002917FB /* SingleFootstep.mp3 in Resources */,
 				6AAE3F9A284511A5002917FB /* GearSound.wav in Resources */,
+				63935A33284657D000155031 /* OldNewspaperTypes.ttf in Resources */,
 				6AB863F128200335006BB85E /* LaunchScreen.storyboard in Resources */,
 				6AAE3F8A2844FF08002917FB /* door2.wav in Resources */,
 				6AB863E528200334006BB85E /* Actions.sks in Resources */,
 				6AAE3F8C28450004002917FB /* openCabinet.wav in Resources */,
 				6AAE3F7F283FC4C7002917FB /* grassFootsteps.mp3 in Resources */,
+				6AAE3FA528465029002917FB /* OldLondon.ttf in Resources */,
+				6AAE3F9C28451D97002917FB /* BONK.mp3 in Resources */,
 				63B9F6AE283439FE008E62C1 /* Victorian Parlor Vintage Alternate_free.ttf in Resources */,
 				6AAE3F882844FD5A002917FB /* doorTaverna.wav in Resources */,
 				6AAE3F9428450A95002917FB /* SingleFootstep2.wav in Resources */,
+				6AAE3F9E28452050002917FB /* swing.wav in Resources */,
 				6AAE3F9628450C89002917FB /* BushExit.wav in Resources */,
 				6AAE3F90284504A4002917FB /* pancaOpenCorto.wav in Resources */,
 			);
@@ -492,6 +514,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AAE3FA2284643EE002917FB /* MainMenu.swift in Sources */,
 				6AB863FB2820258F006BB85E /* OpOverloading.swift in Sources */,
 				6AAE3F71283A4270002917FB /* TavernaDoor.swift in Sources */,
 				6AA31BDF28298C17002CCD47 /* Lampione.swift in Sources */,
@@ -522,6 +545,7 @@
 				6AB8640A2821845B006BB85E /* VirtualController.swift in Sources */,
 				A693D354282561300055C266 /* testRoom.swift in Sources */,
 				6A0621F228330FC80064BB97 /* CollisionsEnum.swift in Sources */,
+				6AAE3FA028461569002917FB /* ObjectBox.swift in Sources */,
 				6AC709612823D4DD007F8A50 /* SpecificCharacterClasses.swift in Sources */,
 				6AAE3F79283C231B002917FB /* TestScene4.swift in Sources */,
 				6AC7096728240B00007F8A50 /* FacingEnum.swift in Sources */,
@@ -691,7 +715,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = YT6T4953M8;
+				DEVELOPMENT_TEAM = 42N2Q96746;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StealthProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -722,7 +746,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = YT6T4953M8;
+				DEVELOPMENT_TEAM = 42N2Q96746;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StealthProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

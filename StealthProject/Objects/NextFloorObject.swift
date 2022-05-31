@@ -60,10 +60,23 @@ class NextFloor: UsableObject{
     }
     
     
-    func loadScene(_ view: SKView){
-        passaggio1 = false
-        let scene = TestScene3(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-        view.presentScene(scene, transition: .fade(withDuration: 2))
+    func loadScene(_ view: SKView, Floor: FloorType){
+
+        switch Floor{
+            
+        case .FIRST_FLOOR:
+            passaggio1 = false
+            let scene = TestScene3(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+            view.presentScene(scene, transition: .fade(withDuration: 2))
+            
+        case .SECOND_FLOOE:
+            let scene = TestScene4(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+            view.presentScene(scene, transition: .fade(withDuration: 2))
+            passaggio1 = true
+            
+        case .LAST_FLOOR:
+            print ("hai vinto 2 volte wow wow ")
+        }
     }
     
     func getFloorLink()->FloorLink{

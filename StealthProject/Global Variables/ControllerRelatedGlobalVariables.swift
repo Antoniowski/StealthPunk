@@ -29,5 +29,6 @@ var passaggio1: Bool = false
 
 var ostacolo : Bool = false
 
+var finale : Bool = true
 
 
