@@ -103,11 +103,13 @@ class Credits: SKScene{
         let touchedNode = atPoint(touchLocation)
 
         if touchedNode.name == "mainmenu"{
+            self.run(.playSoundFileNamed("pagina", waitForCompletion: true))
             let menu = MainMenu(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
             view?.presentScene(menu, transition: .fade(withDuration: 3))
         }
         
         if touchedNode.name == "settings"{
+            self.run(.playSoundFileNamed("pagina", waitForCompletion: true))
             let go = MainMenu(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
             view?.presentScene(go, transition: .fade(withDuration: 3))
         }

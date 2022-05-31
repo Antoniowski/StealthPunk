@@ -107,9 +107,9 @@ class MainMenu: SKScene{
         if touchedNode.name == "menu"{
             self.run(.fadeOut(withDuration: 1), completion: {
                 self.subtitle.text = "MAIN MENU"
-                self.credits.text = "CREDITS"
+                self.credits.text = "Credits"
                 self.credits.name = "credits"
-                self.option.text = "SETTINGS"
+                self.option.text = "Settings"
                 self.option.name = "settings"
                 self.addChild(self.start)
                 self.run(.playSoundFileNamed("pagina", waitForCompletion: true))
@@ -119,6 +119,7 @@ class MainMenu: SKScene{
         }
         
         if touchedNode.name == "credits"{
+            self.run(.playSoundFileNamed("pagina", waitForCompletion: true))
             let credit = Credits(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
             view?.presentScene(credit, transition: .fade(withDuration: 3))
         }
