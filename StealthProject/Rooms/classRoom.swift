@@ -1025,6 +1025,30 @@ class Room: SKNode {
                     chest.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                     chest.lightingBitMask = 1 | 2
                     addChild(chest)
+                    
+                    
+                case 101:
+                    let final = SKSpriteNode (texture: SKTexture (imageNamed: "stand1Final"), size: CGSize(width: blocco, height: blocco))
+                    final.zPosition = 3
+                    final.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+//                    final.physicsBody = SKPhysicsBody(rectangleOf: .init(width: blocco, height: blocco/2), center: .init(x: 0, y: 0))
+//                    final.physicsBody?.allowsRotation = false
+//                    final.physicsBody?.isDynamic = false
+//                    final.physicsBody?.affectedByGravity = false
+                    final.lightingBitMask = 1 | 2
+                    addChild(final)
+                    
+                    let final1 = Collectible(type: .FINAL)
+                    final1.zPosition = 4
+                    final1.position = final.position
+                    final1.position.y += 40
+                    final1.physicsBody = SKPhysicsBody(rectangleOf: .init(width: blocco, height: blocco), center: .init(x: 0, y: 0))
+                    final1.physicsBody?.allowsRotation = false
+                    final1.physicsBody?.isDynamic = false
+                    final1.physicsBody?.affectedByGravity = false
+                   
+                    addChild(final1)
+                    
                 default:
                     print("")
                 }
