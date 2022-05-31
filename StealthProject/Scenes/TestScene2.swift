@@ -213,7 +213,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
                 box.position.y = UIScreen.main.bounds.height*0.55
                 scenecamera.addChild(box)
                 box.run(.moveTo(y: UIScreen.main.bounds.height*0.29 , duration: 0.5), completion: {
-                    box.run(.sequence([.wait(forDuration: 1.5), .moveTo(y: UIScreen.main.bounds.height*0.55, duration: 0.5)]), completion: {
+                    box.run(.sequence([.wait(forDuration: 2.5), .moveTo(y: UIScreen.main.bounds.height*0.55, duration: 0.5)]), completion: {
                         box.removeFromParent()
                     })
                 })
