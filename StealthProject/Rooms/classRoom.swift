@@ -1164,7 +1164,7 @@ class Room: SKNode {
                     }
                 case 14:
                     if floor == .SECOND_FLOOE || floor == .LAST_FLOOR{
-                    let tappetoLatoSx = SKSpriteNode(texture: SKTexture(imageNamed: "tappetoLatoSx"), size: bloccoSize)
+                    let tappetoLatoSx = SKSpriteNode(texture: SKTexture(imageNamed: "TappetoLatoSx"), size: bloccoSize)
                     tappetoLatoSx.normalTexture = SKTexture(imageNamed: "tappetoLatoSx NormalMap")
                     tappetoLatoSx.name = "floorTile"
                     tappetoLatoSx.zPosition = 2
