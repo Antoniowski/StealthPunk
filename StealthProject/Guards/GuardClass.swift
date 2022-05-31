@@ -57,6 +57,8 @@ struct myAction{
 
 class Guard: SKSpriteNode{
     
+    var playerInVisualCone: Bool = false
+    
     private var strength: Int = 0
     private var guardSpeed: Int = 0
     

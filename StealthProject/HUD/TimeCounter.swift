@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 
 var MINUTE: Int = 10
-var SECONDS: Int = 60
+var SECONDS: Int = 0
 
 class TimeCounter: SKNode{
     private var border: SKSpriteNode = SKSpriteNode(imageNamed: "frameFill")
@@ -33,4 +33,37 @@ class TimeCounter: SKNode{
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+func Timer(scene: SKScene){
+    
+        let wait = SKAction.wait(forDuration: 1)
+        let go = SKAction.run({
+            var differenzaDiSecondi = 0
+            var differenzaDiSecondiBool = false
+            
+            if SECONDS > 0 {
+                if(SECONDS - moltiplicatoreTempo < 0){
+                    let differenzaDiSecondi = moltiplicatoreTempo - SECONDS
+                    SECONDS = 60
+                    MINUTE -= 1
+                    SECONDS -= differenzaDiSecondi
+                } else {
+                    SECONDS -= 1 * (moltiplicatoreTempo)
+                }
+            }else{
+                if MINUTE > 0{
+                    SECONDS = 60
+                    SECONDS -= 1 * (moltiplicatoreTempo)
+                    MINUTE -= 1
+                }else{
+                    print("GAME OVER")
+                }
+            }
+        })
+        let actions = SKAction.sequence([wait, go])
+//    scene.run(.sequence([wait, .run {
+//        MINUTE -= 1
+//    }]))
+    scene.run(.repeatForever(actions))
 }

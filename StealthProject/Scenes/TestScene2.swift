@@ -175,9 +175,30 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         enumerateChildNodes(withName: "ROOM/dynamicObject"){oggetto, _ in
             self.oggetti.append(oggetto)
         }
-        Timer()
+       Timer(scene: self)
     }
     
+//    func Timer(){
+//            let wait = SKAction.wait(forDuration: 1)
+//            let go = SKAction.run({
+//                if SECONDS > 0 {
+//                    SECONDS -= 1 * (moltiplicatoreTempo)
+//                }else{
+//                    if MINUTE > 0{
+//                        SECONDS = 60
+//                        SECONDS -= 1 * (moltiplicatoreTempo)
+//                        MINUTE -= 1
+//                    }else{
+//                        print("GAME OVER")
+//                    }
+//                }
+//            })
+//            let actions = SKAction.sequence([wait, go])
+//    //    scene.run(.sequence([wait, .run {
+//    //        MINUTE -= 1
+//    //    }]))
+//        run(.repeatForever(actions))
+//    }
     
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -238,27 +259,6 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     }
     
     
-    func Timer(){
-            let wait = SKAction.wait(forDuration: 1)
-            let go = SKAction.run({
-                if SECONDS > 0 {
-                    SECONDS -= 1
-                }else{
-                    if MINUTE > 0{
-                        SECONDS = 60
-                        SECONDS -= 1
-                        MINUTE -= 1
-                    }else{
-                        print("GAME OVER")
-                    }
-                }
-            })
-            let actions = SKAction.sequence([wait, go])
-        run(.sequence([wait, .run {
-            MINUTE -= 1
-        }]))
-            run(.repeatForever(actions))
-    }
     
     func updateTimerLabel(){
         timer.etichetta.text = String(format: "%d:%d", MINUTE, SECONDS)
