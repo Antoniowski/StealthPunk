@@ -28,12 +28,14 @@ class MainMenu: SKScene{
         start.fontSize = 30
         start.text = "Start"
         start.name = "start"
+        start.fontName = "OldLondon"
         start.zPosition = 2
         start.fontColor = .init(white: 0, alpha: 0.8)
         start.position = .init(x: frame.width*0.74, y: frame.height*0.45)
 
         option.fontSize = 30
         option.text = "Settings"
+        option.fontName = "OldLondon"
         option.zPosition = 2
         option.fontColor = .init(white: 0, alpha: 0.8)
         option.position = .init(x: frame.width*0.74, y: frame.height*0.35)
