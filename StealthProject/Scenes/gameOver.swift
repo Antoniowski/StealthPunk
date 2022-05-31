@@ -27,6 +27,7 @@ class GameOver: SKScene{
         
         breakingNews.fontSize = 30
         breakingNews.text = "Breaking News"
+        breakingNews.fontName = "
         breakingNews.zPosition = 2
         breakingNews.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
         breakingNews.position = .init(x: frame.width*0.7, y: frame.height*0.55)
