@@ -292,6 +292,20 @@ let simpleFinale_R: [[Int]] =
      [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     ]
 
+let simpleFinale_U: [[Int]] =
+    [[1, 11, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+     [4, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5],
+     [2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 5],
+     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 5],
+     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 5],
+     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 5],
+     [4, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5],
+     [4, 6, 6, 6, 5, 1, 1, 1, 1, 1, 1, 3],
+     [4, 6, 6, 6, 5, 0, 0, 0, 0, 0, 0, 0],
+     [4, 6, 6, 6, 5, 0, 0, 0, 0, 0, 0, 0],
+     [2, 1, 1, 1, 3, 0, 0, 0, 0, 0, 0, 0]
+    ]
+
 
 
 //TAVERNA
@@ -726,5 +740,7 @@ let STANZE_FINALI_U: [RoomArchetype] = [.SCAMBIO3]
 let STANZE_FINALI_R: [RoomArchetype] = [.SCAMBIO4]
 
 let FINALE_DOWN : [RoomArchetype] = [.FINALE_D]
+let FINALE_UP: [RoomArchetype] = [.FINALE_U]
 let FINALE_LEFT : [RoomArchetype] = [.FINALE_L]
 let FINALE_RIGHT : [RoomArchetype] = [.FINALE_R]
+

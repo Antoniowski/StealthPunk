@@ -38,6 +38,7 @@ enum RoomArchetype: Int{
     case FINALE_D = 24
     case FINALE_L = 25
     case FINALE_R = 26
+    case FINALE_U = 27
 }
 
 enum RoomsType: Int{
@@ -453,7 +454,19 @@ class Room: SKNode {
             nemici = []
             setTextures(tipo: floor)
             createRoom()
+            
+        case .FINALE_U:
+            door = DoorPosition(UP: true, DOWN: false, RIGHT: false, LEFT: false)
+            tipe = .NORMAL
+            numRighe = simpleFinale_U[1].count
+            numColonne = simpleFinale_U.count
+            stanza = simpleFinale_U
+            nemici = []
+            setTextures(tipo: floor)
+            createRoom()
         }
+        
+    
         
     
     }
