@@ -55,15 +55,23 @@ func visionConeRayCasting360(entity: Guard, scene: SKScene){
     }
     
     
-    createVisionCone360(entity: entity, scene: scene)
-//    if(entity.getPlayerFound()){
-//        scene.enumerateChildNodes(withName: "*"){node, _ in
-//            if(node.name! == entity.name!+"visualCone"){
-//                node.removeFromParent()
-//            }
-//        }
-//    }
+    if(entity.rayCastingPlayerFound){
+        if(!entity.playerInVisualCone){
+            entity.playerInVisualCone = true
+            if(moltiplicatoreTempo == 1){
+                moltiplicatoreTempo = 2
+            } else if (moltiplicatoreTempo == 2){
+                moltiplicatoreTempo = 7
+            } else if (moltiplicatoreTempo == 7){
+                
+            }
+        }
+        
+    } else if(!entity.rayCastingPlayerFound){
+        entity.playerInVisualCone = false
+    }
     
+    createVisionCone360(entity: entity, scene: scene)
 }
 
 func visionConeRayCasting(entity: Guard, scene: SKScene){
@@ -164,7 +172,19 @@ func createVisionCone(entity: Guard, scene: SKScene){
     
     
     if(entity.rayCastingPlayerFound){
-        print("GIOCATORE TROVATO")
+        if(!entity.playerInVisualCone){
+            entity.playerInVisualCone = true
+            if(moltiplicatoreTempo == 1){
+                moltiplicatoreTempo = 2
+            } else if (moltiplicatoreTempo == 2){
+                moltiplicatoreTempo = 7
+            } else if (moltiplicatoreTempo == 7){
+                
+            }
+        }
+        
+    } else if(!entity.rayCastingPlayerFound){
+        entity.playerInVisualCone = false
     }
     
 //    if(entity.rayCastingPlayerFound){

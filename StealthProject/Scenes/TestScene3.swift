@@ -161,8 +161,31 @@ class TestScene3: SKScene, PlayableScene, SKPhysicsContactDelegate {
 //        addChild(scenecamera)
 //        createRoom2()
 //        addChild(room)
+        
+        Timer(scene: self)
     }
     
+//    func Timer(){
+//            let wait = SKAction.wait(forDuration: 1)
+//            let go = SKAction.run({
+//                if SECONDS > 0 {
+//                    SECONDS -= 1 * (moltiplicatoreTempo)
+//                }else{
+//                    if MINUTE > 0{
+//                        SECONDS = 60
+//                        SECONDS -= 1 * (moltiplicatoreTempo)
+//                        MINUTE -= 1
+//                    }else{
+//                        print("GAME OVER")
+//                    }
+//                }
+//            })
+//            let actions = SKAction.sequence([wait, go])
+//    //    scene.run(.sequence([wait, .run {
+//    //        MINUTE -= 1
+//    //    }]))
+//        run(.repeatForever(actions))
+//    }
     
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -232,7 +255,6 @@ class TestScene3: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
 
     }
-    
     
     
     

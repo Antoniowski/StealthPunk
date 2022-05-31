@@ -39,7 +39,7 @@ let simple1MatrixGuardsPaths: [[myAction]] = [
      myAction(actionType: .ROTATE_ACTION, duration: 1.5, startingPoint: CGPoint(x: 0,y: 0), endingPoint: CGPoint(x: 0,y: 0), angle: 90),
      myAction(actionType: .WAIT_ACTION, duration: 3, startingPoint: CGPoint(x: 0,y: 0), endingPoint: CGPoint(x: 0,y: 0), angle: 90),
      myAction(actionType: .PATH_ACTION, duration: 1.5, startingPoint: CGPoint(x: 3,y: 2), endingPoint: CGPoint(x: 8,y: 2), angle: 90),
-     myAction(actionType: .ROTATE_ACTION, duration: 1.5, startingPoint: CGPoint(x: 0,y: 0), endingPoint: CGPoint(x: 0,y: 0), angle: -90),
+     myAction(actionType: .ROTATE_ACTION, duration: 1.5, startingPoint: CGPoint(x: 0,y: 0), endingPoint: CGPoint(x: 0,y: 0), angle: 90),
      myAction(actionType: .PATH_ACTION, duration: 1.5, startingPoint: CGPoint(x: 8,y: 2), endingPoint: CGPoint(x: 8,y: 1), angle: 90),
      myAction(actionType: .ROTATE_ACTION, duration: 1.5, startingPoint: CGPoint(x: 0,y: 0), endingPoint: CGPoint(x: 0,y: 0), angle: -90),
      myAction(actionType: .PATH_ACTION, duration: 1.5, startingPoint: CGPoint(x: 8,y: 1), endingPoint: CGPoint(x: 9,y: 1), angle: 90),
@@ -355,14 +355,30 @@ let prova2ScrignoGuardsPaths: [[myAction]] = [
 let prova3Guards: Matrix =
     [[2,1,1,1,1,1,3],
      [4,6,6,6,6,6,5],
-     [4,6,6,6,6,6,5],
-     [9,6,6,14,6,301,5],
+     [4,6,6,6,301,6,5],
+     [9,6,6,14,6,6,5],
      [4,6,6,6,6,6,5],
      [4,300,6,6,6,6,5],
      [1,1,1,1,1,1,1]
     ]
 
 let prova3GuardsPaths: [[myAction]] = [
+    [myAction(actionType: .ROTATE_ACTION, duration: 1.5, startingPoint: CGPoint(x: 0, y: 0), endingPoint: CGPoint(x: 0, y: 0), angle: 90),
+     myAction(actionType: .PATH_ACTION, duration: 2, startingPoint: CGPoint(x: 4, y: 2), endingPoint: CGPoint(x: 2, y: 2), angle: 90),
+     myAction(actionType: .ROTATE_ACTION, duration: 1.5, startingPoint: CGPoint(x: 0, y: 0), endingPoint: CGPoint(x: 0, y: 0), angle: 90),
+     myAction(actionType: .PATH_ACTION, duration: 2, startingPoint: CGPoint(x: 2, y: 2), endingPoint: CGPoint(x: 2, y: 4), angle: 90),
+     myAction(actionType: .ROTATE_ACTION, duration: 1.5, startingPoint: CGPoint(x: 0, y: 0), endingPoint: CGPoint(x: 0, y: 0), angle: 90),
+     myAction(actionType: .PATH_ACTION, duration: 2, startingPoint: CGPoint(x: 2, y: 4), endingPoint: CGPoint(x: 4, y: 4), angle: 90),
+     myAction(actionType: .ROTATE_ACTION, duration: 1.5, startingPoint: CGPoint(x: 0, y: 0), endingPoint: CGPoint(x: 0, y: 0), angle: 90),
+     myAction(actionType: .ROTATE_ACTION, duration: 1.5, startingPoint: CGPoint(x: 0, y: 0), endingPoint: CGPoint(x: 0, y: 0), angle: 90),
+     myAction(actionType: .PATH_ACTION, duration: 2, startingPoint: CGPoint(x: 4, y: 4), endingPoint: CGPoint(x: 2, y: 4), angle: 90),
+     myAction(actionType: .ROTATE_ACTION, duration: 1.5, startingPoint: CGPoint(x: 0, y: 0), endingPoint: CGPoint(x: 0, y: 0), angle: -90),
+     myAction(actionType: .PATH_ACTION, duration: 2, startingPoint: CGPoint(x: 2, y: 4), endingPoint: CGPoint(x: 2, y: 2), angle: 90),
+     myAction(actionType: .ROTATE_ACTION, duration: 1.5, startingPoint: CGPoint(x: 0, y: 0), endingPoint: CGPoint(x: 0, y: 0), angle: -90),
+     myAction(actionType: .PATH_ACTION, duration: 2, startingPoint: CGPoint(x: 0, y: 0), endingPoint: CGPoint(x: 0, y: 0), angle: 90),
+     myAction(actionType: .ROTATE_ACTION, duration: 1.5, startingPoint: CGPoint(x: 0, y: 0), endingPoint: CGPoint(x: 0, y: 0), angle: 90)],
+    [myAction(actionType: .ROTATE_ACTION, duration: 1.5, startingPoint: CGPoint(x: 0, y: 0), endingPoint: CGPoint(x: 0, y: 0), angle: 90)
+    ]
 ]
 
 let prova3ScrignoGuards: Matrix =
