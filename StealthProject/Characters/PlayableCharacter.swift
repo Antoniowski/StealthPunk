@@ -227,6 +227,9 @@ class PlayableCharacter: SKSpriteNode{
                                     case .VETRINA:
                                         let vetrina = interazione as? Vetrina
                                         vetrina?.action()
+                                    case .BUSH:
+                                        let bush = interazione as? Bush
+                                        bush?.action()
                                     default :
                                         print ("")
                                     }

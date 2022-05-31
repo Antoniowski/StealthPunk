@@ -10,6 +10,7 @@ import GameplayKit
 
 
 class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
+    var initGuards = false
 
     
     var floor = SKSpriteNode(texture: SKTexture(imageNamed: "pavimento3"), size: CGSize(width: blocco, height: blocco))
@@ -46,9 +47,9 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     var knuckles = Collectible(type: .KNUCKLES)
     var testcoin = Collectible(type: .COIN)
     var testcoin2 = Collectible(type: .COIN)
-
-    var clock1 = Collectible(type: .CLOCK1)
-    var clock2 = Collectible(type: .CLOCK2)
+//
+//    var clock1 = Collectible(type: .CLOCK1)
+//    var clock2 = Collectible(type: .CLOCK2)
     
     var testcoin3 = Collectible(type: .COIN)
 
@@ -87,7 +88,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         scenecamera.addChild(timer)
 
         scenecamera.position = player.position
-        scenecamera.setScale(8)
+        scenecamera.setScale(1)
 //        armadio.position = player.position
 //        armadio.position.x += 250
 //        lampione.position = player.position
@@ -99,7 +100,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
 //        player.lightingBitMask = 5
         
 //        let room = Room(.SIMPLE_1, startingPosition: CGPoint(x: 0, y: 400), floor: .SECOND_FLOOE)
-        let f = Floor(self, floorType: .SECOND_FLOOE)
+        let f = Floor(self, floorType: .FIRST_FLOOR)
         
 //        luce.categoryBitMask = 2
 //        luce.position = lampione.position
@@ -114,16 +115,6 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
         luce.ambientColor = .init(red: 0.624, green: 0.624, blue: 0.914, alpha: 0.25) // PER LE PARTI SCURE - GIARDINO
 //        luce.ambientColor = .init(red: 0.6, green: 0.6, blue: 0.75, alpha: 0.15)
-
-        coin.size = CGSize(width: 30, height: 30)
-
-        ombra.position = t.position
-        ombra.position.y -= coin.size.height/2 + 10
-        ombra.zPosition = 1
-        ombra.fillColor = .init(white: 0, alpha: 0.2)
-        ombra.strokeColor = .clear
-        
-        coin.addChild(ombra)
         
         t.position = CGPoint(x: 100, y: 100)
         t.addChild(coin)
@@ -136,8 +127,9 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         lightSwitch.position = player.position
         lightSwitch.position.x -= 70
         
-        knuckles.position = .init(x: 150, y: 150)
-        testcoin.position = .init(x: 150, y: -150)
+        knuckles.position = .init(x: 150, y: -150)
+        boots.position = .init(x: 150, y: -150)
+        knuckles.zPosition = 5
         testcoin2.position = .init(x: 170, y: -150)
         testcoin3.position = .init(x: 190, y: -150)
         testcoin4.position = .init(x: 210, y: -150)
@@ -153,13 +145,13 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         player.position = f.spawn
         player.zPosition = 10
         
-        clock1.zPosition = 3
-        clock2.zPosition = 3
-        clock1.position = .init(x: 150, y: 150)
-        clock2.position = .init(x: 150, y: -150)
-        
-        addChild(clock1)
-        addChild(clock2)
+//        clock1.zPosition = 3
+//        clock2.zPosition = 3
+//        clock1.position = .init(x: 150, y: 150)
+//        clock2.position = .init(x: 150, y: -150)
+//        
+//        addChild(clock1)
+//        addChild(clock2)
         
         addChild(player)
 //        addChild(armadio)
@@ -169,7 +161,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
 //        addChild(ombra)
 //        addChild(lightSwitch)
 //        addChild(boots)
-//        addChild(knuckles)
+        addChild(knuckles)
 //        addChild(testcoin)
 //        addChild(testcoin2)
 //        addChild(testcoin4)
@@ -204,6 +196,9 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         if firstBody.node?.name == "player" && secondBody.node?.name == "collectible"{
             let item = secondBody.node as? Collectible
             item?.action(player: firstBody.node as? PlayableCharacter ?? PlayableCharacter())
+            
+            
+            
             if item?.getType() == .COIN{
 //                indicatore.run(.moveBy(x: 0, y: -90, duration: 0.5), completion: {
 //                    self.indicatore.run(.sequence([.wait(forDuration: 1.5), .moveBy(x: 0, y: 90, duration: 0.5)]))
@@ -212,12 +207,25 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
                     self.indicatore.run(.sequence([.wait(forDuration: 1.5), .moveTo(y: UIScreen.main.bounds.height*0.55, duration: 0.5)]))
                 })
                 item?.action(contatore: indicatore)
+            }else {
+                let box = ObjectBox(item!)
+                box.position.x = -125
+                box.position.y = UIScreen.main.bounds.height*0.55
+                scenecamera.addChild(box)
+                box.run(.moveTo(y: UIScreen.main.bounds.height*0.29 , duration: 0.5), completion: {
+                    box.run(.sequence([.wait(forDuration: 2.5), .moveTo(y: UIScreen.main.bounds.height*0.55, duration: 0.5)]), completion: {
+                        box.removeFromParent()
+                    })
+                })
             }
             secondBody.node?.removeFromParent()
+            
         }
+        
         //PER FAR APPARIRE LE STANZE
         if firstBody.node?.name == "player" && secondBody.node?.name == "door"{
             let door = secondBody.node as? Door
+            door?.run(.playSoundFileNamed("door2", waitForCompletion: true))
             door?.open()
             door?.parent?.alpha = 1
         }
@@ -302,7 +310,28 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
         scenecamera.position = player.position
 
+        if(!initGuards){
+            print("Inizializzo le guardie con le coordinate della scena")
+            initGuards = true
+            for guardia in arrayOfGuards{
+                print("GUARDIA POSIZIONE: \(guardia.position)")
+                let posizioneDellaScena = guardia.convert(guardia.position, to: self)
+                print("GUARDIA POSIZIONE CONVERTITA: \(posizioneDellaScena)")
+                let posizioneDellaScena2 = guardia.roomReference.convert(guardia.position, to: self)
+                print("GUARDIA POSIZIONE CONVERTITA 2: \(posizioneDellaScena2)")
+//                guardia.removeFromParent()
+//                guardia.getCenterBall().removeFromParent()
+//                guardia.position = posizioneDellaScena2
+//                guardia.getCenterBall().position = posizioneDellaScena2
+//                self.addChild(guardia)
+//                self.addChild(guardia.getCenterBall())
+            }
+        }
         
+        for guardia in arrayOfGuards{
+            visionCone(entity: guardia, scene: self)
+            guardia.checkState(point: player.position, deltaTime: delta, scene: self)
+        }
         
         
 //        print(player.position)

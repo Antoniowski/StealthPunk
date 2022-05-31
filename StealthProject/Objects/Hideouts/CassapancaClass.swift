@@ -26,6 +26,6 @@ class Cassapanca: Hideout{
     }
     
     override func action() {
-        self.run(.sequence([.setTexture(open), .wait(forDuration: 0.8), .setTexture(baseTexture)]))
+        self.run(.sequence([.setTexture(open), .playSoundFileNamed("pancaOpenCorto", waitForCompletion: true) , .setTexture(baseTexture), .playSoundFileNamed("closeCabinet", waitForCompletion: true)]))
     }
 }

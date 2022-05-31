@@ -9,6 +9,9 @@ import Foundation
 import GameplayKit
 import SpriteKit
 
+var arrayOfGuards: [Guard] = []
+var guardNameIndex: Int = 0
+
 let guardPhyscisBodyWidth = 45
 let guardPhyscisBodyHeight = 85
 
@@ -107,7 +110,7 @@ class Guard: SKSpriteNode{
     
     private var arrayOfVisionPoints: [CGPoint] = []
     
-    private var invisibleBall: SKShapeNode = SKShapeNode(rectOf: CGSize(width: 1, height: 1))
+    private var invisibleBall: SKShapeNode = SKShapeNode(rectOf: CGSize(width: 20, height: 20))
     private var initBall: Bool = false
     
     private var playerFound: Bool = false
@@ -159,6 +162,11 @@ class Guard: SKSpriteNode{
     
     var obstructedPath: Bool = false
     var targetPosition = CGPoint(x: 0, y: 0)
+    
+    var roomReference = SKNode()
+    
+    var floorMatrixCopy: Matrix = [[]]
+    var floorMatrixForPathfinding: Matrix = [[]]
     
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
         super.init(texture: texture, color: color, size: size)

@@ -174,8 +174,8 @@ class Room: SKNode {
             numColonne = simple1Matrix.count
             stanza = simple1Matrix
             stanzaGuardia = simple1MatrixGuards
-            pavimento = simple1MatrixPavimento
             vettoreDiPath = simple1MatrixGuardsPaths
+            pavimento = simple1MatrixPavimento
             nemici = []
             setTextures(tipo: floor)
             createRoom()
@@ -187,10 +187,13 @@ class Room: SKNode {
             numRighe = simple2Matrix[1].count
             numColonne = simple2Matrix.count
             stanza = simple2Matrix
+            stanzaGuardia = simple2MatrixGuards
+            vettoreDiPath = simple2MatrixGuardsPaths
             pavimento = simple2MatrixPavimento
             nemici = []
             setTextures(tipo: floor)
             createRoom()
+            createGuards()
             addRugsAndLights()
         case .SIMPLE_3:
             door = DoorPosition(UP: false, DOWN: true, RIGHT: true, LEFT: true)
@@ -198,10 +201,13 @@ class Room: SKNode {
             numRighe = simple3Matrix[1].count
             numColonne = simple3Matrix.count
             stanza = simple3Matrix
+            stanzaGuardia = simple3MatrixGuards
+            vettoreDiPath = simple3MatrixGuardsPaths
             pavimento = simple3MatrixPavimento
             nemici = []
             setTextures(tipo: floor)
             createRoom()
+            createGuards()
             addRugsAndLights()
         case .SIMPLE_4:
             door = DoorPosition(UP: true, DOWN: false, RIGHT: true, LEFT: true)
@@ -209,10 +215,13 @@ class Room: SKNode {
             numRighe = simple4Matrix[1].count
             numColonne = simple4Matrix.count
             stanza = simple4Matrix
+            stanzaGuardia = simple4MatrixGuards
+            vettoreDiPath = simple4MatrixGuardsPaths
             pavimento = simple4MatrixPavimento
             nemici = []
             setTextures(tipo: floor)
             createRoom()
+            createGuards()
             addRugsAndLights()
         case .SIMPLE_5:
             door = DoorPosition(UP: false, DOWN: true, RIGHT: false, LEFT: true)
@@ -220,10 +229,13 @@ class Room: SKNode {
             numRighe = simple5Matrix[1].count
             numColonne = simple5Matrix.count
             stanza = simple5Matrix
+            stanzaGuardia = simple5MatrixGuards
+            vettoreDiPath = simple5MatrixGuardsPaths
             pavimento = simple5MatrixPavimento
             nemici = []
             setTextures(tipo: floor)
             createRoom()
+            createGuards()
             addRugsAndLights()
         case .SIMPLE_6:
             door = DoorPosition(UP: false, DOWN: true, RIGHT: true, LEFT: false)
@@ -231,10 +243,13 @@ class Room: SKNode {
             numRighe = simple6Matrix[1].count
             numColonne = simple6Matrix.count
             stanza = simple6Matrix
+            stanzaGuardia = simple6MatrixGuards
+            vettoreDiPath = simple6MatrixGuardsPaths
             pavimento = simple6MatrixPavimento
             nemici = []
             setTextures(tipo: floor)
             createRoom()
+            createGuards()
             addRugsAndLights()
         case .SIMPLE_7:
             door = DoorPosition(UP: false, DOWN: true, RIGHT: true, LEFT: true)
@@ -242,10 +257,13 @@ class Room: SKNode {
             numRighe = simple7Matrix[1].count
             numColonne = simple7Matrix.count
             stanza = simple7Matrix
+            stanzaGuardia = simple7MatrixGuards
+            vettoreDiPath = simple7MatrixGuardsPaths
             pavimento = simple7MatrixPavimento
             nemici = []
             setTextures(tipo: floor)
             createRoom()
+            createGuards()
             addRugsAndLights()
         case .PROVA1:
             door = DoorPosition(UP: true, DOWN: false, RIGHT: false, LEFT: false)
@@ -253,10 +271,13 @@ class Room: SKNode {
             numRighe = prova1[1].count
             numColonne = prova1.count
             stanza = prova1
+            stanzaGuardia = prova1Guards
+            vettoreDiPath = prova1GuardsPaths
             pavimento = prova1Pavimento
             nemici = []
             setTextures(tipo: floor)
             createRoom()
+            createGuards()
             addRugsAndLights()
         case .PROVA2:
             door = DoorPosition(UP: false, DOWN: true, RIGHT: false, LEFT: false)
@@ -264,10 +285,13 @@ class Room: SKNode {
             numRighe = prova2[1].count
             numColonne = prova2.count
             stanza = prova2
+            stanzaGuardia = prova2Guards
+            vettoreDiPath = prova2GuardsPaths
             pavimento = prova2Pavimento
             nemici = []
             setTextures(tipo: floor)
             createRoom()
+            createGuards()
             addRugsAndLights()
         case .PROVA3:
             door = DoorPosition(UP: false, DOWN: false, RIGHT: false, LEFT: true)
@@ -275,10 +299,13 @@ class Room: SKNode {
             numRighe = prova3[1].count
             numColonne = prova3.count
             stanza = prova3
+            stanzaGuardia = prova3Guards
+            vettoreDiPath = prova3GuardsPaths
             nemici = []
             pavimento = prova3Pavimento
             setTextures(tipo: floor)
             createRoom()
+            createGuards()
             addRugsAndLights()
         case .PROVA4:
             door = DoorPosition(UP: false, DOWN: false, RIGHT: true, LEFT: false)
@@ -286,10 +313,12 @@ class Room: SKNode {
             numRighe = prova4[1].count
             numColonne = prova4.count
             stanza = prova4
+            stanzaGuardia = prova4Guards
+            vettoreDiPath = prova4GuardsPaths
             nemici = []
             setTextures(tipo: floor)
             createRoom()
-            
+            createGuards()
         case .SCAMBIO1:
             door = DoorPosition(UP: false, DOWN: true, RIGHT: false, LEFT: false)
             tipe = .NORMAL
@@ -344,10 +373,13 @@ class Room: SKNode {
             numRighe = prova1Scrigno[1].count
             numColonne = prova1Scrigno.count
             stanza = prova1Scrigno
+            stanzaGuardia = prova1ScrignoGuards
+            vettoreDiPath = prova1ScrignoGuardsPaths
             pavimento = prova1Pavimento
             nemici = []
             setTextures(tipo: floor)
             createRoom()
+            createGuards()
             addRugsAndLights()
         case .PROVA2POWERUP:
             door = DoorPosition(UP: false, DOWN: true, RIGHT: false, LEFT: false)
@@ -355,10 +387,13 @@ class Room: SKNode {
             numRighe = prova2Scrigno[1].count
             numColonne = prova2Scrigno.count
             stanza = prova2Scrigno
+            stanzaGuardia = prova2ScrignoGuards
+            vettoreDiPath = prova2ScrignoGuardsPaths
             pavimento = prova2Pavimento
             nemici = []
             setTextures(tipo: floor)
             createRoom()
+            createGuards()
             addRugsAndLights()
         case .PROVA3POWERUP:
             door = DoorPosition(UP: false, DOWN: false, RIGHT: false, LEFT: true)
@@ -366,10 +401,13 @@ class Room: SKNode {
             numRighe = prova3Scrigno[1].count
             numColonne = prova3Scrigno.count
             stanza = prova3Scrigno
+            stanzaGuardia = prova3ScrignoGuards
+            vettoreDiPath = prova3ScrignoGuardsPaths
             pavimento = prova3Pavimento
             nemici = []
             setTextures(tipo: floor)
             createRoom()
+            createGuards()
             addRugsAndLights()
         case .PROVA4POWERUP:
             door = DoorPosition(UP: false, DOWN: false, RIGHT: true, LEFT: false)
@@ -377,10 +415,13 @@ class Room: SKNode {
             numRighe = prova4Scrigno[1].count
             numColonne = prova4Scrigno.count
             stanza = prova4Scrigno
+            stanzaGuardia = prova4ScrignoGuards
+            vettoreDiPath = prova4ScrignoGuardsPaths
             pavimento = prova4Pavimento
             nemici = []
             setTextures(tipo: floor)
             createRoom()
+            createGuards()
             addRugsAndLights()
             
         case .FINALE_D:
@@ -912,11 +953,7 @@ class Room: SKNode {
                     addChild(furnitureSmall)
                 case 40:
                     var armadio: Hideout = Hideout()
-                    if Int.random(in: 0...10) > 5{
-                        armadio = Cassapanca()
-                    }else{
-                        armadio = Vetrina()
-                    }
+                    armadio = Closet()
                     if floor == .FIRST_FLOOR{
                         armadio = Bush()
                     }
@@ -1218,22 +1255,66 @@ class Room: SKNode {
     }
     
     func createGuards(){
+        print("Creating Guards")
         for i in 0...stanzaGuardia.count-1{
             for j in 0...stanzaGuardia[1].count-1{
-                if(stanzaGuardia[i][j] == 0){
+                if(stanzaGuardia[i][j] == 300){
+                    print("GUARDIA")
                     let guardia = GuardConoGrande(texture: SKTexture(imageNamed: "ConoGrandeFrontF2"), color: .clear, size: CGSize(width: enemyDimensionWidth, height: enemyDimensionHeight))
                     guardia.position = CGPoint(x: startingPosition.x + Double(j * blocco) + Double(blocco) , y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                     guardia.zPosition = 500
-                    nemici.append(guardia)
-                    
+                    guardia.name = "Guardia"+String(guardNameIndex)
+                    guardNameIndex += 1
                     addChild(guardia)
+                    
+                    guardia.getCenterBall().zPosition = 600
+                    guardia.getCenterBall().fillColor = .blue
+                    guardia.getCenterBall().strokeColor = .blue
+                    guardia.getCenterBall().position = guardia.position
+                    addChild(guardia.getCenterBall())
+                    
+                    guardia.roomReference = self
+                    
+                    guardia.floorMatrixCopy = self.stanza
+                    guardia.floorMatrixForPathfinding = self.stanza
+                    
+                    nemici.append(guardia)
+                    arrayOfGuards.append(guardia)
+                    
+                    print("GUARDIA CREATA: \(guardia.name) + \(guardia.position)")
+                } else if(stanzaGuardia[i][j] == 301){
+                    print("GUARDIA PICCOLA")
+                    let guardia = GuardConoPiccolo(texture: SKTexture(imageNamed: "ConoPiccoloBackF1"), color: .clear, size: CGSize(width: enemyDimensionWidth, height: enemyDimensionHeight))
+                    guardia.position = CGPoint(x: startingPosition.x + Double(j * blocco) + Double(blocco) , y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    guardia.zPosition = 500
+                    guardia.name = "Guardia"+String(guardNameIndex)
+                    guardNameIndex += 1
+                    addChild(guardia)
+                    
+                    guardia.getCenterBall().zPosition = 600
+                    guardia.getCenterBall().fillColor = .blue
+                    guardia.getCenterBall().strokeColor = .blue
+                    guardia.getCenterBall().position = guardia.position
+                    addChild(guardia.getCenterBall())
+                    
+                    guardia.roomReference = self
+                    
+                    guardia.floorMatrixCopy = self.stanza
+                    guardia.floorMatrixForPathfinding = self.stanza
+                    
+                    nemici.append(guardia)
+                    arrayOfGuards.append(guardia)
+                    
+                    print("GUARDIA CREATA: \(guardia.name) + \(guardia.position)")
                 }
             }
         }
         
         if(nemici.count > 0){
             for index in 0...nemici.count-1 {
-                createPath(entity: nemici[index], arrayOfActions: vettoreDiPath[index])
+                if(vettoreDiPath.count != 0){
+                    createPath(entity: nemici[index], arrayOfActions: vettoreDiPath[index])
+                }
             }
         }
     }
