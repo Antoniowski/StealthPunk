@@ -54,6 +54,7 @@ class MainMenu: SKScene{
 
         credits.fontSize = 24
         credits.text = "Credits"
+        credits.name = "credits"
         credits.fontName = "OldNewspaperTypes"
         credits.zPosition = 2
         credits.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
@@ -78,6 +79,10 @@ class MainMenu: SKScene{
         if touchedNode.name == "start"{
             let lobby = LobbyScene(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
             view?.presentScene(lobby, transition: .fade(withDuration: 3))
+        }
+        if touchedNode.name == "credits"{
+            let credit = Credits(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+            view?.presentScene(credit, transition: .fade(withDuration: 3))
         }
     }
 }
