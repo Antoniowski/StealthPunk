@@ -88,7 +88,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         scenecamera.addChild(timer)
 
         scenecamera.position = player.position
-        scenecamera.setScale(3.5)
+        scenecamera.setScale(1)
 //        armadio.position = player.position
 //        armadio.position.x += 250
 //        lampione.position = player.position
@@ -127,9 +127,9 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         lightSwitch.position = player.position
         lightSwitch.position.x -= 70
         
-        knuckles.position = .init(x: 150, y: 150)
+        knuckles.position = .init(x: 150, y: -150)
         boots.position = .init(x: 150, y: -150)
-        boots.zPosition = 5
+        knuckles.zPosition = 5
         testcoin2.position = .init(x: 170, y: -150)
         testcoin3.position = .init(x: 190, y: -150)
         testcoin4.position = .init(x: 210, y: -150)
@@ -160,8 +160,8 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
 //        addChild(t)
 //        addChild(ombra)
 //        addChild(lightSwitch)
-        addChild(boots)
-//        addChild(knuckles)
+//        addChild(boots)
+        addChild(knuckles)
 //        addChild(testcoin)
 //        addChild(testcoin2)
 //        addChild(testcoin4)
@@ -196,6 +196,9 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         if firstBody.node?.name == "player" && secondBody.node?.name == "collectible"{
             let item = secondBody.node as? Collectible
             item?.action(player: firstBody.node as? PlayableCharacter ?? PlayableCharacter())
+            
+            
+            
             if item?.getType() == .COIN{
 //                indicatore.run(.moveBy(x: 0, y: -90, duration: 0.5), completion: {
 //                    self.indicatore.run(.sequence([.wait(forDuration: 1.5), .moveBy(x: 0, y: 90, duration: 0.5)]))
@@ -204,8 +207,19 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
                     self.indicatore.run(.sequence([.wait(forDuration: 1.5), .moveTo(y: UIScreen.main.bounds.height*0.55, duration: 0.5)]))
                 })
                 item?.action(contatore: indicatore)
+            }else {
+                let box = ObjectBox(item!)
+                box.position.x = -125
+                box.position.y = UIScreen.main.bounds.height*0.55
+                scenecamera.addChild(box)
+                box.run(.moveTo(y: UIScreen.main.bounds.height*0.29 , duration: 0.5), completion: {
+                    box.run(.sequence([.wait(forDuration: 1.5), .moveTo(y: UIScreen.main.bounds.height*0.55, duration: 0.5)]), completion: {
+                        box.removeFromParent()
+                    })
+                })
             }
             secondBody.node?.removeFromParent()
+            
         }
         
         //PER FAR APPARIRE LE STANZE
