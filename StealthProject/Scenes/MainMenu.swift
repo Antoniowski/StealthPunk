@@ -21,42 +21,42 @@ class MainMenu: SKScene{
         backgroundImage.position = .init(x: frame.width/2, y: frame.height/2)
         
         title.fontName = "OldLondon"
-        title.fontSize = 50
+        title.fontSize = 70
         title.text = "StealthPunk"
         title.position = .init(x: frame.width*0.5, y: frame.height*0.80)
         title.zPosition = 2
-        title.fontColor = .init(white: 0, alpha: 0.8)
+        title.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
         
         subtitle.fontName = "OldNewspaperTypes"
-        subtitle.fontSize = 28
+        subtitle.fontSize = 25
         subtitle.text = "MAIN MENU"
         subtitle.position = .init(x: frame.width*0.5, y: frame.height*0.67)
         subtitle.zPosition = 2
-        subtitle.fontColor = .init(white: 0, alpha: 0.8)
+        subtitle.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
         
-        start.fontSize = 60
+        start.fontSize = 50
         start.text = "Tap to Start"
         start.name = "start"
-        start.fontName = "OldLondon"
+        start.fontName = "OldNewspaperTypes"
         start.zPosition = 2
-        start.fontColor = .init(white: 0, alpha: 0.8)
+        start.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
         start.position = .init(x: frame.width*0.74, y: frame.height*0.37)
         start.run(.repeatForever(.sequence([.fadeAlpha(to: 0.4, duration: 0.5), .fadeAlpha(to: 1, duration: 0.5)])))
 
-        option.fontSize = 28
-        option.text = "SETTINGS"
+        option.fontSize = 24
+        option.text = "Settings"
         option.fontName = "OldNewspaperTypes"
         option.zPosition = 2
-        option.fontColor = .init(white: 0, alpha: 0.8)
+        option.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
         option.position = .init(x: frame.width*0.16, y: frame.height*0.67)
         
 //        option.run(.repeatForever(.sequence([.fadeAlpha(to: 0.4, duration: 0.5), .fadeAlpha(to: 1, duration: 0.5)])))
 
-        credits.fontSize = 28
-        credits.text = "CREDITS"
+        credits.fontSize = 24
+        credits.text = "Credits"
         credits.fontName = "OldNewspaperTypes"
         credits.zPosition = 2
-        credits.fontColor = .init(white: 0, alpha: 0.8)
+        credits.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
         credits.position = .init(x: frame.width*0.845, y: frame.height*0.67)
         
         addChild(backgroundImage)
