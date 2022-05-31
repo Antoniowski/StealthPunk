@@ -134,6 +134,11 @@ class LobbyScene: SKScene, PlayableScene{
         if (firstBody.node?.name == "player" && secondBody.node?.name == "player4") {
             player4 = true
         }
+        
+        if firstBody.node?.name == "player" && secondBody.node?.name == "collectible"{
+            let item = secondBody.node as? Collectible
+            item?.action(player: firstBody.node as? PlayableCharacter ?? PlayableCharacter())
+        }
     }
     
     func didEnd(_ contact: SKPhysicsContact) {
@@ -157,6 +162,8 @@ class LobbyScene: SKScene, PlayableScene{
         if (firstBody.node?.name == "player" && secondBody.node?.name == "player4") {
             player4 = false
         }
+        
+        
     }
     
     func showCounter() {
