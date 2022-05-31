@@ -820,8 +820,8 @@ class Room: SKNode {
                     tavolo.physicsBody?.allowsRotation = false
                     addChild(tavolo)
                 case 20:
-                    let scrigno = SKSpriteNode(imageNamed: "forziere")
-                    scrigno.name = "staticObject"
+                    let scrigno = Inventory()
+                    scrigno.name = "dynamicObject"
                     scrigno.size = bloccoSize
                     scrigno.zPosition = 4
                     scrigno.normalTexture = SKTexture(imageNamed: "forziere normal map")
