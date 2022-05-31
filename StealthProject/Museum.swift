@@ -10,8 +10,8 @@ import SpriteKit
 
 class Museum{
     var firstFloor: SKScene = TestScene2(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-    var secondFloor: SKScene = TestScene4(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-    var finalFloor: SKScene = SKScene()
+    var secondFloor: SKScene = TestScene3(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+    var finalFloor: SKScene = TestScene4(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     
     
     func createNewFloor(){
