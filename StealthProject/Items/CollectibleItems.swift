@@ -71,7 +71,8 @@ class Collectible: SKSpriteNode{
             self.objectDescription = "More more time" 
             self.run(.setTexture(sprite))
         case .FINAL:
-            sprite = SKTexture(imageNamed: "")
+            sprite = SKTexture(imageNamed: "crownBorder")
+            self.size = CGSize(width: 70, height: 70)
             self.run(.setTexture(sprite))
         }
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
@@ -151,7 +152,21 @@ class Collectible: SKSpriteNode{
             player.run(.playSoundFileNamed("swing", waitForCompletion: true))
             MINUTE = MINUTE + 1
         case .FINAL:
-            print("YOU WON")
+            player.removeAllActions()
+            self.removeAllActions()
+            myMovement = .zero
+            myGameController.disconnectController()
+            self.physicsBody = SKPhysicsBody()
+            self.physicsBody?.isDynamic = false
+            self.physicsBody?.affectedByGravity = false
+            self.physicsBody?.allowsRotation = false
+            self.run(.scale(to: 0.35, duration: 3), completion: {
+                self.run(.move(to: player.position, duration: 1))
+                self.run(.scale(to: 0.05, duration: 1), completion: {
+                    self.removeFromParent()
+                })
+            })
+            self.run(.moveBy(x: 0, y: 25, duration: 1.5))
         }
     }
     
