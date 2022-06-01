@@ -130,13 +130,41 @@ func createVisionCone360(entity: Guard, scene: SKScene){
     }
     
     let visualCone = SKShapeNode(path: myPath.cgPath)
-    visualCone.fillColor = .yellow
-    visualCone.strokeColor = .yellow
+    if(entity.playerInVisualCone){
+        visualCone.fillColor = .red
+        visualCone.strokeColor = .red
+    } else {
+        visualCone.fillColor = .yellow
+        visualCone.strokeColor = .yellow
+    }
     visualCone.alpha = 0.35
     visualCone.zPosition = entity.zPosition - 1
     visualCone.name = entity.name!+"visualCone"
     
     entity.parent!.addChild(visualCone)
+    
+    if(entity.rayCastingPlayerFound){
+        if(!entity.playerInVisualCone){
+            entity.parent!.enumerateChildNodes(withName: "*"){node, _ in
+                if(node.name == entity.name!+"visualCone"){
+                    let shapeNode = node as! SKShapeNode
+                    shapeNode.fillColor = .red
+                    shapeNode.strokeColor = .red
+                }
+            }
+            entity.playerInVisualCone = true
+            if(moltiplicatoreTempo == 1){
+                moltiplicatoreTempo = 2
+            } else if (moltiplicatoreTempo == moltiplicatoreTempo2){
+                moltiplicatoreTempo = moltiplicatoreTempo3
+            } else if (moltiplicatoreTempo == moltiplicatoreTempo3){
+                loseFlag = true
+            }
+        }
+        
+    } else if(!entity.rayCastingPlayerFound){
+        entity.playerInVisualCone = false
+    }
     
 //    if(entity.rayCastingPlayerFound){
 //        print("Trovato")
@@ -162,8 +190,13 @@ func createVisionCone(entity: Guard, scene: SKScene){
     myPath.addLine(to: entity.position)
     
     let visualCone = SKShapeNode(path: myPath.cgPath)
-    visualCone.fillColor = .yellow
-    visualCone.strokeColor = .yellow
+    if(entity.playerInVisualCone){
+        visualCone.fillColor = .red
+        visualCone.strokeColor = .red
+    } else {
+        visualCone.fillColor = .yellow
+        visualCone.strokeColor = .yellow
+    }
     visualCone.alpha = 0.35
     visualCone.zPosition = entity.zPosition - 1
     visualCone.name = entity.name!+"visualCone"
@@ -173,13 +206,20 @@ func createVisionCone(entity: Guard, scene: SKScene){
     
     if(entity.rayCastingPlayerFound){
         if(!entity.playerInVisualCone){
+            entity.parent!.enumerateChildNodes(withName: "*"){node, _ in
+                if(node.name == entity.name!+"visualCone"){
+                    let shapeNode = node as! SKShapeNode
+                    shapeNode.fillColor = .red
+                    shapeNode.strokeColor = .red
+                }
+            }
             entity.playerInVisualCone = true
             if(moltiplicatoreTempo == 1){
                 moltiplicatoreTempo = 2
-            } else if (moltiplicatoreTempo == 2){
-                moltiplicatoreTempo = 7
-            } else if (moltiplicatoreTempo == 7){
-                
+            } else if (moltiplicatoreTempo == moltiplicatoreTempo2){
+                moltiplicatoreTempo = moltiplicatoreTempo3
+            } else if (moltiplicatoreTempo == moltiplicatoreTempo3){
+                loseFlag = true
             }
         }
         

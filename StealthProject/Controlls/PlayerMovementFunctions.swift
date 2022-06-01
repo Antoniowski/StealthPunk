@@ -112,9 +112,13 @@ extension PlayableScene{
                             chest?.action(scene: scene)
                         case .TAVERNA_DOOR:
                             let door = usable as? TavernaDoor
-                            door?.run(.playSoundFileNamed("doorTaverna", waitForCompletion: false), completion: {
-                                door?.action(self.view!)
+                            door?.run(.run {
+                                music.starsSound(filenamed: music.doorTaverna)
                             })
+//                            door?.run(.playSoundFileNamed("doorTaverna", waitForCompletion: false), completion: {
+                                door?.action(self.view!)
+//                            })
+                            
                         default:
                             return
                         }
@@ -159,6 +163,10 @@ extension PlayableScene{
             player.setHiddenStatus(true)
             DispatchQueue.main.asyncAfter(deadline: .now()+0.35, execute: {
             self.player.alpha = 0
+                self.player.physicsBody = SKPhysicsBody()
+                self.player.physicsBody?.isDynamic = false
+                self.player.physicsBody?.affectedByGravity = false
+                self.player.physicsBody?.allowsRotation = false
             self.player.setEnteringStatus(false)
         })
         }

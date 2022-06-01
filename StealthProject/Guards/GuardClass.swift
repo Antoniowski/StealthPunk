@@ -314,50 +314,58 @@ class Guard: SKSpriteNode{
         if Double(spriteAngle) < pi/8 && Double(spriteAngle) > -pi/8{
             if self.facingDirection != .UP{
                 self.facingDirection = .UP
-                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrandeBackF1")
-                self.run(.setTexture(SKTexture(imageNamed: "ConoGrandeBackF1")))
+                self.currentIdleDirectionTexture = self.backTexture
+//                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrandeBackF1")
+                self.run(.setTexture(currentIdleDirectionTexture))
             }
         }else if Double(spriteAngle) >= pi/8 && Double(spriteAngle) <= 3*pi/8{
             if self.facingDirection != .UP_LEFT{
                 self.facingDirection = .UP_LEFT
-                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrande3:4BackMirrorF1")
-                self.run(.setTexture(SKTexture(imageNamed: "ConoGrande3:4BackMirrorF1")))
+                self.currentIdleDirectionTexture = self.halfBackLTexture
+//                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrande3:4BackMirrorF1")
+                self.run(.setTexture(currentIdleDirectionTexture))
             }
         }else if Double(spriteAngle) > 3*pi/8 && Double(spriteAngle) < 5*pi/8{
             if self.facingDirection != .LEFT{
                 self.facingDirection = .LEFT
-                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrandeSideF2")
-                self.run(.setTexture(SKTexture(imageNamed: "ConoGrandeSideF2")))
+                self.currentIdleDirectionTexture = self.sideLTexture
+//                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrandeSideF2")
+                self.run(.setTexture(currentIdleDirectionTexture))
             }
         }else if Double(spriteAngle) >= 5*pi/8 && Double(spriteAngle) <= 7*pi/8{
             if self.facingDirection != .DOWN_LEFT{
                 self.facingDirection = .DOWN_LEFT
-                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrande3:4FrontF1")
-                self.run(.setTexture(SKTexture(imageNamed: "ConoGrande3:4FrontF1")))
+                self.currentIdleDirectionTexture = self.halfFrontLTexture
+//                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrande3:4FrontF1")
+                self.run(.setTexture(currentIdleDirectionTexture))
             }
         }else if (Double(spriteAngle) > 7*pi/8 && Double(spriteAngle) <= pi) || (Double(spriteAngle) < -7*pi/8 && Double(spriteAngle) >= -pi){
             if self.facingDirection != .DOWN{
                 self.facingDirection = .DOWN
-                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrandeFrontF2")
-                self.run(.setTexture(SKTexture(imageNamed: "ConoGrandeFrontF2")))
+                self.currentIdleDirectionTexture = self.frontTexture
+//                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrandeFrontF2")
+                self.run(.setTexture(currentIdleDirectionTexture))
             }
         }else if Double(spriteAngle) >= -7*pi/8 && Double(spriteAngle) <= -5*pi/8{
             if self.facingDirection != .DOWN_RIGHT{
                 self.facingDirection = .DOWN_RIGHT
-                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrande3:4FrontMirrorF1")
-                self.run(.setTexture(SKTexture(imageNamed: "ConoGrande3:4FrontMirrorF1")))
+                self.currentIdleDirectionTexture = self.halfFrontRTexture
+//                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrande3:4FrontMirrorF1")
+                self.run(.setTexture(currentIdleDirectionTexture))
             }
         }else if Double(spriteAngle) > -5*pi/8 && Double(spriteAngle) < -3*pi/8{
             if self.facingDirection != .RIGHT{
                 self.facingDirection = .RIGHT
-                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrandeSideMirrorF2")
-                self.run(.setTexture(SKTexture(imageNamed: "ConoGrandeSideMirrorF2")))
+                self.currentIdleDirectionTexture = self.sideRTexture
+//                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrandeSideMirrorF2")
+                self.run(.setTexture(currentIdleDirectionTexture))
             }
         }else if Double(spriteAngle) >= -3*pi/8 && Double(spriteAngle) <= -pi/8{
             if self.facingDirection != .UP_RIGHT{
                 self.facingDirection = .UP_RIGHT
-                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrande3:4BackF1")
-                self.run(.setTexture(SKTexture(imageNamed: "ConoGrande3:4BackF1")))
+                self.currentIdleDirectionTexture = self.halfBackRTexture
+//                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrande3:4BackF1")
+                self.run(.setTexture(currentIdleDirectionTexture))
             }
         }
     }
@@ -757,15 +765,17 @@ class Guard: SKSpriteNode{
                 self.angleCorrection = 0
                 self.firstIteration = false
                 self.facingDirection = .UP
-                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrandeBackF1")
-                self.run(.setTexture(SKTexture(imageNamed: "ConoGrandeBackF1")))
+                self.currentIdleDirectionTexture = self.backTexture
+//                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrandeBackF1")
+                self.run(.setTexture(currentIdleDirectionTexture))
             }
         }else if Double(spriteAngle) >= pi/8 && Double(spriteAngle) <= 3*pi/8{
             if self.facingDirection != .UP_LEFT{
                 self.angleCorrection = 0
                 self.firstIteration = false
                 self.facingDirection = .UP_LEFT
-                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrande3:4BackMirrorF1")
+                self.currentIdleDirectionTexture = self.halfBackLTexture
+//                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrande3:4BackMirrorF1")
                 self.run(.setTexture(SKTexture(imageNamed: "ConoGrande3:4BackMirrorF1")))
             }
         }else if Double(spriteAngle) > 3*pi/8 && Double(spriteAngle) < 5*pi/8{
@@ -773,48 +783,54 @@ class Guard: SKSpriteNode{
                 self.angleCorrection = 0
                 self.firstIteration = false
                 self.facingDirection = .LEFT
-                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrandeSideF2")
-                self.run(.setTexture(SKTexture(imageNamed: "ConoGrandeSideF2")))
+                self.currentIdleDirectionTexture = self.sideLTexture
+//                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrandeSideF2")
+                self.run(.setTexture(currentIdleDirectionTexture))
             }
         }else if Double(spriteAngle) >= 5*pi/8 && Double(spriteAngle) <= 7*pi/8{
             if self.facingDirection != .DOWN_LEFT{
                 self.angleCorrection = 0
                 self.firstIteration = false
                 self.facingDirection = .DOWN_LEFT
-                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrande3:4FrontF1")
-                self.run(.setTexture(SKTexture(imageNamed: "ConoGrande3:4FrontF1")))
+                self.currentIdleDirectionTexture = self.halfFrontLTexture
+//                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrande3:4FrontF1")
+                self.run(.setTexture(currentIdleDirectionTexture))
             }
         }else if (Double(spriteAngle) > 7*pi/8 && Double(spriteAngle) <= pi) || (Double(spriteAngle) < -7*pi/8 && Double(spriteAngle) >= -pi){
             if self.facingDirection != .DOWN{
                 self.angleCorrection = 0
                 self.firstIteration = false
                 self.facingDirection = .DOWN
-                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrandeFrontF2")
-                self.run(.setTexture(SKTexture(imageNamed: "ConoGrandeFrontF2")))
+                self.currentIdleDirectionTexture = self.frontTexture
+//                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrandeFrontF2")
+                self.run(.setTexture(currentIdleDirectionTexture))
             }
         }else if Double(spriteAngle) >= -7*pi/8 && Double(spriteAngle) <= -5*pi/8{
             if self.facingDirection != .DOWN_RIGHT{
                 self.angleCorrection = 0
                 self.firstIteration = false
                 self.facingDirection = .DOWN_RIGHT
-                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrande3:4FrontMirrorF1")
-                self.run(.setTexture(SKTexture(imageNamed: "ConoGrande3:4FrontMirrorF1")))
+                self.currentIdleDirectionTexture = self.halfFrontRTexture
+//                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrande3:4FrontMirrorF1")
+                self.run(.setTexture(currentIdleDirectionTexture))
             }
         }else if Double(spriteAngle) > -5*pi/8 && Double(spriteAngle) < -3*pi/8{
             if self.facingDirection != .RIGHT{
                 self.angleCorrection = 0
                 self.firstIteration = false
                 self.facingDirection = .RIGHT
-                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrandeSideMirrorF2")
-                self.run(.setTexture(SKTexture(imageNamed: "ConoGrandeSideMirrorF2")))
+                self.currentIdleDirectionTexture = self.sideRTexture
+//                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrandeSideMirrorF2")
+                self.run(.setTexture(currentIdleDirectionTexture))
             }
         }else if Double(spriteAngle) >= -3*pi/8 && Double(spriteAngle) <= -pi/8{
             if self.facingDirection != .UP_RIGHT{
                 self.angleCorrection = 0
                 self.firstIteration = false
                 self.facingDirection = .UP_RIGHT
-                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrande3:4BackF1")
-                self.run(.setTexture(SKTexture(imageNamed: "ConoGrande3:4BackF1")))
+                self.currentIdleDirectionTexture = self.halfBackRTexture
+//                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrande3:4BackF1")
+                self.run(.setTexture(currentIdleDirectionTexture))
             }
         }
     }
@@ -834,7 +850,7 @@ class Guard: SKSpriteNode{
     
     func checkState(point: CGPoint, deltaTime: TimeInterval, scene: SKScene){
         
-        print(self.actionStateBuffer)
+//        print(self.actionStateBuffer)
         
         if(pathToChasing == true){
             pathToChasing = false
@@ -957,7 +973,7 @@ class Guard: SKSpriteNode{
             }
             checkAngle()
         } else if (actionStateBuffer == .CHASING_PATHFIND){
-            print("CHASING PATHFIND")
+//            print("CHASING PATHFIND")
             rayCastingForObstacles(scene: scene, point: point)
             checkAngle()
             
