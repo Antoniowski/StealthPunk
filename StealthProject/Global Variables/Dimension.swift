@@ -16,16 +16,19 @@ import SpriteKit
 import SwiftUI
 
 
+//Variabile che tiene conto della morte/perdita della partita
 var loseFlag: Bool = false
 
+//Variabili per far scendere il tempo
 let moltiplicatoreTempo2 = 2
 let moltiplicatoreTempo3 = 3
-
 var moltiplicatoreTempo = 1
 
 let blocco : Int = 100
 let bloccoSize: CGSize = CGSize(width: blocco, height: blocco)
 
+
+//Dimensioni delle sprite delle guardie
 let dimensioneGuardiaConoGrandeWidth: Double = 45
 let dimensioneGuardiaConoGrandeHeight: Double = 90
 
@@ -35,12 +38,3 @@ let dimensioneGuardiaConoPiccoloHeight: Double = dimensioneGuardiaConoGrandeHeig
 let dimensioneGuardiaCerchioGrandeWidth: Double = 45
 let dimensioneGuardiaCerchiooGrandeHeight: Double = 90
 
-//protocol Dimensions{
-//
-//}
-//
-//extension Dimensions{
-//    var blocco: Double{
-//        return 100
-//    }
-//}

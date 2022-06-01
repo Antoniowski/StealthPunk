@@ -72,7 +72,7 @@ extension PlayableScene{
         }
     }
     
-    func attackState(scene: SKScene){
+    func attackState(scene: SKScene, nemici: [SKNode]){
         
 //        scene.enumerateChildNodes(withName: "enemy"){ object, _ in
 //            if getDistanceBetween(point1: self.player.position, point2: object.position) <= self.player.getAttackRange(){
@@ -84,6 +84,16 @@ extension PlayableScene{
 //        self.player.setActionState(.MOVE)
         print("ATTACK!")
         velocity = .zero
+        for nemico in nemici{
+            if getDistanceBetween(point1: self.player.position, point2: scene.convert(nemico.position, from: nemico.parent ?? SKNode())) <= self.player.getAttackRange(){
+                let guardia = nemico as? Guard
+                if guardia?.getStrenght() ?? 0 <= player.getStrenght(){
+                    if guardia?.getStatus().isHit == false{
+                        guardia?.setHit(true)
+                    }
+                }
+            }
+        }
     }
     
     func rollState(){
@@ -118,6 +128,9 @@ extension PlayableScene{
 //                            door?.run(.playSoundFileNamed("doorTaverna", waitForCompletion: false), completion: {
                                 door?.action(self.view!)
 //                            })
+                        case .TAVERNA_SCRIGNO:
+                            let chest = usable as? Inventory
+                            chest?.action(scene: scene)
                             
                         default:
                             return
@@ -221,7 +234,7 @@ extension PlayableScene{
             moveState()
             
         case .ATTACK:
-            attackState(scene: scene)
+            attackState(scene: scene, nemici: nemici)
             
         case .INTERACT:
             interactState(scene: scene, oggetti: oggetti)
