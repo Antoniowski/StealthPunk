@@ -70,7 +70,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         scenecamera.position = player.position
         scenecamera.setScale(1)
         
-        let f = Floor(self, floorType: .SECOND_FLOOE)
+        let f = Floor(self, floorType: .FIRST_FLOOR)
 
         
         luce.ambientColor = .init(red: 0.624, green: 0.624, blue: 0.914, alpha: 0.25) // PER LE PARTI SCURE - GIARDINO
@@ -89,6 +89,10 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         addChild(scenecamera)
         enumerateChildNodes(withName: "ROOM/dynamicObject"){oggetto, _ in
             self.oggetti.append(oggetto)
+        }
+        enumerateChildNodes(withName: "ROOM/Guardia[0-1000]"){ nemico, _ in
+            self.nemici.append(nemico)
+            
         }
        Timer(scene: self)
     }
@@ -245,7 +249,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
 //                print("GUARDIA POSIZIONE CONVERTITA: \(posizioneDellaScena)")
                 let posizioneDellaScena2 = guardia.roomReference.convert(guardia.position, to: self)
 //                print("GUARDIA POSIZIONE CONVERTITA 2: \(posizioneDellaScena2)")
-                
+//                nemici.append(guardia)
 //                guardia.removeFromParent()
 //                guardia.getCenterBall().removeFromParent()
 //                guardia.position = posizioneDellaScena2

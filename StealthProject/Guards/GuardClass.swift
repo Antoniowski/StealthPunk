@@ -866,7 +866,7 @@ class Guard: SKSpriteNode{
     func checkState(point: CGPoint, deltaTime: TimeInterval, scene: SKScene){
         
 //        print(self.actionStateBuffer)
-        
+        if status.isHit == false{
         if(pathToChasing == true){
             pathToChasing = false
             
@@ -1076,6 +1076,28 @@ class Guard: SKSpriteNode{
             
         }
         
+        }else{
+            if status.isStunned == false{
+                print("STUNNED")
+                status.isStunned = true
+                if let action = self.invisibleBall.action(forKey: "guardPath"){
+                    action.speed = 0
+                }
+                if let action = self.action(forKey: "guardMovement"){
+                    action.speed = 0
+                }
+                self.run(.sequence([.animate(with: stunnedAnimation, timePerFrame: 0.15), .setTexture(stunnedAnimation[2]) ,.wait(forDuration: 2), .animate(with: stunnedAnimation.reversed(), timePerFrame: 0.15),]), completion: {
+                    if let action = self.invisibleBall.action(forKey: "guardPath"){
+                        action.speed = 1
+                    }
+                    if let action = self.action(forKey: "guardMovement"){
+                        action.speed = 1
+                    }
+                    self.setStunned(false)
+                    self.setHit(false)
+                })
+            }
+        }
     }
     
 }
