@@ -38,10 +38,7 @@ class TimeCounter: SKNode{
 func Timer(scene: SKScene){
     
         let wait = SKAction.wait(forDuration: 1)
-        let go = SKAction.run({
-            var differenzaDiSecondi = 0
-            var differenzaDiSecondiBool = false
-            
+        let go = SKAction.run({            
             if SECONDS > 0 {
                 if(SECONDS - moltiplicatoreTempo < 0){
                     let differenzaDiSecondi = moltiplicatoreTempo - SECONDS

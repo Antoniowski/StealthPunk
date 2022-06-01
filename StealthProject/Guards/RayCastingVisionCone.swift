@@ -138,6 +138,22 @@ func createVisionCone360(entity: Guard, scene: SKScene){
     
     entity.parent!.addChild(visualCone)
     
+    if(entity.rayCastingPlayerFound){
+        if(!entity.playerInVisualCone){
+            entity.playerInVisualCone = true
+            if(moltiplicatoreTempo == 1){
+                moltiplicatoreTempo = 2
+            } else if (moltiplicatoreTempo == moltiplicatoreTempo2){
+                moltiplicatoreTempo = moltiplicatoreTempo3
+            } else if (moltiplicatoreTempo == moltiplicatoreTempo3){
+                loseFlag = true
+            }
+        }
+        
+    } else if(!entity.rayCastingPlayerFound){
+        entity.playerInVisualCone = false
+    }
+    
 //    if(entity.rayCastingPlayerFound){
 //        print("Trovato")
 //        entity.setPlayerFoundTrue()
@@ -176,10 +192,10 @@ func createVisionCone(entity: Guard, scene: SKScene){
             entity.playerInVisualCone = true
             if(moltiplicatoreTempo == 1){
                 moltiplicatoreTempo = 2
-            } else if (moltiplicatoreTempo == 2){
-                moltiplicatoreTempo = 7
-            } else if (moltiplicatoreTempo == 7){
-                
+            } else if (moltiplicatoreTempo == moltiplicatoreTempo2){
+                moltiplicatoreTempo = moltiplicatoreTempo3
+            } else if (moltiplicatoreTempo == moltiplicatoreTempo3){
+                loseFlag = true
             }
         }
         

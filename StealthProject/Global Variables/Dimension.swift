@@ -9,6 +9,12 @@ import Foundation
 import SpriteKit
 import SwiftUI
 
+
+var loseFlag: Bool = false
+
+let moltiplicatoreTempo2 = 2
+let moltiplicatoreTempo3 = 3
+
 var moltiplicatoreTempo = 1
 
 let blocco : Int = 100

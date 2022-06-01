@@ -492,7 +492,7 @@ class Room: SKNode {
         self.frontWallTexture = SKTexture(imageNamed: "parete centrale")
         self.frontWallTextureMap = SKTexture(imageNamed: "parete centrale normal map")
         self.floorTexture = SKTexture(imageNamed: "pavimento taverna")
-        self.floorTextureMap = SKTexture(imageNamed: "pavimento taverna normal map")
+        self.floorTextureMap = SKTexture(imageNamed: "pavimento taverna Normal Map")
         self.sideRightWallTexture = SKTexture(imageNamed: "parete lato dx")
         self.sideLeftWallTexture  = SKTexture(imageNamed: "parete lato sx")
         self.cornerRightWallTexture = SKTexture(imageNamed: "parete angolo dx")
@@ -820,8 +820,8 @@ class Room: SKNode {
                     tavolo.physicsBody?.allowsRotation = false
                     addChild(tavolo)
                 case 20:
-                    let scrigno = SKSpriteNode(imageNamed: "forziere")
-                    scrigno.name = "staticObject"
+                    let scrigno = Inventory()
+                    scrigno.name = "dynamicObject"
                     scrigno.size = bloccoSize
                     scrigno.zPosition = 4
                     scrigno.normalTexture = SKTexture(imageNamed: "forziere normal map")
