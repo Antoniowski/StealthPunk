@@ -850,7 +850,7 @@ class Guard: SKSpriteNode{
     
     func checkState(point: CGPoint, deltaTime: TimeInterval, scene: SKScene){
         
-        print(self.actionStateBuffer)
+//        print(self.actionStateBuffer)
         
         if(pathToChasing == true){
             pathToChasing = false
@@ -973,7 +973,7 @@ class Guard: SKSpriteNode{
             }
             checkAngle()
         } else if (actionStateBuffer == .CHASING_PATHFIND){
-            print("CHASING PATHFIND")
+//            print("CHASING PATHFIND")
             rayCastingForObstacles(scene: scene, point: point)
             checkAngle()
             
