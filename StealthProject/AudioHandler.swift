@@ -36,7 +36,7 @@ class Music{
     
     var soundOn : Bool = true
     
-    var audioOn : Bool = false
+    var audioOn : Bool = true
     
     func starsSound( filenamed: String){
         if(self.soundOn){
@@ -52,6 +52,24 @@ class Music{
             return
             }
             self.soundEffects.play()
+        }
+    }
+    
+    func startMusic( filenamed: String){
+        if(self.audioOn){
+            let resourceUrl = Bundle.main.url(forResource:
+             filenamed , withExtension: nil)
+            do {
+              try musicEffect = AVAudioPlayer(contentsOf: resourceUrl!)
+                musicEffect.volume = 0.3
+                musicEffect.numberOfLoops = -1
+                musicEffect.prepareToPlay()
+                musicEffect.play()
+              } catch {
+                print("Could not create audio player!")
+            return
+            }
+            self.musicEffect.play()
         }
     }
     
