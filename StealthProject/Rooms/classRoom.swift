@@ -1344,7 +1344,32 @@ class Room: SKNode {
                     nemici.append(guardia)
                     arrayOfGuards.append(guardia)
                     
-//                    print("GUARDIA CREATA: \(guardia.name) + \(guardia.position)")
+                    //                    print("GUARDIA CREATA: \(guardia.name) + \(guardia.position)")
+                } else if(stanzaGuardia[i][j] == 302){
+                    //                    print("GUARDIA")
+                    let guardia = GuardCerchioGrande(texture: SKTexture(imageNamed: "ConoGrandeFrontF2"), color: .clear, size: CGSize(width: enemyDimensionWidth, height: enemyDimensionHeight))
+                    //                    guardia.position = CGPoint(x: startingPosition.x + Double(j * blocco) - Double(blocco/2) , y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    guardia.position = CGPoint(x: startingPosition.x + Double(j * blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                    guardia.zPosition = 500
+                    guardia.name = "Guardia"+String(guardNameIndex)
+                    guardNameIndex += 1
+                    addChild(guardia)
+                    
+                    guardia.getCenterBall().zPosition = 1
+                    //                    guardia.getCenterBall().fillColor = .blue
+                    //                    guardia.getCenterBall().strokeColor = .blue
+                    guardia.getCenterBall().position = guardia.position
+                    addChild(guardia.getCenterBall())
+                    
+                    guardia.roomReference = self
+                    
+                    guardia.floorMatrixCopy = self.stanza
+                    guardia.floorMatrixForPathfinding = self.stanza
+                    
+                    nemici.append(guardia)
+                    arrayOfGuards.append(guardia)
+                    
+                    //                    print("GUARDIA CREATA: \(guardia.name) + \(guardia.position)")
                 }
             }
         }
