@@ -10,6 +10,8 @@ import SpriteKit
 import SwiftUI
 
 class LobbyScene: SKScene, PlayableScene{
+    //Variabile che tiene conto se è la prima volta che avvii la partita e che vede se farti vedere o meno il tutorial
+    @AppStorage("firstTimePlayingAgainstTheClock") var firstTimePlayingAgainstTheClock: Bool = false
     
     var delta: TimeInterval = 0
     var lastUpdate: TimeInterval?
@@ -92,7 +94,14 @@ class LobbyScene: SKScene, PlayableScene{
         calcDelta(currentTime: currentTime)
         indicatore.etichetta.text = "x \(indicatore.number)"
         playerEssential(scene: self, nemici: nemici, oggetti: oggetti)
-        playerMovement(player: player as SKSpriteNode, velocity: velocity)
+        if sceneCamera.childNode(withName: "cornice") != nil{
+            if (sceneCamera.childNode(withName: "cornice") as? Inventory)?.statoInventario == false{
+                playerMovement(player: player as SKSpriteNode, velocity: velocity)
+            }
+        }else{
+            playerMovement(player: player as SKSpriteNode, velocity: velocity)
+        }
+        
         sceneCamera.position = player.position
         startGameFunction()
         showCounter()

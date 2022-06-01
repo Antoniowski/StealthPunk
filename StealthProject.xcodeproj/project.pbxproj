@@ -13,6 +13,8 @@
 		4A1B448E2822B274001DABEE /* ControllerRelatedGlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B448D2822B274001DABEE /* ControllerRelatedGlobalVariables.swift */; };
 		4A1B44962822B809001DABEE /* TestScene2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B44952822B809001DABEE /* TestScene2.swift */; };
 		4A1C86292847954B00885CCE /* GuardCerchioGrande.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1C86282847954B00885CCE /* GuardCerchioGrande.swift */; };
+		4A1C862B2847B57600885CCE /* TutorialModalitaATempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1C862A2847B57600885CCE /* TutorialModalitaATempo.swift */; };
+		4A1C862D2847B58100885CCE /* TutorialModalitaClassica.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1C862C2847B58100885CCE /* TutorialModalitaClassica.swift */; };
 		4A2159FA283FD60C000F237C /* GuardMatrixes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2159F9283FD60C000F237C /* GuardMatrixes.swift */; };
 		4A3A1B97284516010030BB48 /* GuardConoPiccolo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3A1B96284516010030BB48 /* GuardConoPiccolo.swift */; };
 		4ABFC91E28327D6D00213CC9 /* GuardConoGrande.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABFC91D28327D6D00213CC9 /* GuardConoGrande.swift */; };
@@ -25,6 +27,7 @@
 		63A55F4528410B1D00A067A5 /* CharacterBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A55F4428410B1D00A067A5 /* CharacterBox.swift */; };
 		63B9F6AB2833DA35008E62C1 /* GearCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9F6AA2833DA35008E62C1 /* GearCounter.swift */; };
 		63B9F6AE283439FE008E62C1 /* Victorian Parlor Vintage Alternate_free.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63B9F6AD283439FE008E62C1 /* Victorian Parlor Vintage Alternate_free.ttf */; };
+		63C2A9B02847940700927D0F /* InventoryPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C2A9AF2847940700927D0F /* InventoryPage.swift */; };
 		6A0621F0283301AF0064BB97 /* CollectibleItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0621EF283301AF0064BB97 /* CollectibleItems.swift */; };
 		6A0621F228330FC80064BB97 /* CollisionsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0621F128330FC80064BB97 /* CollisionsEnum.swift */; };
 		6A2A7E992833F8E600D14EC0 /* Chest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2A7E982833F8E600D14EC0 /* Chest.swift */; };
@@ -101,6 +104,8 @@
 		4A1B448D2822B274001DABEE /* ControllerRelatedGlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerRelatedGlobalVariables.swift; sourceTree = "<group>"; };
 		4A1B44952822B809001DABEE /* TestScene2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestScene2.swift; sourceTree = "<group>"; };
 		4A1C86282847954B00885CCE /* GuardCerchioGrande.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardCerchioGrande.swift; sourceTree = "<group>"; };
+		4A1C862A2847B57600885CCE /* TutorialModalitaATempo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialModalitaATempo.swift; sourceTree = "<group>"; };
+		4A1C862C2847B58100885CCE /* TutorialModalitaClassica.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialModalitaClassica.swift; sourceTree = "<group>"; };
 		4A2159F9283FD60C000F237C /* GuardMatrixes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardMatrixes.swift; sourceTree = "<group>"; };
 		4A3A1B96284516010030BB48 /* GuardConoPiccolo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardConoPiccolo.swift; sourceTree = "<group>"; };
 		4ABFC91D28327D6D00213CC9 /* GuardConoGrande.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardConoGrande.swift; sourceTree = "<group>"; };
@@ -114,6 +119,7 @@
 		63B9F6AA2833DA35008E62C1 /* GearCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearCounter.swift; sourceTree = "<group>"; };
 		63B9F6AD283439FE008E62C1 /* Victorian Parlor Vintage Alternate_free.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Victorian Parlor Vintage Alternate_free.ttf"; sourceTree = "<group>"; };
 		63B9F6AF28343B50008E62C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		63C2A9AF2847940700927D0F /* InventoryPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryPage.swift; sourceTree = "<group>"; };
 		6A0621EF283301AF0064BB97 /* CollectibleItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectibleItems.swift; sourceTree = "<group>"; };
 		6A0621F128330FC80064BB97 /* CollisionsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionsEnum.swift; sourceTree = "<group>"; };
 		6A2A7E982833F8E600D14EC0 /* Chest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chest.swift; sourceTree = "<group>"; };
@@ -382,6 +388,8 @@
 				6AAE3FA1284643EE002917FB /* MainMenu.swift */,
 				52CF6A9928465C4A000A62ED /* GameOverMenu.swift */,
 				52CF6A9B284665D8000A62ED /* Credits.swift */,
+				4A1C862A2847B57600885CCE /* TutorialModalitaATempo.swift */,
+				4A1C862C2847B58100885CCE /* TutorialModalitaClassica.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -404,6 +412,7 @@
 				6AAE3F70283A4270002917FB /* TavernaDoor.swift */,
 				6AAE3F76283C1D27002917FB /* NextFloorObject.swift */,
 				63935A3A28466E7C00155031 /* Inventory.swift */,
+				63C2A9AF2847940700927D0F /* InventoryPage.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -552,9 +561,11 @@
 				6AC709652823D78A007F8A50 /* AbilityClass.swift in Sources */,
 				6AA31BE528299DE4002CCD47 /* UsableObject.swift in Sources */,
 				4A2159FA283FD60C000F237C /* GuardMatrixes.swift in Sources */,
+				63C2A9B02847940700927D0F /* InventoryPage.swift in Sources */,
 				6AB8640228217ED5006BB85E /* PlayerMovementFunctions.swift in Sources */,
 				52CF6A9C284665D8000A62ED /* Credits.swift in Sources */,
 				A693D35B28295AE20055C266 /* classFloor.swift in Sources */,
+				4A1C862B2847B57600885CCE /* TutorialModalitaATempo.swift in Sources */,
 				A693D35928293E470055C266 /* classRoom.swift in Sources */,
 				4A00C74D28255128009DB657 /* RayCastingVisionCone.swift in Sources */,
 				6AB863F92820254D006BB85E /* VectorFunctions.swift in Sources */,
@@ -585,6 +596,7 @@
 				4A00C7512825719C009DB657 /* Swipe Functions.swift in Sources */,
 				6AA31BDC282985A8002CCD47 /* StaticObject.swift in Sources */,
 				63A55F4528410B1D00A067A5 /* CharacterBox.swift in Sources */,
+				4A1C862D2847B58100885CCE /* TutorialModalitaClassica.swift in Sources */,
 				6AB863E928200334006BB85E /* GameViewController.swift in Sources */,
 				6AAE3F84283FD42A002917FB /* TimeCounter.swift in Sources */,
 				6AAE3F6E2837D9BF002917FB /* CassapancaClass.swift in Sources */,
