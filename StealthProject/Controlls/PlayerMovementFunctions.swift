@@ -159,6 +159,10 @@ extension PlayableScene{
             player.setHiddenStatus(true)
             DispatchQueue.main.asyncAfter(deadline: .now()+0.35, execute: {
             self.player.alpha = 0
+                self.player.physicsBody = SKPhysicsBody()
+                self.player.physicsBody?.isDynamic = false
+                self.player.physicsBody?.affectedByGravity = false
+                self.player.physicsBody?.allowsRotation = false
             self.player.setEnteringStatus(false)
         })
         }
