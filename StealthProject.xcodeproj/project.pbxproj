@@ -23,6 +23,7 @@
 		63A55F4528410B1D00A067A5 /* CharacterBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A55F4428410B1D00A067A5 /* CharacterBox.swift */; };
 		63B9F6AB2833DA35008E62C1 /* GearCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9F6AA2833DA35008E62C1 /* GearCounter.swift */; };
 		63B9F6AE283439FE008E62C1 /* Victorian Parlor Vintage Alternate_free.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63B9F6AD283439FE008E62C1 /* Victorian Parlor Vintage Alternate_free.ttf */; };
+		63C2A9B02847940700927D0F /* InventoryPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C2A9AF2847940700927D0F /* InventoryPage.swift */; };
 		6A0621F0283301AF0064BB97 /* CollectibleItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0621EF283301AF0064BB97 /* CollectibleItems.swift */; };
 		6A0621F228330FC80064BB97 /* CollisionsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0621F128330FC80064BB97 /* CollisionsEnum.swift */; };
 		6A2A7E992833F8E600D14EC0 /* Chest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2A7E982833F8E600D14EC0 /* Chest.swift */; };
@@ -110,6 +111,7 @@
 		63B9F6AA2833DA35008E62C1 /* GearCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearCounter.swift; sourceTree = "<group>"; };
 		63B9F6AD283439FE008E62C1 /* Victorian Parlor Vintage Alternate_free.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Victorian Parlor Vintage Alternate_free.ttf"; sourceTree = "<group>"; };
 		63B9F6AF28343B50008E62C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		63C2A9AF2847940700927D0F /* InventoryPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryPage.swift; sourceTree = "<group>"; };
 		6A0621EF283301AF0064BB97 /* CollectibleItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectibleItems.swift; sourceTree = "<group>"; };
 		6A0621F128330FC80064BB97 /* CollisionsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionsEnum.swift; sourceTree = "<group>"; };
 		6A2A7E982833F8E600D14EC0 /* Chest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chest.swift; sourceTree = "<group>"; };
@@ -398,6 +400,7 @@
 				6AAE3F70283A4270002917FB /* TavernaDoor.swift */,
 				6AAE3F76283C1D27002917FB /* NextFloorObject.swift */,
 				63935A3A28466E7C00155031 /* Inventory.swift */,
+				63C2A9AF2847940700927D0F /* InventoryPage.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -545,6 +548,7 @@
 				6AC709652823D78A007F8A50 /* AbilityClass.swift in Sources */,
 				6AA31BE528299DE4002CCD47 /* UsableObject.swift in Sources */,
 				4A2159FA283FD60C000F237C /* GuardMatrixes.swift in Sources */,
+				63C2A9B02847940700927D0F /* InventoryPage.swift in Sources */,
 				6AB8640228217ED5006BB85E /* PlayerMovementFunctions.swift in Sources */,
 				52CF6A9C284665D8000A62ED /* Credits.swift in Sources */,
 				A693D35B28295AE20055C266 /* classFloor.swift in Sources */,

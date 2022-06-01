@@ -17,7 +17,8 @@ class Inventory: UsableObject {
         
     }
     
-    override func action() {
+    func action(scene: SKScene){
+        
         
     }
     
