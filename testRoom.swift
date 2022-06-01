@@ -172,7 +172,7 @@ class Piano1: SKScene, PlayableScene, SKPhysicsContactDelegate  {
             moveState()
             
         case .ATTACK:
-            attackState(scene: self)
+            attackState(scene: self, nemici: nemici)
             
         case .INTERACT:
             interactState(scene: self, oggetti: oggetti)
