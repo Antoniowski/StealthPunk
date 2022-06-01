@@ -26,6 +26,11 @@ class Vetrina: Hideout{
     }
     
     override func action() {
-        self.run(.sequence([.setTexture(open), .playSoundFileNamed("vetrina", waitForCompletion: true), .setTexture(baseTexture), .playSoundFileNamed("vetrina", waitForCompletion: true)]))
+        self.run(.sequence([.setTexture(open), .run {
+            music.starsSound(filenamed: music.vetrna)
+        }, .wait(forDuration: 0.8),
+        .setTexture(baseTexture),.run {
+            music.starsSound(filenamed: music.vetrna)
+        }, ]))
     }
 }

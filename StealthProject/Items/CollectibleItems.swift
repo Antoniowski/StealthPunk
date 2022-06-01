@@ -96,26 +96,36 @@ class Collectible: SKSpriteNode{
     func action(player: PlayableCharacter){
         switch type {
         case .COIN:
-            player.run(.playSoundFileNamed("GearSound", waitForCompletion: true))
+            player.run(.run {
+                music.starsSound(filenamed: music.swing)
+            })
         case .BOOTS:
-            player.run(.playSoundFileNamed("swing", waitForCompletion: true))
+            player.run(.run {
+                music.starsSound(filenamed: music.swing)
+            })
             if player.getNoise() > 0{
                 player.setNoise(newNoise: player.getNoise() - 1)
             }
         case .KNUCKLES:
-            player.run(.playSoundFileNamed("swing", waitForCompletion: true))
+            player.run(.run {
+                music.starsSound(filenamed: music.swing)
+            })
             player.setStrenght(newStrenght: player.getStrenght() + 1)
             if player.getStrenght() > 7{
                 player.setStrenght(newStrenght: 7)
             }
         case .POTION:
-            player.run(.playSoundFileNamed("swing", waitForCompletion: true))
+            player.run(.run {
+                music.starsSound(filenamed: music.swing)
+            })
             player.setSpeed(newSpeed: player.getSpeed() + 1)
             if player.getSpeed() > 7 {
                 player.setSpeed(newSpeed: 7)
             }
         case .SIRINGE:
-            player.run(.playSoundFileNamed("swing", waitForCompletion: true))
+            player.run(.run {
+                music.starsSound(filenamed: music.swing)
+            })
             player.setSpeed(newSpeed: player.getSpeed() + 1)
             player.setStrenght(newStrenght: player.getStrenght() + 1)
             player.setNoise(newNoise: player.getNoise() + 1)
@@ -130,7 +140,9 @@ class Collectible: SKSpriteNode{
                 player.setStrenght(newStrenght: 7)
             }
         case .HAT:
-            player.run(.playSoundFileNamed("swing", waitForCompletion: true))
+            player.run(.run {
+                music.starsSound(filenamed: music.swing)
+            })
             player.setSpeed(newSpeed: player.getSpeed() + 1)
             player.setStrenght(newStrenght: player.getStrenght() - 1)
             player.setNoise(newNoise: player.getNoise() - 1)
@@ -145,11 +157,15 @@ class Collectible: SKSpriteNode{
                 player.setStrenght(newStrenght: 0)
             }
         case .CLOCK1:
-            player.run(.playSoundFileNamed("swing", waitForCompletion: true))
+            player.run(.run {
+                music.starsSound(filenamed: music.swing)
+            })
             SECONDS = SECONDS + 30
             
         case .CLOCK2:
-            player.run(.playSoundFileNamed("swing", waitForCompletion: true))
+            player.run(.run {
+                music.starsSound(filenamed: music.swing)
+            })
             MINUTE = MINUTE + 1
         case .FINAL:
             player.removeAllActions()

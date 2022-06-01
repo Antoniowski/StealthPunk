@@ -27,6 +27,16 @@ class Bush: Hideout{
     }
     
     override func action() {
-        self.run(.sequence([.setTexture(openBush), .playSoundFileNamed("BushEnter", waitForCompletion: true), .setTexture(baseTexture)]))
+        self.run(.sequence(
+            [.setTexture(openBush), .run {
+                music.starsSound(filenamed: music.bushEnter)
+            }, 
+             .setTexture(baseTexture), .run {
+                 music.starsSound(filenamed: music.bushExit)
+             },
+             ]
+        ))
+        
+//        self.run(.sequence([.setTexture(openBush), .playSoundFileNamed("BushEnter", waitForCompletion: true), .setTexture(baseTexture)]))
     }
 }
