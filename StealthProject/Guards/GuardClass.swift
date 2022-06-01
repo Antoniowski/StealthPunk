@@ -2,7 +2,7 @@
 //  GuardClass.swift
 //  StealthProject
 //
-//  Created by Antonio Romano on 04/05/22.
+//  Created by Salvatore Manna on 04/05/22.
 //
 
 import Foundation
@@ -19,6 +19,7 @@ let guardPhyscisBodyHeight = 85
 
 struct GuardState{
     var isDead: Bool = false
+    var isHit: Bool = false
     var isStunned: Bool = false
     var isAlerted: Bool = false
     var isSerching: Bool = false
@@ -152,6 +153,9 @@ class Guard: SKSpriteNode{
     var walkingAnimationBackRight: [SKTexture] = []
     var walkingAnimationBackLeft: [SKTexture] = []
     
+    //    STUNNED ANIMATION
+    var stunnedAnimation: [SKTexture] = []
+    
     
     
     
@@ -235,6 +239,10 @@ class Guard: SKSpriteNode{
         return self.actionState
     }
     
+    func getStatus()->GuardState{
+        return self.status
+    }
+    
     func getGuardMovingDirection()->Direction{
         return self.movingDirection
     }
@@ -294,6 +302,13 @@ class Guard: SKSpriteNode{
         self.actionState = actionState
     }
     
+    func setStunned(_ bool: Bool){
+        self.status.isStunned = bool
+    }
+    
+    func setHit(_ bool: Bool){
+        self.status.isHit = bool
+    }
     func setGuardActionStateBuffer(actionStateBuffer: GuardActionState){
         self.actionStateBuffer = actionStateBuffer
     }
@@ -850,7 +865,7 @@ class Guard: SKSpriteNode{
     
     func checkState(point: CGPoint, deltaTime: TimeInterval, scene: SKScene){
         
-        print(self.actionStateBuffer)
+//        print(self.actionStateBuffer)
         
         if(pathToChasing == true){
             pathToChasing = false
@@ -973,7 +988,7 @@ class Guard: SKSpriteNode{
             }
             checkAngle()
         } else if (actionStateBuffer == .CHASING_PATHFIND){
-            print("CHASING PATHFIND")
+//            print("CHASING PATHFIND")
             rayCastingForObstacles(scene: scene, point: point)
             checkAngle()
             

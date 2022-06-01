@@ -13,6 +13,8 @@
 		4A1B448E2822B274001DABEE /* ControllerRelatedGlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B448D2822B274001DABEE /* ControllerRelatedGlobalVariables.swift */; };
 		4A1B44962822B809001DABEE /* TestScene2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B44952822B809001DABEE /* TestScene2.swift */; };
 		4A1C86292847954B00885CCE /* GuardCerchioGrande.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1C86282847954B00885CCE /* GuardCerchioGrande.swift */; };
+		4A1C862B2847B57600885CCE /* TutorialModalitaATempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1C862A2847B57600885CCE /* TutorialModalitaATempo.swift */; };
+		4A1C862D2847B58100885CCE /* TutorialModalitaClassica.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A1C862C2847B58100885CCE /* TutorialModalitaClassica.swift */; };
 		4A2159FA283FD60C000F237C /* GuardMatrixes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2159F9283FD60C000F237C /* GuardMatrixes.swift */; };
 		4A3A1B97284516010030BB48 /* GuardConoPiccolo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3A1B96284516010030BB48 /* GuardConoPiccolo.swift */; };
 		4ABFC91E28327D6D00213CC9 /* GuardConoGrande.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABFC91D28327D6D00213CC9 /* GuardConoGrande.swift */; };
@@ -102,6 +104,8 @@
 		4A1B448D2822B274001DABEE /* ControllerRelatedGlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerRelatedGlobalVariables.swift; sourceTree = "<group>"; };
 		4A1B44952822B809001DABEE /* TestScene2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestScene2.swift; sourceTree = "<group>"; };
 		4A1C86282847954B00885CCE /* GuardCerchioGrande.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardCerchioGrande.swift; sourceTree = "<group>"; };
+		4A1C862A2847B57600885CCE /* TutorialModalitaATempo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialModalitaATempo.swift; sourceTree = "<group>"; };
+		4A1C862C2847B58100885CCE /* TutorialModalitaClassica.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialModalitaClassica.swift; sourceTree = "<group>"; };
 		4A2159F9283FD60C000F237C /* GuardMatrixes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardMatrixes.swift; sourceTree = "<group>"; };
 		4A3A1B96284516010030BB48 /* GuardConoPiccolo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardConoPiccolo.swift; sourceTree = "<group>"; };
 		4ABFC91D28327D6D00213CC9 /* GuardConoGrande.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardConoGrande.swift; sourceTree = "<group>"; };
@@ -384,6 +388,8 @@
 				6AAE3FA1284643EE002917FB /* MainMenu.swift */,
 				52CF6A9928465C4A000A62ED /* GameOverMenu.swift */,
 				52CF6A9B284665D8000A62ED /* Credits.swift */,
+				4A1C862A2847B57600885CCE /* TutorialModalitaATempo.swift */,
+				4A1C862C2847B58100885CCE /* TutorialModalitaClassica.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -559,6 +565,7 @@
 				6AB8640228217ED5006BB85E /* PlayerMovementFunctions.swift in Sources */,
 				52CF6A9C284665D8000A62ED /* Credits.swift in Sources */,
 				A693D35B28295AE20055C266 /* classFloor.swift in Sources */,
+				4A1C862B2847B57600885CCE /* TutorialModalitaATempo.swift in Sources */,
 				A693D35928293E470055C266 /* classRoom.swift in Sources */,
 				4A00C74D28255128009DB657 /* RayCastingVisionCone.swift in Sources */,
 				6AB863F92820254D006BB85E /* VectorFunctions.swift in Sources */,
@@ -589,6 +596,7 @@
 				4A00C7512825719C009DB657 /* Swipe Functions.swift in Sources */,
 				6AA31BDC282985A8002CCD47 /* StaticObject.swift in Sources */,
 				63A55F4528410B1D00A067A5 /* CharacterBox.swift in Sources */,
+				4A1C862D2847B58100885CCE /* TutorialModalitaClassica.swift in Sources */,
 				6AB863E928200334006BB85E /* GameViewController.swift in Sources */,
 				6AAE3F84283FD42A002917FB /* TimeCounter.swift in Sources */,
 				6AAE3F6E2837D9BF002917FB /* CassapancaClass.swift in Sources */,

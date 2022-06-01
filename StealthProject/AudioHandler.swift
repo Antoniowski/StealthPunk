@@ -13,33 +13,64 @@ class Music{
     
     static let instance = Music()
     
-    let doorTaverna : String = "doorTaverna"
-    let door : String = "door"
-    let door2 : String = "door2"
-    let panca : String = "pancaOpenCorto"
-    let bushExit : String = "BushExit"
-    let bushEnter : String = "BushEnter"
-    let cabinetOpen : String = "closeCabinet"
-    let cabinetClose : String = "openCabinet"
-    let vetrna : String = "vetrina"
-    let bonk : String = "BONK"
-    let gear : String = "GearSound"
-    let pagina : String = "pagina"
-    let footstep1 : String = "SingleFootstep"
-    let footstep2 : String = "SingleFootstep2"
-    let swing : String = "swing"
-    let footstep3 : String = "footsteps"
-    let grassfootstep : String = "grassFootsteps"
+    let doorTaverna : String = "doorTaverna.wav"
+    let door : String = "door.wav"
+    let door2 : String = "door2.wav"
+    let panca : String = "pancaOpenCorto.wav"
+    let bushExit : String = "BushExit.wav"
+    let bushEnter : String = "BushEnter.wav"
+    let cabinetClose : String = "closeCabinet.wav"
+    let cabinetOpen : String = "openCabinet.wav"
+    let vetrna : String = "vetrina.wav"
+    let bonk : String = "BONK.mp3"
+    let gear : String = "GearSound.wav"
+    let pagina : String = "pagina.wav"
+    let footstep1 : String = "SingleFootstep.mp3"
+    let footstep2 : String = "SingleFootstep2.wav"
+    let swing : String = "swing.wav"
+    let footstep3 : String = "footsteps.mp3"
+    let grassfootstep : String = "grassFootsteps.mp3"
     
     var soundEffects : AVAudioPlayer = AVAudioPlayer()
     var musicEffect : AVAudioPlayer = AVAudioPlayer()
     
-    var soundOn : Bool = false
+    var soundOn : Bool = true
     
-    var audioOn : Bool = false
+    var audioOn : Bool = true
     
-    func starsSound( file named: String){
-        
+    func starsSound( filenamed: String){
+        if(self.soundOn){
+            let resourceUrl = Bundle.main.url(forResource:
+             filenamed , withExtension: nil)
+            do {
+              try soundEffects = AVAudioPlayer(contentsOf: resourceUrl!)
+                soundEffects.volume = 0.3
+                soundEffects.prepareToPlay()
+                soundEffects.play()
+              } catch {
+                print("Could not create audio player!")
+            return
+            }
+            self.soundEffects.play()
+        }
+    }
+    
+    func startMusic( filenamed: String){
+        if(self.audioOn){
+            let resourceUrl = Bundle.main.url(forResource:
+             filenamed , withExtension: nil)
+            do {
+              try musicEffect = AVAudioPlayer(contentsOf: resourceUrl!)
+                musicEffect.volume = 0.3
+                musicEffect.numberOfLoops = -1
+                musicEffect.prepareToPlay()
+                musicEffect.play()
+              } catch {
+                print("Could not create audio player!")
+            return
+            }
+            self.musicEffect.play()
+        }
     }
     
     func stopSound(){
@@ -55,3 +86,6 @@ class Music{
     }
     
 }
+
+
+let music = Music()
