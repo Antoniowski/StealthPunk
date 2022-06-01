@@ -17,7 +17,6 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         myGameController.setUpGameController()
         
-        myGameController.virtualController.
         
     }
     
