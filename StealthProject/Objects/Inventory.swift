@@ -17,8 +17,7 @@ class Inventory: UsableObject {
         
     }
     
-    func action(scene: SKScene){
-        
+    func action(scene: SKScene) {
         
     }
     

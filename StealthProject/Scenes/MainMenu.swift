@@ -121,7 +121,7 @@ class MainMenu: SKScene{
         if touchedNode.name == "credits"{
             self.run(.playSoundFileNamed("pagina", waitForCompletion: true))
             let credit = Credits(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-            view?.presentScene(credit, transition: .fade(withDuration: 3))
+            view?.presentScene(credit, transition: .fade(withDuration: 2))
         }
     }
 }
