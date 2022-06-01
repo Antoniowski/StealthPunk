@@ -43,6 +43,12 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     
     
     override func didMove(to view: SKView) {
+        //Resetto le variabili di sconfitta e del tempo
+        loseFlag = false
+        MINUTE = 10
+        SECONDS = 60
+        
+        
         myGameController.connectController()
         self.backgroundColor = .black
         physicsWorld.contactDelegate = self
@@ -74,7 +80,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         luce.lightColor = .init(white: 0, alpha: 0.1)
         luce.zPosition = 50
         player.position = f.spawn
-        player.zPosition = 10
+        player.zPosition = 900
         
         addChild(player)
 
