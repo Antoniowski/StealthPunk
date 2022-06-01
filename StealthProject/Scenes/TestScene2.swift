@@ -70,7 +70,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         scenecamera.position = player.position
         scenecamera.setScale(1)
         
-        let f = Floor(self, floorType: .FIRST_FLOOR)
+        let f = Floor(self, floorType: .SECOND_FLOOE)
 
         
         luce.ambientColor = .init(red: 0.624, green: 0.624, blue: 0.914, alpha: 0.25) // PER LE PARTI SCURE - GIARDINO

@@ -22,6 +22,15 @@ class Closet: Hideout{
     }
     
     override func action() {
-        self.run(.sequence([.setTexture(openCloset),.playSoundFileNamed("openCabinet", waitForCompletion: true), .setTexture(baseTexture), .playSoundFileNamed("closeCabinet", waitForCompletion: true)]))
+        self.run(.sequence(
+            [.setTexture(openCloset), .run {
+                music.starsSound(filenamed: music.cabinetOpen)
+            },.wait(forDuration: 2.7),
+             .setTexture(baseTexture), .run {
+                 music.starsSound(filenamed: music.cabinetClose)
+             },
+             ]
+        ))
+//        self.run(.sequence([.setTexture(openCloset),.playSoundFileNamed("openCabinet", waitForCompletion: true), .setTexture(baseTexture), .playSoundFileNamed("closeCabinet", waitForCompletion: true)]))
     }
 }
