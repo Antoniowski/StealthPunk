@@ -9,8 +9,6 @@ import Foundation
 import SpriteKit
 import SwiftUI
 
-var moltiplicatoreTempo = 1
-
 let blocco : Int = 100
 let bloccoSize: CGSize = CGSize(width: blocco, height: blocco)
 
