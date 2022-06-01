@@ -7,7 +7,7 @@
 
 import Foundation
 import AVFoundation
-
+import SwiftUI
 
 class Music{
     
@@ -30,5 +30,28 @@ class Music{
     let swing : String = "swing"
     let footstep3 : String = "footsteps"
     let grassfootstep : String = "grassFootsteps"
+    
+    var soundEffects : AVAudioPlayer = AVAudioPlayer()
+    var musicEffect : AVAudioPlayer = AVAudioPlayer()
+    
+    var soundOn : Bool = false
+    
+    var audioOn : Bool = false
+    
+    func starsSound( file named: String){
+        
+    }
+    
+    func stopSound(){
+        soundEffects.stop()
+    }
+    
+    func muteSound(){
+        soundOn = false
+    }
+
+    func unmuteSound(){
+        soundOn = true
+    }
     
 }
