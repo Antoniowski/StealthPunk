@@ -115,6 +115,9 @@ extension PlayableScene{
                             door?.run(.playSoundFileNamed("doorTaverna", waitForCompletion: false), completion: {
                                 door?.action(self.view!)
                             })
+                        case .TAVERNA_SCRIGNO:
+                            let chest = usable as? Inventory
+                            chest?.action(scene: scene)
                         default:
                             return
                         }
