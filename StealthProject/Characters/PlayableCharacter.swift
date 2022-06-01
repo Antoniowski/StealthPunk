@@ -211,6 +211,18 @@ class PlayableCharacter: SKSpriteNode{
                         self.setActionState(.MOVE)
                         self.status.isHidden = false
                         self.alpha = 1
+                        self.physicsBody = SKPhysicsBody(rectangleOf: .init(width: 35, height: 60))
+                        self.physicsBody?.isDynamic = true
+                        self.physicsBody?.affectedByGravity = false
+                        self.physicsBody?.allowsRotation = false
+                        self.physicsBody?.categoryBitMask = ColliderType.PLAYER.rawValue
+                        self.physicsBody?.collisionBitMask = ColliderType.COLLECTIBLE.rawValue
+                        self.physicsBody?.contactTestBitMask = ColliderType.COLLECTIBLE.rawValue
+                        self.physicsBody?.collisionBitMask = ColliderType.DOOR.rawValue
+                        self.physicsBody?.contactTestBitMask = ColliderType.DOOR.rawValue
+                        self.physicsBody?.collisionBitMask = ColliderType.CHAR.rawValue
+                        self.physicsBody?.contactTestBitMask = ColliderType.CHAR.rawValue
+                        
 //                        scene.enumerateChildNodes(withName: "ROOM/dynamicObject"){ object, _ in
                         for object in oggetti{
                             if getDistanceBetween(point1: self.position, point2: scene.convert(object.position, from: object.parent ?? SKNode())) <= self.getInteractRange(){
