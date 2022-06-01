@@ -16,6 +16,7 @@
 		4A2159FA283FD60C000F237C /* GuardMatrixes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2159F9283FD60C000F237C /* GuardMatrixes.swift */; };
 		4A3A1B97284516010030BB48 /* GuardConoPiccolo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A3A1B96284516010030BB48 /* GuardConoPiccolo.swift */; };
 		4ABFC91E28327D6D00213CC9 /* GuardConoGrande.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ABFC91D28327D6D00213CC9 /* GuardConoGrande.swift */; };
+		527701BC28478F0600E12374 /* AudioHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527701BB28478F0600E12374 /* AudioHandler.swift */; };
 		52CF6A9A28465C4A000A62ED /* GameOverMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF6A9928465C4A000A62ED /* GameOverMenu.swift */; };
 		52CF6A9C284665D8000A62ED /* Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF6A9B284665D8000A62ED /* Credits.swift */; };
 		63935A33284657D000155031 /* OldNewspaperTypes.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63935A32284657D000155031 /* OldNewspaperTypes.ttf */; };
@@ -103,6 +104,7 @@
 		4A2159F9283FD60C000F237C /* GuardMatrixes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardMatrixes.swift; sourceTree = "<group>"; };
 		4A3A1B96284516010030BB48 /* GuardConoPiccolo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardConoPiccolo.swift; sourceTree = "<group>"; };
 		4ABFC91D28327D6D00213CC9 /* GuardConoGrande.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuardConoGrande.swift; sourceTree = "<group>"; };
+		527701BB28478F0600E12374 /* AudioHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioHandler.swift; sourceTree = "<group>"; };
 		52CF6A9928465C4A000A62ED /* GameOverMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverMenu.swift; sourceTree = "<group>"; };
 		52CF6A9B284665D8000A62ED /* Credits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credits.swift; sourceTree = "<group>"; };
 		63935A32284657D000155031 /* OldNewspaperTypes.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OldNewspaperTypes.ttf; sourceTree = "<group>"; };
@@ -332,6 +334,7 @@
 				A693D35228255F9E0055C266 /* Rooms */,
 				A693D3572826F59C0055C266 /* path */,
 				6AAE3F74283BC46C002917FB /* Museum.swift */,
+				527701BB28478F0600E12374 /* AudioHandler.swift */,
 			);
 			path = StealthProject;
 			sourceTree = "<group>";
@@ -535,6 +538,7 @@
 				6AAE3F71283A4270002917FB /* TavernaDoor.swift in Sources */,
 				6AA31BDF28298C17002CCD47 /* Lampione.swift in Sources */,
 				6AB863E728200334006BB85E /* GameScene.swift in Sources */,
+				527701BC28478F0600E12374 /* AudioHandler.swift in Sources */,
 				6AA31BE32829911A002CCD47 /* LightProtocol.swift in Sources */,
 				4A00C74F2825580D009DB657 /* TestScene3.swift in Sources */,
 				6A2A7E9C283457D600D14EC0 /* Intro.swift in Sources */,
