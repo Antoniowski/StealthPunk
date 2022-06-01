@@ -140,7 +140,7 @@ class TestScene4: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
 
         player.position = f.spawn
-        player.zPosition = 10
+        player.zPosition = 900
 
         
         addChild(player)
