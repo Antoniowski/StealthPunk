@@ -161,7 +161,18 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         //PER FAR APPARIRE LE STANZE
         if firstBody.node?.name == "player" && secondBody.node?.name == "door"{
             let door = secondBody.node as? Door
-            door?.run(.playSoundFileNamed("door2", waitForCompletion: true))
+            let cifra = Int.random(in: 0...2)
+            if(cifra == 0){
+            door?.run(.run {
+                music.starsSound(filenamed: music.door)
+            })
+            }
+            if(cifra == 1){
+                music.starsSound(filenamed: music.door2)
+            }
+            if(cifra == 2){
+                music.starsSound(filenamed: music.doorTaverna)
+            }
             door?.open()
             door?.parent?.alpha = 1
         }
