@@ -38,5 +38,7 @@ class GuardCerchioGrande: Guard{
         self.walkingAnimationBackRight = [SKTexture(imageNamed: "CerchioGrandeFrontF1"), SKTexture(imageNamed:"CerchioGrandeFrontF2")]
         self.walkingAnimationFrontRight = [SKTexture(imageNamed: "CerchioGrandeFrontF1"), SKTexture(imageNamed:"CerchioGrandeFrontF2")]
         self.walkingAnimationFrontLeft = [SKTexture(imageNamed: "CerchioGrandeFrontF1"), SKTexture(imageNamed:"CerchioGrandeFrontF2")]
+        
+        self.stunnedAnimation = [SKTexture(imageNamed: "CerchioGrandeMortoF1"), SKTexture(imageNamed: "CerchioGrandeMortoF2"), SKTexture(imageNamed: "CerchioGrandeMortoF3")]
     }
 }
