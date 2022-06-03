@@ -30,6 +30,10 @@ class Music{
     let swing : String = "swing.wav"
     let footstep3 : String = "footsteps.mp3"
     let grassfootstep : String = "grassFootsteps.mp3"
+    let hit01: String = "hit1.wav"
+    let hit02: String = "hit2.wav"
+    let failedHit01: String = "failedImpact.wav"
+    let whoosh: String = "whoosh.wav"
     
     var soundEffects : AVAudioPlayer = AVAudioPlayer()
     var musicEffect : AVAudioPlayer = AVAudioPlayer()

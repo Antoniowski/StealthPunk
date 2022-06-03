@@ -516,6 +516,9 @@ class PlayableCharacter: SKSpriteNode{
 //            ATTACK ANIMATION
             
         case .ATTACK:
+            self.run(.sequence([.wait(forDuration: 0.3), .run {
+                music.starsSound(filenamed: music.whoosh)
+            }]))
             switch facingDirection {
             case .UP:
                 if self.status.isAttacking == false{

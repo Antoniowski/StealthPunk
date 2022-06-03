@@ -72,6 +72,10 @@
 		6AAE3FA2284643EE002917FB /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE3FA1284643EE002917FB /* MainMenu.swift */; };
 		6AAE3FA528465029002917FB /* OldLondon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6AAE3FA428465029002917FB /* OldLondon.ttf */; };
 		6AAE3FA9284A64F2002917FB /* GOOSE2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6AAE3FA8284A64F2002917FB /* GOOSE2.wav */; };
+		6AAE3FAE284A6AC5002917FB /* hit2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6AAE3FAC284A6AC5002917FB /* hit2.wav */; };
+		6AAE3FAF284A6AC5002917FB /* hit1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6AAE3FAD284A6AC5002917FB /* hit1.wav */; };
+		6AAE3FB1284A6ADE002917FB /* failedImpact.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6AAE3FB0284A6ADE002917FB /* failedImpact.wav */; };
+		6AAE3FB3284A6CB8002917FB /* whoosh.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6AAE3FB2284A6CB8002917FB /* whoosh.wav */; };
 		6AB863E128200334006BB85E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB863E028200334006BB85E /* AppDelegate.swift */; };
 		6AB863E328200334006BB85E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6AB863E228200334006BB85E /* GameScene.sks */; };
 		6AB863E528200334006BB85E /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6AB863E428200334006BB85E /* Actions.sks */; };
@@ -166,6 +170,10 @@
 		6AAE3FA1284643EE002917FB /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		6AAE3FA428465029002917FB /* OldLondon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OldLondon.ttf; sourceTree = "<group>"; };
 		6AAE3FA8284A64F2002917FB /* GOOSE2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GOOSE2.wav; sourceTree = "<group>"; };
+		6AAE3FAC284A6AC5002917FB /* hit2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hit2.wav; sourceTree = "<group>"; };
+		6AAE3FAD284A6AC5002917FB /* hit1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hit1.wav; sourceTree = "<group>"; };
+		6AAE3FB0284A6ADE002917FB /* failedImpact.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = failedImpact.wav; sourceTree = "<group>"; };
+		6AAE3FB2284A6CB8002917FB /* whoosh.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = whoosh.wav; sourceTree = "<group>"; };
 		6AB863DD28200334006BB85E /* StealthPunk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StealthPunk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AB863E028200334006BB85E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6AB863E228200334006BB85E /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -290,6 +298,10 @@
 				6AAE3F91284504E7002917FB /* vetrina.wav */,
 				6AAE3FA8284A64F2002917FB /* GOOSE2.wav */,
 				6AAE3F9B28451D97002917FB /* BONK.mp3 */,
+				6AAE3FAD284A6AC5002917FB /* hit1.wav */,
+				6AAE3FB0284A6ADE002917FB /* failedImpact.wav */,
+				6AAE3FB2284A6CB8002917FB /* whoosh.wav */,
+				6AAE3FAC284A6AC5002917FB /* hit2.wav */,
 				6AAE3F99284511A5002917FB /* GearSound.wav */,
 				6AAE3F9728450CC5002917FB /* BushEnter.wav */,
 				63935A36284669AF00155031 /* pagina.wav */,
@@ -516,6 +528,8 @@
 				6AAE3F9828450CC6002917FB /* BushEnter.wav in Resources */,
 				6AAE3F92284504E7002917FB /* vetrina.wav in Resources */,
 				6AAE3F862844FBF2002917FB /* door.wav in Resources */,
+				6AAE3FAF284A6AC5002917FB /* hit1.wav in Resources */,
+				6AAE3FB3284A6CB8002917FB /* whoosh.wav in Resources */,
 				6AB863EC28200334006BB85E /* Main.storyboard in Resources */,
 				6AAE3F8E2845000D002917FB /* closeCabinet.wav in Resources */,
 				6AB863E328200334006BB85E /* GameScene.sks in Resources */,
@@ -531,6 +545,8 @@
 				6AAE3F8C28450004002917FB /* openCabinet.wav in Resources */,
 				6AAE3F7F283FC4C7002917FB /* grassFootsteps.mp3 in Resources */,
 				6AAE3FA528465029002917FB /* OldLondon.ttf in Resources */,
+				6AAE3FAE284A6AC5002917FB /* hit2.wav in Resources */,
+				6AAE3FB1284A6ADE002917FB /* failedImpact.wav in Resources */,
 				6AAE3F9C28451D97002917FB /* BONK.mp3 in Resources */,
 				6AAE3FA9284A64F2002917FB /* GOOSE2.wav in Resources */,
 				63B9F6AE283439FE008E62C1 /* Victorian Parlor Vintage Alternate_free.ttf in Resources */,
