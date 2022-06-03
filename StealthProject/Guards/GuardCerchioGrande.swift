@@ -30,14 +30,24 @@ class GuardCerchioGrande: Guard{
         self.halfFrontRTexture = SKTexture(imageNamed: "CerchioGrandeBackF2")
         self.halfFrontLTexture = SKTexture(imageNamed: "CerchioGrandeBackF2")
         
-        self.walkingAnimationFront = [SKTexture(imageNamed: "CerchioGrandeFrontF1"), SKTexture(imageNamed: "CerchioGrandeFrontF2")]
-        self.walkingAnimationBack = [SKTexture(imageNamed: "CerchioGrandeFrontF1"), SKTexture(imageNamed: "CerchioGrandeFrontF2")]
-        self.walkingAnimationLeft = [SKTexture(imageNamed: "CerchioGrandeFrontF1"), SKTexture(imageNamed:"CerchioGrandeFrontF2")]
-        self.walkingAnimationRight = [SKTexture(imageNamed: "CerchioGrandeFrontF1"), SKTexture(imageNamed:"CerchioGrandeFrontF2")]
-        self.walkingAnimationBackLeft = [SKTexture(imageNamed: "CerchioGrandeFrontF1"), SKTexture(imageNamed:"CerchioGrandeFrontF2")]
-        self.walkingAnimationBackRight = [SKTexture(imageNamed: "CerchioGrandeFrontF1"), SKTexture(imageNamed:"CerchioGrandeFrontF2")]
-        self.walkingAnimationFrontRight = [SKTexture(imageNamed: "CerchioGrandeFrontF1"), SKTexture(imageNamed:"CerchioGrandeFrontF2")]
-        self.walkingAnimationFrontLeft = [SKTexture(imageNamed: "CerchioGrandeFrontF1"), SKTexture(imageNamed:"CerchioGrandeFrontF2")]
+        self.currentIdleDirectionTexture = self.backTexture
+        
+        self.walkingAnimationFront = [SKTexture(imageNamed: "CerchioGrandeFrontF1"), SKTexture(imageNamed: "CerchioGrandeFrontF2"),
+                                      SKTexture(imageNamed: "CerchioGrandeFrontF3"), SKTexture(imageNamed: "CerchioGrandeFrontF4")]
+        self.walkingAnimationBack = [SKTexture(imageNamed: "CerchioGrandeFrontF1"), SKTexture(imageNamed: "CerchioGrandeFrontF2"),
+                                     SKTexture(imageNamed: "CerchioGrandeFrontF3"), SKTexture(imageNamed: "CerchioGrandeFrontF4")]
+        self.walkingAnimationLeft = [SKTexture(imageNamed: "CerchioGrandeSideF4"), SKTexture(imageNamed:"CerchioGrandeSideF1"),
+                                     SKTexture(imageNamed: "CerchioGrandeSideF2"), SKTexture(imageNamed:"CerchioGrandeSideF3")]
+        self.walkingAnimationRight = [SKTexture(imageNamed: "CerchioGrandeSideF4"), SKTexture(imageNamed:"CerchioGrandeSideF1"),
+                                      SKTexture(imageNamed: "CerchioGrandeSideF2"), SKTexture(imageNamed:"CerchioGrandeSideF3")]
+        self.walkingAnimationBackLeft = [SKTexture(imageNamed: "CerchioGrande3:4F1"), SKTexture(imageNamed:"CerchioGrandeF2"),
+                                         SKTexture(imageNamed: "CerchioGrande3:4F2"), SKTexture(imageNamed:"CerchioGrandeFrontF4")]
+        self.walkingAnimationBackRight = [SKTexture(imageNamed: "CerchioGrande3:4F1"), SKTexture(imageNamed:"CerchioGrandeF2"),
+                                          SKTexture(imageNamed: "CerchioGrande3:4F2"), SKTexture(imageNamed:"CerchioGrandeFrontF4")]
+        self.walkingAnimationFrontRight = [SKTexture(imageNamed: "CerchioGrande3:4F1"), SKTexture(imageNamed:"CerchioGrandeF2"),
+                                           SKTexture(imageNamed: "CerchioGrande3:4F2"), SKTexture(imageNamed:"CerchioGrandeFrontF4")]
+        self.walkingAnimationFrontLeft = [SKTexture(imageNamed: "CerchioGrande3:4F1"), SKTexture(imageNamed:"CerchioGrandeF2"),
+                                          SKTexture(imageNamed: "CerchioGrande3:4F2"), SKTexture(imageNamed:"CerchioGrandeFrontF4")]
         
         self.stunnedAnimation = [SKTexture(imageNamed: "CerchioGrandeMortoF1"), SKTexture(imageNamed: "CerchioGrandeMortoF2"), SKTexture(imageNamed: "CerchioGrandeMortoF3")]
     }

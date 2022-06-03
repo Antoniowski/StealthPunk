@@ -33,6 +33,8 @@ class GuardConoGrande: Guard{
         self.halfFrontRTexture = SKTexture(imageNamed: "ConoGrande3:4FrontMirrorF1")
         self.halfFrontLTexture = SKTexture(imageNamed: "ConoGrande3:4FrontF3")
         
+        self.currentIdleDirectionTexture = self.backTexture
+        
         self.walkingAnimationRight = [SKTexture(imageNamed: "ConoGrandeSideMirrorF2"), SKTexture(imageNamed:"ConoGrandeSideMirrorF3"), SKTexture(imageNamed:"ConoGrandeSideMirrorF4"), SKTexture(imageNamed:"ConoGrandeSideMirrorF1")]
         self.walkingAnimationFrontLeft = [SKTexture(imageNamed: "ConoGrande3:4FrontF2"), SKTexture(imageNamed:"ConoGrande3:4FrontF3"), SKTexture(imageNamed:"ConoGrande3:4FrontF4"), SKTexture(imageNamed:"ConoGrande3:4FrontF1")]
         self.walkingAnimationFrontRight = [SKTexture(imageNamed: "ConoGrande3:4FrontMirrorF2"), SKTexture(imageNamed:"ConoGrande3:4FrontMirrorF3"), SKTexture(imageNamed:"ConoGrande3:4FrontMirrorF4"), SKTexture(imageNamed:"ConoGrande3:4FrontMirrorF1")]

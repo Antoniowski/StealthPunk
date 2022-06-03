@@ -46,7 +46,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         //Resetto le variabili di sconfitta e del tempo
         loseFlag = false
         MINUTE = 10
-        SECONDS = 60
+        SECONDS = 0
         
         
         myGameController.connectController()
@@ -241,22 +241,11 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         scenecamera.position = player.position
 
         if(!initGuards){
-//            print("Inizializzo le guardie con le coordinate della scena")
             initGuards = true
             for guardia in arrayOfGuards{
-//                print("GUARDIA POSIZIONE: \(guardia.position)")
                 let posizioneDellaScena = guardia.convert(guardia.position, to: self)
-//                print("GUARDIA POSIZIONE CONVERTITA: \(posizioneDellaScena)")
                 let posizioneDellaScena2 = guardia.roomReference.convert(guardia.position, to: self)
                 nemici.append(guardia)
-//                print("GUARDIA POSIZIONE CONVERTITA 2: \(posizioneDellaScena2)")
-//                nemici.append(guardia)
-//                guardia.removeFromParent()
-//                guardia.getCenterBall().removeFromParent()
-//                guardia.position = posizioneDellaScena2
-//                guardia.getCenterBall().position = posizioneDellaScena2
-//                self.addChild(guardia)
-//                self.addChild(guardia.getCenterBall())
             }
         }
         

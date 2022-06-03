@@ -28,19 +28,16 @@ func visionCone(entity: Guard, scene: SKScene){
         }
     }
     
-//    scene.enumerateChildNodes(withName: "*"){node, _ in
-//        if(node.name == entity.name!+"visualCone"){
-//            node.removeFromParent()
-//        }
-//    }
-    
     entity.resetArrayOfPoints()
             
-    
-    if(entity.getVisionConeAngle() != 360){
-        visionConeRayCasting(entity: entity, scene: scene)
-    } else {
-        visionConeRayCasting360(entity: entity, scene: scene)
+        
+    if(!entity.getStatus().isHit){
+        if(entity.getVisionConeAngle() != 360){
+            visionConeRayCasting(entity: entity, scene: scene)
+        } else {
+            visionConeRayCasting360(entity: entity, scene: scene)
+        }
+
     }
 }
 
@@ -263,23 +260,6 @@ func createVisionCone(entity: Guard, scene: SKScene){
 
 
 func rayCasting(myX: CGFloat, myY: CGFloat, entity: Guard, scene: SKScene, rayCastingPlayerFound: inout Bool){
-//    var foundObject: Bool = false
-//    let intersectedBody = scene.physicsWorld.body(alongRayStart: entity.roomReference.convert(entity.position, to: scene), end: CGPoint(x: myX, y: myY))
-//    if(intersectedBody != nil && intersectedBody?.node?.name! == "player"){
-//        entity.rayCastingPlayerFound = true
-//    }
-//    scene.physicsWorld.enumerateBodies(alongRayStart: entity.roomReference.convert(entity.position, to: scene), end: CGPoint(x: myX, y: myY)){ body, point, vector, object in
-//        if(intersectedBody?.node?.name! != "player" || intersectedBody?.node?.name! != "collectible"){
-//            foundObject = true
-//            entity.appendToArrayOfPoints(point: point)
-//            object.pointee = true
-//        }
-//    }
-//
-//    if(!foundObject){
-//        entity.appendToArrayOfPoints(point: CGPoint(x: myX, y: myY))
-//    }
-    
     var foundObject: Bool = false
     scene.physicsWorld.enumerateBodies(alongRayStart: entity.roomReference.convert(entity.position, to: scene), end: CGPoint(x: myX, y: myY)){ body, point, vector, object in
         if(body.node?.name == "player"){

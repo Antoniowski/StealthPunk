@@ -36,5 +36,5 @@ let dimensioneGuardiaConoPiccoloWidth: Double = dimensioneGuardiaConoGrandeWidth
 let dimensioneGuardiaConoPiccoloHeight: Double = dimensioneGuardiaConoGrandeHeight / 1.5
 
 let dimensioneGuardiaCerchioGrandeWidth: Double = 45
-let dimensioneGuardiaCerchiooGrandeHeight: Double = 90
+let dimensioneGuardiaCerchioGrandeHeight: Double = 90
 

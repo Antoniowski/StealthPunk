@@ -30,6 +30,8 @@ class GuardConoPiccolo: Guard{
         self.halfFrontRTexture = SKTexture(imageNamed: "ConoPiccolo3:4FrontMirrorF1")
         self.halfFrontLTexture = SKTexture(imageNamed: "ConoPiccolo3:4FrontF1")
         
+        self.currentIdleDirectionTexture = self.backTexture
+        
         self.walkingAnimationFront = [SKTexture(imageNamed: "ConoPiccoloFrontF2"), SKTexture(imageNamed: "ConoPiccoloFrontF1")]
         self.walkingAnimationBack = [SKTexture(imageNamed: "ConoPiccoloBackF2"), SKTexture(imageNamed: "ConoPiccoloBackF1")]
         self.walkingAnimationLeft = [SKTexture(imageNamed: "ConoPiccoloSideF1"), SKTexture(imageNamed:"ConoPiccoloSideF1")]

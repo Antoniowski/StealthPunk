@@ -218,10 +218,12 @@ let simple4MatrixGuardsPaths: [[myAction]] = [
     myAction(actionType: .ROTATE_ACTION, duration: 2, startingPoint: CGPoint(x: 0,y: 0), endingPoint: CGPoint(x: 0,y: 0), angle: -90),
 
     myAction(actionType: .PATH_ACTION, duration: 3, startingPoint: CGPoint(x: 6, y: 4), endingPoint: CGPoint(x: 9,y: 4), angle:0),
-    myAction(actionType: .ROTATE_ACTION, duration: 2, startingPoint: CGPoint(x: 0,y: 0), endingPoint: CGPoint(x: 0,y: 0), angle: 180),
+    myAction(actionType: .ROTATE_ACTION, duration: 2, startingPoint: CGPoint(x: 0,y: 0), endingPoint: CGPoint(x: 0,y: 0), angle: 90),
+    myAction(actionType: .ROTATE_ACTION, duration: 2, startingPoint: CGPoint(x: 0,y: 0), endingPoint: CGPoint(x: 0,y: 0), angle: 90),
 
     myAction(actionType: .PATH_ACTION, duration: 4, startingPoint: CGPoint(x: 9, y: 4), endingPoint: CGPoint(x: 2,y: 4), angle:0),
-    myAction(actionType: .ROTATE_ACTION, duration: 2, startingPoint: CGPoint(x: 0,y: 0), endingPoint: CGPoint(x: 0,y: 0), angle: 180),
+    myAction(actionType: .ROTATE_ACTION, duration: 2, startingPoint: CGPoint(x: 0,y: 0), endingPoint: CGPoint(x: 0,y: 0), angle: 90),
+    myAction(actionType: .ROTATE_ACTION, duration: 2, startingPoint: CGPoint(x: 0,y: 0), endingPoint: CGPoint(x: 0,y: 0), angle: 90),
 
     myAction(actionType: .PATH_ACTION, duration: 2, startingPoint: CGPoint(x: 2, y: 4), endingPoint: CGPoint(x: 5,y: 4), angle:0),
     myAction(actionType: .ROTATE_ACTION, duration: 2, startingPoint: CGPoint(x: 0,y: 0), endingPoint: CGPoint(x: 0,y: 0), angle: -90),
@@ -230,6 +232,7 @@ let simple4MatrixGuardsPaths: [[myAction]] = [
     myAction(actionType: .ROTATE_ACTION, duration: 2, startingPoint: CGPoint(x: 0,y: 0), endingPoint: CGPoint(x: 0,y: 0), angle: 90),
 
     myAction(actionType: .PATH_ACTION, duration: 2, startingPoint: CGPoint(x: 5, y: 6), endingPoint: CGPoint(x: 6,y: 6), angle:0),
+    myAction(actionType: .ROTATE_ACTION, duration: 2, startingPoint: CGPoint(x: 0,y: 0), endingPoint: CGPoint(x: 0,y: 0), angle: 90)
 
     
    ],

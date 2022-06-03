@@ -8,7 +8,7 @@
 import Foundation
 import SpriteKit
 
-var MINUTE: Int = 10
+var MINUTE: Int = 9
 var SECONDS: Int = 0
 
 class TimeCounter: SKNode{

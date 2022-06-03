@@ -25,7 +25,7 @@ class Piano1: SKScene, PlayableScene, SKPhysicsContactDelegate  {
     var delta: TimeInterval = 0.0
     var lastUpdate: TimeInterval?
     
-    let room = Room(.SIMPLE_6, startingPosition: CGPoint(x: 50, y: 50), floor: .FIRST_FLOOR)
+    let room = Room(.SIMPLE_1, startingPosition: CGPoint(x: 50, y: 50), floor: .FIRST_FLOOR)
     
     var scenecamera = SKCameraNode()
     
