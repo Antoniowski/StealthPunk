@@ -28,7 +28,7 @@ class MainMenu: SKScene{
         title.fontName = "OldLondon"
         title.fontSize = 70
         title.text = "StealthPunk"
-        title.position = .init(x: frame.width*0.5, y: frame.height*0.80)
+        title.position = .init(x: frame.width*0.5, y: frame.height*0.79)
         title.zPosition = 2
         title.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
         
