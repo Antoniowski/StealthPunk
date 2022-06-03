@@ -27,7 +27,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     
     var ACCELLERATION: Double = 10
     var MAX_SPEED: Double = 50
-    var FRICTION: Double = 10
+    var FRICTION: Double = 20
 
     
     var indicatore = Counter()
@@ -73,7 +73,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         let f = Floor(self, floorType: .FIRST_FLOOR)
 
         
-        luce.ambientColor = .init(red: 0.624, green: 0.624, blue: 0.914, alpha: 0.25) // PER LE PARTI SCURE - GIARDINO
+        luce.ambientColor = .init(red: 0.624, green: 0.624, blue: 0.914, alpha: 0.40) // PER LE PARTI SCURE - GIARDINO
 //        luce.ambientColor = .init(red: 0.6, green: 0.6, blue: 0.75, alpha: 0.15)
 
         luce.falloff = 10
@@ -174,9 +174,9 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
             if(cifra == 1){
                 music.starsSound(filenamed: music.door2)
             }
-            if(cifra == 2){
-                music.starsSound(filenamed: music.doorTaverna)
-            }
+//            if(cifra == 2){
+//                music.starsSound(filenamed: music.doorTaverna)
+//            }
             door?.open()
             door?.parent?.alpha = 1
         }

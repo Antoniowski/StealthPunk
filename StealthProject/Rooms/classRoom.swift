@@ -608,7 +608,7 @@ class Room: SKNode {
                     var wall = SKSpriteNode(texture: frontWallTexture, size: bloccoSize)
                     wall.normalTexture = frontWallTextureMap
                     if (archetype == .SCAMBIO1 || archetype == .SCAMBIO2 || archetype == .SCAMBIO3 || archetype == .SCAMBIO4) && floor == .FIRST_FLOOR{
-                        if i == 1{
+                        if i == numColonne-1{
                             wall = SKSpriteNode(texture: SKTexture(imageNamed: "parete centrale"), size: bloccoSize)
                             wall.normalTexture = SKTexture(imageNamed: "parete centrale normal map")
                         }
@@ -850,7 +850,7 @@ class Room: SKNode {
                         let muro = SKSpriteNode(texture: SKTexture(imageNamed: "parete centrale"), size: bloccoSize)
                         muro.normalTexture = SKTexture(imageNamed: "parete centrale normal texture")
                         muro.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
-                        addChild(muro)
+                        passaggio.addChild(muro)
                     }
                     addChild(passaggio)
                     
