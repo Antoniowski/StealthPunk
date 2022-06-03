@@ -50,8 +50,8 @@ class PlayableCharacter: SKSpriteNode{
     private var strenght: Int = 0
     private var characterSpeed: Int = 0
     private var noiseDistance: Double = 0
-    private var interactRange: Double = 50
-    private var attackRange: Double = 25
+    private var interactRange: Double = 60
+    private var attackRange: Double = 60
     
     
     private var status: CharacterState = CharacterState()
@@ -264,7 +264,7 @@ class PlayableCharacter: SKSpriteNode{
         var distanceObject: Double = .infinity
 //        scene.enumerateChildNodes(withName: "enemy"){ element, _ in
         for element in enemies{
-            let distance = getDistanceBetween(point1: self.position, point2: element.position)
+            let distance = getDistanceBetween(point1: self.position, point2: scene.convert(element.position, from: element.parent!))
             if first{
                 distanceEnemy = distance
                 first = false
@@ -275,7 +275,7 @@ class PlayableCharacter: SKSpriteNode{
         }
 //        scene.enumerateChildNodes(withName: "ROOM/dynamicObject"){ element, _ in
         for element in oggetti{
-            let distance = getDistanceBetween(point1: self.position, point2: element.convert(element.position, from: element.parent ?? SKNode()))
+            let distance = getDistanceBetween(point1: self.position, point2: scene.convert(element.position, from: element.parent ?? SKNode()))
             if distanceObject >= distance{
                 distanceObject = distance
             }
@@ -516,6 +516,9 @@ class PlayableCharacter: SKSpriteNode{
 //            ATTACK ANIMATION
             
         case .ATTACK:
+            self.run(.sequence([.wait(forDuration: 0.3), .run {
+                music.starsSound(filenamed: music.whoosh)
+            }]))
             switch facingDirection {
             case .UP:
                 if self.status.isAttacking == false{
@@ -543,8 +546,10 @@ class PlayableCharacter: SKSpriteNode{
                 if self.status.isAttacking == false{
                     self.status.isAttacking = true
                     self.xScale = 2
+                    self.lucciola.xScale = 0.5
                     self.run(.animate(with: self.attackAnimationRight, timePerFrame: 0.1), completion: {
                         self.xScale = 1
+                        self.lucciola.xScale = 1
                         self.actionState = .MOVE
                         self.status.isAttacking = false
                         self.status.idle = false
@@ -587,8 +592,10 @@ class PlayableCharacter: SKSpriteNode{
                 if self.status.isAttacking == false{
                     self.status.isAttacking = true
                     self.xScale = 2
+                    self.lucciola.xScale = 0.5
                     self.run(.animate(with: self.attackAnimationLeft, timePerFrame: 0.1), completion: {
                         self.xScale = 1
+                        self.lucciola.xScale = 1
                         self.actionState = .MOVE
                         self.status.isAttacking = false
                         self.status.idle = false
@@ -623,9 +630,13 @@ class PlayableCharacter: SKSpriteNode{
                         self.status.isRolling = false
                     })
                 case .UP_RIGHT:
+                    self.xScale = 1
+                    self.lucciola.xScale = 1
                     self.run(.animate(with: rollingAnimationBack, timePerFrame: 0.1), completion: {
                         if self.status.isRunning {
                             self.actionState = .RUNNING
+                            self.xScale = 2
+                            self.lucciola.xScale = 0.5
                         }else{
                             self.actionState = .MOVE
                         }
@@ -633,19 +644,25 @@ class PlayableCharacter: SKSpriteNode{
                     })
                 case .RIGHT:
                     self.xScale = 2
+                    self.lucciola.xScale = 0.5
                     self.run(.animate(with: rollingAnimationRight, timePerFrame: 0.1), completion: {
                         if self.status.isRunning {
                             self.actionState = .RUNNING
                         }else{
                             self.actionState = .MOVE
                             self.xScale = 1
+                            self.lucciola.xScale = 1
                         }
                         self.status.isRolling = false
                     })
                 case .DOWN_RIGHT:
+                    self.xScale = 1
+                    self.lucciola.xScale = 1
                     self.run(.animate(with: rollingAnimationFront, timePerFrame: 0.1), completion: {
                         if self.status.isRunning {
                             self.actionState = .RUNNING
+                            self.xScale = 2
+                            self.lucciola.xScale = 0.5
                         }else{
                             self.actionState = .MOVE
                         }
@@ -661,9 +678,13 @@ class PlayableCharacter: SKSpriteNode{
                         self.status.isRolling = false
                     })
                 case .DOWN_LEFT:
+                    self.xScale = 1
+                    self.lucciola.xScale = 1
                     self.run(.animate(with: rollingAnimationFront, timePerFrame: 0.1), completion: {
                         if self.status.isRunning {
                             self.actionState = .RUNNING
+                            self.xScale = 2
+                            self.lucciola.xScale = 0.5
                         }else{
                             self.actionState = .MOVE
                         }
@@ -671,19 +692,25 @@ class PlayableCharacter: SKSpriteNode{
                     })
                 case .LEFT:
                     self.xScale = 2
+                    self.lucciola.xScale = 0.5
                     self.run(.animate(with: rollingAnimationLeft, timePerFrame: 0.1), completion: {
                         if self.status.isRunning {
                             self.actionState = .RUNNING
                         }else{
                             self.actionState = .MOVE
                             self.xScale = 1
+                            self.lucciola.xScale = 1
                         }
                         self.status.isRolling = false
                     })
                 case .UP_LEFT:
+                    self.xScale = 1
+                    self.lucciola.xScale = 1
                     self.run(.animate(with: rollingAnimationBack, timePerFrame: 0.1), completion: {
                         if self.status.isRunning {
                             self.actionState = .RUNNING
+                            self.xScale = 2
+                            self.lucciola.xScale = 0.5
                         }else{
                             self.actionState = .MOVE
                         }

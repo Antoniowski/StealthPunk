@@ -57,17 +57,21 @@ class Collectible: SKSpriteNode{
         case .SIRINGE:
             sprite = SKTexture(imageNamed: "siringaBlur")
             self.run(.setTexture(sprite))
+            self.collectibleName = "Siringe"
             self.objectDescription = "All Natural"
         case .HAT:
             sprite = SKTexture(imageNamed: "cappelloBlur")
+            self.collectibleName = "Hat"
             self.objectDescription = "Stylish thief"
             self.run(.setTexture(sprite))
         case .CLOCK1:
             sprite = SKTexture(imageNamed: "orologio+30sec")
+            self.collectibleName = "Clock"
             self.objectDescription = "More time"
             self.run(.setTexture(sprite))
         case .CLOCK2:
             sprite = SKTexture(imageNamed: "orologio+1min")
+            self.collectibleName = "Clock"
             self.objectDescription = "More more time" 
             self.run(.setTexture(sprite))
         case .FINAL:

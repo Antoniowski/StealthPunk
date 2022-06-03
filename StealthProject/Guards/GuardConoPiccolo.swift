@@ -38,5 +38,7 @@ class GuardConoPiccolo: Guard{
         self.walkingAnimationBackRight = [SKTexture(imageNamed: "ConoPiccolo3:4BackF2"), SKTexture(imageNamed:"ConoPiccolo3:4BackF1")]
         self.walkingAnimationFrontRight = [SKTexture(imageNamed: "ConoPiccolo3:4FrontMirrorF2"), SKTexture(imageNamed:"ConoPiccolo3:4FrontMirrorF1")]
         self.walkingAnimationFrontLeft = [SKTexture(imageNamed: "ConoPiccolo3:4FrontF2"), SKTexture(imageNamed:"ConoPiccolo3:4FrontF1")]
+        
+        self.stunnedAnimation = [SKTexture(imageNamed: "ConoPiccoloMortoF1"), SKTexture(imageNamed: "ConoPiccoloMortoF2"), SKTexture(imageNamed: "ConoPiccoloMortoF3")]
     }
 }

@@ -8,12 +8,14 @@
 //TODO: Aggiungere transizione scena
 import Foundation
 import SpriteKit
+import AVFAudio
 
 class Intro: SKScene{
     
     private var logo: SKSpriteNode = SKSpriteNode(imageNamed: "GoosezillaV3")
     private var border: SKShapeNode = SKShapeNode()
-    private var animazione: SKAction = SKAction.sequence([.fadeIn(withDuration: 1.5), .wait(forDuration: 1.5), .fadeOut(withDuration: 1.5)])
+//    private let audio: AVAudioPlayer = AVAudioPlayer()
+    private var animazione: SKAction = SKAction.sequence([.fadeIn(withDuration: 1.5), .playSoundFileNamed("GOOSE2", waitForCompletion: false), .wait(forDuration: 1.5), .fadeOut(withDuration: 1.5)])
     
     override func didMove(to view: SKView) {
         self.backgroundColor = .black

@@ -14,7 +14,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     var delta: TimeInterval = 0.0
     var lastUpdate: TimeInterval?
     
-    var player: PlayableCharacter = Human(texture: SKTexture(imageNamed: "boyFront"), color: .clear, size: CGSize(width: 35, height: 70), noise: 1, speed: 3, strenght: 1)
+    var player: PlayableCharacter = Human(texture: SKTexture(imageNamed: "boyFront"), color: .clear, size: CGSize(width: 35, height: 70), noise: 2, speed: 3, strenght: 3)
     
     var luce: SKLightNode = SKLightNode()
 
@@ -27,7 +27,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     
     var ACCELLERATION: Double = 10
     var MAX_SPEED: Double = 50
-    var FRICTION: Double = 10
+    var FRICTION: Double = 20
 
     
     var indicatore = Counter()
@@ -70,10 +70,10 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         scenecamera.position = player.position
         scenecamera.setScale(1)
         
-        let f = Floor(self, floorType: .SECOND_FLOOE)
+        let f = Floor(self, floorType: .FIRST_FLOOR)
 
         
-        luce.ambientColor = .init(red: 0.624, green: 0.624, blue: 0.914, alpha: 0.25) // PER LE PARTI SCURE - GIARDINO
+        luce.ambientColor = .init(red: 0.624, green: 0.624, blue: 0.914, alpha: 0.40) // PER LE PARTI SCURE - GIARDINO
 //        luce.ambientColor = .init(red: 0.6, green: 0.6, blue: 0.75, alpha: 0.15)
 
         luce.falloff = 10
@@ -90,6 +90,10 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         enumerateChildNodes(withName: "ROOM/dynamicObject"){oggetto, _ in
             self.oggetti.append(oggetto)
         }
+//        enumerateChildNodes(withName: "ROOM/Guardia[0-1000]"){ nemico, _ in
+//            self.nemici.append(nemico)
+//            
+//        }
        Timer(scene: self)
     }
     
@@ -170,9 +174,9 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
             if(cifra == 1){
                 music.starsSound(filenamed: music.door2)
             }
-            if(cifra == 2){
-                music.starsSound(filenamed: music.doorTaverna)
-            }
+//            if(cifra == 2){
+//                music.starsSound(filenamed: music.doorTaverna)
+//            }
             door?.open()
             door?.parent?.alpha = 1
         }
@@ -244,8 +248,9 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
                 let posizioneDellaScena = guardia.convert(guardia.position, to: self)
 //                print("GUARDIA POSIZIONE CONVERTITA: \(posizioneDellaScena)")
                 let posizioneDellaScena2 = guardia.roomReference.convert(guardia.position, to: self)
+                nemici.append(guardia)
 //                print("GUARDIA POSIZIONE CONVERTITA 2: \(posizioneDellaScena2)")
-                
+//                nemici.append(guardia)
 //                guardia.removeFromParent()
 //                guardia.getCenterBall().removeFromParent()
 //                guardia.position = posizioneDellaScena2
@@ -259,7 +264,6 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
             visionCone(entity: guardia, scene: self)
             guardia.checkState(point: player.position, deltaTime: delta, scene: self)
         }
-        
 
     }
     

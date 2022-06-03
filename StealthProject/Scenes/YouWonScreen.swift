@@ -1,14 +1,14 @@
 //
-//  GameOverMenu.swift
+//  YouWonScreen.swift
 //  StealthProject
 //
-//  Created by Guendalina De Laurentis on 31/05/22.
+//  Created by Martina Ottaviano on 03/06/22.
 //
 
 import Foundation
 import SpriteKit
 
-class GameOverMenu: SKScene{
+class YouWonScreen: SKScene{
     var number: Int = 0
     private var backgroundImage: SKSpriteNode = SKSpriteNode(imageNamed: "Menu_Template")
     private var title: SKLabelNode = SKLabelNode(fontNamed: "OldLondon")
@@ -19,8 +19,7 @@ class GameOverMenu: SKScene{
     private var label: SKLabelNode = SKLabelNode()
     private var lobby: SKLabelNode = SKLabelNode()
     private var mainmenu: SKLabelNode = SKLabelNode()
-    private var immagine: SKSpriteNode = SKSpriteNode(imageNamed: "badEnding")
-    private var mugshot: SKLabelNode = SKLabelNode()
+    private var immagine: SKSpriteNode = SKSpriteNode(imageNamed: "goodEnding")
     
     override func didMove(to view: SKView) {
         backgroundImage.size = .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
@@ -28,14 +27,14 @@ class GameOverMenu: SKScene{
         
         title.fontName = "OldLondon"
         title.fontSize = 70
-        title.text = "StealthPunk"
+        title.text = "Congratulations!"
         title.position = .init(x: frame.width*0.5, y: frame.height*0.79)
         title.zPosition = 2
         title.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
         
         subtitle.fontName = "OldNewspaperTypes"
         subtitle.fontSize = 25
-        subtitle.text = "GAME OVER"
+        subtitle.text = "YOU WON!"
         subtitle.position = .init(x: frame.width*0.5, y: frame.height*0.67)
         subtitle.zPosition = 2
         subtitle.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
@@ -45,7 +44,7 @@ class GameOverMenu: SKScene{
         breakingNews.fontName = "OldNewspaperTypes"
         breakingNews.zPosition = 2
         breakingNews.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
-        breakingNews.position = .init(x: frame.width*0.74, y: frame.height*0.5)
+        breakingNews.position = .init(x: frame.width*0.74, y: frame.height*0.5 + 20)
 
         lobby.fontSize = 24
         lobby.text = "Back to Lobby"
@@ -71,9 +70,8 @@ class GameOverMenu: SKScene{
         label.preferredMaxLayoutWidth = size.width*0.9
         label.numberOfLines = 0
         label.verticalAlignmentMode = SKLabelVerticalAlignmentMode.baseline
-        label.text = "Arrested man who tried \nto steal Crown jewels."
+        label.text = "Misterious burglair manages \nto steal Crown jewels from \nhigh security museum."
         label.position = .init(x: frame.width*0.74, y: frame.height*0.3)
-        label.zPosition = 3
         label.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
         
         timeCounter.fontSize = 25
@@ -99,16 +97,6 @@ class GameOverMenu: SKScene{
         immagine.position = .init(x: frame.width*0.295, y: frame.height*0.33)
         immagine.zPosition = 3
         
-        mugshot.fontSize = 16
-        mugshot.fontName = "OldNewspaperTypes"
-        mugshot.preferredMaxLayoutWidth = size.width*0.5
-        mugshot.numberOfLines = 0
-        mugshot.verticalAlignmentMode = SKLabelVerticalAlignmentMode.baseline
-        mugshot.text = "   INMATE #\n       7436\nPOLICE DEPT"
-        mugshot.position = .init(x: 265, y: 22)
-        mugshot.zPosition = 4
-        mugshot.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
-        
         addChild(backgroundImage)
         addChild(title)
         addChild(subtitle)
@@ -119,7 +107,6 @@ class GameOverMenu: SKScene{
         addChild(gearCounter)
         addChild(label)
         addChild(immagine)
-        addChild(mugshot)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

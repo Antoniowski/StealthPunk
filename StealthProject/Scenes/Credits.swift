@@ -26,7 +26,7 @@ class Credits: SKScene{
         title.fontName = "OldLondon"
         title.fontSize = 70
         title.text = "StealthPunk"
-        title.position = .init(x: frame.width*0.5, y: frame.height*0.80)
+        title.position = .init(x: frame.width*0.5, y: frame.height*0.79)
         title.zPosition = 2
         title.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
         
@@ -46,13 +46,13 @@ class Credits: SKScene{
 //        start.position = .init(x: frame.width*0.74, y: frame.height*0.37)
 //        start.run(.repeatForever(.sequence([.fadeAlpha(to: 0.4, duration: 0.5), .fadeAlpha(to: 1, duration: 0.5)])))
 
-        option.fontSize = 24
-        option.text = "Settings"
-        option.name = "settings"
-        option.fontName = "OldNewspaperTypes"
-        option.zPosition = 2
-        option.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
-        option.position = .init(x: frame.width*0.16, y: frame.height*0.67)
+//        option.fontSize = 24
+//        option.text = "Settings"
+//        option.name = "settings"
+//        option.fontName = "OldNewspaperTypes"
+//        option.zPosition = 2
+//        option.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
+//        option.position = .init(x: frame.width*0.16, y: frame.height*0.67)
         
 //        option.run(.repeatForever(.sequence([.fadeAlpha(to: 0.4, duration: 0.5), .fadeAlpha(to: 1, duration: 0.5)])))
 
@@ -62,7 +62,8 @@ class Credits: SKScene{
         mainmenu.fontName = "OldNewspaperTypes"
         mainmenu.zPosition = 2
         mainmenu.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
-        mainmenu.position = .init(x: frame.width*0.845, y: frame.height*0.67)
+        mainmenu.position = .init(x: frame.width*0.16, y: frame.height*0.67)
+        mainmenu.run(.repeatForever(.sequence([.scale(to: 0.9, duration: 2), .scale(to: 1, duration: 2)])))
         
         Goosezilla.fontSize = 40
         Goosezilla.text = "GOOSEZILLA"
@@ -82,6 +83,7 @@ class Credits: SKScene{
         nomi.position = .init(x: frame.width*0.74, y: frame.height*0.3)
         
         logo.position = .init(x: frame.width*0.295, y: frame.height*0.33)
+        logo.zPosition = 3
         
         addChild(backgroundImage)
         addChild(title)

@@ -21,12 +21,14 @@
 		527701BC28478F0600E12374 /* AudioHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527701BB28478F0600E12374 /* AudioHandler.swift */; };
 		52CF6A9A28465C4A000A62ED /* GameOverMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF6A9928465C4A000A62ED /* GameOverMenu.swift */; };
 		52CF6A9C284665D8000A62ED /* Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CF6A9B284665D8000A62ED /* Credits.swift */; };
+		6367E501284A4615004128DE /* YouWonScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6367E500284A4615004128DE /* YouWonScreen.swift */; };
 		63935A33284657D000155031 /* OldNewspaperTypes.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63935A32284657D000155031 /* OldNewspaperTypes.ttf */; };
 		63935A37284669AF00155031 /* pagina.wav in Resources */ = {isa = PBXBuildFile; fileRef = 63935A36284669AF00155031 /* pagina.wav */; };
 		63935A3B28466E7C00155031 /* Inventory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63935A3A28466E7C00155031 /* Inventory.swift */; };
 		63A55F4528410B1D00A067A5 /* CharacterBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63A55F4428410B1D00A067A5 /* CharacterBox.swift */; };
 		63B9F6AB2833DA35008E62C1 /* GearCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B9F6AA2833DA35008E62C1 /* GearCounter.swift */; };
 		63B9F6AE283439FE008E62C1 /* Victorian Parlor Vintage Alternate_free.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63B9F6AD283439FE008E62C1 /* Victorian Parlor Vintage Alternate_free.ttf */; };
+		63C2A9B02847940700927D0F /* InventoryPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C2A9AF2847940700927D0F /* InventoryPage.swift */; };
 		6A0621F0283301AF0064BB97 /* CollectibleItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0621EF283301AF0064BB97 /* CollectibleItems.swift */; };
 		6A0621F228330FC80064BB97 /* CollisionsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0621F128330FC80064BB97 /* CollisionsEnum.swift */; };
 		6A2A7E992833F8E600D14EC0 /* Chest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2A7E982833F8E600D14EC0 /* Chest.swift */; };
@@ -69,6 +71,11 @@
 		6AAE3FA028461569002917FB /* ObjectBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE3F9F28461569002917FB /* ObjectBox.swift */; };
 		6AAE3FA2284643EE002917FB /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAE3FA1284643EE002917FB /* MainMenu.swift */; };
 		6AAE3FA528465029002917FB /* OldLondon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6AAE3FA428465029002917FB /* OldLondon.ttf */; };
+		6AAE3FA9284A64F2002917FB /* GOOSE2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6AAE3FA8284A64F2002917FB /* GOOSE2.wav */; };
+		6AAE3FAE284A6AC5002917FB /* hit2.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6AAE3FAC284A6AC5002917FB /* hit2.wav */; };
+		6AAE3FAF284A6AC5002917FB /* hit1.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6AAE3FAD284A6AC5002917FB /* hit1.wav */; };
+		6AAE3FB1284A6ADE002917FB /* failedImpact.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6AAE3FB0284A6ADE002917FB /* failedImpact.wav */; };
+		6AAE3FB3284A6CB8002917FB /* whoosh.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6AAE3FB2284A6CB8002917FB /* whoosh.wav */; };
 		6AB863E128200334006BB85E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB863E028200334006BB85E /* AppDelegate.swift */; };
 		6AB863E328200334006BB85E /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6AB863E228200334006BB85E /* GameScene.sks */; };
 		6AB863E528200334006BB85E /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 6AB863E428200334006BB85E /* Actions.sks */; };
@@ -111,6 +118,7 @@
 		527701BB28478F0600E12374 /* AudioHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioHandler.swift; sourceTree = "<group>"; };
 		52CF6A9928465C4A000A62ED /* GameOverMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverMenu.swift; sourceTree = "<group>"; };
 		52CF6A9B284665D8000A62ED /* Credits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credits.swift; sourceTree = "<group>"; };
+		6367E500284A4615004128DE /* YouWonScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YouWonScreen.swift; sourceTree = "<group>"; };
 		63935A32284657D000155031 /* OldNewspaperTypes.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OldNewspaperTypes.ttf; sourceTree = "<group>"; };
 		63935A36284669AF00155031 /* pagina.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pagina.wav; sourceTree = "<group>"; };
 		63935A3A28466E7C00155031 /* Inventory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inventory.swift; sourceTree = "<group>"; };
@@ -118,6 +126,7 @@
 		63B9F6AA2833DA35008E62C1 /* GearCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GearCounter.swift; sourceTree = "<group>"; };
 		63B9F6AD283439FE008E62C1 /* Victorian Parlor Vintage Alternate_free.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Victorian Parlor Vintage Alternate_free.ttf"; sourceTree = "<group>"; };
 		63B9F6AF28343B50008E62C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		63C2A9AF2847940700927D0F /* InventoryPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryPage.swift; sourceTree = "<group>"; };
 		6A0621EF283301AF0064BB97 /* CollectibleItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectibleItems.swift; sourceTree = "<group>"; };
 		6A0621F128330FC80064BB97 /* CollisionsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionsEnum.swift; sourceTree = "<group>"; };
 		6A2A7E982833F8E600D14EC0 /* Chest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chest.swift; sourceTree = "<group>"; };
@@ -160,6 +169,11 @@
 		6AAE3F9F28461569002917FB /* ObjectBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectBox.swift; sourceTree = "<group>"; };
 		6AAE3FA1284643EE002917FB /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		6AAE3FA428465029002917FB /* OldLondon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OldLondon.ttf; sourceTree = "<group>"; };
+		6AAE3FA8284A64F2002917FB /* GOOSE2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = GOOSE2.wav; sourceTree = "<group>"; };
+		6AAE3FAC284A6AC5002917FB /* hit2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hit2.wav; sourceTree = "<group>"; };
+		6AAE3FAD284A6AC5002917FB /* hit1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hit1.wav; sourceTree = "<group>"; };
+		6AAE3FB0284A6ADE002917FB /* failedImpact.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = failedImpact.wav; sourceTree = "<group>"; };
+		6AAE3FB2284A6CB8002917FB /* whoosh.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = whoosh.wav; sourceTree = "<group>"; };
 		6AB863DD28200334006BB85E /* StealthPunk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StealthPunk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AB863E028200334006BB85E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6AB863E228200334006BB85E /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -282,7 +296,12 @@
 				6AAE3F9528450C89002917FB /* BushExit.wav */,
 				6AAE3F8D2845000D002917FB /* closeCabinet.wav */,
 				6AAE3F91284504E7002917FB /* vetrina.wav */,
+				6AAE3FA8284A64F2002917FB /* GOOSE2.wav */,
 				6AAE3F9B28451D97002917FB /* BONK.mp3 */,
+				6AAE3FAD284A6AC5002917FB /* hit1.wav */,
+				6AAE3FB0284A6ADE002917FB /* failedImpact.wav */,
+				6AAE3FB2284A6CB8002917FB /* whoosh.wav */,
+				6AAE3FAC284A6AC5002917FB /* hit2.wav */,
 				6AAE3F99284511A5002917FB /* GearSound.wav */,
 				6AAE3F9728450CC5002917FB /* BushEnter.wav */,
 				63935A36284669AF00155031 /* pagina.wav */,
@@ -385,6 +404,7 @@
 				6AAE3F78283C231B002917FB /* TestScene4.swift */,
 				6AAE3FA1284643EE002917FB /* MainMenu.swift */,
 				52CF6A9928465C4A000A62ED /* GameOverMenu.swift */,
+				6367E500284A4615004128DE /* YouWonScreen.swift */,
 				52CF6A9B284665D8000A62ED /* Credits.swift */,
 				4A1C862A2847B57600885CCE /* TutorialModalitaATempo.swift */,
 				4A1C862C2847B58100885CCE /* TutorialModalitaClassica.swift */,
@@ -410,6 +430,7 @@
 				6AAE3F70283A4270002917FB /* TavernaDoor.swift */,
 				6AAE3F76283C1D27002917FB /* NextFloorObject.swift */,
 				63935A3A28466E7C00155031 /* Inventory.swift */,
+				63C2A9AF2847940700927D0F /* InventoryPage.swift */,
 			);
 			path = Objects;
 			sourceTree = "<group>";
@@ -507,6 +528,8 @@
 				6AAE3F9828450CC6002917FB /* BushEnter.wav in Resources */,
 				6AAE3F92284504E7002917FB /* vetrina.wav in Resources */,
 				6AAE3F862844FBF2002917FB /* door.wav in Resources */,
+				6AAE3FAF284A6AC5002917FB /* hit1.wav in Resources */,
+				6AAE3FB3284A6CB8002917FB /* whoosh.wav in Resources */,
 				6AB863EC28200334006BB85E /* Main.storyboard in Resources */,
 				6AAE3F8E2845000D002917FB /* closeCabinet.wav in Resources */,
 				6AB863E328200334006BB85E /* GameScene.sks in Resources */,
@@ -522,7 +545,10 @@
 				6AAE3F8C28450004002917FB /* openCabinet.wav in Resources */,
 				6AAE3F7F283FC4C7002917FB /* grassFootsteps.mp3 in Resources */,
 				6AAE3FA528465029002917FB /* OldLondon.ttf in Resources */,
+				6AAE3FAE284A6AC5002917FB /* hit2.wav in Resources */,
+				6AAE3FB1284A6ADE002917FB /* failedImpact.wav in Resources */,
 				6AAE3F9C28451D97002917FB /* BONK.mp3 in Resources */,
+				6AAE3FA9284A64F2002917FB /* GOOSE2.wav in Resources */,
 				63B9F6AE283439FE008E62C1 /* Victorian Parlor Vintage Alternate_free.ttf in Resources */,
 				6AAE3F882844FD5A002917FB /* doorTaverna.wav in Resources */,
 				6AAE3F9428450A95002917FB /* SingleFootstep2.wav in Resources */,
@@ -558,6 +584,7 @@
 				6AC709652823D78A007F8A50 /* AbilityClass.swift in Sources */,
 				6AA31BE528299DE4002CCD47 /* UsableObject.swift in Sources */,
 				4A2159FA283FD60C000F237C /* GuardMatrixes.swift in Sources */,
+				63C2A9B02847940700927D0F /* InventoryPage.swift in Sources */,
 				6AB8640228217ED5006BB85E /* PlayerMovementFunctions.swift in Sources */,
 				52CF6A9C284665D8000A62ED /* Credits.swift in Sources */,
 				A693D35B28295AE20055C266 /* classFloor.swift in Sources */,
@@ -600,6 +627,7 @@
 				A693D3562826F5960055C266 /* Path.swift in Sources */,
 				4ABFC91E28327D6D00213CC9 /* GuardConoGrande.swift in Sources */,
 				6AA31BE128298F87002CCD47 /* LightSwitch.swift in Sources */,
+				6367E501284A4615004128DE /* YouWonScreen.swift in Sources */,
 				6AB863E128200334006BB85E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -747,7 +775,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = 42N2Q96746;
+				DEVELOPMENT_TEAM = YT6T4953M8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StealthProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -778,7 +806,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = 42N2Q96746;
+				DEVELOPMENT_TEAM = YT6T4953M8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StealthProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

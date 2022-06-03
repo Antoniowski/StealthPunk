@@ -22,6 +22,7 @@ class Lampione: StaticObject, Light{
     init(lightBitmask: Int){
         super.init(texture: SKTexture(imageNamed: "lampione"), color: .clear, size: .init(width: 70, height: 140), objectName: "lampione", objectCategory: .LIGHT)
         light.categoryBitMask = UInt32(lightBitmask)
+        light.isEnabled = false
         self.lightingBitMask = UInt32(lightBitmask)
         light.lightColor = .init(red: 239/255, green: 192/255, blue: 112/255, alpha: 0.5)
         light.position.y += 20

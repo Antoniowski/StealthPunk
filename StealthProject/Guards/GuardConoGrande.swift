@@ -42,7 +42,7 @@ class GuardConoGrande: Guard{
         self.walkingAnimationBackRight = [SKTexture(imageNamed: "ConoGrande3:4BackF2"), SKTexture(imageNamed:"ConoGrande3:4BackF3"), SKTexture(imageNamed:"ConoGrande3:4BackF4"), SKTexture(imageNamed:"ConoGrande3:4BackF1")]
         self.walkingAnimationBackLeft = [SKTexture(imageNamed: "ConoGrande3:4BackMirrorF2"), SKTexture(imageNamed:"ConoGrande3:4BackMirrorF3"), SKTexture(imageNamed:"ConoGrande3:4BackMirrorF4"), SKTexture(imageNamed:"ConoGrande3:4BackMirrorF1")]
         
-        self.stunnedAnimation = [SKTexture(imageNamed: ""), ]
+        self.stunnedAnimation = [SKTexture(imageNamed: "ConoGrandeMortoF1"), SKTexture(imageNamed: "ConoGrandeMortoF2"), SKTexture(imageNamed: "ConoGrandeMortoF3")]
         
     }
 }
