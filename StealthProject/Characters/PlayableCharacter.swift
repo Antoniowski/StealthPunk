@@ -50,8 +50,8 @@ class PlayableCharacter: SKSpriteNode{
     private var strenght: Int = 0
     private var characterSpeed: Int = 0
     private var noiseDistance: Double = 0
-    private var interactRange: Double = 50
-    private var attackRange: Double = 25
+    private var interactRange: Double = 60
+    private var attackRange: Double = 60
     
     
     private var status: CharacterState = CharacterState()

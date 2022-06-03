@@ -14,7 +14,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     var delta: TimeInterval = 0.0
     var lastUpdate: TimeInterval?
     
-    var player: PlayableCharacter = Human(texture: SKTexture(imageNamed: "boyFront"), color: .clear, size: CGSize(width: 35, height: 70), noise: 1, speed: 3, strenght: 1)
+    var player: PlayableCharacter = Human(texture: SKTexture(imageNamed: "boyFront"), color: .clear, size: CGSize(width: 35, height: 70), noise: 2, speed: 3, strenght: 3)
     
     var luce: SKLightNode = SKLightNode()
 
@@ -90,10 +90,10 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         enumerateChildNodes(withName: "ROOM/dynamicObject"){oggetto, _ in
             self.oggetti.append(oggetto)
         }
-        enumerateChildNodes(withName: "ROOM/Guardia[0-1000]"){ nemico, _ in
-            self.nemici.append(nemico)
-            
-        }
+//        enumerateChildNodes(withName: "ROOM/Guardia[0-1000]"){ nemico, _ in
+//            self.nemici.append(nemico)
+//            
+//        }
        Timer(scene: self)
     }
     
@@ -248,6 +248,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
                 let posizioneDellaScena = guardia.convert(guardia.position, to: self)
 //                print("GUARDIA POSIZIONE CONVERTITA: \(posizioneDellaScena)")
                 let posizioneDellaScena2 = guardia.roomReference.convert(guardia.position, to: self)
+                nemici.append(guardia)
 //                print("GUARDIA POSIZIONE CONVERTITA 2: \(posizioneDellaScena2)")
 //                nemici.append(guardia)
 //                guardia.removeFromParent()
@@ -263,7 +264,6 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
             visionCone(entity: guardia, scene: self)
             guardia.checkState(point: player.position, deltaTime: delta, scene: self)
         }
-        
 
     }
     

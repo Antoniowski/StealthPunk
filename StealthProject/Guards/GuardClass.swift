@@ -247,6 +247,26 @@ class Guard: SKSpriteNode{
         return self.movingDirection
     }
     
+    func getStunnedTime(player: PlayableCharacter)->TimeInterval{
+        let difference = player.getStrenght() - self.strength
+        if difference < 0{
+            return 0
+        }else{
+            switch difference{
+            case 0:
+                return 3
+            case 1:
+                return 5
+            case 2:
+                return 7
+            case 3, 4:
+                return 8
+            default:
+                return 10
+            }
+        }
+    }
+    
 //    SET FUNCTIONS
 //    Are these usefull for guards??
     
@@ -1078,7 +1098,6 @@ class Guard: SKSpriteNode{
         
         }else{
             if status.isStunned == false{
-                print("STUNNED")
                 status.isStunned = true
                 if let action = self.invisibleBall.action(forKey: "guardPath"){
                     action.speed = 0
@@ -1086,7 +1105,7 @@ class Guard: SKSpriteNode{
                 if let action = self.action(forKey: "guardMovement"){
                     action.speed = 0
                 }
-                self.run(.sequence([.animate(with: stunnedAnimation, timePerFrame: 0.15), .setTexture(stunnedAnimation[2]) ,.wait(forDuration: 2), .animate(with: stunnedAnimation.reversed(), timePerFrame: 0.15),]), completion: {
+                self.run(.sequence([.animate(with: stunnedAnimation, timePerFrame: 0.15), .setTexture(stunnedAnimation[2]) ,.wait(forDuration: self.getStunnedTime(player: (scene as? PlayableScene)?.player ?? PlayableCharacter())), .animate(with: stunnedAnimation.reversed(), timePerFrame: 0.15),]), completion: {
                     if let action = self.invisibleBall.action(forKey: "guardPath"){
                         action.speed = 1
                     }

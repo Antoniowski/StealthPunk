@@ -78,8 +78,8 @@ extension PlayableScene{
             if getDistanceBetween(point1: self.player.position, point2: scene.convert(nemico.position, from: nemico.parent ?? SKNode())) <= self.player.getAttackRange(){
                 let guardia = nemico as? Guard
                 if guardia?.getStrenght() ?? 0 <= player.getStrenght(){
+                    print("HIT")
                     if guardia?.getStatus().isHit == false{
-                        print("HIT")
                         guardia?.setHit(true)
                     }
                 }
