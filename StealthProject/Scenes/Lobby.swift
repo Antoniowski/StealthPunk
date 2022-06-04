@@ -105,7 +105,6 @@ class LobbyScene: SKScene, PlayableScene{
         sceneCamera.position = player.position
         startGameFunction()
         showCounter()
-        print(player2)
         
         for x in 0..<lightArray.count{
             if lightArray[x].animationBool == false{

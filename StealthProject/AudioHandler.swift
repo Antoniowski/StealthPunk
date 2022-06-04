@@ -35,8 +35,8 @@ class Music{
     let failedHit01: String = "failedImpact.wav"
     let whoosh: String = "whoosh.wav"
     
-    var soundEffects : AVAudioPlayer = AVAudioPlayer()
-    var musicEffect : AVAudioPlayer = AVAudioPlayer()
+    var soundEffects : AVAudioPlayer!
+    var musicEffect : AVAudioPlayer!
     
     var soundOn : Bool = true
     
@@ -55,7 +55,7 @@ class Music{
                 print("Could not create audio player!")
             return
             }
-            self.soundEffects.play()
+//            self.soundEffects.play()
         }
     }
     
@@ -73,7 +73,7 @@ class Music{
                 print("Could not create audio player!")
             return
             }
-            self.musicEffect.play()
+//            self.musicEffect.play()
         }
     }
     

@@ -762,7 +762,12 @@ class Room: SKNode {
                     barile.normalTexture = SKTexture(imageNamed: "bott9NormalMap")
                     barile.lightingBitMask = 1 | 2
                     barile.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
-                    barile.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
+                    let forma = CGMutablePath()
+                    forma.move(to: .init(x: -blocco/2, y: 0))
+                    forma.addLine(to: .init(x: blocco/2, y: 0))
+                    forma.addLine(to: .init(x: 0, y: blocco/2))
+//                    barile.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
+                    barile.physicsBody = SKPhysicsBody(polygonFrom: forma)
                     barile.physicsBody?.isDynamic = false
                     barile.physicsBody?.affectedByGravity = false
                     barile.physicsBody?.allowsRotation = false
@@ -775,7 +780,12 @@ class Room: SKNode {
                     barile.normalTexture = SKTexture(imageNamed: "bott9NormalMap")
                     barile.lightingBitMask = 1 | 2
                     barile.position = CGPoint(x: startingPosition.x + Double(j*blocco) - Double(blocco/4), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
-                    barile.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
+                    let forma = CGMutablePath()
+                    forma.move(to: .init(x: -blocco/2, y: 0))
+                    forma.addLine(to: .init(x: blocco/2, y: 0))
+                    forma.addLine(to: .init(x: 0, y: blocco/2))
+//                    barile.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
+                    barile.physicsBody = SKPhysicsBody(polygonFrom: forma)
                     barile.physicsBody?.isDynamic = false
                     barile.physicsBody?.affectedByGravity = false
                     barile.physicsBody?.allowsRotation = false
