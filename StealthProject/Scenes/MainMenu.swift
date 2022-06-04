@@ -45,7 +45,7 @@ class MainMenu: SKScene{
         start.fontName = "OldNewspaperTypes"
         start.zPosition = 2
         start.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
-        start.position = .init(x: frame.width*0.74, y: frame.height*0.37)
+        start.position = .init(x: frame.width*0.74, y: frame.height*0.25)
         start.run(.repeatForever(.sequence([.fadeAlpha(to: 0.4, duration: 0.5), .fadeAlpha(to: 1, duration: 0.5)])))
 
         option.fontSize = 24
@@ -91,6 +91,29 @@ class MainMenu: SKScene{
         }
         
         if touchedNode.name == "settings"{
+            touchedNode.alpha = 0.5
+        }
+        
+        if touchedNode.name == "menu"{
+            touchedNode.alpha = 0.5
+        }
+        
+        if touchedNode.name == "credits"{
+            touchedNode.alpha = 0.5
+        }
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else {
+            return
+        }
+
+        let touchLocation = touch.location(in: self)
+        let touchedNode = atPoint(touchLocation)
+        
+        if touchedNode.name == "settings"{
+            touchedNode.alpha = 1
+            self.run(.playSoundFileNamed("pagina", waitForCompletion: true))
             self.run(.fadeOut(withDuration: 1), completion: {
                 self.subtitle.text = "SETTINGS"
                 self.credits.text = "Main menu"
@@ -98,13 +121,13 @@ class MainMenu: SKScene{
                 self.option.text = ""
                 self.option.name = ""
                 self.start.removeFromParent()
-                self.run(.playSoundFileNamed("pagina", waitForCompletion: true))
                 self.run(.fadeIn(withDuration: 1))
-               
             })
         }
         
         if touchedNode.name == "menu"{
+            touchedNode.alpha = 1
+            self.run(.playSoundFileNamed("pagina", waitForCompletion: true))
             self.run(.fadeOut(withDuration: 1), completion: {
                 self.subtitle.text = "MAIN MENU"
                 self.credits.text = "Credits"
@@ -112,13 +135,13 @@ class MainMenu: SKScene{
                 self.option.text = "Settings"
                 self.option.name = "settings"
                 self.addChild(self.start)
-                self.run(.playSoundFileNamed("pagina", waitForCompletion: true))
                 self.run(.fadeIn(withDuration: 1))
                 
             })
         }
         
         if touchedNode.name == "credits"{
+            touchedNode.alpha = 1
             self.run(.playSoundFileNamed("pagina", waitForCompletion: true))
             let credit = Credits(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
             view?.presentScene(credit, transition: .fade(withDuration: 2))
