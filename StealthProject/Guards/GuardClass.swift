@@ -126,7 +126,8 @@ class Guard: SKSpriteNode{
     var floorMatrixCopy: Matrix = [[]]
     var floorMatrixForPathfinding: Matrix = [[]]
     
-    
+    var lastAnimation: SKAction = SKAction()
+    var lastAnimationBool: Bool = false
     var setContinousSetDeadTexture: Bool = false
     var setContinousRecoveryTexture: Bool = false
     
@@ -515,42 +516,38 @@ class Guard: SKSpriteNode{
             }
             
             if status.isStunned == false{
+                lastAnimationBool = false
                 status.isStunned = true
                 if let action = self.invisibleBall.action(forKey: "guardPath"){
                     action.speed = 0
                 }
                 if let action = self.action(forKey: "guardMovement"){
-                    action.speed = 0
+                    lastAnimation = action
+                    lastAnimationBool = true
+                    self.removeAction(forKey: "guardMovement")
+                } else {
+                    lastAnimationBool = false
                 }
-                
                 self.run(.sequence([.animate(with: stunnedAnimation, timePerFrame: 0.15),
-                                    .run {
-                                        self.setContinousSetDeadTexture = true
-                                    },
+                                    .setTexture(stunnedAnimation[2]),
                                     .wait(forDuration: self.getStunnedTime(player: (scene as? PlayableScene)?.player ?? PlayableCharacter())),
-                                    .run {
-                                        self.setContinousSetDeadTexture = false
-                                    },
                                     .animate(with: stunnedAnimation.reversed(), timePerFrame: 0.15),
                                     .setTexture(self.frontTexture),
-                                    .run {
-                                        self.setContinousRecoveryTexture = true
-                                    },
                                     .wait(forDuration: 0.5),
-                                    .run {
-                                        self.setContinousRecoveryTexture = false
-                                    },
                                     .run {
                                         if let action = self.invisibleBall.action(forKey: "guardPath"){
                                             action.speed = 1
                                         }
-                                        if let action = self.action(forKey: "guardMovement"){
-                                            action.speed = 1
+                                        if (self.lastAnimationBool) {
+                                            self.run(.repeatForever(self.lastAnimation), withKey: "guardMovement")
+                                            if let action = self.action(forKey: "guardMovement"){
+                                            }
+                                            self.lastAnimationBool = false
                                         }
                                         self.setStunned(false)
                                         self.setHit(false)
                                     }
-                                    
+
                 ]))
             }
         }
