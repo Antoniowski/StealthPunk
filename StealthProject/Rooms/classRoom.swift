@@ -1310,6 +1310,7 @@ class Room: SKNode {
                     let guardia = GuardConoGrande(texture: SKTexture(imageNamed: "ConoGrandeFrontF2"), color: .clear, size: CGSize(width: dimensioneGuardiaConoGrandeWidth, height: dimensioneGuardiaConoGrandeHeight))
                     guardia.position = CGPoint(x: startingPosition.x + Double(j * blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                     guardia.zPosition = 500
+//                    guardia.name = "Guardia"+String(guardNameIndex)+"RunCounter"+String(runCounter)
                     guardia.name = "Guardia"+String(guardNameIndex)
                     guardNameIndex += 1
                     addChild(guardia)
@@ -1334,6 +1335,7 @@ class Room: SKNode {
                     guardia.position = CGPoint(x: startingPosition.x + Double(j * blocco) + Double(blocco/2) , y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                     guardia.zPosition = 500
                     guardia.name = "Guardia"+String(guardNameIndex)
+//                    guardia.name = "Guardia"+String(guardNameIndex)+"RunCounter"+String(runCounter)
                     guardNameIndex += 1
                     addChild(guardia)
                     
@@ -1355,6 +1357,7 @@ class Room: SKNode {
                     let guardia = GuardCerchioGrande(texture: SKTexture(imageNamed: "CerchioGrandeFrontF2"), color: .clear, size: CGSize(width: dimensioneGuardiaCerchioGrandeWidth, height: dimensioneGuardiaCerchioGrandeHeight))
                     guardia.position = CGPoint(x: startingPosition.x + Double(j * blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                     guardia.zPosition = 500
+//                    guardia.name = "Guardia"+String(guardNameIndex)+"RunCounter"+String(runCounter)
                     guardia.name = "Guardia"+String(guardNameIndex)
                     guardNameIndex += 1
                     addChild(guardia)

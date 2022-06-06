@@ -8,18 +8,20 @@
 import Foundation
 import SpriteKit
 
+var deadOnce: Bool = false
+
 func loseFunc(scene : SKScene){
     if(loseFlag){
-        
-//        newMuseum.createNewFloor()
-        scene.removeAllActions()
-        scene.removeAllChildren()
-        
-        scene.camera?.removeAllChildren()
+        deadOnce = true
+//        scene.removeAllActions()
+//        scene.removeAllChildren()
+//        
+//        scene.camera?.removeAllChildren()
         
         myGameController.disconnectController()
         
         loseFlag = false
+        print("MOLTIPLICATORE TEMPO: \(moltiplicatoreTempo)")
         moltiplicatoreTempo = 1
         
         let livelloMorte = GameOverMenu(size: scene.size)

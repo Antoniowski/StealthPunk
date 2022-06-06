@@ -8,6 +8,8 @@
 import Foundation
 import SpriteKit
 
+var runCounter: Int = 0
+
 class Museum{
     var firstFloor: SKScene = TestScene2(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
     var secondFloor: SKScene = TestScene3(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))

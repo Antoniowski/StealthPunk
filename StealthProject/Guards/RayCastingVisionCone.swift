@@ -87,14 +87,6 @@ func visionConeRayCasting(entity: Guard, scene: SKScene){
     
     
     createVisionCone(entity: entity, scene: scene)
-//    if(entity.getPlayerFound()){
-//        scene.enumerateChildNodes(withName: "*"){node, _ in
-//            if(node.name! == entity.name!+"visualCone"){
-//                node.removeFromParent()
-//            }
-//        }
-//    }
-    
 }
 
 func createVisionCone360(entity: Guard, scene: SKScene){
@@ -124,6 +116,13 @@ func createVisionCone360(entity: Guard, scene: SKScene){
     
     entity.parent!.addChild(visualCone)
     
+    var posizioneGiocatore: CGPoint = CGPoint(x: 0, y: 0)
+    
+    scene.enumerateChildNodes(withName: "player"){
+        node, _ in
+        posizioneGiocatore = node.position
+    }
+    
     if(entity.rayCastingPlayerFound){
         if(!entity.playerInVisualCone){
             entity.parent!.enumerateChildNodes(withName: "*"){node, _ in
@@ -135,10 +134,16 @@ func createVisionCone360(entity: Guard, scene: SKScene){
             }
             entity.playerInVisualCone = true
             if(moltiplicatoreTempo == 1){
-                moltiplicatoreTempo = 2
+                moltiplicatoreTempo = moltiplicatoreTempo2
+//                print("MOLTIPLCATORE TEMPO A 2, GUARDIA CERCHIO \(entity.name) e \(entity.position), GIOCATORE: \(posizioneGiocatore)")
             } else if (moltiplicatoreTempo == moltiplicatoreTempo2){
                 moltiplicatoreTempo = moltiplicatoreTempo3
+//                print("MOLTIPLCATORE TEMPO A 3, GUARDIA CERCHIO \(entity.name) e \(entity.position), GIOCATORE: \(posizioneGiocatore)")
             } else if (moltiplicatoreTempo == moltiplicatoreTempo3){
+                moltiplicatoreTempo = moltiplicatoreTempo4
+//                print("MOLTIPLCATORE TEMPO A 4, GUARDIA CERCHIO \(entity.name) e \(entity.position), GIOCATORE: \(posizioneGiocatore)")
+            } else if (moltiplicatoreTempo == moltiplicatoreTempo4){
+//                print("MOLTIPLCATORE TEMPO A 5, GUARDIA CERCHIO \(entity.name) e \(entity.position), GIOCATORE: \(posizioneGiocatore)")
                 loseFlag = true
             }
         }
@@ -147,28 +152,21 @@ func createVisionCone360(entity: Guard, scene: SKScene){
         entity.playerInVisualCone = false
     }
     
-//    if(entity.rayCastingPlayerFound){
-//        print("Trovato")
-//        entity.setPlayerFoundTrue()
-//        entity.setPlayerFoundTransitioningTrue()
-//    } else {
-//        print("NonTrovato")
-//        entity.setPlayerFoundFalse()
-//        entity.setPlayerFoundTransitioningFalse()
-//    }
 }
 
 func createVisionCone(entity: Guard, scene: SKScene){
     var myPath = UIBezierPath()
     
     myPath.move(to: entity.position)
+//    myPath.move(to: entity.roomReference.convert(entity.position, to: scene))
             
     for index in 0..<entity.getArrayOfVisionPoints().count{
         let square = SKShapeNode(rectOf: CGSize(width: 5, height: 5))
         myPath.addLine(to: scene.convert(entity.getArrayOfVisionPoints()[index], to: entity.parent!))
     }
     
-    myPath.addLine(to: entity.position)
+    myPath.move(to: entity.position)
+//    myPath.addLine(to: entity.roomReference.convert(entity.position, to: scene))
     
     let visualCone = SKShapeNode(path: myPath.cgPath)
     if(entity.playerInVisualCone){
@@ -184,6 +182,12 @@ func createVisionCone(entity: Guard, scene: SKScene){
     
     entity.parent!.addChild(visualCone)
     
+    var posizioneGiocatore: CGPoint = CGPoint(x: 0, y: 0)
+    
+    scene.enumerateChildNodes(withName: "player"){
+        node, _ in
+        posizioneGiocatore = node.position
+    }
     
     if(entity.rayCastingPlayerFound){
         if(!entity.playerInVisualCone){
@@ -196,13 +200,16 @@ func createVisionCone(entity: Guard, scene: SKScene){
             }
             entity.playerInVisualCone = true
             if(moltiplicatoreTempo == 1){
-                moltiplicatoreTempo = 2
+                moltiplicatoreTempo = moltiplicatoreTempo2
+//                print("MOLTIPLCATORE TEMPO A 2, GUARDIA \(entity.name) e \(entity.position), GIOCATORE: \(posizioneGiocatore)")
             } else if (moltiplicatoreTempo == moltiplicatoreTempo2){
                 moltiplicatoreTempo = moltiplicatoreTempo3
+//                print("MOLTIPLCATORE TEMPO A 3, GUARDIA \(entity.name) e \(entity.position), GIOCATORE: \(posizioneGiocatore)")
             } else if (moltiplicatoreTempo == moltiplicatoreTempo3){
                 moltiplicatoreTempo = moltiplicatoreTempo4
-            }
-            else if (moltiplicatoreTempo == moltiplicatoreTempo4){
+//                print("MOLTIPLCATORE TEMPO A 4, GUARDIA \(entity.name) e \(entity.position), GIOCATORE: \(posizioneGiocatore)")
+            } else if (moltiplicatoreTempo == moltiplicatoreTempo4){
+//                print("MOLTIPLCATORE TEMPO A 5, GUARDIA \(entity.name) e \(entity.position), GIOCATORE: \(posizioneGiocatore)")
                 loseFlag = true
             }
         }
@@ -210,38 +217,6 @@ func createVisionCone(entity: Guard, scene: SKScene){
     } else if(!entity.rayCastingPlayerFound){
         entity.playerInVisualCone = false
     }
-    
-//    if(entity.rayCastingPlayerFound){
-//        if (entity.getGuardActionState() == .IDLE || entity.getGuardActionState() == .MOVE || entity.getGuardActionState() == .ROTATING_ACTION){
-//            entity.pathToChasing = true
-//        } else if (entity.getGuardActionState() == .SEARCHING || entity.getGuardActionState() == .ROTATING || entity.getGuardActionState() == .RETURNING){
-//            entity.pathToChasing = true
-//        }
-//    } else {
-//        if (entity.getGuardActionState() == .CHASING ){
-//            entity.chasingToSearching = true
-//        } else if (entity.getGuardActionState() == .ROTATING && entity.readyToReturn){
-//            entity.readyToReturn = false
-//            entity.rotatingToReturn = true
-//        }
-//    }
-    
-//    if(entity.rayCastingPlayerFound){
-//        entity.setPlayerFoundTrue()
-//        entity.setPlayerFoundTransitioningTrue()
-//
-//    } else {
-//        if(entity.chasing){
-//            entity.setPlayerFoundFalse()
-////            entity.searching = true
-//            entity.transitionToSearch = true
-//        } else {
-//            entity.setPlayerFoundFalse()
-//            entity.setPlayerFoundTransitioningFalse()
-//        }
-//    }
-    
-    
     
 }
 
