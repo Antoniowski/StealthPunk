@@ -45,7 +45,7 @@ class Human: PlayableCharacter{
         self.characterName = "Human" //INSERIRE NOME PERSONAGGIO APPENA DISPONIBILE
         self.name = "player"
         self.type = .HUMAN
-        self.physicsBody = SKPhysicsBody(rectangleOf: .init(width: 30, height: 60))
+        self.physicsBody = SKPhysicsBody(rectangleOf: .init(width: 12.5, height: 50))
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.isDynamic = true
