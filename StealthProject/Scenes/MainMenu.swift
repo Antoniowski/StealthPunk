@@ -16,8 +16,30 @@ class MainMenu: SKScene{
     private var option: SKLabelNode = SKLabelNode()
     private var credits: SKLabelNode = SKLabelNode()
     
-    private var audio: SKLabelNode = SKLabelNode()
+    private var musicLabel: SKLabelNode = SKLabelNode()
     private var effect: SKLabelNode = SKLabelNode()
+    private var muteMusic: SKSpriteNode = SKSpriteNode()
+    private var muteEffect: SKSpriteNode = SKSpriteNode()
+    
+    private var musicL: SKShapeNode = SKShapeNode()
+    private var musicR: SKShapeNode = SKShapeNode()
+    private var effectL: SKShapeNode = SKShapeNode()
+    private var effectR: SKShapeNode = SKShapeNode()
+    
+    private var M01: SKShapeNode = SKShapeNode(rectOf: .init(width: UIScreen.main.bounds.height*0.02, height: UIScreen.main.bounds.height*0.05))
+    private var M02: SKShapeNode = SKShapeNode()
+    private var M03: SKShapeNode = SKShapeNode()
+    private var M04: SKShapeNode = SKShapeNode()
+    private var M05: SKShapeNode = SKShapeNode()
+    
+    private var E01: SKShapeNode = SKShapeNode()
+    private var E02: SKShapeNode = SKShapeNode()
+    private var E03: SKShapeNode = SKShapeNode()
+    private var E04: SKShapeNode = SKShapeNode()
+    private var E05: SKShapeNode = SKShapeNode()
+
+
+
     
     override func didMove(to view: SKView) {
         backgroundColor = .black
@@ -67,6 +89,29 @@ class MainMenu: SKScene{
         credits.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
         credits.position = .init(x: frame.width*0.845, y: frame.height*0.67)
         credits.run(.repeatForever(.sequence([.scale(to: 0.9, duration: 2), .scale(to: 1, duration: 2)])))
+        
+        
+        musicLabel.fontName = "OldNewspaperTypes"
+        musicLabel.fontSize = 24
+        musicLabel.text = "Music"
+        musicLabel.zPosition = 3
+        musicLabel.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
+        musicLabel.position = .init(x: frame.width*0.75, y: frame.height*0.45)
+        
+        M01.zPosition = 2
+        M01.position = .init(x: frame.width*0.75, y: frame.height*0.4)
+        M01.fillColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
+        M01.strokeColor = .clear
+        
+        
+        
+        effect.fontName = "OldNewspaperTypes"
+        effect.fontSize = 24
+        effect.text = "Sound effects"
+        effect.zPosition = 2
+        effect.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
+        effect.position = .init(x: frame.width*0.75, y: frame.height*0.25)
+        
 
         
         addChild(backgroundImage)
@@ -94,10 +139,6 @@ class MainMenu: SKScene{
             touchedNode.alpha = 0.5
         }
         
-        if touchedNode.name == "menu"{
-            touchedNode.alpha = 0.5
-        }
-        
         if touchedNode.name == "credits"{
             touchedNode.alpha = 0.5
         }
@@ -114,30 +155,8 @@ class MainMenu: SKScene{
         if touchedNode.name == "settings"{
             touchedNode.alpha = 1
             self.run(.playSoundFileNamed("pagina", waitForCompletion: true))
-            self.run(.fadeOut(withDuration: 1), completion: {
-                self.subtitle.text = "SETTINGS"
-                self.credits.text = "Main menu"
-                self.credits.name = "menu"
-                self.option.text = ""
-                self.option.name = ""
-                self.start.removeFromParent()
-                self.run(.fadeIn(withDuration: 1))
-            })
-        }
-        
-        if touchedNode.name == "menu"{
-            touchedNode.alpha = 1
-            self.run(.playSoundFileNamed("pagina", waitForCompletion: true))
-            self.run(.fadeOut(withDuration: 1), completion: {
-                self.subtitle.text = "MAIN MENU"
-                self.credits.text = "Credits"
-                self.credits.name = "credits"
-                self.option.text = "Settings"
-                self.option.name = "settings"
-                self.addChild(self.start)
-                self.run(.fadeIn(withDuration: 1))
-                
-            })
+            let credit = SettingsPage(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+            view?.presentScene(credit, transition: .fade(withDuration: 2))
         }
         
         if touchedNode.name == "credits"{
