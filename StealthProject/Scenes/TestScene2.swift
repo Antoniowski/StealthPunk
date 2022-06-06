@@ -37,8 +37,6 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     var oggetti: [SKNode] = []
     var nemici: [SKNode] = []
     
-    var oggetto = Collectible(type: .COIN)
-    
     
     
     
@@ -97,10 +95,6 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         enumerateChildNodes(withName: "ROOM/dynamicObject"){oggetto, _ in
             self.oggetti.append(oggetto)
         }
-
-        oggetto.position = player.position
-        oggetto.position.y -= 200
-        addChild(oggetto)
         
        Timer(scene: self)
     }
