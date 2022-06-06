@@ -11,9 +11,9 @@ import SpriteKit
 class TutorialModalitaATempo: SKScene {
     var title: SKLabelNode = SKLabelNode(fontNamed: "OldLondon")
     var tutorialParts: [SKLabelNode] = [
-        SKLabelNode(text: "You can move with the analog stick on the left of the screen. \nBy pressing B you can roll. By pressing A you can interact with the items in the room."),
-        SKLabelNode(text: "Throughout the floors you can find some hidden items that may give you some effects. The goal of the game is to get to the end of the floors before the timer runs out."),
-        SKLabelNode(text: "The timer runs out faster every time you are seen. When you are seen for the third time it's game over.")
+        SKLabelNode(text: "You can move with the analog stick on the left of the screen. By pressing B you can roll, while A allows you to interact with the items in the room."),
+        SKLabelNode(text: "Throughout the floors you can find some hidden items that will give you some effects. The goal of the game is to get to the end of the floors before the timer runs out."),
+        SKLabelNode(text: "The timer runs faster each time you are seen. When you get spotted for the third time the game is over.")
     ]
     
     let nextTutorialPage: SKLabelNode = SKLabelNode(text: ">")
@@ -25,8 +25,8 @@ class TutorialModalitaATempo: SKScene {
         backgroundColor = .black
         title.fontName = "OldLondon"
         title.fontSize = 70
-        title.text = "Tutorial"
-        title.position = .init(x: frame.width*0.5, y: frame.height*0.6)
+        title.text = "How to Play"
+        title.position = .init(x: frame.width*0.5, y: frame.height*0.65)
         title.zPosition = 2
         title.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
         
@@ -43,30 +43,30 @@ class TutorialModalitaATempo: SKScene {
 //                tutorialParts[indice].fontName = "Victorian Parlor Vintage Alternate_free"
                 tutorialParts[indice].fontName = "OldNewspaperTypes"
                 tutorialParts[indice].numberOfLines = -1
-                tutorialParts[indice].preferredMaxLayoutWidth = size.width*0.9
+                tutorialParts[indice].preferredMaxLayoutWidth = size.width*0.8
                 tutorialParts[indice].verticalAlignmentMode = SKLabelVerticalAlignmentMode.baseline
                 tutorialParts[indice].fontSize = size.width*0.03
                 tutorialParts[indice].fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
                 tutorialParts[indice].position.x = size.width*0.48
-                tutorialParts[indice].position.y = size.height*0.25
+                tutorialParts[indice].position.y = size.height*0.3
             } else if (indice == 1){
                 tutorialParts[indice].fontName = "OldNewspaperTypes"
                 tutorialParts[indice].numberOfLines = 0
-                tutorialParts[indice].preferredMaxLayoutWidth = size.width*0.9
+                tutorialParts[indice].preferredMaxLayoutWidth = size.width*0.8
                 tutorialParts[indice].verticalAlignmentMode = SKLabelVerticalAlignmentMode.baseline
                 tutorialParts[indice].fontSize = size.width*0.03
                 tutorialParts[indice].fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
                 tutorialParts[indice].position.x = size.width*0.48
-                tutorialParts[indice].position.y = size.height*0.25
+                tutorialParts[indice].position.y = size.height*0.23
             } else if (indice == 2){
                 tutorialParts[indice].fontName = "OldNewspaperTypes"
                 tutorialParts[indice].numberOfLines = 0
-                tutorialParts[indice].preferredMaxLayoutWidth = size.width*0.9
+                tutorialParts[indice].preferredMaxLayoutWidth = size.width*0.8
                 tutorialParts[indice].verticalAlignmentMode = SKLabelVerticalAlignmentMode.baseline
                 tutorialParts[indice].fontSize = size.width*0.03
                 tutorialParts[indice].fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
                 tutorialParts[indice].position.x = size.width*0.48
-                tutorialParts[indice].position.y = size.height*0.25
+                tutorialParts[indice].position.y = size.height*0.4
             }
             tutorialParts[indice].zPosition = 5
         }
