@@ -80,10 +80,22 @@ extension PlayableScene{
                 if guardia?.getStrenght() ?? 0 <= player.getStrenght(){
                     if guardia?.getStatus().isHit == false{
                         if guardia!.getStrenght() <= self.player.getStrenght(){
-                            music.starsSound(filenamed: music.hit01)
+                            let random01 = Int.random(in: 0...20)
+                            if random01 == 10{
+                                music.starsSound(filenamed: music.bonk)
+                            }else{
+                                let random02 = Bool.random()
+                                if random02 {
+                                    music.starsSound(filenamed: music.hit01)
+                                }else{
+                                    music.starsSound(filenamed: music.hit02)
+                                }
+                            }
                         }
                         guardia?.setHit(true)
                     }
+                }else{
+                    music.starsSound(filenamed: music.failedHit01)
                 }
             }
         }
