@@ -30,10 +30,10 @@ class InventoryPage: SKNode{
         backgroundElements.alpha = 0.15
         
         page1.zPosition = 1001
-        page1.position = .init(x: -140,y: -25)
+        page1.position = .init(x: -100,y: -20)
         
         page2.zPosition = 1001
-        page2.position = .init(x: 140,y: -25)
+        page2.position = .init(x: 130,y: -25)
         
 //        page3.zPosition = 1001
 //        page3.position = .init(x: 150,y: -30)
