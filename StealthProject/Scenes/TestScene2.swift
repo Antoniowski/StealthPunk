@@ -41,6 +41,8 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     
     
     override func didMove(to view: SKView) {
+        arrayOfGuards.removeAll()
+        
         //Resetto le variabili di sconfitta e del tempo
         loseFlag = false
         MINUTE = 10
@@ -70,6 +72,8 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         scenecamera.setScale(1)
         
         let f = Floor(self, floorType: .FIRST_FLOOR)
+        
+        runCounter += 1
 
         
         luce.ambientColor = .init(red: 0.624, green: 0.624, blue: 0.914, alpha: 0.40) // PER LE PARTI SCURE - GIARDINO
@@ -80,6 +84,8 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         luce.zPosition = 50
         player.position = f.spawn
         player.zPosition = 900
+        
+        print("POSIZIONE GIOCATORE: \(player.position)")
         
         addChild(player)
 

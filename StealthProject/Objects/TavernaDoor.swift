@@ -38,6 +38,7 @@ class TavernaDoor: UsableObject{
     }
     
     func action(_ view: SKView){
+        newMuseum = Museum()
         if(self.firstTimePlayingAgainstTheClock){
             firstTimePlayingAgainstTheClock = false
             myGameController.disconnectController()
