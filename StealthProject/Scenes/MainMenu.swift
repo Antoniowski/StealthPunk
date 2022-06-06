@@ -15,7 +15,7 @@ class MainMenu: SKScene{
     private var start: SKLabelNode = SKLabelNode()
     private var option: SKLabelNode = SKLabelNode()
     private var credits: SKLabelNode = SKLabelNode()
-    
+    private var image: SKSpriteNode = SKSpriteNode(imageNamed: "menuImage")
     private var audio: SKLabelNode = SKLabelNode()
     private var effect: SKLabelNode = SKLabelNode()
     
@@ -68,6 +68,10 @@ class MainMenu: SKScene{
         credits.position = .init(x: frame.width*0.845, y: frame.height*0.67)
         credits.run(.repeatForever(.sequence([.scale(to: 0.9, duration: 2), .scale(to: 1, duration: 2)])))
 
+        image.position = .init(x: frame.width*0.295, y: frame.height*0.33)
+        image.xScale = 1.27
+        image.yScale =  1.27
+        image.zPosition = 3
         
         addChild(backgroundImage)
         addChild(title)
@@ -75,6 +79,7 @@ class MainMenu: SKScene{
         addChild(start)
         addChild(option)
         addChild(credits)
+        addChild(image)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
