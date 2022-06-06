@@ -170,6 +170,9 @@ class TestScene4: SKScene, PlayableScene, SKPhysicsContactDelegate {
     
     
     override func update(_ currentTime: TimeInterval) {
+        
+        loseFunc(scene: self)
+
         calcDelta(currentTime: currentTime)
         updateTimerLabel()
         indicatore.etichetta.text = "x \(indicatore.number)"

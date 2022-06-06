@@ -1323,6 +1323,8 @@ class Room: SKNode {
                     guardia.floorMatrixCopy = self.stanza
                     guardia.floorMatrixForPathfinding = self.stanza
                     
+                    guardia.lightingBitMask = 1 | 2
+                    
                     nemici.append(guardia)
                     arrayOfGuards.append(guardia)
                     
@@ -1344,6 +1346,8 @@ class Room: SKNode {
                     guardia.floorMatrixCopy = self.stanza
                     guardia.floorMatrixForPathfinding = self.stanza
                     
+                    guardia.lightingBitMask = 1 | 2
+                    
                     nemici.append(guardia)
                     arrayOfGuards.append(guardia)
                     
@@ -1363,6 +1367,8 @@ class Room: SKNode {
                     
                     guardia.floorMatrixCopy = self.stanza
                     guardia.floorMatrixForPathfinding = self.stanza
+                    
+                    guardia.lightingBitMask = 1 | 2
                     
                     nemici.append(guardia)
                     arrayOfGuards.append(guardia)
