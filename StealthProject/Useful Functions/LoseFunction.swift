@@ -13,7 +13,13 @@ func loseFunc(scene : SKScene){
         
         scene.removeAllActions()
         scene.removeAllChildren()
+        
+        scene.camera?.removeAllChildren()
+        
         myGameController.disconnectController()
+        
+        loseFlag = false
+        moltiplicatoreTempo = 1
         
         let livelloMorte = GameOverMenu(size: scene.size)
         let transition = SKTransition.fade(with: .black, duration: 2)
