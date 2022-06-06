@@ -236,7 +236,7 @@ class SettingsPage: SKScene{
         
         if touchedNode.name == "menu"{
             touchedNode.alpha = 1
-            self.run(.playSoundFileNamed("pagina", waitForCompletion: true))
+            music.starsSound(filenamed: music.pagina)
             let menu = MainMenu(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
             view?.presentScene(menu, transition: .fade(withDuration: 2))
             

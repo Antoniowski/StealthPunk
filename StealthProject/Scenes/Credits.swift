@@ -123,14 +123,14 @@ class Credits: SKScene{
 
         if touchedNode.name == "mainmenu"{
             touchedNode.alpha = 1
-            self.run(.playSoundFileNamed("pagina", waitForCompletion: true))
+            music.starsSound(filenamed: music.pagina)
             let menu = MainMenu(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
             view?.presentScene(menu, transition: .fade(withDuration: 3))
         }
         
         if touchedNode.name == "settings"{
             touchedNode.alpha = 1
-            self.run(.playSoundFileNamed("pagina", waitForCompletion: true))
+            music.starsSound(filenamed: music.pagina)
             let go = MainMenu(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
             view?.presentScene(go, transition: .fade(withDuration: 3))
         }

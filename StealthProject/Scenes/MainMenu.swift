@@ -16,27 +16,6 @@ class MainMenu: SKScene{
     private var option: SKLabelNode = SKLabelNode()
     private var credits: SKLabelNode = SKLabelNode()
     private var image: SKSpriteNode = SKSpriteNode(imageNamed: "menuImage")
-//    private var audio: SKLabelNode = SKLabelNode()
-//    private var effect: SKLabelNode = SKLabelNode()
-//    private var muteMusic: SKSpriteNode = SKSpriteNode()
-//    private var muteEffect: SKSpriteNode = SKSpriteNode()
-//
-//    private var musicL: SKShapeNode = SKShapeNode()
-//    private var musicR: SKShapeNode = SKShapeNode()
-//    private var effectL: SKShapeNode = SKShapeNode()
-//    private var effectR: SKShapeNode = SKShapeNode()
-//
-//    private var M01: SKShapeNode = SKShapeNode(rectOf: .init(width: UIScreen.main.bounds.height*0.02, height: UIScreen.main.bounds.height*0.05))
-//    private var M02: SKShapeNode = SKShapeNode()
-//    private var M03: SKShapeNode = SKShapeNode()
-//    private var M04: SKShapeNode = SKShapeNode()
-//    private var M05: SKShapeNode = SKShapeNode()
-//
-//    private var E01: SKShapeNode = SKShapeNode()
-//    private var E02: SKShapeNode = SKShapeNode()
-//    private var E03: SKShapeNode = SKShapeNode()
-//    private var E04: SKShapeNode = SKShapeNode()
-//    private var E05: SKShapeNode = SKShapeNode()
 
 
 
@@ -140,21 +119,21 @@ class MainMenu: SKScene{
         
         if touchedNode.name == "settings"{
             touchedNode.alpha = 1
-            self.run(.playSoundFileNamed("pagina", waitForCompletion: true))
+            music.starsSound(filenamed: music.pagina)
             let credit = SettingsPage(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
             view?.presentScene(credit, transition: .fade(withDuration: 2))
         }
         
         if touchedNode.name == "credits"{
             touchedNode.alpha = 1
-            self.run(.playSoundFileNamed("pagina", waitForCompletion: true))
+            music.starsSound(filenamed: music.pagina)
             let credit = Credits(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
             view?.presentScene(credit, transition: .fade(withDuration: 2))
         }
             
             if touchedNode.name == "options"{
                 touchedNode.alpha = 1
-                self.run(.playSoundFileNamed("pagina", waitForCompletion: true))
+                music.starsSound(filenamed: music.pagina)
                 let credit = SettingsPage(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
                 view?.presentScene(credit, transition: .fade(withDuration: 2))
         }
