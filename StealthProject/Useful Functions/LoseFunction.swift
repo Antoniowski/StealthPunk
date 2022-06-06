@@ -11,6 +11,7 @@ import SpriteKit
 func loseFunc(scene : SKScene){
     if(loseFlag){
         
+//        newMuseum.createNewFloor()
         scene.removeAllActions()
         scene.removeAllChildren()
         

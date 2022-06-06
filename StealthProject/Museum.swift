@@ -15,9 +15,10 @@ class Museum{
     
     
     func createNewFloor(){
-        firstFloor = SKScene()
-        secondFloor = SKScene()
-        finalFloor = SKScene()
+        firstFloor = TestScene2(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        secondFloor = TestScene3(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+        finalFloor = TestScene4(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+
     }
 }
 
