@@ -131,14 +131,33 @@ class GameOverMenu: SKScene{
         let touchedNode = atPoint(touchLocation)
 
         if touchedNode.name == "lobby"{
+            touchedNode.alpha = 0.5
+        }
+        if touchedNode.name == "mainmenu"{
+            touchedNode.alpha = 0.5
+
+    }
+}
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else {
+            return
+        }
+
+        let touchLocation = touch.location(in: self)
+        let touchedNode = atPoint(touchLocation)
+
+        if touchedNode.name == "lobby"{
+            touchedNode.alpha = 1
             music.starsSound(filenamed: music.pagina)
             let lobby = LobbyScene(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
             view?.presentScene(lobby, transition: .fade(withDuration: 3))
         }
         if touchedNode.name == "mainmenu"{
+            touchedNode.alpha = 1
             music.starsSound(filenamed: music.pagina)
             let go = MainMenu(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
             view?.presentScene(go, transition: .fade(withDuration: 3))
     }
-}
+    }
 }
