@@ -101,6 +101,7 @@
 		A693D35928293E470055C266 /* classRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = A693D35828293E470055C266 /* classRoom.swift */; };
 		A693D35B28295AE20055C266 /* classFloor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A693D35A28295AE20055C266 /* classFloor.swift */; };
 		A693D35D282A9F770055C266 /* Dimension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A693D35C282A9F770055C266 /* Dimension.swift */; };
+		A6B41B74284E3316004F1C62 /* LoseFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B41B73284E3316004F1C62 /* LoseFunction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -200,6 +201,7 @@
 		A693D35828293E470055C266 /* classRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = classRoom.swift; sourceTree = "<group>"; };
 		A693D35A28295AE20055C266 /* classFloor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = classFloor.swift; sourceTree = "<group>"; };
 		A693D35C282A9F770055C266 /* Dimension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimension.swift; sourceTree = "<group>"; };
+		A6B41B73284E3316004F1C62 /* LoseFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoseFunction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -368,6 +370,7 @@
 				6AB863F82820254D006BB85E /* VectorFunctions.swift */,
 				6AB863FA2820258F006BB85E /* OpOverloading.swift */,
 				6A6A4D402822BBEA003A76C5 /* DeltaFunctions.swift */,
+				A6B41B73284E3316004F1C62 /* LoseFunction.swift */,
 			);
 			path = "Useful Functions";
 			sourceTree = "<group>";
@@ -574,6 +577,7 @@
 				6AA31BE32829911A002CCD47 /* LightProtocol.swift in Sources */,
 				4A00C74F2825580D009DB657 /* TestScene3.swift in Sources */,
 				6A2A7E9C283457D600D14EC0 /* Intro.swift in Sources */,
+				A6B41B74284E3316004F1C62 /* LoseFunction.swift in Sources */,
 				52CF6A9A28465C4A000A62ED /* GameOverMenu.swift in Sources */,
 				4A3A1B97284516010030BB48 /* GuardConoPiccolo.swift in Sources */,
 				6A2A7E9E28366BA900D14EC0 /* Lobby.swift in Sources */,

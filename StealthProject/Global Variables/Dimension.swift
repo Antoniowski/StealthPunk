@@ -20,8 +20,9 @@ import SwiftUI
 var loseFlag: Bool = false
 
 //Variabili per far scendere il tempo
+let moltiplicatoreTempo4 = 8
 let moltiplicatoreTempo2 = 2
-let moltiplicatoreTempo3 = 3
+let moltiplicatoreTempo3 = 4
 var moltiplicatoreTempo = 1
 
 let blocco : Int = 100
