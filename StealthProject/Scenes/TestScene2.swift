@@ -17,7 +17,6 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     var player: PlayableCharacter = Human(texture: SKTexture(imageNamed: "boyFront"), color: .clear, size: CGSize(width: 35, height: 70), noise: 2, speed: 3, strenght: 3)
     
     var luce: SKLightNode = SKLightNode()
-
     
     var scenecamera = SKCameraNode()
     
@@ -32,7 +31,6 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     
     var indicatore = Counter()
     var timer = TimeCounter()
-    var chest = Chest(locked: false)
     
     var index = 0
 
@@ -59,6 +57,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
         indicatore.position.x = player.position.x - 100
         indicatore.position.y = player.position.y + frame.height/3.5 + 90
+        
         timer.position.x = player.position.x - frame.width*0.45
         timer.position.y = player.position.y + frame.height * 0.35
         timer.setScale(0.5)
@@ -90,34 +89,9 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         enumerateChildNodes(withName: "ROOM/dynamicObject"){oggetto, _ in
             self.oggetti.append(oggetto)
         }
-//        enumerateChildNodes(withName: "ROOM/Guardia[0-1000]"){ nemico, _ in
-//            self.nemici.append(nemico)
-//            
-//        }
+
        Timer(scene: self)
     }
-    
-//    func Timer(){
-//            let wait = SKAction.wait(forDuration: 1)
-//            let go = SKAction.run({
-//                if SECONDS > 0 {
-//                    SECONDS -= 1 * (moltiplicatoreTempo)
-//                }else{
-//                    if MINUTE > 0{
-//                        SECONDS = 60
-//                        SECONDS -= 1 * (moltiplicatoreTempo)
-//                        MINUTE -= 1
-//                    }else{
-//                        print("GAME OVER")
-//                    }
-//                }
-//            })
-//            let actions = SKAction.sequence([wait, go])
-//    //    scene.run(.sequence([wait, .run {
-//    //        MINUTE -= 1
-//    //    }]))
-//        run(.repeatForever(actions))
-//    }
     
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -140,9 +114,6 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
             
             
             if item?.getType() == .COIN{
-//                indicatore.run(.moveBy(x: 0, y: -90, duration: 0.5), completion: {
-//                    self.indicatore.run(.sequence([.wait(forDuration: 1.5), .moveBy(x: 0, y: 90, duration: 0.5)]))
-//                })
                 indicatore.run(.moveTo(y: UIScreen.main.bounds.height*0.29, duration: 0.5), completion: {
                     self.indicatore.run(.sequence([.wait(forDuration: 1.5), .moveTo(y: UIScreen.main.bounds.height*0.55, duration: 0.5)]))
                 })
@@ -209,36 +180,8 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         calcDelta(currentTime: currentTime)
         updateTimerLabel()
         indicatore.etichetta.text = "x \(indicatore.number)"
-        player.updateActionState(scene: self, oggetti: oggetti)
-//        player.updateMovingDirection()
-        player.animationTree()
-        player.searchObject(scene: self, oggetti: oggetti)
-        player.updateFocus(scene: self, enemies: nemici, oggetti: oggetti)
-        
-        
-        
-        switch player.getActionState(){
-        case .MOVE:
-            moveState()
-            
-        case .ATTACK:
-            attackState(scene: self, nemici: nemici)
-            
-        case .INTERACT:
-            interactState(scene: self,oggetti: oggetti)
-            
-        case .ROLL:
-            rollState()
-            
-        case .HIDDEN:
-            hiddenState()
-            
-        case .RUNNING:
-            runningState()
-        }
-        
+        playerEssential(scene: self, nemici: nemici, oggetti: oggetti)
         playerMovement(player: player as SKSpriteNode, velocity: velocity)
-//        luce.position = player.position
 
         
         scenecamera.position = player.position
@@ -246,8 +189,6 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         if(!initGuards){
             initGuards = true
             for guardia in arrayOfGuards{
-                let posizioneDellaScena = guardia.convert(guardia.position, to: self)
-                let posizioneDellaScena2 = guardia.roomReference.convert(guardia.position, to: self)
                 nemici.append(guardia)
             }
         }

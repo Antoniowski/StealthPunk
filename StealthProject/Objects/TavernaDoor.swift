@@ -6,8 +6,11 @@
 //
 
 import SpriteKit
+import SwiftUI
 
 class TavernaDoor: UsableObject{
+    
+    @AppStorage("firstTimePlayingAgainstTheClock") private var firstTimePlayingAgainstTheClock: Bool = true
     
     private var closedNormalTexture: SKTexture = SKTexture(imageNamed: "porta chiusa normal map")
     private var openNormalTexture: SKTexture = SKTexture(imageNamed: "porta aperta normal map")
@@ -35,6 +38,13 @@ class TavernaDoor: UsableObject{
     }
     
     func action(_ view: SKView){
-        view.presentScene(newMuseum.firstFloor, transition: .fade(withDuration: 3))
+        if(self.firstTimePlayingAgainstTheClock){
+            firstTimePlayingAgainstTheClock = false
+            myGameController.disconnectController()
+            let scene = TutorialModalitaATempo(size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+            view.presentScene(scene, transition: .fade(withDuration: 3))
+        }else {
+            view.presentScene(newMuseum.firstFloor, transition: .fade(withDuration: 3))
+        }
     }
 }
