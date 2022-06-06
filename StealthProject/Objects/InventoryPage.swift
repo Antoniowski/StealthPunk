@@ -44,7 +44,7 @@ class InventoryPage: SKNode{
         title.text = "Inventory"
         title.fontSize = 60
         title.fontName = "OldLondon"
-        title.fontColor = .darkGray
+        title.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
         
         
         addChild(title)

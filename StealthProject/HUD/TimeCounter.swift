@@ -57,6 +57,11 @@ func Timer(scene: SKScene){
                     print("GAME OVER")
                 }
             }
+            if(MINUTE < 0){
+                loseFlag = true
+                MINUTE = 0
+                SECONDS = 0
+            }
         })
         let actions = SKAction.sequence([wait, go])
 //    scene.run(.sequence([wait, .run {
