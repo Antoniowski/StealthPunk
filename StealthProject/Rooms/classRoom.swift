@@ -569,8 +569,8 @@ class Room: SKNode {
                 self.frontDoorTexture = SKTexture(imageNamed: "doorClosed")
                 self.leftDoorTexture = SKTexture(imageNamed: "doorLeft")
                 self.rightDoorTexture = SKTexture(imageNamed: "doorRight")
-                self.internalAngledx = SKTexture(imageNamed: "RedWallSegmentR")
-                self.internalAnglesx = SKTexture(imageNamed: "RedWallSegmentL")
+                self.internalAngledx = SKTexture(imageNamed: "redWallSegmentR")
+                self.internalAnglesx = SKTexture(imageNamed: "redWallSegmentL")
             }else{
                 self.frontWallTexture = SKTexture(imageNamed: "pareteCentro")
                 self.floorTexture = SKTexture(imageNamed: "pavimento6")
