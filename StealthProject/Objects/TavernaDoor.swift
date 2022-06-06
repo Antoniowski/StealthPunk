@@ -39,6 +39,7 @@ class TavernaDoor: UsableObject{
     
     func action(_ view: SKView){
         if(self.firstTimePlayingAgainstTheClock){
+            firstTimePlayingAgainstTheClock = false
             myGameController.disconnectController()
             let scene = TutorialModalitaATempo(size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
             view.presentScene(scene, transition: .fade(withDuration: 3))
