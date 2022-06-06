@@ -193,8 +193,10 @@ class Collectible: SKSpriteNode{
     func action(contatore: Counter) {
         if self.type == .COIN {
             contatore.number += 1
+            storage.set(contatore.number, forKey: "gears")
         }
     }
+    
     
     
     
