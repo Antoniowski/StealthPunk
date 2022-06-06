@@ -15,7 +15,6 @@ import Foundation
 import SpriteKit
 import SwiftUI
 
-
 //Variabile che tiene conto della morte/perdita della partita
 var loseFlag: Bool = false
 

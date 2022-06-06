@@ -9,10 +9,7 @@ import Foundation
 import SpriteKit
 import SwiftUI
 
-class LobbyScene: SKScene, PlayableScene{
-    //Variabile che tiene conto se è la prima volta che avvii la partita e che vede se farti vedere o meno il tutorial
-    @AppStorage("firstTimePlayingAgainstTheClock") var firstTimePlayingAgainstTheClock: Bool = false
-    
+class LobbyScene: SKScene, PlayableScene{    
     var delta: TimeInterval = 0
     var lastUpdate: TimeInterval?
     
