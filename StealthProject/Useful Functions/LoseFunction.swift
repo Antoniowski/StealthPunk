@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 
 func loseFunc(scene : SKScene){
-    if(loseFlag || (MINUTE == 0 && SECONDS <= 0)){
+    if(loseFlag){
         
         scene.removeAllActions()
         scene.removeAllChildren()

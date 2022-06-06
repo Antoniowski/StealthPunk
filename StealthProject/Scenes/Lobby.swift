@@ -11,7 +11,7 @@ import SwiftUI
 
 class LobbyScene: SKScene, PlayableScene{
     //Variabile che tiene conto se è la prima volta che avvii la partita e che vede se farti vedere o meno il tutorial
-    @AppStorage("firstTimePlayingAgainstTheClock") var firstTimePlayingAgainstTheClock: Bool = false
+    @AppStorage("firstTimePlayingAgainstTheClock") var firstTimePlayingAgainstTheClock: Bool = true
     
     var gears: Int = 0
     
