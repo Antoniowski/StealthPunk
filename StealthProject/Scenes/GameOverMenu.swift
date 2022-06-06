@@ -71,7 +71,7 @@ class GameOverMenu: SKScene{
         label.preferredMaxLayoutWidth = size.width*0.9
         label.numberOfLines = 0
         label.verticalAlignmentMode = SKLabelVerticalAlignmentMode.baseline
-        label.text = "Arrested man who tried \nto steal Crown jewels."
+        label.text = "Arrested thief who tried \nto steal Crown jewels."
         label.position = .init(x: frame.width*0.74, y: frame.height*0.3)
         label.zPosition = 3
         label.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
