@@ -41,7 +41,7 @@ class Human: PlayableCharacter{
     }
     
     init(){
-        super.init(texture: SKTexture(imageNamed: "boyFront"), color: .clear, size: .init(width: 35, height: 70), noise: 3, speed: 3, strenght: 2)
+        super.init(texture: SKTexture(imageNamed: "boyFront"), color: .clear, size: .init(width: 35, height: 70), noise: 2, speed: 3, strenght: 3)
         self.characterName = "Human" //INSERIRE NOME PERSONAGGIO APPENA DISPONIBILE
         self.name = "player"
         self.type = .HUMAN
