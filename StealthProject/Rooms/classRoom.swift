@@ -607,12 +607,6 @@ class Room: SKNode {
                 case 1:
                     var wall = SKSpriteNode(texture: frontWallTexture, size: bloccoSize)
                     wall.normalTexture = frontWallTextureMap
-                    if (archetype == .SCAMBIO1 || archetype == .SCAMBIO2 || archetype == .SCAMBIO3 || archetype == .SCAMBIO4) && floor == .FIRST_FLOOR{
-                        if i == numColonne-1{
-                            wall = SKSpriteNode(texture: SKTexture(imageNamed: "parete centrale"), size: bloccoSize)
-                            wall.normalTexture = SKTexture(imageNamed: "parete centrale normal map")
-                        }
-                    }
                     wall.name = "wall"
                     wall.zPosition = 2
                     wall.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
@@ -762,7 +756,12 @@ class Room: SKNode {
                     barile.normalTexture = SKTexture(imageNamed: "bott9NormalMap")
                     barile.lightingBitMask = 1 | 2
                     barile.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
-                    barile.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
+                    let forma = CGMutablePath()
+                    forma.move(to: .init(x: -blocco/2, y: 0))
+                    forma.addLine(to: .init(x: blocco/2, y: 0))
+                    forma.addLine(to: .init(x: 0, y: blocco/2))
+//                    barile.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
+                    barile.physicsBody = SKPhysicsBody(polygonFrom: forma)
                     barile.physicsBody?.isDynamic = false
                     barile.physicsBody?.affectedByGravity = false
                     barile.physicsBody?.allowsRotation = false
@@ -775,7 +774,12 @@ class Room: SKNode {
                     barile.normalTexture = SKTexture(imageNamed: "bott9NormalMap")
                     barile.lightingBitMask = 1 | 2
                     barile.position = CGPoint(x: startingPosition.x + Double(j*blocco) - Double(blocco/4), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
-                    barile.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
+                    let forma = CGMutablePath()
+                    forma.move(to: .init(x: -blocco/2, y: 0))
+                    forma.addLine(to: .init(x: blocco/2, y: 0))
+                    forma.addLine(to: .init(x: 0, y: blocco/2))
+//                    barile.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
+                    barile.physicsBody = SKPhysicsBody(polygonFrom: forma)
                     barile.physicsBody?.isDynamic = false
                     barile.physicsBody?.affectedByGravity = false
                     barile.physicsBody?.allowsRotation = false
@@ -847,11 +851,16 @@ class Room: SKNode {
                     if floor == .FIRST_FLOOR{
                         passaggio.texture = SKTexture(imageNamed: "finestraFinale")
                         passaggio.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
-                        let muro = SKSpriteNode(texture: SKTexture(imageNamed: "parete centrale"), size: bloccoSize)
-                        muro.normalTexture = SKTexture(imageNamed: "parete centrale normal texture")
-                        muro.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
-                        passaggio.addChild(muro)
+                        for x in 0..<numColonne{
+                            let muro = SKSpriteNode(texture: SKTexture(imageNamed: "parete centrale"), size: bloccoSize)
+                            muro.normalTexture = SKTexture(imageNamed: "parete centrale normal map")
+                            muro.position = CGPoint(x: startingPosition.x + Double(x*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
+                            muro.zPosition = 9
+                            muro.lightingBitMask = 1|2
+                            addChild(muro)
+                        }
                     }
+                    passaggio.lightingBitMask = 1|2
                     addChild(passaggio)
                     
                 case 31:

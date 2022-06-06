@@ -51,23 +51,7 @@ func visionConeRayCasting360(entity: Guard, scene: SKScene){
         rayCasting(myX: entity.roomReference.convert(entity.position, to: scene).x + newX4, myY: entity.roomReference.convert(entity.position, to: scene).y + newY4, entity: entity, scene: scene, rayCastingPlayerFound: &rayCastingPlayerFound)
     }
     
-    
-    if(entity.rayCastingPlayerFound){
-        if(!entity.playerInVisualCone){
-            entity.playerInVisualCone = true
-            if(moltiplicatoreTempo == 1){
-                moltiplicatoreTempo = 2
-            } else if (moltiplicatoreTempo == 2){
-                moltiplicatoreTempo = 7
-            } else if (moltiplicatoreTempo == 7){
-                
-            }
-        }
         
-    } else if(!entity.rayCastingPlayerFound){
-        entity.playerInVisualCone = false
-    }
-    
     createVisionCone360(entity: entity, scene: scene)
 }
 
@@ -216,6 +200,9 @@ func createVisionCone(entity: Guard, scene: SKScene){
             } else if (moltiplicatoreTempo == moltiplicatoreTempo2){
                 moltiplicatoreTempo = moltiplicatoreTempo3
             } else if (moltiplicatoreTempo == moltiplicatoreTempo3){
+                moltiplicatoreTempo = moltiplicatoreTempo4
+            }
+            else if (moltiplicatoreTempo == moltiplicatoreTempo4){
                 loseFlag = true
             }
         }

@@ -15,9 +15,31 @@ class MainMenu: SKScene{
     private var start: SKLabelNode = SKLabelNode()
     private var option: SKLabelNode = SKLabelNode()
     private var credits: SKLabelNode = SKLabelNode()
-    
-    private var audio: SKLabelNode = SKLabelNode()
-    private var effect: SKLabelNode = SKLabelNode()
+    private var image: SKSpriteNode = SKSpriteNode(imageNamed: "menuImage")
+//    private var audio: SKLabelNode = SKLabelNode()
+//    private var effect: SKLabelNode = SKLabelNode()
+//    private var muteMusic: SKSpriteNode = SKSpriteNode()
+//    private var muteEffect: SKSpriteNode = SKSpriteNode()
+//
+//    private var musicL: SKShapeNode = SKShapeNode()
+//    private var musicR: SKShapeNode = SKShapeNode()
+//    private var effectL: SKShapeNode = SKShapeNode()
+//    private var effectR: SKShapeNode = SKShapeNode()
+//
+//    private var M01: SKShapeNode = SKShapeNode(rectOf: .init(width: UIScreen.main.bounds.height*0.02, height: UIScreen.main.bounds.height*0.05))
+//    private var M02: SKShapeNode = SKShapeNode()
+//    private var M03: SKShapeNode = SKShapeNode()
+//    private var M04: SKShapeNode = SKShapeNode()
+//    private var M05: SKShapeNode = SKShapeNode()
+//
+//    private var E01: SKShapeNode = SKShapeNode()
+//    private var E02: SKShapeNode = SKShapeNode()
+//    private var E03: SKShapeNode = SKShapeNode()
+//    private var E04: SKShapeNode = SKShapeNode()
+//    private var E05: SKShapeNode = SKShapeNode()
+
+
+
     
     override func didMove(to view: SKView) {
         backgroundColor = .black
@@ -45,7 +67,7 @@ class MainMenu: SKScene{
         start.fontName = "OldNewspaperTypes"
         start.zPosition = 2
         start.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
-        start.position = .init(x: frame.width*0.74, y: frame.height*0.37)
+        start.position = .init(x: frame.width*0.74, y: frame.height*0.25)
         start.run(.repeatForever(.sequence([.fadeAlpha(to: 0.4, duration: 0.5), .fadeAlpha(to: 1, duration: 0.5)])))
 
         option.fontSize = 24
@@ -67,7 +89,15 @@ class MainMenu: SKScene{
         credits.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
         credits.position = .init(x: frame.width*0.845, y: frame.height*0.67)
         credits.run(.repeatForever(.sequence([.scale(to: 0.9, duration: 2), .scale(to: 1, duration: 2)])))
+//
+//
 
+        
+
+        image.position = .init(x: frame.width*0.295, y: frame.height*0.33)
+        image.xScale = 1.27
+        image.yScale =  1.27
+        image.zPosition = 3
         
         addChild(backgroundImage)
         addChild(title)
@@ -75,6 +105,7 @@ class MainMenu: SKScene{
         addChild(start)
         addChild(option)
         addChild(credits)
+        addChild(image)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -91,37 +122,41 @@ class MainMenu: SKScene{
         }
         
         if touchedNode.name == "settings"{
-            self.run(.fadeOut(withDuration: 1), completion: {
-                self.subtitle.text = "SETTINGS"
-                self.credits.text = "Main menu"
-                self.credits.name = "menu"
-                self.option.text = ""
-                self.option.name = ""
-                self.start.removeFromParent()
-                self.run(.playSoundFileNamed("pagina", waitForCompletion: true))
-                self.run(.fadeIn(withDuration: 1))
-               
-            })
-        }
-        
-        if touchedNode.name == "menu"{
-            self.run(.fadeOut(withDuration: 1), completion: {
-                self.subtitle.text = "MAIN MENU"
-                self.credits.text = "Credits"
-                self.credits.name = "credits"
-                self.option.text = "Settings"
-                self.option.name = "settings"
-                self.addChild(self.start)
-                self.run(.playSoundFileNamed("pagina", waitForCompletion: true))
-                self.run(.fadeIn(withDuration: 1))
-                
-            })
+            touchedNode.alpha = 0.5
         }
         
         if touchedNode.name == "credits"{
+            touchedNode.alpha = 0.5
+        }
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else {
+            return
+        }
+
+        let touchLocation = touch.location(in: self)
+        let touchedNode = atPoint(touchLocation)
+        
+        if touchedNode.name == "settings"{
+            touchedNode.alpha = 1
+            self.run(.playSoundFileNamed("pagina", waitForCompletion: true))
+            let credit = SettingsPage(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+            view?.presentScene(credit, transition: .fade(withDuration: 2))
+        }
+        
+        if touchedNode.name == "credits"{
+            touchedNode.alpha = 1
             self.run(.playSoundFileNamed("pagina", waitForCompletion: true))
             let credit = Credits(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
             view?.presentScene(credit, transition: .fade(withDuration: 2))
+        }
+            
+            if touchedNode.name == "options"{
+                touchedNode.alpha = 1
+                self.run(.playSoundFileNamed("pagina", waitForCompletion: true))
+                let credit = SettingsPage(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+                view?.presentScene(credit, transition: .fade(withDuration: 2))
         }
     }
 }

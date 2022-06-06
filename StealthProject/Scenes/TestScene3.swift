@@ -232,6 +232,9 @@ class TestScene3: SKScene, PlayableScene, SKPhysicsContactDelegate {
     
     
     override func update(_ currentTime: TimeInterval) {
+        
+        loseFunc(scene: self)
+
         calcDelta(currentTime: currentTime)
         indicatore.etichetta.text = "x \(indicatore.number)"
         playerEssential(scene: self, nemici: [], oggetti: [])

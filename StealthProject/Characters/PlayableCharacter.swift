@@ -516,13 +516,13 @@ class PlayableCharacter: SKSpriteNode{
 //            ATTACK ANIMATION
             
         case .ATTACK:
-            self.run(.sequence([.wait(forDuration: 0.3), .run {
-                music.starsSound(filenamed: music.whoosh)
-            }]))
             switch facingDirection {
             case .UP:
                 if self.status.isAttacking == false{
                     self.status.isAttacking = true
+                    self.run(.sequence([.wait(forDuration: 0.3), .run {
+                        music.starsSound(filenamed: music.whoosh)
+                    }]))
 //                    self.xScale = 2
                     self.run(.animate(with: self.attackAnimationBack, timePerFrame: 0.1), completion: {
 //                        self.xScale = 1
@@ -534,6 +534,9 @@ class PlayableCharacter: SKSpriteNode{
             case .UP_RIGHT:
                 if self.status.isAttacking == false{
                     self.status.isAttacking = true
+                    self.run(.sequence([.wait(forDuration: 0.3), .run {
+                        music.starsSound(filenamed: music.whoosh)
+                    }]))
 //                    self.xScale = 2
                     self.run(.animate(with: self.attackAnimationBack, timePerFrame: 0.1), completion: {
 //                        self.xScale = 1
@@ -545,6 +548,9 @@ class PlayableCharacter: SKSpriteNode{
             case .RIGHT:
                 if self.status.isAttacking == false{
                     self.status.isAttacking = true
+                    self.run(.sequence([.wait(forDuration: 0.3), .run {
+                        music.starsSound(filenamed: music.whoosh)
+                    }]))
                     self.xScale = 2
                     self.lucciola.xScale = 0.5
                     self.run(.animate(with: self.attackAnimationRight, timePerFrame: 0.1), completion: {
@@ -558,6 +564,9 @@ class PlayableCharacter: SKSpriteNode{
             case .DOWN_RIGHT:
                 if self.status.isAttacking == false{
                     self.status.isAttacking = true
+                    self.run(.sequence([.wait(forDuration: 0.3), .run {
+                        music.starsSound(filenamed: music.whoosh)
+                    }]))
 //                    self.xScale = 2
                     self.run(.animate(with: self.attackAnimationFront, timePerFrame: 0.1), completion: {
 //                        self.xScale = 1
@@ -569,6 +578,9 @@ class PlayableCharacter: SKSpriteNode{
             case .DOWN:
                 if self.status.isAttacking == false{
                     self.status.isAttacking = true
+                    self.run(.sequence([.wait(forDuration: 0.3), .run {
+                        music.starsSound(filenamed: music.whoosh)
+                    }]))
 //                    self.xScale = 2
                     self.run(.animate(with: self.attackAnimationFront, timePerFrame: 0.1), completion: {
 //                        self.xScale = 1
@@ -580,6 +592,9 @@ class PlayableCharacter: SKSpriteNode{
             case .DOWN_LEFT:
                 if self.status.isAttacking == false{
                     self.status.isAttacking = true
+                    self.run(.sequence([.wait(forDuration: 0.3), .run {
+                        music.starsSound(filenamed: music.whoosh)
+                    }]))
 //                    self.xScale = 2
                     self.run(.animate(with: self.attackAnimationFront, timePerFrame: 0.1), completion: {
 //                        self.xScale = 1
@@ -591,6 +606,9 @@ class PlayableCharacter: SKSpriteNode{
             case .LEFT:
                 if self.status.isAttacking == false{
                     self.status.isAttacking = true
+                    self.run(.sequence([.wait(forDuration: 0.3), .run {
+                        music.starsSound(filenamed: music.whoosh)
+                    }]))
                     self.xScale = 2
                     self.lucciola.xScale = 0.5
                     self.run(.animate(with: self.attackAnimationLeft, timePerFrame: 0.1), completion: {
@@ -604,6 +622,9 @@ class PlayableCharacter: SKSpriteNode{
             case .UP_LEFT:
                 if self.status.isAttacking == false{
                     self.status.isAttacking = true
+                    self.run(.sequence([.wait(forDuration: 0.3), .run {
+                        music.starsSound(filenamed: music.whoosh)
+                    }]))
 //                    self.xScale = 2
                     self.run(.animate(with: self.attackAnimationBack, timePerFrame: 0.1), completion: {
 //                        self.xScale = 1
