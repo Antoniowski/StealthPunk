@@ -67,7 +67,7 @@ class MainMenu: SKScene{
         start.fontName = "OldNewspaperTypes"
         start.zPosition = 2
         start.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
-        start.position = .init(x: frame.width*0.74, y: frame.height*0.25)
+        start.position = .init(x: frame.width*0.74, y: frame.height*0.35)
         start.run(.repeatForever(.sequence([.fadeAlpha(to: 0.7, duration: 0.5), .fadeAlpha(to: 1, duration: 0.5)])))
 
         option.fontSize = 24

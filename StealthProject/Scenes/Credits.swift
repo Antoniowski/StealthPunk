@@ -70,7 +70,7 @@ class Credits: SKScene{
         Goosezilla.fontName = "OldNewspaperTypes"
         Goosezilla.zPosition = 2
         Goosezilla.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
-        Goosezilla.position = .init(x: frame.width*0.74, y: frame.height*0.5)
+        Goosezilla.position = .init(x: frame.width*0.74, y: frame.height*0.35)
 
         nomi.fontSize = 25
         nomi.fontName = "OldNewspaperTypes"
@@ -79,8 +79,8 @@ class Credits: SKScene{
         nomi.preferredMaxLayoutWidth = size.width*0.9
         nomi.numberOfLines = 0
         nomi.verticalAlignmentMode = SKLabelVerticalAlignmentMode.baseline
-        nomi.text = "Dobbiamo mettere i nomi?"
-        nomi.position = .init(x: frame.width*0.74, y: frame.height*0.3)
+        nomi.text = "Team"
+        nomi.position = .init(x: frame.width*0.74, y: frame.height*0.2)
         
         logo.position = .init(x: frame.width*0.295, y: frame.height*0.33)
         logo.zPosition = 3
