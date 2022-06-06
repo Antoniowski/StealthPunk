@@ -39,7 +39,10 @@ class InventoryPage: SKNode{
         
         gearsAcquired.position = .init(x: -25, y: 45)
         gearsAcquired.zPosition = 1002
-        gearsAcquired.text = "\(String(describing: storage.value(forKey: "gears") as! Int))"
+        gearsAcquired.text = "0"
+        if storage.value(forKey: "gears") != nil{
+            gearsAcquired.text = "\(String(describing: storage.value(forKey: "gears") as! Int))"
+        }
         gearsAcquired.fontName = "OldNewspaperTypes"
         gearsAcquired.fontSize = 25
         gearsAcquired.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
