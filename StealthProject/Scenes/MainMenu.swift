@@ -16,27 +16,27 @@ class MainMenu: SKScene{
     private var option: SKLabelNode = SKLabelNode()
     private var credits: SKLabelNode = SKLabelNode()
     private var image: SKSpriteNode = SKSpriteNode(imageNamed: "menuImage")
-    private var audio: SKLabelNode = SKLabelNode()
-    private var effect: SKLabelNode = SKLabelNode()
-    private var muteMusic: SKSpriteNode = SKSpriteNode()
-    private var muteEffect: SKSpriteNode = SKSpriteNode()
-    
-    private var musicL: SKShapeNode = SKShapeNode()
-    private var musicR: SKShapeNode = SKShapeNode()
-    private var effectL: SKShapeNode = SKShapeNode()
-    private var effectR: SKShapeNode = SKShapeNode()
-    
-    private var M01: SKShapeNode = SKShapeNode(rectOf: .init(width: UIScreen.main.bounds.height*0.02, height: UIScreen.main.bounds.height*0.05))
-    private var M02: SKShapeNode = SKShapeNode()
-    private var M03: SKShapeNode = SKShapeNode()
-    private var M04: SKShapeNode = SKShapeNode()
-    private var M05: SKShapeNode = SKShapeNode()
-    
-    private var E01: SKShapeNode = SKShapeNode()
-    private var E02: SKShapeNode = SKShapeNode()
-    private var E03: SKShapeNode = SKShapeNode()
-    private var E04: SKShapeNode = SKShapeNode()
-    private var E05: SKShapeNode = SKShapeNode()
+//    private var audio: SKLabelNode = SKLabelNode()
+//    private var effect: SKLabelNode = SKLabelNode()
+//    private var muteMusic: SKSpriteNode = SKSpriteNode()
+//    private var muteEffect: SKSpriteNode = SKSpriteNode()
+//
+//    private var musicL: SKShapeNode = SKShapeNode()
+//    private var musicR: SKShapeNode = SKShapeNode()
+//    private var effectL: SKShapeNode = SKShapeNode()
+//    private var effectR: SKShapeNode = SKShapeNode()
+//
+//    private var M01: SKShapeNode = SKShapeNode(rectOf: .init(width: UIScreen.main.bounds.height*0.02, height: UIScreen.main.bounds.height*0.05))
+//    private var M02: SKShapeNode = SKShapeNode()
+//    private var M03: SKShapeNode = SKShapeNode()
+//    private var M04: SKShapeNode = SKShapeNode()
+//    private var M05: SKShapeNode = SKShapeNode()
+//
+//    private var E01: SKShapeNode = SKShapeNode()
+//    private var E02: SKShapeNode = SKShapeNode()
+//    private var E03: SKShapeNode = SKShapeNode()
+//    private var E04: SKShapeNode = SKShapeNode()
+//    private var E05: SKShapeNode = SKShapeNode()
 
 
 
@@ -89,28 +89,9 @@ class MainMenu: SKScene{
         credits.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
         credits.position = .init(x: frame.width*0.845, y: frame.height*0.67)
         credits.run(.repeatForever(.sequence([.scale(to: 0.9, duration: 2), .scale(to: 1, duration: 2)])))
-        
-        
-        musicLabel.fontName = "OldNewspaperTypes"
-        musicLabel.fontSize = 24
-        musicLabel.text = "Music"
-        musicLabel.zPosition = 3
-        musicLabel.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
-        musicLabel.position = .init(x: frame.width*0.75, y: frame.height*0.45)
-        
-        M01.zPosition = 2
-        M01.position = .init(x: frame.width*0.75, y: frame.height*0.4)
-        M01.fillColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
-        M01.strokeColor = .clear
-        
-        
-        
-        effect.fontName = "OldNewspaperTypes"
-        effect.fontSize = 24
-        effect.text = "Sound effects"
-        effect.zPosition = 2
-        effect.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
-        effect.position = .init(x: frame.width*0.75, y: frame.height*0.25)
+//
+//
+
         
 
         image.position = .init(x: frame.width*0.295, y: frame.height*0.33)
