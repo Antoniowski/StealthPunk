@@ -42,13 +42,16 @@ class Music{
     
     var audioOn : Bool = true
     
+    var volume: Float = 0.4
+    var musicVolume: Float = 0.4
+    
     func starsSound( filenamed: String){
         if(self.soundOn){
             let resourceUrl = Bundle.main.url(forResource:
              filenamed , withExtension: nil)
             do {
               try soundEffects = AVAudioPlayer(contentsOf: resourceUrl!)
-                soundEffects.volume = 0.3
+                soundEffects.volume = volume
                 soundEffects.prepareToPlay()
                 soundEffects.play()
               } catch {

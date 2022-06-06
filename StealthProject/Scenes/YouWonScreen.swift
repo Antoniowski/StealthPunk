@@ -118,12 +118,12 @@ class YouWonScreen: SKScene{
         let touchedNode = atPoint(touchLocation)
 
         if touchedNode.name == "lobby"{
-            self.run(.playSoundFileNamed("pagina", waitForCompletion: true))
+            music.starsSound(filenamed: music.pagina)
             let lobby = LobbyScene(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
             view?.presentScene(lobby, transition: .fade(withDuration: 3))
         }
         if touchedNode.name == "mainmenu"{
-            self.run(.playSoundFileNamed("pagina", waitForCompletion: true))
+            music.starsSound(filenamed: music.pagina)
             let go = MainMenu(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
             view?.presentScene(go, transition: .fade(withDuration: 3))
     }
