@@ -14,7 +14,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     var delta: TimeInterval = 0.0
     var lastUpdate: TimeInterval?
     
-    var player: PlayableCharacter = Human(texture: SKTexture(imageNamed: "boyFront"), color: .clear, size: CGSize(width: 35, height: 70), noise: 2, speed: 3, strenght: 3)
+    var player: PlayableCharacter = Human()
     
     var luce: SKLightNode = SKLightNode()
     
@@ -95,7 +95,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         enumerateChildNodes(withName: "ROOM/dynamicObject"){oggetto, _ in
             self.oggetti.append(oggetto)
         }
-
+        
        Timer(scene: self)
     }
     
@@ -115,7 +115,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
         if firstBody.node?.name == "player" && secondBody.node?.name == "collectible"{
             let item = secondBody.node as? Collectible
-            item?.action(player: firstBody.node as? PlayableCharacter ?? PlayableCharacter())
+            item?.action(player: firstBody.node as? PlayableCharacter ?? PlayableCharacter(), scene: self)
             
             
             

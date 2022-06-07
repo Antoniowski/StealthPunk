@@ -73,13 +73,32 @@ class YouWonScreen: SKScene{
         label.text = "Misterious burglair manages \nto steal Crown jewels from \nhigh security museum."
         label.position = .init(x: frame.width*0.74, y: frame.height*0.3)
         label.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
+        label.zPosition = 2
         
         timeCounter.fontSize = 25
         timeCounter.fontName = "OldNewspaperTypes"
         timeCounter.preferredMaxLayoutWidth = size.width*0.9
         timeCounter.numberOfLines = 0
         timeCounter.verticalAlignmentMode = SKLabelVerticalAlignmentMode.baseline
-        timeCounter.text = "Time: \(MINUTE): \(SECONDS)"
+        if MINUTE < 10{
+            if SECONDS < 10{
+                timeCounter.text = "Time: 0\(MINUTE): 0\(SECONDS)"
+            }else{
+                timeCounter.text = "Time: 0\(MINUTE): \(SECONDS)"
+                if SECONDS == 60{
+                    timeCounter.text = "Time: 0\(MINUTE): 00"
+                }
+            }
+        }else{
+            if SECONDS < 10{
+                timeCounter.text = "Time: 0\(MINUTE): 0\(SECONDS)"
+            }else{
+                timeCounter.text = "Time: 0\(MINUTE): \(SECONDS)"
+                if SECONDS == 60{
+                    timeCounter.text = "Time: 0\(MINUTE): 00"
+                }
+            }
+        }
         timeCounter.position = .init(x: frame.width*0.74, y: frame.height*0.2)
         timeCounter.zPosition = 3
         timeCounter.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
