@@ -7,6 +7,7 @@
 
 import Foundation
 import SpriteKit
+import SwiftUI
 
 func visionCone(entity: Guard, scene: SKScene){
 //    entity.centerBall()
@@ -110,7 +111,7 @@ func createVisionCone360(entity: Guard, scene: SKScene){
         visualCone.fillColor = .yellow
         visualCone.strokeColor = .yellow
     }
-    visualCone.alpha = 0.35
+    visualCone.alpha = 17
     visualCone.zPosition = entity.zPosition - 1
     visualCone.name = entity.name!+"visualCone"
     
@@ -175,8 +176,9 @@ func createVisionCone(entity: Guard, scene: SKScene){
     } else {
         visualCone.fillColor = .yellow
         visualCone.strokeColor = .yellow
+        
     }
-    visualCone.alpha = 0.35
+    visualCone.alpha = 0.17
     visualCone.zPosition = entity.zPosition - 1
     visualCone.name = entity.name!+"visualCone"
     

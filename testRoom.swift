@@ -15,6 +15,8 @@ let enemyDimensionHeight: Double = 80
 let blockDimension: Int = 60
 
 
+//IN PROVA2 LE GUARDIE TRASLANO
+
 class Piano1: SKScene, PlayableScene, SKPhysicsContactDelegate  {
 
     let guard1: GuardConoGrande = GuardConoGrande(texture: SKTexture(imageNamed: "ConoGrandeFrontF2"), color: .clear, size: CGSize(width: enemyDimensionWidth, height: enemyDimensionHeight))
@@ -25,7 +27,7 @@ class Piano1: SKScene, PlayableScene, SKPhysicsContactDelegate  {
     var delta: TimeInterval = 0.0
     var lastUpdate: TimeInterval?
     
-    let room = Room(.SIMPLE_5, startingPosition: CGPoint(x: 50, y: 50), floor: .FIRST_FLOOR)
+    let room = Room(.SIMPLE_6, startingPosition: CGPoint(x: 50, y: 50), floor: .FIRST_FLOOR)
     
     var scenecamera = SKCameraNode()
     
@@ -60,7 +62,8 @@ class Piano1: SKScene, PlayableScene, SKPhysicsContactDelegate  {
         
         addChild(room)
         
-        player.position = CGPoint(x: player.position.x + CGFloat(9*blocco), y: player.position.y - CGFloat(2*blocco))
+        player.position = CGPoint(x: 0 + Double(2)*Double(blocco) * 0.5, y: 0 - Double(blocco) * 0.5)
+//        player.position = CGPoint(x: player.position.x + CGFloat(9*blocco), y: player.position.y - CGFloat(2*blocco))
         addChild(player)
         player.name = "player"
         player.zPosition = 20
