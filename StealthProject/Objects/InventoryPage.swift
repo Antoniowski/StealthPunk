@@ -16,6 +16,8 @@ class InventoryPage: SKNode{
     var testo1: SKLabelNode = SKLabelNode()
     var valore: SKLabelNode = SKLabelNode()
     
+    var gearsAcquired: SKLabelNode = SKLabelNode()
+        
     private let page1: SKSpriteNode = SKSpriteNode(texture: SKTexture(imageNamed: "page1"), size: CGSize(width: 390*0.8, height: 320*0.8))
     private let page2: SKSpriteNode = SKSpriteNode(texture: SKTexture(imageNamed: "page2"), size: CGSize(width: 390*0.75, height: 320*0.75))
     private let page3: SKSpriteNode = SKSpriteNode(texture: SKTexture(imageNamed: "page3"), size: CGSize(width: 390*0.8, height: 320*0.8))
@@ -35,6 +37,16 @@ class InventoryPage: SKNode{
         page2.zPosition = 1001
         page2.position = .init(x: 130,y: -25)
         
+        gearsAcquired.position = .init(x: -25, y: 45)
+        gearsAcquired.zPosition = 1002
+        gearsAcquired.text = "0"
+        if storage.value(forKey: "gears") != nil{
+            gearsAcquired.text = "\(String(describing: storage.value(forKey: "gears") as! Int))"
+        }
+        gearsAcquired.fontName = "OldNewspaperTypes"
+        gearsAcquired.fontSize = 25
+        gearsAcquired.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
+        
 //        page3.zPosition = 1001
 //        page3.position = .init(x: 150,y: -30)
         
@@ -53,6 +65,7 @@ class InventoryPage: SKNode{
 //        addChild(page3)
         addChild(backgroundImage)
         addChild(backgroundElements)
+        addChild(gearsAcquired)
         
         
     }

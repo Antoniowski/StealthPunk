@@ -12,9 +12,7 @@ import SwiftUI
 class LobbyScene: SKScene, PlayableScene{
     //Variabile che tiene conto se è la prima volta che avvii la partita e che vede se farti vedere o meno il tutorial
     @AppStorage("firstTimePlayingAgainstTheClock") var firstTimePlayingAgainstTheClock: Bool = true
-    
-    var gears: Int = 0
-    
+        
     var delta: TimeInterval = 0
     var lastUpdate: TimeInterval?
     
@@ -45,18 +43,12 @@ class LobbyScene: SKScene, PlayableScene{
     
     private var oggetti: [SKNode] = []
     private var nemici: [SKNode] = []
-    
+        
     
     override func didMove(to view: SKView) {
         self.name = "Lobby"
         currentScene = self
         print("Scena corrente: \(currentScene)")
-        
-        if firstTimePlayingAgainstTheClock == true{
-            storage.set(0, forKey: "gears")
-        }
-        
-        gears = storage.value(forKey: "gears") as! Int
         
         myGameController.setUpGameController()
         self.backgroundColor = .black
@@ -74,6 +66,8 @@ class LobbyScene: SKScene, PlayableScene{
         ambientLight.position = .init(x: 2000, y: 2000)
         ambientLight.falloff = 10
         ambientLight.categoryBitMask = 1|2
+        
+        
         
         addChild(ambientLight)
         
@@ -157,7 +151,7 @@ class LobbyScene: SKScene, PlayableScene{
         
         if firstBody.node?.name == "player" && secondBody.node?.name == "collectible"{
             let item = secondBody.node as? Collectible
-            item?.action(player: firstBody.node as? PlayableCharacter ?? PlayableCharacter())
+            item?.action(player: firstBody.node as? PlayableCharacter ?? PlayableCharacter(), scene: self)
         }
     }
     

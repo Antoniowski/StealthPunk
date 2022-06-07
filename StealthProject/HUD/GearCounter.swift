@@ -17,6 +17,10 @@ class Counter: SKNode{
     
     override init(){
         super.init()
+        if storage.value(forKey: "gears") == nil{
+            storage.set(0, forKey: "gears")
+        }
+        number = storage.value(forKey: "gears") as! Int
         border.zPosition = 1000
         border.size = CGSize (width: 200, height: 75)
         border.position = CGPoint(x: 100, y: 38)

@@ -97,7 +97,7 @@ class Collectible: SKSpriteNode{
     
     
     
-    func action(player: PlayableCharacter){
+    func action(player: PlayableCharacter, scene: SKScene){
         switch type {
         case .COIN:
             player.run(.run {
@@ -173,6 +173,7 @@ class Collectible: SKSpriteNode{
             MINUTE = MINUTE + 1
         case .FINAL:
             player.removeAllActions()
+            scene.removeAction(forKey: "CLOCK")
             self.removeAllActions()
             myMovement = .zero
             myGameController.disconnectController()
@@ -184,6 +185,8 @@ class Collectible: SKSpriteNode{
                 self.run(.move(to: player.position, duration: 1))
                 self.run(.scale(to: 0.05, duration: 1), completion: {
                     self.removeFromParent()
+                    let win = YouWonScreen(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+                    scene.view?.presentScene(win, transition: .fade(withDuration: 2))
                 })
             })
             self.run(.moveBy(x: 0, y: 25, duration: 1.5))
@@ -193,8 +196,10 @@ class Collectible: SKSpriteNode{
     func action(contatore: Counter) {
         if self.type == .COIN {
             contatore.number += 1
+            storage.set(contatore.number, forKey: "gears")
         }
     }
+    
     
     
     

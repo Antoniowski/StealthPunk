@@ -144,7 +144,7 @@ class Piano1: SKScene, PlayableScene, SKPhysicsContactDelegate  {
         
         if firstBody.node?.name == "player" && secondBody.node?.name == "collectible"{
             let item = secondBody.node as? Collectible
-            item?.action(player: firstBody.node as? PlayableCharacter ?? PlayableCharacter())
+            item?.action(player: firstBody.node as? PlayableCharacter ?? PlayableCharacter(), scene: self)
             if item?.getType() == .COIN{
 //                indicatore.run(.moveBy(x: 0, y: -90, duration: 0.5), completion: {
 //                    self.indicatore.run(.sequence([.wait(forDuration: 1.5), .moveBy(x: 0, y: 90, duration: 0.5)]))

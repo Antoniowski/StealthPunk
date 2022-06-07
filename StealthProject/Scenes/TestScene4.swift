@@ -65,6 +65,7 @@ class TestScene4: SKScene, PlayableScene, SKPhysicsContactDelegate {
         scenecamera.position = player.position
         scenecamera.setScale(1)
         
+        arrayOfGuards.removeAll()
         let f = Floor(self, floorType: .LAST_FLOOR)
 
         
@@ -105,7 +106,7 @@ class TestScene4: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
         if firstBody.node?.name == "player" && secondBody.node?.name == "collectible"{
             let item = secondBody.node as? Collectible
-            item?.action(player: firstBody.node as? PlayableCharacter ?? PlayableCharacter())
+            item?.action(player: firstBody.node as? PlayableCharacter ?? PlayableCharacter(), scene: self)
             
             
             
