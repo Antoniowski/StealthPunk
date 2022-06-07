@@ -43,9 +43,7 @@ class LobbyScene: SKScene, PlayableScene{
     
     private var oggetti: [SKNode] = []
     private var nemici: [SKNode] = []
-    
-    var oggetto = Collectible(type: .COIN)
-    
+        
     
     override func didMove(to view: SKView) {
         self.name = "Lobby"
@@ -153,7 +151,7 @@ class LobbyScene: SKScene, PlayableScene{
         
         if firstBody.node?.name == "player" && secondBody.node?.name == "collectible"{
             let item = secondBody.node as? Collectible
-            item?.action(player: firstBody.node as? PlayableCharacter ?? PlayableCharacter())
+            item?.action(player: firstBody.node as? PlayableCharacter ?? PlayableCharacter(), scene: self)
         }
     }
     

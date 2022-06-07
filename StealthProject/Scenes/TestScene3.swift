@@ -17,7 +17,7 @@ class TestScene3: SKScene, PlayableScene, SKPhysicsContactDelegate {
     var delta: TimeInterval = 0.0
     var lastUpdate: TimeInterval?
     
-    var player: PlayableCharacter = Human(texture: SKTexture(imageNamed: "boyFront"), color: .clear, size: CGSize(width: 35, height: 70), noise: 2, speed: 3, strenght: 3)
+    var player: PlayableCharacter = Human()
 
     var luce: SKLightNode = SKLightNode()
 
@@ -61,8 +61,9 @@ class TestScene3: SKScene, PlayableScene, SKPhysicsContactDelegate {
         scenecamera.addChild(indicatore)
         scenecamera.addChild(timer)
         scenecamera.position = player.position
-        scenecamera.setScale(1)
+        scenecamera.setScale(10)
 
+        arrayOfGuards.removeAll()
         let f = Floor(self, floorType: .SECOND_FLOOE)
         
         player.lightingBitMask = 1 | 2
@@ -108,7 +109,7 @@ class TestScene3: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
         if firstBody.node?.name == "player" && secondBody.node?.name == "collectible"{
             let item = secondBody.node as? Collectible
-            item?.action(player: firstBody.node as? PlayableCharacter ?? PlayableCharacter())
+            item?.action(player: firstBody.node as? PlayableCharacter ?? PlayableCharacter(), scene: self)
             
             
             
