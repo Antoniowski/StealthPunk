@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 import SwiftUI
 
-func visionCone(entity: Guard, scene: SKScene){
+func visionCone(entity: Guard, scene: SKScene, timer: TimeCounter){
 //    entity.centerBall()
     
     entity.rayCastingPlayerFound = false
@@ -34,15 +34,15 @@ func visionCone(entity: Guard, scene: SKScene){
         
     if(!entity.getStatus().isHit){
         if(entity.getVisionConeAngle() != 360){
-            visionConeRayCasting(entity: entity, scene: scene)
+            visionConeRayCasting(entity: entity, scene: scene, timer: timer)
         } else {
-            visionConeRayCasting360(entity: entity, scene: scene)
+            visionConeRayCasting360(entity: entity, scene: scene, timer: timer)
         }
 
     }
 }
 
-func visionConeRayCasting360(entity: Guard, scene: SKScene){
+func visionConeRayCasting360(entity: Guard, scene: SKScene, timer: TimeCounter){
     var rayCastingPlayerFound: Bool = false
     
     for index in 0...Int(entity.getVisionConeAngle())-1{
@@ -53,10 +53,10 @@ func visionConeRayCasting360(entity: Guard, scene: SKScene){
     }
     
         
-    createVisionCone360(entity: entity, scene: scene)
+    createVisionCone360(entity: entity, scene: scene, timer: timer)
 }
 
-func visionConeRayCasting(entity: Guard, scene: SKScene){
+func visionConeRayCasting(entity: Guard, scene: SKScene, timer: TimeCounter){
     var rayCastingPlayerFound: Bool = false
     
     let myAngle = entity.getCenterBall().zRotation * 180 / 3.14 + 90
@@ -87,10 +87,10 @@ func visionConeRayCasting(entity: Guard, scene: SKScene){
     
     
     
-    createVisionCone(entity: entity, scene: scene)
+    createVisionCone(entity: entity, scene: scene, timer: timer)
 }
 
-func createVisionCone360(entity: Guard, scene: SKScene){
+func createVisionCone360(entity: Guard, scene: SKScene, timer: TimeCounter){
     var myPath = UIBezierPath()
     
 //    myPath.move(to: entity.arrayOfPoints[0])
@@ -111,7 +111,7 @@ func createVisionCone360(entity: Guard, scene: SKScene){
         visualCone.fillColor = UIColor(red: 255/255, green: 255/255, blue: 120/255, alpha: 1)
         visualCone.strokeColor = UIColor(red: 255/255, green: 255/255, blue: 120/255, alpha: 1)
     }
-    visualCone.alpha = 17
+    visualCone.alpha = 0.2
     visualCone.zPosition = entity.zPosition - 1
     visualCone.name = entity.name!+"visualCone"
     
@@ -126,25 +126,17 @@ func createVisionCone360(entity: Guard, scene: SKScene){
     
     if(entity.rayCastingPlayerFound){
         if(!entity.playerInVisualCone){
-//            entity.parent!.enumerateChildNodes(withName: "*"){node, _ in
-//                if(node.name == entity.name!+"visualCone"){
-//                    let shapeNode = node as! SKShapeNode
-//                    shapeNode.fillColor = UIColor(red: 255/255, green: 255/255, blue: 120/255, alpha: 1)
-//                    shapeNode.strokeColor = UIColor(red: 255/255, green: 255/255, blue: 120/255, alpha: 1)
-//                }
-//            }
             entity.playerInVisualCone = true
             if(moltiplicatoreTempo == 1){
                 moltiplicatoreTempo = moltiplicatoreTempo2
-//                print("MOLTIPLCATORE TEMPO A 2, GUARDIA CERCHIO \(entity.name) e \(entity.position), GIOCATORE: \(posizioneGiocatore)")
+                timer.cerchio1.fillColor = .red
             } else if (moltiplicatoreTempo == moltiplicatoreTempo2){
                 moltiplicatoreTempo = moltiplicatoreTempo3
-//                print("MOLTIPLCATORE TEMPO A 3, GUARDIA CERCHIO \(entity.name) e \(entity.position), GIOCATORE: \(posizioneGiocatore)")
+                timer.cerchio2.fillColor = .red
             } else if (moltiplicatoreTempo == moltiplicatoreTempo3){
                 moltiplicatoreTempo = moltiplicatoreTempo4
-//                print("MOLTIPLCATORE TEMPO A 4, GUARDIA CERCHIO \(entity.name) e \(entity.position), GIOCATORE: \(posizioneGiocatore)")
+                timer.cerchio3.fillColor = .red
             } else if (moltiplicatoreTempo == moltiplicatoreTempo4){
-//                print("MOLTIPLCATORE TEMPO A 5, GUARDIA CERCHIO \(entity.name) e \(entity.position), GIOCATORE: \(posizioneGiocatore)")
                 loseFlag = true
             }
         }
@@ -155,7 +147,7 @@ func createVisionCone360(entity: Guard, scene: SKScene){
     
 }
 
-func createVisionCone(entity: Guard, scene: SKScene){
+func createVisionCone(entity: Guard, scene: SKScene, timer: TimeCounter){
     var myPath = UIBezierPath()
     
     myPath.move(to: entity.position)
@@ -178,7 +170,7 @@ func createVisionCone(entity: Guard, scene: SKScene){
         visualCone.strokeColor = UIColor(red: 255/255, green: 255/255, blue: 120/255, alpha: 1)
         
     }
-    visualCone.alpha = 0.17
+    visualCone.alpha = 0.2
     visualCone.zPosition = entity.zPosition - 1
     visualCone.name = entity.name!+"visualCone"
     
@@ -193,25 +185,17 @@ func createVisionCone(entity: Guard, scene: SKScene){
     
     if(entity.rayCastingPlayerFound){
         if(!entity.playerInVisualCone){
-//            entity.parent!.enumerateChildNodes(withName: "*"){node, _ in
-//                if(node.name == entity.name!+"visualCone"){
-//                    let shapeNode = node as! SKShapeNode
-//                    shapeNode.fillColor = UIColor(red: 255/255, green: 255/255, blue: 120/255, alpha: 1)
-//                    shapeNode.strokeColor = UIColor(red: 255/255, green: 255/255, blue: 120/255, alpha: 1)
-//                }
-//            }
             entity.playerInVisualCone = true
             if(moltiplicatoreTempo == 1){
                 moltiplicatoreTempo = moltiplicatoreTempo2
-//                print("MOLTIPLCATORE TEMPO A 2, GUARDIA \(entity.name) e \(entity.position), GIOCATORE: \(posizioneGiocatore)")
+                timer.cerchio1.fillColor = .red
             } else if (moltiplicatoreTempo == moltiplicatoreTempo2){
                 moltiplicatoreTempo = moltiplicatoreTempo3
-//                print("MOLTIPLCATORE TEMPO A 3, GUARDIA \(entity.name) e \(entity.position), GIOCATORE: \(posizioneGiocatore)")
+                timer.cerchio2.fillColor = .red
             } else if (moltiplicatoreTempo == moltiplicatoreTempo3){
+                timer.cerchio3.fillColor = .red
                 moltiplicatoreTempo = moltiplicatoreTempo4
-//                print("MOLTIPLCATORE TEMPO A 4, GUARDIA \(entity.name) e \(entity.position), GIOCATORE: \(posizioneGiocatore)")
             } else if (moltiplicatoreTempo == moltiplicatoreTempo4){
-//                print("MOLTIPLCATORE TEMPO A 5, GUARDIA \(entity.name) e \(entity.position), GIOCATORE: \(posizioneGiocatore)")
                 loseFlag = true
             }
         }
