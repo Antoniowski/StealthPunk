@@ -125,11 +125,11 @@ class Room: SKNode {
         self.physicsBody?.affectedByGravity = false
         switch archetype {
         case .FIRST:
-            door = DoorPosition(UP: true, DOWN: false, RIGHT: false, LEFT: false)
+            door = DoorPosition(UP: true, DOWN: true, RIGHT: false, LEFT: false)
             tipe = .START
-            numRighe = simple1Matrix[1].count
-            numColonne = simple1Matrix.count
-            stanza = simple1Matrix
+            numRighe = simple1Iniziale[1].count
+            numColonne = simple1Iniziale.count
+            stanza = simple1Iniziale
             pavimento = simple1MatrixPavimento
             nemici = []
             setTextures(tipo: floor)
@@ -138,21 +138,21 @@ class Room: SKNode {
         case .FIRST_2:
             door = DoorPosition(UP: true, DOWN: true, RIGHT: false, LEFT: false)
             tipe = .START
-            numRighe = simple1Matrix[1].count
-            numColonne = simple1Matrix.count
-            stanza = simple1Matrix
+            numRighe = simple1Iniziale[1].count
+            numColonne = simple1Iniziale.count
+            stanza = simple1Iniziale
             pavimento = simple1MatrixPavimento
             nemici = []
             setTextures(tipo: floor)
             createRoom()
             addRugsAndLights()
         case .FIRST_3:
-            door = DoorPosition(UP: true, DOWN: true, RIGHT: true, LEFT: false)
+            door = DoorPosition(UP: false, DOWN: false, RIGHT: true, LEFT: true)
             tipe = .START
-            numRighe = simple1Matrix[1].count
-            numColonne = simple1Matrix.count
-            stanza = simple1Matrix
-            pavimento = simple1MatrixPavimento
+            numRighe = simple3Iniziale[1].count
+            numColonne = simple3Iniziale.count
+            stanza = simple3Iniziale
+            pavimento = simple3MatrixPavimento
             nemici = []
             setTextures(tipo: floor)
             createRoom()
@@ -160,16 +160,16 @@ class Room: SKNode {
         case .FIRST_4:
             door = DoorPosition(UP: true, DOWN: true, RIGHT: true, LEFT: true)
             tipe = .START
-            numRighe = simple1Matrix[1].count
-            numColonne = simple1Matrix.count
-            stanza = simple1Matrix
-            pavimento = simple1MatrixPavimento
+            numRighe = simple4Iniziale[1].count
+            numColonne = simple4Iniziale.count
+            stanza = simple4Iniziale
+            pavimento = simple4MatrixPavimento
             nemici = []
             setTextures(tipo: floor)
             createRoom()
             addRugsAndLights()
         case .SIMPLE_1:
-            door = DoorPosition(UP: true, DOWN: true, RIGHT: false, LEFT: false)
+            door = DoorPosition(UP: true, DOWN: false, RIGHT: true, LEFT: true)
             tipe = .NORMAL
             numRighe = simple1Matrix[1].count
             numColonne = simple1Matrix.count

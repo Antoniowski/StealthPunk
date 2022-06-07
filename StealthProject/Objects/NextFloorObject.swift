@@ -65,6 +65,7 @@ class NextFloor: UsableObject{
         switch Floor{
             
         case .FIRST_FLOOR:
+            finale = true
             passaggio1 = false
             let scene = TestScene3(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
             view.presentScene(scene, transition: .fade(withDuration: 2))
@@ -73,6 +74,7 @@ class NextFloor: UsableObject{
             let scene = TestScene4(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
             view.presentScene(scene, transition: .fade(withDuration: 2))
             passaggio1 = true
+            finale = true
             
         case .LAST_FLOOR:
             print ("hai vinto 2 volte wow wow ")
