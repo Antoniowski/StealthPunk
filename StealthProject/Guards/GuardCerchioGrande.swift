@@ -13,6 +13,8 @@ class GuardCerchioGrande: Guard{
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
         super.init(texture: texture, color: color, size: size, strength: 3, speed: 150, visionConeRadius: 150, visionConeAngle: 360)
         setAnimationsArray()
+        selfColliderDimensionWidth = dimensioneColliderGuardiaCerchioGrandeWidth
+        selfColliderDimnesionHeight = dimensioneColliderGuardiaCerchioGrandeHeight
     }
     
     required init?(coder aDecoder: NSCoder) {

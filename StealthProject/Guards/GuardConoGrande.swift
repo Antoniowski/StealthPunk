@@ -16,6 +16,8 @@ class GuardConoGrande: Guard{
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
         super.init(texture: texture, color: color, size: size, strength: 3, speed: 150, visionConeRadius: 200, visionConeAngle: 60)
         setAnimationsArray()
+        selfColliderDimensionWidth = dimensioneColliderGuardiaConoGrandeWidth
+        selfColliderDimnesionHeight = dimensioneColliderGuardiaConoGrandeHeight
     }
     
     required init?(coder aDecoder: NSCoder) {

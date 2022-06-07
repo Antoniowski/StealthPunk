@@ -14,12 +14,13 @@ var SECONDS: Int = 0
 class TimeCounter: SKNode{
     private var border: SKSpriteNode = SKSpriteNode(imageNamed: "frameFill")
     var etichetta: SKLabelNode = SKLabelNode()
+    
     var allarmeLivello1: SKSpriteNode = SKSpriteNode(imageNamed: "siren1")
     var allarmeLivello2: SKSpriteNode = SKSpriteNode(imageNamed: "siren1")
     var allarmeLivello3: SKSpriteNode = SKSpriteNode(imageNamed: "siren1")
-//    var cerchio1: SKShapeNode = SKShapeNode(circleOfRadius: 15)
-//    var cerchio2: SKShapeNode = SKShapeNode(circleOfRadius: 15)
-//    var cerchio3: SKShapeNode = SKShapeNode(circleOfRadius: 15)
+
+    var proiettile1: SKSpriteNode = SKSpriteNode(imageNamed: "bullet")
+    var proiettile2: SKSpriteNode = SKSpriteNode(imageNamed: "bullet")
     
     override init() {
         super.init()
@@ -32,6 +33,16 @@ class TimeCounter: SKNode{
         etichetta.fontSize = 40
         etichetta.fontName = "Victorian Parlor Vintage Alternate_free"
         etichetta.fontColor = .white
+        if (moltiplicatoreTempo == moltiplicatoreTempo2){
+            allarmeLivello1.run(.setTexture(SKTexture(imageNamed: "siren2")))
+        } else if (moltiplicatoreTempo == moltiplicatoreTempo3) {
+            allarmeLivello1.run(.setTexture(SKTexture(imageNamed: "siren2")))
+            allarmeLivello2.run(.setTexture(SKTexture(imageNamed: "siren2")))
+        } else if (moltiplicatoreTempo == moltiplicatoreTempo4) {
+            allarmeLivello1.run(.setTexture(SKTexture(imageNamed: "siren2")))
+            allarmeLivello2.run(.setTexture(SKTexture(imageNamed: "siren2")))
+            allarmeLivello3.run(.setTexture(SKTexture(imageNamed: "siren2")))
+        }
         allarmeLivello1.size = CGSize(width: 60, height: 60)
         allarmeLivello1.position = CGPoint(x: 50, y: -32)
         allarmeLivello1.zPosition = 1000

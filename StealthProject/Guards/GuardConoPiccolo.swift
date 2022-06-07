@@ -13,6 +13,8 @@ class GuardConoPiccolo: Guard{
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
         super.init(texture: texture, color: color, size: size, strength: 3, speed: 150, visionConeRadius: 100, visionConeAngle: 50)
         setAnimationsArray()
+        selfColliderDimensionWidth = dimensioneColliderGuardiaConoPiccoloWidth
+        selfColliderDimnesionHeight = dimensioneColliderGuardiaConoPiccoloHeight
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -120,6 +120,10 @@ class Guard: SKSpriteNode{
     
     //    STUNNED ANIMATION
     var stunnedAnimation: [SKTexture] = []
+    
+    // DIMENSIONI COLLIDER
+    var selfColliderDimensionWidth: Double = 0
+    var selfColliderDimnesionHeight: Double = 0
         
     var roomReference = SKNode()
     
@@ -444,6 +448,10 @@ class Guard: SKSpriteNode{
             
             if(!setContinousDEADTexture){
                 setContinousDEADTexture = true
+                self.physicsBody = SKPhysicsBody()
+                self.physicsBody?.restitution = 0
+                self.physicsBody?.affectedByGravity = false
+                self.physicsBody?.isDynamic = false
                 self.run(.sequence([.animate(with: stunnedAnimation, timePerFrame: 0.15),
                                     .setTexture(stunnedAnimation[2])
                 ]))
@@ -501,6 +509,12 @@ class Guard: SKSpriteNode{
                 }
                 
                 if status.isStunned == false{
+                    
+                    self.physicsBody = SKPhysicsBody()
+                    self.physicsBody?.restitution = 0
+                    self.physicsBody?.affectedByGravity = false
+                    self.physicsBody?.isDynamic = false
+                    
                     lastAnimationBool = false
                     status.isStunned = true
                     if let action = self.invisibleBall.action(forKey: "guardPath"){
@@ -531,6 +545,13 @@ class Guard: SKSpriteNode{
                                             }
                                             self.setStunned(false)
                                             self.setHit(false)
+                                            
+                                            self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.selfColliderDimensionWidth, height: self.selfColliderDimnesionHeight))
+                                            self.physicsBody?.isDynamic = false
+                                            self.physicsBody?.restitution = 0
+                                            self.physicsBody?.affectedByGravity = false
+                                            self.physicsBody?.categoryBitMask = ColliderType.ENEMY.rawValue
+                                            self.physicsBody?.contactTestBitMask = ColliderType.PLAYER.rawValue
                                         }
 
                     ]))

@@ -15,6 +15,9 @@ import Foundation
 import SpriteKit
 import SwiftUI
 
+//Variabile che contiene il numero di proiettili massimo che il giocatore può sparare
+var ammo: Int = 2
+
 //Variabile che tiene conto della morte/perdita della partita
 var loseFlag: Bool = false
 

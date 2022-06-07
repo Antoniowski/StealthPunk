@@ -42,6 +42,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     
     
     override func didMove(to view: SKView) {
+        ammo = 2
         
         passaggio1 = false
 
@@ -134,7 +135,6 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
 //            ball.name = "BallTrajectory"
 //            addChild(ball)
 //        }
-        print(arrayOfTouches)
         shootProjectile(player: player, scene: self)
     }
     
