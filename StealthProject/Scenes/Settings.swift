@@ -49,6 +49,10 @@ class SettingsPage: SKScene{
         backgroundImage.size = .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         backgroundImage.position = .init(x: frame.width/2, y: frame.height/2)
         
+        self.run(.repeatForever(.sequence([.wait(forDuration: .random(in: 5...20)), .run {
+            music.starsSound2(filenamed: music.horse)
+        }])))
+        
         title.fontName = "OldLondon"
         title.fontSize = 70
         title.text = "StealthPunk"
@@ -246,8 +250,10 @@ class SettingsPage: SKScene{
             
             if(music.musicVolume < 1) {
                 music.musicVolume += 0.2
+                music.musicEffect.volume += 0.2
                 if music.musicVolume > 1{
                     music.musicVolume = 1
+                    music.musicEffect.volume = 1
                 }
             }
         }
@@ -255,8 +261,10 @@ class SettingsPage: SKScene{
             touchedNode.alpha = 1
             if(music.musicVolume > 0) {
                 music.musicVolume -= 0.2
+                music.musicEffect.volume -= 0.2
                 if music.musicVolume < 0{
                     music.musicVolume = 0
+                    music.musicEffect.volume = 0
                 }
             }
         }

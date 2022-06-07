@@ -73,7 +73,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         scenecamera.addChild(timer)
 
         scenecamera.position = player.position
-        scenecamera.setScale(10)
+        scenecamera.setScale(1)
         
         let f = Floor(self, floorType: .FIRST_FLOOR)
         
@@ -103,6 +103,41 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
        Timer(scene: self)
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first else {
+            return
+        }
+        let touchLocation = touch.location(in: self)
+        let touchedNode = atPoint(touchLocation)
+        
+        arrayOfTouches.removeAll()
+        arrayOfTouches.append(touchLocation)
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            arrayOfTouches.append(touch.location(in: self))
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        enumerateChildNodes(withName: "BallTrajectory"){
+//            node, _ in
+//            node.removeFromParent()
+//        }
+//        for item in arrayOfTouches{
+//            let ball = SKShapeNode(circleOfRadius: 5)
+//            ball.zPosition = 950
+//            ball.position = item
+//            ball.strokeColor = .red
+//            ball.fillColor = .red
+//            ball.name = "BallTrajectory"
+//            addChild(ball)
+//        }
+        print(arrayOfTouches)
+        shootProjectile(player: player, scene: self)
+    }
+    
     
     func didBegin(_ contact: SKPhysicsContact) {
         var firstBody = SKPhysicsBody()
@@ -114,15 +149,21 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         }else if contact.bodyB.node?.name == "player"{
             firstBody = contact.bodyB
             secondBody = contact.bodyA
+        } else if (contact.bodyA.node?.name != "player" && contact.bodyB.node?.name != "player" ){
+            if contact.bodyA.node?.name == "projectile"{
+                firstBody = contact.bodyA
+                secondBody = contact.bodyB
+            }else if contact.bodyB.node?.name == "projectile"{
+                firstBody = contact.bodyB
+                secondBody = contact.bodyA
+            }
         }
         
         
         if firstBody.node?.name == "player" && secondBody.node?.name == "collectible"{
             let item = secondBody.node as? Collectible
             item?.action(player: firstBody.node as? PlayableCharacter ?? PlayableCharacter(), scene: self)
-            
-            
-            
+
             if item?.getType() == .COIN{
                 indicatore.run(.moveTo(y: UIScreen.main.bounds.height*0.29, duration: 0.5), completion: {
                     self.indicatore.run(.sequence([.wait(forDuration: 1.5), .moveTo(y: UIScreen.main.bounds.height*0.55, duration: 0.5)]))
@@ -140,7 +181,6 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
                 })
             }
             secondBody.node?.removeFromParent()
-            
         }
         
         //PER FAR APPARIRE LE STANZE
@@ -167,6 +207,18 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
             let oggetto = secondBody.node as? NextFloor
             oggetto?.loadScene(self.view!, Floor: .FIRST_FLOOR)
         }
+        
+        
+        
+        if firstBody.node?.name == "projectile" && secondBody.node?.physicsBody?.categoryBitMask == ColliderType.WALL.rawValue {
+            firstBody.node?.removeFromParent()
+        }
+        if firstBody.node?.name == "projectile" && secondBody.node?.physicsBody?.categoryBitMask == ColliderType.ENEMY.rawValue {
+            firstBody.node?.removeFromParent()
+            let corpoGuardia: Guard = secondBody.node as! Guard
+            corpoGuardia.setDead(true)
+        }
+        
     }
     
     

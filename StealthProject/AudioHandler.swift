@@ -34,9 +34,12 @@ class Music{
     let hit02: String = "hit2.wav"
     let failedHit01: String = "failedImpact.wav"
     let whoosh: String = "whoosh.wav"
+    let menu: String = "MenuSound.wav"
+    let horse: String = "Horse.mp3"
     
     var soundEffects : AVAudioPlayer!
     var musicEffect : AVAudioPlayer!
+    var soundEffects2: AVAudioPlayer!
     
     var soundOn : Bool = true
     
@@ -62,13 +65,30 @@ class Music{
         }
     }
     
+    func starsSound2( filenamed: String){
+        if(self.soundOn){
+            let resourceUrl = Bundle.main.url(forResource:
+             filenamed , withExtension: nil)
+            do {
+              try soundEffects2 = AVAudioPlayer(contentsOf: resourceUrl!)
+                soundEffects2.volume = volume
+                soundEffects2.prepareToPlay()
+                soundEffects2.play()
+              } catch {
+                print("Could not create audio player!")
+            return
+            }
+//            self.soundEffects.play()
+        }
+    }
+    
     func startMusic( filenamed: String){
         if(self.audioOn){
             let resourceUrl = Bundle.main.url(forResource:
              filenamed , withExtension: nil)
             do {
               try musicEffect = AVAudioPlayer(contentsOf: resourceUrl!)
-                musicEffect.volume = 0.3
+                musicEffect.volume = musicVolume
                 musicEffect.numberOfLoops = -1
                 musicEffect.prepareToPlay()
                 musicEffect.play()
@@ -82,6 +102,17 @@ class Music{
     
     func stopSound(){
         soundEffects.stop()
+    }
+    
+    func stopEffect2(){
+        guard soundEffects2 != nil else{
+            return
+        }
+        soundEffects2.stop()
+    }
+    
+    func stopMusic(){
+        musicEffect.stop()
     }
     
     func muteSound(){

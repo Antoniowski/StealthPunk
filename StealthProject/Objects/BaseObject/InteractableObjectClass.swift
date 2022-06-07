@@ -44,6 +44,8 @@ class InteractableObject: SKSpriteNode{
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.isDynamic = false
         self.physicsBody?.allowsRotation = false
+        self.physicsBody?.categoryBitMask = ColliderType.WALL.rawValue
+        self.physicsBody?.collisionBitMask = ColliderType.PLAYER.rawValue
     }
     
     func action(){
