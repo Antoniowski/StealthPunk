@@ -14,9 +14,12 @@ var SECONDS: Int = 0
 class TimeCounter: SKNode{
     private var border: SKSpriteNode = SKSpriteNode(imageNamed: "frameFill")
     var etichetta: SKLabelNode = SKLabelNode()
-    var cerchio1: SKShapeNode = SKShapeNode(circleOfRadius: 15)
-    var cerchio2: SKShapeNode = SKShapeNode(circleOfRadius: 15)
-    var cerchio3: SKShapeNode = SKShapeNode(circleOfRadius: 15)
+    var allarmeLivello1: SKSpriteNode = SKSpriteNode(imageNamed: "siren1")
+    var allarmeLivello2: SKSpriteNode = SKSpriteNode(imageNamed: "siren1")
+    var allarmeLivello3: SKSpriteNode = SKSpriteNode(imageNamed: "siren1")
+//    var cerchio1: SKShapeNode = SKShapeNode(circleOfRadius: 15)
+//    var cerchio2: SKShapeNode = SKShapeNode(circleOfRadius: 15)
+//    var cerchio3: SKShapeNode = SKShapeNode(circleOfRadius: 15)
     
     override init() {
         super.init()
@@ -29,21 +32,18 @@ class TimeCounter: SKNode{
         etichetta.fontSize = 40
         etichetta.fontName = "Victorian Parlor Vintage Alternate_free"
         etichetta.fontColor = .white
-        cerchio1.strokeColor = .brown
-        cerchio1.fillColor = .systemGray2
-        cerchio1.position = CGPoint(x: 50, y: -25)
-        cerchio1.zPosition = 1000
-        cerchio2.strokeColor = .brown
-        cerchio2.fillColor = .systemGray2
-        cerchio2.position = CGPoint(x: 100, y: -25)
-        cerchio2.zPosition = 1000
-        cerchio3.strokeColor = .brown
-        cerchio3.fillColor = .systemGray2
-        cerchio3.position = CGPoint(x: 150, y: -25)
-        cerchio3.zPosition = 1000
-        addChild(cerchio1)
-        addChild(cerchio2)
-        addChild(cerchio3)
+        allarmeLivello1.size = CGSize(width: 60, height: 60)
+        allarmeLivello1.position = CGPoint(x: 50, y: -32)
+        allarmeLivello1.zPosition = 1000
+        allarmeLivello2.size = CGSize(width: 60, height: 60)
+        allarmeLivello2.position = CGPoint(x: 100, y: -32)
+        allarmeLivello2.zPosition = 1000
+        allarmeLivello3.size = CGSize(width: 60, height: 56)
+        allarmeLivello3.position = CGPoint(x: 150, y: -32)
+        allarmeLivello3.zPosition = 1000
+        addChild(allarmeLivello1)
+        addChild(allarmeLivello2)
+        addChild(allarmeLivello3)
         addChild(border)
         addChild(etichetta)
     }

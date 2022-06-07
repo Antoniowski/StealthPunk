@@ -129,13 +129,13 @@ func createVisionCone360(entity: Guard, scene: SKScene, timer: TimeCounter){
             entity.playerInVisualCone = true
             if(moltiplicatoreTempo == 1){
                 moltiplicatoreTempo = moltiplicatoreTempo2
-                timer.cerchio1.fillColor = .red
+                timer.allarmeLivello1.run(.setTexture(SKTexture(imageNamed: "siren2")))
             } else if (moltiplicatoreTempo == moltiplicatoreTempo2){
                 moltiplicatoreTempo = moltiplicatoreTempo3
-                timer.cerchio2.fillColor = .red
+                timer.allarmeLivello2.run(.setTexture(SKTexture(imageNamed: "siren2")))
             } else if (moltiplicatoreTempo == moltiplicatoreTempo3){
                 moltiplicatoreTempo = moltiplicatoreTempo4
-                timer.cerchio3.fillColor = .red
+                timer.allarmeLivello3.run(.setTexture(SKTexture(imageNamed: "siren2")))
             } else if (moltiplicatoreTempo == moltiplicatoreTempo4){
                 loseFlag = true
             }
@@ -188,12 +188,12 @@ func createVisionCone(entity: Guard, scene: SKScene, timer: TimeCounter){
             entity.playerInVisualCone = true
             if(moltiplicatoreTempo == 1){
                 moltiplicatoreTempo = moltiplicatoreTempo2
-                timer.cerchio1.fillColor = .red
+                timer.allarmeLivello1.run(.setTexture(SKTexture(imageNamed: "siren2")))
             } else if (moltiplicatoreTempo == moltiplicatoreTempo2){
                 moltiplicatoreTempo = moltiplicatoreTempo3
-                timer.cerchio2.fillColor = .red
+                timer.allarmeLivello2.run(.setTexture(SKTexture(imageNamed: "siren2")))
             } else if (moltiplicatoreTempo == moltiplicatoreTempo3){
-                timer.cerchio3.fillColor = .red
+                timer.allarmeLivello3.run(.setTexture(SKTexture(imageNamed: "siren2")))
                 moltiplicatoreTempo = moltiplicatoreTempo4
             } else if (moltiplicatoreTempo == moltiplicatoreTempo4){
                 loseFlag = true
