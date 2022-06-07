@@ -21,13 +21,14 @@ class Piano1: SKScene, PlayableScene, SKPhysicsContactDelegate  {
 
     let guard1: GuardConoGrande = GuardConoGrande(texture: SKTexture(imageNamed: "ConoGrandeFrontF2"), color: .clear, size: CGSize(width: enemyDimensionWidth, height: enemyDimensionHeight))
     
+    var timer = TimeCounter()
     
     
     
     var delta: TimeInterval = 0.0
     var lastUpdate: TimeInterval?
     
-    let room = Room(.SIMPLE_6, startingPosition: CGPoint(x: 50, y: 50), floor: .FIRST_FLOOR)
+    let room = Room(.SIMPLE_4, startingPosition: CGPoint(x: 50, y: 50), floor: .FIRST_FLOOR)
     
     var scenecamera = SKCameraNode()
     
@@ -219,7 +220,7 @@ class Piano1: SKScene, PlayableScene, SKPhysicsContactDelegate  {
         }
         
         for guardia in arrayOfGuards{
-            visionCone(entity: guardia, scene: self)
+            visionCone(entity: guardia, scene: self, timer: timer)
             guardia.checkState(point: player.position, deltaTime: delta, scene: self)
         }
     }
