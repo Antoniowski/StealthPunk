@@ -22,6 +22,9 @@ class YouWonScreen: SKScene{
     private var immagine: SKSpriteNode = SKSpriteNode(imageNamed: "goodEnding")
     
     override func didMove(to view: SKView) {
+        
+        moltiplicatoreTempo = 1
+        
         backgroundImage.size = .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         backgroundImage.position = .init(x: frame.width/2, y: frame.height/2)
         
