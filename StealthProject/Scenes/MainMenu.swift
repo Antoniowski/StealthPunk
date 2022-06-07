@@ -26,6 +26,12 @@ class MainMenu: SKScene{
         backgroundImage.size = .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
         backgroundImage.position = .init(x: frame.width/2, y: frame.height/2)
         
+        music.startMusic(filenamed: music.menu)
+        
+        self.run(.repeatForever(.sequence([.wait(forDuration: .random(in: 14...20)), .run {
+            music.starsSound2(filenamed: music.horse)
+        }])))
+        
         title.fontName = "OldLondon"
         title.fontSize = 70
         title.text = "StealthPunk"
@@ -96,6 +102,8 @@ class MainMenu: SKScene{
         let touchedNode = atPoint(touchLocation)
 
         if touchedNode.name != "credits" && touchedNode.name != "settings" && touchedNode.name != "menu" && subtitle.text == "MAIN MENU"{
+            music.stopMusic()
+            music.stopEffect2()
             let lobby = LobbyScene(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
             view?.presentScene(lobby, transition: .fade(withDuration: 3))
         }
