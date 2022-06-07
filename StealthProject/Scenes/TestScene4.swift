@@ -191,7 +191,7 @@ class TestScene4: SKScene, PlayableScene, SKPhysicsContactDelegate {
         }
         
         for guardia in arrayOfGuards{
-            visionCone(entity: guardia, scene: self)
+            visionCone(entity: guardia, scene: self, timer: timer)
             guardia.checkState(point: player.position, deltaTime: delta, scene: self)
         }
 
