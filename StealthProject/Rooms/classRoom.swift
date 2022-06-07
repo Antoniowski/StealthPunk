@@ -125,7 +125,7 @@ class Room: SKNode {
         self.physicsBody?.affectedByGravity = false
         switch archetype {
         case .FIRST:
-            door = DoorPosition(UP: true, DOWN: false, RIGHT: false, LEFT: false)
+            door = DoorPosition(UP: true, DOWN: true, RIGHT: false, LEFT: false)
             tipe = .START
             numRighe = simple1Iniziale[1].count
             numColonne = simple1Iniziale.count
@@ -147,7 +147,7 @@ class Room: SKNode {
             createRoom()
             addRugsAndLights()
         case .FIRST_3:
-            door = DoorPosition(UP: true, DOWN: true, RIGHT: true, LEFT: false)
+            door = DoorPosition(UP: false, DOWN: false, RIGHT: true, LEFT: true)
             tipe = .START
             numRighe = simple3Iniziale[1].count
             numColonne = simple3Iniziale.count
@@ -169,7 +169,7 @@ class Room: SKNode {
             createRoom()
             addRugsAndLights()
         case .SIMPLE_1:
-            door = DoorPosition(UP: true, DOWN: true, RIGHT: false, LEFT: false)
+            door = DoorPosition(UP: true, DOWN: false, RIGHT: true, LEFT: true)
             tipe = .NORMAL
             numRighe = simple1Matrix[1].count
             numColonne = simple1Matrix.count

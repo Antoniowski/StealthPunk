@@ -48,6 +48,9 @@ class TestScene4: SKScene, PlayableScene, SKPhysicsContactDelegate {
         physicsWorld.contactDelegate = self
         camera = scenecamera
         
+        finale = false
+
+        
         luce.position = .init(x: 2000, y: 2000)
         
         
@@ -63,7 +66,7 @@ class TestScene4: SKScene, PlayableScene, SKPhysicsContactDelegate {
         scenecamera.addChild(timer)
 
         scenecamera.position = player.position
-        scenecamera.setScale(1)
+        scenecamera.setScale(10)
         
         arrayOfGuards.removeAll()
         let f = Floor(self, floorType: .LAST_FLOOR)
