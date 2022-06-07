@@ -243,7 +243,7 @@ class Floor{
                                 scene.addChild(newRoom)
                                     finale = true
                             }
-                            if(!passaggio1){
+                            else if(!passaggio1){
                             let type = STANZE_FINALI_U.randomElement()
                             let newRoom = Room(type ?? .SCAMBIO3, startingPosition: CGPoint(x: door.1.x, y: door.1.y), floor: floorType)
                             newRoom.position.x -= ((newRoom.getUpDoorPosition().x - door.1.x))
