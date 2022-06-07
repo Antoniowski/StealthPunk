@@ -523,7 +523,7 @@ let simple2MatrixPavimento: [[Int]] =
 let simple3Matrix: [[Int]] =
     [[2,  1,  1,  1,  1,  1,  3,  0,  0,  0,  0],
      [9,  6,  6,  6,  6, 40,  5,  0,  0,  0,  0],
-     [1,  1,  1,  4,  6,  6,  6,  1,  1,  1,  3],
+     [1,  1,  1,  4,  6,  6,  31,  1,  1,  1,  3],
      [0,  0,  0,  4, 12,  6,  6,  6,  6,  6, 10],
      [0,  0,  0,  4, 14,  6,  5,  1,  1,  1,  1],
      [0,  0,  0,  4,  6,  6,  5,  0,  0,  0,  0],
@@ -729,10 +729,10 @@ let STANZE_D_NO_SX : [RoomArchetype] = [.SIMPLE_1, .SIMPLE_2]
 let STANZE_R_NO_UP : [RoomArchetype] = [.SIMPLE_3, .SIMPLE_5, .SIMPLE_7]
 let STANZE_L_NO_UP : [RoomArchetype] = [.SIMPLE_3, .SIMPLE_6, .SIMPLE_7]
  
-let STANZE_U_1DOOR: [RoomArchetype] = [.PROVA1, .PROVA1, .PROVA1, .PROVA1, .PROVA1POWERUP]
-let STANZE_R_1DOOR: [RoomArchetype] = [.PROVA4,.PROVA4,.PROVA4,.PROVA4, .PROVA4POWERUP]
-let STANZE_L_1DOOR: [RoomArchetype] = [.PROVA3,.PROVA3,.PROVA3,.PROVA3, .PROVA3POWERUP]
-let STANZE_D_1DOOR: [RoomArchetype] = [.PROVA2,.PROVA2,.PROVA2,.PROVA2, .PROVA2POWERUP]
+let STANZE_U_1DOOR: [RoomArchetype] = [.PROVA1, .PROVA1, .PROVA1POWERUP]
+let STANZE_R_1DOOR: [RoomArchetype] = [.PROVA4, .PROVA4, .PROVA4POWERUP]
+let STANZE_L_1DOOR: [RoomArchetype] = [.PROVA3, .PROVA3, .PROVA3POWERUP]
+let STANZE_D_1DOOR: [RoomArchetype] = [.PROVA2, .PROVA2, .PROVA2POWERUP]
 
 let STANZE_FINALI_D: [RoomArchetype] = [.SCAMBIO1]
 let STANZE_FINALI_L: [RoomArchetype] = [.SCAMBIO2]

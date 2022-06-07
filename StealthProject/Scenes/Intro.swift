@@ -30,7 +30,10 @@ class Intro: SKScene{
         logo.alpha = 0
         border.alpha = 0
         
-        logo.run(animazione)
+        logo.run(animazione, completion: {
+            let menu = MainMenu(size: .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+            view.presentScene(menu, transition: .fade(withDuration: 2))
+        })
         border.run(animazione)
         
         addChild(border)

@@ -76,7 +76,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         runCounter += 1
 
         
-        luce.ambientColor = .init(red: 0.624, green: 0.624, blue: 0.914, alpha: 0.40) // PER LE PARTI SCURE - GIARDINO
+        luce.ambientColor = .init(red: 0.624, green: 0.624, blue: 0.914, alpha: 0.5) // PER LE PARTI SCURE - GIARDINO
 //        luce.ambientColor = .init(red: 0.6, green: 0.6, blue: 0.75, alpha: 0.15)
 
         luce.falloff = 10

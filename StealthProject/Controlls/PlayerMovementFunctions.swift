@@ -123,6 +123,7 @@ extension PlayableScene{
                             let lightSwitch = usable as? LightSwitch
                             lightSwitch?.action(scene)
                         case .CHEST:
+                            music.starsSound(filenamed: music.panca)
                             let chest = usable as? Chest
                             chest?.action(scene: scene)
                         case .TAVERNA_DOOR:

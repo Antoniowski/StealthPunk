@@ -14,7 +14,7 @@ class TestScene4: SKScene, PlayableScene, SKPhysicsContactDelegate {
     var delta: TimeInterval = 0.0
     var lastUpdate: TimeInterval?
     
-    var player: PlayableCharacter = Human(texture: SKTexture(imageNamed: "boyFront"), color: .clear, size: CGSize(width: 35, height: 70), noise: 2, speed: 3, strenght: 3)
+    var player: PlayableCharacter = Human()
     
     var luce: SKLightNode = SKLightNode()
     
