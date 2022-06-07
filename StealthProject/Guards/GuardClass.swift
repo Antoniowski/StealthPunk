@@ -299,62 +299,62 @@ class Guard: SKSpriteNode{
         } else if spriteAngle > pi {
             spriteAngle -= 2*pi
         }
-        
+                
         
         if Double(spriteAngle) < pi/8 && Double(spriteAngle) > -pi/8{
             if self.facingDirection != .UP{
+                movingDirectionBuffer = .NONE
                 self.facingDirection = .UP
                 self.currentIdleDirectionTexture = self.backTexture
-//                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrandeBackF1")
                 self.run(.setTexture(currentIdleDirectionTexture))
             }
         }else if Double(spriteAngle) >= pi/8 && Double(spriteAngle) <= 3*pi/8{
             if self.facingDirection != .UP_LEFT{
+                movingDirectionBuffer = .NONE
                 self.facingDirection = .UP_LEFT
                 self.currentIdleDirectionTexture = self.halfBackLTexture
-//                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrande3:4BackMirrorF1")
                 self.run(.setTexture(currentIdleDirectionTexture))
             }
         }else if Double(spriteAngle) > 3*pi/8 && Double(spriteAngle) < 5*pi/8{
             if self.facingDirection != .LEFT{
+                movingDirectionBuffer = .NONE
                 self.facingDirection = .LEFT
                 self.currentIdleDirectionTexture = self.sideLTexture
-//                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrandeSideF2")
                 self.run(.setTexture(currentIdleDirectionTexture))
             }
         }else if Double(spriteAngle) >= 5*pi/8 && Double(spriteAngle) <= 7*pi/8{
             if self.facingDirection != .DOWN_LEFT{
+                movingDirectionBuffer = .NONE
                 self.facingDirection = .DOWN_LEFT
                 self.currentIdleDirectionTexture = self.halfFrontLTexture
-//                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrande3:4FrontF1")
                 self.run(.setTexture(currentIdleDirectionTexture))
             }
         }else if (Double(spriteAngle) > 7*pi/8 && Double(spriteAngle) <= pi) || (Double(spriteAngle) < -7*pi/8 && Double(spriteAngle) >= -pi){
             if self.facingDirection != .DOWN{
+                movingDirectionBuffer = .NONE
                 self.facingDirection = .DOWN
                 self.currentIdleDirectionTexture = self.frontTexture
-//                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrandeFrontF2")
                 self.run(.setTexture(currentIdleDirectionTexture))
             }
         }else if Double(spriteAngle) >= -7*pi/8 && Double(spriteAngle) <= -5*pi/8{
             if self.facingDirection != .DOWN_RIGHT{
+                movingDirectionBuffer = .NONE
                 self.facingDirection = .DOWN_RIGHT
                 self.currentIdleDirectionTexture = self.halfFrontRTexture
-//                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrande3:4FrontMirrorF1")
                 self.run(.setTexture(currentIdleDirectionTexture))
             }
         }else if Double(spriteAngle) > -5*pi/8 && Double(spriteAngle) < -3*pi/8{
             if self.facingDirection != .RIGHT{
+                movingDirectionBuffer = .NONE
                 self.facingDirection = .RIGHT
                 self.currentIdleDirectionTexture = self.sideRTexture
-//                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrandeSideMirrorF2")
                 self.run(.setTexture(currentIdleDirectionTexture))
             }
         }else if Double(spriteAngle) >= -3*pi/8 && Double(spriteAngle) <= -pi/8{
             if self.facingDirection != .UP_RIGHT{
+                movingDirectionBuffer = .NONE
                 self.facingDirection = .UP_RIGHT
                 self.currentIdleDirectionTexture = self.halfBackRTexture
-//                self.currentIdleDirectionTexture = SKTexture(imageNamed: "ConoGrande3:4BackF1")
                 self.run(.setTexture(currentIdleDirectionTexture))
             }
         }
@@ -441,42 +441,9 @@ class Guard: SKSpriteNode{
             if(self.actionStateBuffer == GuardActionState.IDLE || self.actionStateBuffer == GuardActionState.ROTATING_ACTION){
                 self.removeAction(forKey: "guardMovement")
                 self.run(.setTexture(self.currentIdleDirectionTexture))
-                
                 if(actionStateBuffer != actionState){
-                    
                     actionState = actionStateBuffer
                 }
-                
-            }
-            
-            
-            if(self.actionStateBuffer == GuardActionState.CHASING || self.actionStateBuffer == GuardActionState.RETURNING){
-                if(self.movingDirectionBuffer != self.facingDirection){
-                    self.removeAction(forKey: "guardMovement")
-                    switch facingDirection {
-                    case .UP:
-                        self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.125)), withKey: "guardMovement")
-                    case .UP_RIGHT:
-                        self.run(.repeatForever(.animate(with: walkingAnimationBackRight, timePerFrame: 0.125)), withKey: "guardMovement")
-                    case .RIGHT:
-                        self.run(.repeatForever(.animate(with: walkingAnimationRight, timePerFrame: 0.125)), withKey: "guardMovement")
-                    case .DOWN_RIGHT:
-                        self.run(.repeatForever(.animate(with: walkingAnimationFrontRight, timePerFrame: 0.125)), withKey: "guardMovement")
-                    case .DOWN:
-                        self.run(.repeatForever(.animate(with: walkingAnimationFront, timePerFrame: 0.125)), withKey: "guardMovement")
-                    case .DOWN_LEFT:
-                        self.run(.repeatForever(.animate(with: walkingAnimationFrontLeft, timePerFrame: 0.125)), withKey: "guardMovement")
-                    case .LEFT:
-                        self.run(.repeatForever(.animate(with: walkingAnimationLeft, timePerFrame: 0.125)), withKey: "guardMovement")
-                    case .UP_LEFT:
-                        self.run(.repeatForever(.animate(with: walkingAnimationBackLeft, timePerFrame: 0.125)), withKey: "guardMovement")
-                    case .NONE:
-                        return
-                    }
-                    self.movingDirectionBuffer = self.facingDirection
-                    self.actionState = self.actionStateBuffer
-                }
-                
             }
             
             if(self.actionStateBuffer == GuardActionState.MOVE){
@@ -581,19 +548,27 @@ func createPath(entity: Guard, arrayOfActions: [myAction]){
                 
                 path.addLine(to: CGPoint(x: (action.endingPoint.x - action.startingPoint.x)*CGFloat(blocco), y: 0))
                 if(action.endingPoint.x - action.startingPoint.x > 0){
-                    let updateStateActionToMoveAndDirection = SKAction.customAction(withDuration: 0.01, actionBlock: {
-                        node, _ in
-                        
+//                    let updateStateActionToMoveAndDirection = SKAction.customAction(withDuration: 0.01, actionBlock: {
+//                        node, _ in
+//
+//                        entity.setGuardActionStateBuffer(actionStateBuffer: GuardActionState.MOVE)
+//                    })
+                    let updateStateActionToMoveAndDirection = SKAction.run {
                         entity.setGuardActionStateBuffer(actionStateBuffer: GuardActionState.MOVE)
-                    })
+                        
+                    }
                     
                     sequenceArray.append(updateStateActionToMoveAndDirection)
                 } else {
-                    let updateStateActionToMoveAndDirection = SKAction.customAction(withDuration: 0.01, actionBlock: {
-                        node, _ in
-                        
+//                    let updateStateActionToMoveAndDirection = SKAction.customAction(withDuration: 0.01, actionBlock: {
+//                        node, _ in
+//
+//                        entity.setGuardActionStateBuffer(actionStateBuffer: GuardActionState.MOVE)
+//                    })
+                    let updateStateActionToMoveAndDirection = SKAction.run {
                         entity.setGuardActionStateBuffer(actionStateBuffer: GuardActionState.MOVE)
-                    })
+                        
+                    }
                     
                     sequenceArray.append(updateStateActionToMoveAndDirection)
                 }
@@ -602,19 +577,27 @@ func createPath(entity: Guard, arrayOfActions: [myAction]){
                 
                 path.addLine(to: CGPoint(x: 0, y: (action.startingPoint.y - action.endingPoint.y)*CGFloat(blocco)))
                 if(action.endingPoint.y - action.startingPoint.y > 0){
-                    let updateStateActionToMoveAndDirection = SKAction.customAction(withDuration: 0.01, actionBlock: {
-                        node, _ in
-                        
+//                    let updateStateActionToMoveAndDirection = SKAction.customAction(withDuration: 0.01, actionBlock: {
+//                        node, _ in
+//
+//                        entity.setGuardActionStateBuffer(actionStateBuffer: GuardActionState.MOVE)
+//                    })
+                    let updateStateActionToMoveAndDirection = SKAction.run {
                         entity.setGuardActionStateBuffer(actionStateBuffer: GuardActionState.MOVE)
-                    })
+                        
+                    }
                     
                     sequenceArray.append(updateStateActionToMoveAndDirection)
                 } else {
-                    let updateStateActionToMoveAndDirection = SKAction.customAction(withDuration: 0.01, actionBlock: {
-                        node, _ in
-                        
+//                    let updateStateActionToMoveAndDirection = SKAction.customAction(withDuration: 0.01, actionBlock: {
+//                        node, _ in
+//
+//                        entity.setGuardActionStateBuffer(actionStateBuffer: GuardActionState.MOVE)
+//                    })
+                    let updateStateActionToMoveAndDirection = SKAction.run {
                         entity.setGuardActionStateBuffer(actionStateBuffer: GuardActionState.MOVE)
-                    })
+                        
+                    }
                     
                     sequenceArray.append(updateStateActionToMoveAndDirection)
                 }
