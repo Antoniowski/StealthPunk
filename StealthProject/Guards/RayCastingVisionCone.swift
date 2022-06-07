@@ -7,6 +7,7 @@
 
 import Foundation
 import SpriteKit
+import SwiftUI
 
 func visionCone(entity: Guard, scene: SKScene){
 //    entity.centerBall()
@@ -107,10 +108,10 @@ func createVisionCone360(entity: Guard, scene: SKScene){
         visualCone.fillColor = .red
         visualCone.strokeColor = .red
     } else {
-        visualCone.fillColor = .yellow
-        visualCone.strokeColor = .yellow
+        visualCone.fillColor = UIColor(red: 255/255, green: 255/255, blue: 120/255, alpha: 1)
+        visualCone.strokeColor = UIColor(red: 255/255, green: 255/255, blue: 120/255, alpha: 1)
     }
-    visualCone.alpha = 0.35
+    visualCone.alpha = 17
     visualCone.zPosition = entity.zPosition - 1
     visualCone.name = entity.name!+"visualCone"
     
@@ -125,13 +126,13 @@ func createVisionCone360(entity: Guard, scene: SKScene){
     
     if(entity.rayCastingPlayerFound){
         if(!entity.playerInVisualCone){
-            entity.parent!.enumerateChildNodes(withName: "*"){node, _ in
-                if(node.name == entity.name!+"visualCone"){
-                    let shapeNode = node as! SKShapeNode
-                    shapeNode.fillColor = .red
-                    shapeNode.strokeColor = .red
-                }
-            }
+//            entity.parent!.enumerateChildNodes(withName: "*"){node, _ in
+//                if(node.name == entity.name!+"visualCone"){
+//                    let shapeNode = node as! SKShapeNode
+//                    shapeNode.fillColor = UIColor(red: 255/255, green: 255/255, blue: 120/255, alpha: 1)
+//                    shapeNode.strokeColor = UIColor(red: 255/255, green: 255/255, blue: 120/255, alpha: 1)
+//                }
+//            }
             entity.playerInVisualCone = true
             if(moltiplicatoreTempo == 1){
                 moltiplicatoreTempo = moltiplicatoreTempo2
@@ -173,10 +174,11 @@ func createVisionCone(entity: Guard, scene: SKScene){
         visualCone.fillColor = .red
         visualCone.strokeColor = .red
     } else {
-        visualCone.fillColor = .yellow
-        visualCone.strokeColor = .yellow
+        visualCone.fillColor = UIColor(red: 255/255, green: 255/255, blue: 120/255, alpha: 1)
+        visualCone.strokeColor = UIColor(red: 255/255, green: 255/255, blue: 120/255, alpha: 1)
+        
     }
-    visualCone.alpha = 0.35
+    visualCone.alpha = 0.17
     visualCone.zPosition = entity.zPosition - 1
     visualCone.name = entity.name!+"visualCone"
     
@@ -191,13 +193,13 @@ func createVisionCone(entity: Guard, scene: SKScene){
     
     if(entity.rayCastingPlayerFound){
         if(!entity.playerInVisualCone){
-            entity.parent!.enumerateChildNodes(withName: "*"){node, _ in
-                if(node.name == entity.name!+"visualCone"){
-                    let shapeNode = node as! SKShapeNode
-                    shapeNode.fillColor = .red
-                    shapeNode.strokeColor = .red
-                }
-            }
+//            entity.parent!.enumerateChildNodes(withName: "*"){node, _ in
+//                if(node.name == entity.name!+"visualCone"){
+//                    let shapeNode = node as! SKShapeNode
+//                    shapeNode.fillColor = UIColor(red: 255/255, green: 255/255, blue: 120/255, alpha: 1)
+//                    shapeNode.strokeColor = UIColor(red: 255/255, green: 255/255, blue: 120/255, alpha: 1)
+//                }
+//            }
             entity.playerInVisualCone = true
             if(moltiplicatoreTempo == 1){
                 moltiplicatoreTempo = moltiplicatoreTempo2
