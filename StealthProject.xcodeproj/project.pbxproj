@@ -31,6 +31,8 @@
 		63B9F6AE283439FE008E62C1 /* Victorian Parlor Vintage Alternate_free.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 63B9F6AD283439FE008E62C1 /* Victorian Parlor Vintage Alternate_free.ttf */; };
 		63C2A9B02847940700927D0F /* InventoryPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C2A9AF2847940700927D0F /* InventoryPage.swift */; };
 		6A007C36284E276000793B11 /* UnlockableAndGears.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A007C35284E276000793B11 /* UnlockableAndGears.swift */; };
+		6A007C38284F970E00793B11 /* Horse.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6A007C37284F970E00793B11 /* Horse.mp3 */; };
+		6A007C3A284F971800793B11 /* MenuSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6A007C39284F971800793B11 /* MenuSound.wav */; };
 		6A0621F0283301AF0064BB97 /* CollectibleItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0621EF283301AF0064BB97 /* CollectibleItems.swift */; };
 		6A0621F228330FC80064BB97 /* CollisionsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0621F128330FC80064BB97 /* CollisionsEnum.swift */; };
 		6A2A7E992833F8E600D14EC0 /* Chest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2A7E982833F8E600D14EC0 /* Chest.swift */; };
@@ -132,6 +134,8 @@
 		63B9F6AF28343B50008E62C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		63C2A9AF2847940700927D0F /* InventoryPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryPage.swift; sourceTree = "<group>"; };
 		6A007C35284E276000793B11 /* UnlockableAndGears.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockableAndGears.swift; sourceTree = "<group>"; };
+		6A007C37284F970E00793B11 /* Horse.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Horse.mp3; sourceTree = "<group>"; };
+		6A007C39284F971800793B11 /* MenuSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = MenuSound.wav; sourceTree = "<group>"; };
 		6A0621EF283301AF0064BB97 /* CollectibleItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectibleItems.swift; sourceTree = "<group>"; };
 		6A0621F128330FC80064BB97 /* CollisionsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionsEnum.swift; sourceTree = "<group>"; };
 		6A2A7E982833F8E600D14EC0 /* Chest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chest.swift; sourceTree = "<group>"; };
@@ -303,8 +307,10 @@
 				6AAE3F9528450C89002917FB /* BushExit.wav */,
 				6AAE3F8D2845000D002917FB /* closeCabinet.wav */,
 				6AAE3F91284504E7002917FB /* vetrina.wav */,
+				6A007C37284F970E00793B11 /* Horse.mp3 */,
 				6AAE3FA8284A64F2002917FB /* GOOSE2.wav */,
 				6AAE3F9B28451D97002917FB /* BONK.mp3 */,
+				6A007C39284F971800793B11 /* MenuSound.wav */,
 				6AAE3FAD284A6AC5002917FB /* hit1.wav */,
 				6AAE3FB0284A6ADE002917FB /* failedImpact.wav */,
 				6AAE3FB2284A6CB8002917FB /* whoosh.wav */,
@@ -541,6 +547,7 @@
 				6AAE3FB3284A6CB8002917FB /* whoosh.wav in Resources */,
 				6AB863EC28200334006BB85E /* Main.storyboard in Resources */,
 				6AAE3F8E2845000D002917FB /* closeCabinet.wav in Resources */,
+				6A007C3A284F971800793B11 /* MenuSound.wav in Resources */,
 				6AB863E328200334006BB85E /* GameScene.sks in Resources */,
 				6AAE3F80283FC4C7002917FB /* footsteps.mp3 in Resources */,
 				6AB863EE28200335006BB85E /* Assets.xcassets in Resources */,
@@ -561,6 +568,7 @@
 				63B9F6AE283439FE008E62C1 /* Victorian Parlor Vintage Alternate_free.ttf in Resources */,
 				6AAE3F882844FD5A002917FB /* doorTaverna.wav in Resources */,
 				6AAE3F9428450A95002917FB /* SingleFootstep2.wav in Resources */,
+				6A007C38284F970E00793B11 /* Horse.mp3 in Resources */,
 				6AAE3F9E28452050002917FB /* swing.wav in Resources */,
 				6AAE3F9628450C89002917FB /* BushExit.wav in Resources */,
 				6AAE3F90284504A4002917FB /* pancaOpenCorto.wav in Resources */,

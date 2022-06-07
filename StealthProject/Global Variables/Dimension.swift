@@ -31,10 +31,16 @@ let bloccoSize: CGSize = CGSize(width: blocco, height: blocco)
 //Dimensioni delle sprite delle guardie
 let dimensioneGuardiaConoGrandeWidth: Double = 45
 let dimensioneGuardiaConoGrandeHeight: Double = 90
+let dimensioneColliderGuardiaConoGrandeWidth: Double = 40
+let dimensioneColliderGuardiaConoGrandeHeight: Double = 85
 
 let dimensioneGuardiaConoPiccoloWidth: Double = dimensioneGuardiaConoGrandeWidth / 1.5
 let dimensioneGuardiaConoPiccoloHeight: Double = dimensioneGuardiaConoGrandeHeight / 1.5
+let dimensioneColliderGuardiaConoPiccoloWidth: Double = dimensioneColliderGuardiaConoGrandeWidth / 1.5
+let dimensioneColliderGuardiaConoPiccoloHeight: Double = dimensioneColliderGuardiaConoGrandeHeight / 1.5
 
 let dimensioneGuardiaCerchioGrandeWidth: Double = 45
 let dimensioneGuardiaCerchioGrandeHeight: Double = 90
+let dimensioneColliderGuardiaCerchioGrandeWidth: Double = 40
+let dimensioneColliderGuardiaCerchioGrandeHeight: Double = 85
 

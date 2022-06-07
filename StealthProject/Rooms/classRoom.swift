@@ -613,6 +613,8 @@ class Room: SKNode {
                     wall.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
                     wall.physicsBody?.isDynamic = false
                     wall.physicsBody?.affectedByGravity = false
+                    wall.physicsBody?.categoryBitMask = ColliderType.WALL.rawValue
+                    wall.physicsBody?.collisionBitMask = ColliderType.PLAYER.rawValue
                     wall.lightingBitMask = 1 | 2
                     addChild(wall)
                     
@@ -633,6 +635,8 @@ class Room: SKNode {
                     leftAngle.physicsBody = SKPhysicsBody(polygonFrom: path)
                     leftAngle.physicsBody?.isDynamic = false
                     leftAngle.physicsBody?.affectedByGravity = false
+                    leftAngle.physicsBody?.categoryBitMask = ColliderType.WALL.rawValue
+                    leftAngle.physicsBody?.collisionBitMask = ColliderType.PLAYER.rawValue
                     leftAngle.lightingBitMask = 1 | 2
 
                     addChild(leftAngle)
@@ -653,6 +657,8 @@ class Room: SKNode {
                     myWall.physicsBody = SKPhysicsBody(polygonFrom: path)
                     myWall.physicsBody?.affectedByGravity = false
                     myWall.physicsBody?.isDynamic = false
+                    myWall.physicsBody?.categoryBitMask = ColliderType.WALL.rawValue
+                    myWall.physicsBody?.collisionBitMask = ColliderType.PLAYER.rawValue
                     myWall.lightingBitMask = 1 | 2
                     addChild(myWall)
                 case 4:
@@ -664,6 +670,8 @@ class Room: SKNode {
 //                    if i == 1{
 //                        myWall.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco/3, height: blocco*2), center: CGPoint(x: -blocco/3, y: 0))
 //                    }
+                    myWall.physicsBody?.categoryBitMask = ColliderType.WALL.rawValue
+                    myWall.physicsBody?.collisionBitMask = ColliderType.PLAYER.rawValue
                     myWall.physicsBody?.affectedByGravity = false
                     myWall.physicsBody?.isDynamic = false
                     myWall.lightingBitMask = 1 | 2
@@ -677,6 +685,8 @@ class Room: SKNode {
 //                    if i == 1{
 //                        myWall.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco/3, height: blocco*2), center: CGPoint(x: blocco/3, y: 0))
 //                    }
+                    myWall.physicsBody?.categoryBitMask = ColliderType.WALL.rawValue
+                    myWall.physicsBody?.collisionBitMask = ColliderType.PLAYER.rawValue
                     myWall.physicsBody?.affectedByGravity = false
                     myWall.physicsBody?.isDynamic = false
                     myWall.lightingBitMask = 1 | 2
@@ -765,6 +775,8 @@ class Room: SKNode {
                     barile.physicsBody?.isDynamic = false
                     barile.physicsBody?.affectedByGravity = false
                     barile.physicsBody?.allowsRotation = false
+                    barile.physicsBody?.categoryBitMask = ColliderType.WALL.rawValue
+                    barile.physicsBody?.collisionBitMask = ColliderType.PLAYER.rawValue
                     addChild(barile)
                 case 21:
                     let barile = SKSpriteNode(imageNamed: "bott9")
@@ -781,6 +793,8 @@ class Room: SKNode {
 //                    barile.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: blocco, height: blocco/2), center: CGPoint(x: 0, y: blocco/4))
                     barile.physicsBody = SKPhysicsBody(polygonFrom: forma)
                     barile.physicsBody?.isDynamic = false
+                    barile.physicsBody?.categoryBitMask = ColliderType.WALL.rawValue
+                    barile.physicsBody?.collisionBitMask = ColliderType.PLAYER.rawValue
                     barile.physicsBody?.affectedByGravity = false
                     barile.physicsBody?.allowsRotation = false
                     addChild(barile)
@@ -795,6 +809,8 @@ class Room: SKNode {
                     bancone.physicsBody?.isDynamic = false
                     bancone.physicsBody?.affectedByGravity = false
                     bancone.physicsBody?.allowsRotation = false
+                    bancone.physicsBody?.categoryBitMask = ColliderType.WALL.rawValue
+                    bancone.physicsBody?.collisionBitMask = ColliderType.PLAYER.rawValue
                     bancone.lightingBitMask = 1 | 2
                     addChild(bancone)
                 case 19:
@@ -808,6 +824,8 @@ class Room: SKNode {
                     bancone.physicsBody?.isDynamic = false
                     bancone.physicsBody?.affectedByGravity = false
                     bancone.physicsBody?.allowsRotation = false
+                    bancone.physicsBody?.categoryBitMask = ColliderType.WALL.rawValue
+                    bancone.physicsBody?.collisionBitMask = ColliderType.PLAYER.rawValue
                     bancone.lightingBitMask = 1 | 2
                     addChild(bancone)
                 case 17:
@@ -822,6 +840,7 @@ class Room: SKNode {
                     tavolo.physicsBody?.isDynamic = false
                     tavolo.physicsBody?.affectedByGravity = false
                     tavolo.physicsBody?.allowsRotation = false
+                    tavolo.physicsBody?.collisionBitMask = ColliderType.PLAYER.rawValue
                     addChild(tavolo)
                 case 20:
                     let scrigno = Inventory()
@@ -835,6 +854,8 @@ class Room: SKNode {
                     scrigno.physicsBody?.affectedByGravity = false
                     scrigno.physicsBody?.allowsRotation = false
                     scrigno.lightingBitMask = 1 | 2
+                    scrigno.physicsBody?.categoryBitMask = ColliderType.WALL.rawValue
+                    scrigno.physicsBody?.collisionBitMask = ColliderType.PLAYER.rawValue
 //                    let ombraScrigno = SKShapeNode(ellipseIn: .init(x: -blocco/2, y: -blocco/4, width: blocco, height: blocco/4))
 //                    ombraScrigno.fillColor = .black
 //                    ombraScrigno.strokeColor = .init(red: 0, green: 0, blue: 0, alpha: 0.15)
@@ -874,6 +895,8 @@ class Room: SKNode {
                     internalAngleDx.physicsBody?.affectedByGravity = false
                     internalAngleDx.physicsBody?.allowsRotation = false
                     internalAngleDx.lightingBitMask = 1 | 2
+                    internalAngleDx.physicsBody?.categoryBitMask = ColliderType.WALL.rawValue
+                    internalAngleDx.physicsBody?.collisionBitMask = ColliderType.PLAYER.rawValue
                     addChild(internalAngleDx)
                     
                 case 32:
@@ -886,6 +909,8 @@ class Room: SKNode {
                     internalAngleSx.physicsBody?.isDynamic = false
                     internalAngleSx.physicsBody?.affectedByGravity = false
                     internalAngleSx.physicsBody?.allowsRotation = false
+                    internalAngleSx.physicsBody?.categoryBitMask = ColliderType.WALL.rawValue
+                    internalAngleSx.physicsBody?.collisionBitMask = ColliderType.PLAYER.rawValue
                     internalAngleSx.lightingBitMask = 1 | 2
                     addChild(internalAngleSx)
                     
@@ -901,6 +926,8 @@ class Room: SKNode {
                     internalAngleDx2.physicsBody?.isDynamic = false
                     internalAngleDx2.physicsBody?.affectedByGravity = false
                     internalAngleDx2.physicsBody?.allowsRotation = false
+                    internalAngleDx2.physicsBody?.categoryBitMask = ColliderType.WALL.rawValue
+                    internalAngleDx2.physicsBody?.collisionBitMask = ColliderType.PLAYER.rawValue
                     internalAngleDx2.lightingBitMask = 1 | 2
                     addChild(internalAngleDx2)
                     
@@ -916,6 +943,8 @@ class Room: SKNode {
                     internalAngleSx2.physicsBody?.isDynamic = false
                     internalAngleSx2.physicsBody?.affectedByGravity = false
                     internalAngleSx2.physicsBody?.allowsRotation = false
+                    internalAngleSx2.physicsBody?.categoryBitMask = ColliderType.WALL.rawValue
+                    internalAngleSx2.physicsBody?.collisionBitMask = ColliderType.PLAYER.rawValue
                     internalAngleSx2.lightingBitMask = 1 | 2
                     addChild(internalAngleSx2)
                 
@@ -931,6 +960,8 @@ class Room: SKNode {
                     colonna.physicsBody?.affectedByGravity = false
                     colonna.physicsBody?.allowsRotation = false
                     colonna.physicsBody?.isDynamic = false
+                    colonna.physicsBody?.categoryBitMask = ColliderType.WALL.rawValue
+                    colonna.physicsBody?.collisionBitMask = ColliderType.PLAYER.rawValue
                     colonna.zPosition = 3
                     colonna.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                     colonna.lightingBitMask = 1 | 2
@@ -950,6 +981,8 @@ class Room: SKNode {
                         furnitureBig.physicsBody?.allowsRotation = false
                         furnitureBig.physicsBody?.isDynamic = false
                     }
+                    furnitureBig.physicsBody?.categoryBitMask = ColliderType.WALL.rawValue
+                    furnitureBig.physicsBody?.collisionBitMask = ColliderType.PLAYER.rawValue
                     furnitureBig.zPosition = 3
                     furnitureBig.position = CGPoint(x: startingPosition.x + Double(j*blocco) + Double(blocco/2), y: startingPosition.y - Double(i*blocco) - Double(blocco/2))
                     furnitureBig.lightingBitMask = 1 | 2
@@ -971,6 +1004,8 @@ class Room: SKNode {
 //                        let appoggio = furnitureSmall as? Lampione
 //                        appoggio?.light.ambientColor = .init(red: 0.624, green: 0.624, blue: 0.914, alpha: 0.5)
                     }
+                    furnitureSmall.physicsBody?.categoryBitMask = ColliderType.WALL.rawValue
+                    furnitureSmall.physicsBody?.collisionBitMask = ColliderType.PLAYER.rawValue
                     furnitureSmall.zPosition = 3
                     furnitureSmall.lightingBitMask = 1 | 2
                     addChild(furnitureSmall)
@@ -1069,6 +1104,8 @@ class Room: SKNode {
                     final1.physicsBody?.allowsRotation = false
                     final1.physicsBody?.isDynamic = false
                     final1.physicsBody?.affectedByGravity = false
+                    final1.physicsBody?.categoryBitMask = ColliderType.WALL.rawValue
+                    final1.physicsBody?.collisionBitMask = ColliderType.PLAYER.rawValue
                    
                     addChild(final1)
                     
@@ -1146,6 +1183,9 @@ class Room: SKNode {
                     luce.physicsBody = SKPhysicsBody()
                     luce.physicsBody?.isDynamic = false
                     luce.physicsBody?.affectedByGravity = false
+                    luce.physicsBody?.categoryBitMask = ColliderType.WALL.rawValue
+                    luce.physicsBody?.collisionBitMask = ColliderType.PLAYER.rawValue
+
                     luce.lightingBitMask = 1 | 2
                         luce.zPosition = 3
                     addChild(luce)
@@ -1163,6 +1203,8 @@ class Room: SKNode {
                     luce.physicsBody = SKPhysicsBody()
                     luce.physicsBody?.isDynamic = false
                     luce.physicsBody?.affectedByGravity = false
+                        luce.physicsBody?.categoryBitMask = ColliderType.WALL.rawValue
+                        luce.physicsBody?.collisionBitMask = ColliderType.PLAYER.rawValue
                     luce.lightingBitMask = 1 | 2
                         luce.zPosition = 3
                     addChild(luce)
@@ -1191,6 +1233,8 @@ class Room: SKNode {
                         cornice.physicsBody = SKPhysicsBody()
                         cornice.physicsBody?.isDynamic = false
                         cornice.physicsBody?.affectedByGravity = false
+                        cornice.physicsBody?.categoryBitMask = ColliderType.WALL.rawValue
+                        cornice.physicsBody?.collisionBitMask = ColliderType.PLAYER.rawValue
                         cornice.lightingBitMask = 1 | 2
                         addChild(cornice)
                         
@@ -1324,6 +1368,13 @@ class Room: SKNode {
                     guardia.floorMatrixCopy = self.stanza
                     guardia.floorMatrixForPathfinding = self.stanza
                     
+                    guardia.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: dimensioneColliderGuardiaConoGrandeWidth, height: dimensioneColliderGuardiaConoGrandeHeight))
+                    guardia.physicsBody?.isDynamic = false
+                    guardia.physicsBody?.restitution = 0
+                    guardia.physicsBody?.affectedByGravity = false
+                    guardia.physicsBody?.categoryBitMask = ColliderType.ENEMY.rawValue
+                    guardia.physicsBody?.contactTestBitMask = ColliderType.PLAYER.rawValue
+                    
                     guardia.lightingBitMask = 1 | 2
                     
                     nemici.append(guardia)
@@ -1348,6 +1399,13 @@ class Room: SKNode {
                     guardia.floorMatrixCopy = self.stanza
                     guardia.floorMatrixForPathfinding = self.stanza
                     
+                    guardia.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: dimensioneColliderGuardiaConoPiccoloWidth, height: dimensioneColliderGuardiaConoPiccoloHeight))
+                    guardia.physicsBody?.isDynamic = false
+                    guardia.physicsBody?.restitution = 0
+                    guardia.physicsBody?.affectedByGravity = false
+                    guardia.physicsBody?.categoryBitMask = ColliderType.ENEMY.rawValue
+                    guardia.physicsBody?.contactTestBitMask = ColliderType.PLAYER.rawValue
+                    
                     guardia.lightingBitMask = 1 | 2
                     
                     nemici.append(guardia)
@@ -1370,6 +1428,13 @@ class Room: SKNode {
                     
                     guardia.floorMatrixCopy = self.stanza
                     guardia.floorMatrixForPathfinding = self.stanza
+                    
+                    guardia.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: dimensioneColliderGuardiaCerchioGrandeWidth, height: dimensioneColliderGuardiaCerchioGrandeHeight))
+                    guardia.physicsBody?.isDynamic = false
+                    guardia.physicsBody?.restitution = 0
+                    guardia.physicsBody?.affectedByGravity = false
+                    guardia.physicsBody?.categoryBitMask = ColliderType.ENEMY.rawValue
+                    guardia.physicsBody?.contactTestBitMask = ColliderType.PLAYER.rawValue
                     
                     guardia.lightingBitMask = 1 | 2
                     

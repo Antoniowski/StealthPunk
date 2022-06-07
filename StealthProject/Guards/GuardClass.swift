@@ -131,6 +131,8 @@ class Guard: SKSpriteNode{
     var setContinousSetDeadTexture: Bool = false
     var setContinousRecoveryTexture: Bool = false
     
+    var setContinousDEADTexture: Bool = false
+    
     override init(texture: SKTexture?, color: UIColor, size: CGSize) {
         super.init(texture: texture, color: color, size: size)
     }
@@ -284,6 +286,11 @@ class Guard: SKSpriteNode{
     func setHit(_ bool: Bool){
         self.status.isHit = bool
     }
+    
+    func setDead(_ bool: Bool){
+        self.status.isDead = bool
+    }
+    
     func setGuardActionStateBuffer(actionStateBuffer: GuardActionState){
         self.actionStateBuffer = actionStateBuffer
     }
@@ -431,93 +438,109 @@ class Guard: SKSpriteNode{
     func checkState(point: CGPoint, deltaTime: TimeInterval, scene: SKScene){
         
 //        print(self.actionStateBuffer)
-        if status.isHit == false{
-            if(actionStateBuffer == GuardActionState.IDLE || actionStateBuffer == GuardActionState.MOVE || actionStateBuffer == GuardActionState.ROTATING_ACTION){
-                checkRotationReset()
-                checkAngleInPath()
-            }
+        if(status.isDead == true){
+            self.removeAction(forKey: "guardMovement")
+            self.invisibleBall.removeAction(forKey: "guardPath")
             
-            
-            if(self.actionStateBuffer == GuardActionState.IDLE || self.actionStateBuffer == GuardActionState.ROTATING_ACTION){
-                self.removeAction(forKey: "guardMovement")
-                self.run(.setTexture(self.currentIdleDirectionTexture))
-                if(actionStateBuffer != actionState){
-                    actionState = actionStateBuffer
-                }
-            }
-            
-            if(self.actionStateBuffer == GuardActionState.MOVE){
-                if(self.movingDirectionBuffer != self.facingDirection){
-                    self.removeAction(forKey: "guardMovement")
-                    switch facingDirection {
-                    case .UP:
-                        self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.125)), withKey: "guardMovement")
-                    case .UP_RIGHT:
-                        return
-                    case .RIGHT:
-                        self.run(.repeatForever(.animate(with: walkingAnimationRight, timePerFrame: 0.125)), withKey: "guardMovement")
-                    case .DOWN_RIGHT:
-                        return
-                    case .DOWN:
-                        self.run(.repeatForever(.animate(with: walkingAnimationFront, timePerFrame: 0.125)), withKey: "guardMovement")
-                    case .DOWN_LEFT:
-                        return
-                    case .LEFT:
-                        self.run(.repeatForever(.animate(with: walkingAnimationLeft, timePerFrame: 0.125)), withKey: "guardMovement")
-                    case .UP_LEFT:
-                        return
-                    case .NONE:
-                        return
-                    }
-                    self.movingDirectionBuffer = self.facingDirection
-                    self.actionState = self.actionStateBuffer
-                }
-                
-            }
-            
-        }else{
-            if(setContinousSetDeadTexture){
-                self.run(.setTexture(stunnedAnimation[stunnedAnimation.count-1]))
-            } else if(setContinousRecoveryTexture){
-                self.run(.setTexture(frontTexture))
-            }
-            
-            if status.isStunned == false{
-                lastAnimationBool = false
-                status.isStunned = true
-                if let action = self.invisibleBall.action(forKey: "guardPath"){
-                    action.speed = 0
-                }
-                if let action = self.action(forKey: "guardMovement"){
-                    lastAnimation = action
-                    lastAnimationBool = true
-                    self.removeAction(forKey: "guardMovement")
-                } else {
-                    lastAnimationBool = false
-                }
+            if(!setContinousDEADTexture){
+                setContinousDEADTexture = true
                 self.run(.sequence([.animate(with: stunnedAnimation, timePerFrame: 0.15),
-                                    .setTexture(stunnedAnimation[2]),
-                                    .wait(forDuration: self.getStunnedTime(player: (scene as? PlayableScene)?.player ?? PlayableCharacter())),
-                                    .animate(with: stunnedAnimation.reversed(), timePerFrame: 0.15),
-                                    .setTexture(self.frontTexture),
-                                    .wait(forDuration: 0.5),
-                                    .run {
-                                        if let action = self.invisibleBall.action(forKey: "guardPath"){
-                                            action.speed = 1
-                                        }
-                                        if (self.lastAnimationBool) {
-                                            self.run(.repeatForever(self.lastAnimation), withKey: "guardMovement")
-                                            if let action = self.action(forKey: "guardMovement"){
-                                            }
-                                            self.lastAnimationBool = false
-                                        }
-                                        self.setStunned(false)
-                                        self.setHit(false)
-                                    }
-
+                                    .setTexture(stunnedAnimation[2])
                 ]))
             }
+        } else if (status.isDead == false){
+            if status.isHit == false{
+                if(actionStateBuffer == GuardActionState.IDLE || actionStateBuffer == GuardActionState.MOVE || actionStateBuffer == GuardActionState.ROTATING_ACTION){
+                    checkRotationReset()
+                    checkAngleInPath()
+                }
+                
+                
+                if(self.actionStateBuffer == GuardActionState.IDLE || self.actionStateBuffer == GuardActionState.ROTATING_ACTION){
+                    self.removeAction(forKey: "guardMovement")
+                    self.run(.setTexture(self.currentIdleDirectionTexture))
+                    if(actionStateBuffer != actionState){
+                        actionState = actionStateBuffer
+                    }
+                }
+                
+                if(self.actionStateBuffer == GuardActionState.MOVE){
+                    if(self.movingDirectionBuffer != self.facingDirection){
+                        self.removeAction(forKey: "guardMovement")
+                        switch facingDirection {
+                        case .UP:
+                            self.run(.repeatForever(.animate(with: walkingAnimationBack, timePerFrame: 0.125)), withKey: "guardMovement")
+                        case .UP_RIGHT:
+                            return
+                        case .RIGHT:
+                            self.run(.repeatForever(.animate(with: walkingAnimationRight, timePerFrame: 0.125)), withKey: "guardMovement")
+                        case .DOWN_RIGHT:
+                            return
+                        case .DOWN:
+                            self.run(.repeatForever(.animate(with: walkingAnimationFront, timePerFrame: 0.125)), withKey: "guardMovement")
+                        case .DOWN_LEFT:
+                            return
+                        case .LEFT:
+                            self.run(.repeatForever(.animate(with: walkingAnimationLeft, timePerFrame: 0.125)), withKey: "guardMovement")
+                        case .UP_LEFT:
+                            return
+                        case .NONE:
+                            return
+                        }
+                        self.movingDirectionBuffer = self.facingDirection
+                        self.actionState = self.actionStateBuffer
+                    }
+                    
+                }
+                
+            }else{
+                if(setContinousSetDeadTexture){
+                    self.run(.setTexture(stunnedAnimation[stunnedAnimation.count-1]))
+                } else if(setContinousRecoveryTexture){
+                    self.run(.setTexture(frontTexture))
+                }
+                
+                if status.isStunned == false{
+                    lastAnimationBool = false
+                    status.isStunned = true
+                    if let action = self.invisibleBall.action(forKey: "guardPath"){
+                        action.speed = 0
+                    }
+                    if let action = self.action(forKey: "guardMovement"){
+                        lastAnimation = action
+                        lastAnimationBool = true
+                        self.removeAction(forKey: "guardMovement")
+                    } else {
+                        lastAnimationBool = false
+                    }
+                    self.run(.sequence([.animate(with: stunnedAnimation, timePerFrame: 0.15),
+                                        .setTexture(stunnedAnimation[2]),
+                                        .wait(forDuration: self.getStunnedTime(player: (scene as? PlayableScene)?.player ?? PlayableCharacter())),
+                                        .animate(with: stunnedAnimation.reversed(), timePerFrame: 0.15),
+                                        .setTexture(self.frontTexture),
+                                        .wait(forDuration: 0.5),
+                                        .run {
+                                            if let action = self.invisibleBall.action(forKey: "guardPath"){
+                                                action.speed = 1
+                                            }
+                                            if (self.lastAnimationBool) {
+                                                self.run(.repeatForever(self.lastAnimation), withKey: "guardMovement")
+                                                if let action = self.action(forKey: "guardMovement"){
+                                                }
+                                                self.lastAnimationBool = false
+                                            }
+                                            self.setStunned(false)
+                                            self.setHit(false)
+                                        }
+
+                    ]))
+                }
+            }
         }
+        
+        
+        
+        
     }
     
 }

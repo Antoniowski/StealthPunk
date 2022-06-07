@@ -13,7 +13,7 @@ class TutorialModalitaATempo: SKScene {
     var tutorialParts: [SKLabelNode] = [
         SKLabelNode(text: "You can move with the analog stick on the left of the screen. By pressing B you can roll, while A allows you to interact with the items in the room."),
         SKLabelNode(text: "Throughout the floors you can find some hidden items that will give you some effects. The goal of the game is to get to the end of the floors before the timer runs out."),
-        SKLabelNode(text: "The timer runs faster each time you are seen. When you get spotted for the third time the game is over.")
+        SKLabelNode(text: "The timer runs faster each time you are seen. When you get spotted for the fourth time the game is over.")
     ]
     
     let nextTutorialPage: SKLabelNode = SKLabelNode(text: ">")

@@ -17,7 +17,7 @@ class TestScene3: SKScene, PlayableScene, SKPhysicsContactDelegate {
     var delta: TimeInterval = 0.0
     var lastUpdate: TimeInterval?
     
-    var player: PlayableCharacter = Human(texture: SKTexture(imageNamed: "boyFront"), color: .clear, size: CGSize(width: 35, height: 70), noise: 2, speed: 3, strenght: 3)
+    var player: PlayableCharacter = Human()
 
     var luce: SKLightNode = SKLightNode()
 
@@ -194,7 +194,7 @@ class TestScene3: SKScene, PlayableScene, SKPhysicsContactDelegate {
         }
         
         for guardia in arrayOfGuards{
-            visionCone(entity: guardia, scene: self)
+            visionCone(entity: guardia, scene: self, timer: timer)
             guardia.checkState(point: player.position, deltaTime: delta, scene: self)
         }
 
