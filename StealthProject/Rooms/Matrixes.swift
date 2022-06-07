@@ -318,8 +318,8 @@ let taverna: [[Int]] =
      [2,  1,  32, 6, 31,  1,  3],
      [4,  17, 51,  6,  6,  17, 5],
      [4,  21, 6,  6,  6,  16, 5],
-     [4,  17, 6,  6,  52,  17, 5],
-     [4,  50,  6,  6,  6,  6,  5],
+     [4,  17, 6,  6,  6,  17, 5],
+     [4,  21,  50,  6, 52, 16,  5],
      [1,  1,  1,  1,  1,  1,  1]
     ]
 
@@ -351,10 +351,10 @@ let prova1: Matrix =
 
 let prova1Pavimento: Matrix =
     [[1, 7, 6, 1, 6, 7, 1],
-     [1, 1, 1,12, 1, 1, 1],
-     [1, 1,12,12,12, 1, 1],
-     [1, 1,12,12,12, 1, 1],
-     [1, 1,12,12,12, 1, 1],
+     [1, 1, 1,12, 12, 1, 1],
+     [1, 1,12,12,12, 12, 1],
+     [1, 1,12,12,12, 12, 1],
+     [1, 1,12,12,12, 12, 1],
      [1, 1, 1, 1, 1, 1, 1],
      [1, 1, 1, 1, 1, 1, 1]
     ]
@@ -765,10 +765,10 @@ let STANZE_D_NO_SX : [RoomArchetype] = [.SIMPLE_1, .SIMPLE_2]
 let STANZE_R_NO_UP : [RoomArchetype] = [.SIMPLE_3, .SIMPLE_5, .SIMPLE_7]
 let STANZE_L_NO_UP : [RoomArchetype] = [.SIMPLE_3, .SIMPLE_6, .SIMPLE_7]
  
-let STANZE_U_1DOOR: [RoomArchetype] = [.PROVA1, .PROVA1, .PROVA1, .PROVA1, .PROVA1POWERUP]
-let STANZE_R_1DOOR: [RoomArchetype] = [.PROVA4,.PROVA4,.PROVA4,.PROVA4, .PROVA4POWERUP]
-let STANZE_L_1DOOR: [RoomArchetype] = [.PROVA3,.PROVA3,.PROVA3,.PROVA3, .PROVA3POWERUP]
-let STANZE_D_1DOOR: [RoomArchetype] = [.PROVA2,.PROVA2,.PROVA2,.PROVA2, .PROVA2POWERUP]
+let STANZE_U_1DOOR: [RoomArchetype] = [.PROVA1, .PROVA1, .PROVA1POWERUP]
+let STANZE_R_1DOOR: [RoomArchetype] = [.PROVA4, .PROVA4, .PROVA4POWERUP]
+let STANZE_L_1DOOR: [RoomArchetype] = [.PROVA3, .PROVA3, .PROVA3POWERUP]
+let STANZE_D_1DOOR: [RoomArchetype] = [.PROVA2, .PROVA2, .PROVA2POWERUP]
 
 let STANZE_FINALI_D: [RoomArchetype] = [.SCAMBIO1]
 let STANZE_FINALI_L: [RoomArchetype] = [.SCAMBIO2]

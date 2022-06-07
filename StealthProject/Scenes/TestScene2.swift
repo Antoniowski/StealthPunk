@@ -14,6 +14,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     var delta: TimeInterval = 0.0
     var lastUpdate: TimeInterval?
     
+    
     var player: PlayableCharacter = Human()
     
     var luce: SKLightNode = SKLightNode()
@@ -41,6 +42,9 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     
     
     override func didMove(to view: SKView) {
+        
+        passaggio1 = false
+
         arrayOfGuards.removeAll()
         
         //Resetto le variabili di sconfitta e del tempo
@@ -69,14 +73,14 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         scenecamera.addChild(timer)
 
         scenecamera.position = player.position
-        scenecamera.setScale(1)
+        scenecamera.setScale(10)
         
         let f = Floor(self, floorType: .FIRST_FLOOR)
         
         runCounter += 1
 
         
-        luce.ambientColor = .init(red: 0.624, green: 0.624, blue: 0.914, alpha: 0.40) // PER LE PARTI SCURE - GIARDINO
+        luce.ambientColor = .init(red: 0.624, green: 0.624, blue: 0.914, alpha: 0.5) // PER LE PARTI SCURE - GIARDINO
 //        luce.ambientColor = .init(red: 0.6, green: 0.6, blue: 0.75, alpha: 0.15)
 
         luce.falloff = 10
