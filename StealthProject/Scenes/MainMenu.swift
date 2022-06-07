@@ -28,7 +28,7 @@ class MainMenu: SKScene{
         
         music.startMusic(filenamed: music.menu)
         
-        self.run(.repeatForever(.sequence([.wait(forDuration: .random(in: 5...20)), .run {
+        self.run(.repeatForever(.sequence([.wait(forDuration: .random(in: 14...20)), .run {
             music.starsSound2(filenamed: music.horse)
         }])))
         

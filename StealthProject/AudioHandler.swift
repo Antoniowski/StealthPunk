@@ -105,6 +105,9 @@ class Music{
     }
     
     func stopEffect2(){
+        guard soundEffects2 != nil else{
+            return
+        }
         soundEffects2.stop()
     }
     
