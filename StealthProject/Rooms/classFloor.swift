@@ -38,25 +38,25 @@ class Floor{
         var doorPoints: [(placement: DoorPlacement, point: CGPoint, isOccupied: Bool)] = []
         switch Int.random(in: 0...3){
         case 0:
-            let room = Room(.SIMPLE_1, startingPosition: CGPoint(x: 50, y: 50), floor: floorType)
+            let room = Room(.FIRST, startingPosition: CGPoint(x: 50, y: 50), floor: floorType)
             lastRoomsAdded.append(room)
             spawn = .init(x: room.position.x + Double(blocco*room.getRighe())/2, y: room.position.y - Double(blocco*room.getColonne())/2)
             scene.addChild(room)
             actualAdded+=1
         case 1:
-            let room = Room(.SIMPLE_1,  startingPosition: CGPoint(x: 50, y: 50), floor: floorType)
+            let room = Room(.FIRST_2,  startingPosition: CGPoint(x: 50, y: 50), floor: floorType)
             lastRoomsAdded.append(room)
             spawn = .init(x: room.position.x + Double(blocco*room.getRighe())/2, y: room.position.y - Double(blocco*room.getColonne())/2)
             scene.addChild(room)
             actualAdded+=1
         case 2:
-            let room = Room(.SIMPLE_3,  startingPosition: CGPoint(x: 50, y: 50), floor: floorType)
+            let room = Room(.FIRST_3,  startingPosition: CGPoint(x: 50, y: 50), floor: floorType)
             lastRoomsAdded.append(room)
             spawn = .init(x: room.position.x + Double(blocco*room.getRighe())/2, y: room.position.y - Double(blocco*room.getColonne())/2)
             scene.addChild(room)
             actualAdded+=1
         default:
-            let room = Room(.SIMPLE_4, startingPosition: CGPoint(x: 50, y: 50), floor: floorType)
+            let room = Room(.FIRST_4, startingPosition: CGPoint(x: 50, y: 50), floor: floorType)
             lastRoomsAdded.append(room)
             spawn = .init(x: room.position.x + Double(blocco*room.getRighe())/2, y: room.position.y - Double(blocco*room.getColonne())/2)
             scene.addChild(room)
