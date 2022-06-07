@@ -32,7 +32,7 @@ func visionCone(entity: Guard, scene: SKScene, timer: TimeCounter){
     entity.resetArrayOfPoints()
             
         
-    if(!entity.getStatus().isHit){
+    if(!entity.getStatus().isHit && !entity.getStatus().isDead){
         if(entity.getVisionConeAngle() != 360){
             visionConeRayCasting(entity: entity, scene: scene, timer: timer)
         } else {
