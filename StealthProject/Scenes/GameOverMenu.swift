@@ -28,14 +28,14 @@ class GameOverMenu: SKScene{
         
         title.fontName = "OldLondon"
         title.fontSize = 70
-        title.text = "StealthPunk"
+        title.text = "Game Over"
         title.position = .init(x: frame.width*0.5, y: frame.height*0.79)
         title.zPosition = 2
         title.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
         
         subtitle.fontName = "OldNewspaperTypes"
         subtitle.fontSize = 25
-        subtitle.text = "GAME OVER"
+        subtitle.text = "YOU LOSE!"
         subtitle.position = .init(x: frame.width*0.5, y: frame.height*0.67)
         subtitle.zPosition = 2
         subtitle.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
@@ -95,7 +95,6 @@ class GameOverMenu: SKScene{
         }else
         if(MINUTE == 0 && SECONDS == 0){
             timeCounter.text = "Time: 00 : 00"
-
         }
         
         timeCounter.position = .init(x: frame.width*0.74, y: frame.height*0.2)
