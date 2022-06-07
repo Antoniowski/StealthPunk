@@ -18,7 +18,7 @@ class InventoryPage: SKNode{
     
     var gearsAcquired: SKLabelNode = SKLabelNode()
         
-    private let page1: SKSpriteNode = SKSpriteNode(texture: SKTexture(imageNamed: "page1"), size: CGSize(width: 390*0.8, height: 320*0.8))
+    private let page1: SKSpriteNode = SKSpriteNode(texture: SKTexture(imageNamed: "page1"), size: CGSize(width: 390*0.75, height: 320*0.75))
     private let page2: SKSpriteNode = SKSpriteNode(texture: SKTexture(imageNamed: "page2"), size: CGSize(width: 390*0.75, height: 320*0.75))
     private let page3: SKSpriteNode = SKSpriteNode(texture: SKTexture(imageNamed: "page3"), size: CGSize(width: 390*0.8, height: 320*0.8))
     
@@ -32,12 +32,12 @@ class InventoryPage: SKNode{
         backgroundElements.alpha = 0.15
         
         page1.zPosition = 1001
-        page1.position = .init(x: -100,y: -20)
+        page1.position = .init(x: -120,y: -20)
         
         page2.zPosition = 1001
-        page2.position = .init(x: 130,y: -25)
+        page2.position = .init(x: 140,y: -23)
         
-        gearsAcquired.position = .init(x: -25, y: 45)
+        gearsAcquired.position = .init(x: -25, y: 58)
         gearsAcquired.zPosition = 1002
         gearsAcquired.text = "0"
         if storage.value(forKey: "gears") != nil{
