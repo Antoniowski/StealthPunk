@@ -67,5 +67,5 @@ func Timer(scene: SKScene){
 //    scene.run(.sequence([wait, .run {
 //        MINUTE -= 1
 //    }]))
-    scene.run(.repeatForever(actions))
+    scene.run(.repeatForever(actions), withKey: "CLOCK")
 }

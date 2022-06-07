@@ -115,7 +115,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
         if firstBody.node?.name == "player" && secondBody.node?.name == "collectible"{
             let item = secondBody.node as? Collectible
-            item?.action(player: firstBody.node as? PlayableCharacter ?? PlayableCharacter())
+            item?.action(player: firstBody.node as? PlayableCharacter ?? PlayableCharacter(), scene: self)
             
             
             
