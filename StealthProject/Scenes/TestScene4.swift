@@ -89,6 +89,13 @@ class TestScene4: SKScene, PlayableScene, SKPhysicsContactDelegate {
         enumerateChildNodes(withName: "ROOM/dynamicObject"){oggetto, _ in
             self.oggetti.append(oggetto)
         }
+        
+        if(ammo == 0){
+            timer.proiettile1.alpha = 0.5
+            timer.proiettile1.alpha = 0.5
+        } else if (ammo == 1){
+            timer.proiettile1.alpha = 0.5
+        }
 
        Timer(scene: self)
     }
@@ -124,7 +131,7 @@ class TestScene4: SKScene, PlayableScene, SKPhysicsContactDelegate {
 //            ball.name = "BallTrajectory"
 //            addChild(ball)
 //        }
-        shootProjectile(player: player, scene: self)
+        shootProjectile(player: player, scene: self, timer: timer)
     }
 
     

@@ -212,7 +212,7 @@ func rayCasting(myX: CGFloat, myY: CGFloat, entity: Guard, scene: SKScene, rayCa
     scene.physicsWorld.enumerateBodies(alongRayStart: entity.roomReference.convert(entity.position, to: scene), end: CGPoint(x: myX, y: myY)){ body, point, vector, object in
         if(body.node?.name == "player"){
             entity.rayCastingPlayerFound = true
-        } else if(body.node?.name == "collectible"){
+        } else if(body.node?.name == "collectible" || body.node?.name == "projectile"){
             
         } else {
             foundObject = true
