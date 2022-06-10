@@ -211,7 +211,7 @@ class PlayableCharacter: SKSpriteNode{
                         self.setActionState(.MOVE)
                         self.status.isHidden = false
                         self.alpha = 1
-                        self.physicsBody = SKPhysicsBody(rectangleOf: .init(width: 12.5, height: 50))
+                        self.physicsBody = SKPhysicsBody(rectangleOf: .init(width: 15, height: 55), center: .init(x: 0, y: -7))
                         self.physicsBody?.isDynamic = true
                         self.physicsBody?.affectedByGravity = false
                         self.physicsBody?.allowsRotation = false
