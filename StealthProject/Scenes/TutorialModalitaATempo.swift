@@ -17,7 +17,11 @@ class TutorialModalitaATempo: SKScene {
     ]
     
     let nextTutorialPage: SKLabelNode = SKLabelNode(text: ">")
+    let nextTutorialPageClickableArea: SKShapeNode = SKShapeNode(rectOf: CGSize(width: 33, height: 23))
     let previousTutorialPage: SKLabelNode = SKLabelNode(text: "<")
+    let previousTutorialPageClickableArea: SKShapeNode = SKShapeNode(rectOf: CGSize(width: 33, height: 23))
+    
+    let nextTutorialPageClickableAreaPlay: SKShapeNode = SKShapeNode(rectOf: CGSize(width: 90, height: 50))
     
     var tutorialPartsIndex: Int = 0
     
@@ -92,12 +96,35 @@ class TutorialModalitaATempo: SKScene {
         nextTutorialPage.name = "nextTutorialPage"
         addChild(nextTutorialPage)
         
+        nextTutorialPageClickableArea.position = CGPoint(x: size.width*0.8, y: size.height*0.13)
+        nextTutorialPageClickableArea.zPosition = 6
+        nextTutorialPageClickableArea.fillColor = .red
+        nextTutorialPageClickableArea.strokeColor = .red
+        nextTutorialPageClickableArea.alpha = 0.01
+        nextTutorialPageClickableArea.name = "nextTutorialPage"
+        addChild(nextTutorialPageClickableArea)
+        
         previousTutorialPage.position = CGPoint(x: size.width*0.2, y: size.height*0.1)
         previousTutorialPage.fontName = "OldNewspaperTypes"
         previousTutorialPage.fontSize = size.width*0.045
         previousTutorialPage.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
         previousTutorialPage.zPosition = 5
         previousTutorialPage.name = "previousTutorialPage"
+        
+        previousTutorialPageClickableArea.position = CGPoint(x: size.width*0.2, y: size.height*0.13)
+        previousTutorialPageClickableArea.zPosition = 6
+        previousTutorialPageClickableArea.fillColor = .red
+        previousTutorialPageClickableArea.strokeColor = .red
+        previousTutorialPageClickableArea.alpha = 0.01
+        previousTutorialPageClickableArea.name = "previousTutorialPage"
+        addChild(previousTutorialPageClickableArea)
+        
+        nextTutorialPageClickableAreaPlay.position = CGPoint(x: size.width*0.8, y: size.height*0.13)
+        nextTutorialPageClickableAreaPlay.zPosition = 6
+        nextTutorialPageClickableAreaPlay.fillColor = .red
+        nextTutorialPageClickableAreaPlay.strokeColor = .red
+        nextTutorialPageClickableAreaPlay.alpha = 0.01
+        nextTutorialPageClickableAreaPlay.name = "nextTutorialPage"
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -116,6 +143,7 @@ class TutorialModalitaATempo: SKScene {
                 tutorialParts[tutorialPartsIndex].removeFromParent()
                 tutorialPartsIndex += 1
                 if(tutorialPartsIndex == tutorialParts.count-1){
+                    addChild(nextTutorialPageClickableAreaPlay)
                     nextTutorialPage.text = "Play"
                     nextTutorialPage.run(.repeatForever(.sequence([.fadeAlpha(to: 0.7, duration: 0.5), .fadeAlpha(to: 1, duration: 0.5)])))
                 }
@@ -132,6 +160,7 @@ class TutorialModalitaATempo: SKScene {
                 }
                 tutorialParts[tutorialPartsIndex].removeFromParent()
                 tutorialPartsIndex -= 1
+                nextTutorialPageClickableAreaPlay.removeFromParent()
                 addChild(tutorialParts[tutorialPartsIndex])
                 if(tutorialPartsIndex == 0){
                     previousTutorialPage.removeFromParent()
