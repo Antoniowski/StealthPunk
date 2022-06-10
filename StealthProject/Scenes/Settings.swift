@@ -255,6 +255,7 @@ class SettingsPage: SKScene{
                     music.musicVolume = 1
                     music.musicEffect.volume = 1
                 }
+                storage.set(music.musicVolume, forKey: "musicVolume")
             }
         }
         if touchedNode.name == "-" {
@@ -266,6 +267,7 @@ class SettingsPage: SKScene{
                     music.musicVolume = 0
                     music.musicEffect.volume = 0
                 }
+                storage.set(music.musicVolume, forKey: "musicVolume")
             }
         }
         if touchedNode.name == "+2" {
@@ -276,6 +278,7 @@ class SettingsPage: SKScene{
                 if music.volume > 1{
                     music.volume = 1
                 }
+                storage.set(music.volume, forKey: "volume")
             }
         }
         if touchedNode.name == "-2" {
@@ -285,6 +288,7 @@ class SettingsPage: SKScene{
                 if music.volume < 0{
                     music.volume = 0
                 }
+                storage.set(music.volume, forKey: "volume")
             }
         }
         
