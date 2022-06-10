@@ -33,6 +33,7 @@
 		6A007C36284E276000793B11 /* UnlockableAndGears.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A007C35284E276000793B11 /* UnlockableAndGears.swift */; };
 		6A007C38284F970E00793B11 /* Horse.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6A007C37284F970E00793B11 /* Horse.mp3 */; };
 		6A007C3A284F971800793B11 /* MenuSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6A007C39284F971800793B11 /* MenuSound.wav */; };
+		6A007C3C28538B2E00793B11 /* DeviceFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A007C3B28538B2E00793B11 /* DeviceFunctions.swift */; };
 		6A0621F0283301AF0064BB97 /* CollectibleItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0621EF283301AF0064BB97 /* CollectibleItems.swift */; };
 		6A0621F228330FC80064BB97 /* CollisionsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0621F128330FC80064BB97 /* CollisionsEnum.swift */; };
 		6A2A7E992833F8E600D14EC0 /* Chest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2A7E982833F8E600D14EC0 /* Chest.swift */; };
@@ -136,6 +137,7 @@
 		6A007C35284E276000793B11 /* UnlockableAndGears.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockableAndGears.swift; sourceTree = "<group>"; };
 		6A007C37284F970E00793B11 /* Horse.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Horse.mp3; sourceTree = "<group>"; };
 		6A007C39284F971800793B11 /* MenuSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = MenuSound.wav; sourceTree = "<group>"; };
+		6A007C3B28538B2E00793B11 /* DeviceFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceFunctions.swift; sourceTree = "<group>"; };
 		6A0621EF283301AF0064BB97 /* CollectibleItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectibleItems.swift; sourceTree = "<group>"; };
 		6A0621F128330FC80064BB97 /* CollisionsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionsEnum.swift; sourceTree = "<group>"; };
 		6A2A7E982833F8E600D14EC0 /* Chest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chest.swift; sourceTree = "<group>"; };
@@ -382,6 +384,7 @@
 				6AB863FA2820258F006BB85E /* OpOverloading.swift */,
 				6A6A4D402822BBEA003A76C5 /* DeltaFunctions.swift */,
 				A6B41B73284E3316004F1C62 /* LoseFunction.swift */,
+				6A007C3B28538B2E00793B11 /* DeviceFunctions.swift */,
 			);
 			path = "Useful Functions";
 			sourceTree = "<group>";
@@ -619,6 +622,7 @@
 				6AB8640028217369006BB85E /* PlayableCharacter.swift in Sources */,
 				6AB8640A2821845B006BB85E /* VirtualController.swift in Sources */,
 				63935A3B28466E7C00155031 /* Inventory.swift in Sources */,
+				6A007C3C28538B2E00793B11 /* DeviceFunctions.swift in Sources */,
 				A693D354282561300055C266 /* testRoom.swift in Sources */,
 				4A1C86292847954B00885CCE /* GuardCerchioGrande.swift in Sources */,
 				6A0621F228330FC80064BB97 /* CollisionsEnum.swift in Sources */,

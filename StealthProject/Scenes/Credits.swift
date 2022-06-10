@@ -70,6 +70,9 @@ class Credits: SKScene{
         mainmenu.run(.repeatForever(.sequence([.scale(to: 0.9, duration: 2), .scale(to: 1, duration: 2)])))
         
         Goosezilla.fontSize = 40
+        if (UIDevice.modelName.contains("iPad")){
+            Goosezilla.fontSize = 35
+        }
         Goosezilla.text = "GOOSEZILLA"
         Goosezilla.fontName = "OldNewspaperTypes"
         Goosezilla.zPosition = 2
@@ -87,6 +90,10 @@ class Credits: SKScene{
         nomi.position = .init(x: frame.width*0.74, y: frame.height*0.2)
         
         logo.position = .init(x: frame.width*0.295, y: frame.height*0.33)
+        if(UIDevice.modelName.contains("iPad")){
+            logo.xScale = 0.74
+            logo.yScale =  0.9
+        }
         logo.zPosition = 3
         
         addChild(backgroundImage)

@@ -80,6 +80,10 @@ class SettingsPage: SKScene{
 
         
         image.position = .init(x: frame.width*0.295, y: frame.height*0.33)
+        if(UIDevice.modelName.contains("iPad")){
+            image.xScale = 0.74
+            image.yScale =  0.9
+        }
         image.zPosition = 3
         
         audio.fontName = "OldNewspaperTypes"

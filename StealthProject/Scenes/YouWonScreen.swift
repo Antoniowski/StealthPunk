@@ -30,6 +30,9 @@ class YouWonScreen: SKScene{
         
         title.fontName = "OldLondon"
         title.fontSize = 70
+        if UIDevice.modelName.contains("iPad"){
+            title.fontSize = 50
+        }
         title.text = "Congratulations!"
         title.position = .init(x: frame.width*0.5, y: frame.height*0.79)
         title.zPosition = 2
@@ -50,6 +53,9 @@ class YouWonScreen: SKScene{
         breakingNews.position = .init(x: frame.width*0.74, y: frame.height*0.5 + 20)
 
         lobby.fontSize = 24
+        if UIDevice.modelName.contains("iPad"){
+            label.fontSize = 18
+        }
         lobby.text = "Back to Lobby"
         lobby.fontName = "OldNewspaperTypes"
         lobby.name = "lobby"
@@ -68,6 +74,9 @@ class YouWonScreen: SKScene{
         mainmenu.position = .init(x: frame.width*0.845, y: frame.height*0.67)
         
         label.fontSize = 25
+        if UIDevice.modelName.contains("iPad"){
+            label.fontSize = 18
+        }
         label.fontName = "OldNewspaperTypes"
 //        label.numberOfLines = -1
         label.preferredMaxLayoutWidth = size.width*0.9
@@ -79,6 +88,9 @@ class YouWonScreen: SKScene{
         label.zPosition = 2
         
         timeCounter.fontSize = 25
+        if UIDevice.modelName.contains("iPad"){
+            timeCounter.fontSize = 18
+        }
         timeCounter.fontName = "OldNewspaperTypes"
         timeCounter.preferredMaxLayoutWidth = size.width*0.9
         timeCounter.numberOfLines = 0
@@ -107,6 +119,9 @@ class YouWonScreen: SKScene{
         timeCounter.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
         
         gearCounter.fontSize = 25
+        if UIDevice.modelName.contains("iPad"){
+            gearCounter.fontSize = 18
+        }
         gearCounter.fontName = "OldNewspaperTypes"
         gearCounter.preferredMaxLayoutWidth = size.width*0.9
         gearCounter.numberOfLines = 0
@@ -117,6 +132,10 @@ class YouWonScreen: SKScene{
         gearCounter.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
         
         immagine.position = .init(x: frame.width*0.295, y: frame.height*0.33)
+        if UIDevice.modelName.contains("iPad"){
+            immagine.xScale = 0.74
+            immagine.yScale =  0.9
+        }
         immagine.zPosition = 3
         
         addChild(backgroundImage)

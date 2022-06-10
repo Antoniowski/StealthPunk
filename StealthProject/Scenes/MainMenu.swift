@@ -47,6 +47,9 @@ class MainMenu: SKScene{
         subtitle.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
         
         start.fontSize = 50
+        if(UIDevice.modelName.contains("iPad")){
+            start.fontSize = 25
+        }
         start.text = "Tap to Start"
         start.name = "start"
         start.fontName = "OldNewspaperTypes"
@@ -82,6 +85,10 @@ class MainMenu: SKScene{
         image.position = .init(x: frame.width*0.295, y: frame.height*0.33)
         image.xScale = 1.27
         image.yScale =  1.27
+        if(UIDevice.modelName.contains("iPad")){
+            image.xScale = 0.95
+            image.yScale =  1.15
+        }
         image.zPosition = 3
         
         addChild(backgroundImage)

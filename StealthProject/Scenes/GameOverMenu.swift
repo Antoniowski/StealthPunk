@@ -41,6 +41,9 @@ class GameOverMenu: SKScene{
         subtitle.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
         
         breakingNews.fontSize = 40
+        if UIDevice.modelName.contains("iPad"){
+            breakingNews.fontSize = 30
+        }
         breakingNews.text = "Breaking News"
         breakingNews.fontName = "OldNewspaperTypes"
         breakingNews.zPosition = 2
@@ -48,6 +51,9 @@ class GameOverMenu: SKScene{
         breakingNews.position = .init(x: frame.width*0.74, y: frame.height*0.5)
 
         lobby.fontSize = 24
+        if UIDevice.modelName.contains("iPad"){
+            lobby.fontSize = 18
+        }
         lobby.text = "Back to Lobby"
         lobby.fontName = "OldNewspaperTypes"
         lobby.name = "lobby"
@@ -66,6 +72,9 @@ class GameOverMenu: SKScene{
         mainmenu.position = .init(x: frame.width*0.845, y: frame.height*0.67)
         
         label.fontSize = 25
+        if UIDevice.modelName.contains("iPad"){
+            label.fontSize = 18
+        }
         label.fontName = "OldNewspaperTypes"
 //        label.numberOfLines = -1
         label.preferredMaxLayoutWidth = size.width*0.9
@@ -77,6 +86,9 @@ class GameOverMenu: SKScene{
         label.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
         
         timeCounter.fontSize = 25
+        if UIDevice.modelName.contains("iPad"){
+            timeCounter.fontSize = 18
+        }
         timeCounter.fontName = "OldNewspaperTypes"
         timeCounter.preferredMaxLayoutWidth = size.width*0.9
         timeCounter.numberOfLines = 0
@@ -102,6 +114,9 @@ class GameOverMenu: SKScene{
         timeCounter.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
         
         gearCounter.fontSize = 25
+        if UIDevice.modelName.contains("iPad"){
+            gearCounter.fontSize = 18
+        }
         gearCounter.fontName = "OldNewspaperTypes"
         gearCounter.preferredMaxLayoutWidth = size.width*0.9
         gearCounter.numberOfLines = 0
@@ -112,15 +127,23 @@ class GameOverMenu: SKScene{
         gearCounter.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
         
         immagine.position = .init(x: frame.width*0.295, y: frame.height*0.33)
+        if(UIDevice.modelName.contains("iPad")){
+            immagine.xScale = 0.74
+            immagine.yScale =  0.9
+        }
         immagine.zPosition = 3
         
         mugshot.fontSize = 16
+        if UIDevice.modelName.contains("iPad"){
+            mugshot.fontSize = 11
+        }
         mugshot.fontName = "OldNewspaperTypes"
         mugshot.preferredMaxLayoutWidth = size.width*0.5
         mugshot.numberOfLines = 0
         mugshot.verticalAlignmentMode = SKLabelVerticalAlignmentMode.baseline
         mugshot.text = "   INMATE #\n       7436\nPOLICE DEPT"
-        mugshot.position = .init(x: 265, y: 22)
+        mugshot.position = immagine.position
+        mugshot.position.y -= frame.height/4
         mugshot.zPosition = 4
         mugshot.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
         
