@@ -74,7 +74,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         scenecamera.addChild(timer)
 
         scenecamera.position = player.position
-        scenecamera.setScale(1)
+        scenecamera.setScale(10)
         
         let f = Floor(self, floorType: .FIRST_FLOOR)
         
