@@ -17,8 +17,8 @@ enum ColliderType: UInt32{
     case DOOR = 3
     case CHAR = 4
     case ENEMY = 5
-    case PROJECTILE = 6
+    case PROJECTILE = 8
     case WALL = 7
     
-    case NONE = 16
+    case NONE = 0
 }

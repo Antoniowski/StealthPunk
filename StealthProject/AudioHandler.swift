@@ -45,9 +45,8 @@ class Music{
     
     var audioOn : Bool = true
     
-    var volume: Float = 0.4
-    var musicVolume: Float = 0.4
-    
+    var volume: Float = storage.value(forKey: "volume") as? Float ?? 0.4
+    var musicVolume: Float = storage.value(forKey: "musicVolume") as? Float ?? 0.4
     func starsSound( filenamed: String){
         if(self.soundOn){
             let resourceUrl = Bundle.main.url(forResource:

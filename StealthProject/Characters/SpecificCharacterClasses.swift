@@ -16,7 +16,7 @@ class Human: PlayableCharacter{
     override init(texture: SKTexture?, color: UIColor, size: CGSize, noise: Int, speed: Int, strenght: Int) {
         super.init(texture: texture, color: color, size: size, noise: noise, speed: speed, strenght: strenght)
         self.name = "player"
-        self.physicsBody = SKPhysicsBody(rectangleOf: .init(width: 30, height: 60))
+        self.physicsBody = SKPhysicsBody(rectangleOf: .init(width: 25, height: 75))
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.isDynamic = true
@@ -45,7 +45,7 @@ class Human: PlayableCharacter{
         self.characterName = "Human" //INSERIRE NOME PERSONAGGIO APPENA DISPONIBILE
         self.name = "player"
         self.type = .HUMAN
-        self.physicsBody = SKPhysicsBody(rectangleOf: .init(width: 12.5, height: 50))
+        self.physicsBody = SKPhysicsBody(rectangleOf: .init(width: 15, height: 55), center: .init(x: 0, y: -7))
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.allowsRotation = false
         self.physicsBody?.isDynamic = true

@@ -101,6 +101,8 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
             self.oggetti.append(oggetto)
         }
         
+        
+        
        Timer(scene: self)
     }
     
@@ -135,7 +137,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
 //            ball.name = "BallTrajectory"
 //            addChild(ball)
 //        }
-        shootProjectile(player: player, scene: self)
+        shootProjectile(player: player, scene: self, timer: timer)
     }
     
     
