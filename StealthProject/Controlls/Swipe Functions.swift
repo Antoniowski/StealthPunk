@@ -37,17 +37,11 @@ func shootProjectile(player: PlayableCharacter, scene: SKScene, timer: TimeCount
             yTraslataIniziale = arrayOfTouches[0].y - arrayOfTouches[arrayOfTouches.count-1].y
             roIniziale = sqrt((xTraslataIniziale*xTraslataIniziale)+(yTraslataIniziale*yTraslataIniziale))
             tetaIniziale = -asin(yTraslataIniziale/roIniziale)
-            
-            print(tetaIniziale)
-            
             for index in 2...arrayOfTouches.count-1{
                 let xTraslata = arrayOfTouches[1].x - arrayOfTouches[index].x
                 let yTraslata = arrayOfTouches[1].y - arrayOfTouches[index].y
                 let ro = sqrt((xTraslata*xTraslata)+(yTraslata*yTraslata))
                 let teta = -asin(yTraslata/ro)
-                
-                print(teta)
-                
                 if teta > tetaIniziale + (20*3.14/180) || teta < tetaIniziale - (20*3.14/180) {
                     return
                 }
@@ -67,7 +61,7 @@ func shootProjectile(player: PlayableCharacter, scene: SKScene, timer: TimeCount
             
         if distance > 80 {
             if(ammo > 0){
-//                ammo -= 1
+                ammo -= 1
                 if(ammo == 1){
                     timer.proiettile1.alpha = 0.5
                 } else if (ammo == 0){
