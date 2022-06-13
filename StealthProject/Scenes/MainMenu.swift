@@ -83,8 +83,14 @@ class MainMenu: SKScene{
         
 
         image.position = .init(x: frame.width*0.295, y: frame.height*0.33)
-        image.xScale = 1.27
-        image.yScale =  1.27
+        image.xScale = size.width*0.001425
+        image.yScale = size.width*0.001427
+//        image.xScale = 1.27
+//        image.yScale =  1.27
+        if(UIDevice.modelName.contains("iPhone 8")){
+            image.xScale = size.width*0.001421
+            image.yScale = size.width*0.00174
+        }
         if(UIDevice.modelName.contains("iPad")){
             image.xScale = 0.95
             image.yScale =  1.15

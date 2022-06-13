@@ -56,11 +56,11 @@ class TimeCounter: SKNode{
         proiettile1.size = CGSize(width: 200, height: 200)
         proiettile1.zPosition = 1000
         proiettile1.zRotation = 120 * 3.14 / 180
-        proiettile1.position = CGPoint(x: 1500, y: 25)
+        proiettile1.position = CGPoint(x: UIScreen.main.bounds.size.width*1.8, y: 25)
         proiettile2.size = CGSize(width: 200, height: 200)
         proiettile2.zPosition = 1000
         proiettile2.zRotation = 120 * 3.14 / 180
-        proiettile2.position = CGPoint(x: 1550, y: 25)
+        proiettile2.position = CGPoint(x: UIScreen.main.bounds.size.width*1.85, y: 25)
         addChild(proiettile1)
         addChild(proiettile2)
         addChild(allarmeLivello1)

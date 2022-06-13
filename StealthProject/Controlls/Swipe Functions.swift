@@ -13,6 +13,7 @@ func shootProjectile(player: PlayableCharacter, scene: SKScene, timer: TimeCount
 //    scene.enumerateChildNodes(withName: "touchBall"){
 //        node, _ in
 //        node.removeFromParent()
+//    
 //    }
     
     if(arrayOfTouches.count > 1){
@@ -67,7 +68,7 @@ func shootProjectile(player: PlayableCharacter, scene: SKScene, timer: TimeCount
             
         if distance > 80 {
             if(ammo > 0){
-//                ammo -= 1
+                ammo -= 1
                 if(ammo == 1){
                     timer.proiettile1.alpha = 0.5
                 } else if (ammo == 0){

@@ -90,6 +90,14 @@ class Credits: SKScene{
         nomi.position = .init(x: frame.width*0.74, y: frame.height*0.2)
         
         logo.position = .init(x: frame.width*0.295, y: frame.height*0.33)
+        logo.xScale = size.width*0.00112
+        logo.yScale = size.width*0.00112
+//        image.xScale = 1.27
+//        image.yScale =  1.27
+        if(UIDevice.modelName.contains("iPhone 8") || UIDevice.modelName.contains("iPhone 8 Plus")){
+            logo.xScale = size.width*0.00112
+            logo.yScale = size.width*0.00135
+        }
         if(UIDevice.modelName.contains("iPad")){
             logo.xScale = 0.74
             logo.yScale =  0.9
