@@ -11,7 +11,7 @@ import SpriteKit
 class TutorialModalitaATempo: SKScene {
     var title: SKLabelNode = SKLabelNode(fontNamed: "OldLondon")
     var tutorialParts: [SKLabelNode] = [
-        SKLabelNode(text: "You can move with the analog stick on the left of the screen. By pressing B you can roll, while A allows you to interact with the items in the room. By swiping on the screen you can shoot in the direction of the swipe, you only have two ammunitions."),
+        SKLabelNode(text: "You can move with the analog stick on the left of the screen. By pressing B you can roll, while A allows you to interact with the items in the room. By swiping on the screen you can shoot in the direction of the swipe (note that the swipe must be \"straight enough\"), you only have two ammunitions."),
         SKLabelNode(text: "Throughout the floors you can find some hidden items that will give you some effects. The goal of the game is to get to the end of the floors before the timer runs out."),
         SKLabelNode(text: "The timer runs faster each time you are seen. When you get spotted for the fourth time the game is over.")
     ]
@@ -52,7 +52,7 @@ class TutorialModalitaATempo: SKScene {
                 tutorialParts[indice].fontSize = size.width*0.03
                 tutorialParts[indice].fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
                 tutorialParts[indice].position.x = size.width*0.48
-                tutorialParts[indice].position.y = size.height*0.17
+                tutorialParts[indice].position.y = size.height*0.12
             } else if (indice == 1){
                 tutorialParts[indice].fontName = "OldNewspaperTypes"
                 tutorialParts[indice].numberOfLines = 0
