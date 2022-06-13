@@ -127,6 +127,14 @@ class GameOverMenu: SKScene{
         gearCounter.fontColor = .init(red: 0.22, green: 0.196, blue: 0.165, alpha: 0.85)
         
         immagine.position = .init(x: frame.width*0.295, y: frame.height*0.33)
+        immagine.xScale = size.width*0.00112
+        immagine.yScale = size.width*0.00112
+//        image.xScale = 1.27
+//        image.yScale =  1.27
+        if(UIDevice.modelName.contains("iPhone 8") || UIDevice.modelName.contains("iPhone 8 Plus")){
+            immagine.xScale = size.width*0.00112
+            immagine.yScale = size.width*0.00135
+        }
         if(UIDevice.modelName.contains("iPad")){
             immagine.xScale = 0.74
             immagine.yScale =  0.9

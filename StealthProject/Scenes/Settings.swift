@@ -80,6 +80,14 @@ class SettingsPage: SKScene{
 
         
         image.position = .init(x: frame.width*0.295, y: frame.height*0.33)
+        image.xScale = size.width*0.00112
+        image.yScale = size.width*0.00112
+//        image.xScale = 1.27
+//        image.yScale =  1.27
+        if(UIDevice.modelName.contains("iPhone 8") || UIDevice.modelName.contains("iPhone 8 Plus")){
+            image.xScale = size.width*0.00112
+            image.yScale = size.width*0.00135
+        }
         if(UIDevice.modelName.contains("iPad")){
             image.xScale = 0.74
             image.yScale =  0.9
