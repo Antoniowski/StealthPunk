@@ -42,6 +42,11 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
     
     
     override func didMove(to view: SKView) {
+        globalPlayerSpeed = 0
+        globalPlayerNoise = 0
+        globalPlayerStrength = 0
+        print("Speed: \(player.getSpeed()) + Noise: \(player.getNoise()) + Strength: \(player.getStrenght())")
+        
         ammo = 2
         
         passaggio1 = false

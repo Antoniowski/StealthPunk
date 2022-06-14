@@ -15,6 +15,13 @@ import Foundation
 import SpriteKit
 import SwiftUI
 
+
+//Variabili per mantenere gli oggetti tra le stanze
+var globalPlayerNoise = 0
+var globalPlayerStrength = 0
+var globalPlayerSpeed = 0
+
+
 //Variabile che contiene il numero di proiettili massimo che il giocatore può sparare
 var ammo: Int = 2
 

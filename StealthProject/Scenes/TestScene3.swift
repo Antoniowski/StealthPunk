@@ -43,6 +43,17 @@ class TestScene3: SKScene, PlayableScene, SKPhysicsContactDelegate {
     
     
     override func didMove(to view: SKView) {
+        if(globalPlayerSpeed != 0){
+            player.setSpeed(newSpeed: globalPlayerSpeed)
+        }
+        if(globalPlayerStrength != 0){
+            player.setStrenght(newStrenght: globalPlayerStrength)
+        }
+        if(globalPlayerNoise != 0){
+            player.setNoise(newNoise: globalPlayerNoise)
+        }
+        print("Speed: \(player.getSpeed()) + Noise: \(player.getNoise()) + Strength: \(player.getStrenght())")
+        
         myGameController.connectController()
         self.backgroundColor = .black
         physicsWorld.contactDelegate = self
