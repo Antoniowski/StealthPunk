@@ -108,6 +108,7 @@ extension PlayableScene{
     }
     
     func interactState(scene: SKScene, oggetti: [SKNode]){
+        velocity = .zero
         if player.getStatus().isInteracting == false && player.getStatus().isExiting == false{
             player.setInteractingStatus(true)
 //            print("Interaction")
@@ -178,6 +179,7 @@ extension PlayableScene{
     }
     
     func hiddenState(){
+        velocity = .zero
         if player.getStatus().isHidden == false{
             player.setHiddenStatus(true)
             DispatchQueue.main.asyncAfter(deadline: .now()+0.35, execute: {

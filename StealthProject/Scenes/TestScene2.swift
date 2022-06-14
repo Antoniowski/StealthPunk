@@ -175,7 +175,10 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
                     self.indicatore.run(.sequence([.wait(forDuration: 1.5), .moveTo(y: UIScreen.main.bounds.height*0.55, duration: 0.5)]))
                 })
                 item?.action(contatore: indicatore)
-            }else {
+            }else if item?.getType() == .FINAL{
+                print("YOU WON")
+            }
+            else {
                 let box = ObjectBox(item!)
                 box.position.x = -125
                 box.position.y = UIScreen.main.bounds.height*0.55
