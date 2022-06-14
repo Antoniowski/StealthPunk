@@ -718,7 +718,7 @@ let prova3ScrignoGuardsPaths: [[myAction]] = [
      myAction(actionType: .ROTATE_ACTION, duration: 1.5, startingPoint: CGPoint(x: 0, y: 0), endingPoint: CGPoint(x: 0, y: 0), angle: -90),
      myAction(actionType: .PATH_ACTION, duration: 1.5, startingPoint: CGPoint(x: 5, y: 1), endingPoint: CGPoint(x: 5, y: 5), angle: -90),
      myAction(actionType: .ROTATE_ACTION, duration: 1.5, startingPoint: CGPoint(x: 0, y: 0), endingPoint: CGPoint(x: 0, y: 0), angle: -90),
-     myAction(actionType: .PATH_ACTION, duration: 1.5, startingPoint: CGPoint(x: 5, y: 5), endingPoint: CGPoint(x: 1, y: 5), angle: -90),
+     myAction(actionType: .PATH_ACTION, duration: 1.5, startingPoint: CGPoint(x: 5, y: 5), endingPoint: CGPoint(x: 2, y: 5), angle: -90),
      myAction(actionType: .ROTATE_ACTION, duration: 1.5, startingPoint: CGPoint(x: 0, y: 0), endingPoint: CGPoint(x: 0, y: 0), angle: -90)
     ]
 ]

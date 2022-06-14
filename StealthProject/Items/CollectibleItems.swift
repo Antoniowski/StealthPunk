@@ -109,22 +109,27 @@ class Collectible: SKSpriteNode{
             })
             if player.getNoise() > 0{
                 player.setNoise(newNoise: player.getNoise() - 1)
+                globalPlayerNoise = player.getNoise()
             }
         case .KNUCKLES:
             player.run(.run {
                 music.starsSound(filenamed: music.swing)
             })
             player.setStrenght(newStrenght: player.getStrenght() + 1)
+            globalPlayerStrength = player.getStrenght()
             if player.getStrenght() > 7{
                 player.setStrenght(newStrenght: 7)
+                globalPlayerStrength = player.getStrenght()
             }
         case .POTION:
             player.run(.run {
                 music.starsSound(filenamed: music.swing)
             })
             player.setSpeed(newSpeed: player.getSpeed() + 1)
+            globalPlayerSpeed = player.getSpeed()
             if player.getSpeed() > 7 {
                 player.setSpeed(newSpeed: 7)
+                globalPlayerSpeed = player.getSpeed()
             }
         case .SIRINGE:
             player.run(.run {
@@ -134,14 +139,21 @@ class Collectible: SKSpriteNode{
             player.setStrenght(newStrenght: player.getStrenght() + 1)
             player.setNoise(newNoise: player.getNoise() + 1)
             
+            globalPlayerSpeed = player.getSpeed()
+            globalPlayerStrength = player.getStrenght()
+            globalPlayerNoise = player.getNoise()
+            
             if player.getNoise() > 7{
                 player.setNoise(newNoise: 7)
+                globalPlayerNoise = player.getNoise()
             }
             if player.getSpeed() > 7{
                 player.setSpeed(newSpeed: 7)
+                globalPlayerSpeed = player.getSpeed()
             }
             if player.getStrenght() > 7 {
                 player.setStrenght(newStrenght: 7)
+                globalPlayerStrength = player.getStrenght()
             }
         case .HAT:
             player.run(.run {
@@ -151,14 +163,21 @@ class Collectible: SKSpriteNode{
             player.setStrenght(newStrenght: player.getStrenght() - 1)
             player.setNoise(newNoise: player.getNoise() - 1)
             
+            globalPlayerSpeed = player.getSpeed()
+            globalPlayerStrength = player.getStrenght()
+            globalPlayerNoise = player.getNoise()
+            
             if player.getNoise() < 0{
                 player.setNoise(newNoise: 0)
+                globalPlayerNoise = player.getNoise()
             }
             if player.getSpeed() > 7{
                 player.setSpeed(newSpeed: 7)
+                globalPlayerSpeed = player.getSpeed()
             }
             if player.getStrenght() < 0 {
                 player.setStrenght(newStrenght: 0)
+                globalPlayerStrength = player.getStrenght()
             }
         case .CLOCK1:
             player.run(.run {
