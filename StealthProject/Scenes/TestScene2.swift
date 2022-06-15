@@ -45,7 +45,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         globalPlayerSpeed = 0
         globalPlayerNoise = 0
         globalPlayerStrength = 0
-        print("Speed: \(player.getSpeed()) + Noise: \(player.getNoise()) + Strength: \(player.getStrenght())")
+//        print("Speed: \(player.getSpeed()) + Noise: \(player.getNoise()) + Strength: \(player.getStrenght())")
         
         ammo = 2
         
@@ -94,7 +94,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         player.position = f.spawn
         player.zPosition = 900
         
-        print("POSIZIONE GIOCATORE: \(player.position)")
+//        print("POSIZIONE GIOCATORE: \(player.position)")
         
         addChild(player)
 
@@ -119,6 +119,7 @@ class TestScene2: SKScene, PlayableScene, SKPhysicsContactDelegate {
         
         arrayOfTouches.removeAll()
         arrayOfTouches.append(touchLocation)
+        
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {

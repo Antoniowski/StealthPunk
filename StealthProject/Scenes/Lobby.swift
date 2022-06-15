@@ -48,9 +48,8 @@ class LobbyScene: SKScene, PlayableScene{
     override func didMove(to view: SKView) {
         self.name = "Lobby"
         currentScene = self
-        print("Scena corrente: \(currentScene)")
+//        print("Scena corrente: \(currentScene)")
         
-        myGameController.setUpGameController()
         self.backgroundColor = .black
         physicsWorld.contactDelegate = self
         
@@ -89,7 +88,14 @@ class LobbyScene: SKScene, PlayableScene{
         enumerateChildNodes(withName: "ROOM/dynamicObject"){oggetto, _ in
             self.oggetti.append(oggetto)
         }
-
+        
+        self.run(.wait(forDuration: 0.05), completion: {
+            myGameController.setUpGameController()
+            myGameController.virtualController?.controller?.extendedGamepad?.leftThumbstick.setValueForXAxis(Float(0), yAxis: Float(0))
+            self.velocity = CGVector(dx: 0, dy: 0)
+        })
+        
+//        myGameController.setUpGameController()
     }
     
     override func update(_ currentTime: TimeInterval) {

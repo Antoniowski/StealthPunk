@@ -15,9 +15,12 @@ func loseFunc(scene : SKScene){
         deadOnce = true
 //        scene.removeAllActions()
 //        scene.removeAllChildren()
-//        
 //        scene.camera?.removeAllChildren()
         
+//        myGameController.virtualController?.controller?.extendedGamepad?.leftThumbstick.setValueForXAxis(Float(0), yAxis: Float(0))
+        myMovement = CGVector(dx: 0, dy: 0)
+        
+        myAngle = 0
         myGameController.disconnectController()
         
         loseFlag = false

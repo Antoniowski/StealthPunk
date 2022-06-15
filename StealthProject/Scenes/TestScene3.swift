@@ -52,7 +52,7 @@ class TestScene3: SKScene, PlayableScene, SKPhysicsContactDelegate {
         if(globalPlayerNoise != 0){
             player.setNoise(newNoise: globalPlayerNoise)
         }
-        print("Speed: \(player.getSpeed()) + Noise: \(player.getNoise()) + Strength: \(player.getStrenght())")
+//        print("Speed: \(player.getSpeed()) + Noise: \(player.getNoise()) + Strength: \(player.getStrenght())")
         
         myGameController.connectController()
         self.backgroundColor = .black

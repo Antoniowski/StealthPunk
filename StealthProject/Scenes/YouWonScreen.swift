@@ -23,6 +23,7 @@ class YouWonScreen: SKScene{
     
     override func didMove(to view: SKView) {
         
+//        myGameController.virtualController?.controller?.extendedGamepad?.leftThumbstick.setValueForXAxis(Float(0), yAxis: Float(0))
         moltiplicatoreTempo = 1
         
         backgroundImage.size = .init(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
