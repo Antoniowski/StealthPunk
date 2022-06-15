@@ -33,6 +33,8 @@ class LobbyScene: SKScene, PlayableScene{
     var player3: Bool = false
     var player4: Bool = false
     
+    var controllerBool: Bool = false
+    
 
     private let ambientLight = SKLightNode()
     private var lightArray: [LuceTaverna] = []
@@ -92,7 +94,7 @@ class LobbyScene: SKScene, PlayableScene{
         self.run(.wait(forDuration: 0.05), completion: {
             myGameController.setUpGameController()
             myGameController.virtualController?.controller?.extendedGamepad?.leftThumbstick.setValueForXAxis(Float(0), yAxis: Float(0))
-            self.velocity = CGVector(dx: 0, dy: 0)
+            self.controllerBool = true
         })
         
 //        myGameController.setUpGameController()
@@ -107,7 +109,9 @@ class LobbyScene: SKScene, PlayableScene{
                 playerMovement(player: player as SKSpriteNode, velocity: velocity)
             }
         }else{
-            playerMovement(player: player as SKSpriteNode, velocity: velocity)
+            if controllerBool{
+                playerMovement(player: player as SKSpriteNode, velocity: velocity)
+            }
         }
         
         sceneCamera.position = player.position
