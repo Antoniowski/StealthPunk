@@ -106,7 +106,9 @@ class LobbyScene: SKScene, PlayableScene{
         playerEssential(scene: self, nemici: nemici, oggetti: oggetti)
         if sceneCamera.childNode(withName: "cornice") != nil{
             if (sceneCamera.childNode(withName: "cornice") as? Inventory)?.statoInventario == false{
+                if controllerBool{
                 playerMovement(player: player as SKSpriteNode, velocity: velocity)
+                }
             }
         }else{
             if controllerBool{
