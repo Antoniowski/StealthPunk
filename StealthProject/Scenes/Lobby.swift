@@ -94,6 +94,8 @@ class LobbyScene: SKScene, PlayableScene{
         self.run(.wait(forDuration: 0.05), completion: {
             myGameController.setUpGameController()
             myGameController.virtualController?.controller?.extendedGamepad?.leftThumbstick.setValueForXAxis(Float(0), yAxis: Float(0))
+            self.velocity = .zero
+            myMovement = .zero
             self.controllerBool = true
         })
         
@@ -107,7 +109,7 @@ class LobbyScene: SKScene, PlayableScene{
         if sceneCamera.childNode(withName: "cornice") != nil{
             if (sceneCamera.childNode(withName: "cornice") as? Inventory)?.statoInventario == false{
                 if controllerBool{
-                playerMovement(player: player as SKSpriteNode, velocity: velocity)
+                    playerMovement(player: player as SKSpriteNode, velocity: velocity)
                 }
             }
         }else{
